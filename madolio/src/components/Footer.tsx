@@ -20,7 +20,7 @@ export default function Footer() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[0.9375rem] font-semibold text-ink transition-colors hover:bg-white/85"
+                className="border-beam inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[0.9375rem] font-semibold text-ink transition-colors hover:bg-white/85"
               >
                 Falar no WhatsApp
               </a>

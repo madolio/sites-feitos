@@ -1,4 +1,12 @@
+import type { MouseEvent } from 'react'
+import PercentCounter from './PercentCounter'
 import Reveal from './Reveal'
+
+function handleSpotlight(e: MouseEvent<HTMLDivElement>) {
+  const rect = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--spot-x', `${e.clientX - rect.left}px`)
+  e.currentTarget.style.setProperty('--spot-y', `${e.clientY - rect.top}px`)
+}
 
 const iconProps = {
   viewBox: '0 0 48 48',
@@ -77,7 +85,9 @@ export default function Benefits() {
                   transform="rotate(-3 70 40)"
                 />
               </svg>
-              <span className="font-heading text-5xl font-semibold text-ink">100%</span>
+              <span className="font-heading text-5xl font-semibold text-ink">
+                <PercentCounter value={100} />
+              </span>
             </div>
             <h3 className="mt-6 text-lg font-semibold text-ink">Responsivo</h3>
             <p className="mt-2 max-w-sm text-ink/65">
@@ -88,7 +98,11 @@ export default function Benefits() {
 
           <div className="grid gap-5 sm:grid-cols-3">
             {secondaryBenefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-2xl border border-line bg-white p-8">
+              <div
+                key={benefit.title}
+                onMouseMove={handleSpotlight}
+                className="spotlight-card rounded-2xl border border-line bg-white p-8"
+              >
                 {benefit.icon}
                 <h3 className="mt-5 text-lg font-semibold text-ink">{benefit.title}</h3>
                 <p className="mt-2 text-ink/65">{benefit.description}</p>

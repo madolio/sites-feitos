@@ -39,7 +39,12 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary border-beam rounded-full"
+              >
                 Falar no WhatsApp
               </a>
               <a href={EMAIL_HREF} className="btn-outline">

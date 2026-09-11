@@ -78,3 +78,101 @@
     background-position: -150% 0;
   }
 }
+
+/* Border Beam — mesmo efeito do componente "Border Beam" da Magic UI
+   (magicui.design), refeito em CSS puro com @property em vez de instalar o
+   registry inteiro: um traço de luz gira ao redor da borda do botão. */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.border-beam {
+  position: relative;
+  isolation: isolate;
+}
+
+.border-beam::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg,
+    transparent 300deg,
+    var(--color-accent) 338deg,
+    #fff 349deg,
+    var(--color-accent) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-beam-spin 3.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes border-beam-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-beam::before {
+    animation: none;
+  }
+}
+
+/* Marquee — mesmo padrão do componente "Marquee" da Magic UI/shadcn: uma
+   faixa que rola infinitamente, duplicando o conteúdo pra não deixar buraco. */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+
+  .marquee-duplicate {
+    display: none;
+  }
+}
+
+/* Spotlight card — mesmo padrão do "Card Spotlight" da Aceternity UI
+   (ui.aceternity.com): um brilho radial segue o cursor sobre o card. */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(320px circle at var(--spot-x, 50%) var(--spot-y, 50%), var(--color-accent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.spotlight-card:hover::after {
+  opacity: 0.1;
+}

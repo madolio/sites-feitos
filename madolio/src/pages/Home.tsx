@@ -1,5 +1,6 @@
 import Benefits from '../components/Benefits'
 import Hero from '../components/Hero'
+import ProjectsMarquee from '../components/ProjectsMarquee'
 import Seo from '../components/Seo'
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         path="/"
       />
       <Hero />
+      <ProjectsMarquee />
       <Benefits />
     </>
   )
