@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* Vibe "Lambe-lambe": hamburgueria de bairro × cartaz em risografia.
+   As três cores de destaque são tintas reais de risografia (Fluorescent Pink,
+   Medium Blue e Yellow); onde elas se sobrepõem (mix-blend-mode: multiply)
+   aparecem as outras cores, como na impressão de verdade.
+   Ver CLAUDE.md pro Vibe Discovery completo. */
+@theme {
+  --color-paper: #fbfaf5;
+  --color-blue: #3255a4;
+  --color-pink: #ff48b0;
+  --color-yellow: #ffe800;
+  --color-ink: #1f2a4a;
+
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-poster: "Bungee", "Arial Black", ui-sans-serif, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+
+  /* Grão da risografia — o tile é gerado uma vez em Grain.tsx. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    pointer-events: none;
+    background-image: var(--grain, none);
+    background-size: 180px 180px;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-pink);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .poster {
+    font-family: var(--font-poster);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+
+  /* Título impresso duas vezes (azul + rosa) com registro desalinhado. */
+  .riso-type {
+    display: inline-grid;
+  }
+
+  .riso-type > * {
+    grid-area: 1 / 1;
+  }
+
+  .riso-type > .riso-pink {
+    color: var(--color-pink);
+    mix-blend-mode: multiply;
+    transform: translate(0.045em, 0.035em);
+  }
+
+  .btn-blue {
+    @apply inline-flex items-center justify-center rounded-full bg-blue px-6 py-3 font-bold text-paper no-underline transition-transform hover:-rotate-2 active:scale-95;
+  }
+
+  .btn-paper {
+    @apply inline-flex items-center justify-center rounded-full border-[3px] border-blue px-5 py-2.5 font-bold text-blue no-underline transition-transform hover:rotate-2;
+  }
+}
+
+.demo-dialog,
+.comanda-dialog {
+  width: min(32rem, calc(100% - 1.5rem));
+  max-height: calc(100dvh - 1.5rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.demo-dialog::backdrop,
+.comanda-dialog::backdrop {
+  background: rgb(50 85 164 / 0.55);
+}
+
+/* Borda picotada do bloco de comanda. */
+.picote {
+  --tooth: 10px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / var(--tooth) 100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / var(--tooth) 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-blue,
+  .btn-paper {
+    transition: none;
+  }
+}

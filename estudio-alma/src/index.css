@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Vibe "Contrologia": pilates × Bauhaus (o Balé Triádico de Oskar Schlemmer —
+   corpo como geometria). As quatro cores de destaque são as cores das molas
+   do reformer. Ver CLAUDE.md pro Vibe Discovery completo. */
+@theme {
+  --color-gesso: #e9e8e4;
+  --color-ink: #1d1b26;
+  --color-line: #cfcdc6;
+  --color-amarela: #f2b300;
+  --color-verde: #2f8f5b;
+  --color-azul: #2c4fa3;
+  --color-vermelha: #d63c3c;
+
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gesso text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-azul);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Títulos em caixa baixa, como a tipografia da Bauhaus (Herbert Bayer). */
+  .display {
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+    text-transform: lowercase;
+  }
+
+  .btn-ink {
+    @apply inline-flex items-center justify-center bg-ink px-6 py-3.5 font-medium text-gesso no-underline transition-colors hover:bg-azul;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center border-2 border-ink px-5 py-3 font-medium text-ink no-underline transition-colors hover:bg-ink hover:text-gesso;
+  }
+}
+
+.demo-dialog {
+  width: min(34rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--color-gesso);
+  color: var(--color-ink);
+}
+
+.demo-dialog::backdrop {
+  background: rgb(29 27 38 / 0.65);
+}

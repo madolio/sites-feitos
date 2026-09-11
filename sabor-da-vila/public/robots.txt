@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sabor-da-vila.fenoninho-max.workers.dev/sitemap.xml
