@@ -1,6 +1,6 @@
-# Site Template
+# Bastos Advocacia
 
-Template padrão da Madolio pra criar sites de clientes novos. Vite + React + TypeScript + Tailwind CSS, hospedado no Cloudflare Workers.
+Conceito de página única pro nicho de advocacia empresarial e civil — exemplo de estilo da Madolio, dados fictícios. Vite + React + TypeScript + Tailwind CSS, hospedado no Cloudflare Workers.
 
 ## Desenvolvimento
 
@@ -15,4 +15,4 @@ npm run dev
 npm run deploy
 ```
 
-Ver `CLAUDE.md` para o passo a passo de como clonar este template pra um cliente novo.
+Ver `CLAUDE.md` para a direção de design e o histórico deste projeto.

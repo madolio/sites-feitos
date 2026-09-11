@@ -1,13 +1,14 @@
-// Template Madolio — pra clonar pra um cliente novo:
-// 1. Troque os valores abaixo pelos dados reais do negócio.
-// 2. Em index.html, busque e substitua {{BUSINESS_NAME}}, {{TAGLINE}},
-//    {{DESCRIPTION}}, {{DOMAIN}} e {{EMAIL}} (tags estáticas de SEO/OG —
-//    não são lidas daqui, precisam ser editadas à parte).
-// 3. Ajuste cores/fonte em src/index.css (@theme) se o cliente pedir outra
-//    identidade visual, e o texto de Hero.tsx/Benefits.tsx pro negócio.
+// Conceito Madolio para o nicho jurídico — advocacia empresarial e civil.
+// Nome, OAB e dados de contato são fictícios (exemplo de estilo, não cliente real).
 
-export const BUSINESS_NAME = 'Nome do Negócio'
+export const FIRM_NAME = 'Bastos Advocacia'
+export const LAWYER_NAME = 'Dra. Camila Bastos'
+export const OAB = 'OAB/SP 312.884'
+
 export const WHATSAPP_URL =
-  'https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20saber%20mais'
-export const EMAIL = 'contato@seudominio.com.br'
+  'https://wa.me/5511940028800?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta'
+export const PHONE_DISPLAY = '(11) 4002-8800'
+export const PHONE_HREF = 'tel:+551140028800'
+export const EMAIL = 'contato@bastosadvocacia.com.br'
 export const EMAIL_HREF = `mailto:${EMAIL}`
+export const ADDRESS = 'Av. Brigadeiro Faria Lima, 1811 — São Paulo, SP'
