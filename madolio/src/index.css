@@ -126,36 +126,6 @@
   }
 }
 
-/* Marquee — mesmo padrão do componente "Marquee" da Magic UI/shadcn: uma
-   faixa que rola infinitamente, duplicando o conteúdo pra não deixar buraco. */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 28s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-    width: auto;
-  }
-
-  .marquee-duplicate {
-    display: none;
-  }
-}
-
 /* Spotlight card — mesmo padrão do "Card Spotlight" da Aceternity UI
    (ui.aceternity.com): um brilho radial segue o cursor sobre o card. */
 .spotlight-card {

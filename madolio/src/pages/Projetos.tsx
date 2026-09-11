@@ -17,25 +17,28 @@ const cases = [
     name: 'Doce Ateliê',
     category: 'Confeitaria',
     description:
-      'Catálogo de bolos e docaria com fotos em destaque, horário de encomenda e pedidos direto pelo WhatsApp.',
-    bg: '#F7D9E3',
-    accent: '#E85D8A',
+      'Monte o bolo numa cartela de sabores estilo leque de cores, veja o corte mudando em tempo real e mande a encomenda pelo WhatsApp.',
+    bg: '#FFFCF7',
+    accent: '#C4213A',
+    url: 'https://doce-atelie.fenoninho-max.workers.dev',
   },
   {
     name: 'Estúdio Alma',
     category: 'Pilates',
     description:
-      'Página de aulas e turmas com apresentação da instrutora e agendamento de experimental pelo WhatsApp.',
-    bg: '#DCEFE3',
-    accent: '#4F9D77',
+      'Boneco animado troca de pose conforme você rola a página, grade de horários e pedido de aula experimental pelo WhatsApp.',
+    bg: '#E9E8E4',
+    accent: '#2C4FA3',
+    url: 'https://estudio-alma.fenoninho-max.workers.dev',
   },
   {
     name: 'Sabor da Vila',
     category: 'Hamburgueria',
     description:
-      'Cardápio digital com fotos dos combos, promoções da semana e pedido rápido pelo WhatsApp.',
-    bg: '#FBE3D3',
-    accent: '#E2632F',
+      'Cardápio com comanda flutuante, hambúrguer ilustrado em risografia e pedido fechado direto pelo WhatsApp.',
+    bg: '#FBFAF5',
+    accent: '#3255A4',
+    url: 'https://sabor-da-vila.fenoninho-max.workers.dev',
   },
   {
     name: 'Bastos Advocacia',
