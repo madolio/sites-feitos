@@ -49,6 +49,33 @@ const cases = [
     accent: '#7A2E3A',
     url: 'https://site-template.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Torre',
+    category: 'SaaS de agendamento',
+    description:
+      'Software fictício com a agenda do dia numa tela de radar de verdade — cada agendamento é um blip, com varredura e confirmação automática.',
+    bg: '#0B1417',
+    accent: '#35D6C9',
+    url: 'https://torre.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Traço',
+    category: 'Arquitetura e interiores',
+    description:
+      'Portfólio de um escritório de arquitetura: a planta baixa do hero se desenha sozinha, e cada projeto é representado pelo próprio esquema, sem fotos.',
+    bg: '#F6F4EF',
+    accent: '#C9962D',
+    url: 'https://traco.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Âncora',
+    category: 'Consultoria financeira',
+    description:
+      'Consultoria de patrimônio com um extrato ilustrativo que soma linha a linha na tela — sóbrio, sem gráfico de bolsa nem verde/vermelho de day trade.',
+    bg: '#F3EDE0',
+    accent: '#AB8A53',
+    url: 'https://ancora.fenoninho-max.workers.dev',
+  },
 ]
 
 export default function Projetos() {
@@ -56,7 +83,7 @@ export default function Projetos() {
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
       <Seo
         title="Projetos — Sites reais e conceitos | Madolio"
-        description="Veja o redesign do site institucional da NBJ Systems e conceitos de sites para confeitaria, pilates, hamburgueria e advocacia — exemplos do que a Madolio pode criar pro seu negócio."
+        description="Veja o redesign do site institucional da NBJ Systems e conceitos de sites para confeitaria, pilates, hamburgueria, advocacia, SaaS, arquitetura e consultoria financeira — exemplos do que a Madolio pode criar pro seu negócio."
         path="/projetos"
       />
       <div className="mx-auto max-w-6xl px-6">
@@ -71,7 +98,7 @@ export default function Projetos() {
           </p>
         </Reveal>
 
-        <Reveal stagger={0.1} className="mt-14 grid gap-10 sm:grid-cols-2">
+        <Reveal stagger={0.1} className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map((project) => {
             const Wrapper = project.url ? 'a' : 'div'
             return (
@@ -86,7 +113,7 @@ export default function Projetos() {
                 <div className="mt-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
-                    <span className="text-sm text-ink/50">
+                    <span className="text-sm text-ink/65">
                       {project.category} · {project.real ? 'cliente real' : 'conceito'}
                     </span>
                   </div>
