@@ -10,7 +10,7 @@ export default function About() {
             "Boa parte dos processos que eu vejo começou com um contrato mal
             escrito. Meu trabalho é resolver isso antes — não depois."
           </p>
-          <p className="mt-6 text-ink/60">
+          <p className="mt-6 text-sm text-ink/70">
             {LAWYER_NAME}, à frente do escritório desde 2013
           </p>
         </Reveal>

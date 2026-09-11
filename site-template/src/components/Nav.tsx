@@ -13,7 +13,8 @@ export default function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="/" onClick={() => setOpen(false)} className="font-heading text-lg font-semibold text-ink">
+        <a href="/" onClick={() => setOpen(false)} className="flex items-center gap-2 font-heading text-lg text-ink">
+          <span className="rivet" aria-hidden="true" />
           {FIRM_NAME}
         </a>
 
@@ -32,7 +33,7 @@ export default function Nav() {
         <div className="flex items-center gap-3">
           <a
             href={PHONE_HREF}
-            className="hidden text-[0.9375rem] font-semibold text-ink transition-colors hover:text-accent sm:inline-block"
+            className="hidden text-[0.9375rem] font-semibold tabular-nums text-ink transition-colors hover:text-accent-hover sm:inline-block"
           >
             {PHONE_DISPLAY}
           </a>

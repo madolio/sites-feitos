@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
+/* Vibe: "Terminal Wagon-Lit" — vagão-leito europeu × sinalização de aeroporto. */
 @theme {
-  --color-ink: #1e2823;
-  --color-paper: #f5f1e8;
-  --color-surface-alt: #ece6d8;
-  --color-line: #d9d0bc;
-  --color-accent: #7a2e3a;
-  --color-accent-hover: #5e2029;
+  --color-ink: #241a14;
+  --color-paper: #f3ede1;
+  --color-surface-alt: #1f3a32;
+  --color-line: #d8cdb8;
+  --color-accent: #b08d57;
+  --color-accent-hover: #93713f;
+  --color-signal: #9b3b2e;
 
-  --font-heading: "Source Serif 4", ui-serif, Georgia, serif;
-  --font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Prata", ui-serif, Georgia, serif;
+  --font-body: "Overpass", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   body {
     @apply bg-paper font-body text-ink antialiased;
     font-size: 1.0625rem;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   h1,
@@ -25,10 +27,11 @@
   h4 {
     @apply font-heading;
     text-wrap: balance;
+    letter-spacing: 0.01em;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-signal);
     outline-offset: 3px;
   }
 }
@@ -36,14 +39,34 @@
 @layer components {
   .btn-primary,
   .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 text-[0.9375rem] font-semibold transition-colors;
+    @apply inline-flex items-center justify-center px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
   }
 
   .btn-primary {
-    @apply bg-accent text-paper hover:bg-accent-hover;
+    @apply bg-ink text-paper hover:bg-ink/85;
   }
 
   .btn-outline {
-    @apply border border-ink/25 text-ink hover:border-ink;
+    @apply border border-ink/30 text-ink hover:border-ink;
   }
+
+  /* Rebite de latão — detalhe de acabamento de vagão, usado nos divisores. */
+  .rivet {
+    @apply inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent;
+  }
+
+  /* Borda perfurada de talão de bilhete — o wildcard da seção de contato. */
+  .ticket-edge {
+    background-image: radial-gradient(circle, var(--color-paper) 3px, transparent 3.5px);
+    background-size: 16px 16px;
+    background-position: -8px center;
+    background-repeat: repeat-x;
+    height: 8px;
+  }
+}
+
+/* Painel de embarque mecânico — o motion assinatura, só no hero. */
+.flap {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
 }
