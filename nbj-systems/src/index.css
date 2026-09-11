@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0f2430;
+  --color-accent: #0b7a9a;
+  --color-accent-hover: #095f78;
+  --color-water: #2ba7cc;
+  --color-sediment: #b5812f;
+  --color-surface-alt: #eaf0f1;
+  --color-line: #c8d5d9;
+
+  --font-heading: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white font-body text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+    font-stretch: 116%;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-sm px-5 py-3 text-[0.9375rem] font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-hover;
+  }
+
+  .btn-outline {
+    @apply border border-ink/25 text-ink hover:border-ink;
+  }
+}
