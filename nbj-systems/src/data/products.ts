@@ -2,6 +2,8 @@ export type Product = {
   name: string
   description: string
   image?: string
+  /** Só usado quando não há foto (ver ProductGlyph.tsx) — esquema técnico no lugar. */
+  glyph?: 'filtrante' | 'tanque' | 'bancada' | 'cristal'
   spec?: { value: string; label: string }
 }
 
@@ -34,6 +36,7 @@ export const treatmentProducts: Product[] = [
     name: 'Insumos e Cargas Filtrantes',
     description:
       'Zeólitas (alumino silicatos hidratados) com estrutura microporosa, altamente eficazes em troca iônica, purificação e remoção de impurezas.',
+    glyph: 'cristal',
     spec: { value: '3 granulometrias', label: 'de zeólita' },
   },
 ]

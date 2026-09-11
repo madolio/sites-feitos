@@ -1,5 +1,6 @@
 import OsmosisScale from '../components/OsmosisScale'
 import SpecList from '../components/SpecList'
+import SystemMap from '../components/SystemMap'
 import { treatmentProducts } from '../data/products'
 
 export default function Produtos() {
@@ -15,7 +16,9 @@ export default function Produtos() {
             hospitais e indústrias.
           </p>
 
-          <div className="mt-14">
+          <SystemMap />
+
+          <div className="mt-16">
             <SpecList items={treatmentProducts} />
           </div>
         </div>

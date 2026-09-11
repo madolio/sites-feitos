@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { osmosisModels } from '../data/products'
+import FlowGlyph from './FlowGlyph'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -32,8 +33,11 @@ export default function OsmosisScale({ detailed = false }: { detailed?: boolean 
     <ul ref={ref} className={detailed ? 'space-y-10' : 'space-y-5'}>
       {osmosisModels.map((model) => (
         <li key={model.name}>
-          <div className="flex items-baseline justify-between gap-4">
-            <h3 className="text-lg font-bold text-ink">{model.name}</h3>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <FlowGlyph className="h-5 w-14 shrink-0" />
+              <h3 className="text-lg font-bold text-ink">{model.name}</h3>
+            </div>
             <span className="text-ink/70 tabular-nums">{model.flow} L/h</span>
           </div>
           <div className="mt-2 h-2.5 bg-ink/10">
