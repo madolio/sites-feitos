@@ -38,12 +38,12 @@ const cases = [
     accent: '#E2632F',
   },
   {
-    name: 'Site Modelo',
-    category: 'Modelo padrão Madolio',
+    name: 'Bastos Advocacia',
+    category: 'Advocacia empresarial e civil',
     description:
-      'O template que uso como ponto de partida pra cada cliente novo: hero com identidade visual própria, seção de benefícios e contato direto — pronto pra ganhar a cara do seu negócio.',
-    bg: '#EDEDF0',
-    accent: '#2F6FED',
+      'Página única pra um escritório de advocacia: áreas de atuação, processo de atendimento e agendamento direto — sem o kit visual de card e ícone que a maioria usa.',
+    bg: '#F5F1E8',
+    accent: '#7A2E3A',
     url: 'https://site-template.fenoninho-max.workers.dev',
   },
 ]
@@ -53,7 +53,7 @@ export default function Projetos() {
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
       <Seo
         title="Projetos — Sites reais e conceitos | Madolio"
-        description="Veja o redesign do site institucional da NBJ Systems e conceitos de sites para confeitaria, pilates e hamburgueria — exemplos do que a Madolio pode criar pro seu negócio."
+        description="Veja o redesign do site institucional da NBJ Systems e conceitos de sites para confeitaria, pilates, hamburgueria e advocacia — exemplos do que a Madolio pode criar pro seu negócio."
         path="/projetos"
       />
       <div className="mx-auto max-w-6xl px-6">
@@ -62,9 +62,9 @@ export default function Projetos() {
             O que eu posso criar pro seu negócio
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink/70">
-            A NBJ Systems é um cliente real. Os conceitos mostram como um
-            site simples e bem feito pode representar negócios diferentes,
-            e o Site Modelo é o template que dá origem a cada um deles.
+            A NBJ Systems é um cliente real. Os outros são conceitos — cada
+            um pensado do zero pro nicho que representa, sem reaproveitar a
+            cara de nenhum dos outros.
           </p>
         </Reveal>
 
