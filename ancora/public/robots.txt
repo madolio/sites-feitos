@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ancora.fenoninho-max.workers.dev/sitemap.xml

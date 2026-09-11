@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Vibe "Extrato": consultoria de investimentos × caderneta de banco antiga —
+   a paginazinha de lançamentos, carimbada, com o saldo somando linha a linha.
+   Sóbrio de propósito: nada de gráfico de velas nem verde/vermelho de bolsa.
+   Ver CLAUDE.md. */
+@theme {
+  --color-indigo: #241b3a;
+  --color-indigo-deep: #180f2b;
+  --color-paper: #f3ede0;
+  --color-line: #d8cdb2;
+  --color-brass: #ab8a53;
+  --color-brass-hover: #8f7143;
+
+  --font-serif: "Spectral", ui-serif, Georgia, serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-indigo antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .btn-brass {
+    @apply inline-flex items-center justify-center rounded-sm bg-brass px-6 py-3 font-semibold text-paper transition-colors hover:bg-brass-hover;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center rounded-sm border border-indigo/25 px-5 py-2.5 font-semibold text-indigo transition-colors hover:border-indigo;
+  }
+}
+
+/* Linha pontilhada de lançamento — a régua de pontos entre a descrição e o
+   valor, como numa fatura ou caderneta impressa. */
+.ledger-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.ledger-row .dots {
+  flex: 1;
+  border-bottom: 1.5px dotted var(--color-line);
+  transform: translateY(-0.3em);
+}
+
+/* Selo/carimbo — usado uma vez, como confirmação de algo real (nunca como
+   decoração repetida). */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  border: 1.5px solid var(--color-brass);
+  border-radius: 9999px;
+  padding: 0.3em 0.9em;
+  color: var(--color-brass);
+  transform: rotate(-2deg);
+}

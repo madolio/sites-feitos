@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* Vibe "Planta Baixa": escritório de arquitetura × desenho técnico de planta
+   baixa editorial. Papel, grafite, linhas finas de projeto — nada de
+   fotografia grande de revista nem card+sombra. Ver CLAUDE.md. */
+@theme {
+  --color-paper: #f6f4ef;
+  --color-ink: #22201b;
+  --color-line: #cdc7ba;
+  --color-blueline: #7a92a3;
+  --color-ochre: #c9962d;
+
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ochre);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-ink {
+    @apply inline-flex items-center justify-center border border-ink px-6 py-3 font-medium text-ink transition-colors hover:bg-ink hover:text-paper;
+  }
+
+  .btn-quiet {
+    @apply inline-flex items-center justify-center px-1 py-1 font-medium text-ink underline decoration-blueline underline-offset-4 transition-colors hover:decoration-ochre;
+  }
+}
+
+/* Linha de cota (dimension line) — o traço fino com setas nas pontas usado em
+   plantas de arquitetura, reaproveitado como divisor entre seções. */
+.dim-line {
+  display: flex;
+  align-items: center;
+  color: var(--color-blueline);
+}
+
+.dim-line::before,
+.dim-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.dim-line span {
+  padding: 0 0.75em;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+/* Planta que se traça sozinha ao entrar na tela — via DrawSVG (ver
+   FloorPlan.tsx), com fallback estático se reduced motion. */
+.floor-plan path {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 1.4;
+}
+
+.floor-plan .fp-fill {
+  fill: var(--color-blueline);
+  fill-opacity: 0.08;
+  stroke: none;
+}
