@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* Vibe "Contact Sheet": fotografia × folha de contato de laboratório —
+   os quadros numerados de um negativo, com anotações de lápis de cera nas
+   margens. Sem foto real de casamento/ensaio (não temos), então os quadros
+   viram ilustração de traço. Ver CLAUDE.md. */
+@theme {
+  --color-ink: #141110;
+  --color-paper: #efe6d8;
+  --color-line: #d2c5ae;
+  --color-amber: #d98c2b;
+  --color-amber-ink: #8a5a1a;
+
+  --font-display: "Big Shoulders Display", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-body text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-amber-ink);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-amber {
+    @apply inline-flex items-center justify-center bg-amber-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-ink;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center border-2 border-ink px-5 py-2.5 font-semibold text-ink transition-colors hover:bg-ink hover:text-paper;
+  }
+}
+
+/* Perfurações do filme — usadas na FilmBar. */
+.sprockets {
+  background-image: radial-gradient(circle, var(--color-paper) 3px, transparent 3.2px);
+  background-size: 18px 100%;
+  background-position: 9px center;
+  background-repeat: repeat-x;
+}
+
+/* Anotação de margem, em lápis de cera — leve rotação, como escrita à mão. */
+.grease {
+  transform: rotate(-1.2deg);
+  font-family: var(--font-display);
+}
