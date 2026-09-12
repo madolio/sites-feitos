@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pulso.fenoninho-max.workers.dev/sitemap.xml

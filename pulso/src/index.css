@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Vibe "Raia": personal training × pista de atletismo — as raias pintadas,
+   as placas de distância, o painel de cronômetro. Nada de academia
+   preto+vermelho+ícone-de-halтere genérico. Ver CLAUDE.md. */
+@theme {
+  --color-track: #171614;
+  --color-chalk: #f4f0e6;
+  --color-line: #d8d0bd;
+  /* --color-lane é o vermelho-laranja vívido da raia — só pra preenchimento
+     decorativo, bordas, pontos e texto QUANDO o fundo já é escuro (--track).
+     Sobre o fundo claro (--chalk), esse tom não tem contraste suficiente
+     (~3.4:1) pra texto — usar --color-lane-ink nesses casos. */
+  --color-lane: #e8482f;
+  --color-lane-ink: #a83321;
+  --color-lane-ink-hover: #8c2a1b;
+
+  --font-display: "Anton", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Karla", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-chalk font-body text-track antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-lane);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-lane {
+    @apply inline-flex items-center justify-center bg-lane-ink px-7 py-3.5 font-display text-lg tracking-wide text-chalk uppercase transition-colors hover:bg-lane-ink-hover;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center border-2 border-track px-6 py-3 font-display text-lg tracking-wide text-track uppercase transition-colors hover:border-lane-ink hover:text-lane-ink;
+  }
+}
+
+/* Trilho de raia — a régua vertical fixa à esquerda (Rail.tsx), com as
+   marcações de distância como se fossem placas de pista de atletismo. */
+.rail-mark {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Cronômetro — dígitos tabulares pro contador de repetições animado. */
+.stopwatch {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
