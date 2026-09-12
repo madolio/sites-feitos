@@ -146,3 +146,56 @@
 .spotlight-card:hover::after {
   opacity: 0.1;
 }
+
+/* Bento card — mistura o "Card Spotlight" (Aceternity UI) com o "Tilted
+   Card" (React Bits): o brilho segue o cursor, e o cartão inclina levemente
+   em 3D acompanhando a posição do mouse. */
+.bento-card {
+  --mx: 50%;
+  --my: 50%;
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  overflow: hidden;
+  perspective: 900px;
+  transition: box-shadow 0.3s;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s;
+  background: radial-gradient(280px circle at var(--mx) var(--my), var(--color-accent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bento-card:hover::before {
+  opacity: 0.08;
+}
+
+.bento-card:hover {
+  box-shadow: 0 20px 40px -20px rgba(15, 28, 51, 0.25);
+}
+
+.bento-card-inner {
+  position: relative;
+  z-index: 1;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-card-inner {
+    transition: none;
+  }
+}
+
+@media (hover: none) {
+  .bento-card::before {
+    display: none;
+  }
+}
