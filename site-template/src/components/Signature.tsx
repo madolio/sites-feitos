@@ -9,7 +9,7 @@ gsap.registerPlugin(DrawSVGPlugin, useGSAP)
 // desenha-se uma vez, como o gesto de fechar um acordo. O traço é um
 // floreio abstrato (não tenta formar letras reais), só a cadência de uma
 // caligrafia cursiva.
-export default function Signature() {
+export default function Signature({ className = 'h-14 w-auto text-accent' }: { className?: string }) {
   const ref = useRef<SVGSVGElement>(null)
 
   useGSAP(
@@ -30,7 +30,7 @@ export default function Signature() {
     <svg
       ref={ref}
       viewBox="0 0 220 64"
-      className="h-14 w-auto text-accent"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="2.25"

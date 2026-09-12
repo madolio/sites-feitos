@@ -25,6 +25,19 @@ A colisão do Q3 é o que dá identidade própria: as áreas de atuação são n
 
 **Se for pedir uma nova reformulação de vibe no futuro, repetir esse processo** (perguntar Q1-Q4 ao usuário, não inventar sozinho) em vez de ir direto pro clichê mais óbvio do nicho.
 
+## Reestruturação de set/2026 — arquitetura, não decoração
+
+Depois de ver Torre/Traço/Âncora, o usuário notou que todos os sites (inclusive este) seguiam a mesma **fórmula estrutural** por baixo de vibes diferentes: nav horizontal com menu de âncoras, hero em duas colunas, lista de cards numa seção separada, rodapé "vamos conversar" genérico. A vibe "Terminal Wagon-Lit" continua a mesma (aprovada) — o que mudou foi a arquitetura da página:
+
+- **`Nav.tsx` → `TopBar.tsx`.** Sem menu de âncoras (`#atuacao`, `#atendimento`, `#contato`) — a página não é mais uma coleção de seções saltáveis, é uma jornada única de cima a baixo. Só nome do escritório, telefone e o CTA "Agendar consulta", sempre visíveis. Sem hambúrguer mobile (não há menu pra abrir).
+- **`Hero.tsx` + `PracticeAreas.tsx` → `Board.tsx` (um componente só).** Antes eram duas seções: hero com headline+CTA+3 estatísticas, depois um bloco escuro separado com a lista de áreas de atuação. Agora é **um quadro de partidas de verdade**: a manchete abre a página, e o corpo é o painel escuro único — estatísticas como cabeçalho do quadro, cada área de atuação como uma "partida" (número, nome, descrição, **casos ativos** rodando no `SplitFlap`, seta de embarque). O CTA só aparece **depois** do quadro, não junto da manchete — mostra o que o escritório faz antes de pedir contato. `data/areas.ts` (novo) centraliza as áreas com o campo `casos` (número que anima no SplitFlap).
+- **`Process.tsx` → `Route.tsx`.** A numeração do atendimento é genuinamente sequencial (isso legitima numerar), mas virou um **trajeto de trem** — linha horizontal com paradas (rebites) no desktop, linha vertical no celular — em vez de uma lista vertical de cards numerados (a fórmula "como funciona" mais comum por aí).
+- **`About.tsx` (citação solta, centralizada) foi removida como seção própria** e incorporada ao talão do `Footer.tsx`, ao lado dos dados de contato — o bilhete de trem (já era o wildcard da página) agora carrega a citação da advogada, não só endereço/e-mail/protocolo. Reduz de 4 seções (Hero, PracticeAreas, About, Process) pra 3 (Board, Route, Footer).
+- `Signature.tsx` (componente de assinatura cursiva animada, feito numa passada anterior mas nunca usado em lugar nenhum) finalmente entrou em uso — ao lado do CTA "Falar no WhatsApp" no talão principal do rodapé, reforçando a ideia de "fechar um acordo". Ganhou um parâmetro `className` (antes tinha o tamanho fixo no próprio componente).
+- Contraste: o rótulo "ÁREAS DE ATUAÇÃO / CASOS ATIVOS" (cabeçalho da tabela do quadro) estava em `text-paper/45` sobre `bg-ink` — dá ~3.98:1, abaixo do mínimo. Subido pra `/55` (~5.27:1). Nesse par de cores específico (`#241a14`/`#f3ede1`), `/50` é o piso seguro pra texto normal — não usar opacidade menor que essa em texto sobre o fundo `ink`.
+
+**Escopo:** só este projeto. NBJ Systems, Sabor da Vila, Traço, Âncora, Doce Ateliê e Estúdio Alma foram deixados como estão (pedido explícito do usuário, "pág a pág"). madolio (home) já foi reestruturado antes deste; Torre é o próximo.
+
 ## Histórico completo
 
 1. Era um "template genérico" (placeholders `{{BUSINESS_NAME}}` etc., cópia visual da home do madolio) — reconstruído a partir do site que já estava publicado sem repositório em lugar nenhum.

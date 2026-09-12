@@ -1,15 +1,11 @@
-import About from '../components/About'
-import Hero from '../components/Hero'
-import PracticeAreas from '../components/PracticeAreas'
-import Process from '../components/Process'
+import Board from '../components/Board'
+import Route from '../components/Route'
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <PracticeAreas />
-      <About />
-      <Process />
+      <Board />
+      <Route />
     </>
   )
 }

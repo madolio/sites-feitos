@@ -3,15 +3,21 @@ import {
   EMAIL,
   EMAIL_HREF,
   FIRM_NAME,
+  LAWYER_NAME,
   PHONE_DISPLAY,
   PHONE_HREF,
   WHATSAPP_URL,
 } from '../config/site'
 import Reveal from './Reveal'
+import Signature from './Signature'
 
-// O rodapé é formatado como um talão de bilhete de trem — a borda pontilhada
-// e o "número de protocolo" são o wildcard da página: um detalhe que não
-// "combina" com um site jurídico, mas fecha a colisão vagão-leito × wayfinding.
+// O rodapé é formatado como um bilhete de trem de verdade: a parte principal
+// (canhoto grande) é o convite pra agendar, com a assinatura como quem fecha
+// um acordo; a parte destacável (o talão, à direita) carrega a citação da
+// advogada e os dados de contato — antes isso era uma seção "About" solta no
+// meio da página, centralizada, igual a qualquer citação de site por aí.
+// Juntar os dois no bilhete tira uma seção inteira e dá à citação um lugar
+// que só faz sentido nessa página.
 export default function Footer() {
   return (
     <footer id="contato" className="scroll-mt-20 bg-ink text-paper">
@@ -40,20 +46,29 @@ export default function Footer() {
                 {PHONE_DISPLAY}
               </a>
             </div>
+
+            <Signature className="mt-10 h-12 w-auto text-accent" />
           </div>
 
           <div className="relative border-t border-dashed border-paper/25 p-8 md:border-t-0 md:border-l md:p-10">
             <span
               aria-hidden="true"
-              className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-ink md:left-0 md:top-1/2 md:-translate-x-1.5 md:-translate-y-1/2"
+              className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-ink md:top-1/2 md:left-0 md:-translate-x-1.5 md:-translate-y-1/2"
             />
             <span
               aria-hidden="true"
               className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-ink md:hidden"
             />
-            <p className="text-xs text-paper/60">Protocolo Nº SP-2026-00184</p>
 
-            <dl className="mt-6 space-y-6">
+            <p className="font-heading text-lg leading-relaxed text-paper/90">
+              "Boa parte dos processos que eu vejo começou com um contrato
+              mal escrito. Meu trabalho é resolver isso antes — não depois."
+            </p>
+            <p className="mt-3 text-sm text-paper/60">
+              {LAWYER_NAME}, à frente do escritório desde 2013
+            </p>
+
+            <dl className="mt-8 space-y-6 border-t border-paper/15 pt-6">
               <div>
                 <dt className="text-sm text-paper/65">E-mail</dt>
                 <dd className="mt-1">
@@ -67,6 +82,8 @@ export default function Footer() {
                 <dd className="mt-1 text-paper">{ADDRESS}</dd>
               </div>
             </dl>
+
+            <p className="mt-8 text-xs text-paper/50">Protocolo Nº SP-2026-00184</p>
           </div>
         </Reveal>
 
