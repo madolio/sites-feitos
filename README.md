@@ -11,8 +11,14 @@ Repositório consolidado com todos os sites da Madolio. Cada pasta é um projeto
 - **[torre/](torre/)** — conceito de SaaS de agendamento, vibe torre de controle/radar (torre.fenoninho-max.workers.dev).
 - **[traco/](traco/)** — conceito de escritório de arquitetura, vibe planta baixa editorial (traco.fenoninho-max.workers.dev).
 - **[ancora/](ancora/)** — conceito de consultoria financeira, vibe extrato/caderneta (ancora.fenoninho-max.workers.dev).
+- **[pulso/](pulso/)** — conceito de personal training, vibe raia de atletismo (pulso.fenoninho-max.workers.dev).
+- **[focinho/](focinho/)** — conceito de pet shop/veterinária, vibe carteirinha de vacinação (focinho.fenoninho-max.workers.dev).
+- **[corte/](corte/)** — conceito de salão/barbearia, vibe painel de senha de atendimento (corte.fenoninho-max.workers.dev).
+- **[chave/](chave/)** — conceito de imobiliária, vibe classificados de jornal (chave.fenoninho-max.workers.dev).
+- **[revelar/](revelar/)** — conceito de fotografia, vibe folha de contato de laboratório (revelar.fenoninho-max.workers.dev).
+- **[passaporte/](passaporte/)** — conceito de escola de idiomas, vibe passaporte com carimbos de visto (passaporte.fenoninho-max.workers.dev).
 
-Os sete últimos são **negócios/produtos fictícios** — exemplos de estilo pra mostrar no portfólio (linkados em `madolio/src/pages/Projetos.tsx`), não clientes reais. Os quatro primeiros (Bastos, Doce Ateliê, Estúdio Alma, Sabor da Vila) são todos artesanais/ilustrados; Torre, Traço e Ancora foram feitos depois, com registros visuais deliberadamente diferentes (tech/radar, editorial minimalista, sóbrio corporativo) pra não ler como "uma vertente só". Cada um com WhatsApp real tem WhatsApp em modo demonstração (mostra a mensagem que seria enviada, sem apontar pra um número real); Traço e Ancora usam e-mail de contato em vez disso, por serem serviços B2B/consultoria.
+Os treze últimos são **negócios/produtos fictícios** — exemplos de estilo pra mostrar no portfólio (linkados em `madolio/src/data/projetos.ts`), não clientes reais. Os quatro primeiros feitos (Bastos, Doce Ateliê, Estúdio Alma, Sabor da Vila) são todos artesanais/ilustrados; Torre, Traço e Âncora vieram depois com registros mais "tech/corporativo"; e Pulso, Focinho, Corte, Chave, Revelar e Passaporte, feitos por último, têm cada um sua própria **arquitetura de página** (não só cor/fonte diferente) — nenhum usa barra de navegação horizontal comum, e cada um substitui essa barra por algo do próprio universo do negócio (raia de pista, abas de fichário, painel de senha, cabeçalho de jornal não-fixo, tira de filme, ou nenhuma barra nenhuma). Cada um com WhatsApp tem WhatsApp em modo demonstração (mostra a mensagem que seria enviada, sem apontar pra um número real); Traço e Âncora usam e-mail de contato em vez disso, por serem serviços B2B/consultoria.
 
 Cada pasta mantém o histórico de commits do repositório original de onde veio (juntado via `git subtree`). Ver o `CLAUDE.md` de cada uma pra detalhes específicos (design, deploy, gotchas).
 
