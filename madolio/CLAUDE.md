@@ -47,6 +47,12 @@ O usuário já deu feedback de que o visual "hand-rolled Tailwind" (card arredon
 
 Tipografia: **IBM Plex Serif** (títulos) + **IBM Plex Sans** (corpo). Paleta navy/azul (`--color-ink` #0F1C33, `--color-paper` #F7F9FC, `--color-accent` #1D4FD1). Tokens centralizados em `src/index.css` (`@theme`).
 
+## Gotcha real: `position: fixed` + `transition` no `transform` quebra no Safari/iOS
+
+O botão flutuante de WhatsApp (`Chrome.tsx`) usava `translate-y-*` com `transition-all` **no mesmo elemento** que tinha `fixed`. No iPhone (Safari), isso fazia o botão "descolar" do canto da tela durante o scroll e passar a rolar junto com o conteúdo, aparecendo no meio da página em vez de fixo — reportado pelo usuário com print. Esse ambiente de teste só tem Chrome headless, que **não reproduz** esse bug (por isso passou despercebido) — não dá pra confiar só no Chrome pra validar `position: fixed` com transição de `transform`.
+
+**Fix:** separar em dois elementos — um `<div className="fixed ...">` sem nenhum transform/transition (só fixa a posição), e dentro dele o `<a>` que recebe a transição de opacity/translate-y. O elemento fixo nunca anima; o elemento que anima nunca é fixo.
+
 ## Gotcha de teste: Chrome headless não respeita `--window-size` abaixo de ~484px
 
 Ver histórico anterior deste arquivo — usar Puppeteer com `isMobile: true`/`hasTouch: true` no viewport, ou o truque do iframe same-origin, nunca confiar em `--window-size` pequeno sozinho passado direto pro `chrome --headless`.

@@ -18,16 +18,25 @@ export default function Chrome() {
         madolio<span className="text-accent">.</span>
       </Link>
 
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noreferrer"
-        className={`fixed right-5 bottom-5 z-50 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-hover sm:right-6 sm:bottom-6 ${
-          pastHero ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
-        }`}
-      >
-        Falar no WhatsApp
-      </a>
+      {/* O `fixed` fica num wrapper sem transform/transition — animar o
+          transform (translate-y) direto num elemento `position: fixed` é um
+          bug conhecido do Safari/iOS: o WebKit às vezes "descola" o elemento
+          do viewport durante a transição e ele passa a rolar junto com a
+          página (relatado pelo usuário: o botão aparecia no meio da tela,
+          no meio de outro conteúdo, em vez de fixo no canto). Separando quem
+          é fixed (não anima) de quem anima (não é fixed) evita o bug. */}
+      <div className="fixed right-5 bottom-5 z-50 sm:right-6 sm:bottom-6">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className={`block rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-hover ${
+            pastHero ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
+          }`}
+        >
+          Falar no WhatsApp
+        </a>
+      </div>
     </>
   )
 }

@@ -16,8 +16,8 @@ export default function Benefits() {
           </h2>
         </Reveal>
 
-        <Reveal stagger={0.1} className="mt-12 grid gap-5 sm:grid-cols-3">
-          <BentoCard className="sm:col-span-3">
+        <Reveal stagger={0.1} className="mt-12 grid gap-5 sm:grid-cols-2">
+          <BentoCard className="sm:col-span-2">
             <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:text-left">
               <div className="shrink-0">
                 <span className="font-heading text-7xl font-semibold text-accent sm:text-8xl">
@@ -42,17 +42,6 @@ export default function Benefits() {
             <p className="mt-1.5 text-ink/70">
               Do briefing à publicação. Sem builder genérico atrasando o
               processo.
-            </p>
-          </BentoCard>
-
-          <BentoCard>
-            <span className="font-heading text-4xl font-semibold text-accent">
-              <StatCounter value={0} />
-            </span>
-            <h3 className="mt-4 text-lg font-semibold text-ink">modelos prontos</h3>
-            <p className="mt-1.5 text-ink/70">
-              Identidade visual pensada do zero pro seu negócio, não um
-              template reaproveitado.
             </p>
           </BentoCard>
 
