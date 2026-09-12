@@ -29,11 +29,11 @@ export default function Trabalhos() {
   }
 
   return (
-    <section id="trabalhos" className="scroll-mt-20 py-20 md:py-28">
+    <section id="trabalhos" className="scroll-mt-20 bg-void py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <h2 className="text-3xl font-semibold text-ink md:text-4xl">Trabalhos</h2>
-          <p className="mt-3 max-w-md text-ink/65">
+          <h2 className="font-poster text-4xl tracking-tight text-white uppercase md:text-5xl">Trabalhos</h2>
+          <p className="mt-3 max-w-md text-fog">
             A NBJ Systems é cliente real. Os outros são conceitos — cada um
             pensado do zero pro nicho que representa.
           </p>
@@ -43,7 +43,7 @@ export default function Trabalhos() {
           <Reveal
             as="ul"
             stagger={0.06}
-            className="divide-y divide-line border-y border-line"
+            className="divide-y divide-white/10 border-y border-white/10"
             onMouseLeave={clearActive}
           >
             {projetos.map((p, i) => (
@@ -56,10 +56,10 @@ export default function Trabalhos() {
                   aria-expanded={active === i}
                   className="group flex w-full flex-col gap-1 py-5 text-left sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
                 >
-                  <span className="text-xl font-semibold text-ink transition-colors group-hover:text-accent">
+                  <span className="text-xl font-semibold text-white transition-colors group-hover:text-accent-hero">
                     {p.name}
                   </span>
-                  <span className="text-sm text-ink/65 sm:shrink-0">
+                  <span className="text-sm text-fog sm:shrink-0">
                     {p.category} · {p.real ? 'cliente real' : 'conceito'}
                   </span>
                 </button>
@@ -86,7 +86,7 @@ export default function Trabalhos() {
         <Reveal className="mt-10 text-center lg:text-left">
           <Link
             to="/projetos"
-            className="font-semibold text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
+            className="font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 transition-colors hover:decoration-accent-hero"
           >
             Ver todos os projetos numa página só
           </Link>
@@ -102,15 +102,15 @@ export default function Trabalhos() {
 function ProjetoInfo({ projeto, compact = false }: { projeto: Projeto | null; compact?: boolean }) {
   return (
     <div className={`${compact ? 'mt-4' : 'mt-5'} ${compact ? '' : 'lg:min-h-[8.5rem]'}`}>
-      <h3 className="text-lg font-semibold text-ink">{projeto?.name ?? 'Nenhum site selecionado'}</h3>
-      <p className="mt-1.5 line-clamp-2 text-ink/70">
+      <h3 className="text-lg font-semibold text-white">{projeto?.name ?? 'Nenhum site selecionado'}</h3>
+      <p className="mt-1.5 line-clamp-2 text-fog">
         {projeto?.description ?? 'Passe o mouse num nome à esquerda pra ver o site aqui.'}
       </p>
       <a
         href={projeto?.url}
         target="_blank"
         rel="noreferrer"
-        className={`mt-3 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4 ${
+        className={`mt-3 inline-block font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 ${
           projeto?.url ? '' : 'pointer-events-none opacity-0'
         }`}
       >

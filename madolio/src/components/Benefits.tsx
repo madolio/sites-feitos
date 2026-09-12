@@ -11,7 +11,7 @@ export default function Benefits() {
     <section id="beneficios" className="scroll-mt-20 bg-surface-alt py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
-          <h2 className="text-3xl font-semibold text-ink md:text-4xl">
+          <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">
             Tudo que seu site precisa ter
           </h2>
         </Reveal>
@@ -20,7 +20,7 @@ export default function Benefits() {
           <BentoCard className="sm:col-span-2">
             <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:text-left">
               <div className="shrink-0">
-                <span className="font-heading text-7xl font-semibold text-accent sm:text-8xl">
+                <span className="font-poster text-8xl text-accent sm:text-9xl">
                   <StatCounter value={100} suffix="%" />
                 </span>
               </div>
@@ -35,7 +35,7 @@ export default function Benefits() {
           </BentoCard>
 
           <BentoCard>
-            <span className="font-heading text-4xl font-semibold text-accent">
+            <span className="font-poster text-5xl text-accent">
               <StatCounter value={5} />–<StatCounter value={15} />
             </span>
             <h3 className="mt-4 text-lg font-semibold text-ink">dias</h3>
@@ -46,7 +46,7 @@ export default function Benefits() {
           </BentoCard>
 
           <BentoCard>
-            <span className="font-heading text-4xl font-semibold text-accent">
+            <span className="font-poster text-5xl text-accent">
               <StatCounter value={1} />
             </span>
             <h3 className="mt-4 text-lg font-semibold text-ink">pessoa só</h3>

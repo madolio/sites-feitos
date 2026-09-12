@@ -37,17 +37,17 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
   const host = projeto?.url ? new URL(projeto.url).host : null
 
   return (
-    <div className="overflow-hidden rounded-lg border-2 border-ink shadow-[6px_6px_0_0_rgba(29,27,24,0.12)]">
-      <div className="flex items-center gap-1.5 border-b-2 border-ink bg-white px-3 py-2">
-        <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
-        <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
-        <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
-        <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/55">
+    <div className="overflow-hidden rounded-lg border border-white/15 shadow-[0_30px_70px_-30px_rgba(77,162,255,0.35)]">
+      <div className="flex items-center gap-1.5 border-b border-white/15 bg-white/5 px-3 py-2">
+        <span className="h-2.5 w-2.5 rounded-full border border-white/25" />
+        <span className="h-2.5 w-2.5 rounded-full border border-white/25" />
+        <span className="h-2.5 w-2.5 rounded-full border border-white/25" />
+        <span className="ml-2 truncate rounded-full bg-white/10 px-3 py-1 text-xs text-fog">
           {host ?? 'nenhum site selecionado'}
         </span>
       </div>
 
-      <div ref={frameRef} className="relative aspect-[4/3] w-full overflow-hidden bg-surface-alt">
+      <div ref={frameRef} className="relative aspect-[4/3] w-full overflow-hidden bg-white/5">
         {projeto?.url && (
           <>
             <iframe
@@ -59,7 +59,7 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
               className="pointer-events-none absolute top-0 left-0 origin-top-left border-0 transition-opacity duration-300"
               style={{ width: VIRTUAL_WIDTH, height: VIRTUAL_HEIGHT, transform: `scale(${scale})`, opacity: loaded ? 1 : 0 }}
             />
-            {!loaded && <div className="absolute inset-0 animate-pulse bg-surface-alt" aria-hidden="true" />}
+            {!loaded && <div className="absolute inset-0 animate-pulse bg-white/5" aria-hidden="true" />}
           </>
         )}
       </div>
