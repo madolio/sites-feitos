@@ -85,4 +85,58 @@ export const projetos: Projeto[] = [
     accent: '#AB8A53',
     url: 'https://ancora.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Pulso',
+    category: 'Personal training',
+    description:
+      'Contador de repetições sobe sozinho no hero, navegação vira uma raia de atletismo com marcação de distância, e o processo é uma barra de progresso 0M–100M.',
+    bg: '#F4F0E6',
+    accent: '#E8482F',
+    url: 'https://pulso.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Focinho',
+    category: 'Pet shop e veterinária',
+    description:
+      'A ficha de atendimento de um pet vira o hero, com carimbo de "vacina em dia" — navegação em abas de fichário em vez de barra de menu.',
+    bg: '#FAF7F0',
+    accent: '#B8432E',
+    url: 'https://focinho.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Corte',
+    category: 'Salão de beleza e barbearia',
+    description:
+      'Painel de senha de atendimento em vez de nav — o número "atendendo agora" sobe sozinho, e o cardápio de preços vira um quadro pendurado na parede.',
+    bg: '#F7EEE8',
+    accent: '#146B62',
+    url: 'https://corte.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Chave',
+    category: 'Imobiliária',
+    description:
+      'Página de classificados de jornal de verdade — cabeçalho não fixo, imóveis em colunas densas com filete entre elas, sem grade de cards.',
+    bg: '#EFECE4',
+    accent: '#3B5B70',
+    url: 'https://chave.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Revelar',
+    category: 'Fotografia de casamento e ensaio',
+    description:
+      'Folha de contato de laboratório fotográfico: cada serviço é um quadro numerado de negativo com anotação de lápis de cera, sem fotos de verdade.',
+    bg: '#EFE6D8',
+    accent: '#D98C2B',
+    url: 'https://revelar.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Passaporte',
+    category: 'Escola de idiomas',
+    description:
+      'Cada nível do curso (A1 a C2) carimba na página como um visto de verdade — sem barra de progresso de app gamificado, e sem nenhuma barra de navegação.',
+    bg: '#F2EAD9',
+    accent: '#5C1F2E',
+    url: 'https://passaporte.fenoninho-max.workers.dev',
+  },
 ]
