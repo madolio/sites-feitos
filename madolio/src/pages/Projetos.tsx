@@ -8,8 +8,8 @@ export default function Projetos() {
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
       <Seo
-        title="Projetos — Sites e mockups de nicho | Madolio"
-        description="Veja o redesign do site institucional da NBJ Systems e mockups de sites para confeitaria, pilates, hamburgueria, advocacia, SaaS, arquitetura e consultoria financeira — exemplos do que a Madolio pode criar pro seu negócio."
+        title="Projetos — Portfólio de sites de nicho | Madolio"
+        description="Veja o portfólio da Madolio: sites para tratamento de água, confeitaria, pilates, hamburgueria, advocacia, SaaS, arquitetura e consultoria financeira — exemplos do que posso criar pro seu negócio."
         path="/projetos"
       />
       <div className="mx-auto max-w-6xl px-6">
@@ -22,7 +22,7 @@ export default function Projetos() {
             O que eu posso criar pro seu negócio
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink/70">
-            Da NBJ Systems a mockups de nicho — cada um pensado do zero pro
+            Um portfólio de identidades visuais — cada um pensado do zero pro
             negócio que representa, sem reaproveitar a cara de nenhum dos
             outros.
           </p>
@@ -41,9 +41,7 @@ export default function Projetos() {
               <div className="mt-5">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
-                  <span className="text-sm text-ink/65">
-                    {project.category} · {project.real ? 'cliente' : 'mockup'}
-                  </span>
+                  <span className="text-sm text-ink/65">{project.category} · portfólio</span>
                 </div>
                 <p className="mt-2 text-ink/65">{project.description}</p>
                 <span className="mt-3 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4">

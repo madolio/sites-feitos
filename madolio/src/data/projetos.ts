@@ -8,7 +8,6 @@ export type Projeto = {
   bg: string
   accent: string
   url?: string
-  real?: boolean
 }
 
 export const projetos: Projeto[] = [
@@ -16,11 +15,10 @@ export const projetos: Projeto[] = [
     name: 'NBJ Systems',
     category: 'Equipamentos para tratamento de água',
     description:
-      'Redesign completo do site institucional: apresentação da empresa, setores atendidos e linha de produtos, com contato direto por WhatsApp.',
+      'O sistema de filtração vira um diagrama técnico de verdade no hero — a água escorre pelos canos até a osmose reversa, e cada impureza para exatamente na etapa que a retém.',
     bg: '#DCEFFB',
     accent: '#0E8FB2',
     url: 'https://nbj-systems.fenoninho-max.workers.dev',
-    real: true,
   },
   {
     name: 'Doce Ateliê',
