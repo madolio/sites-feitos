@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* Vibe "Classificados": imobiliária × página de classificados de jornal —
+   colunas densas, filete entre colunas, sem nav fixo (ninguém "navega" um
+   jornal, só lê). Nada de planta baixa (isso é do Traço) nem quadro de
+   chaves óbvio. Ver CLAUDE.md. */
+@theme {
+  --color-ink: #1a1a1a;
+  --color-paper: #efece4;
+  --color-line: #cac5b6;
+  --color-steel: #3b5b70;
+  --color-steel-hover: #2c4657;
+
+  --font-display: "PT Serif", ui-serif, Georgia, serif;
+  --font-body: "Roboto Condensed", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-body text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-steel);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-steel {
+    @apply inline-flex items-center justify-center bg-steel px-6 py-3 font-semibold text-paper transition-colors hover:bg-steel-hover;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center border-2 border-ink px-5 py-2.5 font-semibold text-ink transition-colors hover:bg-ink hover:text-paper;
+  }
+}
+
+.classificados {
+  column-gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .classificados {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .classificados {
+    columns: 3;
+  }
+}
+
+.classificados > * {
+  break-inside: avoid;
+}
+
+@media (min-width: 640px) {
+  .classificados {
+    column-rule: 1px solid var(--color-line);
+  }
+}
