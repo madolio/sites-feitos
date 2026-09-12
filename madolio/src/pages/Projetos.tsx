@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
-import ProjectsGrid from '../components/ProjectsGrid'
+import ProjectShowcase from '../components/ProjectShowcase'
 import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
-import { projetos } from '../data/projetos'
 
 export default function Projetos() {
   return (
@@ -29,7 +28,7 @@ export default function Projetos() {
         </Reveal>
 
         <div className="mt-14">
-          <ProjectsGrid projetos={projetos} />
+          <ProjectShowcase />
         </div>
       </div>
     </section>
