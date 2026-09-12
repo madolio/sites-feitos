@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import ProjectShowcase from '../components/ProjectShowcase'
+import HeroPreview from '../components/HeroPreview'
 import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
+import { projetos } from '../data/projetos'
 
 export default function Projetos() {
   return (
@@ -27,9 +28,31 @@ export default function Projetos() {
           </p>
         </Reveal>
 
-        <div className="mt-14">
-          <ProjectShowcase />
-        </div>
+        <Reveal stagger={0.1} className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {projetos.map((project) => (
+            <a
+              key={project.name}
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="block"
+            >
+              <HeroPreview projeto={project} />
+              <div className="mt-5">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
+                  <span className="text-sm text-ink/65">
+                    {project.category} · {project.real ? 'cliente real' : 'conceito'}
+                  </span>
+                </div>
+                <p className="mt-2 text-ink/65">{project.description}</p>
+                <span className="mt-3 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4">
+                  Ver site
+                </span>
+              </div>
+            </a>
+          ))}
+        </Reveal>
       </div>
     </section>
   )
