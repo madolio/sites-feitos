@@ -1,21 +1,23 @@
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Log from './components/Log'
-import Nav from './components/Nav'
 import Planos from './components/Planos'
-import Produto from './components/Produto'
+import Sidebar from './components/Sidebar'
+import SystemCheck from './components/SystemCheck'
 
 export default function App() {
   return (
     <>
-      <Nav />
-      <main>
-        <Hero />
-        <Produto />
-        <Planos />
-        <Log />
-      </main>
-      <Footer />
+      <Sidebar />
+      <div className="lg:pl-56">
+        <main>
+          <Hero />
+          <SystemCheck />
+          <Planos />
+          <Log />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
