@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Vibe "Colagem de Festa": inspirado num estilo de referência que o usuário
+   mandou (sistema "Slush" — colagem de adesivos, traço preto de 1px em
+   tudo, radius de pílula, várias cores saturadas por tela, zero foto/
+   gradiente/sombra). Adaptado pro nicho de festa infantil, sem copiar o
+   layout — só a lógica: texto sempre em Carbon (nunca colorido), cor
+   saturada só em forma/adesivo com contorno preto. Ver CLAUDE.md. */
+@theme {
+  --color-carbon: #141414;
+  --color-cream: #fffaf0;
+  --color-line: #ecdfc9;
+  --color-sky: #3d9dff;
+  --color-mint: #4ce0a0;
+  --color-lavender: #e6c9ff;
+  --color-ember: #ff6a3d;
+  --color-sun: #ffd23d;
+
+  --font-display: "Baloo 2", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cream font-body text-carbon antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-carbon);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Botões e cartões sempre com contorno preto de 1.5px — "recorte de
+     papel", nunca sombra suave. */
+  .btn-sticker {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-carbon bg-carbon px-6 py-3 font-display font-bold text-cream transition-transform hover:-rotate-1;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border-[1.5px] border-carbon px-6 py-3 font-display font-bold text-carbon transition-transform hover:rotate-1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-sticker,
+  .btn-ghost {
+    transition: none;
+  }
+}
