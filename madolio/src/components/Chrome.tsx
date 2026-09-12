@@ -13,7 +13,7 @@ export default function Chrome() {
     <>
       <Link
         to="/"
-        className="fixed top-5 left-5 z-50 rounded-full bg-paper/85 px-3 py-1.5 font-heading text-lg font-extrabold text-ink backdrop-blur transition-colors hover:text-accent sm:top-6 sm:left-6"
+        className="fixed top-5 left-5 z-50 rounded-full bg-paper px-3 py-1.5 font-heading text-lg font-extrabold text-ink shadow-sm shadow-ink/10 transition-colors hover:text-accent sm:top-6 sm:left-6"
       >
         madolio<span className="text-accent">.</span>
       </Link>
