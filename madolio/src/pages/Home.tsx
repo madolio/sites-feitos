@@ -1,6 +1,7 @@
 import Benefits from '../components/Benefits'
 import Hero from '../components/Hero'
 import Seo from '../components/Seo'
+import Trabalhos from '../components/Trabalhos'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         path="/"
       />
       <Hero />
+      <Trabalhos />
       <Benefits />
     </>
   )

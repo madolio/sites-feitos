@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Nav from './Nav'
+import Chrome from './Chrome'
 import Footer from './Footer'
 
 export default function Layout() {
@@ -19,7 +19,7 @@ export default function Layout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
-      <Nav />
+      <Chrome />
       <main className="flex-1">
         <Outlet />
       </main>

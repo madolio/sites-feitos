@@ -14,6 +14,7 @@ type RevealProps = {
   /** Tag do wrapper — use quando o filho precisa ser um elemento semântico
    * específico (ex: `dl`), pra não quebrar a estrutura exigida pelo pai. */
   as?: ElementType
+  [prop: string]: unknown
 }
 
 export default function Reveal({
@@ -23,6 +24,7 @@ export default function Reveal({
   y = 24,
   stagger,
   as: Tag = 'div',
+  ...rest
 }: RevealProps) {
   const ref = useRef<HTMLElement>(null)
 
@@ -52,5 +54,5 @@ export default function Reveal({
     { scope: ref, dependencies: [delay, y, stagger] },
   )
 
-  return createElement(Tag, { ref, className }, children)
+  return createElement(Tag, { ref, className, ...rest }, children)
 }
