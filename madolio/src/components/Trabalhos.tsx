@@ -34,8 +34,8 @@ export default function Trabalhos() {
         <Reveal>
           <h2 className="font-poster text-4xl tracking-tight text-white uppercase md:text-5xl">Trabalhos</h2>
           <p className="mt-3 max-w-md text-fog">
-            A NBJ Systems é cliente real. Os outros são conceitos — cada um
-            pensado do zero pro nicho que representa.
+            Da NBJ Systems a mockups de nicho — cada site pensado do zero,
+            sem reaproveitar a cara de nenhum dos outros.
           </p>
         </Reveal>
 
@@ -60,7 +60,7 @@ export default function Trabalhos() {
                     {p.name}
                   </span>
                   <span className="text-sm text-fog sm:shrink-0">
-                    {p.category} · {p.real ? 'cliente real' : 'conceito'}
+                    {p.category} · {p.real ? 'cliente' : 'mockup'}
                   </span>
                 </button>
 
