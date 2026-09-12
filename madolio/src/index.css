@@ -8,8 +8,19 @@
   --color-accent: #1d4fd1;
   --color-accent-hover: #163c9e;
 
+  /* Hero escuro (ver Hero.tsx) — atmosférico, à parte da paleta clara do
+     resto do site, no espírito do "Air" (fundo quase-preto, texto Fog).
+     --color-accent (#1d4fd1) não tem contraste suficiente sobre --color-void
+     (~2.9:1) — --color-accent-hero é a variante clara, só pra uso ali
+     (~7.3:1), no mesmo tom "Electric Blue" da outra referência mandada. */
+  --color-void: #0a0d14;
+  --color-fog: #aab3c4;
+  --color-accent-hero: #4da2ff;
+
   --font-heading: "IBM Plex Serif", ui-serif, Georgia, serif;
   --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-poster: "Bebas Neue", var(--font-heading);
+  --font-accent: "Instrument Serif", var(--font-heading);
 }
 
 @layer base {
@@ -47,36 +58,13 @@
     @apply border border-ink/20 text-ink hover:border-ink;
   }
 
-  .shimmer-text {
-    background-image: linear-gradient(
-      100deg,
-      var(--color-ink) 35%,
-      var(--color-accent) 50%,
-      var(--color-ink) 65%
-    );
-    background-size: 250% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: shimmer-sweep 3.5s linear infinite;
+  /* Ghost button — sem preenchimento sólido, só um traço fino, no espírito
+     do sistema "Air": nunca um CTA em bloco de cor sobre o fundo escuro do
+     hero, só contorno. */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border border-white/35 px-6 py-3 text-[0.9375rem] font-semibold text-white transition-colors hover:border-white/70;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .shimmer-text {
-      animation: none;
-      background-image: none;
-      color: inherit;
-    }
-  }
-}
-
-@keyframes shimmer-sweep {
-  0% {
-    background-position: 150% 0;
-  }
-  100% {
-    background-position: -150% 0;
-  }
 }
 
 /* Border Beam — mesmo efeito do componente "Border Beam" da Magic UI

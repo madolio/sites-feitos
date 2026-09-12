@@ -139,4 +139,13 @@ export const projetos: Projeto[] = [
     accent: '#5C1F2E',
     url: 'https://passaporte.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Confete',
+    category: 'Festa infantil',
+    description:
+      'Colagem de adesivos com contorno preto e cores saturadas — nav em pílula flutuante e uma fita ondulada de verdade atrás dos depoimentos.',
+    bg: '#FFFAF0',
+    accent: '#141414',
+    url: 'https://confete.fenoninho-max.workers.dev',
+  },
 ]
