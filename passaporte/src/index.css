@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Vibe "Visto": escola de idiomas × passaporte com carimbos de visto — cada
+   nível do curso (A1 a C2) é uma página carimbada, não uma barra de
+   progresso genérica de app gamificado. Ver CLAUDE.md. */
+@theme {
+  --color-ink: #5c1f2e;
+  --color-paper: #f2ead9;
+  --color-line: #ddceac;
+  --color-teal: #2f6f6b;
+  --color-teal-hover: #245552;
+
+  --font-display: "Cormorant", ui-serif, Georgia, serif;
+  --font-body: "Cormorant", ui-serif, Georgia, serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-family: "Mulish", ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-teal {
+    @apply inline-flex items-center justify-center rounded-sm bg-teal px-6 py-3 font-semibold text-paper transition-colors hover:bg-teal-hover;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center rounded-sm border-2 border-paper/70 px-5 py-2.5 font-semibold text-paper transition-colors hover:border-paper;
+  }
+
+  .stamp-number {
+    font-family: var(--font-mono);
+  }
+}
