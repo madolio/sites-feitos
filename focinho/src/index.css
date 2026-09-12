@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Vibe "Prontuário": pet shop/veterinária × carteira de vacinação —
+   a fichinha que registra peso, vacina e próxima consulta. Nada de
+   pata-de-cachorro pastel genérica. Ver CLAUDE.md. */
+@theme {
+  --color-ink: #2b3a3a;
+  --color-paper: #faf7f0;
+  --color-line: #e2dbc9;
+  --color-accent: #b8432e;
+  --color-accent-hover: #9a3624;
+  --color-sage: #4f6a3f;
+
+  --font-display: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-body text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-paper transition-colors hover:bg-accent-hover;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-ink/20 px-5 py-2.5 font-semibold text-ink transition-colors hover:border-ink;
+  }
+}
+
+/* Carimbo — usado nos serviços (Servicos.tsx) e no rodapé, imitando o
+   carimbo redondo de carteira de vacinação, com o traço levemente irregular
+   de borracha. */
+.stamp {
+  border: 2.5px dashed currentColor;
+  border-radius: 9999px;
+}
+
+.stamp-tilt {
+  transform: rotate(-6deg);
+}
