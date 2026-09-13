@@ -12,13 +12,13 @@ export type Projeto = {
 
 export const projetos: Projeto[] = [
   {
-    name: 'NBJ Systems',
+    name: 'Nascente',
     category: 'Equipamentos para tratamento de água',
     description:
       'O sistema de filtração vira um diagrama técnico de verdade no hero — a água escorre pelos canos até a osmose reversa, e cada impureza para exatamente na etapa que a retém.',
     bg: '#DCEFFB',
     accent: '#0E8FB2',
-    url: 'https://nbj-systems.fenoninho-max.workers.dev',
+    url: 'https://nascente.fenoninho-max.workers.dev',
   },
   {
     name: 'Doce Ateliê',

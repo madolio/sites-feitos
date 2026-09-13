@@ -23,7 +23,6 @@ export default function HeroPreview({ projeto }: { projeto: Projeto }) {
   }, [])
 
   if (!projeto.url) return null
-  const host = new URL(projeto.url).host
 
   return (
     <div className="overflow-hidden rounded-lg border-2 border-ink shadow-[6px_6px_0_0_rgba(29,27,24,0.12)]">
@@ -31,7 +30,7 @@ export default function HeroPreview({ projeto }: { projeto: Projeto }) {
         <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
         <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
         <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
-        <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/55">{host}</span>
+        <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/55">seudominio.com</span>
       </div>
 
       <div

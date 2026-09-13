@@ -1,4 +1,5 @@
-import { PHONE_PRIMARY, PHONE_PRIMARY_HREF, WHATSAPP_URL } from '../constants'
+import { Link } from 'react-router-dom'
+import { sendToWhatsApp } from '../demo'
 import TreatmentDiagram from './TreatmentDiagram'
 
 export default function Hero() {
@@ -14,16 +15,22 @@ export default function Hero() {
             <p className="max-w-md text-ink/75">
               Bancadas reprocessadoras, elementos filtrantes, tanques em PRFV
               e osmose reversa para clínicas de hemodiálise, hospitais e
-              indústrias. Fabricamos em Taboão da Serra (SP) desde 1990.
+              indústrias — do projeto à instalação.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
+              <button
+                type="button"
+                onClick={() =>
+                  sendToWhatsApp('Olá, Nascente! Quero um orçamento pros equipamentos de tratamento de água.')
+                }
+                className="btn-primary"
+              >
                 Falar no WhatsApp
-              </a>
-              <a href={PHONE_PRIMARY_HREF} className="btn-outline">
-                Ligar {PHONE_PRIMARY}
-              </a>
+              </button>
+              <Link to="/produtos" className="btn-outline">
+                Ver catálogo
+              </Link>
             </div>
           </div>
         </div>

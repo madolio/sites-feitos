@@ -40,12 +40,11 @@ export default function Trabalhos() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-16" onMouseLeave={clearActive}>
           <Reveal
             as="ul"
             stagger={0.06}
             className="divide-y divide-white/10 border-y border-white/10"
-            onMouseLeave={clearActive}
           >
             {projetos.map((p, i) => (
               <li key={p.name}>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PHONE_PRIMARY, PHONE_PRIMARY_HREF } from '../constants'
+import { sendToWhatsApp } from '../demo'
 
 const links = [
   { to: '/produtos', label: 'Produtos' },
@@ -11,11 +11,21 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false)
 
+  const falarNoWhatsApp = () => {
+    setOpen(false)
+    sendToWhatsApp('Olá, Nascente! Quero saber mais sobre os equipamentos.')
+  }
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" onClick={() => setOpen(false)} className="flex items-center">
-          <img src="/images/logo.png" alt="NBJ Systems" className="h-8 w-auto" />
+        <Link
+          to="/"
+          onClick={() => setOpen(false)}
+          className="font-heading text-lg font-extrabold text-ink"
+          style={{ fontStretch: '116%' }}
+        >
+          Nascente
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -31,12 +41,13 @@ export default function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={PHONE_PRIMARY_HREF}
-            className="hidden font-semibold text-ink tabular-nums transition-colors hover:text-accent sm:inline-block"
+          <button
+            type="button"
+            onClick={falarNoWhatsApp}
+            className="hidden font-semibold text-ink transition-colors hover:text-accent sm:inline-block"
           >
-            {PHONE_PRIMARY}
-          </a>
+            Falar no WhatsApp
+          </button>
 
           <button
             type="button"
@@ -71,9 +82,9 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <a href={PHONE_PRIMARY_HREF} className="btn-primary mt-3">
-            Ligar {PHONE_PRIMARY}
-          </a>
+          <button type="button" onClick={falarNoWhatsApp} className="btn-primary mt-3">
+            Falar no WhatsApp
+          </button>
         </nav>
       )}
     </header>

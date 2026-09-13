@@ -34,8 +34,6 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
     setLoaded(false)
   }, [projeto?.url])
 
-  const host = projeto?.url ? new URL(projeto.url).host : null
-
   return (
     <div className="overflow-hidden rounded-lg border border-white/15 shadow-[0_30px_70px_-30px_rgba(77,162,255,0.35)]">
       <div className="flex items-center gap-1.5 border-b border-white/15 bg-white/5 px-3 py-2">
@@ -43,7 +41,7 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
         <span className="h-2.5 w-2.5 rounded-full border border-white/25" />
         <span className="h-2.5 w-2.5 rounded-full border border-white/25" />
         <span className="ml-2 truncate rounded-full bg-white/10 px-3 py-1 text-xs text-fog">
-          {host ?? 'nenhum site selecionado'}
+          {projeto?.url ? 'seudominio.com' : 'nenhum site selecionado'}
         </span>
       </div>
 

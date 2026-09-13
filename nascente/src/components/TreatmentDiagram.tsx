@@ -241,7 +241,7 @@ export default function TreatmentDiagram() {
       </svg>
 
       <figcaption className="sr-only">
-        Etapas de um sistema compacto de osmose reversa NBJ-OR.
+        Etapas de um sistema compacto de osmose reversa NSC-RO.
       </figcaption>
 
       <ol className="mt-6 grid gap-x-4 gap-y-5 sm:mt-8 sm:grid-cols-5 sm:text-center">
