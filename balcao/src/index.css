@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff6e1;
+  --color-card: #fffcf5;
+  --color-ink: #2b2115;
+  --color-leaf: #257a40;
+  --color-mustard: #e8a93b;
+  --color-line: #efe1c2;
+
+  --font-display: "Alfa Slab One", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Lexend", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  h1,
+  h2 {
+    @apply font-display;
+    font-weight: 400;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-leaf);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-leaf text-cream hover:bg-ink;
+  }
+
+  .btn-outline {
+    @apply border border-ink/25 text-ink hover:border-ink;
+  }
+}

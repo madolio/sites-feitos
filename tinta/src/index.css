@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #121212;
+  --color-paper: #f5f5f0;
+  --color-ember: #ff3b3b;
+  --color-line: #2a2a2a;
+
+  --font-display: "Staatliches", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-void font-body text-paper antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2 {
+    @apply font-display;
+    letter-spacing: 0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-none px-6 py-3 text-[0.9375rem] font-semibold tracking-wide uppercase transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-ember text-void hover:bg-paper;
+  }
+
+  .btn-outline {
+    @apply border border-paper/30 text-paper hover:border-paper;
+  }
+}
+
+/* Trilho horizontal: cada .panel ocupa a tela toda e "encaixa" no scroll —
+   o wheel vertical é redirecionado pro scrollLeft via JS (ver Trilho.tsx). */
+.trilho {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.panel {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}

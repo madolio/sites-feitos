@@ -146,4 +146,40 @@ export const projetos: Projeto[] = [
     accent: '#141414',
     url: 'https://confete.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Cerne',
+    category: 'Design de interiores',
+    description:
+      'Sem hero, sem seções empilhadas: duas colunas fixas que rolam separado — os casos à esquerda, e um painel sticky à direita que troca de desenho técnico conforme o capítulo que você está lendo.',
+    bg: '#EDE7DD',
+    accent: '#4E6046',
+    url: 'https://cerne.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Tinta',
+    category: 'Estúdio de tatuagem',
+    description:
+      'A página inteira rola de lado, não de cima pra baixo — uma parede de flash sheet de verdade, com bolinhas de navegação em vez de barra de menu.',
+    bg: '#121212',
+    accent: '#FF3B3B',
+    url: 'https://tinta.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Balcão',
+    category: 'Lanchonete de autoatendimento',
+    description:
+      'Sem hero, sem "sobre nós" — abre direto no cardápio, com carrinho de verdade (adicionar, tirar, total) e pedido fechado pelo WhatsApp, como um totem de autoatendimento.',
+    bg: '#FFF6E1',
+    accent: '#257A40',
+    url: 'https://balcao.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Rota',
+    category: 'Software de logística',
+    description:
+      'Não é uma página institucional — é a própria tela do software: barra lateral, mapa de rotas animado e tabela de entregas, como se fosse um print do produto de verdade.',
+    bg: '#F2F3F5',
+    accent: '#5B4FE0',
+    url: 'https://rota.fenoninho-max.workers.dev',
+  },
 ]

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #ede7dd;
+  --color-panel: #e3dbcb;
+  --color-ink: #2e2118;
+  --color-moss: #4e6046;
+  --color-line: #d9cfbe;
+
+  --font-display: "Petrona", ui-serif, Georgia, serif;
+  --font-body: "Sora", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-body text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-moss);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-sm px-5 py-3 text-[0.9375rem] font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-moss;
+  }
+
+  .btn-outline {
+    @apply border border-ink/25 text-ink hover:border-ink;
+  }
+}
