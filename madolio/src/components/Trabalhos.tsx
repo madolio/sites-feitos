@@ -45,7 +45,7 @@ export default function Trabalhos() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-16" onMouseLeave={clearActive}>
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-16" onMouseLeave={clearActive}>
           <Reveal
             as="ul"
             stagger={0.06}
