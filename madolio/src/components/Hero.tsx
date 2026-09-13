@@ -57,6 +57,23 @@ export default function Hero() {
         </Reveal>
       </div>
 
+      {/* Preenche o vão entre os botões e a faixa de estatísticas em telas
+          altas (o bloco acima é centralizado no espaço restante) — em vez de
+          deixar em branco, um convite discreto pra rolar. Posição absoluta
+          (não empilhado no flex) pra não interferir na centralização do
+          título nem depender da altura variável do vão. */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-24 z-10 flex justify-center sm:bottom-28"
+        aria-hidden="true"
+      >
+        <div className="motion-safe:animate-bounce flex flex-col items-center gap-2 text-fog/70">
+          <span className="text-[0.6875rem] font-semibold tracking-[0.2em] uppercase">role pra ver mais</span>
+          <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 7l6 6 6-6" />
+          </svg>
+        </div>
+      </div>
+
       <Reveal
         as="dl"
         stagger={0.1}

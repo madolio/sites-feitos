@@ -46,54 +46,56 @@ export default function Trabalhos() {
         </Reveal>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-16" onMouseLeave={clearActive}>
-          <Reveal
-            as="ul"
-            stagger={0.06}
-            className="divide-y divide-white/10 border-y border-white/10"
-          >
-            {destacados.map((p, i) => (
-              <li key={p.name}>
-                <button
-                  type="button"
-                  onMouseEnter={() => scheduleActive(i)}
-                  onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  aria-expanded={active === i}
-                  className="group flex w-full flex-col gap-1 py-5 text-left sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
-                >
-                  <span className="text-xl font-semibold text-white transition-colors group-hover:text-accent-hero">
-                    {p.name}
-                  </span>
-                  <span className="text-sm text-fog sm:shrink-0">{p.category} · portfólio</span>
-                </button>
+          <div>
+            <Reveal
+              as="ul"
+              stagger={0.06}
+              className="divide-y divide-white/10 border-y border-white/10"
+            >
+              {destacados.map((p, i) => (
+                <li key={p.name}>
+                  <button
+                    type="button"
+                    onMouseEnter={() => scheduleActive(i)}
+                    onFocus={() => setActive(i)}
+                    onClick={() => setActive(i)}
+                    aria-expanded={active === i}
+                    className="group flex w-full flex-col gap-1 py-5 text-left sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                  >
+                    <span className="text-xl font-semibold text-white transition-colors group-hover:text-accent-hero">
+                      {p.name}
+                    </span>
+                    <span className="text-sm text-fog sm:shrink-0">{p.category} · portfólio</span>
+                  </button>
 
-                {/* No celular (sem hover), a prévia abre embaixo do item tocado. */}
-                <div className={`overflow-hidden lg:hidden ${active === i ? 'pb-6' : ''}`}>
-                  {active === i && (
-                    <>
-                      <LivePreview projeto={p} />
-                      <ProjetoInfo projeto={p} compact />
-                    </>
-                  )}
-                </div>
-              </li>
-            ))}
-          </Reveal>
+                  {/* No celular (sem hover), a prévia abre embaixo do item tocado. */}
+                  <div className={`overflow-hidden lg:hidden ${active === i ? 'pb-6' : ''}`}>
+                    {active === i && (
+                      <>
+                        <LivePreview projeto={p} />
+                        <ProjetoInfo projeto={p} compact />
+                      </>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </Reveal>
+
+            <Reveal className="mt-10 text-center lg:text-left">
+              <Link
+                to="/projetos"
+                className="font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 transition-colors hover:decoration-accent-hero"
+              >
+                Ver todos os projetos numa página só
+              </Link>
+            </Reveal>
+          </div>
 
           <div className="hidden lg:block lg:sticky lg:top-24 lg:self-start">
             <LivePreview projeto={current} />
             <ProjetoInfo projeto={current} />
           </div>
         </div>
-
-        <Reveal className="mt-10 text-center lg:text-left">
-          <Link
-            to="/projetos"
-            className="font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 transition-colors hover:decoration-accent-hero"
-          >
-            Ver todos os projetos numa página só
-          </Link>
-        </Reveal>
       </div>
     </section>
   )
