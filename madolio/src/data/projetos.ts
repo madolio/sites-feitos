@@ -154,9 +154,9 @@ export const projetos: Projeto[] = [
     name: 'Cerne',
     category: 'Design de interiores',
     description:
-      'Sem hero, sem seções empilhadas: duas colunas fixas que rolam separado — os casos à esquerda, e um painel sticky à direita que troca de desenho técnico conforme o capítulo que você está lendo.',
-    bg: '#EDE7DD',
-    accent: '#4E6046',
+      'A navegação é a própria planta baixa — clique num cômodo pra ver o material e a decisão de projeto por trás dele, sem depender de rolagem.',
+    bg: '#FAF7F2',
+    accent: '#2F4A3E',
     url: 'https://cerne.fenoninho-max.workers.dev',
     destaque: true,
   },

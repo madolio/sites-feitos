@@ -1,11 +1,11 @@
 import { sendToWhatsApp } from '../demo'
 
 // Sem barra de navegação: só a marca discreta no canto e o CTA de WhatsApp
-// flutuante — o resto da tela é sempre o conteúdo (a coluna dupla de Obra.tsx).
+// flutuante — o resto da tela é sempre o conteúdo (a planta interativa).
 export default function Chrome() {
   return (
     <>
-      <div className="fixed top-5 left-5 z-50 rounded-sm bg-paper px-3 py-1.5 shadow-sm shadow-ink/10 sm:top-6 sm:left-6">
+      <div className="fixed top-5 left-5 z-50 rounded-full bg-paper px-3.5 py-1.5 shadow-sm shadow-ink/10 sm:top-6 sm:left-6">
         <span className="font-display text-lg text-ink">Cerne</span>
       </div>
 

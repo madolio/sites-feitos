@@ -14,7 +14,7 @@ export default function Contato() {
   return (
     <footer id="contato" className="border-t border-line bg-panel px-6 py-20 sm:px-10 md:py-28">
       <div className="mx-auto max-w-lg">
-        <h2 className="text-3xl sm:text-4xl">Vamos desenhar o seu?</h2>
+        <h2 className="text-3xl text-ink sm:text-4xl">Vamos desenhar o seu?</h2>
         <p className="mt-3 text-ink/75">
           Conta seu nome — a gente confirma um horário pra conversar sobre o
           projeto.
@@ -27,7 +27,7 @@ export default function Contato() {
             autoComplete="given-name"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="min-w-0 flex-1 rounded-sm border border-ink/25 bg-paper px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss"
+            className="min-w-0 flex-1 rounded-full border border-ink/25 bg-paper px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
           />
           <button
             type="submit"

@@ -46,7 +46,7 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
       </div>
 
       <div ref={frameRef} className="relative aspect-[4/3] w-full overflow-hidden bg-white/5">
-        {projeto?.url && (
+        {projeto?.url ? (
           <>
             <iframe
               key={projeto.url}
@@ -59,6 +59,15 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
             />
             {!loaded && <div className="absolute inset-0 animate-pulse bg-white/5" aria-hidden="true" />}
           </>
+        ) : (
+          // Estado ocioso: em vez de uma caixa vazia, um cursor sutil
+          // piscando no centro — sinaliza "aponte aqui" sem repetir o texto
+          // que já aparece embaixo da moldura (ProjetoInfo).
+          <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="h-8 w-8 animate-pulse text-white/20" fill="currentColor">
+              <path d="M5 3l14 8.5-6 1.3L10.5 19z" />
+            </svg>
+          </div>
         )}
       </div>
     </div>
