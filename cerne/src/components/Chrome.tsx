@@ -5,7 +5,7 @@ import { sendToWhatsApp } from '../demo'
 export default function Chrome() {
   return (
     <>
-      <div className="fixed top-5 left-5 z-50 rounded-sm bg-paper/90 px-3 py-1.5 shadow-sm shadow-ink/10 backdrop-blur-sm sm:top-6 sm:left-6">
+      <div className="fixed top-5 left-5 z-50 rounded-sm bg-paper px-3 py-1.5 shadow-sm shadow-ink/10 sm:top-6 sm:left-6">
         <span className="font-display text-lg text-ink">Cerne</span>
       </div>
 

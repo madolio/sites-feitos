@@ -13,18 +13,41 @@ export default function Obra() {
   const refs = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue
-          const i = refs.current.findIndex((el) => el === entry.target)
-          if (i !== -1) setActive(i)
-        }
-      },
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
-    )
-    refs.current.forEach((el) => el && observer.observe(el))
-    return () => observer.disconnect()
+    // O painel sticky (e o `active` que ele lê) só existe em telas lg+ — no
+    // celular ele fica `hidden`. Mas o observer continuava rodando e
+    // chamando `setActive` a cada capítulo cruzado, disparando re-render da
+    // página inteira em todo scroll, mesmo sem nenhum efeito visual (era
+    // isso que deixava o scroll ruim no celular). Só liga o observer quando
+    // a tela é larga o bastante pra o painel existir de verdade.
+    const mm = window.matchMedia('(min-width: 64rem)')
+    let observer: IntersectionObserver | undefined
+
+    const ligar = () => {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue
+            const i = refs.current.findIndex((el) => el === entry.target)
+            if (i !== -1) setActive(i)
+          }
+        },
+        { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
+      )
+      refs.current.forEach((el) => el && observer!.observe(el))
+    }
+
+    const onChange = () => {
+      observer?.disconnect()
+      observer = undefined
+      if (mm.matches) ligar()
+    }
+
+    onChange()
+    mm.addEventListener('change', onChange)
+    return () => {
+      mm.removeEventListener('change', onChange)
+      observer?.disconnect()
+    }
   }, [])
 
   return (

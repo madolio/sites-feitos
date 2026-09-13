@@ -11,10 +11,15 @@ import Reveal from './Reveal'
 // disparar um iframe novo a cada passada.
 const HOVER_DELAY = 150
 
+// A lista completa (19 projetos) é grande demais pra home — aqui mostra só
+// um recorte curado (`destaque: true` em projetos.ts); a lista inteira fica
+// em /projetos, pro link "Ver todos" no fim da seção.
+const destacados = projetos.filter((p) => p.destaque)
+
 export default function Trabalhos() {
   const [active, setActive] = useState<number | null>(null)
   const hoverTimeout = useRef<number | undefined>(undefined)
-  const current = active !== null ? projetos[active] : null
+  const current = active !== null ? destacados[active] : null
 
   useEffect(() => () => window.clearTimeout(hoverTimeout.current), [])
 
@@ -46,7 +51,7 @@ export default function Trabalhos() {
             stagger={0.06}
             className="divide-y divide-white/10 border-y border-white/10"
           >
-            {projetos.map((p, i) => (
+            {destacados.map((p, i) => (
               <li key={p.name}>
                 <button
                   type="button"

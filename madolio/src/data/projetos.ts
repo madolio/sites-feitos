@@ -8,6 +8,8 @@ export type Projeto = {
   bg: string
   accent: string
   url?: string
+  /** Recorte curado pra home (Trabalhos.tsx) — a lista completa só aparece em /projetos. */
+  destaque?: boolean
 }
 
 export const projetos: Projeto[] = [
@@ -64,6 +66,7 @@ export const projetos: Projeto[] = [
     bg: '#0B1417',
     accent: '#35D6C9',
     url: 'https://torre.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Traço',
@@ -145,6 +148,7 @@ export const projetos: Projeto[] = [
     bg: '#FFFAF0',
     accent: '#141414',
     url: 'https://confete.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Cerne',
@@ -154,6 +158,7 @@ export const projetos: Projeto[] = [
     bg: '#EDE7DD',
     accent: '#4E6046',
     url: 'https://cerne.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Tinta',
@@ -163,6 +168,7 @@ export const projetos: Projeto[] = [
     bg: '#121212',
     accent: '#FF3B3B',
     url: 'https://tinta.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Balcão',
@@ -172,6 +178,7 @@ export const projetos: Projeto[] = [
     bg: '#FFF6E1',
     accent: '#257A40',
     url: 'https://balcao.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Rota',
@@ -181,5 +188,6 @@ export const projetos: Projeto[] = [
     bg: '#F2F3F5',
     accent: '#5B4FE0',
     url: 'https://rota.fenoninho-max.workers.dev',
+    destaque: true,
   },
 ]
