@@ -66,7 +66,6 @@ export const projetos: Projeto[] = [
     bg: '#0B1417',
     accent: '#35D6C9',
     url: 'https://torre.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Traço',
@@ -178,7 +177,6 @@ export const projetos: Projeto[] = [
     bg: '#FFF6E1',
     accent: '#257A40',
     url: 'https://balcao.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Rota',
@@ -188,6 +186,26 @@ export const projetos: Projeto[] = [
     bg: '#F2F3F5',
     accent: '#5B4FE0',
     url: 'https://rota.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
+    name: 'Torno',
+    category: 'Ateliê de cerâmica',
+    description:
+      'O site é o torno: molde o barro girando em 3D arrastando a silhueta, escolha o esmalte e leve ao forno — a peça fica incandescente e sai vitrificada.',
+    bg: '#E8E4DD',
+    accent: '#1F3C88',
+    url: 'https://torno.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
+    name: 'Cardume',
+    category: 'Escola de mergulho',
+    description:
+      'Rolar a página é descer no oceano, de 0 a 40 m em 3D: um cardume que foge do cursor, luz que some com a profundidade e, lá embaixo, o cursor vira lanterna.',
+    bg: '#04121F',
+    accent: '#FFE2A1',
+    url: 'https://cardume.fenoninho-max.workers.dev',
     destaque: true,
   },
 ]

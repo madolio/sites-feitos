@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-raso: #8fdde3;
+  --color-abismo: #04121f;
+  --color-casco: #06283d;
+  --color-espuma: #eaf6f7;
+  --color-lanterna: #ffe2a1;
+  --color-placa: #051a2a;
+
+  --font-titulo: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-visor: "Martian Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    /* Cor da água na profundidade atual — atualizada a cada quadro pelo
+       motor do mergulho (App.tsx). É o fundo que aparece antes do 3D
+       carregar e se o navegador não tiver WebGL. */
+    --agua: #8fdde3;
+  }
+
+  body {
+    @apply font-titulo text-espuma antialiased;
+    background: var(--agua);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-titulo;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-lanterna);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-[0.9375rem] font-bold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-lanterna text-abismo hover:bg-espuma;
+  }
+
+  .btn-outline {
+    @apply border border-espuma/35 text-espuma hover:border-espuma;
+  }
+
+  /* Prancheta de mergulho: placa escura semiopaca, legível sobre qualquer
+     profundidade (do turquesa claro da superfície ao preto do fundo). Sem
+     backdrop-filter — desfoque por cima de um canvas que muda todo quadro
+     custa caro no celular. */
+  .prancheta {
+    @apply rounded-[22px] border border-espuma/15 bg-placa/85 p-6 sm:p-7;
+  }
+}
+
+@keyframes piscar {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.piscando {
+  animation: piscar 0.8s steps(2, jump-none) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piscando {
+    animation: none;
+  }
+}

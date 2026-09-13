@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gesso: #e8e4dd;
+  --color-folha: #f6f4f0;
+  --color-barro: #8e877d;
+  --color-ink: #1d1b18;
+  --color-line: #d5cfc5;
+  /* A cor de destaque da interface é o esmalte escolhido — App.tsx troca
+     estas duas variáveis em tempo real (ver data.ts: `esmaltes`). */
+  --color-glaze: #1f3c88;
+  --color-on-glaze: #ffffff;
+
+  --font-display: "Young Serif", ui-serif, Georgia, serif;
+  --font-ui: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-gesso font-ui text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.55;
+    overflow: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-[0.9375rem] font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-folha hover:bg-glaze hover:text-on-glaze;
+  }
+
+  .btn-outline {
+    @apply border border-ink/25 text-ink hover:border-ink;
+  }
+}
+
+/* Dica do dedo: sobe e desce ao lado da silhueta até a primeira arrastada. */
+@keyframes deslizar {
+  0%,
+  100% {
+    transform: translateY(-38px);
+  }
+  50% {
+    transform: translateY(38px);
+  }
+}
+
+.dedo {
+  animation: deslizar 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dedo {
+    animation: none;
+  }
+}

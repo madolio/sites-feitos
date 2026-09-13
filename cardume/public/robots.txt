@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cardume.fenoninho-max.workers.dev/sitemap.xml

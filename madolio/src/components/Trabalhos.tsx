@@ -11,10 +11,10 @@ import Reveal from './Reveal'
 // disparar um iframe novo a cada passada.
 const HOVER_DELAY = 150
 
-// A lista completa (19 projetos) é grande demais pra home — aqui mostra só
-// um recorte curado (`destaque: true` em projetos.ts); a lista inteira fica
-// em /projetos, pro link "Ver todos" no fim da seção.
-const destacados = projetos.filter((p) => p.destaque)
+// A lista completa é grande demais pra home — aqui mostra só um recorte
+// curado (`destaque: true` em projetos.ts), do mais novo pro mais antigo; a
+// lista inteira fica em /projetos, pro link "Ver todos" no fim da seção.
+const destacados = projetos.filter((p) => p.destaque).reverse()
 
 export default function Trabalhos() {
   const [active, setActive] = useState<number | null>(null)
