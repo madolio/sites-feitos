@@ -218,4 +218,14 @@ export const projetos: Projeto[] = [
     url: 'https://encaixe.fenoninho-max.workers.dev',
     destaque: true,
   },
+  {
+    name: 'Calibre',
+    category: 'Relojoaria artesanal',
+    description:
+      'O mecanismo do relógio é o site: engrenagens de latão em 3D de verdade se montam sozinhas na tela, e você gira a coroa pra dar corda de verdade no volante de balanço.',
+    bg: '#120D08',
+    accent: '#CAA25E',
+    url: 'https://calibre.fenoninho-max.workers.dev',
+    destaque: true,
+  },
 ]

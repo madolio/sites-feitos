@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #120d08;
+  --color-void-deep: #0b0805;
+  --color-cream: #ede3d0;
+  --color-brass: #caa25e;
+  --color-brass-dim: #8a6a34;
+  --color-steel: #3a5a72;
+  --color-line: rgba(202, 162, 94, 0.18);
+
+  --font-heading: "Cormorant Garamond", "Iowan Old Style", ui-serif, serif;
+  --font-ui: "Sora", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-void font-ui text-cream antialiased;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-void);
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-brass text-void hover:bg-cream;
+  }
+
+  .btn-outline {
+    @apply border border-brass/50 text-cream hover:border-brass hover:text-brass;
+  }
+}
