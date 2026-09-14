@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Reveal from './Reveal'
 
 const perguntas = [
@@ -42,6 +43,8 @@ const faqSchema = {
 }
 
 export default function Faq() {
+  const [open, setOpen] = useState<number | null>(0)
+
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto max-w-3xl px-6">
@@ -51,13 +54,36 @@ export default function Faq() {
           <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">Perguntas frequentes</h2>
         </Reveal>
 
-        <Reveal as="dl" stagger={0.06} className="mt-12 divide-y divide-line border-y border-line">
-          {perguntas.map((item) => (
-            <div key={item.q} className="py-6">
-              <dt className="font-semibold text-ink">{item.q}</dt>
-              <dd className="mt-2 text-ink/70">{item.a}</dd>
-            </div>
-          ))}
+        <Reveal as="div" stagger={0.06} className="mt-12 divide-y divide-line border-y border-line">
+          {perguntas.map((item, i) => {
+            const isOpen = open === i
+            return (
+              <div key={item.q}>
+                <button
+                  type="button"
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  className="flex w-full items-center justify-between gap-4 py-6 text-left"
+                >
+                  <span className="font-semibold text-ink">{item.q}</span>
+                  <svg
+                    viewBox="0 0 20 20"
+                    className={`h-4 w-4 shrink-0 text-ink/50 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                  >
+                    <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                <div
+                  className="grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out"
+                  style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                >
+                  <p className="min-h-0 overflow-hidden pb-6 text-ink/70">{item.a}</p>
+                </div>
+              </div>
+            )
+          })}
         </Reveal>
       </div>
     </section>
