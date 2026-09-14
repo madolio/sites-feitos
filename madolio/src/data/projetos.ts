@@ -162,7 +162,7 @@ export const projetos: Projeto[] = [
     name: 'Tinta',
     category: 'Estúdio de tatuagem',
     description:
-      'A página inteira rola de lado, não de cima pra baixo — uma parede de flash sheet de verdade, com bolinhas de navegação em vez de barra de menu.',
+      'A página rola de lado, e o catálogo é um provador: escolhe a zona num corpo de referência, escolhe o desenho, e ele é carimbado ali na hora, se desenhando sozinho.',
     bg: '#121212',
     accent: '#FF3B3B',
     url: 'https://tinta.fenoninho-max.workers.dev',

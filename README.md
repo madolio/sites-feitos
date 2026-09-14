@@ -19,7 +19,7 @@ Repositório consolidado com todos os sites da Madolio. Cada pasta é um projeto
 - **[passaporte/](passaporte/)** — conceito de escola de idiomas, vibe passaporte com carimbos de visto (passaporte.fenoninho-max.workers.dev).
 - **[confete/](confete/)** — conceito de festa infantil, vibe colagem de adesivos (confete.fenoninho-max.workers.dev).
 - **[cerne/](cerne/)** — conceito de design de interiores, esqueleto de duas colunas fixas (cerne.fenoninho-max.workers.dev).
-- **[tinta/](tinta/)** — conceito de estúdio de tatuagem, esqueleto de rolagem horizontal (tinta.fenoninho-max.workers.dev).
+- **[tinta/](tinta/)** — conceito de estúdio de tatuagem, esqueleto de rolagem horizontal, com um provador: escolhe a zona num corpo de referência e o desenho é carimbado ali, se desenhando sozinho (tinta.fenoninho-max.workers.dev).
 - **[balcao/](balcao/)** — conceito de lanchonete de autoatendimento, esqueleto de catálogo com carrinho, sem hero (balcao.fenoninho-max.workers.dev).
 - **[rota/](rota/)** — conceito de software de logística, esqueleto de dashboard/app (rota.fenoninho-max.workers.dev).
 - **[torno/](torno/)** — conceito de ateliê de cerâmica, 3D: o site é um torno onde você molda, esmalta e queima uma peça (torno.fenoninho-max.workers.dev).

@@ -4,13 +4,21 @@ Site-conceito da Madolio pro nicho de estúdio de tatuagem. **Empresa fictícia*
 
 Feito pra ter um **esqueleto de página** genuinamente diferente dos outros conceitos do portfólio — ver a instrução original do usuário: "mude o esqueleto da página, parece tudo a mesma coisa". Ver também Cerne (duas colunas fixas), Balcão (catálogo sem hero) e Rota (layout de dashboard), feitos na mesma leva.
 
+**Redesenhado uma vez** (a pedido do usuário: "reformule essa também", mesma leva do redesign do Taça). O esqueleto de rolagem horizontal (`Trilho.tsx`) não mudou — continua bom e continua sendo o diferencial da página. O que mudou foi o painel do meio: era uma grade estática de flash que só abria WhatsApp; agora é um provador (`PainelProvador.tsx` + `Corpo.tsx`) — ver seção própria abaixo.
+
+## O painel novo: prova antes de marcar
+
+`Corpo.tsx` desenha uma figura de referência (traço único, mesmo estilo do `Flash.tsx` — gesto, não anatomia exata) com cinco zonas marcadas (`data/flashes.ts`, array `zonas`: peito, ombro, antebraço, pulso, panturrilha, cada uma com posição e diâmetro no viewBox 220×480). Tocar numa zona a seleciona; escolher um desenho na grade ao lado "carimba" aquele flash exatamente ali em cima do corpo, na escala da zona — só libera o botão de marcar (com a combinação certa já escrita na mensagem) depois das duas escolhas.
+
+O carimbo se desenha sozinho, como se a agulha estivesse traçando ali na hora: `Flash.tsx` ganhou a prop `animado`, que aplica `stroke-dasharray`/`-dashoffset` (320, maior que qualquer traço dos ícones de 120×120 — não precisa medir o comprimento real de cada `path`, só a margem) via a classe `.flash-traçando` em `index.css`. Cada troca de zona ou desenho muda a `key` do elemento carimbado em `PainelProvador.tsx`, forçando remount — é o jeito mais simples de replayar a animação CSS em React sem gerenciar classes manualmente.
+
 ## Deploy (Cloudflare Workers)
 
 Worker `tinta`, em `https://tinta.fenoninho-max.workers.dev`. `npm run deploy`.
 
 ## O esqueleto — a página inteira rola de lado
 
-`Trilho.tsx` é o esqueleto: 4 painéis (`PainelAbertura`, `PainelFlashes`, `PainelArtistas`, `PainelContato`), cada um com `width: 100vw`, dentro de um trilho `overflow-x: auto` com `scroll-snap-type: x mandatory` (classe `.trilho`/`.panel` em `index.css`). Não é vertical com `transform: rotate` — é rolagem horizontal real.
+`Trilho.tsx` é o esqueleto: 4 painéis (`PainelAbertura`, `PainelProvador`, `PainelArtistas`, `PainelContato`), cada um com `width: 100vw`, dentro de um trilho `overflow-x: auto` com `scroll-snap-type: x mandatory` (classe `.trilho`/`.panel` em `index.css`). Não é vertical com `transform: rotate` — é rolagem horizontal real.
 
 - **Desktop:** o wheel vertical do mouse/trackpad é redirecionado pro `scrollLeft` do trilho via `onWheel` (só quando o gesto é majoritariamente vertical — `Math.abs(deltaY) > Math.abs(deltaX)` — pra não atrapalhar quem já rola de lado num trackpad). O CSS `scroll-snap` cuida de encaixar no painel mais próximo ao soltar.
 - **Mobile:** nada de JS — o arrasto lateral do dedo já produz `scrollLeft` nativamente; só o scroll-snap.

@@ -2,11 +2,26 @@ import type { Flash as FlashType } from '../data/flashes'
 
 // Ilustrações estilo "flash sheet" tradicional: traço grosso único, sem
 // preenchimento, mesma linguagem de todo o portfólio (nunca foto).
-export default function Flash({ tipo, className = '' }: { tipo: FlashType['tipo']; className?: string }) {
+//
+// `animado`: usado só no carimbo em cima do corpo (Corpo.tsx via
+// PainelProvador.tsx) — o traço se desenha sozinho, como se a máquina
+// estivesse tatuando ali na hora. Técnica: `stroke-dasharray`/`-dashoffset`
+// com um valor fixo bem maior que qualquer caminho do ícone (120×120,
+// nenhum traço passa de ~260 unidades) — não precisa medir o comprimento
+// real de cada `<path>` em runtime, só garantir a margem.
+export default function Flash({
+  tipo,
+  className = '',
+  animado = false,
+}: {
+  tipo: FlashType['tipo']
+  className?: string
+  animado?: boolean
+}) {
   return (
     <svg
       viewBox="0 0 120 120"
-      className={className}
+      className={`${className} ${animado ? 'flash-traçando' : ''}`}
       fill="none"
       stroke="currentColor"
       strokeWidth="3.5"

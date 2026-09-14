@@ -61,3 +61,28 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
+
+/* O desenho "sendo tatuado" em cima do corpo (Corpo.tsx) — ver Flash.tsx.
+   320 é maior que qualquer traço dos ícones de 120×120; a margem garante que
+   o traço inteiro fique escondido no offset inicial e revele por completo no
+   fim, sem precisar medir o comprimento real de cada path. */
+.flash-traçando path,
+.flash-traçando circle {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: tracar 0.9s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-traçando path,
+  .flash-traçando circle {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tracar {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
