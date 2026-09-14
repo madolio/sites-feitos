@@ -17,6 +17,10 @@ npm run dev
 npm run build
 ```
 
-Deploy contínuo configurado na Netlify: qualquer push na branch `main` gera um novo deploy em [madolio.com.br](https://madolio.com.br).
+Deploy manual no Cloudflare Workers:
 
-Deploy automatico configurado via Netlify + GitHub.
+```bash
+npx wrangler deploy
+```
+
+`wrangler.jsonc` aponta pro Worker `madolio`, com `madolio.com.br`/`www.madolio.com.br` vinculados como Custom Domain — não há deploy automático por push.
