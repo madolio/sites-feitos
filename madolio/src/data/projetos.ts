@@ -230,7 +230,7 @@ export const projetos: Projeto[] = [
     name: 'Taça',
     category: 'Vinícola de altitude',
     description:
-      'Escolha um rótulo na lista e ele é servido na hora, ao vivo, na mesma taça em 3D: ela drena, troca de cor e enche de novo — sem sair da tela, sem vídeo, sem foto de garrafa.',
+      'Um corte transversal da encosta em vez de foto de vinhedo: cada rótulo fica ancorado na altitude real do talhão de onde vem, e escolher um mostra onde ele nasce.',
     bg: '#241832',
     accent: '#7A1030',
     url: 'https://taca.fenoninho-max.workers.dev',

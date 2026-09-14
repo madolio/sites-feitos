@@ -10,8 +10,11 @@
   --color-sage: #7c8c5b;
   --color-dusk: #241832;
   --color-line: rgba(43, 27, 46, 0.14);
+  --color-soil: #4a3c28;
+  --color-soil-light: #6b5636;
+  --color-mist: #cdd6da;
 
-  --font-heading: "Spectral", "Iowan Old Style", ui-serif, serif;
+  --font-heading: "Newsreader", "Iowan Old Style", ui-serif, serif;
   --font-ui: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
