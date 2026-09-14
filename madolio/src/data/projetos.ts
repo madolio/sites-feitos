@@ -236,4 +236,13 @@ export const projetos: Projeto[] = [
     url: 'https://taca.fenoninho-max.workers.dev',
     destaque: true,
   },
+  {
+    name: 'Ferro',
+    category: 'Academia',
+    description:
+      'Um placar de treino no lugar da nav, e a carga total levantada por mês sobe sozinha no hero — vibe disco de ferro fundido e fita de segurança, sem o clichê preto+vermelho de academia.',
+    bg: '#eef0f2',
+    accent: '#16161a',
+    url: 'https://ferro.fenoninho-max.workers.dev',
+  },
 ]

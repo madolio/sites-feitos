@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Vibe "Anilha": academia de verdade × disco de ferro fundido — o peso, o
+   giz na mão, a fita de segurança amarela do rack. Nada de reskin do Pulso
+   (raia de atletismo) nem clichê academia-preto-e-vermelho-com-halтere. Ver
+   CLAUDE.md. */
+@theme {
+  --color-iron: #16161a;
+  --color-steel-50: #eef0f2;
+  --color-steel: #8a8f98;
+  --color-line: #d7dade;
+  /* --color-signal (amarelo de segurança) só entra em par de alto
+     contraste: texto iron sobre fundo signal, ou texto/borda signal sobre
+     fundo iron. Nunca texto signal sobre steel-50 (contraste insuficiente). */
+  --color-signal: #f5c518;
+
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-steel-50 font-body text-iron antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-signal);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-signal {
+    @apply inline-flex items-center justify-center bg-signal px-7 py-3.5 font-display text-lg font-semibold tracking-wide text-iron uppercase transition-opacity hover:opacity-85;
+  }
+
+  .btn-iron {
+    @apply inline-flex items-center justify-center border-2 border-iron px-6 py-3 font-display text-lg font-semibold tracking-wide text-iron uppercase transition-colors hover:bg-iron hover:text-steel-50;
+  }
+}
+
+/* Dígitos tabulares pro contador de carga animado (PlateCounter). */
+.tally {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
