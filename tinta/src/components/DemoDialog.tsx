@@ -18,7 +18,7 @@ export default function DemoDialog() {
     <dialog
       ref={ref}
       aria-labelledby="demo-title"
-      className="w-[min(32rem,calc(100%-1.5rem))] border border-paper/20 bg-void p-0 text-paper backdrop:bg-black/70"
+      className="m-auto w-[min(32rem,calc(100%-1.5rem))] border border-paper/20 bg-void p-0 text-paper backdrop:bg-black/70"
       onClick={(e) => {
         if (e.target === ref.current) ref.current.close()
       }}
