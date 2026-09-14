@@ -49,7 +49,7 @@ export default function Contato() {
 
         <div className="mt-16 border-t border-line pt-6">
           <span className="font-heading text-lg font-medium text-brass">Calibre</span>
-          <p className="mt-2 text-sm text-cream/50">
+          <p className="mt-2 text-sm text-cream/60">
             A Calibre é uma relojoaria fictícia: este site é um conceito
             criado pela{' '}
             <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">

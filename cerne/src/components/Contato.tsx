@@ -38,7 +38,7 @@ export default function Contato() {
           </button>
         </form>
 
-        <p className="mt-10 text-sm text-ink/60">
+        <p className="mt-10 text-sm text-ink/70">
           O Cerne é um estúdio fictício: este site é um conceito criado pela{' '}
           <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
             Madolio

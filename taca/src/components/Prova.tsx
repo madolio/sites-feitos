@@ -97,7 +97,7 @@ export default function Prova() {
         </div>
 
         <div className="lg:pt-2">
-          <p className="text-sm font-semibold tracking-wide text-parchment/50">
+          <p className="text-sm font-semibold tracking-wide text-parchment/55">
             {vinhos.length} rótulos da casa — toque num nome pra servir
           </p>
           <ul className="mt-4 divide-y divide-parchment/10 border-y border-parchment/10">
@@ -120,7 +120,7 @@ export default function Prova() {
                         <span className="font-heading text-2xl font-medium italic">{v.nome}</span>
                         <span className="text-sm font-semibold text-garnet-light">{v.aPartirDe}</span>
                       </span>
-                      <span className="mt-0.5 block text-sm text-parchment/50">
+                      <span className="mt-0.5 block text-sm text-parchment/55">
                         {v.uva}, {v.safra}
                       </span>
                       {selecionado && <span className="mt-2 block max-w-md text-parchment/75">{v.notas}</span>}

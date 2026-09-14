@@ -54,7 +54,7 @@ export default function Hero() {
               <ReservaMarcha />
             </div>
           </div>
-          <p className="pointer-events-none mt-3 text-xs text-cream/50">Gire a coroa pra dar corda no mecanismo acima.</p>
+          <p className="pointer-events-none mt-3 text-xs text-cream/60">Gire a coroa pra dar corda no mecanismo acima.</p>
         </div>
       </div>
     </section>
