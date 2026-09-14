@@ -1,3 +1,4 @@
+import { sendToEmail } from '../demo'
 import { Mark } from './Nav'
 
 export default function Footer() {
@@ -12,9 +13,9 @@ export default function Footer() {
               com os próximos passos.
             </p>
             <div className="mt-7 flex flex-wrap gap-6">
-              <a href="mailto:projetos@tracoarquitetura.com.br" className="btn-ink">
+              <button type="button" onClick={() => sendToEmail('projetos@tracoarquitetura.com.br')} className="btn-ink">
                 projetos@tracoarquitetura.com.br
-              </a>
+              </button>
             </div>
           </div>
 

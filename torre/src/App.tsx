@@ -1,3 +1,4 @@
+import DemoDialog from './components/DemoDialog'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Log from './components/Log'
@@ -18,6 +19,7 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      <DemoDialog />
     </>
   )
 }

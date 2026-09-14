@@ -1,3 +1,4 @@
+import { sendToEmail } from '../demo'
 import { Mark } from './Nav'
 
 export default function Footer() {
@@ -11,9 +12,13 @@ export default function Footer() {
               O primeiro diagnóstico é sem custo e sem compromisso — só pra
               entender o seu momento.
             </p>
-            <a href="mailto:contato@ancorapatrimonio.com.br" className="btn-brass mt-7 inline-flex">
+            <button
+              type="button"
+              onClick={() => sendToEmail('contato@ancorapatrimonio.com.br')}
+              className="btn-brass mt-7 inline-flex"
+            >
               contato@ancorapatrimonio.com.br
-            </a>
+            </button>
           </div>
 
           <div className="md:pt-1">

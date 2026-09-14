@@ -1,3 +1,4 @@
+import DemoDialog from './components/DemoDialog'
 import Equipe from './components/Equipe'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -16,6 +17,7 @@ export default function App() {
         <Equipe />
       </main>
       <Footer />
+      <DemoDialog />
     </>
   )
 }

@@ -1,3 +1,4 @@
+import { sendToEmail } from '../demo'
 import { Mark } from './Sidebar'
 
 // Antes: bloco escuro "fale com a gente" com CTA grande — mas o CTA já é
@@ -11,7 +12,14 @@ export default function Footer() {
         <div className="mono flex items-center gap-2.5 text-sm text-ink-dim">
           <Mark className="h-5 w-5" />
           <span>
-            Torre — <a href="mailto:contato@torre.app" className="text-cyan underline underline-offset-4">contato@torre.app</a>
+            Torre —{' '}
+            <button
+              type="button"
+              onClick={() => sendToEmail('contato@torre.app')}
+              className="text-cyan underline underline-offset-4"
+            >
+              contato@torre.app
+            </button>
           </span>
         </div>
         <p className="mono text-xs text-ink-dim">
