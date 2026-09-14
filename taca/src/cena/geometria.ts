@@ -24,7 +24,7 @@ const PERFIL_TACA: [number, number][] = [
 export const ALTURA_BASE_TACA_BOJO = 0.93
 export const ALTURA_VINHO = 1.52
 
-function raioNaAltura(y: number) {
+export function raioNaAltura(y: number) {
   for (let i = 0; i < PERFIL_TACA.length - 1; i++) {
     const [x1, y1] = PERFIL_TACA[i]
     const [x2, y2] = PERFIL_TACA[i + 1]

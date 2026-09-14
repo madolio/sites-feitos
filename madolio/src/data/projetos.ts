@@ -230,7 +230,7 @@ export const projetos: Projeto[] = [
     name: 'Taça',
     category: 'Vinícola de altitude',
     description:
-      'Arraste a taça e o vinho gira de verdade em 3D — o vidro tem refração real, o líquido atrasa em relação ao giro da mão, e um giro forte deixa lágrimas escorrendo pela parede.',
+      'Escolha um rótulo na lista e ele é servido na hora, ao vivo, na mesma taça em 3D: ela drena, troca de cor e enche de novo — sem sair da tela, sem vídeo, sem foto de garrafa.',
     bg: '#241832',
     accent: '#7A1030',
     url: 'https://taca.fenoninho-max.workers.dev',
