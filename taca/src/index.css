@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-parchment: #f3ecdd;
+  --color-parchment-deep: #e9dfc8;
+  --color-ink: #2b1b2e;
+  --color-garnet: #7a1030;
+  --color-garnet-deep: #4d0a1f;
+  --color-sage: #7c8c5b;
+  --color-dusk: #241832;
+  --color-line: rgba(43, 27, 46, 0.14);
+
+  --font-heading: "Spectral", "Iowan Old Style", ui-serif, serif;
+  --font-ui: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-parchment font-ui text-ink antialiased;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-garnet);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-garnet);
+    color: var(--color-parchment);
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-garnet text-parchment hover:bg-ink;
+  }
+
+  .btn-outline {
+    @apply border border-parchment/50 text-parchment hover:border-parchment hover:bg-parchment/10;
+  }
+}

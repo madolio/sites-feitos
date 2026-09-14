@@ -147,7 +147,6 @@ export const projetos: Projeto[] = [
     bg: '#FFFAF0',
     accent: '#141414',
     url: 'https://confete.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Cerne',
@@ -167,7 +166,6 @@ export const projetos: Projeto[] = [
     bg: '#121212',
     accent: '#FF3B3B',
     url: 'https://tinta.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Balcão',
@@ -226,6 +224,16 @@ export const projetos: Projeto[] = [
     bg: '#120D08',
     accent: '#CAA25E',
     url: 'https://calibre.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
+    name: 'Taça',
+    category: 'Vinícola de altitude',
+    description:
+      'Arraste a taça e o vinho gira de verdade em 3D — o vidro tem refração real, o líquido atrasa em relação ao giro da mão, e um giro forte deixa lágrimas escorrendo pela parede.',
+    bg: '#241832',
+    accent: '#7A1030',
+    url: 'https://taca.fenoninho-max.workers.dev',
     destaque: true,
   },
 ]
