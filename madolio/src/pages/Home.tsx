@@ -1,6 +1,13 @@
 import Benefits from '../components/Benefits'
+import Confianca from '../components/Confianca'
+import CtaFinal from '../components/CtaFinal'
+import Diferenciais from '../components/Diferenciais'
+import Faq from '../components/Faq'
 import Hero from '../components/Hero'
+import ParaQuemE from '../components/ParaQuemE'
+import Processo from '../components/Processo'
 import Seo from '../components/Seo'
+import Sobre from '../components/Sobre'
 import Trabalhos from '../components/Trabalhos'
 
 export default function Home() {
@@ -12,8 +19,15 @@ export default function Home() {
         path="/"
       />
       <Hero />
+      <Diferenciais />
       <Trabalhos />
       <Benefits />
+      <ParaQuemE />
+      <Processo />
+      <Confianca />
+      <Sobre />
+      <Faq />
+      <CtaFinal />
     </>
   )
 }
