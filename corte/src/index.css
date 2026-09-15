@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 /* Vibe "Senha": salão/barbearia × painel de senha de atendimento (o
-   "agora atendendo Nº 042" de padaria/farmácia). Nada de espelho dourado
-   com serifada elegante. Ver CLAUDE.md. */
+   "agora atendendo Nº 042" de padaria/farmácia). Paleta trocada pra
+   azul/branco/vermelho de barbearia clássica — o trio da placa giratória
+   de poste de barbeiro, a pedido do usuário ("quero algo mais como
+   barbeiro normal mesmo... aqueles detalhes azuis branco e vermelho").
+   Ver CLAUDE.md. */
 @theme {
-  --color-ink: #2c1029;
-  --color-paper: #f7eee8;
-  --color-line: #e2d3cd;
-  --color-teal: #146b62;
-  --color-teal-hover: #0f5049;
+  --color-ink: #16233b;
+  --color-paper: #fafaf7;
+  --color-line: #dde1e6;
+  --color-vermelho: #c8202f;
+  --color-vermelho-hover: #a01623;
+  --color-azul: #1d4e89;
 
   --font-display: "Unbounded", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -30,14 +34,14 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-teal);
+    outline: 3px solid var(--color-azul);
     outline-offset: 2px;
   }
 }
 
 @layer components {
-  .btn-teal {
-    @apply inline-flex items-center justify-center rounded-lg bg-teal px-6 py-3 font-semibold text-paper transition-colors hover:bg-teal-hover;
+  .btn-vermelho {
+    @apply inline-flex items-center justify-center rounded-lg bg-vermelho px-6 py-3 font-semibold text-paper transition-colors hover:bg-vermelho-hover;
   }
 
   .btn-line {
@@ -47,6 +51,32 @@
   .ticket {
     font-family: var(--font-display);
     font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Listra de poste de barbeiro — a diagonal azul/vermelha/branca girando,
+   usada só como detalhe decorativo fino (TicketBar.tsx, Hero.tsx), nunca
+   como fundo de bloco de texto. */
+@keyframes poste-girar {
+  to {
+    background-position: 40px 0;
+  }
+}
+
+.poste {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-vermelho) 0 10px,
+    var(--color-paper) 10px 20px,
+    var(--color-azul) 20px 30px,
+    var(--color-paper) 30px 40px
+  );
+  animation: poste-girar 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poste {
+    animation: none;
   }
 }
 

@@ -42,7 +42,7 @@ export default function Agendar() {
               {servicos.map((s) => (
                 <label
                   key={s.name}
-                  className={`cursor-pointer rounded-lg border-2 border-ink/25 px-4 py-2 font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-teal ${
+                  className={`cursor-pointer rounded-lg border-2 border-ink/25 px-4 py-2 font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-azul ${
                     servico === s.name ? 'border-ink bg-ink text-paper' : 'text-ink hover:border-ink'
                   }`}
                 >
@@ -54,9 +54,9 @@ export default function Agendar() {
           </fieldset>
 
           {servicoEscolhido && (
-            <div className="ticket flex items-baseline gap-4 rounded-lg border-2 border-dashed border-teal/40 bg-teal/5 px-4 py-3 text-sm">
+            <div className="ticket flex items-baseline gap-4 rounded-lg border-2 border-dashed border-vermelho/40 bg-vermelho/5 px-4 py-3 text-sm">
               <span>
-                Sua senha seria a <strong className="text-lg text-teal">Nº {senha}</strong>
+                Sua senha seria a <strong className="text-lg text-vermelho">Nº {senha}</strong>
               </span>
               <span className="text-ink/60">~{espera} min de espera</span>
             </div>
@@ -69,11 +69,11 @@ export default function Agendar() {
               autoComplete="given-name"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              className="mt-2 w-full rounded-lg border-2 border-ink/25 bg-white px-4 py-3 text-ink focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+              className="mt-2 w-full rounded-lg border-2 border-ink/25 bg-white px-4 py-3 text-ink focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azul"
             />
           </label>
 
-          <button type="submit" disabled={!ready} className="btn-teal disabled:cursor-not-allowed disabled:opacity-50">
+          <button type="submit" disabled={!ready} className="btn-vermelho disabled:cursor-not-allowed disabled:opacity-50">
             Pegar minha senha
           </button>
         </form>

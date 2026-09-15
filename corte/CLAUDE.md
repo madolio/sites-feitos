@@ -22,12 +22,18 @@ Pedido do usuário: reformular no mesmo nível de inovação da Realce & Cia (ef
 - **`TicketStub.tsx` deixou de ser só decorativo** — ganhou o botão "Puxar senha": cada clique incrementa o número e a nota reaparece com uma animação de "papel saindo da máquina" (`.ticket-dispensar` em index.css, troca de `key` remonta o elemento e replay a animação).
 - **`Agendar.tsx` calcula espera estimada de verdade** — ao escolher um serviço, aparece "Sua senha seria a Nº X, ~Y min de espera", calculado a partir da duração real do serviço (`servicos[].minutos`) × pessoas fictícias na frente. A mensagem de WhatsApp já sai com esse número escrito.
 
-Paleta: `--color-ink` #2c1029 (ameixa quase-preta), `--color-paper` #f7eee8 (creme), `--color-teal` #146b62 (única cor de marca). Fontes: **Unbounded** (display, geométrica arredondada) + **Manrope** (corpo).
+## Reformulação 2 — paleta de barbearia clássica
+
+Feedback direto: "quero algo mais como barbeiro normal mesmo, curti a ideia da senha, mas vai nas cores de barbeiro, aqueles detalhes azuis branco e vermelho". O esqueleto (painel de senha) ficou — só a paleta trocou, de ameixa/creme/verde-petróleo pra **azul/branco/vermelho** do poste giratório clássico de barbearia.
+
+- `--color-ink` (ameixa) → **navy** #16233b. `--color-paper` (creme) → **branco** #fafaf7. `--color-teal` → **`--color-vermelho`** #c8202f (cor de marca principal, mesmo papel que o teal tinha: botões, destaque de número) + **`--color-azul`** #1d4e89 (secundária, só decorativa).
+- `Mark` (o ícone da marca, antes um envelope genérico) virou um mini-poste de barbeiro com listras diagonais vermelho/branco/azul.
+- `PosteBarbeiro.tsx` (novo): um poste giratório de verdade ao lado do talão de senha no Hero — listras girando em loop via CSS (`.poste`, `background-position` animado), o símbolo mais clássico do ofício, juntando as duas ideias da marca (fila numerada + barbearia tradicional) no mesmo golpe de vista. Respeita `prefers-reduced-motion`.
 
 ## Arquitetura — painel de senha em vez de nav
 
 `TicketBar.tsx` substitui a barra de navegação por um **painel "atendendo agora"**: o número sobe sozinho a cada 9s (decorativo, dá vida à página), sem nenhum link de menu — CTA "Marcar horário" é o único elemento interativo da barra. `Menu.tsx` (a lista de preços) é um quadro pendurado na parede, não uma grade de cards.
 
-## Gotcha de contraste — teal só funciona no fundo claro
+## Gotcha de contraste — vermelho só funciona no fundo claro
 
-Mesma lição do Pulso e do Focinho: `--color-teal` (#146b62) foi validado a ~5.5:1 contra `--paper`, mas contra o fundo escuro `--ink` (ameixa quase-preta) dá só ~2.7:1 — insuficiente até pro mínimo de 3:1 de elementos decorativos, e bem abaixo do 4.5:1 de texto. `Menu.tsx` (seção de fundo escuro) por isso usa `text-paper` pros preços, não `text-teal` — a cor de marca fica reservada só pras seções de fundo claro (`TicketBar`, botões, `Agendar`). Regra geral adotada nos 6 conceitos desta leva: **validar cada cor de marca contra CADA fundo onde ela aparece, nunca presumir que funciona nos dois.**
+Mesma lição de sempre: `--color-vermelho` (#c8202f) funciona bem como texto/fundo sobre `--paper` (branco), mas sobre `--ink` (navy escuro) o contraste cai bastante — `Menu.tsx` (seção de fundo escuro) por isso usa `text-paper` pros preços, nunca `text-vermelho`. Regra geral adotada nos conceitos desta leva: **validar cada cor de marca contra CADA fundo onde ela aparece, nunca presumir que funciona nos dois.**
