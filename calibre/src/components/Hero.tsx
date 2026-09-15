@@ -1,47 +1,27 @@
-import { useEffect } from 'react'
-import gsap from 'gsap'
-import { montagem } from '../estado'
 import { sendToWhatsApp } from '../demo'
-import Vitrine from '../cena/Vitrine'
-import Coroa from './Coroa'
-import ReservaMarcha from './ReservaMarcha'
+import RelogioNav from './RelogioNav'
 
-// Único movimento não pedido pelo visitante: ao entrar, as peças do calibre
-// (explodidas por padrão) se juntam sozinhas, uma vez, num timeline de 2.4s.
-// Depois disso o mecanismo só se move em resposta ao que a pessoa faz — girar
-// a coroa (Coroa.tsx) e assistir a reserva de marcha subir (ReservaMarcha.tsx).
+// Rework total: a cena 3D do calibre montando (e o gesto de girar a coroa)
+// saíram por completo — a pedido do usuário, que não gostou da ideia do
+// mecanismo em 3D. No lugar, o mostrador é literal: um relógio analógico
+// de verdade, com hora certa, onde os números 12/4/8 são a navegação
+// (ver RelogioNav.tsx). Continua sendo sobre "o relógio à vista", só que
+// agora é o relógio de verdade funcionando, não uma peça desmontada.
 export default function Hero() {
-  useEffect(() => {
-    const reduzida = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduzida) {
-      montagem.progresso = 1
-      return
-    }
-    const tw = gsap.to(montagem, { progresso: 1, duration: 2.4, delay: 0.5, ease: 'power2.inOut' })
-    return () => {
-      tw.kill()
-    }
-  }, [])
-
   return (
-    <section className="relative min-h-[100svh] overflow-hidden border-b border-line">
-      <div className="absolute inset-0">
-        <Vitrine />
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent" />
-
-      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-12 sm:px-10 sm:pb-16">
-        <div className="max-w-lg">
+    <section id="inicio" className="border-b border-line px-6 pt-28 pb-20 sm:px-10 md:pt-36 md:pb-28">
+      <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-[1.05fr_0.95fr] md:gap-10">
+        <div>
           <h1 className="font-heading text-5xl leading-[1.05] font-medium text-cream sm:text-6xl">
-            O mecanismo por trás do relógio, à vista
+            O relógio certo, à vista
           </h1>
           <p className="mt-5 max-w-md text-lg text-cream/75">
             Relojoaria artesanal em Campinas (SP). Cada calibre é montado à
-            mão, peça por peça — e o site mostra exatamente como, em vez de
-            só fotografar o resultado.
+            mão, peça por peça — e o mostrador ao lado está correndo no
+            horário real agora mesmo.
           </p>
 
-          <div className="pointer-events-auto mt-8 flex flex-wrap items-center gap-6">
+          <div className="mt-8 flex flex-wrap items-center gap-6">
             <button
               type="button"
               onClick={() => sendToWhatsApp('Olá! Quero conversar sobre um relógio sob encomenda com a Calibre.')}
@@ -49,13 +29,13 @@ export default function Hero() {
             >
               Encomendar um relógio
             </button>
-            <div className="flex items-center gap-4">
-              <Coroa />
-              <ReservaMarcha />
-            </div>
           </div>
-          <p className="pointer-events-none mt-3 text-xs text-cream/60">Gire a coroa pra dar corda no mecanismo acima.</p>
+          <p className="mt-4 text-xs text-cream/55">
+            Os números 12, 4 e 8 do mostrador levam pras seções da página.
+          </p>
         </div>
+
+        <RelogioNav />
       </div>
     </section>
   )

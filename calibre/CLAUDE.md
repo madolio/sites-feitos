@@ -1,30 +1,19 @@
 # Calibre (conceito)
 
-Site-conceito da Madolio pro nicho de relojoaria artesanal. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4 + React Three Fiber. Página única, com rolagem (diferente do Torno, que é uma ferramenta de tela única).
+Site-conceito da Madolio pro nicho de relojoaria artesanal. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única, com rolagem.
 
-## Reformulação — avaliado e deixado como está (quase todo)
+## Rework total — o 3D saiu por completo
 
-Pedido do usuário: reformular no mesmo nível de ousadia da Realce (efeitos, responsividade, "tudo fluindo"), aplicado aos 7 conceitos de uma leva. Avaliação honesta pro Calibre: **este projeto já excede esse nível** — 3D real com física simulada (corda que descarrega sozinha, balanço oscilando), textura procedural, único gesto de interação (girar a coroa) documentado e testado. Adicionar mais efeitos por cima seria acúmulo, não melhoria.
+Havia uma avaliação anterior nesta sessão dizendo que o Calibre "já excedia" o nível de ousadia pedido (3D real com física simulada, gesto de girar a coroa) e não precisava de mudança. **O usuário discordou explicitamente**: "calibre - rework total, esse 3d n curti, muda a ideia para outra" — manteve o nicho (relojoaria), mas rejeitou a execução inteira.
 
-Único ajuste: `Catalogo.tsx` ganhou hover consistente com o resto da leva (anel de latão + leve elevação no card ao passar o mouse) — puramente cosmético, não competiu com o "único movimento não pedido" da cena 3D nem com o gesto da coroa. Verificado responsivo em mobile (canvas 3D redimensiona corretamente, zero overflow, zero erro de console).
+Removido por completo, não deixado como código morto: `src/cena/Vitrine.tsx`, `geometria.ts`, `texturas.ts`, `src/estado.ts`, `Coroa.tsx`, `ReservaMarcha.tsx`, e as dependências `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`, `postprocessing`, `three`, `gsap` + `.npmrc` (que só existia por causa dos peers opcionais de Expo do R3F). O bundle caiu de ~1,35 MB pra 234 KB.
 
-## Deploy (Cloudflare Workers)
+## O conceito novo: o mostrador é a navegação, ao vivo
 
-Worker `calibre`, em `https://calibre.fenoninho-max.workers.dev`. `npm run deploy`. Tem `.npmrc` com `legacy-peer-deps=true` (senão o `npm install` quebra nos peers opcionais de Expo do React Three Fiber — mesmo problema do Torno/Cardume).
+Em vez de mostrar o mecanismo por dentro (3D), a ideia virou literal na direção contrária: um **relógio analógico de verdade**, com ponteiros correndo no horário real do visitante (atualiza a cada segundo via `setInterval`, sem lib), onde os números **12, 4 e 8** do mostrador são a navegação da página — cada um leva a uma seção (`Modelos`/`catálogo`, `Como nasce`/`processo`, `Encomendar`/`contato`).
 
-## A cena: um calibre de verdade em 3D
-
-`src/cena/Vitrine.tsx` é a cena inteira: placa-mãe, barril da mola real, três engrenagens (centro/terça/escape) e o volante de balanço — todas geradas por coordenadas em `geometria.ts`, não modeladas em outro programa. `criarEngrenagem()` é a função que faz o trabalho pesado: um disco com dentes alternando raio cheio/raio menor vira, com parâmetros diferentes, tanto as três engrenagens quanto a coroa de corda (`Coroa.tsx` é HTML/CSS, não 3D — só a ideia de "dente fino e curto" é compartilhada conceitualmente).
-
-`texturas.ts` gera o acabamento **Côtes de Genève** (as listras onduladas de relojoaria fina de verdade, não um metal escovado genérico) pra placa-mãe, e as estrias em espiral do barril, ambos via canvas 2D — mesma técnica das texturas do Torno.
-
-## O único movimento não pedido
-
-Ao entrar na página, as peças (que nascem explodidas, flutuando bem separadas) se juntam sozinhas numa animação GSAP de 2,4s (`Hero.tsx`) — o único movimento automático da cena. `prefers-reduced-motion` pula direto pro estado montado.
-
-## O gesto: girar a coroa
-
-Depois de montado, a interação principal é girar a coroa (`Coroa.tsx`) — não arrastar em linha reta, o ângulo do ponteiro em volta do centro do botão vira energia (`estado.ts`, `corda.energia`). Mais corda = volante de balanço oscila mais rápido e as engrenagens giram mais rápido; a energia drena sozinha e devagar, nunca chega a zero (mesma lógica de "nunca deixa a cena parada" do resto do portfólio 3D). `ReservaMarcha.tsx` lê `corda.energia` direto no DOM a cada quadro via `requestAnimationFrame`, sem passar por estado React — mesmo padrão do `Termometro` do Torno.
+- **`RelogioNav.tsx`** (novo): calcula os ângulos dos três ponteiros a partir de `new Date()`, desenha o mostrador em SVG (reaproveitando a mesma lógica de marcação de `Mostrador.tsx`) e sobrepõe três pontos clicáveis com scroll-spy (`IntersectionObserver`, mesmo padrão do `Rail.tsx`/`Regua.tsx` de outros conceitos) — o ponto da seção visível acende em latão.
+- **Duas instâncias, um componente**: o mostrador grande (`Hero.tsx`) é a peça de exibição; uma versão `compacto` (prop) mora fixa na barra do topo (`Nav.tsx`) — sem essa segunda instância, a navegação desapareceria da tela depois do primeiro scroll, quebrando o padrão do resto do repositório (nav sempre visível). Mesmo relógio, mesma hora, só em miniatura, sem os traços de hora/minuto.
 
 ## Sequência real → numeração
 
@@ -32,10 +21,10 @@ Depois de montado, a interação principal é girar a coroa (`Coroa.tsx`) — n�
 
 ## Catálogo sem foto
 
-`Mostrador.tsx` desenha o mostrador de cada modelo em SVG — ponteiros sempre parados às 10h09 (a pose clássica de fotografia de relojoaria), com sub-mostradores de cronógrafo opcionais. Nenhuma foto de relógio no site inteiro, mesmo espírito do Encaixe (desenho técnico em vez de foto), aplicado a outro ofício.
+`Mostrador.tsx` desenha o mostrador de cada modelo em SVG — ponteiros sempre parados às 10h09 (a pose clássica de fotografia de relojoaria), com sub-mostradores de cronógrafo opcionais. Nenhuma foto de relógio no site inteiro, mesmo espírito do Encaixe (desenho técnico em vez de foto), aplicado a outro ofício. `Catalogo.tsx` tem hover consistente com o resto do portfólio (anel de latão + leve elevação no card).
 
 ## Referência visual
 
-Paleta: `--color-void` #120d08 (fundo, quase preto mas com calor — não o preto/verde-ácido genérico), `--color-brass` #caa25e (latão — cor de metal de verdade, não um "accent" arbitrário), `--color-steel` #3a5a72 (aço azulado, reservado só pro volante de balanço — o mesmo "blued steel" que relojoaria fina usa em ponteiros e parafusos). Fontes: **Cormorant Garamond** (títulos, evoca a tipografia gravada num mostrador) + **Sora** (interface) — combinação não usada em nenhum outro projeto do repositório.
+Paleta: `--color-void` #120d08 (fundo, quase preto mas com calor), `--color-brass` #caa25e (latão — cor de metal de verdade), `--color-steel` #3a5a72 (aço azulado, reservado pro segundeiro do mostrador grande — o mesmo "blued steel" que relojoaria fina usa em ponteiros e parafusos). Fontes: **Cormorant Garamond** (títulos) + **Sora** (interface).
 
 **Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo):** depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.
