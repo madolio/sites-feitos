@@ -19,6 +19,18 @@ Pedido explícito do usuário: "reformule a ideia toda, coloque uma pegada acade
 - **Mais 3D** ("pode viajar"): `Scene3D.tsx` ganhou dois meshes novos além do `MoltenBlob` — `CircuitShell` (icosaedro wireframe branco, maior, girando no sentido contrário — efeito "raio-x elétrico" ao redor do metal) e `Shards` (6 octaedros metálicos menores orbitando em posições fixas). Título do Hero ganhou `.chrome-text` (text-shadow em camadas simulando bisel metálico gravado) e um ícone de relâmpago (`Bolt`, `.bolt` com `@keyframes bolt-flicker`) piscando ao lado do texto "desde 1987".
 - Favicon e `theme-color` atualizados pra preto puro.
 
+**Ajuste seguinte (v4):** feedback direto sobre a cena 3D — "esse blob azul tá mt feio, reformula ele todo". Estava mesmo: o `MoltenBlob`, a `CircuitShell` e os `Shards` foram removidos inteiros e a cena refeita.
+
+- **O objeto agora é uma anilha olímpica de verdade**, não uma forma abstrata: anel extrudado (`Shape` + `holes` + `ExtrudeGeometry`) com chanfro e seis furos de pegada. Pro site que se chama *Ferro*, o objeto ser literalmente ferro de academia vale mais que um blob genérico. São três, de tamanhos diferentes, girando em velocidades diferentes.
+- **A causa raiz da feiura era técnica:** `metalness={1}` sem nada pra refletir renderiza chapado — era por isso que o blob parecia plástico azul, e nenhum ajuste de cor ia resolver. A correção é o `Estudio`: um `<Environment frames={1}>` com `<Lightformer>` da drei montando um cubemap **local**, sem baixar HDR de CDN nenhum. Com ambiente pra refletir, o mesmo material vira aço.
+- **Composição:** as anilhas ficam nas laterais, não atrás do título. A primeira tentativa deixou uma anilha cromada gigante bem no meio e o título sumiu em cima dela — erro pego em screenshot, não no código.
+
+### Gotchas da cena
+
+1. **Intensidade dos lightformers é baixa de propósito.** Alta, o aço vira cromo espelhado e estoura de branco: bonito isolado, ilegível com texto por cima.
+2. **As anilhas giram, então o brilho atrás do texto muda com o tempo.** Um screenshot legível não prova que continue legível 3 s depois — por isso o Hero tem uma máscara radial escura (`radial-gradient`) entre o canvas e o conteúdo, que trava o contraste independente de onde a rotação parou. Ao revisar, conferir vários instantes, não um.
+3. **O grupo escala por `viewport.width`.** As anilhas estão em `x` grande pra ficarem nas bordas; num viewport estreito o mundo visível encolhe e elas sairiam de quadro. O `scale` proporcional faz o conjunto encolher e se aproximar do centro em vez de sumir no mobile.
+
 ## Deploy (Cloudflare Workers)
 
 Worker `ferro`, em `https://ferro.fenoninho-max.workers.dev`. `npm run deploy`.

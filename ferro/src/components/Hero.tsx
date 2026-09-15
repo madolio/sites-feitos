@@ -39,14 +39,26 @@ export default function Hero() {
       <Scene3DLazy
         className="pointer-events-none absolute inset-0"
         particleColor="#5b9fff"
-        particleCount={450}
-        particleOpacity={0.5}
-        particleSize={0.035}
-        minRadius={2.6}
-        maxRadius={5.5}
-        cameraDistance={5.5}
-        blobColor="#1b4dab"
-        showBlob
+        particleCount={420}
+        particleOpacity={0.4}
+        particleSize={0.03}
+        minRadius={3.4}
+        maxRadius={7}
+        cameraDistance={6.2}
+        acoColor="#414a56"
+        luzColor="#5b9fff"
+      />
+
+      {/* As anilhas giram, então o brilho atrás do texto muda o tempo todo —
+          um screenshot legível não garante que continue legível 3s depois.
+          Esta máscara escura no miolo trava o contraste do título. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 55% at 50% 45%, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.72) 45%, rgba(5,5,5,0) 78%)',
+        }}
       />
 
       <div className="relative z-10 mx-auto max-w-2xl px-6">
