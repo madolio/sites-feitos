@@ -1,27 +1,22 @@
 @import "tailwindcss";
 
-/* Vibe "Cartaz de show": academia old school × cartaz de show de rock
-   pesado xerocado, colado na parede com fita crepe. Papel envelhecido,
-   tinta de xerox gasta, ferrugem em vez de amarelo de segurança. Nada de
-   academia clean com LED, nada de crossfit colorido -- e nada do Ferro
-   anterior (paleta industrial/institucional). Ver CLAUDE.md. */
+/* Vibe "Cartaz de show" v2 -- galpão escuro de academia old school, cartaz
+   de banda de metal xerocado pregado na parede com fita crepe. A v1 dessa
+   reformulação usava papel envelhecido como fundo da página inteira e
+   ficou "documento antigo" em vez de "parede de galpão à noite" -- agora o
+   fundo é escuro (void), e o papel/xerox só aparece nos "cartazes" (blocos
+   individuais), com partículas de fuligem e um blob de metal derretido em
+   3D de verdade (Three.js) no Hero. Ver CLAUDE.md. */
 @theme {
+  --color-void: #120f0d;
   --color-paper: #ddd3b4;
   --color-ink: #211b16;
+  /* --color-smoke é o texto secundário sobre --color-void (fumaça/poeira
+     no ar escuro do galpão) -- --color-chumbo continua existindo só pra
+     texto secundário sobre --color-paper (dentro dos cartazes). */
+  --color-smoke: #a89f8a;
   --color-chumbo: #5b564c;
-  /* --color-rust é escuro o bastante pra funcionar como texto direto
-     sobre --color-paper (testado: ~6.5:1, acima do mínimo AA de 4.5:1) --
-     diferente do amarelo de segurança do Ferro anterior, que só entrava
-     como fundo. A regra aqui é a oposta: nunca usar --color-rust como
-     TEXTO sobre --color-ink (dois tons escuros, ~1.7:1, insuficiente).
-     Rust funciona como texto/fundo sobre paper, ou como fundo com texto
-     paper por cima -- nunca como texto sobre ink. */
   --color-rust: #7a281b;
-  /* Variante clara pra texto GRANDE sobre --color-ink (o par --color-rust
-     + ink dá só ~1.7:1, insuficiente mesmo pra texto grande). Testada:
-     ~3.6:1 contra ink -- ok pro limiar de "texto grande" da WCAG (24px+
-     regular ou 18.66px bold), não usar em texto de corpo pequeno sobre
-     ink. */
   --color-rust-bright: #c9622f;
 
   --font-display: "Metal Mania", ui-sans-serif, system-ui, sans-serif;
@@ -30,7 +25,7 @@
 
 @layer base {
   body {
-    @apply bg-paper font-body text-ink antialiased;
+    @apply bg-void font-body text-paper antialiased;
     font-size: 1.0625rem;
     line-height: 1.65;
   }
@@ -45,18 +40,25 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-rust);
+    outline: 3px solid var(--color-rust-bright);
     outline-offset: 2px;
   }
 }
 
 @layer components {
   .btn-rust {
-    @apply inline-flex items-center justify-center border-2 border-ink bg-rust px-7 py-3.5 font-display text-lg text-paper uppercase transition-opacity hover:opacity-85;
+    @apply inline-flex items-center justify-center border-2 border-paper/40 bg-rust px-7 py-3.5 font-display text-lg text-paper uppercase transition-opacity hover:opacity-85;
   }
 
+  /* .btn-ink é pro contorno usado DENTRO de cartazes de papel (Planos,
+     DemoDialog) -- nunca direto sobre o fundo escuro --color-void. */
   .btn-ink {
     @apply inline-flex items-center justify-center border-2 border-ink px-6 py-3 font-display text-lg text-ink uppercase transition-colors hover:bg-ink hover:text-paper;
+  }
+
+  /* Cartaz -- bloco de papel xerocado "pregado" no galpão escuro. */
+  .poster {
+    @apply border-2 border-ink bg-paper text-ink;
   }
 }
 
@@ -75,6 +77,23 @@
   background-size: 3px 3px;
   opacity: 0.06;
   mix-blend-mode: multiply;
+}
+
+/* Fumaça/poeira no ar escuro do galpão -- ruído bem mais discreto que o
+   .xerox-grain, sobre fundo --color-void em vez de --color-paper. */
+.void-grain {
+  position: relative;
+}
+
+.void-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--color-paper) 0.5px, transparent 0.5px);
+  background-size: 4px 4px;
+  opacity: 0.035;
+  mix-blend-mode: screen;
 }
 
 /* Fita crepe — tira presa em cima de um bloco, como se o cartaz estivesse

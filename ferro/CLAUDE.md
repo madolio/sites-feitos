@@ -6,6 +6,12 @@ Site-conceito da Madolio pro nicho de academia (musculação + funcional). **Neg
 
 Pedido explícito do usuário: "reformule a ideia toda, coloque uma pegada academia oldschool. algo relíquia, rock pauleira". Substitui por completo a primeira versão (vibe "Anilha" — paleta industrial iron/steel/signal-amarelo, nav em placar de treino). Mantido: nome, domínio (`ferro`), a técnica de contador animado (`PlateCounter.tsx`, sem lib) e o modo demonstração.
 
+**Ajuste seguinte:** o usuário gostou da direção, mas achou que a paleta clara (papel envelhecido como fundo da página inteira) não combinava com as fontes agressivas, e pediu mais efeitos 3D — "pode viajar nessa página". Resolvido:
+
+- **Fundo virou escuro** (`--color-void`, #120f0d) — o papel/xerox agora só aparece nos "cartazes" individuais (cards, header, plaquinha de recordes), não na página inteira. Isso deu o clima de "galpão à noite com pôster pregado na parede" que faltava, em vez de "documento antigo".
+- **WebGL de verdade** (`@react-three/fiber` + `@react-three/drei`, mesmo padrão do Madolio): `Scene3D.tsx`/`Scene3DLazy.tsx` reescritos aqui (projetos são independentes) com um campo de partículas (fuligem/poeira, cor `#c9622f`) e um `MoltenBlob` — icosaedro distorcido (`MeshDistortMaterial` da drei) com metalness/emissive, girando devagar atrás do título do Hero, representando ferro em fusão. Precisa de `.npmrc` com `legacy-peer-deps=true` (mesma razão dos outros conceitos 3D — peers opcionais de Expo do React Three Fiber).
+- Fontes **mantidas** (Metal Mania + Special Elite), só a paleta e o fundo mudaram.
+
 ## Deploy (Cloudflare Workers)
 
 Worker `ferro`, em `https://ferro.fenoninho-max.workers.dev`. `npm run deploy`.
@@ -20,7 +26,7 @@ Worker `ferro`, em `https://ferro.fenoninho-max.workers.dev`. `npm run deploy`.
   - `PlateCounter.tsx` no Hero — reaproveitado da v1, agora conta anos de casa (1987) em vez de carga levantada.
 - **Esqueleto próprio:** `Recordes.tsx` — um quadro de recordes envelhecido (`.xerox-grain` + `.tape`), pregado na parede, no lugar de uma seção genérica de diferenciais.
 
-Paleta: `--color-paper` (#ddd3b4, papel envelhecido) + `--color-ink` (#211b16, tinta de xerox) + `--color-chumbo` (#5b564c, texto secundário) + `--color-rust` (#7a281b, ferrugem/sangue desbotado). Fontes: **Metal Mania** (display — literal fonte de logo de banda de thrash metal, só pra títulos grandes, ilegível em corpo de texto) + **Special Elite** (corpo — datilografia/xerox).
+Paleta: `--color-void` (#120f0d, fundo da página) + `--color-paper` (#ddd3b4, só nos cartazes) + `--color-ink` (#211b16, texto dentro dos cartazes) + `--color-smoke` (#a89f8a, texto secundário sobre `void`) + `--color-chumbo` (#5b564c, texto secundário sobre `paper`) + `--color-rust`/`--color-rust-bright` (ferrugem, ver seção de contraste). Fontes: **Metal Mania** (display — literal fonte de logo de banda de thrash metal, só pra títulos grandes, ilegível em corpo de texto) + **Special Elite** (corpo — datilografia/xerox).
 
 ## Gotcha de contraste — o oposto do esperado
 

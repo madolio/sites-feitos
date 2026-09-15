@@ -240,9 +240,9 @@ export const projetos: Projeto[] = [
     name: 'Ferro',
     category: 'Academia old school',
     description:
-      'Cartaz de show de rock pesado xerocado, colado com fita crepe: o quadro de recordes fica pregado na parede desde 1987, e uma bobina de fita cassete gira sem parar no hero.',
-    bg: '#ddd3b4',
-    accent: '#7a281b',
+      'Galpão escuro com cartaz de show xerocado colado na parede: partículas de fuligem e um blob de metal derretido em 3D de verdade atrás do título, quadro de recordes pregado desde 1987.',
+    bg: '#120f0d',
+    accent: '#c9622f',
     url: 'https://ferro.fenoninho-max.workers.dev',
   },
   {
