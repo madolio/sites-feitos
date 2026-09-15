@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* Vibe "Camarim": o salão visto como um camarim de teatro — parede verde
+   profunda, espelho com lâmpadas quentes em volta, ferragem de latão. A
+   marca se chama Realce, então a ideia da página é literalmente a luz que
+   realça. Nada do kit rosa/dourado/mármore que todo site de salão usa.
+   Ver CLAUDE.md. */
+@theme {
+  --color-noite: #14201c;
+  --color-luz: #f6ecd9;
+  /* --color-jade é o verde da identidade atual deles (logo verde/teal),
+     escurecido pra virar texto legível sobre --color-luz (5.4:1). Sobre
+     fundo escuro ele NÃO passa (2.6:1) -- ver seção de contraste no
+     CLAUDE.md e usar --color-jade-claro lá. */
+  --color-jade: #1d6b57;
+  --color-jade-claro: #4fae8f;
+  --color-latao: #c08a3e;
+  --color-fumo: #8a9a92;
+  --color-grafite: #3e4a45;
+
+  --font-display: "Bodoni Moda", ui-serif, Georgia, serif;
+  --font-body: "Karla", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Compensa o cabeçalho fixo quando se pula pra uma âncora. */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-luz font-body text-noite antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-latao);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-jade {
+    @apply inline-flex items-center justify-center rounded-full bg-jade px-7 py-3.5 font-medium text-luz transition-opacity hover:opacity-85;
+  }
+
+  /* Contorno claro -- só sobre fundo --color-noite. */
+  .btn-luz {
+    @apply inline-flex items-center justify-center rounded-full border border-luz/40 px-6 py-3 font-medium text-luz transition-colors hover:bg-luz hover:text-noite;
+  }
+
+  /* Contorno escuro -- só sobre fundo --color-luz. */
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-full border border-noite/25 px-6 py-3 font-medium text-noite transition-colors hover:bg-noite hover:text-luz;
+  }
+
+  .rotulo {
+    @apply text-xs tracking-[0.22em] uppercase;
+  }
+}
+
+/* --- Lâmpadas do camarim -------------------------------------------------
+   Cada lâmpada é um ponto com halo. O "acender" é escalonado por
+   --atraso (inline style), pra fileira acender uma a uma como um espelho
+   de camarim sendo ligado. Depois fica respirando de leve. */
+.lampada {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--color-luz);
+  translate: -50% -50%;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--color-latao) 60%, transparent),
+    0 0 12px 4px color-mix(in srgb, var(--color-latao) 55%, transparent),
+    0 0 28px 10px color-mix(in srgb, var(--color-latao) 22%, transparent);
+  opacity: 0;
+  animation:
+    acender 0.5s ease-out forwards,
+    respirar 4s ease-in-out infinite;
+  animation-delay: var(--atraso, 0ms), calc(var(--atraso, 0ms) + 0.5s);
+}
+
+@keyframes acender {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+  60% {
+    opacity: 1;
+    scale: 1.15;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.25);
+  }
+}
+
+/* --- Revelação por rolagem ----------------------------------------------
+   Usado via IntersectionObserver (ver useRevelar). Sem GSAP de propósito:
+   as animações desta página são só de opacity/translate e a classe
+   utilitária de transition do Tailwind brigaria com o GSAP nas mesmas
+   propriedades. */
+.revelar {
+  opacity: 0;
+  translate: 0 1.25rem;
+  transition:
+    opacity 0.7s ease-out,
+    translate 0.7s ease-out;
+}
+
+.revelar[data-visivel='true'] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Filete de latão -- separador fino usado no lugar de borda cheia. */
+.filete {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-latao) 70%, transparent),
+    transparent
+  );
+  height: 1px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .lampada {
+    opacity: 1;
+    animation: none;
+  }
+
+  .revelar {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}
