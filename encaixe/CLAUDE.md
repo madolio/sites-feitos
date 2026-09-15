@@ -18,7 +18,9 @@ Não é foto de móvel nenhuma vez no site — cada peça do catálogo é um **d
 
 ## O único movimento não pedido
 
-`Hero.tsx`: ao carregar a página, uma espiga desliza e trava no furo de um encaixe desenhado em SVG — o único movimento automático do site, um gesto só, que resume a proposta inteira. `prefers-reduced-motion` pula direto pro estado já encaixado. Toda cor da peça usa `var(--color-wood)`/`--color-wood-dark`, nunca a paleta de tinta/ink usada no resto do desenho de linha — reforça que aquela peça é "madeira de verdade" entrando no encaixe "desenhado a lápis".
+`Hero.tsx`: ao carregar a página, uma tábua desliza e trava numa segunda tábua — o único movimento automático do site, um gesto só, que resume a proposta inteira. `prefers-reduced-motion` pula direto pro estado já encaixado. Toda cor da peça usa `var(--color-wood)`/`--color-wood-dark`, nunca a paleta de tinta/ink usada no resto do desenho de linha — reforça que aquela peça é "madeira de verdade" entrando no encaixe "desenhado a lápis".
+
+**Ilustração trocada** (feedback: "esse espiga e furo, a ilustração do primeiro bloco, mude ela"). Era um pino retangular simples deslizando num furo retangular — lia como peça de brinquedo de encaixar, não como marcenaria de verdade. Agora é um **rabo-de-andorinha**: dentes triangulares de uma tábua entrelaçando nos vãos da outra (`d="M20,40 H150 L130,60 L150,80..."`, zigue-zague gerado à mão), o encaixe mais reconhecível da marcenaria. O rótulo embaixo mudou de "espiga-e-furo" pra "rabo-de-andorinha" pra bater com o desenho novo.
 
 ## Reformulação — efeitos, mas sem quebrar a regra do "único movimento"
 
