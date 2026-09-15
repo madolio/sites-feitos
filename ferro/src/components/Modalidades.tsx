@@ -31,7 +31,10 @@ export default function Modalidades() {
 
         <div className="mt-10 grid gap-8 sm:grid-cols-2">
           {modalidades.map((item) => (
-            <div key={item.titulo} className={`poster xerox-grain relative p-6 ${item.rotate}`}>
+            <div
+              key={item.titulo}
+              className={`poster xerox-grain relative p-6 transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 hover:shadow-lg ${item.rotate}`}
+            >
               <span className="tape" aria-hidden="true" />
               <h3 className="text-xl">{item.titulo}</h3>
               <p className="mt-2 text-chumbo">{item.texto}</p>

@@ -19,7 +19,10 @@ export default function Recordes() {
           <span className="tape" aria-hidden="true" />
           <ul className="divide-y divide-paper/15">
             {recordes.map((r) => (
-              <li key={r.movimento} className="flex flex-wrap items-baseline justify-between gap-2 py-4">
+              <li
+                key={r.movimento}
+                className="flex flex-wrap items-baseline justify-between gap-2 px-2 py-4 transition-colors duration-200 hover:bg-paper/5"
+              >
                 <span className="text-lg">{r.movimento}</span>
                 <span className="flex items-baseline gap-3">
                   <span className="tally text-2xl text-[color:var(--color-steel-bright)]">{r.peso}</span>

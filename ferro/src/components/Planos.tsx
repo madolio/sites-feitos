@@ -16,7 +16,9 @@ export default function Planos() {
           {planos.map((plano) => (
             <div
               key={plano.nome}
-              className={`flex flex-col border-2 p-6 ${plano.destaque ? 'border-steel bg-ink text-paper' : 'border-ink'}`}
+              className={`flex flex-col border-2 p-6 transition-colors duration-300 ${
+                plano.destaque ? 'border-steel bg-ink text-paper' : 'border-ink hover:border-steel'
+              }`}
             >
               <h3 className="text-xl">{plano.nome}</h3>
               <p className={`mt-2 text-2xl tally ${plano.destaque ? 'text-[color:var(--color-steel-bright)]' : 'text-ink'}`}>

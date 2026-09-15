@@ -2,6 +2,16 @@
 
 Site-conceito da Madolio pro nicho de academia (musculação + funcional). **Negócio fictício** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única.
 
+## Reformulação — polish de hover (leva "nível de ousadia da Realce")
+
+O Ferro já tinha passado por 4 rodadas de reformulação nesta sessão (old school/rock, fundo escuro + WebGL, paleta Metallica, anilhas 3D com reflexo real) — já estava no nível pedido. Único ajuste desta leva: consistência de hover nos elementos estáticos que ainda não respondiam a nada:
+
+- `Modalidades.tsx`: cada cartaz "descola da parede" no hover — sobe de leve e desfaz a rotação (`hover:rotate-0`), como tirar o pôster torto da parede pra olhar de frente.
+- `Planos.tsx`: cards não-destaque ganham borda azul no hover.
+- `Recordes.tsx`: cada linha do placar ilumina de leve no hover.
+
+Nenhuma mudança na cena 3D do Hero nem na paleta — já estavam certas.
+
 ## Reformulação — pegada old school / relíquia / rock pesado
 
 Pedido explícito do usuário: "reformule a ideia toda, coloque uma pegada academia oldschool. algo relíquia, rock pauleira". Substitui por completo a primeira versão (vibe "Anilha" — paleta industrial iron/steel/signal-amarelo, nav em placar de treino). Mantido: nome, domínio (`ferro`), a técnica de contador animado (`PlateCounter.tsx`, sem lib) e o modo demonstração.
