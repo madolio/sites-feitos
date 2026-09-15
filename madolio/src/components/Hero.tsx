@@ -39,7 +39,7 @@ export default function Hero() {
             <span className="h-px w-8 bg-accent-hero/60" />
           </p>
 
-          <h1 className="font-poster text-[3.75rem] leading-[0.82] tracking-tight text-white uppercase sm:text-[5.5rem] lg:text-[6.5rem]">
+          <h1 className="font-poster text-[3.75rem] leading-[0.95] tracking-tight text-white uppercase sm:text-[5.5rem] lg:text-[6.5rem]">
             Um site que parece
             <br />
             <span className="font-accent text-accent-hero tracking-normal italic normal-case">feito à mão</span> pro

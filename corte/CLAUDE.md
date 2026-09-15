@@ -35,7 +35,7 @@ Feedback direto: "quero algo mais como barbeiro normal mesmo, curti a ideia da s
 Feedback: "coloca mais elementos visuais remententes a barbearia" — o poste era o único elemento literal do ofício; o resto (senha, cores) era abstrato.
 
 - **`Icones.tsx`** (novo): tesoura, navalha e pente, traço simples. `Profissionais.tsx` trocou a silhueta genérica de "pessoa" por um desses ícones por profissional, escolhido pela especialidade real já escrita em `data.ts` (Duda Ferraz/cortes → tesoura, Igor Salgado/barba → navalha, Bia Torres/escova → pente) — não é decoração aleatória, cada ícone corresponde ao dado que já existia.
-- **`Selo.tsx`** (novo): carimbo circular vintage com texto correndo na borda (`<textPath>`) e uma tesoura no centro — ao lado do poste no Hero, reforçando a estética de barbearia tradicional sem depender só da paleta de cor.
+- **`Selo.tsx`** (novo): carimbo circular vintage com texto correndo na borda (`<textPath>`) e uma tesoura no centro. Feedback direto ("aq na Corte ficou feio, reformule") sobre a primeira tentativa: o selo ao lado do poste no Hero deixava um vão vazio entre os dois, sem parecer intencional. Movido pro rodapé de `Agendar.tsx`, ao lado da assinatura/aviso de negócio fictício — funciona como um carimbo de autenticidade ali, contextualmente melhor que flutuando ao lado do poste. O poste (`PosteBarbeiro.tsx`) ficou sozinho no Hero, um pouco maior, com presença própria.
 - **`.piso-xadrez`** (index.css): faixa fina de piso xadrez preto/branco — o chão clássico de barbearia antiga — usada como divisor entre `Hero`/`Menu` e `Menu`/`Profissionais`, nunca como fundo de bloco de texto (evita brigar com legibilidade).
 
 ## Arquitetura — painel de senha em vez de nav

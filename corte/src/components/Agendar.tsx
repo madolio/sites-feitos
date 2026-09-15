@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { servicos, START_TICKET } from '../data'
 import { sendToWhatsApp } from '../demo'
+import Selo from './Selo'
 import { Mark } from './TicketBar'
 
 // Quantas pessoas já estão na fila na frente de uma senha nova — fixo, só
@@ -78,17 +79,22 @@ export default function Agendar() {
           </button>
         </form>
 
-        <div className="mt-16 flex items-center gap-2.5 border-t border-line pt-6">
-          <Mark className="h-6 w-6 text-ink" />
-          <span className="font-display">Corte</span>
+        <div className="mt-16 flex items-center justify-between gap-6 border-t border-line pt-6">
+          <div>
+            <div className="flex items-center gap-2.5">
+              <Mark className="h-6 w-6 text-ink" />
+              <span className="font-display">Corte</span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm text-ink/70">
+              O Corte é um negócio fictício: este site é um conceito criado pela{' '}
+              <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
+                Madolio
+              </a>
+              .
+            </p>
+          </div>
+          <Selo className="h-16 w-16 shrink-0 text-ink/40 sm:h-20 sm:w-20" />
         </div>
-        <p className="mt-4 text-sm text-ink/70">
-          O Corte é um negócio fictício: este site é um conceito criado pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
-            Madolio
-          </a>
-          .
-        </p>
       </div>
     </footer>
   )
