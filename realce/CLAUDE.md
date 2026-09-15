@@ -21,7 +21,7 @@ Worker `realce`, em `https://realce.fenoninho-max.workers.dev`. `npm run deploy`
 
 ## Vibe — "Camarim"
 
-- **Lugar/objeto:** camarim de teatro. Parede verde profunda, espelho com lâmpadas quentes em volta, ferragem de latão.
+- **Lugar/objeto:** camarim de teatro. Parede preta, espelho com lâmpadas quentes em volta, ferragem dourada.
 - **Colisão:** a marca se chama *Realce* — a página é literalmente sobre a luz que realça.
 - **Nunca parecer:** o kit rosa/dourado/mármore/script que praticamente todo site de salão usa, nem o "Corte" (barbearia deste mesmo repositório, que usa painel de senha e quadro de preços).
 - **Esqueleto próprio:** `Marquise.tsx` — no lugar de sublinhado ou pílula marcando a seção ativa, cada item da nav tem uma **lâmpada** que acende quando você entra na seção. A barra inteira é o espelho de camarim em miniatura.
@@ -46,24 +46,31 @@ Os blocos usam `min-height`, **nunca `height`**, com piso de 78px. Com `height` 
 
 ## Paleta e contraste
 
-`--color-noite` (#14201c, parede do camarim) + `--color-luz` (#f6ecd9, luz de lâmpada quente) + `--color-jade` (#1d6b57) + `--color-jade-claro` (#4fae8f) + `--color-latao` (#c08a3e) + `--color-fumo` (#8a9a92) + `--color-grafite` (#3e4a45).
+**A paleta é a deles, não inventada.** A primeira versão deste site usou verde/jade porque uma leitura automática do site atual afirmou que o logo era "verde/teal" — estava errado. A paleta real foi extraída de duas fontes:
 
-O jade vem do verde/teal que eles já usam na identidade atual — a paleta respeita a marca deles em vez de inventar uma do zero.
+1. `wp-content/themes/curly/assets/css/style_dynamic.css` (o CSS que o customizador do tema WordPress gera), onde o accent aparece como `rgba(195, 157, 84, 1)`.
+2. As cores efetivamente pintadas na página, lidas com `getComputedStyle` em todos os elementos e contadas por frequência: preto, branco, `#333333`, `#cccccc`, `#f5f5f5` e **`rgb(197, 157, 95)` = `#c59d5f`** — o dourado do logo.
+
+Tokens: `--color-preto` (#000000) + `--color-branco` (#ffffff) + `--color-cinza` (#f5f5f5, seções claras alternadas) + `--color-dourado` (#c59d5f, o dourado do logo) + `--color-dourado-escuro` (#8a6a2f) + `--color-fumo` (#aaaaaa) + `--color-grafite` (#333333).
 
 Pares testados (proporção WCAG calculada, não estimada):
 
 | par | razão | uso |
 | --- | --- | --- |
-| `luz` sobre `noite` | 14,3:1 | texto principal em seção escura |
-| `fumo` sobre `noite` | 5,7:1 | texto secundário em seção escura |
-| `jade-claro` sobre `noite` | 6,2:1 | destaque em seção escura |
-| `latao` sobre `noite` | 5,6:1 | rótulos e filetes em seção escura |
-| `grafite` sobre `luz` | 7,9:1 | texto secundário em seção clara |
-| `jade` sobre `luz` | 5,4:1 | destaque em seção clara |
+| `branco` sobre `preto` | 21:1 | texto principal em seção escura |
+| `fumo` sobre `preto` | 10,2:1 | texto secundário em seção escura |
+| `dourado` sobre `preto` | 8,4:1 | rótulos, horários e filetes em seção escura |
+| `preto` sobre `dourado` | 8,4:1 | texto do botão primário e do chip selecionado |
+| `grafite` sobre `branco` | 12,6:1 | texto secundário em seção clara |
+| `grafite` sobre `cinza` | 11,6:1 | idem, na seção clara alternada |
+| `dourado-escuro` sobre `branco` | 4,9:1 | destaque em seção clara |
+| `dourado-escuro` sobre `preto` | 4,3:1 | anel de foco (serve nos dois fundos) |
 
-**Os dois que NÃO passam:** `jade` sobre `noite` (2,6:1) e `latao` sobre `luz` (2,6:1). Em fundo escuro usar `jade-claro`; o latão só entra sobre fundo escuro, e sobre fundo claro nunca como texto.
+**O que NÃO passa:** `--color-dourado` como texto sobre fundo claro — 2,5:1 no branco e 2,3:1 no cinza. O próprio site deles tem isso (logo dourado no branco), mas logo é marca gráfica e não cai na regra de texto da WCAG. Aqui, em fundo claro o dourado entra **só** como preenchimento (botão, chip selecionado) ou decoração; pra texto dourado em fundo claro existe `--color-dourado-escuro`.
 
-Fontes: **Bodoni Moda** (display — didone de alto contraste, marquise de teatro) + **Karla** (corpo).
+É o inverso da regra dos outros projetos do repositório, onde o accent costuma falhar no escuro. Aqui o accent é claro: falha no claro, brilha no escuro.
+
+Fontes: **Bodoni Moda** (display — didone de alto contraste, marquise de teatro) + **Karla** (corpo). O site atual deles usa Montserrat em tudo; a tipografia aqui é escolha de projeto, não da marca — só a paleta foi mantida fiel.
 
 ## Animação: por que sem GSAP
 

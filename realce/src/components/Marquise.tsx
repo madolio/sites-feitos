@@ -33,10 +33,10 @@ export default function Marquise() {
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-latao/20 bg-noite/95 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-dourado/20 bg-preto/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-3">
         <a href="#inicio" className="leading-tight">
-          <span className="font-display text-xl text-luz">Realce &amp; Cia</span>
+          <span className="font-display text-xl text-branco">Realce &amp; Cia</span>
           <span className="block text-[0.62rem] tracking-[0.2em] text-fumo uppercase">
             são roque · desde 2004
           </span>
@@ -55,11 +55,11 @@ export default function Marquise() {
                 <span
                   className={`h-2 w-2 rounded-full transition-all duration-300 ${
                     acesa
-                      ? 'bg-luz shadow-[0_0_10px_3px_rgba(192,138,62,0.7)]'
-                      : 'bg-luz/25 group-hover:bg-luz/60'
+                      ? 'bg-branco shadow-[0_0_10px_3px_rgba(197,157,95,0.75)]'
+                      : 'bg-branco/25 group-hover:bg-branco/60'
                   }`}
                 />
-                <span className={acesa ? 'text-luz' : 'text-fumo group-hover:text-luz'}>
+                <span className={acesa ? 'text-branco' : 'text-fumo group-hover:text-branco'}>
                   {s.rotulo}
                 </span>
               </a>
@@ -67,7 +67,7 @@ export default function Marquise() {
           })}
         </nav>
 
-        <a href="#visita" className="btn-jade px-5 py-2.5 text-sm">
+        <a href="#visita" className="btn-dourado px-5 py-2.5 text-sm">
           Agendar
         </a>
       </div>

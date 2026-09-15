@@ -66,10 +66,10 @@ export default function MonteSuaVisita() {
   }
 
   return (
-    <section id="visita" className="bg-luz py-20 md:py-28">
+    <section id="visita" className="bg-cinza py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="revelar max-w-2xl">
-          <p className="rotulo text-jade">Reservas</p>
+          <p className="rotulo text-dourado-escuro">Reservas</p>
           <h2 className="mt-3 text-3xl sm:text-4xl">Monte sua visita</h2>
           <p className="mt-4 text-grafite">
             Escolha os serviços na ordem em que quer fazer. A agenda ao lado
@@ -98,13 +98,13 @@ export default function MonteSuaVisita() {
                             aria-pressed={ativo}
                             className={`flex w-full items-baseline justify-between gap-3 rounded-lg border px-4 py-3 text-left transition-colors ${
                               ativo
-                                ? 'border-jade bg-jade text-luz'
-                                : 'border-noite/15 hover:border-jade hover:bg-jade/5'
+                                ? 'border-dourado bg-dourado text-preto'
+                                : 'border-preto/15 bg-branco hover:border-dourado hover:bg-dourado/15'
                             }`}
                           >
                             <span className="font-medium">{s.nome}</span>
                             <span
-                              className={`tabular shrink-0 text-sm ${ativo ? 'text-luz/80' : 'text-grafite'}`}
+                              className={`tabular shrink-0 text-sm ${ativo ? 'text-preto/70' : 'text-grafite'}`}
                             >
                               {duracao(s.minutos)}
                             </span>
@@ -117,8 +117,8 @@ export default function MonteSuaVisita() {
             ))}
           </div>
 
-          <div className="rounded-2xl bg-noite p-6 text-luz lg:sticky lg:top-24">
-            <p className="rotulo text-latao">Sua agenda</p>
+          <div className="rounded-2xl bg-preto p-6 text-branco lg:sticky lg:top-24">
+            <p className="rotulo text-dourado">Sua agenda</p>
 
             <div className="mt-5">
               <label htmlFor="chegada" className="text-sm text-fumo">
@@ -128,7 +128,7 @@ export default function MonteSuaVisita() {
                 id="chegada"
                 value={chegada}
                 onChange={(e) => setChegada(Number(e.target.value))}
-                className="tabular mt-2 w-full rounded-lg border border-luz/25 bg-noite px-3 py-2.5 text-luz"
+                className="tabular mt-2 w-full rounded-lg border border-branco/25 bg-preto px-3 py-2.5 text-branco"
               >
                 {horarios.map((h) => (
                   <option key={h} value={h}>
@@ -139,28 +139,28 @@ export default function MonteSuaVisita() {
             </div>
 
             {blocos.length === 0 ? (
-              <p className="mt-6 border-t border-luz/15 pt-6 text-sm text-fumo">
+              <p className="mt-6 border-t border-branco/15 pt-6 text-sm text-fumo">
                 Nenhum serviço escolhido ainda. Toque em um ao lado e ele entra
                 aqui na hora.
               </p>
             ) : (
-              <ol className="mt-6 border-t border-luz/15 pt-6">
+              <ol className="mt-6 border-t border-branco/15 pt-6">
                 {blocos.map((b) => (
                   <li
                     key={b.servico.id}
-                    className="relative border-l border-latao/40 pb-3 pl-4"
+                    className="relative border-l border-dourado/40 pb-3 pl-4"
                     style={{ minHeight: `${altura(b.servico.minutos)}px` }}
                   >
-                    <span className="absolute top-1 -left-[4.5px] h-2 w-2 rounded-full bg-latao" />
+                    <span className="absolute top-1 -left-[4.5px] h-2 w-2 rounded-full bg-dourado" />
                     <div className="min-w-0">
-                      <p className="tabular text-xs text-latao">
+                      <p className="tabular text-xs text-dourado">
                         {hhmm(b.inicio)}–{hhmm(b.fim)}
                       </p>
                       <p className="truncate font-medium">{b.servico.nome}</p>
                       <button
                         type="button"
                         onClick={() => alternar(b.servico.id)}
-                        className="mt-1 text-xs text-fumo underline underline-offset-2 hover:text-luz"
+                        className="mt-1 text-xs text-fumo underline underline-offset-2 hover:text-branco"
                       >
                         tirar
                       </button>
@@ -171,25 +171,25 @@ export default function MonteSuaVisita() {
             )}
 
             {blocos.length > 0 && (
-              <div className="mt-2 border-t border-luz/15 pt-5">
+              <div className="mt-2 border-t border-branco/15 pt-5">
                 <div className="flex items-baseline justify-between">
                   <span className="text-sm text-fumo">Total</span>
                   <span className="tabular font-display text-2xl">{duracao(total)}</span>
                 </div>
                 <div className="mt-1 flex items-baseline justify-between">
                   <span className="text-sm text-fumo">Saída prevista</span>
-                  <span className="tabular text-jade-claro">{hhmm(saida)}</span>
+                  <span className="tabular text-dourado">{hhmm(saida)}</span>
                 </div>
 
                 {passaDoFechamento && (
-                  <p className="mt-4 rounded-lg border border-latao/50 bg-latao/10 p-3 text-sm text-luz">
+                  <p className="mt-4 rounded-lg border border-dourado/50 bg-dourado/10 p-3 text-sm text-branco">
                     Assim a visita passa das 19h, que é quando fechamos. Escolha
                     um horário de chegada mais cedo ou divida em dois dias — dá
                     pra combinar isso na mensagem.
                   </p>
                 )}
 
-                <button type="button" onClick={pedir} className="btn-jade mt-5 w-full">
+                <button type="button" onClick={pedir} className="btn-dourado mt-5 w-full">
                   Pedir esse horário
                 </button>
                 <p className="mt-3 text-center text-xs text-fumo">

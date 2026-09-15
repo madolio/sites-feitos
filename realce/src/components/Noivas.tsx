@@ -14,11 +14,11 @@ const roteiro = [
 
 export default function Noivas() {
   return (
-    <section id="noivas" className="bg-luz py-20 md:py-28">
+    <section id="noivas" className="bg-branco py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <div className="revelar">
-            <p className="rotulo text-jade">Noivas</p>
+            <p className="rotulo text-dourado-escuro">Noivas</p>
             <h2 className="mt-3 text-3xl sm:text-4xl">
               O dia da noiva não começa no dia.
             </h2>
@@ -42,7 +42,7 @@ export default function Noivas() {
                     'gostaria de saber sobre o teste e a disponibilidade de data.',
                 )
               }
-              className="btn-jade mt-8"
+              className="btn-dourado mt-8"
             >
               Falar sobre o meu casamento
             </button>
@@ -55,9 +55,9 @@ export default function Noivas() {
               {roteiro.map((etapa) => (
                 <li
                   key={etapa.quando}
-                  className="grid grid-cols-[7.5rem_1fr] items-baseline gap-4 border-b border-noite/10 py-4 last:border-b-0"
+                  className="grid grid-cols-[7.5rem_1fr] items-baseline gap-4 border-b border-preto/10 py-4 last:border-b-0"
                 >
-                  <span className="tabular text-sm text-jade">{etapa.quando}</span>
+                  <span className="tabular text-sm text-dourado-escuro">{etapa.quando}</span>
                   <span>{etapa.o_que}</span>
                 </li>
               ))}

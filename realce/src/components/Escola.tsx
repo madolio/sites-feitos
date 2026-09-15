@@ -2,10 +2,10 @@ import { sendToWhatsApp } from '../demo'
 
 export default function Escola() {
   return (
-    <section id="escola" className="bg-noite py-20 text-luz md:py-28">
+    <section id="escola" className="bg-preto py-20 text-branco md:py-28">
       <div className="mx-auto max-w-4xl px-6">
         <div className="revelar">
-          <p className="rotulo text-latao">Escola</p>
+          <p className="rotulo text-dourado">Escola</p>
           <h2 className="mt-3 text-3xl sm:text-4xl">
             Aqui também se forma cabeleireiro.
           </h2>
@@ -44,7 +44,7 @@ export default function Escola() {
                 'quais turmas estão abrindo e como funciona a inscrição.',
             )
           }
-          className="btn-luz revelar mt-10"
+          className="btn-branco revelar mt-10"
         >
           Saber das próximas turmas
         </button>

@@ -11,10 +11,10 @@ function duracao(minutos: number) {
 // índice à esquerda e os serviços correm à direita separados por filete.
 export default function Servicos() {
   return (
-    <section id="servicos" className="bg-noite py-20 text-luz md:py-28">
+    <section id="servicos" className="bg-preto py-20 text-branco md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <div className="revelar max-w-2xl">
-          <p className="rotulo text-latao">O que fazemos</p>
+          <p className="rotulo text-dourado">O que fazemos</p>
           <h2 className="mt-3 text-3xl sm:text-4xl">Serviços da casa</h2>
           <p className="mt-4 text-fumo">
             O tempo ao lado de cada um é o que reservamos na agenda. Serve pra
@@ -25,13 +25,13 @@ export default function Servicos() {
 
         {grupos.map((grupo) => (
           <div key={grupo} className="revelar mt-14 grid gap-6 sm:grid-cols-[10rem_1fr]">
-            <h3 className="rotulo pt-1 text-latao">{grupo}</h3>
+            <h3 className="rotulo pt-1 text-dourado">{grupo}</h3>
 
             <ul>
               {servicos
                 .filter((s) => s.grupo === grupo)
                 .map((s) => (
-                  <li key={s.id} className="border-t border-luz/12 py-5 first:border-t-0 first:pt-0">
+                  <li key={s.id} className="border-t border-branco/12 py-5 first:border-t-0 first:pt-0">
                     <div className="flex items-baseline justify-between gap-4">
                       <h4 className="font-display text-xl">{s.nome}</h4>
                       <span className="tabular shrink-0 text-sm text-fumo">

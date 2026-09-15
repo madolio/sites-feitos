@@ -250,8 +250,8 @@ export const projetos: Projeto[] = [
     category: 'Salão de beleza — redesenho conceitual',
     description:
       'A nav é um espelho de camarim: cada seção tem uma lâmpada que acende quando você chega nela. E em vez de lista de serviços, você monta a visita — escolhe na ordem, e a agenda fecha sozinha com hora de entrada, de saída e aviso se passar do fechamento.',
-    bg: '#14201c',
-    accent: '#c08a3e',
+    bg: '#000000',
+    accent: '#c59d5f',
     url: 'https://realce.fenoninho-max.workers.dev',
     destaque: true,
   },

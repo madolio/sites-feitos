@@ -3,11 +3,11 @@ import { sendToWhatsApp } from '../demo'
 
 export default function CtaFinal() {
   return (
-    <section className="bg-noite px-6 pb-24 text-luz">
+    <section className="bg-preto px-6 pb-24 text-branco">
       <div className="mx-auto max-w-2xl">
         <div className="relative pt-[20%] pb-10">
           <div
-            className="absolute inset-0 border border-latao/35"
+            className="absolute inset-0 border border-dourado/35"
             style={{ borderRadius: `50% 50% 10px 10px / ${ARCO}% ${ARCO}% 10px 10px` }}
           />
           <Lampadas />
@@ -24,7 +24,7 @@ export default function CtaFinal() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a href="#visita" className="btn-jade">
+              <a href="#visita" className="btn-dourado">
                 Montar minha visita
               </a>
               <button
@@ -32,7 +32,7 @@ export default function CtaFinal() {
                 onClick={() =>
                   sendToWhatsApp('Olá! Queria informações sobre os serviços do Realce & Cia.')
                 }
-                className="btn-luz"
+                className="btn-branco"
               >
                 Só tirar uma dúvida
               </button>

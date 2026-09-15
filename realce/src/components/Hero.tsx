@@ -9,19 +9,19 @@ const fatos = [
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-noite px-6 pt-16 pb-20 text-luz md:pb-28">
+    <section id="inicio" className="relative overflow-hidden bg-preto px-6 pt-16 pb-20 text-branco md:pb-28">
       <div className="mx-auto max-w-3xl">
         {/* A moldura do espelho de camarim. O border-radius usa o mesmo ARCO
             das lâmpadas pra borda e luz coincidirem. */}
         <div className="relative pt-[22%] pb-12 sm:pt-[18%]">
           <div
-            className="absolute inset-0 border border-latao/35"
+            className="absolute inset-0 border border-dourado/35"
             style={{ borderRadius: `50% 50% 10px 10px / ${ARCO}% ${ARCO}% 10px 10px` }}
           />
           <Lampadas />
 
           <div className="relative px-6 text-center sm:px-14">
-            <p className="rotulo text-latao">São Roque · desde 2004</p>
+            <p className="rotulo text-dourado">São Roque · desde 2004</p>
 
             <h1 className="mt-5 text-4xl leading-[1.12] sm:text-5xl md:text-6xl">
               Salão e escola,
@@ -36,10 +36,10 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a href="#visita" className="btn-jade">
+              <a href="#visita" className="btn-dourado">
                 Montar minha visita
               </a>
-              <a href="#servicos" className="btn-luz">
+              <a href="#servicos" className="btn-branco">
                 Ver os serviços
               </a>
             </div>
@@ -50,7 +50,7 @@ export default function Hero() {
           {fatos.map((f) => (
             <div key={f.rotulo}>
               <dt className="sr-only">{f.rotulo}</dt>
-              <dd className="tabular font-display text-2xl text-luz sm:text-3xl">{f.valor}</dd>
+              <dd className="tabular font-display text-2xl text-branco sm:text-3xl">{f.valor}</dd>
               <p className="mt-1 text-xs text-fumo">{f.rotulo}</p>
             </div>
           ))}

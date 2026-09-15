@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-latao/20 bg-noite py-10 text-luz">
+    <footer className="border-t border-dourado/20 bg-preto py-10 text-branco">
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex flex-wrap items-baseline justify-between gap-4">
           <span className="font-display text-xl">Realce &amp; Cia</span>
@@ -9,10 +9,10 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="filete my-6" />
+        <div className="filete-claro my-6" />
 
         <p className="max-w-3xl text-sm text-fumo">
-          Este site é um <strong className="text-luz">conceito de redesenho</strong> criado
+          Este site é um <strong className="text-branco">conceito de redesenho</strong> criado
           pela Madolio para o Realce &amp; Cia, salão e escola de cabeleireiros
           que existe de verdade em São Roque. Não é o site oficial do salão, não
           é encomendado por eles e os textos descritivos são ilustrativos.
