@@ -10,7 +10,7 @@ export default function CtaFinal() {
         <button
           type="button"
           onClick={() => sendToWhatsApp('Olá! Quero saber mais sobre a Ferro.')}
-          className="btn-rust mt-8"
+          className="btn-steel mt-8"
         >
           Falar no WhatsApp
         </button>

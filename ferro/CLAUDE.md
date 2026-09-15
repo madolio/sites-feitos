@@ -6,11 +6,18 @@ Site-conceito da Madolio pro nicho de academia (musculação + funcional). **Neg
 
 Pedido explícito do usuário: "reformule a ideia toda, coloque uma pegada academia oldschool. algo relíquia, rock pauleira". Substitui por completo a primeira versão (vibe "Anilha" — paleta industrial iron/steel/signal-amarelo, nav em placar de treino). Mantido: nome, domínio (`ferro`), a técnica de contador animado (`PlateCounter.tsx`, sem lib) e o modo demonstração.
 
-**Ajuste seguinte:** o usuário gostou da direção, mas achou que a paleta clara (papel envelhecido como fundo da página inteira) não combinava com as fontes agressivas, e pediu mais efeitos 3D — "pode viajar nessa página". Resolvido:
+**Ajuste seguinte (v2):** o usuário gostou da direção, mas achou que a paleta clara (papel envelhecido como fundo da página inteira) não combinava com as fontes agressivas, e pediu mais efeitos 3D — "pode viajar nessa página". Resolvido:
 
-- **Fundo virou escuro** (`--color-void`, #120f0d) — o papel/xerox agora só aparece nos "cartazes" individuais (cards, header, plaquinha de recordes), não na página inteira. Isso deu o clima de "galpão à noite com pôster pregado na parede" que faltava, em vez de "documento antigo".
-- **WebGL de verdade** (`@react-three/fiber` + `@react-three/drei`, mesmo padrão do Madolio): `Scene3D.tsx`/`Scene3DLazy.tsx` reescritos aqui (projetos são independentes) com um campo de partículas (fuligem/poeira, cor `#c9622f`) e um `MoltenBlob` — icosaedro distorcido (`MeshDistortMaterial` da drei) com metalness/emissive, girando devagar atrás do título do Hero, representando ferro em fusão. Precisa de `.npmrc` com `legacy-peer-deps=true` (mesma razão dos outros conceitos 3D — peers opcionais de Expo do React Three Fiber).
+- **Fundo virou escuro** (`--color-void`) — o papel/xerox agora só aparece nos "cartazes" individuais (cards, header, plaquinha de recordes), não na página inteira. Isso deu o clima de "galpão à noite com pôster pregado na parede" que faltava, em vez de "documento antigo".
+- **WebGL de verdade** (`@react-three/fiber` + `@react-three/drei`, mesmo padrão do Madolio): `Scene3D.tsx`/`Scene3DLazy.tsx` reescritos aqui (projetos são independentes) com um campo de partículas e um `MoltenBlob` — icosaedro distorcido (`MeshDistortMaterial` da drei) com metalness/emissive, girando devagar atrás do título do Hero, representando ferro em fusão. Precisa de `.npmrc` com `legacy-peer-deps=true` (mesma razão dos outros conceitos 3D — peers opcionais de Expo do React Three Fiber).
 - Fontes **mantidas** (Metal Mania + Special Elite), só a paleta e o fundo mudaram.
+
+**Ajuste seguinte (v3):** feedback direto — "a paleta de cores e fonte n combinou, mantém a fonte" (v2 tinha ferrugem/laranja) foi corrigido antes de ainda receber outro pedido explícito: "viaje mais, quero cores preto branco e azul, algo na pegada do metallica". Resolvido:
+
+- Paleta inteira trocada de ferrugem/laranja pra **preto/branco/azul elétrico** (`--color-steel` #1b4dab / `--color-steel-bright` #5b9fff no lugar de `--color-rust`/`--color-rust-bright`; `--color-paper` virou branco-chrome #f0f0ee em vez de papel envelhecido tan; `--color-smoke`/`--color-chumbo` viraram cinza-azulado frio). Todas as classes (`.btn-rust` → `.btn-steel`) e usos inline (`text-rust`, `border-rust`) foram renomeados.
+- **Fontes mantidas** de novo, intocadas — só cor.
+- **Mais 3D** ("pode viajar"): `Scene3D.tsx` ganhou dois meshes novos além do `MoltenBlob` — `CircuitShell` (icosaedro wireframe branco, maior, girando no sentido contrário — efeito "raio-x elétrico" ao redor do metal) e `Shards` (6 octaedros metálicos menores orbitando em posições fixas). Título do Hero ganhou `.chrome-text` (text-shadow em camadas simulando bisel metálico gravado) e um ícone de relâmpago (`Bolt`, `.bolt` com `@keyframes bolt-flicker`) piscando ao lado do texto "desde 1987".
+- Favicon e `theme-color` atualizados pra preto puro.
 
 ## Deploy (Cloudflare Workers)
 
@@ -26,16 +33,16 @@ Worker `ferro`, em `https://ferro.fenoninho-max.workers.dev`. `npm run deploy`.
   - `PlateCounter.tsx` no Hero — reaproveitado da v1, agora conta anos de casa (1987) em vez de carga levantada.
 - **Esqueleto próprio:** `Recordes.tsx` — um quadro de recordes envelhecido (`.xerox-grain` + `.tape`), pregado na parede, no lugar de uma seção genérica de diferenciais.
 
-Paleta: `--color-void` (#120f0d, fundo da página) + `--color-paper` (#ddd3b4, só nos cartazes) + `--color-ink` (#211b16, texto dentro dos cartazes) + `--color-smoke` (#a89f8a, texto secundário sobre `void`) + `--color-chumbo` (#5b564c, texto secundário sobre `paper`) + `--color-rust`/`--color-rust-bright` (ferrugem, ver seção de contraste). Fontes: **Metal Mania** (display — literal fonte de logo de banda de thrash metal, só pra títulos grandes, ilegível em corpo de texto) + **Special Elite** (corpo — datilografia/xerox).
+Paleta (v3, preto/branco/azul — pegada Metallica): `--color-void` (#050505, fundo da página) + `--color-paper` (#f0f0ee, branco-chrome, só nos cartazes) + `--color-ink` (#0a0a0a, texto dentro dos cartazes) + `--color-smoke` (#9aa6b3, texto secundário sobre `void`) + `--color-chumbo` (#545f6b, texto secundário sobre `paper`) + `--color-steel`/`--color-steel-bright` (azul elétrico, ver seção de contraste). Fontes: **Metal Mania** (display — literal fonte de logo de banda de thrash metal, só pra títulos grandes, ilegível em corpo de texto) + **Special Elite** (corpo — datilografia/xerox). Mantidas desde a v1 apesar de duas trocas de paleta, a pedido explícito do usuário nas duas vezes.
 
 ## Gotcha de contraste — o oposto do esperado
 
-`--color-rust` é escuro (não um amarelo/vermelho vívido como nas paletas anteriores), então a regra de pares é invertida em relação ao que se esperaria:
+`--color-steel` é escuro (não um vívido como nas paletas anteriores), então a regra de pares é invertida em relação ao que se esperaria:
 
-- **Rust funciona bem como TEXTO direto sobre `paper`** (testado: ~6.5:1, acima do mínimo AA de 4.5:1) — diferente do `--color-signal` da v1, que só entrava como fundo.
-- **Rust NÃO funciona como texto sobre `ink`** (dois tons escuros, ~1.7:1, bem abaixo do mínimo). Pra esse caso existe `--color-rust-bright` (#c9622f), testado em ~3.6:1 contra `ink` — só serve pro limiar de "texto grande" da WCAG (24px+ regular ou 18.66px+ bold), nunca pra texto pequeno de corpo sobre `ink`. Usado em `Recordes.tsx` nos valores de peso (`text-2xl`).
+- **Steel funciona bem como TEXTO direto sobre `paper`** (branco-chrome) — contraste alto.
+- **Steel NÃO funciona como texto sobre `ink`/`void`** (dois tons escuros). Pra esse caso existe `--color-steel-bright` (#5b9fff) — só serve pro limiar de "texto grande" da WCAG (24px+ regular ou 18.66px+ bold), nunca pra texto pequeno de corpo sobre fundo escuro. Usado em `Recordes.tsx` nos valores de peso (`text-2xl`) e no contador do Hero.
 
-Se adicionar um novo elemento com `--color-rust` sobre fundo escuro, usar `--color-rust-bright` e confirmar que o texto é grande — não criar uma terceira variante sem testar o contraste primeiro.
+Se adicionar um novo elemento com `--color-steel` sobre fundo escuro, usar `--color-steel-bright` e confirmar que o texto é grande — não criar uma terceira variante sem testar o contraste primeiro.
 
 ## Modo demonstração
 

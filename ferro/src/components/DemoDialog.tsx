@@ -36,7 +36,7 @@ export default function DemoDialog() {
           site é um conceito criado pela Madolio.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <a href={MADOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="btn-rust">
+          <a href={MADOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="btn-steel">
             Quero um site assim
           </a>
           <button type="button" onClick={() => ref.current?.close()} className="btn-ink">

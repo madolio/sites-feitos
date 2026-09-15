@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
-/* Vibe "Cartaz de show" v2 -- galpão escuro de academia old school, cartaz
-   de banda de metal xerocado pregado na parede com fita crepe. A v1 dessa
-   reformulação usava papel envelhecido como fundo da página inteira e
-   ficou "documento antigo" em vez de "parede de galpão à noite" -- agora o
-   fundo é escuro (void), e o papel/xerox só aparece nos "cartazes" (blocos
-   individuais), com partículas de fuligem e um blob de metal derretido em
-   3D de verdade (Three.js) no Hero. Ver CLAUDE.md. */
+/* Vibe "Cartaz de show" v3 -- galpão escuro de academia old school, cartaz
+   de banda de metal xerocado pregado na parede com fita crepe. Paleta
+   trocada pra preto/branco/azul elétrico (pegada Metallica -- chrome
+   riscado, relâmpago) a pedido do usuário: "viaje mais, quero cores
+   preto branco e azul, algo na pegada do metallica". Fontes mantidas
+   (Metal Mania + Special Elite). Ver CLAUDE.md. */
 @theme {
-  --color-void: #120f0d;
-  --color-paper: #ddd3b4;
-  --color-ink: #211b16;
-  /* --color-smoke é o texto secundário sobre --color-void (fumaça/poeira
-     no ar escuro do galpão) -- --color-chumbo continua existindo só pra
-     texto secundário sobre --color-paper (dentro dos cartazes). */
-  --color-smoke: #a89f8a;
-  --color-chumbo: #5b564c;
-  --color-rust: #7a281b;
-  --color-rust-bright: #c9622f;
+  --color-void: #050505;
+  --color-paper: #f0f0ee;
+  --color-ink: #0a0a0a;
+  /* --color-smoke é o texto secundário sobre --color-void -- --color-chumbo
+     continua existindo só pra texto secundário sobre --color-paper (dentro
+     dos cartazes). Ambos agora tendem pro cinza-azulado frio, não mais o
+     cinza quente da paleta anterior. */
+  --color-smoke: #9aa6b3;
+  --color-chumbo: #545f6b;
+  --color-steel: #1b4dab;
+  --color-steel-bright: #5b9fff;
 
   --font-display: "Metal Mania", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Special Elite", ui-monospace, monospace;
@@ -40,14 +40,14 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-rust-bright);
+    outline: 3px solid var(--color-steel-bright);
     outline-offset: 2px;
   }
 }
 
 @layer components {
-  .btn-rust {
-    @apply inline-flex items-center justify-center border-2 border-paper/40 bg-rust px-7 py-3.5 font-display text-lg text-paper uppercase transition-opacity hover:opacity-85;
+  .btn-steel {
+    @apply inline-flex items-center justify-center border-2 border-paper/40 bg-steel px-7 py-3.5 font-display text-lg text-paper uppercase transition-opacity hover:opacity-85;
   }
 
   /* .btn-ink é pro contorno usado DENTRO de cartazes de papel (Planos,
@@ -126,8 +126,35 @@
   animation: spin-reel 3.5s linear infinite;
 }
 
+/* Título "gravado em chrome" -- camadas de text-shadow simulando bisel
+   metálico (destaque claro em cima, sombra escura embaixo), no lugar de
+   um gradiente de texto genérico. */
+.chrome-text {
+  color: var(--color-paper);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35),
+    0 -1px 0 rgba(0, 0, 0, 0.6),
+    0 0 24px color-mix(in srgb, var(--color-steel-bright) 55%, transparent);
+}
+
+/* Relâmpago piscando -- referência direta ao raio de logo de banda de
+   metal, no lugar de um ícone estático. */
+@keyframes bolt-flicker {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px var(--color-steel-bright)); }
+  45% { opacity: 1; filter: drop-shadow(0 0 6px var(--color-steel-bright)); }
+  50% { opacity: 0.35; filter: none; }
+  55% { opacity: 1; filter: drop-shadow(0 0 10px var(--color-steel-bright)); }
+  78% { opacity: 0.5; filter: none; }
+  82% { opacity: 1; filter: drop-shadow(0 0 6px var(--color-steel-bright)); }
+}
+
+.bolt {
+  animation: bolt-flicker 4.5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reel {
+  .reel,
+  .bolt {
     animation: none;
   }
 }

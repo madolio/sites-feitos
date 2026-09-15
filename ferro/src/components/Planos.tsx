@@ -16,17 +16,17 @@ export default function Planos() {
           {planos.map((plano) => (
             <div
               key={plano.nome}
-              className={`flex flex-col border-2 p-6 ${plano.destaque ? 'border-rust bg-ink text-paper' : 'border-ink'}`}
+              className={`flex flex-col border-2 p-6 ${plano.destaque ? 'border-steel bg-ink text-paper' : 'border-ink'}`}
             >
               <h3 className="text-xl">{plano.nome}</h3>
-              <p className={`mt-2 text-2xl tally ${plano.destaque ? 'text-[color:var(--color-rust-bright)]' : 'text-ink'}`}>
+              <p className={`mt-2 text-2xl tally ${plano.destaque ? 'text-[color:var(--color-steel-bright)]' : 'text-ink'}`}>
                 {plano.preco}
               </p>
               {plano.legenda && <p className="mt-1 text-sm text-chumbo">{plano.legenda}</p>}
               <button
                 type="button"
                 onClick={() => sendToWhatsApp(`Olá! Quero o plano ${plano.nome} da Ferro.`)}
-                className={`mt-6 ${plano.destaque ? 'btn-rust' : 'btn-ink'}`}
+                className={`mt-6 ${plano.destaque ? 'btn-steel' : 'btn-ink'}`}
               >
                 Quero esse plano
               </button>

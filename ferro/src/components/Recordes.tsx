@@ -22,7 +22,7 @@ export default function Recordes() {
               <li key={r.movimento} className="flex flex-wrap items-baseline justify-between gap-2 py-4">
                 <span className="text-lg">{r.movimento}</span>
                 <span className="flex items-baseline gap-3">
-                  <span className="tally text-2xl text-[color:var(--color-rust-bright)]">{r.peso}</span>
+                  <span className="tally text-2xl text-[color:var(--color-steel-bright)]">{r.peso}</span>
                   <span className="text-sm text-paper/50">{r.ano}</span>
                 </span>
               </li>

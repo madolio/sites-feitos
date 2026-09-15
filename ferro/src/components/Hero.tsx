@@ -24,19 +24,28 @@ function Reel() {
   )
 }
 
+// Relâmpago piscando — referência ao raio de logo de banda de metal.
+function Bolt() {
+  return (
+    <svg viewBox="0 0 24 24" className="bolt h-6 w-6 text-[color:var(--color-steel-bright)]" aria-hidden="true">
+      <path d="M13 2 4 14h6l-1 8 10-14h-7l1-6z" fill="currentColor" />
+    </svg>
+  )
+}
+
 export default function Hero() {
   return (
     <section id="inicio" className="void-grain relative overflow-hidden border-b-2 border-paper/20 pt-28 pb-16 text-center md:pt-36 md:pb-24">
       <Scene3DLazy
         className="pointer-events-none absolute inset-0"
-        particleColor="#c9622f"
+        particleColor="#5b9fff"
         particleCount={450}
         particleOpacity={0.5}
         particleSize={0.035}
         minRadius={2.6}
         maxRadius={5.5}
         cameraDistance={5.5}
-        blobColor="#7a281b"
+        blobColor="#1b4dab"
         showBlob
       />
 
@@ -44,9 +53,10 @@ export default function Hero() {
         <div className="mb-6 flex items-center justify-center gap-3 text-sm text-smoke uppercase">
           <Reel />
           <span>Desde 1987 · trilha nunca para</span>
+          <Bolt />
         </div>
 
-        <h1 className="text-5xl leading-[1.05] text-paper md:text-6xl">
+        <h1 className="chrome-text text-5xl leading-[1.05] md:text-6xl">
           Treino old school,
           <br />
           sem modinha de LED
@@ -60,14 +70,14 @@ export default function Hero() {
           <button
             type="button"
             onClick={() => sendToWhatsApp('Olá! Quero fazer uma aula experimental na Ferro.')}
-            className="btn-rust"
+            className="btn-steel"
           >
             Aula experimental grátis
           </button>
         </div>
 
         <div className="mt-14 border-t border-paper/15 pt-8">
-          <span className="tally text-5xl text-[color:var(--color-rust-bright)] md:text-6xl">
+          <span className="tally text-5xl text-[color:var(--color-steel-bright)] md:text-6xl">
             <PlateCounter target={39} />
           </span>
           <p className="mt-2 text-sm text-smoke uppercase">anos de casa, sem trocar de dono</p>

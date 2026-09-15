@@ -240,9 +240,9 @@ export const projetos: Projeto[] = [
     name: 'Ferro',
     category: 'Academia old school',
     description:
-      'Galpão escuro com cartaz de show xerocado colado na parede: partículas de fuligem e um blob de metal derretido em 3D de verdade atrás do título, quadro de recordes pregado desde 1987.',
-    bg: '#120f0d',
-    accent: '#c9622f',
+      'Galpão escuro com cartaz de show xerocado colado na parede: partículas, um blob de metal derretido em 3D girando dentro de uma casca de circuito wireframe e estilhaços orbitando o título, na paleta preto/branco/azul de capa de disco de metal pesado.',
+    bg: '#050505',
+    accent: '#5b9fff',
     url: 'https://ferro.fenoninho-max.workers.dev',
   },
   {

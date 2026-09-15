@@ -23,7 +23,7 @@ export default function TapeHeader() {
         <button
           type="button"
           onClick={() => sendToWhatsApp('Olá! Quero saber mais sobre a Ferro.')}
-          className="btn-rust border-ink px-4 py-2 text-sm"
+          className="btn-steel border-ink px-4 py-2 text-sm"
         >
           Falar agora
         </button>
