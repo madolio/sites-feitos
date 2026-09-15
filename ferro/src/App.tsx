@@ -4,15 +4,17 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Modalidades from './components/Modalidades'
 import Planos from './components/Planos'
-import Scoreboard from './components/Scoreboard'
+import Recordes from './components/Recordes'
+import TapeHeader from './components/TapeHeader'
 
 export default function App() {
   return (
     <>
-      <Scoreboard />
+      <TapeHeader />
       <main className="pt-14">
         <Hero />
         <Modalidades />
+        <Recordes />
         <Planos />
         <CtaFinal />
       </main>

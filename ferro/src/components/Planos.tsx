@@ -1,14 +1,14 @@
 import { sendToWhatsApp } from '../demo'
 
 const planos = [
-  { nome: 'Mensal', preco: 'R$ 129/mês', destaque: false },
-  { nome: 'Trimestral', preco: 'R$ 109/mês', destaque: true },
-  { nome: 'Anual', preco: 'R$ 89/mês', destaque: false },
+  { nome: 'Diária', preco: 'R$ 25', destaque: false },
+  { nome: 'Mensal', preco: 'R$ 119/mês', destaque: true },
+  { nome: 'Old School', preco: 'R$ 99/mês', legenda: 'sócio há mais de 5 anos', destaque: false },
 ]
 
 export default function Planos() {
   return (
-    <section id="planos" className="border-y-4 border-iron bg-steel-50 py-16 md:py-24">
+    <section id="planos" className="border-y-2 border-ink bg-paper py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <h2 className="text-3xl md:text-4xl">Planos</h2>
 
@@ -16,14 +16,17 @@ export default function Planos() {
           {planos.map((plano) => (
             <div
               key={plano.nome}
-              className={`flex flex-col border-2 p-6 ${plano.destaque ? 'border-signal bg-iron text-steel-50' : 'border-iron'}`}
+              className={`flex flex-col border-2 p-6 ${plano.destaque ? 'border-rust bg-ink text-paper' : 'border-ink'}`}
             >
               <h3 className="text-xl">{plano.nome}</h3>
-              <p className={`mt-2 text-2xl tally ${plano.destaque ? 'text-signal' : 'text-iron'}`}>{plano.preco}</p>
+              <p className={`mt-2 text-2xl tally ${plano.destaque ? 'text-[color:var(--color-rust-bright)]' : 'text-ink'}`}>
+                {plano.preco}
+              </p>
+              {plano.legenda && <p className="mt-1 text-sm text-chumbo">{plano.legenda}</p>}
               <button
                 type="button"
-                onClick={() => sendToWhatsApp(`Olá! Quero assinar o plano ${plano.nome} da Ferro.`)}
-                className={`mt-6 ${plano.destaque ? 'btn-signal' : 'btn-iron'}`}
+                onClick={() => sendToWhatsApp(`Olá! Quero o plano ${plano.nome} da Ferro.`)}
+                className={`mt-6 ${plano.destaque ? 'btn-rust' : 'btn-ink'}`}
               >
                 Quero esse plano
               </button>

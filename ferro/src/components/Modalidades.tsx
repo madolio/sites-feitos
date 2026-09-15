@@ -1,19 +1,19 @@
 const modalidades = [
   {
-    titulo: 'Musculação',
-    texto: 'Aparelhos e pesos livres, sem fila — ficha de treino montada com o instrutor.',
+    titulo: 'Musculação clássica',
+    texto: 'Halteres e barras de verdade — sem máquina de tela touch, sem fila pra selfie.',
   },
   {
-    titulo: 'Funcional',
-    texto: 'Aulas em grupo pequeno, treino variado, sem repetir a mesma sequência toda semana.',
+    titulo: 'Powerlifting',
+    texto: 'Supino, agachamento e levantamento terra. Treino de força, do jeito antigo.',
   },
   {
-    titulo: 'Alongamento e mobilidade',
-    texto: 'Pra quem treina pesado e não pode negligenciar a recuperação.',
+    titulo: 'Cardio old school',
+    texto: 'Corda, saco de areia, escada. Sem esteira com tela de streaming.',
   },
   {
     titulo: 'Horário livre',
-    texto: 'Sem turma marcada — treina quando encaixa na sua semana.',
+    texto: 'Sem turma marcada, sem playlist imposta — a trilha é a nossa.',
   },
 ]
 
@@ -25,9 +25,9 @@ export default function Modalidades() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {modalidades.map((item) => (
-            <div key={item.titulo} className="border-2 border-iron p-6">
+            <div key={item.titulo} className="border-2 border-ink p-6">
               <h3 className="text-xl">{item.titulo}</h3>
-              <p className="mt-2 text-iron/70">{item.texto}</p>
+              <p className="mt-2 text-chumbo">{item.texto}</p>
             </div>
           ))}
         </div>

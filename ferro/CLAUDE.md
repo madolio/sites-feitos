@@ -2,33 +2,39 @@
 
 Site-conceito da Madolio pro nicho de academia (musculação + funcional). **Negócio fictício** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única.
 
-Pedido explícito do usuário: "faça no estilo de academia" — depois de o Pulso (personal training) ter sido feito de propósito para NÃO parecer academia clássica, este aqui é o oposto: assume a estética de academia de peso livre, mas com identidade própria (não é reskin do Pulso).
+## Reformulação — pegada old school / relíquia / rock pesado
+
+Pedido explícito do usuário: "reformule a ideia toda, coloque uma pegada academia oldschool. algo relíquia, rock pauleira". Substitui por completo a primeira versão (vibe "Anilha" — paleta industrial iron/steel/signal-amarelo, nav em placar de treino). Mantido: nome, domínio (`ferro`), a técnica de contador animado (`PlateCounter.tsx`, sem lib) e o modo demonstração.
 
 ## Deploy (Cloudflare Workers)
 
 Worker `ferro`, em `https://ferro.fenoninho-max.workers.dev`. `npm run deploy`.
 
-## Vibe — "Anilha"
+## Vibe — "Cartaz de show"
 
-- **Lugar/objeto:** disco de ferro fundido, fita de segurança amarela do rack de peso, giz na mão.
-- **Colisão:** academia de peso livre × sinalização de equipamento industrial.
-- **Nunca parecer:** o Pulso (raia de pista de atletismo) nem o clichê genérico "academia preto+vermelho+ícone de halтere solto".
-- **Wildcard:** `PlateCounter.tsx` no Hero — contador de carga total (kg levantados/mês) que sobe de 0 até o alvo quando entra na tela, mesma técnica do `RepCounter` do Pulso (`requestAnimationFrame`, sem lib), mas reescrito aqui (projetos são independentes, sem import cruzado).
+- **Lugar/objeto:** cartaz de show de rock pesado xerocado, colado na parede com fita crepe; placar de recordes pregado há décadas.
+- **Colisão:** academia clássica dos anos 80/90 × flyer de show de banda de metal.
+- **Nunca parecer:** academia moderna com LED/espelho de Instagram, crossfit colorido, nem a v1 deste próprio site (paleta industrial/institucional).
+- **Wildcards:**
+  - `Reel` (dentro de `Hero.tsx`) — bobina de fita cassete girando sem parar (`.reel`, CSS puro, `prefers-reduced-motion` respeitado), representando "a trilha nunca para".
+  - `PlateCounter.tsx` no Hero — reaproveitado da v1, agora conta anos de casa (1987) em vez de carga levantada.
+- **Esqueleto próprio:** `Recordes.tsx` — um quadro de recordes envelhecido (`.xerox-grain` + `.tape`), pregado na parede, no lugar de uma seção genérica de diferenciais.
 
-Paleta: `--color-iron` (#16161a, quase-preto) + `--color-steel-50` (#eef0f2, cinza claro frio — não é o mesmo "chalk" quente do Pulso) + `--color-signal` (#f5c518, amarelo de segurança). Fontes: **Oswald** (display condensada industrial) + **Barlow** (corpo).
+Paleta: `--color-paper` (#ddd3b4, papel envelhecido) + `--color-ink` (#211b16, tinta de xerox) + `--color-chumbo` (#5b564c, texto secundário) + `--color-rust` (#7a281b, ferrugem/sangue desbotado). Fontes: **Metal Mania** (display — literal fonte de logo de banda de thrash metal, só pra títulos grandes, ilegível em corpo de texto) + **Special Elite** (corpo — datilografia/xerox).
 
-## Gotcha de contraste — regra do par, não da cor isolada
+## Gotcha de contraste — o oposto do esperado
 
-Testado com a fórmula de contraste do WCAG antes do deploy: `--color-signal` (amarelo) só é usado em **pares de alto contraste conhecidos** — texto `iron` sobre fundo `signal` (`.btn-signal`), ou texto/borda `signal` sobre fundo `iron` (nunca o contrário). **Nunca texto `signal` direto sobre `steel-50`** (contraste insuficiente, mesmo problema que o Pulso teve com `lane` vívido). Como só apareceu nesses dois pares desde o início, não foi necessário criar uma variante `-ink` como no Pulso.
+`--color-rust` é escuro (não um amarelo/vermelho vívido como nas paletas anteriores), então a regra de pares é invertida em relação ao que se esperaria:
 
-## Arquitetura — sem nav horizontal comum
+- **Rust funciona bem como TEXTO direto sobre `paper`** (testado: ~6.5:1, acima do mínimo AA de 4.5:1) — diferente do `--color-signal` da v1, que só entrava como fundo.
+- **Rust NÃO funciona como texto sobre `ink`** (dois tons escuros, ~1.7:1, bem abaixo do mínimo). Pra esse caso existe `--color-rust-bright` (#c9622f), testado em ~3.6:1 contra `ink` — só serve pro limiar de "texto grande" da WCAG (24px+ regular ou 18.66px+ bold), nunca pra texto pequeno de corpo sobre `ink`. Usado em `Recordes.tsx` nos valores de peso (`text-2xl`).
 
-`Scoreboard.tsx` substitui a barra de navegação tradicional por uma faixa fixa no topo no espírito de placar de treino (contorno grosso, dígitos tabulares) — marca, dois links de âncora (`#planos`, `#contato`) e um botão que já dispara o modo demonstração, em vez de um menu completo (a página é curta, não precisa de mais que isso).
+Se adicionar um novo elemento com `--color-rust` sobre fundo escuro, usar `--color-rust-bright` e confirmar que o texto é grande — não criar uma terceira variante sem testar o contraste primeiro.
 
 ## Modo demonstração
 
-Igual ao Pulso: `demo.ts` + `DemoDialog.tsx`. Nenhum botão abre um WhatsApp real — todos disparam `sendToWhatsApp(mensagem)`, que abre um `<dialog>` mostrando a mensagem que seria enviada e oferece o contato real da Madolio pra quem quiser "um site assim".
+Igual aos outros conceitos: `demo.ts` + `DemoDialog.tsx`. Nenhum botão abre um WhatsApp real. Já mantém `m-auto` na className do `<dialog>` (bug encontrado e corrigido em 19 outros conceitos antes desta reformulação).
 
 ## SEO básico
 
-`index.html` tem meta description, canonical e Open Graph (sem `og:image`/`twitter:image` — não existe `og-image.png` gerado pra este conceito, preferi omitir a tag a referenciar um arquivo inexistente). `public/robots.txt` e `public/sitemap.xml` existem.
+`index.html` tem meta description, canonical e Open Graph (sem `og:image` — não existe imagem gerada pra este conceito). `public/robots.txt` e `public/sitemap.xml` existem.

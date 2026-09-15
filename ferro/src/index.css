@@ -1,58 +1,114 @@
 @import "tailwindcss";
 
-/* Vibe "Anilha": academia de verdade × disco de ferro fundido — o peso, o
-   giz na mão, a fita de segurança amarela do rack. Nada de reskin do Pulso
-   (raia de atletismo) nem clichê academia-preto-e-vermelho-com-halтere. Ver
-   CLAUDE.md. */
+/* Vibe "Cartaz de show": academia old school × cartaz de show de rock
+   pesado xerocado, colado na parede com fita crepe. Papel envelhecido,
+   tinta de xerox gasta, ferrugem em vez de amarelo de segurança. Nada de
+   academia clean com LED, nada de crossfit colorido -- e nada do Ferro
+   anterior (paleta industrial/institucional). Ver CLAUDE.md. */
 @theme {
-  --color-iron: #16161a;
-  --color-steel-50: #eef0f2;
-  --color-steel: #8a8f98;
-  --color-line: #d7dade;
-  /* --color-signal (amarelo de segurança) só entra em par de alto
-     contraste: texto iron sobre fundo signal, ou texto/borda signal sobre
-     fundo iron. Nunca texto signal sobre steel-50 (contraste insuficiente). */
-  --color-signal: #f5c518;
+  --color-paper: #ddd3b4;
+  --color-ink: #211b16;
+  --color-chumbo: #5b564c;
+  /* --color-rust é escuro o bastante pra funcionar como texto direto
+     sobre --color-paper (testado: ~6.5:1, acima do mínimo AA de 4.5:1) --
+     diferente do amarelo de segurança do Ferro anterior, que só entrava
+     como fundo. A regra aqui é a oposta: nunca usar --color-rust como
+     TEXTO sobre --color-ink (dois tons escuros, ~1.7:1, insuficiente).
+     Rust funciona como texto/fundo sobre paper, ou como fundo com texto
+     paper por cima -- nunca como texto sobre ink. */
+  --color-rust: #7a281b;
+  /* Variante clara pra texto GRANDE sobre --color-ink (o par --color-rust
+     + ink dá só ~1.7:1, insuficiente mesmo pra texto grande). Testada:
+     ~3.6:1 contra ink -- ok pro limiar de "texto grande" da WCAG (24px+
+     regular ou 18.66px bold), não usar em texto de corpo pequeno sobre
+     ink. */
+  --color-rust-bright: #c9622f;
 
-  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Metal Mania", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Special Elite", ui-monospace, monospace;
 }
 
 @layer base {
   body {
-    @apply bg-steel-50 font-body text-iron antialiased;
+    @apply bg-paper font-body text-ink antialiased;
     font-size: 1.0625rem;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.02em;
     text-wrap: balance;
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-signal);
+    outline: 3px solid var(--color-rust);
     outline-offset: 2px;
   }
 }
 
 @layer components {
-  .btn-signal {
-    @apply inline-flex items-center justify-center bg-signal px-7 py-3.5 font-display text-lg font-semibold tracking-wide text-iron uppercase transition-opacity hover:opacity-85;
+  .btn-rust {
+    @apply inline-flex items-center justify-center border-2 border-ink bg-rust px-7 py-3.5 font-display text-lg text-paper uppercase transition-opacity hover:opacity-85;
   }
 
-  .btn-iron {
-    @apply inline-flex items-center justify-center border-2 border-iron px-6 py-3 font-display text-lg font-semibold tracking-wide text-iron uppercase transition-colors hover:bg-iron hover:text-steel-50;
+  .btn-ink {
+    @apply inline-flex items-center justify-center border-2 border-ink px-6 py-3 font-display text-lg text-ink uppercase transition-colors hover:bg-ink hover:text-paper;
   }
 }
 
-/* Dígitos tabulares pro contador de carga animado (PlateCounter). */
+/* Grão de xerox — ruído sutil sobre qualquer bloco "de papel", pra parecer
+   cópia batida na máquina, não um flat design digital. */
+.xerox-grain {
+  position: relative;
+}
+
+.xerox-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--color-ink) 0.6px, transparent 0.6px);
+  background-size: 3px 3px;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+}
+
+/* Fita crepe — tira presa em cima de um bloco, como se o cartaz estivesse
+   colado na parede. */
+.tape {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 4.5rem;
+  height: 1.4rem;
+  background: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 25%, transparent);
+  rotate: -2deg;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+}
+
 .tally {
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
+}
+
+@keyframes spin-reel {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reel {
+  animation: spin-reel 3.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel {
+    animation: none;
+  }
 }

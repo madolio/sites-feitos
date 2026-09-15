@@ -238,11 +238,11 @@ export const projetos: Projeto[] = [
   },
   {
     name: 'Ferro',
-    category: 'Academia',
+    category: 'Academia old school',
     description:
-      'Um placar de treino no lugar da nav, e a carga total levantada por mês sobe sozinha no hero — vibe disco de ferro fundido e fita de segurança, sem o clichê preto+vermelho de academia.',
-    bg: '#eef0f2',
-    accent: '#16161a',
+      'Cartaz de show de rock pesado xerocado, colado com fita crepe: o quadro de recordes fica pregado na parede desde 1987, e uma bobina de fita cassete gira sem parar no hero.',
+    bg: '#ddd3b4',
+    accent: '#7a281b',
     url: 'https://ferro.fenoninho-max.workers.dev',
   },
   {

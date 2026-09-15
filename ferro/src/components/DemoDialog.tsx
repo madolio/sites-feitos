@@ -18,7 +18,7 @@ export default function DemoDialog() {
     <dialog
       ref={ref}
       aria-labelledby="demo-title"
-      className="m-auto w-[min(32rem,calc(100%-1.5rem))] border-4 border-iron bg-steel-50 p-0 text-iron backdrop:bg-iron/60"
+      className="m-auto w-[min(32rem,calc(100%-1.5rem))] border-4 border-ink bg-paper p-0 text-ink backdrop:bg-ink/60"
       onClick={(e) => {
         if (e.target === ref.current) ref.current.close()
       }}
@@ -27,19 +27,19 @@ export default function DemoDialog() {
         <h2 id="demo-title" className="text-3xl">
           Sua mensagem
         </h2>
-        <pre className="mt-5 border-2 border-iron bg-white p-4 font-sans text-[0.95rem] leading-relaxed whitespace-pre-wrap">
+        <pre className="mt-5 border-2 border-ink bg-white p-4 font-sans text-[0.95rem] leading-relaxed whitespace-pre-wrap">
           {message}
         </pre>
-        <p className="mt-5 text-iron/75">
+        <p className="mt-5 text-chumbo">
           Num site de verdade, esse botão abriria o WhatsApp da academia com a
           mensagem acima já escrita. O Ferro é um negócio fictício — este
           site é um conceito criado pela Madolio.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <a href={MADOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="btn-signal">
+          <a href={MADOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="btn-rust">
             Quero um site assim
           </a>
-          <button type="button" onClick={() => ref.current?.close()} className="btn-iron">
+          <button type="button" onClick={() => ref.current?.close()} className="btn-ink">
             Voltar ao site
           </button>
         </div>

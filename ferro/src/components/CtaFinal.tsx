@@ -2,15 +2,15 @@ import { sendToWhatsApp } from '../demo'
 
 export default function CtaFinal() {
   return (
-    <section id="contato" className="py-16 md:py-24">
-      <div className="mx-auto max-w-3xl px-6 text-center">
-        <h2 className="text-3xl md:text-4xl">Bora treinar?</h2>
-        <p className="mt-4 text-iron/70">Segunda a sábado, 6h às 22h.</p>
+    <section id="contato" className="py-16 text-center md:py-24">
+      <div className="mx-auto max-w-3xl px-6">
+        <h2 className="text-3xl md:text-4xl">Bora treinar old school?</h2>
+        <p className="mt-4 text-chumbo">Segunda a sábado, 6h às 22h. Sem playlist de app — a trilha é nossa.</p>
 
         <button
           type="button"
           onClick={() => sendToWhatsApp('Olá! Quero saber mais sobre a Ferro.')}
-          className="btn-signal mt-8"
+          className="btn-rust mt-8"
         >
           Falar no WhatsApp
         </button>
