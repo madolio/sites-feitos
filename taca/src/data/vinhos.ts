@@ -8,6 +8,10 @@ export type Vinho = {
   cor: string
   /** Altitude do talhão onde esse rótulo é colhido, em metros. */
   altitude: number
+  /** Categorias da roda de aromas (RodaAromas.tsx) — extraídas do texto de
+   * `notas`, não um dado novo inventado: cada tag corresponde a algo que já
+   * está escrito na descrição do próprio rótulo. */
+  aromas: string[]
 }
 
 export const vinhos: Vinho[] = [
@@ -19,6 +23,7 @@ export const vinhos: Vinho[] = [
     aPartirDe: 'a partir de R$ 145',
     cor: '#5a0e24',
     altitude: 980,
+    aromas: ['Fruta escura', 'Especiado'],
   },
   {
     nome: 'Encosta Brut',
@@ -28,6 +33,7 @@ export const vinhos: Vinho[] = [
     aPartirDe: 'a partir de R$ 168',
     cor: '#d9c87e',
     altitude: 1090,
+    aromas: ['Torrado', 'Cítrico'],
   },
   {
     nome: 'Névoa',
@@ -37,6 +43,7 @@ export const vinhos: Vinho[] = [
     aPartirDe: 'a partir de R$ 118',
     cor: '#cbb355',
     altitude: 1180,
+    aromas: ['Cítrico', 'Mineral'],
   },
   {
     nome: 'Reserva do Talhador',
@@ -46,5 +53,6 @@ export const vinhos: Vinho[] = [
     aPartirDe: 'a partir de R$ 210',
     cor: '#3a0713',
     altitude: 1240,
+    aromas: ['Amadeirado', 'Especiado'],
   },
 ]

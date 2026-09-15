@@ -10,9 +10,6 @@
   --color-sage: #7c8c5b;
   --color-dusk: #241832;
   --color-line: rgba(43, 27, 46, 0.14);
-  --color-soil: #4a3c28;
-  --color-soil-light: #6b5636;
-  --color-mist: #cdd6da;
 
   --font-heading: "Newsreader", "Iowan Old Style", ui-serif, serif;
   --font-ui: "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -57,51 +54,8 @@
   }
 }
 
-/* Neblina deriva de leve sobre a encosta (Encosta.tsx) — movimento literal,
-   não decoração gratuita: é o que justifica visualmente por que o rótulo
-   "Névoa" (o talhão mais alto) tem a acidez que o nome promete. Só
-   translação/opacidade, nada de traçado se desenhando (essa assinatura já
-   é do Traço). */
-@keyframes neblina-deriva {
-  0%,
-  100% {
-    transform: translate(0, 0);
-    opacity: 0.85;
-  }
-  50% {
-    transform: translate(-18px, 6px);
-    opacity: 1;
-  }
-}
-
-.neblina-deriva {
-  animation: neblina-deriva 9s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-/* Notas do rótulo selecionado (Encosta.tsx) — trocavam sem transição. */
-@keyframes notas-entrar {
-  from {
-    opacity: 0;
-    translate: 0 6px;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-
-.notas-entrar {
-  animation: notas-entrar 0.3s ease-out both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .neblina-deriva {
-    animation: none;
-  }
-
-  .notas-entrar {
-    animation: none;
+  * {
+    transition-duration: 0.01ms !important;
   }
 }

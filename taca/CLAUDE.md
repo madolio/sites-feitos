@@ -2,38 +2,25 @@
 
 Site-conceito da Madolio pro nicho de vinícola de altitude. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única, com rolagem.
 
-**Redesenhado duas vezes.** A primeira vez fundiu hero + catálogo (`Hero.tsx`/`Catalogo.tsx`/`Rotulo.tsx` viraram `Prova.tsx`, a pedido de "reformule a do vinho, inove nela"). A segunda vez — esta — trocou o conceito inteiro do hero: o usuário testou o site e voltou com "a ideia da taça girando em 3d n curti, busca outra, mas genérico ficou u, pouco". Ou seja: não era um problema de polimento, era o conceito em si (a taça 3D que servia o vinho ao vivo) que não convenceu, **e** o resto da página tinha ficado genérico o bastante pra também incomodar. `Prova.tsx` e toda a cena 3D (`cena/Vitrine.tsx`, `cena/Vinhedo.tsx`, `cena/geometria.ts`, `cena/texturas.ts`, `estado.ts`) foram removidos por completo — não deixados como código morto, nem GSAP/React Three Fiber/Three.js/postprocessing como dependência morta no `package.json` (o `.npmrc` com `legacy-peer-deps=true`, que só existia por causa dos peers opcionais de Expo do R3F, também saiu). O bundle caiu de ~1,28 MB pra 232 KB só com essa remoção.
+**Redesenhado três vezes.** V1: taça 3D servindo vinho ao vivo — rejeitada ("a ideia da taça girando em 3d n curti"). V2: corte transversal da encosta com os rótulos ancorados na altitude real de cada talhão. V3 (esta): o usuário rejeitou a v2 inteira também — "a mesma coisa do calibre, n curti nada" — pedindo pra trocar de novo, mantendo só o nicho (vinícola de altitude).
 
 ## Deploy (Cloudflare Workers)
 
 Worker `taca`, em `https://taca.fenoninho-max.workers.dev`. `npm run deploy`.
 
-## O conceito novo: a encosta é o catálogo
+## O conceito v3: a roda de aromas é a navegação/catálogo
 
-Antes de redesenhar, voltei ao que a marca já tinha de específico: os rótulos já se chamavam `Talhão Sul`, `Encosta Brut`, `Névoa`, `Reserva do Talhador` — nomes que já sugeriam terreno e altitude, só que a vitrine (a taça 3D) não tinha nada a ver com isso. `Encosta.tsx` literaliza a frase "vinícola de altitude": um corte transversal da encosta, desenhado em SVG (não WebGL — é ilustração 2D, leve, sem Canvas/GPU), com os quatro rótulos ancorados na altitude real do talhão de cada um (`vinhos[].altitude`, em metros — dado novo que substituiu `cor`+`nivel`, que só faziam sentido pra simular líquido numa taça 3D).
+`Encosta.tsx` (o corte transversal, com curvas de nível e neblina animada) saiu por completo — não ficou como código morto. No lugar: **`RodaAromas.tsx`**, uma roda de aromas de sommelier de verdade (a ferramenta real que se usa numa degustação pra nomear o que se está sentindo no copo), dividida em 6 categorias (Fruta escura, Cítrico, Mineral, Torrado, Amadeirado, Especiado). Clicar numa fatia filtra a lista de rótulos pra mostrar só os que têm aquele aroma — em vez dos quatro rótulos sempre visíveis de uma vez.
 
-Isso não é decoração — plantar em curva de nível é uma técnica real de vinhedo de encosta (evita erosão), então as "carreiras" desenhadas por baixo da crista (`carreiras` em `Encosta.tsx`, cópias do mesmo traçado deslocadas em Y) representam algo verdadeiro sobre como um vinhedo de altitude é plantado, não é só textura. A neblina no canto superior direito (`radialGradient#neblina`) também não é atmosfera gratuita: reforça por que `Névoa` (o rótulo mais alto, 1180 m) tem a acidez que o nome promete — "o frio da altitude segura a acidez", já estava no texto do rótulo, a neblina só torna isso visível. As linhas de grade com "1000 m"/"1100 m"/"1200 m" à esquerda dão escala de verdade ao desenho, como um gráfico de elevação de trilha — não são um enfeite tipo textura topográfica genérica.
+**Nenhum dado novo inventado:** cada categoria da roda já estava escrita na nota de degustação de algum rótulo (`data/vinhos.ts`, campo `notas`) — só foi extraído em tags estruturadas (`aromas: string[]`). Ex.: "14 meses em carvalho francês" → `Amadeirado` + `Especiado`; "Cítrico e mineral" → `Cítrico` + `Mineral`. A roda não é decoração, é o mesmo texto reorganizado como filtro.
 
-**Técnica:** o traçado da crista é um array de pontos com controles de curva Bézier (`crista` em `Encosta.tsx`), convertido em `d` de `<path>` por `caminhoCrista(deslocY)`. Os quatro marcadores usam os MESMOS pontos que formam a curva (`pontos`), então cada bolinha já nasce em cima da crista, na altitude certa — não é preciso alinhar duas fontes de verdade separadas. O SVG é puramente decorativo (`aria-hidden`); os marcadores são `<button>` HTML de verdade, posicionados por `%` sobre um container com `aspect-ratio: 1200/480` idêntico ao `viewBox` — isso é o que garante que a posição em `%` bate exatamente com a posição no desenho, em qualquer largura de tela, sem recalcular nada em JS.
+**Técnica:** cada fatia é um `<path>` de arco SVG (`fatia(inicio, fim)`, trigonometria simples — mesmo padrão de `ponto()` usado em outros conceitos do repositório pra converter ângulo+raio em coordenada), clicável, com toggle (clicar de novo ou no botão "Ver todos os rótulos" reseta o filtro). A altitude de cada talhão (`vinhos[].altitude`) continua existindo no dado e aparece na lista de rótulos, só não é mais o eixo visual principal da página.
 
-A lista de rótulos abaixo do desenho (herdada da versão anterior, mantida porque já funcionava bem: nome, uva+safra, preço, notas ao selecionar) agora também mostra a altitude por extenso, e compartilha o mesmo `useState` de seleção com os marcadores do desenho — tocar num marcador ou na lista faz a mesma coisa. Isso dá duas formas de escolher (uma espacial, uma convencional), sem depender só do desenho pra quem prefere/precisa de uma lista simples.
+`Processo.tsx` (as seis etapas "da parreira à taça") e `Contato.tsx` não mudaram — não tinham relação com a ilustração da encosta, então não precisavam ser refeitos.
 
-## Paleta e tipografia — trocadas, não só reaproveitadas
+## Paleta e tipografia — mantidas
 
-`--font-heading` trocou de Spectral pra **Newsreader** — a Spectral já era usada pelo Âncora (`ancora/src/index.css`), então mesmo que a nota antiga deste arquivo dissesse "combinação não usada em nenhum outro projeto", isso não era mais verdade. Newsreader também tem uma cara mais de "relatório de campo/observação científica" que combina com o desenho de corte transversal, sem copiar a Fraunces (já usada pelo Traço).
-
-Dois tokens de cor novos, específicos do desenho: `--color-soil` #4a3c28 e `--color-soil-light` #6b5636 (terra da encosta, tom claro o bastante pra se destacar do `--color-dusk` #241832 de fundo — silhueta de terra contra céu de noite, não duas cores escondidas uma atrás da outra) e `--color-mist` #cdd6da (neblina, baixa opacidade). O resto da paleta (parchment/garnet/sage/dusk) continua — não era o problema apontado, e já eram cores literais (garnet é cor de vinho de verdade, não um accent arbitrário).
-
-## Reformulação — efeitos, sem repetir a assinatura do Traço
-
-Pedido do usuário: mesmo nível de efeitos/fluidez da Realce, nos 7 conceitos da leva. Aqui o desenho da encosta era 100% estático — zero movimento no site inteiro, e a troca de rótulo selecionado cortava o texto de notas sem transição.
-
-- **Neblina deriva de leve** (`.neblina-deriva`, translate+opacity em loop de 9s) — não é decoração gratuita: é o que justifica visualmente por que o rótulo mais alto (`Névoa`) tem a acidez que o nome promete. Fog de verdade se move; uma neblina estática seria menos verossímil que uma se movendo de leve.
-- **Notas do rótulo selecionado** (`Encosta.tsx`, lista abaixo do desenho) agora entram com fade+leve subida (`.notas-entrar`, key trocada por `v.nome`) em vez de aparecer num corte seco.
-
-**Decisão de propósito:** cogitei um efeito de "crista se desenhando" ao carregar (a curva do morro traçando sozinha, tipo o desenho técnico), mas esse é exatamente o efeito-assinatura do **Traço** (outro projeto do repositório, planta baixa que se desenha sozinha no hero) — reservado pra ele, não repetido aqui.
-
-Ambas as animações novas respeitam `prefers-reduced-motion: reduce`.
+Fontes (**Newsreader** + **Manrope**) e paleta principal (parchment/garnet/sage/dusk) continuam as mesmas da v2 — o usuário não reclamou de cor, só do conceito visual do hero/catálogo. Os tokens `--color-soil`/`--color-soil-light`/`--color-mist`, que só existiam pra desenhar a encosta e a neblina, saíram do `index.css` junto com `Encosta.tsx`.
 
 ## Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo)
 
