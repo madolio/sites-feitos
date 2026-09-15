@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionNumber from './SectionNumber'
 
 // Foto real e bio pessoal ainda vão entrar aqui — por enquanto, um
 // placeholder discreto (iniciais) em vez de deixar o espaço quebrado ou
@@ -16,6 +17,7 @@ export default function Sobre() {
           </div>
 
           <div>
+            <SectionNumber n="07" label="Quem faz" />
             <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">
               Quem faz o seu site
             </h2>

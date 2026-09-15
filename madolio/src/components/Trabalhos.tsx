@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { projetos, type Projeto } from '../data/projetos'
 import LivePreview from './LivePreview'
 import Reveal from './Reveal'
+import SectionNumber from './SectionNumber'
 
 // Lista mestre-detalhe: nomes à esquerda, e à direita fica sempre a MESMA
 // moldura — vazia até você passar o mouse (ou tocar, no celular) num nome, aí
@@ -37,6 +38,7 @@ export default function Trabalhos() {
     <section id="trabalhos" className="scroll-mt-20 bg-void py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
+          <SectionNumber n="02" label="Portfólio" dark />
           <h2 className="font-poster text-4xl tracking-tight text-white uppercase md:text-5xl">Trabalhos</h2>
           <p className="mt-3 max-w-md text-fog">
             Um portfólio de identidades visuais — cada site pensado do zero

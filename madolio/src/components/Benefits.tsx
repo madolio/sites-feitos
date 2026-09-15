@@ -1,5 +1,6 @@
 import BentoCard from './BentoCard'
 import Reveal from './Reveal'
+import SectionNumber from './SectionNumber'
 import StatCounter from './StatCounter'
 
 // Bento grid com brilho + inclinação 3D no hover (Card Spotlight da
@@ -11,6 +12,7 @@ export default function Benefits() {
     <section id="beneficios" className="scroll-mt-20 bg-surface-alt py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
+          <SectionNumber n="03" label="O que está incluso" />
           <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">
             Tudo que seu site precisa ter
           </h2>

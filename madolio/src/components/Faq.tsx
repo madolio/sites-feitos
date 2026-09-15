@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import SectionNumber from './SectionNumber'
 
 const perguntas = [
   {
@@ -51,6 +52,7 @@ export default function Faq() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
         <Reveal>
+          <SectionNumber n="08" label="Dúvidas" />
           <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">Perguntas frequentes</h2>
         </Reveal>
 

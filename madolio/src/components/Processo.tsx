@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Reveal from './Reveal'
+import SectionNumber from './SectionNumber'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -57,6 +58,7 @@ export default function Processo() {
     <section ref={root} className="py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
+          <SectionNumber n="05" label="O processo" />
           <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">Como funciona</h2>
         </Reveal>
 

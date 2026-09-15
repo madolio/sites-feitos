@@ -4,6 +4,7 @@ import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Reveal from './Reveal'
+import SectionNumber from './SectionNumber'
 
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, useGSAP)
 
@@ -62,6 +63,7 @@ export default function ParaQuemE() {
     <section ref={root} className="bg-surface-alt py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
+          <SectionNumber n="04" label="É pra você?" />
           <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">
             Pra quem é — e pra quem não é
           </h2>
