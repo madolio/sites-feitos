@@ -23,6 +23,13 @@ O esqueleto já estava certo, mas era 100% estático: trocar de cômodo cortava 
 
 Ambas respeitam `prefers-reduced-motion: reduce`.
 
+## Reformulação 2 — profundidade de conteúdo, não só efeito
+
+Feedback direto: "se aprofunde mais no design de interior" — a página inteira era planta interativa + formulário de contato, sem nada que mostrasse profissionalismo/metodologia real de design de interiores.
+
+- **`Materiais.tsx`** (novo): uma materioteca de verdade — cada amostra é textura CSS (não foto) do material que já aparece em `data/casos.ts`, deduplicado (freijó, concreto aparente, linho cru, cabo de aço, etc.), com a legenda dizendo em qual cômodo/casa cada um foi usado. Não é uma seção nova de conteúdo inventado: é o mesmo dado que já existia nas salas, só exposto como catálogo de especificação.
+- **`Processo.tsx`** (novo): metodologia específica de design de interiores (observar rotina → fechar paleta de material → só então desenhar a planta → acompanhar execução), não o "conversa → orçamento → entrega" genérico que serviria pra qualquer prestador. A ordem em si é o argumento: **material antes de planta**, coerente com o próprio esqueleto do site (a planta baixa é literalmente construída a partir dos materiais mostrados).
+
 ## Referência visual (trocada na v2)
 
 Paleta: `--color-paper` #faf7f2 (branco quente), `--color-panel` #f1ece3 (fundo da moldura da planta), `--color-ink` #221f1c, `--color-pine` #2f4a3e (verde-pinheiro, mais frio/escuro que o musgo da v1 — validado ~9:1 sobre o paper, bem confortável como texto). Fontes: **DM Serif Display** (títulos) + **DM Sans** (corpo) — nenhuma das duas usada em outro projeto do repositório (a v1 usava Petrona/Sora, agora livres pra outro projeto).
