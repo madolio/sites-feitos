@@ -64,8 +64,24 @@ export default function Trabalhos() {
                     aria-expanded={active === i}
                     className="group flex w-full flex-col gap-1 py-5 text-left sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
                   >
-                    <span className="text-xl font-semibold text-white transition-colors group-hover:text-accent-hero">
-                      {p.name}
+                    <span className="flex items-baseline gap-2.5">
+                      <span className="text-xl font-semibold text-white transition-colors group-hover:text-accent-hero">
+                        {p.name}
+                      </span>
+                      <svg
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                        className="h-3.5 w-3.5 shrink-0 -translate-x-1 text-accent-hero opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+                      >
+                        <path
+                          d="M5 15L15 5M15 5H7M15 5V13"
+                          stroke="currentColor"
+                          strokeWidth="1.75"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        />
+                      </svg>
                     </span>
                     <span className="text-sm text-fog sm:shrink-0">{p.category} · portfólio</span>
                   </button>

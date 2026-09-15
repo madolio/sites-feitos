@@ -33,6 +33,12 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-1 items-center justify-center px-6 pt-24 pb-20">
         <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="mb-5 flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.2em] text-fog uppercase">
+            <span className="h-px w-8 bg-accent-hero/60" />
+            Criação de sites sob medida
+            <span className="h-px w-8 bg-accent-hero/60" />
+          </p>
+
           <h1 className="font-poster text-[3.75rem] leading-[0.82] tracking-tight text-white uppercase sm:text-[5.5rem] lg:text-[6.5rem]">
             Um site que parece
             <br />

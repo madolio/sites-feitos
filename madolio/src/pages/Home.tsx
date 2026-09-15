@@ -2,6 +2,7 @@ import Benefits from '../components/Benefits'
 import Confianca from '../components/Confianca'
 import CtaFinal from '../components/CtaFinal'
 import Diferenciais from '../components/Diferenciais'
+import Faixa from '../components/Faixa'
 import Faq from '../components/Faq'
 import Hero from '../components/Hero'
 import ParaQuemE from '../components/ParaQuemE'
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <Diferenciais />
       <Trabalhos />
+      <Faixa />
       <Benefits />
       <ParaQuemE />
       <Processo />

@@ -73,8 +73,10 @@ export default function Processo() {
           <Reveal as="ol" stagger={0.08} className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {etapas.map((etapa) => (
               <li key={etapa.numero}>
-                <span className="font-poster text-3xl text-accent">{etapa.numero}</span>
-                <h3 className="mt-3 text-lg font-semibold text-ink">{etapa.titulo}</h3>
+                <span className="font-poster flex h-11 w-11 items-center justify-center rounded-full border-2 border-accent text-lg text-accent">
+                  {etapa.numero}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-ink">{etapa.titulo}</h3>
                 <p className="mt-1.5 text-ink/70">{etapa.texto}</p>
               </li>
             ))}
