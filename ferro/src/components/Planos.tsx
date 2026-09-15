@@ -3,12 +3,12 @@ import { sendToWhatsApp } from '../demo'
 const planos = [
   { nome: 'Diária', preco: 'R$ 25', destaque: false },
   { nome: 'Mensal', preco: 'R$ 119/mês', destaque: true },
-  { nome: 'Old School', preco: 'R$ 99/mês', legenda: 'sócio há mais de 5 anos', destaque: false },
+  { nome: 'Anual', preco: 'R$ 99/mês', legenda: 'fechado por 12 meses', destaque: false },
 ]
 
 export default function Planos() {
   return (
-    <section id="planos" className="border-y-2 border-ink bg-paper py-16 md:py-24">
+    <section id="planos" className="border-b-2 border-preto bg-branco py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <h2 className="text-3xl md:text-4xl">Planos</h2>
 
@@ -17,18 +17,18 @@ export default function Planos() {
             <div
               key={plano.nome}
               className={`flex flex-col border-2 p-6 transition-colors duration-300 ${
-                plano.destaque ? 'border-steel bg-ink text-paper' : 'border-ink hover:border-steel'
+                plano.destaque ? 'border-preto bg-preto text-branco' : 'border-preto/20 hover:border-preto'
               }`}
             >
               <h3 className="text-xl">{plano.nome}</h3>
-              <p className={`mt-2 text-2xl tally ${plano.destaque ? 'text-[color:var(--color-steel-bright)]' : 'text-ink'}`}>
+              <p className={`tabular mt-2 text-2xl font-bold ${plano.destaque ? 'text-lima' : 'text-preto'}`}>
                 {plano.preco}
               </p>
-              {plano.legenda && <p className="mt-1 text-sm text-chumbo">{plano.legenda}</p>}
+              {plano.legenda && <p className="mt-1 text-sm text-fumo">{plano.legenda}</p>}
               <button
                 type="button"
                 onClick={() => sendToWhatsApp(`Olá! Quero o plano ${plano.nome} da Ferro.`)}
-                className={`mt-6 ${plano.destaque ? 'btn-steel' : 'btn-ink'}`}
+                className={`mt-6 ${plano.destaque ? 'btn-lima' : 'btn-contorno'}`}
               >
                 Quero esse plano
               </button>

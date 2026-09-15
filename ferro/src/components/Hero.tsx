@@ -1,98 +1,32 @@
-import { sendToWhatsApp } from '../demo'
-import PlateCounter from './PlateCounter'
-import Scene3DLazy from './Scene3DLazy'
-
-// Bobina de fita cassete girando sem parar — a trilha sonora que nunca
-// para. Efeito CSS, continua junto do metal derretido em WebGL atrás.
-function Reel() {
-  return (
-    <svg viewBox="0 0 32 32" className="reel h-10 w-10 text-paper" aria-hidden="true">
-      <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" strokeWidth="2" />
-      <circle cx="16" cy="16" r="4" fill="currentColor" />
-      {[0, 60, 120, 180, 240, 300].map((deg) => (
-        <line
-          key={deg}
-          x1="16"
-          y1="16"
-          x2={16 + 9 * Math.cos((deg * Math.PI) / 180)}
-          y2={16 + 9 * Math.sin((deg * Math.PI) / 180)}
-          stroke="currentColor"
-          strokeWidth="1.4"
-        />
-      ))}
-    </svg>
-  )
-}
-
-// Relâmpago piscando — referência ao raio de logo de banda de metal.
-function Bolt() {
-  return (
-    <svg viewBox="0 0 24 24" className="bolt h-6 w-6 text-[color:var(--color-steel-bright)]" aria-hidden="true">
-      <path d="M13 2 4 14h6l-1 8 10-14h-7l1-6z" fill="currentColor" />
-    </svg>
-  )
-}
+import CalculadoraRM from './CalculadoraRM'
 
 export default function Hero() {
   return (
-    <section id="inicio" className="void-grain relative overflow-hidden border-b-2 border-paper/20 pt-28 pb-16 text-center md:pt-36 md:pb-24">
-      <Scene3DLazy
-        className="pointer-events-none absolute inset-0"
-        particleColor="#5b9fff"
-        particleCount={420}
-        particleOpacity={0.4}
-        particleSize={0.03}
-        minRadius={3.4}
-        maxRadius={7}
-        cameraDistance={6.2}
-        acoColor="#414a56"
-        luzColor="#5b9fff"
-      />
+    <section id="inicio" className="border-b-2 border-preto bg-branco px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[1.1fr_1fr] md:items-center">
+        <div>
+          <p className="rotulo text-lima-escuro">Treino orientado a dado</p>
+          <h1 className="mt-4 text-5xl leading-[1.05] sm:text-6xl">
+            Treine com número, não com achismo
+          </h1>
+          <p className="mt-6 max-w-md text-lg text-fumo">
+            Musculação, força e condicionamento em Ferro — cada carga é
+            calculada, não chutada. Comece medindo sua carga máxima aqui do
+            lado.
+          </p>
 
-      {/* As anilhas giram, então o brilho atrás do texto muda o tempo todo —
-          um screenshot legível não garante que continue legível 3s depois.
-          Esta máscara escura no miolo trava o contraste do título. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 55% at 50% 45%, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.72) 45%, rgba(5,5,5,0) 78%)',
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-2xl px-6">
-        <div className="mb-6 flex items-center justify-center gap-3 text-sm text-smoke uppercase">
-          <Reel />
-          <span>Desde 1987 · trilha nunca para</span>
-          <Bolt />
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#calculadora" className="btn-lima">
+              Calcular minha carga
+            </a>
+            <a href="#planos" className="btn-contorno">
+              Ver planos
+            </a>
+          </div>
         </div>
 
-        <h1 className="chrome-text text-5xl leading-[1.05] md:text-6xl">
-          Treino old school,
-          <br />
-          sem modinha de LED
-        </h1>
-        <p className="mx-auto mt-6 max-w-lg text-lg text-smoke">
-          Peso de ferro de verdade, som de rock pesado no alto-falante.
-          Academia clássica, do jeito que sempre foi.
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => sendToWhatsApp('Olá! Quero fazer uma aula experimental na Ferro.')}
-            className="btn-steel"
-          >
-            Aula experimental grátis
-          </button>
-        </div>
-
-        <div className="mt-14 border-t border-paper/15 pt-8">
-          <span className="tally text-5xl text-[color:var(--color-steel-bright)] md:text-6xl">
-            <PlateCounter target={39} />
-          </span>
-          <p className="mt-2 text-sm text-smoke uppercase">anos de casa, sem trocar de dono</p>
+        <div id="calculadora">
+          <CalculadoraRM />
         </div>
       </div>
     </section>

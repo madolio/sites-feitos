@@ -1,43 +1,33 @@
 const modalidades = [
   {
-    titulo: 'Musculação clássica',
-    texto: 'Halteres e barras de verdade — sem máquina de tela touch, sem fila pra selfie.',
-    rotate: '-rotate-1',
+    titulo: 'Musculação',
+    texto: 'Séries e cargas ajustadas pelo seu 1RM, revisadas a cada 4 semanas.',
   },
   {
-    titulo: 'Powerlifting',
-    texto: 'Supino, agachamento e levantamento terra. Treino de força, do jeito antigo.',
-    rotate: 'rotate-1',
+    titulo: 'Força',
+    texto: 'Levantamento básico — agachamento, terra e supino — com progressão medida, não empírica.',
   },
   {
-    titulo: 'Cardio old school',
-    texto: 'Corda, saco de areia, escada. Sem esteira com tela de streaming.',
-    rotate: 'rotate-[-0.6deg]',
+    titulo: 'Condicionamento',
+    texto: 'Circuitos curtos e intensos com frequência cardíaca monitorada.',
   },
   {
-    titulo: 'Horário livre',
-    texto: 'Sem turma marcada, sem playlist imposta — a trilha é a nossa.',
-    rotate: 'rotate-[0.8deg]',
+    titulo: 'Avaliação física',
+    texto: 'Composição corporal e mobilidade medidas antes de montar qualquer programa.',
   },
 ]
 
-// Cada modalidade é um cartaz xerocado, levemente torto, como se tivesse
-// sido pregado à mão na parede do galpão.
 export default function Modalidades() {
   return (
-    <section className="py-16 md:py-24">
+    <section id="modalidades" className="border-b-2 border-preto bg-branco py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-3xl text-paper md:text-4xl">Modalidades</h2>
+        <h2 className="text-3xl md:text-4xl">Modalidades</h2>
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-2">
+        <div className="mt-10 grid gap-px overflow-hidden border-2 border-preto sm:grid-cols-2">
           {modalidades.map((item) => (
-            <div
-              key={item.titulo}
-              className={`poster xerox-grain relative p-6 transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 hover:shadow-lg ${item.rotate}`}
-            >
-              <span className="tape" aria-hidden="true" />
+            <div key={item.titulo} className="group bg-branco p-6 transition-colors hover:bg-preto hover:text-branco">
               <h3 className="text-xl">{item.titulo}</h3>
-              <p className="mt-2 text-chumbo">{item.texto}</p>
+              <p className="mt-2 text-fumo transition-colors group-hover:text-cinza">{item.texto}</p>
             </div>
           ))}
         </div>
