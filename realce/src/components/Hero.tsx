@@ -30,17 +30,17 @@ export default function Hero() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-md text-fumo">
-              Cabelo, pele, depilação, mãos e pés e dia da noiva. Monte sua
-              visita aqui embaixo e veja, antes de mandar mensagem, a que horas
-              você sai.
+              Cabelo, pele, depilação, mãos e pés e dia da noiva. Veja os
+              serviços, monte sua visita e saiba, antes de mandar mensagem, a
+              que horas você sai.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a href="#visita" className="btn-dourado">
-                Montar minha visita
-              </a>
-              <a href="#servicos" className="btn-branco">
+              <a href="#servicos" className="btn-dourado">
                 Ver os serviços
+              </a>
+              <a href="#visita" className="btn-branco">
+                Montar minha visita
               </a>
             </div>
           </div>

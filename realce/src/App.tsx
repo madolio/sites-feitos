@@ -18,8 +18,8 @@ export default function App() {
       <Marquise />
       <main className="pt-[4.5rem]">
         <Hero />
-        <MonteSuaVisita />
         <Servicos />
+        <MonteSuaVisita />
         <Noivas />
         <Escola />
         <Onde />

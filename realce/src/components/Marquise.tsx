@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
 const secoes = [
-  { id: 'visita', rotulo: 'Monte sua visita' },
   { id: 'servicos', rotulo: 'Serviços' },
+  { id: 'visita', rotulo: 'Monte sua visita' },
   { id: 'noivas', rotulo: 'Noivas' },
   { id: 'escola', rotulo: 'Escola' },
   { id: 'onde', rotulo: 'Onde estamos' },
@@ -56,7 +56,7 @@ export default function Marquise() {
                   className={`h-2 w-2 rounded-full transition-all duration-300 ${
                     acesa
                       ? 'bg-branco shadow-[0_0_10px_3px_rgba(197,157,95,0.75)]'
-                      : 'bg-branco/25 group-hover:bg-branco/60'
+                      : 'bg-branco/25 group-hover:bg-dourado group-hover:shadow-[0_0_8px_2px_rgba(197,157,95,0.6)]'
                   }`}
                 />
                 <span className={acesa ? 'text-branco' : 'text-fumo group-hover:text-branco'}>
