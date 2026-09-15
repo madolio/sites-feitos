@@ -52,3 +52,14 @@
     @apply border border-ink/60 text-ink hover:border-accent hover:text-accent;
   }
 }
+
+/* Halo do encaixe (DesenhoTecnico.tsx) — só aparece no hover do card do
+   catálogo, nunca automático: resposta a uma ação do visitante, diferente
+   do único movimento não pedido do Hero (ver CLAUDE.md). */
+.encaixe-halo {
+  transition: fill-opacity 0.3s ease-out;
+}
+
+.group:hover .encaixe-halo {
+  fill-opacity: 0.16;
+}

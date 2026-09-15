@@ -14,8 +14,8 @@ export default function Catalogo() {
 
         <div className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2">
           {pecas.map((p) => (
-            <article key={p.nome}>
-              <div className="aspect-[10/7] bg-paper-deep/40 p-4">
+            <article key={p.nome} className="group">
+              <div className="aspect-[10/7] bg-paper-deep/40 p-4 transition-transform duration-300 group-hover:-translate-y-1">
                 <DesenhoTecnico desenho={p.desenho} nomeJunta={p.encaixe} />
               </div>
               <h3 className="mt-5 font-heading text-xl font-medium text-ink">{p.nome}</h3>

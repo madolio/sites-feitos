@@ -36,9 +36,19 @@ export default function DesenhoTecnico({ desenho, nomeJunta }: { desenho: Desenh
         {cota.label}
       </text>
 
-      {/* encaixe em destaque */}
+      {/* encaixe em destaque — o halo só aparece no hover do card (ver
+          Catalogo.tsx, className="group"). Não é o "movimento não pedido"
+          do Hero: é resposta a uma ação do visitante, não automático. */}
+      <circle cx={junta.x} cy={junta.y} r={7} fill="var(--color-wood)" fillOpacity={0} className="encaixe-halo" />
       <circle cx={junta.x} cy={junta.y} r={3.2} fill="none" stroke="var(--color-wood)" strokeWidth={1.2} />
-      <text x={junta.x + 6} y={junta.y - 4} fill="var(--color-wood-dark)" fontSize={6.5} fontFamily="var(--font-ui)" fontWeight={600}>
+      <text
+        x={junta.x + 6}
+        y={junta.y - 4}
+        fill="var(--color-wood-dark)"
+        fontSize={6.5}
+        fontFamily="var(--font-ui)"
+        fontWeight={600}
+      >
         {nomeJunta}
       </text>
     </svg>

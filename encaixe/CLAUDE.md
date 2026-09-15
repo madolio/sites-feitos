@@ -20,6 +20,15 @@ Não é foto de móvel nenhuma vez no site — cada peça do catálogo é um **d
 
 `Hero.tsx`: ao carregar a página, uma espiga desliza e trava no furo de um encaixe desenhado em SVG — o único movimento automático do site, um gesto só, que resume a proposta inteira. `prefers-reduced-motion` pula direto pro estado já encaixado. Toda cor da peça usa `var(--color-wood)`/`--color-wood-dark`, nunca a paleta de tinta/ink usada no resto do desenho de linha — reforça que aquela peça é "madeira de verdade" entrando no encaixe "desenhado a lápis".
 
+## Reformulação — efeitos, mas sem quebrar a regra do "único movimento"
+
+Pedido do usuário: mesmo nível de efeitos/fluidez da Realce, em todos os 7 conceitos desta leva. Aqui isso exigia cuidado: o site inteiro é construído em torno da regra de que **só existe um movimento automático** (a espiga do Hero). Adicionar efeitos decorativos por toda parte quebraria a própria proposta.
+
+A saída: efeitos que só acontecem em **resposta a uma ação do visitante** (hover), nunca automáticos — isso não viola a regra, porque a regra é sobre movimento não pedido, não sobre ausência total de interação.
+
+- `Catalogo.tsx`: cada `<article>` ganhou `className="group"`, e o quadro do desenho sobe de leve (`group-hover:-translate-y-1`) no hover — como levantar a peça da bancada pra examinar.
+- `DesenhoTecnico.tsx`: o círculo do encaixe ganhou um halo (`.encaixe-halo`, fill-opacity 0 → 0.16 no hover do card) — destaca exatamente o detalhe que é o argumento de venda da marca, só quando alguém para pra olhar.
+
 ## Sequência real → numeração
 
 `Processo.tsx` numera as seis etapas (conversa → madeira → desenho do encaixe → corte → acabamento → entrega) porque **são**, de fato, uma sequência fixa de atendimento — diferente da maioria dos outros conceitos do portfólio, que evitam numeração decorativa quando o conteúdo não é uma sequência real.

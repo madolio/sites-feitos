@@ -219,7 +219,7 @@ export const projetos: Projeto[] = [
     name: 'Encaixe',
     category: 'Marcenaria sob medida',
     description:
-      'Nenhuma foto de móvel: cada peça é um desenho técnico de elevação com cota e o encaixe de verdade em destaque — a navegação é a régua de carpinteiro fixada na borda da tela.',
+      'Nenhuma foto de móvel: cada peça é um desenho técnico de elevação com cota, e passar o mouse acende um halo no encaixe de verdade — a navegação é a régua de carpinteiro fixada na borda da tela.',
     bg: '#EFE8D8',
     accent: '#34586C',
     url: 'https://encaixe.fenoninho-max.workers.dev',
