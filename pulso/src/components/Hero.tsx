@@ -1,3 +1,4 @@
+import PulseLine from './PulseLine'
 import RepCounter from './RepCounter'
 
 export default function Hero() {
@@ -21,11 +22,12 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-20">
-          <div className="text-7xl text-track sm:text-8xl">
+        <div className="relative mt-20">
+          <PulseLine className="absolute inset-x-0 top-1/2 h-16 -translate-y-1/2 text-lane-ink/15" />
+          <div className="relative text-7xl text-track sm:text-8xl">
             <RepCounter target={48213} />
           </div>
-          <p className="mt-3 text-sm tracking-widest text-track/60 uppercase">
+          <p className="relative mt-3 text-sm tracking-widest text-track/60 uppercase">
             repetições treinadas essa semana, entre todos os alunos
           </p>
         </div>

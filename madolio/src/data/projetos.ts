@@ -98,7 +98,7 @@ export const projetos: Projeto[] = [
     name: 'Pulso',
     category: 'Personal training',
     description:
-      'Contador de repetições sobe sozinho no hero, navegação vira uma raia de atletismo com marcação de distância, e o processo é uma barra de progresso 0M–100M.',
+      'Um traçado de monitor cardíaco corre sem parar no hero, navegação vira uma raia de atletismo com marcação de distância, e a barra de progresso 0M–100M agora é clicável: escolha o programa e veja o pulso bater na posição certa.',
     bg: '#F4F0E6',
     accent: '#E8482F',
     url: 'https://pulso.fenoninho-max.workers.dev',

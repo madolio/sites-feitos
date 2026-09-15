@@ -17,6 +17,15 @@ Worker `pulso`, em `https://pulso.fenoninho-max.workers.dev`. `npm run deploy`.
 
 Paleta: pista quase-preta `#171614` (track), giz `#f4f0e6` (chalk). Fontes: **Anton** (display, cartaz de estádio) + **Karla** (corpo).
 
+## Reformulação — nível de ousadia da Realce
+
+Pedido do usuário: reformular no mesmo nível de inovação da Realce & Cia (efeitos, responsividade, "tudo fluindo"), sem trocar nicho nem nome. Duas adições:
+
+- **`PulseLine.tsx`** — a métrica que o nome "Pulso" pede de verdade: um traçado de monitor cardíaco (SVG, unidade de 100×40 repetida 8x) deslizando em loop infinito via CSS (`@keyframes pulse-scroll`, translateX -50%). Usado atrás do contador de repetições no Hero. Antes o site só citava a metáfora de pista de atletismo — agora tem literalmente um "pulso" correndo na tela.
+- **`Programas.tsx` deixou de ser decorativo** — a barra de distância 0M–100M agora é um seletor de verdade: clicar num programa move um ponto que pulsa (`.pulse-beat`, escala+opacidade em loop) até a posição correspondente na barra, e o card escolhido ganha borda e seta. A barra sempre existiu, só nunca reagia a nada.
+
+Ambas as animações respeitam `prefers-reduced-motion: reduce` (paradas, ver index.css).
+
 ## Arquitetura — sem nav horizontal
 
 `Rail.tsx` substitui a barra de navegação por uma **raia vertical fixa à esquerda** (desktop): uma régua com marcações de distância (0M/25M/60M/100M) em vez de links de menu — a marcação acende com scroll-spy (`IntersectionObserver`) conforme você "corre" a página. No celular vira uma barra fina no topo (fallback, não a identidade principal). Todo o conteúdo (`Hero`, `Programas`, `Resultados`, `Agendar`) tem `lg:pl-16` pra não ficar embaixo da raia.

@@ -64,3 +64,43 @@
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
 }
+
+/* Linha de pulso (PulseLine.tsx) — desliza a metade da largura em loop
+   infinito, como um monitor cardíaco correndo sem parar. */
+@keyframes pulse-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.pulse-line {
+  animation: pulse-scroll 4s linear infinite;
+}
+
+/* Ponto de batimento — pulsa de verdade (escala + opacidade), marcando o
+   segmento ativo escolhido em Programas.tsx. */
+@keyframes pulse-beat {
+  0%,
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+  50% {
+    scale: 1.6;
+    opacity: 0.55;
+  }
+}
+
+.pulse-beat {
+  animation: pulse-beat 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-line {
+    animation: none;
+  }
+
+  .pulse-beat {
+    animation: none;
+  }
+}
