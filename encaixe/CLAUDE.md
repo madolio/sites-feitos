@@ -2,41 +2,44 @@
 
 Site-conceito da Madolio pro nicho de marcenaria sob medida. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única.
 
-## Deploy (Cloudflare Workers)
-
-Worker `encaixe`, em `https://encaixe.fenoninho-max.workers.dev`. `npm run deploy`.
-
 ## Conceito
 
 Não é foto de móvel nenhuma vez no site — cada peça do catálogo é um **desenho técnico de elevação** (linha, cota, sem sombreado), como se a página fosse uma folha de bancada de marceneiro. O motivo aparece no próprio hero, texto e produto: "móvel que se sustenta pelo encaixe, não pelo parafuso".
 
-`src/desenho.ts` gera as linhas de cada arquétipo de móvel (mesa, banco, estante, cadeira, aparador, banqueta) por coordenadas — não são ilustrações desenhadas peça a peça; mesa e aparador, por exemplo, só variam a largura da função geradora. Cada `Desenho` carrega também uma cota de largura (régua com traço + número) e o ponto do encaixe em destaque, que o `DesenhoTecnico.tsx` desenha com um círculo e o nome do encaixe ao lado — a etiqueta descreve o encaixe de verdade daquela peça (rabo-de-andorinha, espiga-e-furo, cavilha, meia-madeira), não é rótulo decorativo.
+`src/desenho.ts` gera as linhas de cada arquétipo de móvel (mesa, banco, estante, cadeira, aparador, banqueta) por coordenadas — não são ilustrações desenhadas peça a peça; mesa e aparador, por exemplo, só variam a largura da função geradora. Cada `Desenho` carrega também uma cota de largura e o ponto do encaixe em destaque, que o `DesenhoTecnico.tsx` desenha com um círculo e o nome do encaixe ao lado — a etiqueta descreve o encaixe de verdade daquela peça, não é rótulo decorativo.
 
-## O esqueleto — régua em vez de barra de menu
+## Reformulação total — o encaixe (não o móvel) organiza o site
 
-`Regua.tsx` substitui a barra de navegação por uma trena fixa na borda esquerda da tela (só em telas grandes): um traço vertical com uma marca por seção, que enche de cor quando a seção correspondente está visível (`IntersectionObserver`). Em telas menores a régua some e a navegação vira só rolagem — não existe versão "menu hambúrguer" dela, pra não recriar a barra que ela existe pra evitar.
+Pedido do usuário, depois de já ter trocado só a ilustração numa rodada anterior: "reformule 100% até a ideia". Não bastava trocar a ilustração de novo — o conceito de base mudou.
 
-## O único movimento não pedido
+**Antes:** régua de carpinteiro fixa como nav lateral (`Regua.tsx`) + catálogo estático com scroll + um movimento automático único no Hero, tocando uma vez ao carregar.
 
-`Hero.tsx`: ao carregar a página, uma tábua desliza e trava numa segunda tábua — o único movimento automático do site, um gesto só, que resume a proposta inteira. `prefers-reduced-motion` pula direto pro estado já encaixado. Toda cor da peça usa `var(--color-wood)`/`--color-wood-dark`, nunca a paleta de tinta/ink usada no resto do desenho de linha — reforça que aquela peça é "madeira de verdade" entrando no encaixe "desenhado a lápis".
+**Agora:** o tipo de encaixe é o eixo de tudo. `data/encaixes.ts` define os 4 tipos reais que aparecem no catálogo (rabo-de-andorinha, espiga-e-furo, meia-madeira, cavilha), cada um com sua descrição estrutural verdadeira (por que aquele encaixe é usado, não decoração). O estado de qual tipo está selecionado mora em `App.tsx` e é compartilhado por dois componentes:
 
-**Ilustração trocada** (feedback: "esse espiga e furo, a ilustração do primeiro bloco, mude ela"). Era um pino retangular simples deslizando num furo retangular — lia como peça de brinquedo de encaixar, não como marcenaria de verdade. Agora é um **rabo-de-andorinha**: dentes triangulares de uma tábua entrelaçando nos vãos da outra (`d="M20,40 H150 L130,60 L150,80..."`, zigue-zague gerado à mão), o encaixe mais reconhecível da marcenaria. O rótulo embaixo mudou de "espiga-e-furo" pra "rabo-de-andorinha" pra bater com o desenho novo.
+- **`EncaixeInterativo.tsx`** (no Hero) — abas pros 4 tipos + um `<input type="range">` que o visitante arrasta pra montar o encaixe escolhido, do zero ao cem por cento, na velocidade que quiser. Isso substitui o "único movimento não pedido" (que tocava uma vez, sozinho, sem controle) por uma interação de verdade — de passivo pra exploratório.
+- **`Catalogo.tsx`** — filtra as peças pelo tipo selecionado (`tipo.match(peca.encaixe)`), mostrando só quem usa aquele encaixe e quantas são, em vez da lista inteira sempre visível.
 
-## Reformulação — efeitos, mas sem quebrar a regra do "único movimento"
+`Regua.tsx` foi removido por completo (não deixado como código morto) e substituído por `TopoSimples.tsx`, uma barra fixa simples com marca + contato — a navegação real agora é escolher o encaixe, não rolar a página.
 
-Pedido do usuário: mesmo nível de efeitos/fluidez da Realce, em todos os 7 conceitos desta leva. Aqui isso exigia cuidado: o site inteiro é construído em torno da regra de que **só existe um movimento automático** (a espiga do Hero). Adicionar efeitos decorativos por toda parte quebraria a própria proposta.
+### Geometria por tipo (`EncaixeInterativo.tsx`)
 
-A saída: efeitos que só acontecem em **resposta a uma ação do visitante** (hover), nunca automáticos — isso não viola a regra, porque a regra é sobre movimento não pedido, não sobre ausência total de interação.
+Cada ilustração usa a mesma convenção (peça fixa em `--color-ink`, peça móvel em `--color-wood`/`--color-wood-dark`) com uma forma diferente:
 
-- `Catalogo.tsx`: cada `<article>` ganhou `className="group"`, e o quadro do desenho sobe de leve (`group-hover:-translate-y-1`) no hover — como levantar a peça da bancada pra examinar.
-- `DesenhoTecnico.tsx`: o círculo do encaixe ganhou um halo (`.encaixe-halo`, fill-opacity 0 → 0.16 no hover do card) — destaca exatamente o detalhe que é o argumento de venda da marca, só quando alguém para pra olhar.
+- **Rabo-de-andorinha**: zigue-zague triangular entrelaçando.
+- **Espiga-e-furo**: um retângulo (espiga) que preenche um vão retangular.
+- **Meia-madeira**: cada peça perde a metade da espessura exatamente onde se cruzam.
+- **Cavilha**: duas tábuas retas que se encontram, com dois pinos (círculos) entrando em dois furos.
+
+A peça móvel é sempre definida na **posição de repouso** (`avanco = 0`, separada) e recebe `translateX(-avanco * amplitude)` — nunca o contrário, senão a peça nasce encaixada e "desmonta" ao arrastar pra frente, que é o inverso do que o controle promete.
+
+**Gotcha real, pego em teste:** com a peça na posição separada, as coordenadas passam de x=320 (o viewBox é `0 0 320 200`), e como o SVG tinha `overflow-visible`, esse trecho vazava pra fora do card e criava overflow horizontal na página — visível principalmente no celular. Corrigido envolvendo o SVG num `<div className="overflow-hidden">`: a peça afastada agora é recortada pela borda do card, como se estivesse fora de quadro, em vez de vazar pela página.
 
 ## Sequência real → numeração
 
-`Processo.tsx` numera as seis etapas (conversa → madeira → desenho do encaixe → corte → acabamento → entrega) porque **são**, de fato, uma sequência fixa de atendimento — diferente da maioria dos outros conceitos do portfólio, que evitam numeração decorativa quando o conteúdo não é uma sequência real.
+`Processo.tsx` numera as seis etapas (conversa → madeira → desenho do encaixe → corte → acabamento → entrega) porque **são**, de fato, uma sequência fixa de atendimento.
 
-## Referência visual
+## Referência visual — mantida
 
-Paleta: `--color-paper` #efe8d8 (papel kraft/engenharia, fundo do site inteiro — nenhum branco puro), `--color-ink` #2a2420 (linha de desenho técnico, quase preto mas quente), `--color-accent` #34586c (azul de grafite/lápis de marcenaria — frio, único contraste "frio" do site contra o papel e a madeira quentes), `--color-wood` #8b5a34 (única cor de preenchimento sólido do site, reservada pra madeira de verdade: a peça do hero e o número das etapas do processo). Fontes: **Fraunces** (títulos, com itálico reservado só pra uma palavra por vez) + **Work Sans** (interface/corpo) — combinação não usada em nenhum outro projeto do repositório. `rounded-none` em tudo: cantos são encaixados, não arredondados.
+Paleta (`--color-paper` #efe8d8, `--color-ink` #2a2420, `--color-accent` #34586c, `--color-wood` #8b5a34) e fontes (**Fraunces** + **Work Sans**) não mudaram — o pedido era sobre a ideia/estrutura, não sobre cor. `rounded-none` em tudo: cantos são encaixados, não arredondados.
 
 **Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo):** depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.

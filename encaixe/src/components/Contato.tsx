@@ -14,7 +14,7 @@ export default function Contato() {
 
   return (
     <footer id="contato" className="scroll-mt-24 px-6 py-20 md:py-28">
-      <div className="mx-auto max-w-2xl lg:pl-12">
+      <div className="mx-auto max-w-2xl">
         <h2 className="font-heading text-3xl font-medium text-ink sm:text-4xl">Vamos desenhar sua peça?</h2>
         <p className="mt-3 max-w-md text-ink/70">
           Conta o que você precisa e onde ela vai ficar — eu respondo com uma
