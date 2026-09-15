@@ -1,8 +1,11 @@
 import type { Caso, Sala } from '../data/casos'
 
+// A troca de key faz o React remontar o bloco a cada cômodo novo — junto
+// com .sala-entrar (index.css), isso dá o fade+slide que faltava: antes o
+// conteúdo trocava sem transição nenhuma, um corte seco.
 export default function DetalheSala({ caso, sala }: { caso: Caso; sala: Sala }) {
   return (
-    <div>
+    <div key={sala.id} className="sala-entrar">
       <span className="text-sm font-medium text-pine">
         {caso.ambiente} · {caso.area}
       </span>

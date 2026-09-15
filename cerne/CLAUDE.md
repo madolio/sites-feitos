@@ -14,6 +14,15 @@ Worker `cerne`, em `https://cerne.fenoninho-max.workers.dev`. `npm run deploy`.
 
 Essa foi a correção direta do que não funcionou na v1: o usuário rejeitou especificamente o esqueleto de duas colunas com painel sticky — aqui não existe coluna fixa nem estado amarrado a scroll, é 100% clique.
 
+## Reformulação — efeitos (nível de ousadia da Realce)
+
+O esqueleto já estava certo, mas era 100% estático: trocar de cômodo cortava o conteúdo sem transição nenhuma. Pedido do usuário: mesmo nível de efeitos/fluidez da Realce.
+
+- **`DetalheSala.tsx`** agora remonta com `key={sala.id}` e a classe `.sala-entrar` — fade + leve subida ao trocar de cômodo, em vez do corte seco.
+- **`Planta.tsx`**: o cômodo selecionado ganha um contorno que pulsa de leve (`.sala-marcada`, stroke-opacity em loop) — um "marca-texto" que chama atenção sem imitar o efeito de traçado se desenhando, que já é a assinatura do **Traço** (outro projeto deste repositório). Colisão evitada de propósito.
+
+Ambas respeitam `prefers-reduced-motion: reduce`.
+
 ## Referência visual (trocada na v2)
 
 Paleta: `--color-paper` #faf7f2 (branco quente), `--color-panel` #f1ece3 (fundo da moldura da planta), `--color-ink` #221f1c, `--color-pine` #2f4a3e (verde-pinheiro, mais frio/escuro que o musgo da v1 — validado ~9:1 sobre o paper, bem confortável como texto). Fontes: **DM Serif Display** (títulos) + **DM Sans** (corpo) — nenhuma das duas usada em outro projeto do repositório (a v1 usava Petrona/Sora, agora livres pra outro projeto).

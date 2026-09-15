@@ -161,7 +161,7 @@ export const projetos: Projeto[] = [
     name: 'Cerne',
     category: 'Design de interiores',
     description:
-      'A navegação é a própria planta baixa — clique num cômodo pra ver o material e a decisão de projeto por trás dele, sem depender de rolagem.',
+      'A navegação é a própria planta baixa — clique num cômodo e ele pulsa como um marca-texto, o material e a decisão de projeto entram com um leve fade, sem depender de rolagem.',
     bg: '#FAF7F2',
     accent: '#2F4A3E',
     url: 'https://cerne.fenoninho-max.workers.dev',

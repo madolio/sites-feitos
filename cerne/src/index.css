@@ -46,3 +46,46 @@
     @apply border border-ink/25 text-ink hover:border-ink;
   }
 }
+
+/* Troca de cômodo (DetalheSala.tsx) — antes o texto trocava sem transição
+   nenhuma, um corte seco. */
+@keyframes sala-entrar {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.sala-entrar {
+  animation: sala-entrar 0.35s ease-out both;
+}
+
+/* Contorno do cômodo escolhido (Planta.tsx) — pulsa de leve, como um
+   marca-texto, sem ser um traçado se desenhando (efeito já usado no Traço). */
+@keyframes sala-marcada {
+  0%,
+  100% {
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0.45;
+  }
+}
+
+.sala-marcada {
+  animation: sala-marcada 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sala-entrar {
+    animation: none;
+  }
+
+  .sala-marcada {
+    animation: none;
+  }
+}

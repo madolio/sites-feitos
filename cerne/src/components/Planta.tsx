@@ -48,6 +48,21 @@ export default function Planta({
               strokeWidth={selecionada ? 2.5 : 1.5}
               className="transition-colors"
             />
+            {/* Marca-texto do cômodo escolhido — um contorno que pulsa de
+                leve, não um desenho se traçando (esse efeito já é a
+                assinatura do Traço, não pode repetir aqui). */}
+            {selecionada && (
+              <rect
+                x={sala.rect.x}
+                y={sala.rect.y}
+                width={sala.rect.w}
+                height={sala.rect.h}
+                fill="none"
+                stroke="var(--color-pine)"
+                strokeWidth="2.5"
+                className="sala-marcada pointer-events-none"
+              />
+            )}
             <text
               x={sala.rect.x + sala.rect.w / 2}
               y={sala.rect.y + sala.rect.h / 2}
