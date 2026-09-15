@@ -1,27 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
 import type { Projeto } from '../data/projetos'
 
-// Prévia de verdade do site (iframe real, não mockup), mas recortada pra
-// mostrar só a primeira seção (o hero) — não a página inteira encolhida até
-// virar ilegível. O iframe renderiza numa largura de desktop fixa (1280px) e
-// só HERO_HEIGHT de altura é visível; o resto da página real fica fora do
-// corte. Encolhido via scale calculado por ResizeObserver pra caber no card.
-const VIRTUAL_WIDTH = 1280
-const HERO_HEIGHT = 760
+// Screenshot estático, não iframe. A página /projetos tinha 28 sites reais
+// carregando ao mesmo tempo dentro de iframes — pesado e ruim de
+// acessibilidade (cada iframe é outro documento inteiro, com sua própria
+// árvore de foco e leitores de tela se perdendo nela). Uma foto da home
+// resolve os dois problemas: carrega leve e não é navegável por engano.
+// Os arquivos ficam em public/previews/<slug>.jpg, gerados via Playwright;
+// o slug é o subdomínio da URL (ex: "pulso" de pulso.fenoninho-max...).
+function slugDaUrl(url: string) {
+  return new URL(url).hostname.split('.')[0]
+}
 
 export default function HeroPreview({ projeto }: { projeto: Projeto }) {
-  const frameRef = useRef<HTMLDivElement>(null)
-  const [scale, setScale] = useState(0.3)
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    const el = frameRef.current
-    if (!el) return
-    const ro = new ResizeObserver(([entry]) => setScale(entry.contentRect.width / VIRTUAL_WIDTH))
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
-
   if (!projeto.url) return null
 
   return (
@@ -33,25 +23,14 @@ export default function HeroPreview({ projeto }: { projeto: Projeto }) {
         <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/55">seudominio.com</span>
       </div>
 
-      <div
-        ref={frameRef}
-        className="relative w-full overflow-hidden bg-surface-alt"
-        style={{ aspectRatio: `${VIRTUAL_WIDTH} / ${HERO_HEIGHT}` }}
-      >
-        <iframe
-          src={projeto.url}
-          title={`Prévia do site ${projeto.name}`}
+      <div className="relative w-full overflow-hidden bg-surface-alt" style={{ aspectRatio: '1280 / 760' }}>
+        <img
+          src={`/previews/${slugDaUrl(projeto.url)}.jpg`}
+          alt={`Página inicial do site ${projeto.name}`}
           loading="lazy"
-          onLoad={() => setLoaded(true)}
-          className="pointer-events-none absolute top-0 left-0 origin-top-left border-0 transition-opacity duration-300"
-          style={{
-            width: VIRTUAL_WIDTH,
-            height: HERO_HEIGHT,
-            transform: `scale(${scale})`,
-            opacity: loaded ? 1 : 0,
-          }}
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-top"
         />
-        {!loaded && <div className="absolute inset-0 animate-pulse bg-surface-alt" aria-hidden="true" />}
       </div>
     </div>
   )
