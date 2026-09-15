@@ -17,8 +17,8 @@ export default function Contato() {
       <div className="mx-auto max-w-2xl">
         <h2 className="font-heading text-3xl font-medium text-ink sm:text-4xl">Vamos desenhar sua peça?</h2>
         <p className="mt-3 max-w-md text-ink/70">
-          Conta o que você precisa e onde ela vai ficar — eu respondo com uma
-          ideia de encaixe e um prazo.
+          Conta o que você precisa e pra qual ocasião — eu respondo com uma
+          ideia de tecido e um prazo.
         </p>
 
         <form onSubmit={enviar} className="mt-10 space-y-5">
@@ -38,7 +38,7 @@ export default function Contato() {
               rows={3}
               value={pedido}
               onChange={(e) => setPedido(e.target.value)}
-              placeholder="Ex: uma mesa pra 6 pessoas, madeira clara"
+              placeholder="Ex: um blazer pra usar no trabalho, tecido escuro"
               className="mt-2 w-full resize-none border border-line bg-white/60 px-4 py-3 text-ink focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             />
           </label>
@@ -50,7 +50,7 @@ export default function Contato() {
         <div className="mt-16 border-t border-line pt-6">
           <span className="font-heading text-lg font-medium text-ink">Encaixe</span>
           <p className="mt-2 text-sm text-ink/60">
-            A Encaixe é uma marcenaria fictícia: este site é um conceito
+            A Encaixe é uma alfaiataria fictícia: este site é um conceito
             criado pela{' '}
             <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
               Madolio

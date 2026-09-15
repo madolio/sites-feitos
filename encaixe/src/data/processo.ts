@@ -7,32 +7,32 @@ export type Etapa = {
 export const etapas: Etapa[] = [
   {
     numero: '01',
-    titulo: 'Conversa e medidas',
-    descricao: 'Você manda o espaço e o uso — mesa pra quantas pessoas, altura de banco, vão de estante — e eu risco o desenho na hora, junto com você.',
+    titulo: 'Medição e conversa',
+    descricao: 'Tiro suas medidas de verdade — não só busto e cintura, mas postura, jeito de sentar, altura de punho — e conversamos sobre pra que ocasião a peça vai servir.',
   },
   {
     numero: '02',
-    titulo: 'Escolha da madeira',
-    descricao: 'Fotografo três ou quatro tábuas do pátio pra você escolher pelo veio e pelo nó, não só pelo nome da espécie.',
+    titulo: 'Escolha do tecido',
+    descricao: 'Você vê e toca as cartelas de tecido de verdade antes de decidir — peso, caimento e textura mudam muito entre uma lã fria e um tweed.',
   },
   {
     numero: '03',
-    titulo: 'Desenho do encaixe',
-    descricao: 'Cada peça recebe o encaixe certo pro esforço que vai receber — rabo-de-andorinha onde puxa, espiga-e-furo onde sustenta.',
+    titulo: 'Molde sob medida',
+    descricao: 'O molde é traçado do zero pras suas medidas, não ajustado a partir de um tamanho padrão — é isso que separa feito à mão de simplesmente feito menor ou maior.',
   },
   {
     numero: '04',
-    titulo: 'Corte e ajuste na bancada',
-    descricao: 'O encaixe é cortado à mão e ajustado a seco antes de qualquer cola entrar — se não trava sem forçar, eu refaço.',
+    titulo: 'Primeira prova',
+    descricao: 'A peça vem alinhavada, sem acabamento — é o momento de ajustar caimento, comprimento de manga e altura de calça antes da costura final.',
   },
   {
     numero: '05',
-    titulo: 'Acabamento em óleo',
-    descricao: 'Óleo, não verniz: entra na fibra em vez de cobrir, e dá pra lixar e reaplicar em casa daqui a alguns anos.',
+    titulo: 'Costura e acabamento',
+    descricao: 'Lapela entalhada à mão, casas de botão fechadas por dentro — os detalhes que uma confecção em série não faz, porque não compensa em escala.',
   },
   {
     numero: '06',
-    titulo: 'Entrega e montagem',
-    descricao: 'Levo a peça montada ou monto no local, dependendo do tamanho — e deixo escrito qual óleo usar na próxima manutenção.',
+    titulo: 'Prova final e entrega',
+    descricao: 'Última prova pra confirmar caimento com a peça pronta, e entrego com a ficha de medidas guardada — a próxima encomenda não precisa medir tudo de novo.',
   },
 ]

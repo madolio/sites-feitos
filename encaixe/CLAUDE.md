@@ -1,45 +1,38 @@
 # Encaixe (conceito)
 
-Site-conceito da Madolio pro nicho de marcenaria sob medida. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única.
+Site-conceito da Madolio pro nicho de **alfaiataria sob medida**. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4. Página única.
 
-## Conceito
+## Histórico — 3 reformulações completas
 
-Não é foto de móvel nenhuma vez no site — cada peça do catálogo é um **desenho técnico de elevação** (linha, cota, sem sombreado), como se a página fosse uma folha de bancada de marceneiro. O motivo aparece no próprio hero, texto e produto: "móvel que se sustenta pelo encaixe, não pelo parafuso".
+1. **v1**: marcenaria sob medida — catálogo em desenho técnico de elevação + régua de carpinteiro como nav + um movimento automático (espiga deslizando).
+2. **v2**: ainda marcenaria, mas com o tipo de encaixe (rabo-de-andorinha, espiga-e-furo, etc.) organizando o site inteiro — abas + slider de montagem arrastável, catálogo filtrado pelo tipo escolhido.
+3. **v3 (esta)**: feedback direto — "aqui, muito ruim mesmo, reformule 100% até a ideia", seguido de "na verdade muda até essa ideia de moveis, me de outras". Não era mais um problema de execução, era o nicho inteiro. Perguntei direções novas e o usuário escolheu **alfaiataria sob medida**.
 
-`src/desenho.ts` gera as linhas de cada arquétipo de móvel (mesa, banco, estante, cadeira, aparador, banqueta) por coordenadas — não são ilustrações desenhadas peça a peça; mesa e aparador, por exemplo, só variam a largura da função geradora. Cada `Desenho` carrega também uma cota de largura e o ponto do encaixe em destaque, que o `DesenhoTecnico.tsx` desenha com um círculo e o nome do encaixe ao lado — a etiqueta descreve o encaixe de verdade daquela peça, não é rótulo decorativo.
+**O nome "Encaixe" foi mantido de propósito** — cai igualmente bem pra roupa ("a roupa encaixa em você", o caimento perfeito de uma peça sob medida) quanto caía pra marcenaria. Isso evitou trocar marca, domínio e todo o "esqueleto" de arquivos — só o negócio por trás mudou.
 
-## Reformulação total — o encaixe (não o móvel) organiza o site
+## Deploy (Cloudflare Workers)
 
-Pedido do usuário, depois de já ter trocado só a ilustração numa rodada anterior: "reformule 100% até a ideia". Não bastava trocar a ilustração de novo — o conceito de base mudou.
+Worker `encaixe`, em `https://encaixe.fenoninho-max.workers.dev`. `npm run deploy`.
 
-**Antes:** régua de carpinteiro fixa como nav lateral (`Regua.tsx`) + catálogo estático com scroll + um movimento automático único no Hero, tocando uma vez ao carregar.
+## O conceito v3: configurador de orçamento, não navegação temática
 
-**Agora:** o tipo de encaixe é o eixo de tudo. `data/encaixes.ts` define os 4 tipos reais que aparecem no catálogo (rabo-de-andorinha, espiga-e-furo, meia-madeira, cavilha), cada um com sua descrição estrutural verdadeira (por que aquele encaixe é usado, não decoração). O estado de qual tipo está selecionado mora em `App.tsx` e é compartilhado por dois componentes:
+As duas versões anteriores tentavam fazer o **tema** (encaixe de marcenaria) carregar a página inteira — régua, slider, filtro. Essa v3 é deliberadamente mais direta: em vez de uma metáfora sendo a navegação, o site oferece uma **ferramenta que a pessoa realmente usaria antes de fechar negócio com um alfaiate** — um orçamento.
 
-- **`EncaixeInterativo.tsx`** (no Hero) — abas pros 4 tipos + um `<input type="range">` que o visitante arrasta pra montar o encaixe escolhido, do zero ao cem por cento, na velocidade que quiser. Isso substitui o "único movimento não pedido" (que tocava uma vez, sozinho, sem controle) por uma interação de verdade — de passivo pra exploratório.
-- **`Catalogo.tsx`** — filtra as peças pelo tipo selecionado (`tipo.match(peca.encaixe)`), mostrando só quem usa aquele encaixe e quantas são, em vez da lista inteira sempre visível.
+- **`Configurador.tsx`** (no Hero): escolhe peça (blazer/calça/colete/camisa), tecido (lã fria/linho/flanela/tweed/algodão egípcio) e corte (slim/clássico/oversized). Preço e prazo são calculados ao vivo (`data/configuracao.ts`: `precoBase` de cada peça × multiplicador do tecido × multiplicador do corte — nunca um número solto), e o figurino técnico ao lado atualiza pra mostrar a combinação escolhida. O botão final já manda a mensagem de WhatsApp com peça, tecido, corte, preço e prazo.
+- **`Catalogo.tsx`** voltou a ser uma vitrine simples (sem filtro/estado compartilhado) — mostra as 4 peças de referência, cada uma com seu figurino e um convite pra usar o configurador acima pra outras combinações.
 
-`Regua.tsx` foi removido por completo (não deixado como código morto) e substituído por `TopoSimples.tsx`, uma barra fixa simples com marca + contato — a navegação real agora é escolher o encaixe, não rolar a página.
+## Desenho técnico — de elevação de móvel pra figurino plano
 
-### Geometria por tipo (`EncaixeInterativo.tsx`)
+`desenho.ts` foi reescrito do zero: as funções `desenharMesa`/`desenharBanco`/etc. (elevação de móvel) saíram, substituídas por `desenharBlazer`/`desenharCalca`/`desenharColete`/`desenharCamisa` — **figurino técnico plano** (o "flat sketch" que a indústria de moda usa pra registrar corte e costura sem corpo dentro), mesma ideia de "nunca foto" da versão anterior, aplicada a roupa em vez de móvel. O tipo `Desenho` (tracos/junta/cota/viewBox) não mudou — `DesenhoTecnico.tsx` é 100% genérico e não precisou de nenhuma alteração de lógica, só os nomes de variável de cor (`--color-wood` → `--color-fio`, representando fio/costura em vez de madeira).
 
-Cada ilustração usa a mesma convenção (peça fixa em `--color-ink`, peça móvel em `--color-wood`/`--color-wood-dark`) com uma forma diferente:
-
-- **Rabo-de-andorinha**: zigue-zague triangular entrelaçando.
-- **Espiga-e-furo**: um retângulo (espiga) que preenche um vão retangular.
-- **Meia-madeira**: cada peça perde a metade da espessura exatamente onde se cruzam.
-- **Cavilha**: duas tábuas retas que se encontram, com dois pinos (círculos) entrando em dois furos.
-
-A peça móvel é sempre definida na **posição de repouso** (`avanco = 0`, separada) e recebe `translateX(-avanco * amplitude)` — nunca o contrário, senão a peça nasce encaixada e "desmonta" ao arrastar pra frente, que é o inverso do que o controle promete.
-
-**Gotcha real, pego em teste:** com a peça na posição separada, as coordenadas passam de x=320 (o viewBox é `0 0 320 200`), e como o SVG tinha `overflow-visible`, esse trecho vazava pra fora do card e criava overflow horizontal na página — visível principalmente no celular. Corrigido envolvendo o SVG num `<div className="overflow-hidden">`: a peça afastada agora é recortada pela borda do card, como se estivesse fora de quadro, em vez de vazar pela página.
+**Gotcha real, pego em teste:** em `desenharCalca` e `desenharCamisa`, a cota de tamanho (embaixo) e o rótulo do detalhe em destaque (no meio da peça) ficaram próximos demais verticalmente pro `viewBox` original de `200` de altura — os dois textos colidiam e ficavam ilegíveis. Corrigido aumentando a altura do `viewBox` (`calça`: 200→220, `camisa`: 200→215) e reposicionando a cota pra baixo do que qualquer outro elemento.
 
 ## Sequência real → numeração
 
-`Processo.tsx` numera as seis etapas (conversa → madeira → desenho do encaixe → corte → acabamento → entrega) porque **são**, de fato, uma sequência fixa de atendimento.
+`Processo.tsx` numera as seis etapas reais de alfaiataria (medição → tecido → molde → primeira prova → costura → prova final e entrega) — refeitas do zero pra alfaiataria, não reaproveitadas do texto de marcenaria.
 
 ## Referência visual — mantida
 
-Paleta (`--color-paper` #efe8d8, `--color-ink` #2a2420, `--color-accent` #34586c, `--color-wood` #8b5a34) e fontes (**Fraunces** + **Work Sans**) não mudaram — o pedido era sobre a ideia/estrutura, não sobre cor. `rounded-none` em tudo: cantos são encaixados, não arredondados.
+Paleta (`--color-paper` #efe8d8, `--color-ink` #2a2420, `--color-accent` #34586c) e fontes (**Fraunces** + **Work Sans**) não mudaram — o tom "caderno de bancada"/kraft funciona bem pra ficha técnica de alfaiate também. `rounded-none` em tudo.
 
 **Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo):** depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.

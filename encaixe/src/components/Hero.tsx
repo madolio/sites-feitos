@@ -1,42 +1,28 @@
-import { sendToWhatsApp } from '../demo'
-import EncaixeInterativo from './EncaixeInterativo'
+import Configurador from './Configurador'
 
-type Props = {
-  selecionado: string
-  onSelecionar: (id: string) => void
-}
-
-// Reformulação completa (não só a ilustração): o site inteiro passou a
-// se organizar pelo tipo de encaixe, não pelo móvel. Escolher um tipo aqui
-// também filtra o catálogo abaixo — ver App.tsx.
-export default function Hero({ selecionado, onSelecionar }: Props) {
+// Segunda reformulação completa: não é mais marcenaria, é alfaiataria sob
+// medida — o usuário pediu pra mudar até o nicho ("na verdade muda até
+// essa ideia de moveis"). O nome "Encaixe" foi mantido de propósito: cai
+// bem pra roupa também ("a roupa que encaixa em você", o caimento
+// perfeito), então não precisou trocar marca/domínio, só a ideia inteira
+// de negócio por trás.
+export default function Hero() {
   return (
     <section className="border-b border-line px-6 pt-28 pb-20 md:pt-36 md:pb-28">
-      <div className="mx-auto grid max-w-5xl items-start gap-12 md:grid-cols-[1fr_1fr] md:gap-10">
-        <div>
+      <div className="mx-auto max-w-5xl">
+        <div className="max-w-2xl">
           <h1 className="font-heading text-[2.75rem] leading-[1.05] font-medium text-ink sm:text-6xl">
-            Móvel que se sustenta pelo encaixe, não pelo parafuso
+            A roupa encaixa em você, não o contrário
           </h1>
           <p className="mt-6 max-w-md text-lg text-ink/75">
-            Marcenaria sob medida em Itu (SP). Escolha um tipo de encaixe ao
-            lado e arraste pra montar — o catálogo abaixo mostra as peças
-            que usam ele.
+            Alfaiataria sob medida em Itu (SP). Monte a peça abaixo — tecido,
+            corte — e veja preço e prazo estimados na hora.
           </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <button
-              type="button"
-              onClick={() => sendToWhatsApp('Olá! Quero conversar sobre uma peça sob medida com a Encaixe.')}
-              className="btn-primary"
-            >
-              Pedir um orçamento
-            </button>
-            <a href="#catalogo" className="btn-outline">
-              Ver o catálogo
-            </a>
-          </div>
         </div>
 
-        <EncaixeInterativo selecionado={selecionado} onSelecionar={onSelecionar} />
+        <div className="mt-14 border-t border-line pt-10">
+          <Configurador />
+        </div>
       </div>
     </section>
   )

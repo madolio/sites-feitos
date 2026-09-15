@@ -32,7 +32,7 @@ export default function DemoDialog() {
         </pre>
         <p className="mt-5 text-ink/70">
           Num site de verdade, esse botão abriria o WhatsApp da Encaixe com a
-          mensagem acima já escrita. A Encaixe é uma marcenaria fictícia —
+          mensagem acima já escrita. A Encaixe é uma alfaiataria fictícia —
           este site é um conceito criado pela Madolio.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">

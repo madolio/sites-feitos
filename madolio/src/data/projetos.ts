@@ -217,9 +217,9 @@ export const projetos: Projeto[] = [
   },
   {
     name: 'Encaixe',
-    category: 'Marcenaria sob medida',
+    category: 'Alfaiataria sob medida',
     description:
-      'Escolha um tipo de encaixe e arraste pra montar, do zero ao cem por cento — o catálogo abaixo filtra sozinho pras peças que usam ele. Nenhuma foto de móvel, só desenho técnico de elevação.',
+      'Monte a peça num configurador de verdade — tecido, corte — e veja preço e prazo mudarem ao vivo, com o figurino técnico se ajustando junto. Nenhuma foto de manequim.',
     bg: '#EFE8D8',
     accent: '#34586C',
     url: 'https://encaixe.fenoninho-max.workers.dev',

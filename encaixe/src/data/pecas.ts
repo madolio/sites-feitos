@@ -1,18 +1,10 @@
-import {
-  desenharAparador,
-  desenharBanco,
-  desenharBanqueta,
-  desenharCadeira,
-  desenharEstante,
-  desenharMesa,
-  type Desenho,
-} from '../desenho'
+import { desenharBlazer, desenharCalca, desenharCamisa, desenharColete, type Desenho } from '../desenho'
 
 export type Peca = {
   nome: string
   categoria: string
-  madeira: string
-  encaixe: string
+  tecido: string
+  detalhe: string
   medidas: string
   aPartirDe: string
   descricao: string
@@ -21,69 +13,47 @@ export type Peca = {
 
 export const pecas: Peca[] = [
   {
-    nome: 'Mesa Juntada',
-    categoria: 'Mesa de jantar',
-    madeira: 'freijó maciço',
-    encaixe: 'rabo-de-andorinha',
-    medidas: '160 × 90 × 75 cm',
-    aPartirDe: 'a partir de R$ 4.200',
+    nome: 'Blazer Ravena',
+    categoria: 'Blazer de duas camadas',
+    tecido: 'lã fria',
+    detalhe: 'lapela entalhada à mão',
+    medidas: 'Corte clássico',
+    aPartirDe: 'a partir de R$ 2.400',
     descricao:
-      'O tampo é juntado de três tábuas escolhidas pelo desenho do veio, e a travessa entra na perna em rabo-de-andorinha — sem parafuso, sem cola visível, sem cantoneira.',
-    desenho: desenharMesa('160 cm'),
+      'A lapela é entalhada e costurada à mão, não termocolada — é o que faz ela cair reta e não enrugar depois de uma tarde sentado.',
+    desenho: desenharBlazer('Clássico'),
   },
   {
-    nome: 'Banco Trave',
-    categoria: 'Banco de refeitório',
-    madeira: 'ipê',
-    encaixe: 'espiga-e-furo',
-    medidas: '140 × 34 × 46 cm',
-    aPartirDe: 'a partir de R$ 1.850',
-    descricao:
-      'Pensado pra ficar de pé sozinho: a perna vira espiga, o assento vira o furo, e o encaixe seca sob prensa antes de sair da bancada.',
-    desenho: desenharBanco('140 cm'),
-  },
-  {
-    nome: 'Estante Três Vãos',
-    categoria: 'Estante modular',
-    madeira: 'cumaru',
-    encaixe: 'cavilha de madeira',
-    medidas: '84 × 32 × 96 cm',
-    aPartirDe: 'a partir de R$ 2.600',
-    descricao:
-      'Cada prateleira entra encaixada e presa por cavilha própria, torneada da mesma tábua — não tem bucha plástica em lugar nenhum dessa peça.',
-    desenho: desenharEstante('84 cm'),
-  },
-  {
-    nome: 'Cadeira Três Réguas',
-    categoria: 'Cadeira de mesa',
-    madeira: 'pequi',
-    encaixe: 'espiga passante',
-    medidas: '52 × 48 × 82 cm',
-    aPartirDe: 'a partir de R$ 1.480',
-    descricao:
-      'O encosto entra direto no assento em espiga passante — a peça que mais quebra numa cadeira comprada pronta é a primeira que a gente reforça aqui.',
-    desenho: desenharCadeira('52 cm'),
-  },
-  {
-    nome: 'Aparador Gaveteiro',
-    categoria: 'Aparador baixo',
-    madeira: 'cedro-rosa',
-    encaixe: 'rabo-de-andorinha',
-    medidas: '164 × 42 × 68 cm',
-    aPartirDe: 'a partir de R$ 3.900',
-    descricao:
-      'As gavetas correm em trilho de madeira, não de metal, e a lateral do corpo é fechada com o mesmo encaixe do tampo da mesa — família de peças, mesma linguagem.',
-    desenho: desenharAparador('164 cm'),
-  },
-  {
-    nome: 'Banqueta Cruzada',
-    categoria: 'Banqueta baixa',
-    madeira: 'angico',
-    encaixe: 'meia-madeira em xis',
-    medidas: '38 × 38 × 46 cm',
+    nome: 'Calça Alfaiataria Reta',
+    categoria: 'Calça de fechamento clássico',
+    tecido: 'lã fria',
+    detalhe: 'prega frontal simples',
+    medidas: 'Corte clássico',
     aPartirDe: 'a partir de R$ 980',
     descricao:
-      'As duas pernas se cruzam em meia-madeira — cada uma perde metade da espessura exatamente onde encontra a outra, e travam sem nenhum reforço metálico.',
-    desenho: desenharBanqueta('38 cm'),
+      'Uma prega só na frente, não duas — dá mais espaço no quadril sem parecer larga demais na cintura.',
+    desenho: desenharCalca('Clássico'),
+  },
+  {
+    nome: 'Colete Sarja',
+    categoria: 'Colete de terno três peças',
+    tecido: 'tweed',
+    detalhe: 'bolso com aba',
+    medidas: 'Corte clássico',
+    aPartirDe: 'a partir de R$ 780',
+    descricao:
+      'Fechamento em V baixo, pensado pra não esconder o nó da gravata — o erro mais comum de colete pronto.',
+    desenho: desenharColete('Clássico'),
+  },
+  {
+    nome: 'Camisa Punho Duplo',
+    categoria: 'Camisa social',
+    tecido: 'algodão egípcio',
+    detalhe: 'punho com botão duplo',
+    medidas: 'Corte slim',
+    aPartirDe: 'a partir de R$ 590',
+    descricao:
+      'O punho com dois botões ajusta em dois pontos, não um — segura melhor no pulso sem folgar durante o dia.',
+    desenho: desenharCamisa('Slim'),
   },
 ]

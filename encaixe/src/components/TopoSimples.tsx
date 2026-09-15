@@ -1,9 +1,7 @@
 import { sendToWhatsApp } from '../demo'
 
-// A régua de carpinteiro (nav lateral, fixa na borda esquerda) saiu — a
-// navegação real agora é escolher o encaixe no Hero. Esta barra fica só
-// com a marca e o contato, como nos conceitos mais recentes do
-// repositório que já não precisam de uma nav decorativa própria.
+// Nav simples e fixa — a página é curta o bastante (Hero com configurador,
+// catálogo, processo, contato) pra não precisar de esqueleto decorativo.
 export default function TopoSimples() {
   return (
     <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-6 py-4 sm:px-10">

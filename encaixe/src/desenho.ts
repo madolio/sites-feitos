@@ -1,8 +1,9 @@
-// Cada peça do catálogo é mostrada como um desenho técnico de elevação —
-// não foto — no espírito de um caderno de bancada. As linhas de cada arquétipo
-// (mesa, banco, etc.) são geradas aqui por coordenadas, não desenhadas peça a
-// peça: mesa e aparador só variam a largura, por exemplo. `pernaTracejada`
-// marca as peças "de trás" (sugerindo profundidade, não uma planta de verdade).
+// Cada peça do catálogo é mostrada como um FIGURINO TÉCNICO PLANO — o
+// desenho de moda que registra corte e costura sem corpo dentro (o que a
+// indústria chama de "flat sketch"), não uma foto de manequim. Continua o
+// mesmo princípio do site anterior (desenho técnico, não foto), aplicado a
+// alfaiataria em vez de marcenaria. As linhas de cada arquétipo são
+// geradas aqui por coordenadas.
 export type Traco = {
   x1: number
   y1: number
@@ -13,141 +14,117 @@ export type Traco = {
 
 export type Desenho = {
   tracos: Traco[]
-  /** Ponto do encaixe em destaque — onde o texto da peça aponta. */
+  /** Ponto de um detalhe de construção em destaque — onde o texto aponta. */
   junta: { x: number; y: number }
-  /** Cota de largura, desenhada como régua embaixo do desenho. */
+  /** Cota de tamanho, desenhada como régua embaixo do desenho. */
   cota: { x1: number; x2: number; y: number; label: string }
   viewBox: string
 }
 
 const L = (x1: number, y1: number, x2: number, y2: number, tracejado = false): Traco => ({ x1, y1, x2, y2, tracejado })
 
-export function desenharMesa(label: string): Desenho {
-  const y0 = 118
-  const yTopo = 46
+export function desenharBlazer(label: string): Desenho {
   return {
-    viewBox: '0 0 200 140',
+    viewBox: '0 0 160 200',
     tracos: [
-      L(20, yTopo, 180, yTopo),
-      L(20, yTopo + 6, 180, yTopo + 6),
-      L(20, yTopo, 20, yTopo + 6),
-      L(180, yTopo, 180, yTopo + 6),
-      L(46, yTopo + 6, 34, y0, true),
-      L(154, yTopo + 6, 166, y0, true),
-      L(32, yTopo + 6, 32, y0),
-      L(168, yTopo + 6, 168, y0),
-      L(32, 96, 168, 96),
+      L(50, 30, 80, 46),
+      L(80, 46, 110, 30),
+      L(50, 30, 34, 42),
+      L(110, 30, 126, 42),
+      L(34, 42, 30, 170),
+      L(126, 42, 130, 170),
+      L(30, 170, 130, 170),
+      L(80, 46, 80, 160, true),
+      L(80, 46, 62, 60),
+      L(62, 60, 50, 30),
+      L(76, 95, 84, 95),
+      L(76, 118, 84, 118),
+      L(34, 42, 10, 130),
+      L(10, 130, 26, 138),
+      L(26, 138, 30, 170),
+      L(126, 42, 150, 130),
+      L(150, 130, 134, 138),
+      L(134, 138, 130, 170),
+      L(40, 130, 58, 130),
+      L(102, 130, 120, 130),
     ],
-    junta: { x: 32, y: 96 },
-    cota: { x1: 20, x2: 180, y: y0 + 14, label },
+    junta: { x: 62, y: 60 },
+    cota: { x1: 30, x2: 130, y: 184, label },
   }
 }
 
-export function desenharBanco(label: string): Desenho {
-  const y0 = 118
-  const yTopo = 78
+export function desenharCalca(label: string): Desenho {
   return {
-    viewBox: '0 0 200 140',
+    viewBox: '0 0 160 220',
     tracos: [
-      L(35, yTopo, 165, yTopo),
-      L(35, yTopo + 5, 165, yTopo + 5),
-      L(35, yTopo, 35, yTopo + 5),
-      L(165, yTopo, 165, yTopo + 5),
-      L(46, yTopo + 5, 46, y0),
-      L(154, yTopo + 5, 154, y0),
-      L(46, 102, 154, 102),
+      L(48, 20, 112, 20),
+      L(48, 20, 44, 100),
+      L(112, 20, 116, 100),
+      L(44, 100, 32, 190),
+      L(116, 100, 128, 190),
+      L(80, 20, 78, 96, true),
+      L(78, 96, 70, 190, true),
+      L(78, 96, 90, 190, true),
+      L(28, 190, 40, 190),
+      L(120, 190, 132, 190),
+      L(66, 24, 62, 90),
+      L(48, 26, 112, 26),
     ],
-    junta: { x: 46, y: 102 },
-    cota: { x1: 35, x2: 165, y: y0 + 14, label },
+    junta: { x: 66, y: 24 },
+    cota: { x1: 30, x2: 132, y: 196, label },
   }
 }
 
-export function desenharEstante(label: string): Desenho {
-  const topo = 24
-  const base = 120
-  const prateleiras = [46, 68, 90]
+export function desenharColete(label: string): Desenho {
   return {
-    viewBox: '0 0 200 140',
+    viewBox: '0 0 160 200',
     tracos: [
-      L(58, topo, 58, base),
-      L(142, topo, 142, base),
-      L(58, topo, 142, topo),
-      L(58, base, 142, base),
-      ...prateleiras.map((y) => L(58, y, 142, y)),
+      L(52, 30, 80, 42),
+      L(80, 42, 108, 30),
+      L(52, 30, 40, 40),
+      L(108, 30, 120, 40),
+      L(40, 40, 36, 160),
+      L(120, 40, 124, 160),
+      L(36, 160, 124, 160),
+      L(40, 40, 56, 46),
+      L(56, 46, 44, 100),
+      L(120, 40, 104, 46),
+      L(104, 46, 116, 100),
+      L(80, 42, 80, 150, true),
+      L(74, 78, 86, 78),
+      L(74, 100, 86, 100),
+      L(74, 122, 86, 122),
+      L(48, 128, 66, 128),
+      L(48, 124, 66, 124),
     ],
-    junta: { x: 58, y: prateleiras[1] },
-    cota: { x1: 58, x2: 142, y: base + 14, label },
+    junta: { x: 57, y: 126 },
+    cota: { x1: 36, x2: 124, y: 174, label },
   }
 }
 
-export function desenharCadeira(label: string): Desenho {
-  const base = 120
-  const assento = 72
+export function desenharCamisa(label: string): Desenho {
   return {
-    viewBox: '0 0 200 140',
+    viewBox: '0 0 160 215',
     tracos: [
-      L(64, 26, 64, assento),
-      L(116, 26, 116, assento),
-      L(64, 26, 116, 26),
-      L(64, 42, 116, 42),
-      L(64, 57, 116, 57),
-      L(64, assento, 116, assento),
-      L(64, assento + 4, 116, assento + 4),
-      L(70, assento + 4, 70, base),
-      L(110, assento + 4, 110, base),
-      L(64, 26, 60, assento + 4, true),
-      L(60, assento + 4, 60, base, true),
+      L(64, 20, 96, 20),
+      L(64, 20, 56, 34),
+      L(96, 20, 104, 34),
+      L(56, 34, 104, 34),
+      L(56, 34, 38, 176),
+      L(104, 34, 122, 176),
+      L(38, 176, 122, 176),
+      L(80, 34, 80, 168, true),
+      L(80, 56, 80, 60),
+      L(80, 76, 80, 80),
+      L(80, 96, 80, 100),
+      L(80, 116, 80, 120),
+      L(56, 34, 20, 90),
+      L(20, 90, 34, 96),
+      L(104, 34, 140, 90),
+      L(140, 90, 126, 96),
+      L(24, 88, 30, 94),
     ],
-    junta: { x: 70, y: assento + 4 },
-    cota: { x1: 60, x2: 116, y: base + 14, label },
+    junta: { x: 27, y: 91 },
+    cota: { x1: 38, x2: 122, y: 190, label },
   }
-}
-
-export function desenharAparador(label: string): Desenho {
-  const y0 = 118
-  const yTopo = 68
-  return {
-    viewBox: '0 0 200 140',
-    tracos: [
-      L(18, yTopo, 182, yTopo),
-      L(18, yTopo + 5, 182, yTopo + 5),
-      L(18, yTopo, 18, yTopo + 5),
-      L(182, yTopo, 182, yTopo + 5),
-      L(28, yTopo + 5, 28, y0),
-      L(172, yTopo + 5, 172, y0),
-      L(28, y0, 172, y0),
-      L(100, yTopo + 5, 100, y0),
-      circleAsTraco(91, (yTopo + y0) / 2),
-      circleAsTraco(109, (yTopo + y0) / 2),
-    ],
-    junta: { x: 28, y: yTopo + 5 },
-    cota: { x1: 18, x2: 182, y: y0 + 14, label },
-  }
-}
-
-export function desenharBanqueta(label: string): Desenho {
-  const assento = 56
-  const base = 118
-  const xEsq = 76
-  const xDir = 124
-  return {
-    viewBox: '0 0 200 140',
-    tracos: [
-      L(xEsq, assento, xDir, assento),
-      L(xEsq, assento + 5, xDir, assento + 5),
-      L(xEsq, assento, xEsq, assento + 5),
-      L(xDir, assento, xDir, assento + 5),
-      L(xEsq + 4, assento + 5, xDir - 4, base),
-      L(xDir - 4, assento + 5, xEsq + 4, base),
-    ],
-    junta: { x: 100, y: (assento + 5 + base) / 2 },
-    cota: { x1: xEsq, x2: xDir, y: base + 14, label },
-  }
-}
-
-// Pequeno truque pra "desenhar" um círculo (puxador) sem sair do formato
-// Traco de linha reta: duas linhas curtas cruzadas fazem um xis discreto,
-// mais coerente com a linguagem de desenho técnico do que um círculo perfeito.
-function circleAsTraco(x: number, y: number): Traco {
-  return L(x - 1.5, y - 1.5, x + 1.5, y + 1.5)
 }

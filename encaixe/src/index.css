@@ -6,8 +6,12 @@
   --color-ink: #2a2420;
   --color-accent: #34586c;
   --color-accent-soft: #7fa0ad;
-  --color-wood: #8b5a34;
-  --color-wood-dark: #5f3b22;
+  /* --color-fio (linha de costura) substitui o antigo --color-wood da
+     versão de marcenaria — mesmo papel visual (cor de preenchimento
+     sólido, reservada pro detalhe de construção em destaque), agora
+     representando fio/costura em vez de madeira. */
+  --color-fio: #8b5a34;
+  --color-fio-escuro: #5f3b22;
   --color-line: #cfc2a2;
 
   --font-heading: "Fraunces", "Iowan Old Style", ui-serif, serif;
@@ -51,15 +55,23 @@
   .btn-outline {
     @apply border border-ink/60 text-ink hover:border-accent hover:text-accent;
   }
+
+  .rotulo {
+    @apply text-xs font-semibold tracking-[0.14em] uppercase;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
-/* Halo do encaixe (DesenhoTecnico.tsx) — só aparece no hover do card do
-   catálogo, nunca automático: resposta a uma ação do visitante, diferente
-   do único movimento não pedido do Hero (ver CLAUDE.md). */
-.encaixe-halo {
+/* Halo do detalhe de construção (DesenhoTecnico.tsx) — só aparece no hover
+   do card do catálogo, nunca automático: resposta a uma ação do
+   visitante. */
+.detalhe-halo {
   transition: fill-opacity 0.3s ease-out;
 }
 
-.group:hover .encaixe-halo {
+.group:hover .detalhe-halo {
   fill-opacity: 0.16;
 }
