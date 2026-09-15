@@ -14,8 +14,8 @@ export default function Catalogo() {
 
         <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2">
           {relogios.map((r) => (
-            <article key={r.nome} className="flex gap-6">
-              <div className="h-32 w-32 shrink-0 rounded-full bg-black/20 p-2">
+            <article key={r.nome} className="group flex gap-6">
+              <div className="h-32 w-32 shrink-0 rounded-full bg-black/20 p-2 ring-1 ring-transparent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-brass/40">
                 <Mostrador
                   corFundo={r.corFundo}
                   corMarcadores={r.corMarcadores}

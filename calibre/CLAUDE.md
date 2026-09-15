@@ -2,6 +2,12 @@
 
 Site-conceito da Madolio pro nicho de relojoaria artesanal. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4 + React Three Fiber. Página única, com rolagem (diferente do Torno, que é uma ferramenta de tela única).
 
+## Reformulação — avaliado e deixado como está (quase todo)
+
+Pedido do usuário: reformular no mesmo nível de ousadia da Realce (efeitos, responsividade, "tudo fluindo"), aplicado aos 7 conceitos de uma leva. Avaliação honesta pro Calibre: **este projeto já excede esse nível** — 3D real com física simulada (corda que descarrega sozinha, balanço oscilando), textura procedural, único gesto de interação (girar a coroa) documentado e testado. Adicionar mais efeitos por cima seria acúmulo, não melhoria.
+
+Único ajuste: `Catalogo.tsx` ganhou hover consistente com o resto da leva (anel de latão + leve elevação no card ao passar o mouse) — puramente cosmético, não competiu com o "único movimento não pedido" da cena 3D nem com o gesto da coroa. Verificado responsivo em mobile (canvas 3D redimensiona corretamente, zero overflow, zero erro de console).
+
 ## Deploy (Cloudflare Workers)
 
 Worker `calibre`, em `https://calibre.fenoninho-max.workers.dev`. `npm run deploy`. Tem `.npmrc` com `legacy-peer-deps=true` (senão o `npm install` quebra nos peers opcionais de Expo do React Three Fiber — mesmo problema do Torno/Cardume).
