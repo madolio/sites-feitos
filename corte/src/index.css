@@ -104,3 +104,14 @@
     animation: none;
   }
 }
+
+/* Piso xadrez — o chão clássico de barbearia antiga, usado como faixa fina
+   de transição entre seções (não como fundo de bloco de texto, pra não
+   brigar com legibilidade). */
+.piso-xadrez {
+  background-image:
+    linear-gradient(45deg, var(--color-ink) 25%, transparent 25%, transparent 75%, var(--color-ink) 75%),
+    linear-gradient(45deg, var(--color-ink) 25%, transparent 25%, transparent 75%, var(--color-ink) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+}

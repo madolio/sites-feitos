@@ -1,12 +1,16 @@
 import { START_TICKET } from '../data'
 import PosteBarbeiro from './PosteBarbeiro'
+import Selo from './Selo'
 import TicketStub from './TicketStub'
 
 export default function Hero() {
   return (
     <section id="inicio" className="scroll-mt-16 pt-24 pb-20 md:pt-32 md:pb-28">
       <div className="mx-auto max-w-3xl px-6 text-center">
-        <PosteBarbeiro />
+        <div className="flex items-center justify-center gap-6">
+          <PosteBarbeiro />
+          <Selo className="h-20 w-20 text-ink/70 sm:h-24 sm:w-24" />
+        </div>
         <h1 className="mt-6 text-4xl leading-[1.15] sm:text-5xl">
           Sem fila de espera. Só a sua senha.
         </h1>

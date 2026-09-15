@@ -11,7 +11,9 @@ export default function App() {
       <TicketBar />
       <main>
         <Hero />
+        <div className="piso-xadrez h-3" aria-hidden="true" />
         <Menu />
+        <div className="piso-xadrez h-3" aria-hidden="true" />
         <Profissionais />
       </main>
       <Agendar />

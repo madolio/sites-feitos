@@ -30,6 +30,14 @@ Feedback direto: "quero algo mais como barbeiro normal mesmo, curti a ideia da s
 - `Mark` (o ícone da marca, antes um envelope genérico) virou um mini-poste de barbeiro com listras diagonais vermelho/branco/azul.
 - `PosteBarbeiro.tsx` (novo): um poste giratório de verdade ao lado do talão de senha no Hero — listras girando em loop via CSS (`.poste`, `background-position` animado), o símbolo mais clássico do ofício, juntando as duas ideias da marca (fila numerada + barbearia tradicional) no mesmo golpe de vista. Respeita `prefers-reduced-motion`.
 
+## Reformulação 3 — mais elementos visuais de barbearia
+
+Feedback: "coloca mais elementos visuais remententes a barbearia" — o poste era o único elemento literal do ofício; o resto (senha, cores) era abstrato.
+
+- **`Icones.tsx`** (novo): tesoura, navalha e pente, traço simples. `Profissionais.tsx` trocou a silhueta genérica de "pessoa" por um desses ícones por profissional, escolhido pela especialidade real já escrita em `data.ts` (Duda Ferraz/cortes → tesoura, Igor Salgado/barba → navalha, Bia Torres/escova → pente) — não é decoração aleatória, cada ícone corresponde ao dado que já existia.
+- **`Selo.tsx`** (novo): carimbo circular vintage com texto correndo na borda (`<textPath>`) e uma tesoura no centro — ao lado do poste no Hero, reforçando a estética de barbearia tradicional sem depender só da paleta de cor.
+- **`.piso-xadrez`** (index.css): faixa fina de piso xadrez preto/branco — o chão clássico de barbearia antiga — usada como divisor entre `Hero`/`Menu` e `Menu`/`Profissionais`, nunca como fundo de bloco de texto (evita brigar com legibilidade).
+
 ## Arquitetura — painel de senha em vez de nav
 
 `TicketBar.tsx` substitui a barra de navegação por um **painel "atendendo agora"**: o número sobe sozinho a cada 9s (decorativo, dá vida à página), sem nenhum link de menu — CTA "Marcar horário" é o único elemento interativo da barra. `Menu.tsx` (a lista de preços) é um quadro pendurado na parede, não uma grade de cards.
