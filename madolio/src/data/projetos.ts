@@ -116,7 +116,7 @@ export const projetos: Projeto[] = [
     name: 'Corte',
     category: 'Salão de beleza e barbearia',
     description:
-      'Painel de senha de atendimento em vez de nav — o número "atendendo agora" sobe sozinho, e o cardápio de preços vira um quadro pendurado na parede.',
+      'Painel de senha de atendimento em vez de nav — o número "atendendo agora" sobe sozinho, o talão puxa uma senha nova de verdade, e escolher um serviço já mostra a espera estimada.',
     bg: '#F7EEE8',
     accent: '#146B62',
     url: 'https://corte.fenoninho-max.workers.dev',

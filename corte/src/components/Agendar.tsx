@@ -1,17 +1,29 @@
 import { useState } from 'react'
-import { servicos } from '../data'
+import { servicos, START_TICKET } from '../data'
 import { sendToWhatsApp } from '../demo'
 import { Mark } from './TicketBar'
+
+// Quantas pessoas já estão na fila na frente de uma senha nova — fixo, só
+// pra dar uma estimativa plausível (o Corte é fictício, não existe fila
+// real pra consultar).
+const PESSOAS_NA_FRENTE = 2
 
 export default function Agendar() {
   const [servico, setServico] = useState<string | null>(null)
   const [nome, setNome] = useState('')
   const ready = servico !== null && nome.trim().length > 1
 
+  const servicoEscolhido = servicos.find((s) => s.name === servico)
+  const espera = servicoEscolhido ? servicoEscolhido.minutos * PESSOAS_NA_FRENTE : null
+  const senha = START_TICKET + PESSOAS_NA_FRENTE + 1
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!ready) return
-    sendToWhatsApp(`Olá, Corte! Quero marcar: ${servico}.\nMeu nome é ${nome.trim()}.`)
+    sendToWhatsApp(
+      `Olá, Corte! Quero marcar: ${servico}.\nMeu nome é ${nome.trim()}.` +
+        (espera ? `\nVi no site que a senha seria a Nº ${senha}, espera estimada de ~${espera} min.` : ''),
+    )
   }
 
   return (
@@ -40,6 +52,15 @@ export default function Agendar() {
               ))}
             </div>
           </fieldset>
+
+          {servicoEscolhido && (
+            <div className="ticket flex items-baseline gap-4 rounded-lg border-2 border-dashed border-teal/40 bg-teal/5 px-4 py-3 text-sm">
+              <span>
+                Sua senha seria a <strong className="text-lg text-teal">Nº {senha}</strong>
+              </span>
+              <span className="text-ink/60">~{espera} min de espera</span>
+            </div>
+          )}
 
           <label className="block max-w-sm">
             <span className="font-bold">Seu nome</span>

@@ -23,7 +23,7 @@ export default function Hero() {
       </div>
 
       <div className="mt-14">
-        <TicketStub numero={START_TICKET + 1} />
+        <TicketStub numeroInicial={START_TICKET + 1} />
       </div>
     </section>
   )

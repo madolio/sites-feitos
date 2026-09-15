@@ -49,3 +49,28 @@
     font-variant-numeric: tabular-nums;
   }
 }
+
+/* Papel saindo da máquina de senha — toca de novo a cada clique em "Puxar
+   senha" (a key trocada em TicketStub.tsx remonta o elemento). */
+@keyframes ticket-dispensar {
+  from {
+    translate: 0 -14px;
+    rotate: -1.5deg;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    rotate: 0deg;
+    opacity: 1;
+  }
+}
+
+.ticket-dispensar {
+  animation: ticket-dispensar 0.4s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket-dispensar {
+    animation: none;
+  }
+}
