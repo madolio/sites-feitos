@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adriano.fenoninho-max.workers.dev/sitemap.xml

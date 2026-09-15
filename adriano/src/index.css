@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* Identidade dupla: água + elétrica, os dois ofícios reais do Adriano. Azul
+   pra água, âmbar pra elétrica — nunca misturados no mesmo elemento, cada
+   um marca a seção do serviço que representa. Sóbrio e direto: é o site de
+   um profissional de verdade, não um portfólio de conceito. */
+@theme {
+  --color-grafite: #1b2530;
+  --color-papel: #f7f9fb;
+  --color-linha: #dde5ec;
+  --color-agua: #0e6ba8;
+  --color-agua-clara: #eaf4fb;
+  --color-eletrica: #b9790a;
+  --color-eletrica-clara: #fdf3e2;
+  --color-fumo: #5c6b7a;
+
+  --font-heading: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  body {
+    @apply bg-papel font-body text-grafite antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-heading font-semibold;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-agua);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-agua {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-agua px-7 py-3.5 font-semibold text-white transition-opacity hover:opacity-90;
+  }
+
+  .btn-contorno {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-grafite/25 px-6 py-3 font-semibold text-grafite transition-colors hover:border-grafite;
+  }
+
+  /* Contorno claro -- só sobre fundo escuro (CtaFinal). */
+  .btn-contorno-claro {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:border-white;
+  }
+
+  .rotulo {
+    @apply text-xs font-semibold tracking-[0.16em] text-fumo uppercase;
+  }
+}
+
+/* Revelação por rolagem — IntersectionObserver único (useRevelar.ts), sem
+   GSAP: só opacity/translate, então a classe utilitária transition do
+   Tailwind não briga com nada. */
+.revelar {
+  opacity: 0;
+  translate: 0 1rem;
+  transition:
+    opacity 0.6s ease-out,
+    translate 0.6s ease-out;
+}
+
+.revelar[data-visivel='true'] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .revelar {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}
