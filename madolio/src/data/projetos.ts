@@ -239,7 +239,7 @@ export const projetos: Projeto[] = [
     name: 'Taça',
     category: 'Vinícola de altitude',
     description:
-      'Um corte transversal da encosta em vez de foto de vinhedo: cada rótulo fica ancorado na altitude real do talhão de onde vem, e escolher um mostra onde ele nasce.',
+      'Um corte transversal da encosta em vez de foto de vinhedo: a neblina deriva de leve sobre o talhão mais alto, cada rótulo fica ancorado na altitude real de onde vem, e escolher um mostra onde ele nasce.',
     bg: '#241832',
     accent: '#7A1030',
     url: 'https://taca.fenoninho-max.workers.dev',

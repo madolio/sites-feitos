@@ -106,7 +106,7 @@ export default function Encosta() {
                 ))}
               </g>
 
-              <ellipse cx="850" cy="140" rx="430" ry="190" fill="url(#neblina)" />
+              <ellipse cx="850" cy="140" rx="430" ry="190" fill="url(#neblina)" className="neblina-deriva" />
 
               <path d={caminhoCrista(0)} fill="none" stroke="var(--color-parchment)" strokeOpacity="0.5" strokeWidth="2" />
             </svg>
@@ -165,7 +165,11 @@ export default function Encosta() {
                       <span className="mt-0.5 block text-sm text-parchment/55">
                         {v.uva}, {v.safra} — {v.altitude} m de altitude
                       </span>
-                      {selecionado && <span className="mt-2 block max-w-md text-parchment/75">{v.notas}</span>}
+                      {selecionado && (
+                        <span key={v.nome} className="notas-entrar mt-2 block max-w-md text-parchment/75">
+                          {v.notas}
+                        </span>
+                      )}
                     </span>
                   </button>
                 </li>

@@ -24,6 +24,17 @@ A lista de rótulos abaixo do desenho (herdada da versão anterior, mantida porq
 
 Dois tokens de cor novos, específicos do desenho: `--color-soil` #4a3c28 e `--color-soil-light` #6b5636 (terra da encosta, tom claro o bastante pra se destacar do `--color-dusk` #241832 de fundo — silhueta de terra contra céu de noite, não duas cores escondidas uma atrás da outra) e `--color-mist` #cdd6da (neblina, baixa opacidade). O resto da paleta (parchment/garnet/sage/dusk) continua — não era o problema apontado, e já eram cores literais (garnet é cor de vinho de verdade, não um accent arbitrário).
 
+## Reformulação — efeitos, sem repetir a assinatura do Traço
+
+Pedido do usuário: mesmo nível de efeitos/fluidez da Realce, nos 7 conceitos da leva. Aqui o desenho da encosta era 100% estático — zero movimento no site inteiro, e a troca de rótulo selecionado cortava o texto de notas sem transição.
+
+- **Neblina deriva de leve** (`.neblina-deriva`, translate+opacity em loop de 9s) — não é decoração gratuita: é o que justifica visualmente por que o rótulo mais alto (`Névoa`) tem a acidez que o nome promete. Fog de verdade se move; uma neblina estática seria menos verossímil que uma se movendo de leve.
+- **Notas do rótulo selecionado** (`Encosta.tsx`, lista abaixo do desenho) agora entram com fade+leve subida (`.notas-entrar`, key trocada por `v.nome`) em vez de aparecer num corte seco.
+
+**Decisão de propósito:** cogitei um efeito de "crista se desenhando" ao carregar (a curva do morro traçando sozinha, tipo o desenho técnico), mas esse é exatamente o efeito-assinatura do **Traço** (outro projeto do repositório, planta baixa que se desenha sozinha no hero) — reservado pra ele, não repetido aqui.
+
+Ambas as animações novas respeitam `prefers-reduced-motion: reduce`.
+
 ## Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo)
 
 Depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.
