@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Vibe "Quadro de fornada": padaria artesanal × quadro-negro de horário de
+   forno, giz e crosta quente. Nada de padaria-fofa-pastel-com-ícone-de-pão
+   genérico. Ver CLAUDE.md. */
+@theme {
+  --color-crosta: #2b1a12;
+  --color-farinha: #f7f1e4;
+  --color-trigo: #c9a86a;
+  /* --color-forno (terracota) só entra em par de alto contraste: texto
+     crosta sobre fundo forno, ou texto/borda forno sobre fundo crosta.
+     Nunca texto forno direto sobre farinha (contraste insuficiente, mesma
+     regra aplicada no Ferro). */
+  --color-forno: #d97b29;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-farinha font-body text-crosta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-forno);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-forno {
+    @apply inline-flex items-center justify-center rounded-full bg-forno px-7 py-3.5 font-semibold text-crosta transition-opacity hover:opacity-85;
+  }
+
+  .btn-crosta {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-crosta px-6 py-3 font-semibold text-crosta transition-colors hover:bg-crosta hover:text-farinha;
+  }
+}
+
+/* Dígitos tabulares pro contador animado (LoafCounter). */
+.tally {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}

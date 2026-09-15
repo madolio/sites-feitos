@@ -245,4 +245,13 @@ export const projetos: Projeto[] = [
     accent: '#16161a',
     url: 'https://ferro.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Fornada',
+    category: 'Padaria artesanal',
+    description:
+      'O quadro de horários do forno é o próprio conteúdo, escrito a giz — e o contador de pães do dia sobe sozinho no hero. Sem o clichê fofo-pastel de padaria.',
+    bg: '#f7f1e4',
+    accent: '#d97b29',
+    url: 'https://fornada.fenoninho-max.workers.dev',
+  },
 ]
