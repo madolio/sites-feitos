@@ -116,7 +116,7 @@ export const projetos: Projeto[] = [
     name: 'Corte',
     category: 'Salão de beleza e barbearia',
     description:
-      'Painel de senha de atendimento em vez de nav — na paleta azul/branco/vermelho do poste giratório clássico de barbearia. O talão puxa uma senha nova de verdade, e escolher um serviço já mostra a espera estimada.',
+      'Painel de senha de atendimento numa barbearia clássica de verdade — poste giratório, selo vintage e tesoura/navalha/pente marcando cada profissional pela especialidade.',
     bg: '#FAFAF7',
     accent: '#C8202F',
     url: 'https://corte.fenoninho-max.workers.dev',
