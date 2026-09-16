@@ -39,6 +39,12 @@ export default function Projetos() {
             negócio que representa, sem reaproveitar a cara de nenhum dos
             outros.
           </p>
+          <Link
+            to="/reel"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-ink"
+          >
+            Ver os destaques em movimento →
+          </Link>
         </Reveal>
 
         <Reveal className="mt-10 flex items-center justify-between gap-4">
