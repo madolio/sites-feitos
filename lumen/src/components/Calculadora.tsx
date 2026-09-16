@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { ambientes, FATOR_MANUTENCAO, FATOR_UTILIZACAO } from '../data/ambientes'
 import { luminarias } from '../data/luminarias'
 import { sendToWhatsApp } from '../demo'
+import { CampoNumero } from './CampoNumero'
 
 // Fórmula real de projeto luminotécnico: N = (E × A) / (F × UF × MF)
 // E = iluminância desejada (lux), A = área (m²), F = fluxo da luminária
@@ -41,30 +42,8 @@ export function Calculadora() {
         </p>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <label className="flex flex-col gap-2 text-sm text-fumo">
-            Largura do ambiente (m)
-            <input
-              type="number"
-              min={1}
-              max={20}
-              step={0.5}
-              value={largura}
-              onChange={(e) => setLargura(Number(e.target.value) || 1)}
-              className="rounded-none border border-fio bg-noite px-4 py-3 text-marfim outline-none focus:border-acento"
-            />
-          </label>
-          <label className="flex flex-col gap-2 text-sm text-fumo">
-            Comprimento do ambiente (m)
-            <input
-              type="number"
-              min={1}
-              max={20}
-              step={0.5}
-              value={comprimento}
-              onChange={(e) => setComprimento(Number(e.target.value) || 1)}
-              className="rounded-none border border-fio bg-noite px-4 py-3 text-marfim outline-none focus:border-acento"
-            />
-          </label>
+          <CampoNumero label="Largura do ambiente (m)" value={largura} onChange={setLargura} min={1} max={20} step={0.5} />
+          <CampoNumero label="Comprimento do ambiente (m)" value={comprimento} onChange={setComprimento} min={1} max={20} step={0.5} />
         </div>
 
         <div className="mt-6">

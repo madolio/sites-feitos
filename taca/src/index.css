@@ -39,6 +39,15 @@
   }
 }
 
+.campo-numero::-webkit-inner-spin-button,
+.campo-numero::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.campo-numero {
+  -moz-appearance: textfield;
+}
+
 @layer components {
   .btn-primary,
   .btn-outline {

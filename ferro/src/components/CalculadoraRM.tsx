@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { CampoNumero } from './CampoNumero'
 
 // O wildcard novo: uma calculadora de 1RM (carga máxima pra uma repetição)
 // de verdade, usando a fórmula de Epley — a mesma que treinador de força
@@ -33,31 +34,8 @@ export default function CalculadoraRM() {
       </p>
 
       <div className="mt-6 grid grid-cols-2 gap-4">
-        <label className="block">
-          <span className="text-sm font-semibold">Peso (kg)</span>
-          <input
-            type="number"
-            inputMode="decimal"
-            min={0}
-            value={peso}
-            onChange={(e) => setPeso(e.target.value)}
-            placeholder="80"
-            className="mt-1.5 w-full border-2 border-preto/20 px-3 py-2.5 text-lg focus:border-preto focus:outline-none"
-          />
-        </label>
-        <label className="block">
-          <span className="text-sm font-semibold">Repetições</span>
-          <input
-            type="number"
-            inputMode="numeric"
-            min={1}
-            max={20}
-            value={reps}
-            onChange={(e) => setReps(e.target.value)}
-            placeholder="5"
-            className="mt-1.5 w-full border-2 border-preto/20 px-3 py-2.5 text-lg focus:border-preto focus:outline-none"
-          />
-        </label>
+        <CampoNumero label="Peso (kg)" value={peso} onChange={setPeso} placeholder="80" min={0} max={500} step={5} />
+        <CampoNumero label="Repetições" value={reps} onChange={setReps} placeholder="5" min={1} max={20} step={1} />
       </div>
 
       {rm && (

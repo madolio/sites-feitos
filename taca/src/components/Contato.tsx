@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { sendToWhatsApp } from '../demo'
+import { CampoNumero } from './CampoNumero'
 
 export default function Contato() {
   const [nome, setNome] = useState('')
@@ -32,16 +33,7 @@ export default function Contato() {
               className="mt-2 w-full rounded-lg border border-line bg-white/50 px-4 py-3 text-ink focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-garnet"
             />
           </label>
-          <label className="block max-w-xs">
-            <span className="text-sm font-semibold text-ink">Quantas pessoas</span>
-            <input
-              type="number"
-              min={1}
-              value={pessoas}
-              onChange={(e) => setPessoas(e.target.value)}
-              className="mt-2 w-full rounded-lg border border-line bg-white/50 px-4 py-3 text-ink focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-garnet"
-            />
-          </label>
+          <CampoNumero label="Quantas pessoas" value={pessoas} onChange={setPessoas} min={1} max={20} />
           <button type="submit" disabled={!pronto} className="btn-primary disabled:cursor-not-allowed disabled:opacity-40">
             Pedir horários disponíveis
           </button>
