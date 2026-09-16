@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full">
-      <Hero gema={gema} peca={peca} onPeca={setPeca} />
+      <Hero gema={gema} peca={peca} onPeca={setPeca} onGema={setGema} />
       <Catalogo gema={gema} onEscolher={setGema} />
       <Processo />
       <Contato />

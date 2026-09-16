@@ -18,6 +18,14 @@ Primeira versão mostrava só a gema (um octaedro gigante) girando isolada no he
 
 **Gotcha de proporção**: ajustar câmera/escala de uma cena Three.js "no escuro" (sem olhar o resultado) erra fácil — a primeira tentativa pós-reformulação tinha a gema flutuando longe da peça, o brinco com o "gancho" renderizado como blob (rotation passada como prop de `<cylinderGeometry>` em vez de no `<mesh>`) e a câmera errada deixando tudo gigante ou minúsculo dependendo da peça. Corrigido só depois de testar visualmente cada uma das 3 peças com screenshot real (Playwright), não confiando só na leitura do código.
 
+## v3: brincos → pulseira cravejada, e Hero em duas colunas
+
+Usuário mandou foto de referência de um "tennis bracelet" (fileira de pedras encastoadas, não um solitário) — trocamos "Brincos" por "Pulseira" (`Pulseira` em `cena/Joia.tsx`): 15 gemas pequenas em torno de um aro fino prateado, com vão e fecho de um lado. Depois de testar na home, a composição centrada/simétrica ficava pequena e sem graça — ajustada com escala maior, deslocamento pra esquerda e rotação diagonal em Z, pra abrir mais como a foto de referência (fecho de um lado, pedras se espalhando pro outro).
+
+`Hero.tsx` foi reformulado de "canvas full-bleed com seletor flutuando por cima" pra duas colunas: joia à esquerda (`Vitrine`), escolha de peça + pedra à direita — texto e controles não competem mais com o 3D, e sobra espaço pra crescer (mais peças, mais gemas, mais um bloco) sem esmagar a vitrine. A seleção de pedra agora existe em dois lugares (Hero, rápida; `Catalogo` mais abaixo, com a ficha técnica completa de IOR/dispersão/dureza) — de propósito, não duplicação por descuido.
+
+**Gotcha de aspect ratio**: o canvas do Colar (correntes em V bem largas) foi calibrado pra um canvas full-width; na coluna estreita (metade da tela no desktop), a mesma câmera fixa deixa o colar meio grande/cortado nas bordas por causa do FOV vertical fixo do Three.js — funcional, mas não é o enquadramento ideal; ajuste futuro seria recalcular a câmera com base no aspect ratio real do canvas, não um valor fixo pensado pra tela cheia.
+
 ## Bug real encontrado e corrigido: stagger + ScrollTrigger `once` em botões
 
 `Catalogo.tsx` originalmente envolvia a grade de 6 botões (as gemas) num único `<Reveal stagger={0.06}>`, igual ao padrão usado em Lúmen/Ferro/etc. Isso **quebrou de verdade**: o `onEnter`/`onComplete` do GSAP disparavam normalmente (confirmado via log), mas o DOM permanecia travado em `opacity: 0` pra sempre — um `MutationObserver` mostrou centenas de escritas de estilo repetidas voltando pra `opacity: 0` mesmo depois do `onComplete`. Isolei removendo o WebGL (não era a causa) e removendo o `stagger` (aí funcionou 100%) — o problema é especificamente a combinação `stagger` + `scrollTrigger.once: true` quando o target é um conjunto de `<button>` com `transition` do Tailwind (que inclui `opacity`/`transform` nas propriedades transicionadas) e `className` condicional.
