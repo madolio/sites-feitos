@@ -34,20 +34,24 @@ export default function Gema({
       <MeshTransmissionMaterial
         // ior real da pedra escolhida — quanto maior, mais a luz se dobra
         // ao entrar/sair da gema, e mais "viva" a peça parece girando.
+        // attenuationDistance MAIOR que thickness é o que faz a pedra
+        // parecer clara e brilhante — antes estava menor (0.4 < 1.4),
+        // e pela lei de Beer-Lambert isso absorve praticamente toda a luz
+        // que atravessa, deixando a gema com cara de pedra preta opaca.
         ior={gema.ior}
-        thickness={1.4}
-        chromaticAberration={gema.dispersao * 6}
+        thickness={0.7}
+        chromaticAberration={gema.dispersao * 8}
         color={gema.cor}
-        roughness={0.03}
+        roughness={0.02}
         transmission={1}
-        anisotropy={0.2}
-        distortion={0.1}
-        distortionScale={0.3}
-        temporalDistortion={0.05}
+        anisotropy={0.15}
+        distortion={0.06}
+        distortionScale={0.2}
+        temporalDistortion={0.03}
         clearcoat={1}
-        attenuationDistance={0.4}
+        attenuationDistance={1.1}
         attenuationColor={gema.cor}
-        envMapIntensity={1.4}
+        envMapIntensity={2.4}
       />
     </mesh>
   )

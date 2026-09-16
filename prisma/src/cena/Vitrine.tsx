@@ -12,11 +12,13 @@ export default function Vitrine({ peca, gema }: { peca: Peca; gema: GemaTipo }) 
       dpr={[1, 1.8]}
       gl={{ antialias: true, alpha: true }}
     >
-      <ambientLight intensity={0.5} />
-      <spotLight position={[4, 5, 5]} intensity={2.4} angle={0.4} penumbra={0.6} />
-      <spotLight position={[-4, -2, 3]} intensity={1.1} color={gema.cor} angle={0.5} penumbra={1} />
+      <ambientLight intensity={0.8} />
+      <spotLight position={[4, 5, 5]} intensity={3.5} angle={0.4} penumbra={0.6} />
+      <spotLight position={[-4, -2, 3]} intensity={1.8} color={gema.cor} angle={0.5} penumbra={1} />
+      <spotLight position={[0, 3, -4]} intensity={2} angle={0.6} penumbra={0.8} />
+      <pointLight position={[0, 0, 4]} intensity={1.2} />
       <Suspense fallback={null}>
-        <Environment preset="studio" />
+        <Environment preset="city" />
         <Joia peca={peca} gema={gema} girando={false} />
       </Suspense>
       <OrbitControls
