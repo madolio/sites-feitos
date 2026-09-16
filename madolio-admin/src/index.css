@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-noite: #0c0d10;
+  --color-carvao: #16171b;
+  --color-fio: #2a2c32;
+  --color-marfim: #eef0f3;
+  --color-fumo: #9195a0;
+  --color-acento: #5ee6a4;
+}
+
+@layer base {
+  body {
+    @apply bg-noite font-sans text-marfim antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
