@@ -9,7 +9,7 @@
   --color-steel: #3a5a72;
   --color-line: rgba(202, 162, 94, 0.18);
 
-  --font-heading: "Cormorant Garamond", "Iowan Old Style", ui-serif, serif;
+  --font-heading: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-ui: "Sora", ui-sans-serif, system-ui, sans-serif;
 }
 

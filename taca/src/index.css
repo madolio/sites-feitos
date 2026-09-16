@@ -11,7 +11,7 @@
   --color-dusk: #241832;
   --color-line: rgba(43, 27, 46, 0.14);
 
-  --font-heading: "Newsreader", "Iowan Old Style", ui-serif, serif;
+  --font-heading: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-ui: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 

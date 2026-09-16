@@ -15,7 +15,7 @@
   --color-acento: #ffb46b;
   --color-acento-escuro: #7a4d1c;
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Unbounded", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }

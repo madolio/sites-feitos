@@ -10,8 +10,8 @@
   --color-teal: #2f6f6b;
   --color-teal-hover: #245552;
 
-  --font-display: "Cormorant", ui-serif, Georgia, serif;
-  --font-body: "Cormorant", ui-serif, Georgia, serif;
+  --font-display: "Big Shoulders Display", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Mulish", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Courier Prime", ui-monospace, monospace;
 }
 
