@@ -26,25 +26,47 @@ function Anel({ gema }: { gema: GemaTipo }) {
   )
 }
 
+const RAIO_COLAR = 1.25
+const ABERTURA_COLAR = 1.15 // rad de vão no topo — onde a corrente passaria pela nuca
+const GAP_COLAR = Math.PI / 2 // vão centrado no topo, não do lado
+
 function Colar({ gema }: { gema: GemaTipo }) {
+  const inicio = GAP_COLAR + ABERTURA_COLAR / 2
+  const angBail = -Math.PI / 2 // ponto mais baixo do arco, onde o pingente pende
+
   return (
-    <group position={[0, 0.4, 0]}>
-      {/* duas correntes finas descendo dos ombros até o bail central,
-          bem mais simples e legível que tentar curvar uma corrente real */}
-      <mesh position={[-0.55, 0.55, 0]} rotation={[0, 0, 0.55]}>
-        <cylinderGeometry args={[0.02, 0.02, 1.3, 8]} />
+    <group position={[0, 0.55, 0]}>
+      {/* corrente: um arco de verdade (curvo, não dois canos retos), aberto
+          no topo como se passasse por cima do pescoço — a versão anterior
+          com dois cilindros retos formando um "V" lia como um cabide, não
+          como um colar. */}
+      <mesh rotation={[0, 0, inicio]}>
+        <torusGeometry args={[RAIO_COLAR, 0.025, 12, 80, Math.PI * 2 - ABERTURA_COLAR]} />
         <meshStandardMaterial {...OURO} />
       </mesh>
-      <mesh position={[0.55, 0.55, 0]} rotation={[0, 0, -0.55]}>
-        <cylinderGeometry args={[0.02, 0.02, 1.3, 8]} />
+
+      {/* bail conectando a corrente ao pingente */}
+      <mesh
+        position={[Math.cos(angBail) * RAIO_COLAR, Math.sin(angBail) * RAIO_COLAR, 0]}
+        rotation={[Math.PI / 2, 0, 0]}
+      >
+        <torusGeometry args={[0.1, 0.03, 12, 32]} />
         <meshStandardMaterial {...OURO} />
       </mesh>
-      {/* bail preso na ponta das duas correntes */}
-      <mesh position={[0, -0.05, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.12, 0.035, 12, 32]} />
+
+      {/* pingente: mesmo estilo de bezel do anel, não a gema flutuando sozinha */}
+      <mesh
+        position={[Math.cos(angBail) * RAIO_COLAR, Math.sin(angBail) * RAIO_COLAR - 0.32, 0.04]}
+      >
+        <torusGeometry args={[0.24, 0.04, 12, 32]} />
         <meshStandardMaterial {...OURO} />
       </mesh>
-      <Gema gema={gema} escala={0.55} posicao={[0, -0.55, 0]} girando />
+      <Gema
+        gema={gema}
+        escala={0.26}
+        posicao={[Math.cos(angBail) * RAIO_COLAR, Math.sin(angBail) * RAIO_COLAR - 0.32, 0.04]}
+        girando
+      />
     </group>
   )
 }
