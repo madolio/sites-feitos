@@ -86,12 +86,25 @@ const PASSO = 4.75 // rem — distância vertical entre o centro de cada parada
 // A barra que desliza sobre o trilho até a parada ativa — o carrinho do
 // reformer. Em rem (não medido em px via DOM) porque o ritmo vertical das
 // paradas é fixo por CSS; evita ResizeObserver só pra isso.
+//
+// `top` soma o padding-top do <nav> (py-9 = 2.25rem): como o Carrinho é
+// posicionado absoluto e o <nav> é o ancestral posicionado mais próximo, o
+// "top: 0" dele cai na borda do padding-box do nav — ANTES do padding —
+// enquanto a <ul> (fluxo normal) começa depois do padding. Sem essa soma o
+// carrinho ficava ~36px acima de onde devia, cavalgando entre duas paradas
+// em vez de alinhado na ativa (bug visto em screenshot pelo usuário).
+const PADDING_NAV = 2.25 // rem — py-9
+
 function Carrinho({ indice, cor }: { indice: number; cor: string }) {
   return (
     <div
       aria-hidden="true"
       className="motion-safe:transition-[top] motion-safe:duration-500 motion-safe:ease-out absolute left-0 h-14 w-full border-y-2"
-      style={{ top: `${indice * PASSO}rem`, borderColor: cor, background: 'color-mix(in srgb, var(--color-gesso) 12%, transparent)' }}
+      style={{
+        top: `${indice * PASSO + PADDING_NAV}rem`,
+        borderColor: cor,
+        background: 'color-mix(in srgb, var(--color-gesso) 12%, transparent)',
+      }}
     >
       <span className="absolute top-1/2 left-2.5 h-1.5 w-1.5 -translate-y-1/2 rounded-full" style={{ background: cor }} />
       <span className="absolute top-1/2 right-2.5 h-1.5 w-1.5 -translate-y-1/2 rounded-full" style={{ background: cor }} />
