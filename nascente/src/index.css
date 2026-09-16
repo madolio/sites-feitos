@@ -50,3 +50,23 @@
     @apply border border-ink/25 text-ink hover:border-ink;
   }
 }
+
+/* Painel.tsx: o traço tracejado que "escorre" atrás dos estágios, mesma
+   linguagem visual do cano em TreatmentDiagram.tsx (água correndo, não uma
+   borda decorativa parada). */
+@keyframes painel-fluxo {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.painel-fluxo {
+  color: var(--color-water);
+  animation: painel-fluxo 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .painel-fluxo {
+    animation: none;
+  }
+}

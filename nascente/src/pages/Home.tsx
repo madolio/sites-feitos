@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-surface-alt py-20 md:py-28">
+      <section id="osmose" className="scroll-mt-20 bg-surface-alt py-20 md:py-28">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[1fr_1.2fr] md:gap-16">
           <div>
             <h2 className="text-3xl font-extrabold text-ink md:text-[2.75rem]">

@@ -39,7 +39,7 @@ A home foi reestruturada primeiro (é o molde de origem). Mudanças de **arquite
 - **Footer (`Footer.tsx`) minimizado.** Sem o bloco escuro "bora conversar" (que se repetia em quase todo projeto) — como o CTA já é permanente (`Chrome.tsx`), o rodapé é só copyright + e-mail, uma linha.
 - `src/data/projetos.ts` (novo) — lista de projetos compartilhada entre `Trabalhos.tsx` (home) e `pages/Projetos.tsx` (grid completo, mantido como página secundária pra quem quer ver todos com mais detalhe). `pages/Projetos.tsx` ganhou um link "← madolio" no topo já que não há mais nav global pra voltar.
 
-**Escopo desta reestruturação:** só a home. NBJ Systems, Sabor da Vila, Traço, Âncora, Doce Ateliê e Estúdio Alma foram propositalmente deixados como estão. Bastos Advocacia e Torre serão reestruturados depois, um de cada vez (pedido explícito do usuário: "vamos pág a pág").
+**Escopo desta reestruturação:** só a home. Sabor da Vila, Traço, Âncora, Doce Ateliê e Estúdio Alma continuam propositalmente como estão. Bastos Advocacia, Torre e Nascente já foram reestruturados depois, um de cada vez (pedido explícito do usuário: "vamos pág a pág") — ver o `CLAUDE.md` de cada um.
 
 ## Diretrizes de design (histórico, ainda válido)
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Nav from './Nav'
+import Painel from './Painel'
 import Footer from './Footer'
 
 export default function Layout() {
@@ -19,11 +19,13 @@ export default function Layout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white text-ink">
-      <Nav />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
+      <Painel />
+      <div className="flex flex-1 flex-col lg:pl-56">
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }
