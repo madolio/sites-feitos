@@ -57,12 +57,6 @@ export default function Projetos() {
           </span>
         </Reveal>
 
-        <Reveal className="mt-3">
-          <Link to="/reels" className="text-sm font-semibold text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent">
-            Prefere ver em Reels? ↓
-          </Link>
-        </Reveal>
-
         {filtrados.length === 0 ? (
           <p className="mt-14 text-ink/60">Nenhum projeto encontrado pra "{busca}".</p>
         ) : (

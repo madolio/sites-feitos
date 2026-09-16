@@ -61,20 +61,6 @@ Ver histórico anterior deste arquivo — usar Puppeteer com `isMobile: true`/`h
 
 Ver `src/components/Reveal.tsx` — não colocar a classe `transition`/`duration-*` genérica do Tailwind no mesmo elemento que o GSAP anima em opacity/transform.
 
-## `/reels` — o portfólio em clipes curtos
-
-Feature nova, rota separada. Pedido do usuário foi só "feature nova, tipo reels" — perguntei o que exatamente antes de construir (AskUserQuestion: vitrine tipo Instagram vs. clipes da interação de cada site vs. outro conceito) e a resposta foi **clipes curtos da interação de assinatura de cada site**, não uma galeria genérica.
-
-- `pages/Reels.tsx` — rolagem vertical com `snap-y snap-mandatory`, uma tela cheia (`100svh`) por projeto, sem paginação/botão de "próximo": rolar É a navegação, igual ao formato real. Fica **fora do `<Layout>`** de propósito (ver `App.tsx`) — sem o `Chrome` fixo nem o `Footer` do resto do site, pra parecer abrir um app separado, não mais uma página institucional.
-- `data/reels.ts` — um `Reel` por projeto: `slug` (bate com o nome do arquivo em `public/reels/`), `projeto`/`categoria`/`legenda`/`url`.
-- **Os clipes são capturados do site ao vivo, não são mockup nem posed screenshot.** Cada `public/reels/<slug>.gif` veio de um script Puppeteer que abre o Worker publicado de verdade, executa o gesto de assinatura daquele projeto (clicar na roda de aromas do Taça, puxar a senha do Corte, escolher esmalte e levar ao forno no Torno, etc.) e tira uma sequência de screenshots recortados (`page.screenshot({clip})`) num elemento/área específica — não a tela inteira. Os PNGs viram GIF animado via `gifenc` + `pngjs` (decodifica cada PNG pra pixels crus, quantiza, codifica) — **sem depender de ffmpeg**, que não está instalado neste ambiente. O script de captura ficou no scratchpad da sessão, não faz parte do repo (é uma ferramenta de geração de asset, não código de produção).
-- `<slug>.png` (o último quadro de cada captura) é o poster: `index.css` esconde `.clipe-anim` e mostra `.clipe-poster` sob `@media (prefers-reduced-motion: reduce)` — não dá pra pausar a animação nativa de um GIF via CSS, então a saída é nunca carregar a versão animada nesse caso.
-- **Curadoria, não os 31 projetos do portfólio.** Primeira leva com 8: Taça, Torno, Cerne, Calibre, Corte, Tinta, Ferro, Pulso — escolhidos por terem um gesto único, determinístico e fácil de disparar por script (clique simples ou sequência curta). Cardume (scroll 3D) e Marcha (scroll profundo + fotos reais) ficaram de fora dessa leva por precisarem de mais engenharia de captura; qualquer projeto novo com interação de assinatura clara é candidato a entrar depois, bastando gerar o par `.gif`+`.png` e adicionar uma entrada em `reels.ts`.
-- Descoberto e corrigido durante a geração: o primeiro seletor usado pra recortar o relógio do Calibre (`.aspect-square`) casava com DOIS elementos (um ícone de 40px E o relógio de verdade) — `querySelector` pegava o primeiro (o ícone), gerando um GIF 80×80 todo preto. Corrigido mirando `.aspect-square.w-full` (classe exclusiva do relógio). Vale de lição pra qualquer seletor de recorte por classe genérica: conferir com um `querySelectorAll` quantos elementos batem antes de confiar no primeiro.
-- Torno (cena 3D) gerava um GIF de ~2,8 MB com o recorte/contagem de quadros iniciais — cena rica em cor comprime mal em GIF (paleta de 256 cores). Resolvido recortando mais apertado ao redor do vaso (não a tela inteira) e reduzindo de 30 pra 10 quadros — caiu pra ~470 KB, ainda o mais pesado da leva mas dentro do razoável.
-- Links de entrada: "Ver em Reels" em `Trabalhos.tsx` (home) e "Prefere ver em Reels?" em `pages/Projetos.tsx` — o link de volta de dentro do Reels leva pra `/projetos`, não pra `/`.
-- Listado em `public/sitemap.xml` (prioridade 0.6, mais baixa que `/` e `/projetos` — é uma forma alternativa de navegar o mesmo conteúdo, não conteúdo novo).
-
 ## SEO básico
 
 `index.html` tem meta description, canonical, Open Graph e Twitter Card. `public/robots.txt` e `public/sitemap.xml` existem — o sitemap lista `/` e `/projetos`.

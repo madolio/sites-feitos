@@ -99,18 +99,12 @@ export default function Trabalhos() {
               ))}
             </Reveal>
 
-            <Reveal className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-center lg:text-left">
+            <Reveal className="mt-10 text-center lg:text-left">
               <Link
                 to="/projetos"
                 className="font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 transition-colors hover:decoration-accent-hero"
               >
                 Ver todos os projetos numa página só
-              </Link>
-              <Link
-                to="/reels"
-                className="font-semibold text-fog underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
-              >
-                Ver em Reels ↓
               </Link>
             </Reveal>
           </div>

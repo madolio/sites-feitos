@@ -187,21 +187,3 @@
     display: none;
   }
 }
-
-/* Reels (ver Reels.tsx): o clipe animado (.webp em loop) é o padrão; o
-   poster (.png, primeiro quadro) só aparece com movimento reduzido — trocar
-   a fonte de animação nativa de uma imagem não dá pra pausar via CSS, então
-   a saída é nunca carregar/mostrar a versão animada nesse caso. */
-.clipe-poster {
-  display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .clipe-anim {
-    display: none;
-  }
-
-  .clipe-poster {
-    display: block;
-  }
-}
