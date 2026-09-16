@@ -26,6 +26,18 @@ Sem JSON-LD de LocalBusiness de propósito (seria dado estruturado de uma empres
 
 Tokens em `src/index.css`: papel `#fffcf7`, cacau `#33190f`, cereja `#c4213a`. Fonte única: **Bricolage Grotesque** (eixos opsz/wdth/wght; títulos com `font-stretch: 80%` via `.display`). As cores dos sabores ficam em `src/data.ts` e são reusadas no leque, nas opções do montador e nas camadas do bolo.
 
+## Reestruturação de set/2026 — a navegação virou a própria cartela de sabores
+
+Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa full-width, logo + lista de links + botão) enquanto outros conceitos do repositório (Torre, Calibre, Cerne, Nascente...) já tinham ganhado arquitetura própria — ver o `CLAUDE.md` do `madolio`, que documentava essa lista. Reestruturado "página a página" a pedido do usuário, usando a reforma do Nascente (painel de instrumento) como referência de método.
+
+`Nav.tsx` (removido, não deixado como código morto) virou `Cartela.tsx`: em vez de uma lista de links de texto, cada seção do site (Sabores/Encomenda/Docinhos/Prazos) é uma tira em miniatura do próprio leque de cores que já é o mecanismo do Hero (`FanDeck.tsx`) e o vocabulário da marca (`FanMark`, reaproveitado como logo). As tiras (`Tira`) ficam presas numa fileira, cada uma com um código no estilo Pantone (`DA 401`–`DA 404`) e uma cor — não as cores dos sabores de verdade (`data.ts`), mas uma paleta própria pra navegação, emprestada do mesmo trio do `FanMark` mais uma quarta cor. Levemente abertas em leque (`--tilt`, `rotate` por índice), a seção ativa (ou em hover) perde a inclinação e sobe — a mesma sensação de puxar uma tira pra fora do maço que já existe em `.fan-strip`, reaproveitada em `.cartela-tab` no `index.css`.
+
+- **Desktop:** barra fixa no topo (não virou coluna lateral — a página é única e já usa `max-w-6xl` centralizado; sidebar exigiria replatformar todas as seções). As tiras ficam entre a marca e o CTA, alinhadas pela base (`items-end`) como um leque de verdade.
+- **Mobile:** vira uma barra fina (marca + CTA + botão de menu). As tiras ficam atrás de um menu que abre embaixo, em duas colunas, com o mesmo layout de swatch+código+nome do `FlavorOption` do `Encomenda.tsx` — reaproveita um padrão visual que o site já tinha, em vez de inventar um novo.
+- **Seção ativa:** por scroll-spy (`IntersectionObserver`, `useSecaoAtiva`) — como é página única (sem rotas), não precisa de fallback por rota+hash como o do Nascente.
+- Como o header cresceu (as tiras precisam de espaço pra "abrir" acima da fileira), o `scroll-mt-16`/`pt-28 md:pt-36` das seções virou `scroll-mt-24`/`pt-24 md:pt-32` em `Hero.tsx`, `Encomenda.tsx`, `Docinhos.tsx` e `Prazos.tsx`.
+- Cuidado com a palavra mais longa (`Encomenda`) estourando a largura da tira — ajustada pra `w-16` com `break-words` de segurança. Os códigos das tiras usam `text-ink/65` (não `/55`), pela mesma regra de contraste da seção abaixo.
+
 ## Componentes e de onde vieram
 
 - `FanDeck.tsx` — **adaptado do Bounce Cards (React Bits)**: entrada elástica em stagger + "empurra os vizinhos" no hover, mas girando as tiras em volta de um rebite. O ângulo final é `--base`, `--open` (0→1) é animado pelo GSAP, `--push`/`--lift` vêm do hover (CSS em `index.css`, classe `.fan-strip`). Durante a entrada a classe `.is-opening` desliga a `transition` do CSS pra não brigar com o GSAP.

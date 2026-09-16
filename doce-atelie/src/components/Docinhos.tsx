@@ -3,7 +3,7 @@ import Docinho from './Docinho'
 
 export default function Docinhos() {
   return (
-    <section id="docinhos" className="scroll-mt-16 py-20 md:py-28">
+    <section id="docinhos" className="scroll-mt-24 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="grid gap-6 md:grid-cols-[1fr_1fr] md:items-end">
           <h2 className="display text-5xl md:text-7xl">Docinhos de festa</h2>

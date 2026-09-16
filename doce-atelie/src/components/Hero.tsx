@@ -22,7 +22,7 @@ export default function Hero({ order, setOrder }: HeroProps) {
   }
 
   return (
-    <section id="sabores" className="scroll-mt-16 overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section id="sabores" className="scroll-mt-24 overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
       <div className="mx-auto grid max-w-6xl gap-14 px-5 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-10">
         <div>
           <h1 className="display text-[3.2rem] sm:text-7xl lg:text-[5.6rem]">

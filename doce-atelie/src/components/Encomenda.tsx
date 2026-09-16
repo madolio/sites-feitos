@@ -28,7 +28,7 @@ export default function Encomenda({ order, setOrder }: EncomendaProps) {
     })
 
   return (
-    <section id="encomenda" className="scroll-mt-16 bg-ink py-20 text-card md:py-28">
+    <section id="encomenda" className="scroll-mt-24 bg-ink py-20 text-card md:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="display text-5xl md:text-7xl">Monte a encomenda</h2>
         <p className="mt-5 max-w-lg text-lg text-card/75">

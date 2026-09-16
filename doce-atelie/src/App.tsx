@@ -4,7 +4,7 @@ import Docinhos from './components/Docinhos'
 import Encomenda from './components/Encomenda'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
-import Nav from './components/Nav'
+import Cartela from './components/Cartela'
 import Prazos from './components/Prazos'
 import Reveal from './components/Reveal'
 import Sprinkles from './components/Sprinkles'
@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <>
-      <Nav />
+      <Cartela />
       <main>
         <Hero order={order} setOrder={setOrder} />
         <Encomenda order={order} setOrder={setOrder} />
