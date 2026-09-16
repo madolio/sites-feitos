@@ -31,8 +31,12 @@ export default function Reel() {
       const painéis = painelRefs.current
       if (!container || painéis.length < 2) return
 
+      const textos = painéis.map((p) => p.querySelector<HTMLElement>('.reel-texto')!)
+
       gsap.set(painéis, { opacity: 0 })
       gsap.set(painéis[0], { opacity: 1 })
+      gsap.set(textos, { yPercent: 8 })
+      gsap.set(textos[0], { yPercent: 0 })
 
       gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
         const tl = gsap.timeline({
@@ -46,10 +50,16 @@ export default function Reel() {
           },
         })
 
+        // Fundo (foto/cor) crossfade suave; o texto de cada painel desliza
+        // pra fora/dentro em vez de só desaparecer no mesmo lugar — dois
+        // blocos de texto sobrepostos exatamente na mesma posição (como
+        // era antes) ficava ilegível durante a transição ("ROTATORNO").
         painéis.forEach((_, i) => {
           if (i === 0) return
-          tl.to(painéis[i - 1], { opacity: 0, duration: 0.35 }, i - 0.7)
-          tl.to(painéis[i], { opacity: 1, duration: 0.35 }, i - 0.7)
+          tl.to(painéis[i - 1], { opacity: 0, duration: 0.16 }, i - 0.55)
+          tl.to(textos[i - 1], { yPercent: -8, opacity: 0, duration: 0.16 }, i - 0.55)
+          tl.to(painéis[i], { opacity: 1, duration: 0.16 }, i - 0.42)
+          tl.fromTo(textos[i], { yPercent: 8, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.2 }, i - 0.4)
         })
 
         return () => {
@@ -80,9 +90,15 @@ export default function Reel() {
             <img
               src={`/previews/${p.slug}.jpg`}
               alt=""
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
+              className="pointer-events-none absolute inset-0 h-full w-full scale-110 object-cover object-top opacity-[0.08] blur-2xl saturate-50"
             />
-            <div className="relative z-10 max-w-2xl">
+            {/* Escurece a textura de fundo pra ela virar só cor/forma abstrata
+                — com a imagem "crua" (mesmo em opacidade baixa), o texto real
+                do preview aparecia como um "texto fantasma" competindo com o
+                título/descrição de verdade, especialmente durante o crossfade
+                entre painéis (dois textos difusos sobrepostos = ilegível). */}
+            <div className="absolute inset-0" style={{ backgroundColor: p.bg, opacity: 0.85 }} />
+            <div className="reel-texto relative z-10 max-w-2xl">
               <p className="text-xs font-semibold tracking-widest uppercase opacity-60" style={{ color: p.accent }}>
                 {String(i + 1).padStart(2, '0')} / {String(destaques.length).padStart(2, '0')} — {p.category}
               </p>

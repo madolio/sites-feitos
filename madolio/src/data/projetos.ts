@@ -290,7 +290,7 @@ export const projetos: Projeto[] = [
     name: 'Prisma',
     category: 'Joalheria sob medida',
     description:
-      'Configurador de verdade em WebGL: escolha a peça (anel, colar, brincos) e a gema, e veja ela encaixada na peça — com o índice de refração real de cada pedra (2,417 do diamante, 1,762 do rubi/safira...), não um brilho decorativo.',
+      'Configurador de verdade em WebGL: escolha a peça (anel, colar, pulseira) e a gema, e veja ela encaixada na peça — com o índice de refração real de cada pedra (2,417 do diamante, 1,762 do rubi/safira...), não um brilho decorativo.',
     bg: '#100c14',
     accent: '#b98cff',
     url: 'https://prisma.fenoninho-max.workers.dev',
