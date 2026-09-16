@@ -48,19 +48,20 @@ function Colar({ gema }: { gema: GemaTipo }) {
   )
 }
 
-function Brincos({ gema }: { gema: GemaTipo }) {
+function Pulseira({ gema }: { gema: GemaTipo }) {
   return (
-    <group>
-      {[-1, 1].map((lado) => (
-        <group key={lado} position={[lado * 0.75, 0, 0]}>
-          {/* base do brinco (tarraxa) atrás da gema */}
-          <mesh position={[0, 0, -0.2]} rotation={[Math.PI / 2, 0, 0]}>
-            <cylinderGeometry args={[0.42, 0.42, 0.06, 24]} />
-            <meshStandardMaterial {...OURO} />
-          </mesh>
-          <Gema gema={gema} escala={0.3} posicao={[0, 0, 0]} />
-        </group>
-      ))}
+    <group rotation={[1.1, 0, 0]}>
+      {/* bangle: aro largo visto em ângulo, como um bracelete apoiado */}
+      <mesh>
+        <torusGeometry args={[1.1, 0.1, 24, 100]} />
+        <meshStandardMaterial {...OURO} />
+      </mesh>
+      {/* bezel com a gema encastoada na frente do bangle */}
+      <mesh position={[0, 1.15, 0.06]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.26, 0.045, 12, 32]} />
+        <meshStandardMaterial {...OURO} />
+      </mesh>
+      <Gema gema={gema} escala={0.28} posicao={[0, 1.15, 0.06]} />
     </group>
   )
 }
@@ -77,7 +78,7 @@ export default function Joia({ peca, gema, girando }: { peca: Peca; gema: GemaTi
     <group ref={ref}>
       {peca.id === 'anel' && <Anel gema={gema} />}
       {peca.id === 'colar' && <Colar gema={gema} />}
-      {peca.id === 'brincos' && <Brincos gema={gema} />}
+      {peca.id === 'pulseira' && <Pulseira gema={gema} />}
     </group>
   )
 }
