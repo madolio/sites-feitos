@@ -3,6 +3,7 @@ import DemoDialog from './components/DemoDialog'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
 import Pacotes from './components/Pacotes'
+import Reveal from './components/Reveal'
 import Ribbon from './components/Ribbon'
 
 export default function App() {
@@ -11,10 +12,16 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Pacotes />
-        <Ribbon />
+        <Reveal as="div">
+          <Pacotes />
+        </Reveal>
+        <Reveal as="div">
+          <Ribbon />
+        </Reveal>
       </main>
-      <Contato />
+      <Reveal as="div">
+        <Contato />
+      </Reveal>
       <DemoDialog />
     </>
   )

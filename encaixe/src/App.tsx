@@ -3,6 +3,7 @@ import Contato from './components/Contato'
 import DemoDialog from './components/DemoDialog'
 import Hero from './components/Hero'
 import Processo from './components/Processo'
+import Reveal from './components/Reveal'
 import TopoSimples from './components/TopoSimples'
 
 export default function App() {
@@ -11,9 +12,15 @@ export default function App() {
       <TopoSimples />
       <main>
         <Hero />
-        <Catalogo />
-        <Processo />
-        <Contato />
+        <Reveal as="div">
+          <Catalogo />
+        </Reveal>
+        <Reveal as="div">
+          <Processo />
+        </Reveal>
+        <Reveal as="div">
+          <Contato />
+        </Reveal>
       </main>
       <DemoDialog />
     </>

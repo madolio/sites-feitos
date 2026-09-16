@@ -7,6 +7,7 @@ import Horarios from './components/Horarios'
 import Instrutora from './components/Instrutora'
 import Nav from './components/Nav'
 import Respira from './components/Respira'
+import Reveal from './components/Reveal'
 
 export default function App() {
   return (
@@ -14,13 +15,23 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Aulas />
-        <Horarios />
-        <Instrutora />
+        <Reveal as="div">
+          <Aulas />
+        </Reveal>
+        <Reveal as="div">
+          <Horarios />
+        </Reveal>
+        <Reveal as="div">
+          <Instrutora />
+        </Reveal>
         <Respira />
-        <Experimental />
+        <Reveal as="div">
+          <Experimental />
+        </Reveal>
       </main>
-      <Footer />
+      <Reveal as="div">
+        <Footer />
+      </Reveal>
       <DemoDialog />
     </>
   )

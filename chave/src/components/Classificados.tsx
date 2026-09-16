@@ -1,5 +1,6 @@
 import { anuncios, tipos } from '../data'
 import TipoIcon from './TipoIcon'
+import Reveal from './Reveal'
 
 export default function Classificados() {
   return (
@@ -10,7 +11,7 @@ export default function Classificados() {
           <p className="text-sm text-ink/65">{anuncios.length} anúncios</p>
         </div>
 
-        <div className="classificados mt-8">
+        <Reveal as="div" className="classificados mt-8" stagger={0.08}>
           {anuncios.map((a) => (
             <article key={a.codigo} className="mb-8 border-b border-line pb-6">
               <div className="flex items-start gap-3">
@@ -39,7 +40,7 @@ export default function Classificados() {
               </div>
             </article>
           ))}
-        </div>
+        </Reveal>
 
         <p className="mt-2 text-xs text-ink/65">
           {tipos.map((t) => t.label).join(' · ')} — categorias deste classificado
