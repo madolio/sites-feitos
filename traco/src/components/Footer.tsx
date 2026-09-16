@@ -1,10 +1,10 @@
 import { sendToEmail } from '../demo'
-import { Mark } from './Nav'
+import { Mark } from './Carimbo'
 import Reveal from './Reveal'
 
 export default function Footer() {
   return (
-    <footer id="contato" className="scroll-mt-16 border-t border-line py-16">
+    <footer id="contato" className="scroll-mt-16 border-t border-line py-16 pb-28 sm:pb-16">
       <Reveal className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
           <div>
