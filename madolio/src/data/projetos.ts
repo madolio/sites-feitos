@@ -287,6 +287,16 @@ export const projetos: Projeto[] = [
     destaque: true,
   },
   {
+    name: 'Prisma',
+    category: 'Joalheria sob medida',
+    description:
+      'Terceiro projeto do portfólio com WebGL de verdade: a gema do hero refrata a luz com o índice de refração real de cada pedra (2,417 do diamante, 1,762 do rubi/safira...) — o mesmo número que sai de um refratômetro de gemólogo, não um brilho decorativo.',
+    bg: '#100c14',
+    accent: '#b98cff',
+    url: 'https://prisma.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
     name: 'Marcha',
     category: 'Concessionária de esportivos',
     description:
