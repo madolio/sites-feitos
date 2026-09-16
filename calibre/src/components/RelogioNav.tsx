@@ -95,7 +95,7 @@ export default function RelogioNav({ compacto = false }: { compacto?: boolean })
             key={s.id}
             href={`#${s.id}`}
             aria-current={acesa ? 'true' : undefined}
-            title={compacto ? s.label : undefined}
+            title={s.label}
             className="group contents"
           >
             <span
@@ -111,7 +111,7 @@ export default function RelogioNav({ compacto = false }: { compacto?: boolean })
             />
             {!compacto && (
               <span
-                className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-xs font-medium transition-colors ${
+                className={`absolute hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-xs font-medium transition-colors md:inline-block ${
                   acesa ? 'text-brass' : 'text-cream/60 group-hover:text-cream'
                 }`}
                 style={{ left: `${(lbl.x / 200) * 100}%`, top: `${(lbl.y / 200) * 100}%` }}
