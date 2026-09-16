@@ -1,5 +1,5 @@
 import { sendToEmail } from '../demo'
-import { Mark } from './Nav'
+import { Mark } from './Fundeio'
 import Reveal from './Reveal'
 
 export default function Footer() {
