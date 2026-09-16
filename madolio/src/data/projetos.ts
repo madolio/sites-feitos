@@ -273,4 +273,14 @@ export const projetos: Projeto[] = [
     accent: '#d97b29',
     url: 'https://fornada.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Lúmen',
+    category: 'Projeto luminotécnico',
+    description:
+      'Uma sala escura de verdade: o cursor é a única luz, revelando o hero um ponto por vez. A calculadora usa a fórmula real de projeto (lux × área ÷ lumens × fatores de utilização e manutenção), e cada luminária do catálogo tem seu cone desenhado pelo ângulo de feixe e pela temperatura de cor reais, convertida em RGB.',
+    bg: '#0a0908',
+    accent: '#ffb46b',
+    url: 'https://lumen.fenoninho-max.workers.dev',
+    destaque: true,
+  },
 ]

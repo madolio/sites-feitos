@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Vibe "sala escura, luz de verdade": página quase toda em preto, com uma
+   luminária quente 2700K como acento — o cursor no Hero funciona como uma
+   luminária de verdade acendendo o ambiente, então o resto do site precisa
+   ser sóbrio pra não competir com esse momento. */
+@theme {
+  --color-noite: #0a0908;
+  --color-carvao: #16140f;
+  --color-fio: #322c22;
+  --color-marfim: #f2ead9;
+  --color-fumo: #9a9285;
+  /* --color-acento é a temperatura 2700K (luz quente) convertida por
+     kelvinParaRgb — não escolhida no olho. Validada ~9:1 sobre --noite. */
+  --color-acento: #ffb46b;
+  --color-acento-escuro: #7a4d1c;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-noite font-body text-marfim antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .btn-acento {
+    @apply inline-flex items-center justify-center rounded-none bg-acento px-5 py-3 font-semibold text-noite transition hover:brightness-110;
+  }
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-none border border-fio px-5 py-3 font-semibold text-marfim transition hover:border-acento hover:text-acento;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
