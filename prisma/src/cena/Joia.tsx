@@ -71,14 +71,14 @@ function Pulseira({ gema }: { gema: GemaTipo }) {
   })
 
   return (
-    <group position={[-0.55, 0.1, 0]} scale={1.15} rotation={[0.85, 0, 0.35]}>
+    <group scale={0.8} rotation={[0.85, 0, 0.35]}>
       {/* pulseira cravejada: fileira de pedras pequenas encastoadas lado a
           lado num aro fino prateado, em vez de uma gema solitária — pedido
           explícito do usuário com foto de referência de "tennis bracelet".
-          Deslocada pra esquerda + rotação em Z (diagonal), pra compor como
-          a foto de referência — o fecho liso num canto, as pedras se
-          espalhando pro canto oposto — em vez de um círculo centrado e
-          simétrico, que ficava pequeno e sem graça na home. */}
+          Rotação em Z (diagonal) só pra compor como a foto de referência —
+          centralizada, sem deslocamento manual: esse offset fazia sentido
+          quando a vitrine ocupava a tela cheia, mas com o Hero em duas
+          colunas (v3) ele só empurrava a peça pra fora da própria coluna. */}
       <mesh rotation={[0, 0, inicio]}>
         <torusGeometry
           args={[RAIO_PULSEIRA, 0.035, 12, 80, Math.PI * 2 - ARCO_ABERTURA]}

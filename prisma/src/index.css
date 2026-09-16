@@ -30,6 +30,15 @@
   }
 }
 
+.campo-numero::-webkit-inner-spin-button,
+.campo-numero::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.campo-numero {
+  -moz-appearance: textfield;
+}
+
 @layer components {
   .btn-acento {
     @apply inline-flex items-center justify-center rounded-full bg-acento px-6 py-3 font-semibold text-noite transition hover:brightness-110;

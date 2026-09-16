@@ -26,6 +26,12 @@ Usuário mandou foto de referência de um "tennis bracelet" (fileira de pedras e
 
 **Gotcha de aspect ratio**: o canvas do Colar (correntes em V bem largas) foi calibrado pra um canvas full-width; na coluna estreita (metade da tela no desktop), a mesma câmera fixa deixa o colar meio grande/cortado nas bordas por causa do FOV vertical fixo do Three.js — funcional, mas não é o enquadramento ideal; ajuste futuro seria recalcular a câmera com base no aspect ratio real do canvas, não um valor fixo pensado pra tela cheia.
 
+Depois da mudança pra duas colunas, a pulseira (única peça com `position`/`scale` fixos calibrados pra tela cheia) ficou grande e deslocada, cortando o cabeçalho — removido o deslocamento manual e reduzida a escala (`0.8`) pra caber centralizada dentro da coluna estreita. Lição: qualquer offset/escala hardcoded numa cena 3D fica amarrado ao layout do momento — mudar o layout ao redor exige reconferir visualmente cada peça, não só a que motivou a mudança.
+
+## v4: `Catalogo` (fichas de gema) removido — duplicava a escolha do Hero
+
+Depois da v3 (seleção de pedra também no Hero), a seção "Escolha a gema" abaixo (`Catalogo.tsx`, cards clicáveis com IOR/dispersão/dureza) virou uma escolha redundante — mesma ação, dois lugares. Removida e substituída por `Medida.tsx`: uma calculadora de aro que usa geometria pura (circunferência ÷ π = diâmetro) e a aproximação real que joalherias usam pra estimar o aro brasileiro (aro ≈ diâmetro em mm − 11,6, explicitamente rotulada como estimativa, não substituindo o anelímetro físico). Segue o mesmo padrão do resto do portfólio: toda calculadora usa fórmula real, nunca um número decorativo.
+
 ## Bug real encontrado e corrigido: stagger + ScrollTrigger `once` em botões
 
 `Catalogo.tsx` originalmente envolvia a grade de 6 botões (as gemas) num único `<Reveal stagger={0.06}>`, igual ao padrão usado em Lúmen/Ferro/etc. Isso **quebrou de verdade**: o `onEnter`/`onComplete` do GSAP disparavam normalmente (confirmado via log), mas o DOM permanecia travado em `opacity: 0` pra sempre — um `MutationObserver` mostrou centenas de escritas de estilo repetidas voltando pra `opacity: 0` mesmo depois do `onComplete`. Isolei removendo o WebGL (não era a causa) e removendo o `stagger` (aí funcionou 100%) — o problema é especificamente a combinação `stagger` + `scrollTrigger.once: true` quando o target é um conjunto de `<button>` com `transition` do Tailwind (que inclui `opacity`/`transform` nas propriedades transicionadas) e `className` condicional.

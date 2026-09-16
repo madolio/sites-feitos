@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Hero from './components/Hero'
-import Catalogo from './components/Catalogo'
+import Medida from './components/Medida'
 import Processo from './components/Processo'
 import Contato from './components/Contato'
 import DemoDialog from './components/DemoDialog'
@@ -14,7 +14,7 @@ export default function App() {
   return (
     <div className="min-h-screen w-full">
       <Hero gema={gema} peca={peca} onPeca={setPeca} onGema={setGema} />
-      <Catalogo gema={gema} onEscolher={setGema} />
+      <Medida />
       <Processo />
       <Contato />
       <DemoDialog />
