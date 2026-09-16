@@ -51,11 +51,15 @@ function Colar({ gema }: { gema: GemaTipo }) {
 
 const N_PEDRAS = 15
 const RAIO_PULSEIRA = 1.15
-const ARCO_ABERTURA = 0.55 // rad de "vão" deixado pro fecho, no fundo do arco
+const ARCO_ABERTURA = 0.55 // rad de "vão" deixado pro fecho, à esquerda
+// Vão (fecho) centrado em π rad — do lado esquerdo da cena — pra pulseira
+// abrir da esquerda (aro liso) pra direita (fileira de pedras), igual à
+// foto de referência, em vez do vão ficar escondido no topo.
+const GAP_CENTRO = Math.PI
 
 function Pulseira({ gema }: { gema: GemaTipo }) {
-  const inicio = Math.PI / 2 + ARCO_ABERTURA / 2
-  const fim = Math.PI / 2 + Math.PI * 2 - ARCO_ABERTURA / 2
+  const inicio = GAP_CENTRO + ARCO_ABERTURA / 2
+  const fim = GAP_CENTRO + Math.PI * 2 - ARCO_ABERTURA / 2
 
   const pedras = Array.from({ length: N_PEDRAS }, (_, i) => {
     const t = i / (N_PEDRAS - 1)
@@ -67,10 +71,14 @@ function Pulseira({ gema }: { gema: GemaTipo }) {
   })
 
   return (
-    <group rotation={[1.15, 0, 0]}>
+    <group position={[-0.55, 0.1, 0]} scale={1.15} rotation={[0.85, 0, 0.35]}>
       {/* pulseira cravejada: fileira de pedras pequenas encastoadas lado a
           lado num aro fino prateado, em vez de uma gema solitária — pedido
-          explícito do usuário com foto de referência de "tennis bracelet". */}
+          explícito do usuário com foto de referência de "tennis bracelet".
+          Deslocada pra esquerda + rotação em Z (diagonal), pra compor como
+          a foto de referência — o fecho liso num canto, as pedras se
+          espalhando pro canto oposto — em vez de um círculo centrado e
+          simétrico, que ficava pequeno e sem graça na home. */}
       <mesh rotation={[0, 0, inicio]}>
         <torusGeometry
           args={[RAIO_PULSEIRA, 0.035, 12, 80, Math.PI * 2 - ARCO_ABERTURA]}
