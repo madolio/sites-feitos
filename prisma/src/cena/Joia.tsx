@@ -6,6 +6,7 @@ import type { Gema as GemaTipo } from '../data/gemas'
 import type { Peca } from '../data/pecas'
 
 const OURO = { color: '#d9b45c', metalness: 1, roughness: 0.28 } as const
+const PRATA = { color: '#d8dade', metalness: 1, roughness: 0.2 } as const
 
 function Anel({ gema }: { gema: GemaTipo }) {
   return (
@@ -48,20 +49,55 @@ function Colar({ gema }: { gema: GemaTipo }) {
   )
 }
 
+const N_PEDRAS = 15
+const RAIO_PULSEIRA = 1.15
+const ARCO_ABERTURA = 0.55 // rad de "vão" deixado pro fecho, no fundo do arco
+
 function Pulseira({ gema }: { gema: GemaTipo }) {
+  const inicio = Math.PI / 2 + ARCO_ABERTURA / 2
+  const fim = Math.PI / 2 + Math.PI * 2 - ARCO_ABERTURA / 2
+
+  const pedras = Array.from({ length: N_PEDRAS }, (_, i) => {
+    const t = i / (N_PEDRAS - 1)
+    const angulo = inicio + t * (fim - inicio)
+    return {
+      x: Math.cos(angulo) * RAIO_PULSEIRA,
+      y: Math.sin(angulo) * RAIO_PULSEIRA,
+    }
+  })
+
   return (
-    <group rotation={[1.1, 0, 0]}>
-      {/* bangle: aro largo visto em ângulo, como um bracelete apoiado */}
-      <mesh>
-        <torusGeometry args={[1.1, 0.1, 24, 100]} />
-        <meshStandardMaterial {...OURO} />
+    <group rotation={[1.15, 0, 0]}>
+      {/* pulseira cravejada: fileira de pedras pequenas encastoadas lado a
+          lado num aro fino prateado, em vez de uma gema solitária — pedido
+          explícito do usuário com foto de referência de "tennis bracelet". */}
+      <mesh rotation={[0, 0, inicio]}>
+        <torusGeometry
+          args={[RAIO_PULSEIRA, 0.035, 12, 80, Math.PI * 2 - ARCO_ABERTURA]}
+        />
+        <meshStandardMaterial {...PRATA} />
       </mesh>
-      {/* bezel com a gema encastoada na frente do bangle */}
-      <mesh position={[0, 1.15, 0.06]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.26, 0.045, 12, 32]} />
-        <meshStandardMaterial {...OURO} />
-      </mesh>
-      <Gema gema={gema} escala={0.28} posicao={[0, 1.15, 0.06]} />
+
+      {/* fecho, nas duas pontas do vão */}
+      {[inicio, fim].map((angulo, i) => (
+        <mesh
+          key={i}
+          position={[Math.cos(angulo) * RAIO_PULSEIRA, Math.sin(angulo) * RAIO_PULSEIRA, 0]}
+        >
+          <boxGeometry args={[0.16, 0.12, 0.08]} />
+          <meshStandardMaterial {...PRATA} />
+        </mesh>
+      ))}
+
+      {pedras.map((p, i) => (
+        <group key={i} position={[p.x, p.y, 0.04]}>
+          <mesh>
+            <torusGeometry args={[0.09, 0.02, 8, 16]} />
+            <meshStandardMaterial {...PRATA} />
+          </mesh>
+          <Gema gema={gema} escala={0.1} />
+        </group>
+      ))}
     </group>
   )
 }
