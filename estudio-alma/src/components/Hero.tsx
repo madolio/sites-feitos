@@ -68,7 +68,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={section} id="inicio" className="overflow-hidden bg-gesso pt-24 pb-16 lg:flex lg:h-svh lg:items-center lg:pt-20 lg:pb-8">
+    <section ref={section} id="inicio" className="overflow-hidden bg-gesso pt-24 pb-16 lg:flex lg:h-svh lg:items-center lg:pt-10 lg:pb-10">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-14">
         <div>
           <h1 className="display text-[3.6rem] sm:text-7xl lg:text-[6.4rem]">Pilates é controle.</h1>

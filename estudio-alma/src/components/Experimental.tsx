@@ -19,7 +19,7 @@ export default function Experimental() {
   }
 
   return (
-    <section id="experimental" className="scroll-mt-16 bg-amarela py-20 md:py-28">
+    <section id="experimental" className="scroll-mt-16 bg-amarela py-20 md:py-28 lg:scroll-mt-0">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-6 md:grid-cols-[1fr_1.1fr] md:gap-16">
         <div>
           <h2 className="display text-6xl md:text-8xl">A primeira aula é com a Helena.</h2>

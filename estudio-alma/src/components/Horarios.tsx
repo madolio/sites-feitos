@@ -2,7 +2,7 @@ import { dias, grade } from '../data'
 
 export default function Horarios() {
   return (
-    <section id="horarios" className="scroll-mt-16 bg-ink py-20 text-gesso md:py-28">
+    <section id="horarios" className="scroll-mt-16 bg-ink py-20 text-gesso md:py-28 lg:scroll-mt-0">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="display text-6xl md:text-8xl">Horários</h2>

@@ -10,6 +10,21 @@ Worker `estudio-alma`, em `https://estudio-alma.fenoninho-max.workers.dev`. `npm
 
 Mesmo esquema da Doce Ateliê: `sendToWhatsApp()` (`src/demo.ts`) abre o `DemoDialog.tsx` com a mensagem que seria enviada + o WhatsApp da Madolio. Nunca apontar pra um número inventado. O rodapé declara que o negócio é fictício.
 
+## Reestruturação de set/2026 — a navegação virou o trilho do reformer
+
+Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa full-width, logo + lista de links âncora + botão CTA) enquanto outros conceitos do repositório (Torre, Calibre, Cerne, Nascente...) já tinham ganhado arquitetura própria — ver o `CLAUDE.md` do `madolio`, que documentava essa lista. Reestruturado "página a página" a pedido do usuário, usando a reforma do Nascente (`Painel.tsx`) como referência de método.
+
+`Nav.tsx` (removido, não deixado como código morto) virou `Trilho.tsx`: em vez de uma barra de links soltos, a navegação é o próprio aparelho mais característico do pilates — o reformer, o carrinho (carriage) que desliza sobre um trilho preso por molas de tensão. Literaliza o equipamento, não um ícone genérico de "boneco fazendo pose" (esse já é o assunto do `Figure.tsx` no Hero — não duplicar).
+
+- Cada seção (Início/Aulas/Horários/Instrutora/Experimental) é um "ponto de tensão" ao longo do trilho, marcado por uma mola (`Mola`, zigue-zague em SVG) nas mesmas quatro cores das molas do reformer já usadas no resto do site (Aulas.tsx, Instrutora.tsx). A mola "comprime" (traço mais grosso, opacidade cheia) na seção ativa.
+- O `Carrinho` é a barra que desliza até a parada ativa — não é medido via DOM/ResizeObserver: como o ritmo vertical das paradas é fixo em CSS (`PASSO = 4.75rem` por item), a posição é só `indice * PASSO`, mais simples e sem layout thrashing.
+- **Desktop:** coluna fixa `w-56` à esquerda (mesmo padrão do Torre/Nascente), sempre visível. O CTA "Aula experimental" fixo no pé da coluna é estilizado como o footbar do reformer — a barra onde se apoia o pé.
+- **Mobile:** vira uma barra fina no topo (marca + CTA + botão de menu) — as paradas ficam atrás de um menu que abre embaixo, não escondidas sem pista nenhuma.
+- **Parada ativa:** por scroll-spy (`IntersectionObserver`, `useParadaAtiva`), igual ao padrão do Nascente (`rootMargin` assimétrico pra disparar a troca antes da seção tomar a tela toda).
+- Extraído `Mark` de `Nav.tsx` pra `Mark.tsx` — o `Footer.tsx` também usa a marca, não fazia sentido ela morar dentro do componente de navegação.
+- Como a coluna deixou de ser uma barra fixa no TOPO (no desktop), o padding-top do Hero mudou de "espaço pra header full-width" pra um respiro simétrico (`lg:pt-10 lg:pb-10` no lugar de `lg:pt-20 lg:pb-8`), e o `scroll-mt-16` das outras seções (usado pra âncora não ficar atrás da barra fixa) ganhou `lg:scroll-mt-0`, já que no desktop não há mais barra no topo.
+- Deslizar do carrinho e trocar a espessura/opacidade da mola usam `motion-safe:transition-*` do Tailwind — sem JS extra pra checar `prefers-reduced-motion`, já cai pra instantâneo.
+
 ## Vibe Discovery — "Contrologia"
 
 - **Lugar/objeto:** o estúdio de Joseph Pilates nos anos 1920 — molas, madeira e metal do reformer.
