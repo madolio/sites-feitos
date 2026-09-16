@@ -30,12 +30,24 @@ function useParadaAtiva() {
     const elementos = paradas.map((p) => document.getElementById(p.id)).filter((el): el is HTMLElement => !!el)
     if (elementos.length === 0) return
 
+    // O callback só reporta os alvos cujo estado MUDOU desde a última
+    // chamada, não uma foto completa de quem está visível agora — por isso
+    // `visiveis` mantém o próprio registro (id -> intersectionRatio),
+    // atualizado entrada a entrada, em vez de tratar o lote da vez como a
+    // lista inteira (senão uma parada já visível nunca é reconfirmada
+    // quando outra sai de vista, e o carrinho trava na parada antiga — mesmo
+    // bug achado e corrigido no Varal.tsx do sabor-da-vila, a partir de um
+    // print do usuário).
+    const visiveis = new Map<string, number>()
+
     const observer = new IntersectionObserver(
       (entradas) => {
-        const visiveis = entradas.filter((e) => e.isIntersecting)
-        if (visiveis.length === 0) return
-        const maisVisivel = visiveis.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        setAtivo(maisVisivel.target.id)
+        for (const e of entradas) {
+          if (e.isIntersecting) visiveis.set(e.target.id, e.intersectionRatio)
+          else visiveis.delete(e.target.id)
+        }
+        const ordenado = [...visiveis.entries()].sort((a, b) => b[1] - a[1])
+        if (ordenado[0]) setAtivo(ordenado[0][0])
       },
       { rootMargin: '-15% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
     )

@@ -32,10 +32,23 @@ function usePranchaAtiva() {
       .filter((el): el is HTMLElement => !!el)
     if (elementos.length === 0) return
 
+    // O callback só reporta os alvos cujo estado MUDOU desde a última
+    // chamada, não uma foto completa de quem está visível agora — por isso
+    // `visiveis` mantém o próprio registro, atualizado entrada a entrada, em
+    // vez de tratar o lote da vez como a lista inteira (senão uma prancha já
+    // visível nunca é reconfirmada quando outra sai de vista, e a ativa
+    // trava no valor antigo — mesmo bug achado e corrigido no Varal.tsx do
+    // sabor-da-vila, a partir de um print do usuário).
+    const visiveis = new Map<string, number>()
+
     const observer = new IntersectionObserver(
       (entradas) => {
-        const visivel = entradas.find((e) => e.isIntersecting)
-        if (visivel) setAtiva(visivel.target.id)
+        for (const e of entradas) {
+          if (e.isIntersecting) visiveis.set(e.target.id, e.boundingClientRect.top)
+          else visiveis.delete(e.target.id)
+        }
+        const ordenado = [...visiveis.entries()].sort((a, b) => a[1] - b[1])
+        if (ordenado[0]) setAtiva(ordenado[0][0])
       },
       { rootMargin: '-20% 0px -60% 0px' },
     )

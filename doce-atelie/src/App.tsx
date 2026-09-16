@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import DemoDialog from './components/DemoDialog'
 import Docinhos from './components/Docinhos'
 import Encomenda from './components/Encomenda'
@@ -12,6 +12,16 @@ import { emptyOrder, type Order } from './order'
 
 export default function App() {
   const [order, setOrder] = useState<Order>(emptyOrder)
+
+  // Ao abrir a página já com um #hash na URL (recarregar, ou abrir um link
+  // que já aponta pra uma seção), o navegador tenta pular pra lá antes da
+  // seção existir no DOM (tudo renderizado pelo React) — o pulo nativo não
+  // acontece e o scroll fica em 0. Corrigido rolando manualmente depois que
+  // a página termina de montar (mesmo bug/fix do sabor-da-vila).
+  useEffect(() => {
+    if (!window.location.hash) return
+    document.querySelector(window.location.hash)?.scrollIntoView()
+  }, [])
 
   return (
     <>

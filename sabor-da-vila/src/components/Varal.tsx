@@ -19,12 +19,26 @@ function useSecaoAtiva() {
     const elementos = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el)
     if (elementos.length === 0) return
 
+    // O callback do IntersectionObserver só reporta os alvos cujo estado
+    // MUDOU desde a última chamada, não uma foto completa de quem está
+    // visível agora — por isso precisa manter o próprio registro de quem
+    // está visível (`visiveis`), atualizando entrada a entrada, em vez de
+    // tratar `entradas` (o lote da vez) como a lista inteira. Sem isso, uma
+    // seção que já estava visível e continua visível nunca é reconfirmada
+    // quando outra seção sai de vista — a ativa trava no valor antigo (bug
+    // relatado pelo usuário: o tíquete nunca ficava azul depois de um pulo
+    // direto pra #cardapio, porque "início" saía sem "cardápio" ser
+    // reportado de novo).
+    const visiveis = new Map<string, number>()
+
     const observer = new IntersectionObserver(
       (entradas) => {
-        const visiveis = entradas
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visiveis[0]) setAtiva(visiveis[0].target.id)
+        for (const e of entradas) {
+          if (e.isIntersecting) visiveis.set(e.target.id, e.boundingClientRect.top)
+          else visiveis.delete(e.target.id)
+        }
+        const ordenado = [...visiveis.entries()].sort((a, b) => a[1] - b[1])
+        if (ordenado[0]) setAtiva(ordenado[0][0])
       },
       { rootMargin: '-15% 0px -70% 0px' },
     )
