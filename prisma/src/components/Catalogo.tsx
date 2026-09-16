@@ -15,7 +15,7 @@ export default function Catalogo({
       </Reveal>
       <Reveal delay={0.08} as="p" className="mt-3 max-w-lg text-fumo">
         Índice de refração (IOR) e dispersão são valores reais de tabela gemológica — não decoração. Toque numa
-        pedra e veja a vitrine acima girar com a física dela.
+        pedra e veja ela aparecer encaixada na peça, lá em cima.
       </Reveal>
 
       <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">

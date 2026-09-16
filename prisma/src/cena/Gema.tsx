@@ -8,17 +8,28 @@ import type { Gema as GemaTipo } from '../data/gemas'
 // geometria essencial de facetas de coroa + pavilhão sem o custo de uma
 // malha de lapidação real com 50+ facetas — o ponto aqui é a física da
 // luz atravessando o material, não a geometria de corte exata.
-export default function Gema({ gema, girando }: { gema: GemaTipo; girando: boolean }) {
+// `escala` deixa a mesma pedra servir de solitário grande (colar) ou de
+// pedra pequena encastoada (anel/brincos) sem duplicar o componente.
+export default function Gema({
+  gema,
+  girando = false,
+  escala = 1,
+  posicao = [0, 0, 0],
+}: {
+  gema: GemaTipo
+  girando?: boolean
+  escala?: number
+  posicao?: [number, number, number]
+}) {
   const ref = useRef<Mesh>(null)
 
   useFrame((_, delta) => {
     if (!ref.current || !girando) return
     ref.current.rotation.y += delta * 0.35
-    ref.current.rotation.x = Math.sin(Date.now() / 4000) * 0.15
   })
 
   return (
-    <mesh ref={ref} scale={1.6}>
+    <mesh ref={ref} scale={escala} position={posicao}>
       <octahedronGeometry args={[1, 0]} />
       <MeshTransmissionMaterial
         // ior real da pedra escolhida — quanto maior, mais a luz se dobra

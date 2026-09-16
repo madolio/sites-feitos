@@ -1,18 +1,27 @@
 import { Suspense, lazy } from 'react'
 import type { Gema } from '../data/gemas'
+import { pecas, type Peca } from '../data/pecas'
 
 const Vitrine = lazy(() => import('../cena/Vitrine'))
 
-export default function Hero({ gema }: { gema: Gema }) {
+export default function Hero({
+  gema,
+  peca,
+  onPeca,
+}: {
+  gema: Gema
+  peca: Peca
+  onPeca: (p: Peca) => void
+}) {
   return (
     <section className="relative flex h-svh w-full flex-col overflow-hidden">
       <div className="absolute inset-0">
         <Suspense fallback={<div className="h-full w-full animate-pulse bg-carvao" />}>
-          <Vitrine gema={gema} girando />
+          <Vitrine peca={peca} gema={gema} />
         </Suspense>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-noite/70 via-transparent to-noite" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-noite/70 via-transparent to-noite/90" />
 
       <header className="relative z-10 flex items-start justify-between p-5 sm:p-8">
         <div>
@@ -21,17 +30,26 @@ export default function Hero({ gema }: { gema: Gema }) {
         </div>
       </header>
 
-      <div className="relative z-10 mt-auto p-5 pb-12 sm:p-8 sm:pb-16">
-        <p className="max-w-sm text-sm text-fumo">
-          Índice de refração real: <span className="tabular text-marfim">{gema.ior.toFixed(3)}</span> — {gema.nome}
+      <div className="relative z-10 mt-auto flex flex-col items-center gap-5 p-5 pb-10 text-center sm:p-8 sm:pb-14">
+        <p className="max-w-md text-sm text-fumo">
+          Arraste pra girar. Escolha a peça — a gema com o índice de refração real de{' '}
+          <span className="text-marfim">{gema.nome.toLowerCase()}</span> aparece montada nela.
         </p>
-        <h2 className="mt-2 max-w-xl font-display text-4xl leading-tight sm:text-5xl">
-          Cada pedra dobra a luz do jeito que a física dela exige.
-        </h2>
-        <p className="mt-4 max-w-md text-fumo">
-          Nada de brilho genérico: a gema que gira aí atrás usa o índice de refração de verdade de cada pedra —
-          o mesmo número que sai de um refratômetro de gemólogo.
-        </p>
+
+        <div className="pointer-events-auto flex gap-2 rounded-full border border-fio bg-noite/60 p-1.5 backdrop-blur">
+          {pecas.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => onPeca(p)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                p.id === peca.id ? 'bg-acento text-noite' : 'text-marfim hover:bg-fio'
+              }`}
+            >
+              {p.nome}
+            </button>
+          ))}
+        </div>
       </div>
     </section>
   )
