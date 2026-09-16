@@ -129,16 +129,26 @@ function ProjetoInfo({ projeto, compact = false }: { projeto: Projeto | null; co
       <p className="mt-1.5 line-clamp-2 text-fog">
         {projeto?.description ?? 'Passe o mouse num nome à esquerda pra ver o site aqui.'}
       </p>
-      <a
-        href={projeto?.url}
-        target="_blank"
-        rel="noreferrer"
-        className={`mt-3 inline-block font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 ${
-          projeto?.url ? '' : 'pointer-events-none opacity-0'
-        }`}
-      >
-        Abrir site completo
-      </a>
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+        <a
+          href={projeto?.url}
+          target="_blank"
+          rel="noreferrer"
+          className={`inline-block font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 ${
+            projeto?.url ? '' : 'pointer-events-none opacity-0'
+          }`}
+        >
+          Abrir site completo
+        </a>
+        {projeto?.estudoDeCaso && (
+          <Link
+            to={projeto.estudoDeCaso}
+            className="inline-block font-semibold text-fog underline decoration-white/25 underline-offset-4 hover:text-white"
+          >
+            Ver making of
+          </Link>
+        )}
+      </div>
     </div>
   )
 }

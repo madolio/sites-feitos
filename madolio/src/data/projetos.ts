@@ -10,6 +10,8 @@ export type Projeto = {
   url?: string
   /** Recorte curado pra home (Trabalhos.tsx) — a lista completa só aparece em /projetos. */
   destaque?: boolean
+  /** Rota interna pra página de "making of" deste projeto, quando existe uma. */
+  estudoDeCaso?: string
 }
 
 export const projetos: Projeto[] = [
@@ -214,6 +216,7 @@ export const projetos: Projeto[] = [
     accent: '#FFE2A1',
     url: 'https://cardume.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/cardume',
   },
   {
     name: 'Encaixe',

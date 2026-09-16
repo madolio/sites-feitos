@@ -62,19 +62,36 @@ export default function Projetos() {
         ) : (
           <Reveal stagger={0.1} className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {filtrados.map((project) => (
-              <a key={project.name} href={project.url} target="_blank" rel="noreferrer" className="block">
-                <HeroPreview projeto={project} />
+              <div key={project.name}>
+                <a href={project.url} target="_blank" rel="noreferrer" className="block">
+                  <HeroPreview projeto={project} />
+                </a>
                 <div className="mt-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
                     <span className="text-sm text-ink/65">{project.category} · portfólio</span>
                   </div>
                   <p className="mt-2 text-ink/65">{project.description}</p>
-                  <span className="mt-3 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4">
-                    Ver site
-                  </span>
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4"
+                    >
+                      Ver site
+                    </a>
+                    {project.estudoDeCaso && (
+                      <Link
+                        to={project.estudoDeCaso}
+                        className="inline-block font-semibold text-ink/60 underline decoration-ink/25 underline-offset-4 hover:text-ink"
+                      >
+                        Ver making of
+                      </Link>
+                    )}
+                  </div>
                 </div>
-              </a>
+              </div>
             ))}
           </Reveal>
         )}
