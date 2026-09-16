@@ -5,8 +5,8 @@ import DemoDialog from './components/DemoDialog'
 import Footer from './components/Footer'
 import Grain from './components/Grain'
 import Hero from './components/Hero'
-import Nav from './components/Nav'
 import Onde from './components/Onde'
+import Varal from './components/Varal'
 
 export default function App() {
   const [qty, setQty] = useState<Record<string, number>>({})
@@ -26,7 +26,7 @@ export default function App() {
   return (
     <>
       <Grain />
-      <Nav />
+      <Varal />
       <main>
         <Hero />
         <Cardapio qty={qty} change={change} />

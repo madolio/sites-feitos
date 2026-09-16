@@ -1,5 +1,5 @@
 import { sendToWhatsApp } from '../demo'
-import { Mark } from './Nav'
+import { Mark } from './Varal'
 import Reveal from './Reveal'
 
 export default function Footer() {
