@@ -45,26 +45,29 @@ export default function PurezaGauge() {
   const offset = CIRCUNFERENCIA * (1 - percurso / 100)
 
   return (
-    <div ref={ref} className="relative inline-flex h-32 w-32 items-center justify-center">
-      <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
-        <circle cx="60" cy="60" r={RAIO} fill="none" stroke="var(--color-agua-clara)" strokeWidth="8" />
-        <circle
-          cx="60"
-          cy="60"
-          r={RAIO}
-          fill="none"
-          stroke="var(--color-agua)"
-          strokeWidth="8"
-          strokeLinecap="round"
-          strokeDasharray={CIRCUNFERENCIA}
-          strokeDashoffset={offset}
-          style={{ transition: 'stroke-dashoffset 0.05s linear' }}
-        />
-      </svg>
-      <div className="absolute flex flex-col items-center">
-        <span className="font-heading text-2xl font-semibold text-agua">{percurso}%</span>
-        <span className="text-[0.65rem] font-medium text-fumo">pura</span>
+    <div className="rounded-2xl border border-agua-clara bg-agua-clara/50 p-6 text-center">
+      <div ref={ref} className="relative mx-auto inline-flex h-32 w-32 items-center justify-center">
+        <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
+          <circle cx="60" cy="60" r={RAIO} fill="none" stroke="var(--color-agua-clara)" strokeWidth="8" />
+          <circle
+            cx="60"
+            cy="60"
+            r={RAIO}
+            fill="none"
+            stroke="var(--color-agua)"
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeDasharray={CIRCUNFERENCIA}
+            strokeDashoffset={offset}
+            style={{ transition: 'stroke-dashoffset 0.05s linear' }}
+          />
+        </svg>
+        <div className="absolute flex flex-col items-center">
+          <span className="font-heading text-2xl font-semibold text-agua">{percurso}%</span>
+          <span className="text-[0.65rem] font-medium text-fumo">pura</span>
+        </div>
       </div>
+      <p className="mt-4 max-w-[10rem] text-sm text-fumo">É o padrão de água que eu entrego pra quem precisa dela pra hemodiálise.</p>
     </div>
   )
 }

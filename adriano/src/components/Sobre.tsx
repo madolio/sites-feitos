@@ -12,10 +12,10 @@ export default function Sobre() {
           <p className="rotulo text-fumo">Sobre</p>
           <h2 className="mt-3 text-3xl text-grafite sm:text-4xl">22 anos cuidando da água e da parte elétrica</h2>
           <p className="mt-5 max-w-2xl text-lg text-fumo">
-            Adriano atende todo tipo de cliente — de residências a clínicas
-            que dependem de água tratada com o rigor que hemodiálise exige.
-            É o mesmo cuidado nos dois casos: entender o que o local precisa
-            antes de propor a solução.
+            Atendo todo tipo de cliente — de residências a clínicas que
+            dependem de água tratada com o rigor que hemodiálise exige. É o
+            mesmo cuidado nos dois casos: entendo o que o local precisa antes
+            de propor a solução.
           </p>
         </div>
 
