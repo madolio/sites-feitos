@@ -306,4 +306,14 @@ export const projetos: Projeto[] = [
     url: 'https://marcha.fenoninho-max.workers.dev',
     destaque: true,
   },
+  {
+    name: 'Bruma',
+    category: 'Perfumaria artesanal',
+    description:
+      'Cada fragrância mostra a concentração real de óleo essencial (Extrait, EDP, EDT) e a pirâmide olfativa de verdade — topo, coração e fundo — não um rótulo bonito. Fundo em shader WebGL sedoso, cartão 3D que se endireita ao rolar a página.',
+    bg: '#06120f',
+    accent: '#3fae82',
+    url: 'https://bruma.fenoninho-max.workers.dev',
+    destaque: true,
+  },
 ]
