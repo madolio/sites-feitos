@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const dias = [
   { label: 'Terça a quinta', horario: '18h às 23h' },
   { label: 'Sexta e sábado', horario: '18h às 00h' },
@@ -18,7 +20,7 @@ export default function Onde() {
           </span>
         </h2>
 
-        <div className="mt-10 grid gap-12 md:grid-cols-[1fr_1fr]">
+        <Reveal className="mt-10 grid gap-12 md:grid-cols-[1fr_1fr]">
           <div>
             <p className="text-xl font-bold">Rua Cardeal Arcoverde, 812 — Vila Pompeia, São Paulo</p>
             <p className="mt-3 max-w-sm text-lg">
@@ -35,7 +37,7 @@ export default function Onde() {
               </div>
             ))}
           </dl>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

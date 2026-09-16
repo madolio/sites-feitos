@@ -3,6 +3,7 @@ import { ambientes, FATOR_MANUTENCAO, FATOR_UTILIZACAO } from '../data/ambientes
 import { luminarias } from '../data/luminarias'
 import { sendToWhatsApp } from '../demo'
 import { CampoNumero } from './CampoNumero'
+import Reveal from './Reveal'
 
 // Fórmula real de projeto luminotécnico: N = (E × A) / (F × UF × MF)
 // E = iluminância desejada (lux), A = área (m²), F = fluxo da luminária
@@ -33,7 +34,7 @@ export function Calculadora() {
 
   return (
     <section id="calculadora" className="border-t border-fio bg-carvao px-6 py-20">
-      <div className="mx-auto max-w-3xl">
+      <Reveal className="mx-auto max-w-3xl">
         <p className="font-mono text-sm tracking-widest text-acento uppercase">Calculadora</p>
         <h2 className="mt-3 text-3xl">Quantas luminárias o seu ambiente precisa</h2>
         <p className="mt-3 text-fumo">
@@ -103,7 +104,7 @@ export function Calculadora() {
             Pedir um projeto de verdade
           </button>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

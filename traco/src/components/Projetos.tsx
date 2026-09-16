@@ -1,13 +1,14 @@
 import { projetos } from '../data'
 import ProjetoPlan from './ProjetoPlan'
+import Reveal from './Reveal'
 
 export default function Projetos() {
   return (
     <section id="projetos" className="scroll-mt-16 border-t border-line py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <h2 className="text-4xl md:text-5xl">Projetos</h2>
+        <Reveal as="h2" className="text-4xl md:text-5xl">Projetos</Reveal>
 
-        <div className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal stagger={0.08} className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {projetos.map((p, i) => (
             <article key={p.id}>
               <ProjetoPlan index={i} className="h-auto w-full" />
@@ -20,7 +21,7 @@ export default function Projetos() {
               </p>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

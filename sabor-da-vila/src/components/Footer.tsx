@@ -1,10 +1,11 @@
 import { sendToWhatsApp } from '../demo'
 import { Mark } from './Nav'
+import Reveal from './Reveal'
 
 export default function Footer() {
   return (
     <footer className="bg-blue text-paper">
-      <div className="mx-auto max-w-6xl px-5 pt-14 pb-8 sm:px-6 md:pt-18">
+      <Reveal as="div" className="mx-auto max-w-6xl px-5 pt-14 pb-8 sm:px-6 md:pt-18">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <div className="flex items-center gap-3">
             <Mark className="h-14 w-14" />
@@ -27,7 +28,7 @@ export default function Footer() {
           </a>
           .
         </p>
-      </div>
+      </Reveal>
     </footer>
   )
 }

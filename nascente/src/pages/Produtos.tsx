@@ -1,4 +1,5 @@
 import OsmosisScale from '../components/OsmosisScale'
+import Reveal from '../components/Reveal'
 import SpecList from '../components/SpecList'
 import SystemMap from '../components/SystemMap'
 import { treatmentProducts } from '../data/products'
@@ -18,9 +19,9 @@ export default function Produtos() {
 
           <SystemMap />
 
-          <div className="mt-16">
+          <Reveal className="mt-16">
             <SpecList items={treatmentProducts} />
-          </div>
+          </Reveal>
         </div>
       </section>
 

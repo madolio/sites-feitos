@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const fornadas = [
   { hora: '06h30', item: 'Pão de fermentação natural', status: 'Saindo agora' },
   { hora: '09h00', item: 'Croissant e folhados', status: 'A caminho' },
@@ -15,7 +17,11 @@ export default function FornadaDoDia() {
         <h2 className="text-3xl md:text-4xl">Fornada do dia</h2>
         <p className="mt-3 text-farinha/70">Atualizado toda manhã — o que sai, e quando.</p>
 
-        <ul className="mt-10 divide-y divide-farinha/15 border-y border-farinha/15">
+        <Reveal
+          as="ul"
+          className="mt-10 divide-y divide-farinha/15 border-y border-farinha/15"
+          stagger={0.08}
+        >
           {fornadas.map((f) => (
             <li key={f.hora} className="flex flex-wrap items-baseline justify-between gap-2 py-4">
               <span className="tally text-lg text-trigo">{f.hora}</span>
@@ -23,7 +29,7 @@ export default function FornadaDoDia() {
               <span className="text-sm text-farinha/60">{f.status}</span>
             </li>
           ))}
-        </ul>
+        </Reveal>
       </div>
     </section>
   )

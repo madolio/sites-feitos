@@ -1,13 +1,14 @@
 import { artistas } from '../data/flashes'
+import Reveal from './Reveal'
 
 export default function PainelArtistas() {
   return (
     <section className="panel flex h-svh w-screen shrink-0 flex-col justify-center overflow-y-auto px-6 py-20 sm:px-10">
-      <h2 className="font-display text-3xl tracking-widest text-paper uppercase sm:text-4xl">
+      <Reveal as="h2" className="font-display text-3xl tracking-widest text-paper uppercase sm:text-4xl">
         Quem tatua
-      </h2>
+      </Reveal>
 
-      <ul className="mt-10 grid max-w-2xl gap-6 sm:grid-cols-3">
+      <Reveal as="ul" stagger={0.08} className="mt-10 grid max-w-2xl gap-6 sm:grid-cols-3">
         {artistas.map((a) => (
           <li key={a.nome} className="border border-line p-6">
             <span className="font-display text-4xl text-ember">
@@ -20,7 +21,7 @@ export default function PainelArtistas() {
             <p className="mt-1 text-sm text-paper/60">{a.estilo}</p>
           </li>
         ))}
-      </ul>
+      </Reveal>
     </section>
   )
 }

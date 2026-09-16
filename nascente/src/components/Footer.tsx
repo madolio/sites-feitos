@@ -1,10 +1,11 @@
 import { sendToWhatsApp } from '../demo'
+import Reveal from './Reveal'
 
 export default function Footer() {
   return (
     <footer id="contato" className="scroll-mt-20 bg-ink text-white">
       <div className="mx-auto max-w-6xl px-6 pt-20 pb-10 md:pt-24">
-        <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:gap-16">
+        <Reveal className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:gap-16">
           <div>
             <h2 className="text-2xl font-extrabold md:text-3xl">
               Fale com a nossa equipe
@@ -30,7 +31,7 @@ export default function Footer() {
               </button>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         <div className="mt-16 flex flex-wrap justify-between gap-4 border-t border-white/15 pt-6 text-sm text-white/50">
           <span>© {new Date().getFullYear()} Nascente</span>

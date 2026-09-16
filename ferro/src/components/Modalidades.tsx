@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const modalidades = [
   {
     titulo: 'Musculação',
@@ -21,16 +23,18 @@ export default function Modalidades() {
   return (
     <section id="modalidades" className="border-b-2 border-preto bg-branco py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-3xl md:text-4xl">Modalidades</h2>
+        <Reveal>
+          <h2 className="text-3xl md:text-4xl">Modalidades</h2>
+        </Reveal>
 
-        <div className="mt-10 grid gap-px overflow-hidden border-2 border-preto sm:grid-cols-2">
+        <Reveal stagger={0.08} className="mt-10 grid gap-px overflow-hidden border-2 border-preto sm:grid-cols-2">
           {modalidades.map((item) => (
             <div key={item.titulo} className="group bg-branco p-6 transition-colors hover:bg-preto hover:text-branco">
               <h3 className="text-xl">{item.titulo}</h3>
               <p className="mt-2 text-fumo transition-colors group-hover:text-cinza">{item.texto}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,4 +1,5 @@
 import { plans } from '../data'
+import Reveal from './Reveal'
 
 // Todos os recursos de todos os planos, na ordem em que aparecem no plano
 // mais completo — usado como as linhas da tabela comparativa.
@@ -12,12 +13,14 @@ export default function Planos() {
   return (
     <section id="planos" className="scroll-mt-16 border-t border-line py-20 md:py-28">
       <div className="mx-auto max-w-4xl px-5 sm:px-6">
-        <h2 className="text-4xl font-medium tracking-tight md:text-5xl">Planos</h2>
-        <p className="mt-4 max-w-md text-lg text-ink-dim">
-          14 dias grátis em qualquer plano, sem cartão. Cancele quando quiser.
-        </p>
+        <Reveal>
+          <h2 className="text-4xl font-medium tracking-tight md:text-5xl">Planos</h2>
+          <p className="mt-4 max-w-md text-lg text-ink-dim">
+            14 dias grátis em qualquer plano, sem cartão. Cancele quando quiser.
+          </p>
+        </Reveal>
 
-        <div className="mt-12 overflow-x-auto">
+        <Reveal className="mt-12 overflow-x-auto">
           <table className="w-full min-w-[36rem] border-collapse">
             <caption className="sr-only">Comparação de planos da Torre</caption>
             <thead>
@@ -83,7 +86,7 @@ export default function Planos() {
               </tr>
             </tbody>
           </table>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

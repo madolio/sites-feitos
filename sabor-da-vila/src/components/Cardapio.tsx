@@ -1,4 +1,5 @@
 import { brl, cardapio, type Item } from '../data'
+import Reveal from './Reveal'
 
 type CardapioProps = {
   qty: Record<string, number>
@@ -24,15 +25,15 @@ export default function Cardapio({ qty, change }: CardapioProps) {
           </p>
         </div>
 
-        <div className="mt-10 bg-pink/15 p-5 sm:p-6">
+        <Reveal className="mt-10 bg-pink/15 p-5 sm:p-6">
           <p className="poster text-2xl text-blue sm:text-3xl">Terça do smash</p>
           <p className="mt-1 text-lg font-medium">
             Dois Smash da Vila e uma fritas grande por R$ 49. Só às terças, no
             balcão ou na entrega.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-x-14 gap-y-14 md:grid-cols-2">
+        <Reveal as="div" className="mt-12 grid gap-x-14 gap-y-14 md:grid-cols-2" stagger={0.08}>
           {cardapio.map((cat) => (
             <div key={cat.id}>
               <h3 className="poster text-4xl text-blue">{cat.name}</h3>
@@ -44,7 +45,7 @@ export default function Cardapio({ qty, change }: CardapioProps) {
               </ul>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

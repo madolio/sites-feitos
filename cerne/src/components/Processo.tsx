@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 // Processo específico de design de interiores — não o "conversa, orçamento,
 // entrega" genérico que serviria pra qualquer prestador de serviço. Cada
 // etapa é uma decisão real que muda o resultado (por que medir a luz antes
@@ -30,10 +32,12 @@ export default function Processo() {
   return (
     <section id="processo" className="border-t border-line bg-panel px-6 py-16 sm:px-10 md:py-24">
       <div className="mx-auto max-w-3xl">
-        <span className="text-sm font-medium text-pine">Como a gente projeta</span>
-        <h2 className="mt-2 text-3xl text-ink sm:text-4xl">Design de interior é decisão de material, não estética</h2>
+        <Reveal>
+          <span className="text-sm font-medium text-pine">Como a gente projeta</span>
+          <h2 className="mt-2 text-3xl text-ink sm:text-4xl">Design de interior é decisão de material, não estética</h2>
+        </Reveal>
 
-        <ol className="mt-10 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
+        <Reveal as="ol" className="mt-10 grid gap-8 border-t border-line pt-8 sm:grid-cols-2" stagger={0.08}>
           {etapas.map((etapa, i) => (
             <li key={etapa.titulo}>
               <span className="font-display text-2xl text-pine">{String(i + 1).padStart(2, '0')}</span>
@@ -41,7 +45,7 @@ export default function Processo() {
               <p className="mt-2 text-ink/70">{etapa.texto}</p>
             </li>
           ))}
-        </ol>
+        </Reveal>
       </div>
     </section>
   )

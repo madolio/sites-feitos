@@ -1,9 +1,10 @@
 import { sendToWhatsApp } from '../demo'
+import Reveal from './Reveal'
 
 export default function CtaFinal() {
   return (
     <section className="bg-preto py-16 text-center text-branco md:py-24">
-      <div className="mx-auto max-w-3xl px-6">
+      <Reveal className="mx-auto max-w-3xl px-6">
         <h2 className="text-3xl text-branco md:text-4xl">Comece medindo, não chutando</h2>
         <p className="mt-4 text-cinza">Segunda a sábado, 6h às 22h.</p>
 
@@ -14,7 +15,7 @@ export default function CtaFinal() {
         >
           Falar no WhatsApp
         </button>
-      </div>
+      </Reveal>
     </section>
   )
 }

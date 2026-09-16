@@ -1,4 +1,5 @@
 import { sendToEmail } from '../demo'
+import Reveal from './Reveal'
 import { Mark } from './Sidebar'
 
 // Antes: bloco escuro "fale com a gente" com CTA grande — mas o CTA já é
@@ -8,7 +9,7 @@ import { Mark } from './Sidebar'
 export default function Footer() {
   return (
     <footer id="contato" className="scroll-mt-16 border-t border-line py-10">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-5 sm:px-6">
+      <Reveal className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-5 sm:px-6">
         <div className="mono flex items-center gap-2.5 text-sm text-ink-dim">
           <Mark className="h-5 w-5" />
           <span>
@@ -28,7 +29,7 @@ export default function Footer() {
             Madolio
           </a>
         </p>
-      </div>
+      </Reveal>
     </footer>
   )
 }

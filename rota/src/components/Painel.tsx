@@ -1,5 +1,6 @@
 import { sendToWhatsApp } from '../demo'
 import MapaRotas from './MapaRotas'
+import Reveal from './Reveal'
 import StatGrid from './StatGrid'
 import TabelaEntregas from './TabelaEntregas'
 
@@ -24,7 +25,7 @@ export default function Painel() {
         <StatGrid />
       </div>
 
-      <div className="mt-4 rounded-xl border border-line bg-card p-5">
+      <Reveal className="mt-4 rounded-xl border border-line bg-card p-5">
         <div className="flex items-center justify-between">
           <h2 className="font-semibold text-ink">Rotas ativas</h2>
           <span className="text-xs text-ink/45">atualizado agora</span>
@@ -36,11 +37,11 @@ export default function Painel() {
         <div className="mt-4">
           <MapaRotas />
         </div>
-      </div>
+      </Reveal>
 
-      <div className="mt-4">
+      <Reveal className="mt-4">
         <TabelaEntregas />
-      </div>
+      </Reveal>
 
       <p className="mt-8 text-center text-sm text-ink/45">
         A Rota é um software fictício: este site é um conceito criado pela{' '}

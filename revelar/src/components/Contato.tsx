@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { pacotes } from '../data'
 import { sendToWhatsApp } from '../demo'
 import { Mark } from './FilmBar'
+import Reveal from './Reveal'
 
 export default function Contato() {
   const [pacote, setPacote] = useState<string | null>(null)
@@ -17,9 +18,11 @@ export default function Contato() {
   return (
     <footer id="contato" className="scroll-mt-24 py-20 md:py-28">
       <div className="mx-auto max-w-2xl px-6">
-        <h2 className="text-3xl sm:text-4xl">Pacotes</h2>
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl">Pacotes</h2>
+        </Reveal>
 
-        <ul className="mt-10 divide-y-2 divide-ink border-y-2 border-ink">
+        <Reveal as="ul" stagger={0.08} className="mt-10 divide-y-2 divide-ink border-y-2 border-ink">
           {pacotes.map((p) => (
             <li key={p.nome} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-5">
               <div>
@@ -31,9 +34,9 @@ export default function Contato() {
               <span className="font-display text-lg text-amber-ink">{p.preco}</span>
             </li>
           ))}
-        </ul>
+        </Reveal>
 
-        <form onSubmit={submit} className="mt-12 space-y-6">
+        <Reveal as="form" onSubmit={submit} className="mt-12 space-y-6">
           <fieldset>
             <legend className="font-bold">Qual pacote te interessa?</legend>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -65,7 +68,7 @@ export default function Contato() {
           <button type="submit" disabled={!ready} className="btn-amber disabled:cursor-not-allowed disabled:opacity-50">
             Pedir orçamento
           </button>
-        </form>
+        </Reveal>
 
         <div className="mt-16 flex items-center gap-2.5 border-t border-line pt-6">
           <Mark className="h-6 w-6 text-ink" />

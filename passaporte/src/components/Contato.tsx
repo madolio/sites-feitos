@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { idiomas } from '../data'
 import { sendToWhatsApp } from '../demo'
+import Reveal from './Reveal'
 
 export default function Contato() {
   const [idioma, setIdioma] = useState<string | null>(null)
@@ -16,11 +17,13 @@ export default function Contato() {
   return (
     <footer id="matricula" className="scroll-mt-16 py-20 md:py-28">
       <div className="mx-auto max-w-2xl px-6">
-        <h2 className="text-3xl sm:text-4xl">Carimbe o seu primeiro nível</h2>
-        <p className="mt-3 max-w-md text-ink/75">
-          O teste de nivelamento é gratuito e leva 20 minutos — a gente te
-          diz exatamente onde começar.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl">Carimbe o seu primeiro nível</h2>
+          <p className="mt-3 max-w-md text-ink/75">
+            O teste de nivelamento é gratuito e leva 20 minutos — a gente te
+            diz exatamente onde começar.
+          </p>
+        </Reveal>
 
         <form onSubmit={submit} className="mt-10 space-y-6">
           <fieldset>

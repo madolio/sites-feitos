@@ -1,10 +1,11 @@
 import { sendToEmail } from '../demo'
 import { Mark } from './Nav'
+import Reveal from './Reveal'
 
 export default function Footer() {
   return (
     <footer id="contato" className="scroll-mt-16 border-t border-line py-16">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <Reveal as="div" className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
           <div>
             <h2 className="text-3xl md:text-4xl">Vamos organizar o seu patrimônio?</h2>
@@ -39,7 +40,7 @@ export default function Footer() {
           . Números e carteiras são ilustrativos, não recomendação de
           investimento.
         </p>
-      </div>
+      </Reveal>
     </footer>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { sendToWhatsApp } from '../demo'
 import { servicos } from '../data'
 import { Mark } from './FolderTabs'
+import Reveal from './Reveal'
 
 export default function Agendar() {
   const [servico, setServico] = useState<string | null>(null)
@@ -17,13 +18,15 @@ export default function Agendar() {
   return (
     <footer id="agendar" className="scroll-mt-24 border-t border-line bg-ink py-20 text-paper md:py-28">
       <div className="mx-auto max-w-3xl px-6">
-        <h2 className="text-3xl text-paper sm:text-4xl">Vamos marcar?</h2>
-        <p className="mt-3 max-w-md text-paper/75">
-          Escolhe o serviço e o nome do seu bichano ou cachorro — a gente
-          confirma o horário na hora.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl text-paper sm:text-4xl">Vamos marcar?</h2>
+          <p className="mt-3 max-w-md text-paper/75">
+            Escolhe o serviço e o nome do seu bichano ou cachorro — a gente
+            confirma o horário na hora.
+          </p>
+        </Reveal>
 
-        <form onSubmit={submit} className="mt-10 max-w-lg space-y-6">
+        <Reveal as="form" onSubmit={submit} className="mt-10 max-w-lg space-y-6">
           <fieldset>
             <legend className="font-bold">Qual serviço?</legend>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -54,7 +57,7 @@ export default function Agendar() {
           <button type="submit" disabled={!ready} className="btn-accent disabled:cursor-not-allowed disabled:opacity-50">
             Enviar pedido
           </button>
-        </form>
+        </Reveal>
 
         <div className="mt-16 flex items-center gap-2.5 border-t border-paper/20 pt-6">
           <Mark className="h-7 w-7" />

@@ -1,3 +1,4 @@
+import Reveal from './Reveal'
 import { sectors } from '../data/sectors'
 
 export default function Empresa() {
@@ -6,7 +7,7 @@ export default function Empresa() {
       <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-2 md:gap-16">
         <div>
           <h2 className="text-lg font-semibold text-ink/75">Setores atendidos</h2>
-          <ul className="mt-5 space-y-1">
+          <Reveal as="ul" className="mt-5 space-y-1" stagger={0.08}>
             {sectors.map((sector) => (
               <li
                 key={sector.name}
@@ -16,10 +17,10 @@ export default function Empresa() {
                 {sector.name}
               </li>
             ))}
-          </ul>
+          </Reveal>
         </div>
 
-        <div className="md:pt-12">
+        <Reveal className="md:pt-12">
           <h2 className="text-2xl font-bold text-ink md:text-3xl">
             Da fabricação à instalação
           </h2>
@@ -35,7 +36,7 @@ export default function Empresa() {
               que a água chegue com a qualidade que cada aplicação exige.
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,8 +1,9 @@
 import { stats } from '../data/painel'
+import Reveal from './Reveal'
 
 export default function StatGrid() {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+    <Reveal className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4" stagger={0.08}>
       {stats.map((s) => (
         <div key={s.label} className="rounded-xl border border-line bg-card p-4">
           <p className="text-xs font-medium text-ink/55">{s.label}</p>
@@ -10,6 +11,6 @@ export default function StatGrid() {
           <p className="mt-1 text-xs text-ink/45">{s.nota}</p>
         </div>
       ))}
-    </div>
+    </Reveal>
   )
 }

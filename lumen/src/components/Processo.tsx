@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const etapas = [
   { titulo: 'Levantamento do espaço', texto: 'Medição real do ambiente, pé-direito, aberturas e uso previsto de cada zona.' },
   { titulo: 'Estudo de layout', texto: 'Onde cada ponto de luz vai — geral, tarefa e destaque nunca são a mesma luminária.' },
@@ -11,10 +13,12 @@ export function Processo() {
   return (
     <section id="processo" className="border-t border-fio bg-carvao px-6 py-20">
       <div className="mx-auto max-w-3xl">
-        <p className="font-mono text-sm tracking-widest text-acento uppercase">Processo</p>
-        <h2 className="mt-3 text-3xl">Como um projeto de luz é feito</h2>
+        <Reveal>
+          <p className="font-mono text-sm tracking-widest text-acento uppercase">Processo</p>
+          <h2 className="mt-3 text-3xl">Como um projeto de luz é feito</h2>
+        </Reveal>
 
-        <ol className="mt-8 flex flex-col gap-6">
+        <Reveal as="ol" className="mt-8 flex flex-col gap-6" stagger={0.08}>
           {etapas.map((e, i) => (
             <li key={e.titulo} className="flex gap-4">
               <span className="tabular font-mono text-acento">{String(i + 1).padStart(2, '0')}</span>
@@ -24,7 +28,7 @@ export function Processo() {
               </div>
             </li>
           ))}
-        </ol>
+        </Reveal>
       </div>
     </section>
   )

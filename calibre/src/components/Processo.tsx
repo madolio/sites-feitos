@@ -1,15 +1,18 @@
 import { etapas } from '../data/processo'
+import Reveal from './Reveal'
 
 export default function Processo() {
   return (
     <section id="processo" className="scroll-mt-20 border-b border-line px-6 py-20 sm:px-10 md:py-28">
       <div className="mx-auto max-w-3xl">
-        <h2 className="font-heading text-4xl font-medium text-cream sm:text-5xl">Como um calibre nasce</h2>
-        <p className="mt-3 max-w-md text-cream/65">
-          Da conversa inicial ao boletim de marcha, sempre nessa ordem.
-        </p>
+        <Reveal>
+          <h2 className="font-heading text-4xl font-medium text-cream sm:text-5xl">Como um calibre nasce</h2>
+          <p className="mt-3 max-w-md text-cream/65">
+            Da conversa inicial ao boletim de marcha, sempre nessa ordem.
+          </p>
+        </Reveal>
 
-        <ol className="mt-14 border-l border-line pl-8">
+        <Reveal as="ol" stagger={0.08} className="mt-14 border-l border-line pl-8">
           {etapas.map((e, i) => (
             <li key={e.numero} className={`relative ${i > 0 ? 'mt-10' : ''}`}>
               <span className="absolute top-1 -left-[calc(2rem+5px)] h-2.5 w-2.5 rounded-full bg-brass" />
@@ -18,7 +21,7 @@ export default function Processo() {
               <p className="mt-2 max-w-md text-cream/70">{e.descricao}</p>
             </li>
           ))}
-        </ol>
+        </Reveal>
       </div>
     </section>
   )

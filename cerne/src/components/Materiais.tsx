@@ -1,4 +1,5 @@
 import { casos } from '../data/casos'
+import Reveal from './Reveal'
 
 // Textura CSS por família de material — o objetivo é dar profundidade real
 // ao trabalho de especificação, não um card de "nossos diferenciais". Cada
@@ -39,15 +40,17 @@ export default function Materiais() {
   return (
     <section id="materiais" className="border-t border-line bg-paper px-6 py-16 sm:px-10 md:py-24">
       <div className="mx-auto max-w-3xl">
-        <span className="text-sm font-medium text-pine">Materioteca</span>
-        <h2 className="mt-2 text-3xl text-ink sm:text-4xl">Cada projeto começa pelo material, não pelo desenho</h2>
-        <p className="mt-4 max-w-md text-ink/75">
-          Antes de qualquer planta, a gente decide o que vai revestir, forrar
-          e estruturar cada cômodo — a amostra abaixo é a materioteca real
-          por trás das quatro casas ao lado.
-        </p>
+        <Reveal>
+          <span className="text-sm font-medium text-pine">Materioteca</span>
+          <h2 className="mt-2 text-3xl text-ink sm:text-4xl">Cada projeto começa pelo material, não pelo desenho</h2>
+          <p className="mt-4 max-w-md text-ink/75">
+            Antes de qualquer planta, a gente decide o que vai revestir, forrar
+            e estruturar cada cômodo — a amostra abaixo é a materioteca real
+            por trás das quatro casas ao lado.
+          </p>
+        </Reveal>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <Reveal className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3" stagger={0.08}>
           {materiaisUnicos.map((m) => (
             <div key={m.material}>
               <div
@@ -61,7 +64,7 @@ export default function Materiais() {
               </p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

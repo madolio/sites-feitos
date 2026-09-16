@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { sendToWhatsApp } from '../demo'
 import { Mark } from './Rail'
+import Reveal from './Reveal'
 
 const horarios = ['Manhã', 'Almoço', 'Fim de tarde', 'Noite'] as const
 
@@ -20,11 +21,13 @@ export default function Agendar() {
   return (
     <footer id="agendar" className="scroll-mt-16 border-t-4 border-track bg-track py-20 text-chalk md:py-28 lg:pl-16">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-4xl text-chalk sm:text-5xl">Sua largada é agora.</h2>
-        <p className="mt-4 max-w-md text-lg text-chalk/90">
-          A primeira aula é grátis, sem compromisso. É só marcar o melhor
-          horário.
-        </p>
+        <Reveal>
+          <h2 className="text-4xl text-chalk sm:text-5xl">Sua largada é agora.</h2>
+          <p className="mt-4 max-w-md text-lg text-chalk/90">
+            A primeira aula é grátis, sem compromisso. É só marcar o melhor
+            horário.
+          </p>
+        </Reveal>
 
         <form onSubmit={submit} className="mt-10 max-w-lg space-y-6">
           <fieldset>

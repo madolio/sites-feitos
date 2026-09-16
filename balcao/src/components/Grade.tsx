@@ -1,5 +1,6 @@
 import { cardapio, type Categoria } from '../data/cardapio'
 import ItemCard from './ItemCard'
+import Reveal from './Reveal'
 
 export default function Grade({
   categoria,
@@ -15,7 +16,11 @@ export default function Grade({
   const itens = cardapio.filter((i) => i.categoria === categoria)
 
   return (
-    <ul className="mx-auto grid max-w-4xl grid-cols-2 gap-4 px-5 py-6 sm:grid-cols-3 sm:gap-5 sm:px-8">
+    <Reveal
+      as="ul"
+      stagger={0.08}
+      className="mx-auto grid max-w-4xl grid-cols-2 gap-4 px-5 py-6 sm:grid-cols-3 sm:gap-5 sm:px-8"
+    >
       {itens.map((item) => (
         <ItemCard
           key={item.id}
@@ -25,6 +30,6 @@ export default function Grade({
           onRemove={() => onRemove(item.id)}
         />
       ))}
-    </ul>
+    </Reveal>
   )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { programas } from '../data'
+import Reveal from './Reveal'
 
 // Marcos acumulados da barra (0, 25, 60, 85, 100) — usados tanto pra
 // desenhar os segmentos quanto pra posicionar o ponto de batimento.
@@ -18,11 +19,13 @@ export default function Programas() {
   return (
     <section id="programas" className="scroll-mt-16 border-t-4 border-track py-20 md:py-28 lg:pl-16">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-4xl sm:text-5xl">A pista do seu treino</h2>
-        <p className="mt-4 max-w-md text-lg text-track/70">
-          Quatro trechos, na ordem em que o corpo evolui — não pula etapa.
-          Toque em um pra ver onde ele fica na pista.
-        </p>
+        <Reveal>
+          <h2 className="text-4xl sm:text-5xl">A pista do seu treino</h2>
+          <p className="mt-4 max-w-md text-lg text-track/70">
+            Quatro trechos, na ordem em que o corpo evolui — não pula etapa.
+            Toque em um pra ver onde ele fica na pista.
+          </p>
+        </Reveal>
 
         {/* Barra de distância com o ponto de batimento */}
         <div className="relative mt-14">
@@ -42,7 +45,7 @@ export default function Programas() {
           <span>100M</span>
         </div>
 
-        <div className="mt-14 grid gap-10 sm:grid-cols-2">
+        <Reveal className="mt-14 grid gap-10 sm:grid-cols-2" stagger={0.08}>
           {programas.map((p, i) => {
             const selecionado = ativo === i
             return (
@@ -70,7 +73,7 @@ export default function Programas() {
               </button>
             )
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

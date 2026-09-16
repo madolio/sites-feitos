@@ -1,5 +1,6 @@
 import { luminarias, type Luminaria } from '../data/luminarias'
 import { kelvinParaCss } from '../cor'
+import Reveal from './Reveal'
 
 // O cone de cada card é geometria real, não decoração: a abertura do
 // triângulo é o ângulo de feixe de catálogo da luminária (trigonometria
@@ -36,14 +37,16 @@ export function Catalogo() {
   return (
     <section id="catalogo" className="border-t border-fio bg-noite px-6 py-20">
       <div className="mx-auto max-w-5xl">
-        <p className="font-mono text-sm tracking-widest text-acento uppercase">Catálogo</p>
-        <h2 className="mt-3 text-3xl">Cada luminária tem um feixe diferente</h2>
-        <p className="mt-3 max-w-2xl text-fumo">
-          O cone é desenhado a partir do ângulo de feixe real de cada peça, e a cor vem da temperatura de cor exata
-          (Kelvin) — não é ilustração livre.
-        </p>
+        <Reveal>
+          <p className="font-mono text-sm tracking-widest text-acento uppercase">Catálogo</p>
+          <h2 className="mt-3 text-3xl">Cada luminária tem um feixe diferente</h2>
+          <p className="mt-3 max-w-2xl text-fumo">
+            O cone é desenhado a partir do ângulo de feixe real de cada peça, e a cor vem da temperatura de cor exata
+            (Kelvin) — não é ilustração livre.
+          </p>
+        </Reveal>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
           {luminarias.map((l) => (
             <article key={l.id} className="border border-fio bg-carvao p-5">
               <ConeDeLuz luminaria={l} />
@@ -70,7 +73,7 @@ export function Catalogo() {
               </dl>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

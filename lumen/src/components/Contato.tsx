@@ -1,12 +1,13 @@
 import { sendToWhatsApp } from '../demo'
 import { useState } from 'react'
+import Reveal from './Reveal'
 
 export function Contato() {
   const [texto, setTexto] = useState('')
 
   return (
     <section id="contato" className="border-t border-fio bg-noite px-6 py-20">
-      <div className="mx-auto max-w-xl">
+      <Reveal className="mx-auto max-w-xl">
         <p className="font-mono text-sm tracking-widest text-acento uppercase">Contato</p>
         <h2 className="mt-3 text-3xl">Fale sobre o seu projeto</h2>
 
@@ -32,7 +33,7 @@ export function Contato() {
         <p className="mt-8 text-xs text-fumo">
           O Lúmen é um estúdio de luminotécnica fictício, conceito de site criado pela Madolio.
         </p>
-      </div>
+      </Reveal>
     </section>
   )
 }

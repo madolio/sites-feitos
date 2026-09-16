@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Empresa from '../components/Empresa'
 import Hero from '../components/Hero'
 import OsmosisScale from '../components/OsmosisScale'
+import Reveal from '../components/Reveal'
 import SpecList from '../components/SpecList'
 import { treatmentProducts } from '../data/products'
 
@@ -12,7 +13,7 @@ export default function Home() {
 
       <section className="pb-20 md:pb-28">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="text-3xl font-extrabold text-ink md:text-[2.75rem]">
               Produtos
             </h2>
@@ -22,11 +23,11 @@ export default function Home() {
             >
               Ver catálogo completo
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="mt-10">
+          <Reveal className="mt-10">
             <SpecList items={treatmentProducts} />
-          </div>
+          </Reveal>
         </div>
       </section>
 

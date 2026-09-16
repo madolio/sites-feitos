@@ -1,4 +1,5 @@
 import { sendToWhatsApp } from '../demo'
+import Reveal from './Reveal'
 
 const planos = [
   { nome: 'Diária', preco: 'R$ 25', destaque: false },
@@ -10,9 +11,11 @@ export default function Planos() {
   return (
     <section id="planos" className="border-b-2 border-preto bg-branco py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-3xl md:text-4xl">Planos</h2>
+        <Reveal>
+          <h2 className="text-3xl md:text-4xl">Planos</h2>
+        </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <Reveal stagger={0.08} className="mt-10 grid gap-6 sm:grid-cols-3">
           {planos.map((plano) => (
             <div
               key={plano.nome}
@@ -34,7 +37,7 @@ export default function Planos() {
               </button>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

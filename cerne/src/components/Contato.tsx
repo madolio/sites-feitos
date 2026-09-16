@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { sendToWhatsApp } from '../demo'
+import Reveal from './Reveal'
 
 export default function Contato() {
   const [nome, setNome] = useState('')
@@ -13,7 +14,7 @@ export default function Contato() {
 
   return (
     <footer id="contato" className="border-t border-line bg-panel px-6 py-20 sm:px-10 md:py-28">
-      <div className="mx-auto max-w-lg">
+      <Reveal className="mx-auto max-w-lg">
         <h2 className="text-3xl text-ink sm:text-4xl">Vamos desenhar o seu?</h2>
         <p className="mt-3 text-ink/75">
           Conta seu nome — a gente confirma um horário pra conversar sobre o
@@ -45,7 +46,7 @@ export default function Contato() {
           </a>
           .
         </p>
-      </div>
+      </Reveal>
     </footer>
   )
 }
