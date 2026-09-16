@@ -1,0 +1,11 @@
+{
+  "name": "Leads Madolio",
+  "short_name": "Leads",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f6f4a",
+  "icons": [
+    { "src": "/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
