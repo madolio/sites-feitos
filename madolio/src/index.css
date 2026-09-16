@@ -20,7 +20,7 @@
   --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-poster: "Bebas Neue", var(--font-heading);
-  --font-accent: "Instrument Sans", var(--font-heading);
+  --font-accent: "Instrument Serif", var(--font-heading);
 }
 
 @layer base {
