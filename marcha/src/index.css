@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-preto: #0b0b0c;
+  --color-carvao: #171719;
+  --color-fio: #2c2c30;
+  --color-marfim: #f3f1ec;
+  --color-fumo: #97949c;
+  /* --color-acento validada ~5,5:1 sobre --preto e ~5:1 sobre --carvao — acima do mínimo AA (4,5:1) pra texto normal. */
+  --color-acento: #ff3b30;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-preto font-body text-marfim antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+  }
+}
+
+.campo-numero::-webkit-inner-spin-button,
+.campo-numero::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.campo-numero {
+  -moz-appearance: textfield;
+}
+
+@layer components {
+  .btn-acento {
+    @apply inline-flex items-center justify-center rounded-md bg-acento px-5 py-3 font-semibold text-marfim transition hover:brightness-110;
+  }
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-md border border-fio px-5 py-3 font-semibold text-marfim transition hover:border-acento hover:text-acento;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
