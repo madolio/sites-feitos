@@ -206,6 +206,7 @@ export const projetos: Projeto[] = [
     accent: '#1F3C88',
     url: 'https://torno.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/torno',
   },
   {
     name: 'Cardume',
@@ -227,6 +228,7 @@ export const projetos: Projeto[] = [
     accent: '#34586C',
     url: 'https://encaixe.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/encaixe',
   },
   {
     name: 'Calibre',
@@ -237,6 +239,7 @@ export const projetos: Projeto[] = [
     accent: '#CAA25E',
     url: 'https://calibre.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/calibre',
   },
   {
     name: 'Taça',
@@ -247,6 +250,7 @@ export const projetos: Projeto[] = [
     accent: '#7A1030',
     url: 'https://taca.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/taca',
   },
   {
     name: 'Ferro',
@@ -266,6 +270,7 @@ export const projetos: Projeto[] = [
     accent: '#c59d5f',
     url: 'https://realce.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/realce',
   },
   {
     name: 'Fornada',
@@ -285,6 +290,7 @@ export const projetos: Projeto[] = [
     accent: '#ffb46b',
     url: 'https://lumen.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/lumen',
   },
   {
     name: 'Prisma',
@@ -295,6 +301,7 @@ export const projetos: Projeto[] = [
     accent: '#b98cff',
     url: 'https://prisma.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/prisma',
   },
   {
     name: 'Marcha',
@@ -305,6 +312,7 @@ export const projetos: Projeto[] = [
     accent: '#ff3b30',
     url: 'https://marcha.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/marcha',
   },
   {
     name: 'Bruma',
@@ -315,5 +323,6 @@ export const projetos: Projeto[] = [
     accent: '#3fae82',
     url: 'https://bruma.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/bruma',
   },
 ]
