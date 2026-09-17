@@ -4,7 +4,7 @@ import TreatmentDiagram from './TreatmentDiagram'
 
 export default function Hero() {
   return (
-    <section className="overflow-hidden pt-24 pb-20 md:pb-28 lg:pt-16">
+    <section id="inicio" className="overflow-hidden pt-24 pb-20 md:pb-28 lg:pt-16">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 md:grid-cols-[1.25fr_1fr] md:items-end md:gap-16">
           <h1 className="text-[2.5rem] font-extrabold leading-[1.02] text-ink md:text-[3.75rem]">

@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Hero />
 
-      <section className="pb-20 md:pb-28">
+      <section id="produtos-preview" className="scroll-mt-20 pb-20 md:pb-28">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="text-3xl font-extrabold text-ink md:text-[2.75rem]">

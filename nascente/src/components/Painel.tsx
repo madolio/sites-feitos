@@ -7,12 +7,16 @@ import { sendToWhatsApp } from '../demo'
 // texto solto) marcando onde a agulha aponta — cheio no estágio ativo, em
 // repouso nos outros. Substitui `Nav.tsx` (barra fixa com logo+links+botão,
 // igual à de praticamente qualquer site) por um painel de instrumento.
+// `domId` é o alvo observado pelo scroll-spy — separado de `to` (a rota+hash
+// de navegação) porque "Captação" e "Filtração" não têm hash próprio (a
+// segunda é uma ROTA, `/produtos`), mas ainda têm uma seção física pra
+// observar na Home (o Hero e a prévia de produtos, respectivamente).
 const estagios = [
-  { to: '/', hash: '', label: 'Captação' },
-  { to: '/produtos', hash: '', label: 'Filtração' },
-  { to: '/produtos#osmose', hash: '#osmose', label: 'Osmose reversa' },
-  { to: '/#setores', hash: '#setores', label: 'Aplicação' },
-  { to: '/#contato', hash: '#contato', label: 'Atendimento' },
+  { to: '/', domId: 'inicio', label: 'Captação' },
+  { to: '/produtos', domId: 'produtos-preview', label: 'Filtração' },
+  { to: '/produtos#osmose', domId: 'osmose', label: 'Osmose reversa' },
+  { to: '/#setores', domId: 'setores', label: 'Aplicação' },
+  { to: '/#contato', domId: 'contato', label: 'Atendimento' },
 ] as const
 
 function useEstagioAtivo() {
@@ -21,9 +25,15 @@ function useEstagioAtivo() {
 
   useEffect(() => {
     setPorScroll(null)
-    const ids = estagios.filter((e) => e.hash).map((e) => e.hash.slice(1))
-    const elementos = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el)
+    // Nem todo domId existe em toda página (ex: "produtos-preview" só
+    // existe na Home, "osmose" existe tanto na Home quanto em /produtos) —
+    // só observa o que realmente está montado na página atual.
+    const elementos = estagios
+      .map((e) => ({ to: e.to as string, el: document.getElementById(e.domId) }))
+      .filter((x): x is { to: string; el: HTMLElement } => x.el !== null)
     if (elementos.length === 0) return
+
+    const paraDestino = new Map(elementos.map((x) => [x.el.id, x.to]))
 
     // O callback só reporta os alvos cujo estado MUDOU desde a última
     // chamada, não uma foto completa de quem está visível agora — por isso
@@ -41,16 +51,16 @@ function useEstagioAtivo() {
           else visiveis.delete(e.target.id)
         }
         const ordenado = [...visiveis.entries()].sort((a, b) => a[1] - b[1])
-        if (ordenado[0]) setPorScroll(`#${ordenado[0][0]}`)
+        if (ordenado[0]) setPorScroll(paraDestino.get(ordenado[0][0]) ?? null)
       },
       { rootMargin: '-20% 0px -60% 0px' },
     )
-    elementos.forEach((el) => observer.observe(el))
+    elementos.forEach(({ el }) => observer.observe(el))
     return () => observer.disconnect()
   }, [location.pathname])
 
-  if (porScroll) return estagios.find((e) => e.hash === porScroll)?.to ?? null
-  if (!location.hash) return estagios.find((e) => e.to === location.pathname && !e.hash)?.to ?? null
+  if (porScroll) return porScroll
+  if (!location.hash) return estagios.find((e) => e.to === location.pathname)?.to ?? null
   return estagios.find((e) => e.to === `${location.pathname}${location.hash}`)?.to ?? null
 }
 
