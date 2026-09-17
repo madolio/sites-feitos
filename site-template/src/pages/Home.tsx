@@ -1,11 +1,11 @@
-import Board from '../components/Board'
-import Route from '../components/Route'
+import Docket from '../components/Docket'
+import Sequence from '../components/Sequence'
 
 export default function Home() {
   return (
     <>
-      <Board />
-      <Route />
+      <Docket />
+      <Sequence />
     </>
   )
 }

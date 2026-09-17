@@ -4,10 +4,11 @@ import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(useGSAP)
 
-// O painel de embarque mecânico — motion assinatura da página. Cada dígito
-// "roda" (como um painel de horários de trem/aeroporto) antes de travar no
-// valor final. Único motion não pedido; o resto usa apenas Reveal.
-export default function SplitFlap({ value }: { value: string }) {
+// Leitura de telemetria — cada dígito conta rapidamente até travar no valor
+// final, como um contador ao vivo de um painel de controle de missão (não
+// mais um painel de partidas de trem). Único motion "de dado", reservado pra
+// número real de casos ativos.
+export default function Readout({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
 
   useGSAP(
@@ -38,7 +39,7 @@ export default function SplitFlap({ value }: { value: string }) {
   )
 
   return (
-    <span ref={ref} className="flap">
+    <span ref={ref} className="flap readout">
       {value.split('').map((ch, i) => (
         <span key={i}>{ch}</span>
       ))}

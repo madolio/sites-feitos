@@ -12,3 +12,7 @@ export const PHONE_HREF = 'tel:+551140028800'
 export const EMAIL = 'contato@bastosadvocacia.com.br'
 export const EMAIL_HREF = `mailto:${EMAIL}`
 export const ADDRESS = 'Av. Brigadeiro Faria Lima, 1811 — São Paulo, SP'
+export const COORDINATES = '23.5870° S, 46.6826° O'
+// Número de processo fictício, usado como identificador de "sessão ao vivo"
+// no rastreador do topo da página e no console de contato.
+export const CASE_REF = '0192-45.2026.8.26.0100'

@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
-/* Vibe: "Terminal Wagon-Lit" — vagão-leito europeu × sinalização de aeroporto. */
+/* Vibe: "Sessão ao Vivo" — sala de audiência em sessão × painel de controle de missão espacial. */
 @theme {
-  --color-ink: #241a14;
-  --color-paper: #f3ede1;
-  --color-surface-alt: #1f3a32;
-  --color-line: #d8cdb8;
-  --color-accent: #b08d57;
-  --color-accent-hover: #93713f;
-  --color-signal: #9b3b2e;
+  --color-ink: #15110d;
+  --color-panel: #1d1712;
+  --color-paper: #f4f0e8;
+  --color-line: #d9d0bd;
+  --color-precision: #2f6f93;
+  --color-precision-hover: #255a78;
+  --color-go: #3f9463;
+  --color-hold: #cf4b39;
 
-  --font-heading: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Overpass", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
 @layer base {
@@ -27,11 +29,12 @@
   h4 {
     @apply font-heading;
     text-wrap: balance;
+    text-transform: uppercase;
     letter-spacing: 0.01em;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-hold);
     outline-offset: 3px;
   }
 }
@@ -50,22 +53,46 @@
     @apply border border-ink/30 text-ink hover:border-ink;
   }
 
-  /* Rebite de latão — detalhe de acabamento de vagão, usado nos divisores. */
-  .rivet {
-    @apply inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent;
+  /* Grade de telemetria — textura sutil de painel técnico, usada no fundo
+     dos blocos escuros em vez do veludo/latão da versão anterior. */
+  .telemetry-grid {
+    background-image: linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 
-  /* Borda perfurada de talão de bilhete — o wildcard da seção de contato. */
-  .ticket-edge {
-    background-image: radial-gradient(circle, var(--color-paper) 3px, transparent 3.5px);
-    background-size: 16px 16px;
-    background-position: -8px center;
-    background-repeat: repeat-x;
-    height: 8px;
+  /* Leitura monoespaçada — reservada pra dado real (número de processo,
+     horário, código de status), nunca decorativa. */
+  .readout {
+    @apply font-mono tabular-nums;
   }
 }
 
-/* Painel de embarque mecânico — o motion assinatura, só no hero. */
+/* Indicador "ao vivo" — pulso real de opacidade+escala, não um pill estático. */
+@keyframes pulse-live {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.72);
+  }
+}
+
+.pulse-live {
+  animation: pulse-live 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-live {
+    animation: none;
+  }
+}
+
+/* Painel de leitura numérica que "gira" antes de travar — telemetria de
+   caso ativo, não mais um quadro de partidas de trem. */
 .flap {
   display: inline-block;
   font-variant-numeric: tabular-nums;

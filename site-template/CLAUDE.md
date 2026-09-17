@@ -25,6 +25,31 @@ A colisão do Q3 é o que dá identidade própria: as áreas de atuação são n
 
 **Se for pedir uma nova reformulação de vibe no futuro, repetir esse processo** (perguntar Q1-Q4 ao usuário, não inventar sozinho) em vez de ir direto pro clichê mais óbvio do nicho.
 
+## Vibe: "Sessão ao Vivo" (set/2026 — 2ª reformulação de vibe)
+
+**Motivo:** o usuário achou o "Terminal Wagon-Lit" (vagão-leito) polido mas **"muito morta, sem vida"** — estático, sem pulso, nada parecia ao vivo, apesar de tecnicamente bem executado. Não era um problema de paleta, era de linguagem inteira: nada na página realmente "acontecia" continuamente. Rodei as 4 perguntas de Vibe Discovery de novo (processo documentado acima, repetido como prometido em vez de inventar sozinho):
+
+- **Q1 (lugar/objeto real):** sala de audiência em sessão — argumentação acontecendo agora, ao vivo.
+- **Q2 (emoção em 3s):** precisão afiada (não mais a autoridade serena da versão anterior).
+- **Q3 (colisão):** escritório jurídico + painel de controle de missão espacial — telemetria, indicadores GO/NO-GO, linguagem de contagem regressiva, checklist de sistemas.
+- **Q4 (nunca pode parecer):** site institucional corporativo genérico (hero gradiente, cards de serviço, "por que nos escolher") — e nunca mais o Wagon-Lit anterior, que agora lê como "morto".
+
+A colisão do Q3 é o que resolve o Q2/reclamação: a página passou a ter **relógios e contadores de verdade rodando o tempo inteiro** (não só motion de entrada uma vez), porque uma sala de audiência em sessão e uma sala de controle de missão têm isso em comum — algo está sempre em andamento, marcado no segundo.
+
+- **Paleta ("Sessão ao Vivo"):** `#15110d` quase-preto com fundo quente (ink, madeira de bancada de tribunal, não o azul-frio do painel da Torre `#0b1417`), `#1d1712` painel um tom acima (panel), `#f4f0e8` pergaminho claro (paper), `#d9d0bd` (line), `#2f6f93` azul-aço de precisão (precision — cor de instrumento cirúrgico, distinta do âmbar `#f2a93a` e do ciano `#35d6c9` da Torre), `#3f9463` verde de status GO (go), `#cf4b39` vermelho de alerta/"ao vivo" (hold — usado no indicador pulsante). Nenhum hex reciclado da versão anterior deste projeto nem dos projetos-irmãos (Torre, Traço, Âncora).
+- **Tipografia:** Oswald (títulos, condensada/maiúscula — cartaz de edital de tribunal e ao mesmo tempo placar técnico) + Inter (corpo) + **IBM Plex Mono** reservada só pra dado real: número de processo, cronômetro, coordenadas, código de sistema (`SYS-01` etc.) — nunca decorativa em rótulo comum, seguindo a diretriz do próprio projeto contra monoespaçada-decorativa como AI tell. Terceira combinação distinta de Torre (Space Grotesk/JetBrains Mono), Âncora (Sora/Roboto Mono) e Traço (Syne/Work Sans).
+- **Wildcard:** não é mais um objeto estático (talão de bilhete) — são **dois componentes que contam sozinhos o tempo inteiro**: `SessionTimer.tsx` (cronômetro HH:MM:SS subindo desde que a página carregou, no cabeçalho do `Docket.tsx`, ao lado do nº de processo fictício) e `LiveClock.tsx` (relógio de verdade, tique a cada segundo, no console de contato). Isso é o que resolve diretamente a reclamação de "sem vida" — motion de scroll-reveal (`Reveal.tsx`) já existia antes, mas nada rodava em loop indefinido sem interação do usuário.
+- **Arquitetura de componentes** (retimados, não só repintados):
+  - `TopBar.tsx` → `StatusBar.tsx`: ganhou o indicador "EM SESSÃO" com ponto pulsante (`.pulse-live`, keyframe de opacidade+escala real, não um pill estático).
+  - `Board.tsx` → `Docket.tsx`: o "quadro de partidas" virou um painel rastreando uma sessão ao vivo — cabeçalho com nº de processo + `SessionTimer`, e as áreas de atuação viraram um **checklist de sistemas GO/NO-GO** (`StatusLight.tsx` no lugar do `GateArrow.tsx` — LED circular em vez de seta de embarque; rótulo "GO" em verde por linha).
+  - `SplitFlap.tsx` → `Readout.tsx`: mesma mecânica de dígito girando até travar (ainda serve, reconceituada como leitura de telemetria em vez de painel de trem).
+  - `Route.tsx` → `Sequence.tsx`: o trajeto de trem virou contagem regressiva de lançamento (T-03 → T-00), continua numerado porque o atendimento é de fato sequencial (a mesma regra de antes se mantém).
+  - `Footer.tsx` → `Console.tsx`: o talão de bilhete perfurado virou um console de contato — coordenadas fictícias, nº de processo, `LiveClock` correndo, citação da advogada como entrada de "Log" em vez de citação solta.
+  - `Signature.tsx` (assinatura cursiva animada) foi **removida** — não fazia sentido na linguagem de precisão/telemetria; o lugar dela junto ao CTA principal foi ocupado pelo indicador "Canal aberto" + `LiveClock`.
+  - `src/data/areas.ts`: campo `number` virou `code` (`SYS-01`, `SYS-02`...) — identificador técnico real de cada linha do checklist, não decoração.
+  - `src/config/site.ts`: adicionados `CASE_REF` (nº de processo fictício, reaproveitado no rastreador e no console) e `COORDINATES` (coordenadas fictícias do escritório).
+- Botões continuam retos, sem arredondamento (mantido — ainda é a assinatura de formato deste projeto frente aos irmãos).
+
 ## Reestruturação de set/2026 — arquitetura, não decoração
 
 Depois de ver Torre/Traço/Âncora, o usuário notou que todos os sites (inclusive este) seguiam a mesma **fórmula estrutural** por baixo de vibes diferentes: nav horizontal com menu de âncoras, hero em duas colunas, lista de cards numa seção separada, rodapé "vamos conversar" genérico. A vibe "Terminal Wagon-Lit" continua a mesma (aprovada) — o que mudou foi a arquitetura da página:
