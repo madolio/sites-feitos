@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Chrome from './Chrome'
 import Footer from './Footer'
-import MenuCheio from './MenuCheio'
 
 export default function Layout() {
   const { pathname, hash } = useLocation()
@@ -21,7 +20,6 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
       <Chrome />
-      <MenuCheio />
       <main className="flex-1">
         <Outlet />
       </main>

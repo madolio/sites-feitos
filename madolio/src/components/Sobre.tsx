@@ -6,7 +6,7 @@ import SectionNumber from './SectionNumber'
 // inventar uma biografia que ninguém confirmou.
 export default function Sobre() {
   return (
-    <section id="sobre" className="scroll-mt-20 py-20 md:py-28">
+    <section className="py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal className="grid items-start gap-10 md:grid-cols-[auto_1fr] md:gap-14">
           <div className="flex flex-col items-center gap-3 sm:items-start">
