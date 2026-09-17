@@ -2,6 +2,7 @@ import { useState, type Dispatch, type SetStateAction } from 'react'
 import { recheios } from '../data'
 import { MAX_RECHEIOS, type Order } from '../order'
 import FanDeck from './FanDeck'
+import Reveal from './Reveal'
 
 type HeroProps = {
   order: Order
@@ -24,7 +25,7 @@ export default function Hero({ order, setOrder }: HeroProps) {
   return (
     <section id="sabores" className="scroll-mt-24 overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
       <div className="mx-auto grid max-w-6xl gap-14 px-5 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-10">
-        <div>
+        <Reveal y={18} stagger={0.12}>
           <h1 className="display text-[3.2rem] sm:text-7xl lg:text-[5.6rem]">
             Escolha o recheio como quem escolhe uma cor.
           </h1>
@@ -41,7 +42,7 @@ export default function Hero({ order, setOrder }: HeroProps) {
               Ver prazos de encomenda
             </a>
           </div>
-        </div>
+        </Reveal>
 
         <div>
           <FanDeck flavors={recheios} selected={selected} onSelect={setSelected} />

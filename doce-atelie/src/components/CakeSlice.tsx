@@ -42,8 +42,22 @@ export default function CakeSlice({ order }: { order: Order }) {
   return (
     <figure className="mx-auto max-w-md lg:max-w-none">
       <svg viewBox="0 0 340 240" className="w-full" role="img" aria-label="Prévia do corte do bolo com as camadas escolhidas">
+        <defs>
+          <linearGradient id="cake-shade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#000" stopOpacity="0" />
+            <stop offset="100%" stopColor="#000" stopOpacity="0.14" />
+          </linearGradient>
+          <radialGradient id="cake-shadow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#000" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#000" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* sombra de contato no prato */}
+        <ellipse cx="170" cy={bottom + 10} rx="150" ry="10" fill="url(#cake-shadow)" />
+
         <g className="cake-body" style={{ transform: `scaleX(${scale})` }}>
-          {/* cobertura em volta (parede do bolo) */}
+          {/* cobertura em volta (parede do bolo), com leve gradiente pra dar volume */}
           <rect
             x="16"
             y={top - 12}
@@ -54,19 +68,42 @@ export default function CakeSlice({ order }: { order: Order }) {
             opacity={massa ? 1 : 0.1}
             className="cake-layer"
           />
+          <rect
+            x="16"
+            y={top - 12}
+            width="308"
+            height={bottom - top + 14}
+            rx="12"
+            fill="url(#cake-shade)"
+            opacity={massa ? 1 : 0}
+            className="cake-layer"
+          />
           {placed.map((layer, i) => (
-            <rect
-              key={i}
-              x="24"
-              y={layer.y}
-              width="292"
-              height={layer.h}
-              rx={layer.kind === 'recheio' ? 7 : 3}
-              fill={layer.color ?? EMPTY}
-              stroke={layer.color ? 'transparent' : EMPTY_STROKE}
-              strokeDasharray={layer.color ? undefined : '5 5'}
-              className="cake-layer"
-            />
+            <g key={i}>
+              <rect
+                x="24"
+                y={layer.y}
+                width="292"
+                height={layer.h}
+                rx={layer.kind === 'recheio' ? 7 : 3}
+                fill={layer.color ?? EMPTY}
+                stroke={layer.color ? 'transparent' : EMPTY_STROKE}
+                strokeDasharray={layer.color ? undefined : '5 5'}
+                className="cake-layer"
+              />
+              {layer.color && (
+                <rect
+                  x="24"
+                  y={layer.y}
+                  width="292"
+                  height={Math.max(2, layer.h * 0.22)}
+                  rx={layer.kind === 'recheio' ? 7 : 3}
+                  fill="#fff"
+                  opacity={layer.kind === 'recheio' ? 0.14 : 0.09}
+                  className="cake-layer"
+                />
+              )}
+            </g>
           ))}
           {massa &&
             crumbs.map((c, i) => {
@@ -81,6 +118,14 @@ export default function CakeSlice({ order }: { order: Order }) {
                 />
               )
             })}
+          {/* fita de cobertura ondulada no topo — só aparece com massa escolhida */}
+          {massa && (
+            <path
+              d={`M16 ${top - 12} Q 46 ${top - 22}, 76 ${top - 12} T 136 ${top - 12} T 196 ${top - 12} T 256 ${top - 12} T 324 ${top - 12} V ${top - 2} H16 Z`}
+              fill="#fbf1e3"
+              className="cake-layer"
+            />
+          )}
         </g>
         {/* prato */}
         <rect x="6" y={bottom + 2} width="328" height="7" rx="3.5" fill="#fffcf7" opacity="0.9" />

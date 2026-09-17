@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const prazos = [
   {
     swatch: '#f5c93a',
@@ -22,7 +24,7 @@ export default function Prazos() {
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="display text-5xl md:text-7xl">Prazos e retirada</h2>
 
-        <dl className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+        <Reveal as="dl" y={26} stagger={0.1} className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
           {prazos.map((p) => (
             <div key={p.title}>
               <span className="block h-3 w-full rounded-[3px]" style={{ background: p.swatch }} aria-hidden="true" />
@@ -30,7 +32,7 @@ export default function Prazos() {
               <dd className="mt-2 max-w-xs text-ink/75">{p.text}</dd>
             </div>
           ))}
-        </dl>
+        </Reveal>
       </div>
     </section>
   )

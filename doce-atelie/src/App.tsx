@@ -29,12 +29,8 @@ export default function App() {
       <main>
         <Hero order={order} setOrder={setOrder} />
         <Encomenda order={order} setOrder={setOrder} />
-        <Reveal as="div">
-          <Docinhos />
-        </Reveal>
-        <Reveal as="div">
-          <Prazos />
-        </Reveal>
+        <Docinhos />
+        <Prazos />
       </main>
       <Reveal as="div">
         <Footer />

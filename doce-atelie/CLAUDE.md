@@ -50,6 +50,16 @@ Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa f
 
 Em fundo `card`, texto pequeno precisa de pelo menos `text-ink/65` (`/60` dá 4.3:1 e reprova). Em fundo `ink`, pelo menos `text-card/60`. No rodapé cereja, `text-white/90` no mínimo.
 
+## Polimento visual de set/2026 — mesma ideia, mais vida e mais craft
+
+Depois da reestruturação da navegação (seção acima), o usuário pediu pra "reformular sem mudar a ideia": o site seguia visualmente datado perto de conceitos mais recentes do portfólio (Cardume, Bruma, Lúmen), sem que o mecanismo da cartela de sabores precisasse mudar. Não mexeu em paleta, tipografia (continua só Bricolage Grotesque, por escolha documentada no Vibe Discovery) nem no leque — só na execução.
+
+- **"Muito morta, sem vida" — padrão de queixa de outros projetos, checado aqui também:** `Docinhos.tsx` e `Prazos.tsx` estavam dentro de um `<Reveal as="div">` genérico no `App.tsx` (o bloco inteiro entrava junto, sem stagger). Movido o `Reveal` pra dentro de cada componente, direto no título/parágrafo e na lista/grid (`as="ul"`/`as="dl"` com `stagger`), pra cada docinho e cada prazo entrar em sequência, não em bloco. `App.tsx` não embrulha mais essas seções.
+- **Hero estático no load:** `FanDeck` já tinha entrada elástica própria (GSAP), mas o título/texto/CTAs ao lado ficavam parados. Envolvidos num `Reveal` com `stagger`, mesmo padrão usado no resto do site — sem competir com a animação do leque, que continua intacta.
+- **Corte do bolo (`CakeSlice.tsx`) mais de verdade:** era um empilhado de retângulos sólidos. Adicionado gradiente sutil de sombra na cobertura lateral (dá volume à parede do bolo), uma tira de brilho no topo de cada camada (recheio/massa deixam de parecer chapados), sombra de contato elíptica sob o prato, e uma borda ondulada de cobertura no topo (só aparece com massa escolhida) — sugere a cobertura "derramando" sem virar ilustração fofa de cupcake (o que o Vibe Discovery já proibia).
+- **Docinhos com mais profundidade no hover:** além do giro que já existia, ganharam `drop-shadow` e um leve levantar (`-translate-y-1`) — reforça que são objetos numa forminha, não figuras planas.
+- Nada de card+badge+CTA-gradiente genérico foi adicionado; os componentes usados (`Reveal`, gradientes SVG) já existiam no vocabulário do projeto ou do repositório.
+
 ## Testes visuais
 
 O `vite preview` com o plugin da Cloudflare guarda a lista de assets de quando subiu — depois de um novo build ele devolve HTML no lugar do JS novo (tela branca). Pra revisar, servir o `dist` com um servidor estático (`npx serve -s dist`) ou reiniciar o preview a cada build.
