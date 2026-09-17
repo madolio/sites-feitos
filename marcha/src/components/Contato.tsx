@@ -12,6 +12,7 @@ export function Contato() {
         alt=""
         width={1600}
         height={1126}
+        loading="lazy"
         className="absolute inset-0 h-full w-full object-cover opacity-25"
       />
       <div className="absolute inset-0 bg-preto/70" />
