@@ -6,7 +6,10 @@ export default function Chrome() {
   return (
     <>
       <div className="fixed top-5 left-5 z-50 rounded-full bg-paper px-3.5 py-1.5 shadow-sm shadow-ink/10 sm:top-6 sm:left-6">
-        <span className="font-display text-lg text-ink">Cerne</span>
+        <h1 className="font-display text-lg text-ink">
+          Cerne
+          <span className="sr-only"> — Design de interiores</span>
+        </h1>
       </div>
 
       <div className="fixed right-5 bottom-5 z-50 sm:right-6 sm:bottom-6">

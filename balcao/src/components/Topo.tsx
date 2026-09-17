@@ -7,7 +7,10 @@ export default function Topo({ ativa, onSelect }: { ativa: Categoria; onSelect: 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-5 pt-5 pb-3 sm:px-8">
-        <span className="font-display text-2xl text-ink">Balcão</span>
+        <h1 className="font-display text-2xl text-ink">
+          Balcão
+          <span className="sr-only"> — Lanchonete de autoatendimento</span>
+        </h1>
         <span className="flex items-center gap-1.5 text-sm font-medium text-leaf">
           <span className="h-2 w-2 rounded-full bg-leaf" aria-hidden="true" />
           Aberto agora
