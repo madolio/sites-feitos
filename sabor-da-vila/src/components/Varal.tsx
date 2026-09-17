@@ -43,7 +43,25 @@ function useSecaoAtiva() {
       { rootMargin: '-15% 0px -70% 0px' },
     )
     elementos.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+
+    // "Onde e horário" é a última seção antes do rodapé — a página não rola
+    // além do fim do documento, então o topo dela pode nunca entrar na
+    // faixa -15%/-70% do observer acima. Sem isso, chegar no fim da página
+    // pelo link "Onde e horário" deixa o tíquete de "Cardápio" marcado como
+    // ativo (mesmo bug e fix do Fundeio.tsx do ancora, a partir de um print
+    // do usuário: clicou "Contato" lá e "Equipe" continuou marcada).
+    const ultima = ids[ids.length - 1]
+    const checarFim = () => {
+      const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+      if (noFim) setAtiva(ultima)
+    }
+    window.addEventListener('scroll', checarFim, { passive: true })
+    checarFim()
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', checarFim)
+    }
   }, [])
 
   return ativa

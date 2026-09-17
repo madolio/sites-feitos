@@ -62,7 +62,26 @@ function useProfundidadeAtiva() {
       { rootMargin: '-20% 0px -60% 0px' },
     )
     elementos.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+
+    // A última profundidade (#contato) é o próprio <footer>, o fim do
+    // documento — a página não rola além dele, então o topo dessa seção
+    // pode nunca entrar na faixa -20%/-60% do observer acima (rodapé curto
+    // demais pra empurrar o próprio topo até lá). Sem isso, chegar no fim
+    // da página pelo link "Contato" deixa o nav preso na profundidade
+    // anterior (reportado pelo usuário com print: clicou "Contato", o site
+    // foi pra lá, mas "Equipe" continuou marcada).
+    const ultima = profundidades[profundidades.length - 1].hash
+    const checarFim = () => {
+      const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+      if (noFim) setAtivo(ultima)
+    }
+    window.addEventListener('scroll', checarFim, { passive: true })
+    checarFim()
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', checarFim)
+    }
   }, [])
 
   return ativo
