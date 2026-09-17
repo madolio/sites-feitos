@@ -39,10 +39,10 @@ export default function Encomenda() {
                 id="especie"
                 value={especie}
                 onChange={(e) => setEspecie(e.target.value)}
-                className="mt-2 w-full rounded-md border border-vidro/25 bg-transparent px-4 py-3 text-vidro"
+                className="mt-2 w-full rounded-md border border-vidro/25 bg-transparent px-4 py-3 text-vidro [color-scheme:dark]"
               >
                 {especies.map((e) => (
-                  <option key={e.id} value={e.comum} className="text-mata">
+                  <option key={e.id} value={e.comum} className="bg-mata text-vidro">
                     {e.comum} — {e.cientifico}
                   </option>
                 ))}

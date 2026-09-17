@@ -23,6 +23,10 @@ export default function Footer() {
         <p className="mt-10 text-xs text-vidro/40">
           Estufa Cheia é um negócio fictício — conceito de site criado pela Madolio.
         </p>
+        <p className="mt-2 text-xs text-vidro/30">
+          Fotos de espécimes: Tanvi.sharmaaa, Dick Culbert, 小石川人暉, Priskamarsila29 e Krzysztof
+          Ziarnek — Wikimedia Commons, CC BY / CC BY-SA.
+        </p>
       </div>
     </footer>
   )
