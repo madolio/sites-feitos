@@ -15,7 +15,7 @@ Worker `passaporte`, em `https://passaporte.fenoninho-max.workers.dev`. `npm run
 - **Nunca parecer:** Duolingo/app gamificado com mascote e sequência de dias.
 - **Wildcard:** `NivelStamp.tsx` — cada nível "carimba" na página com um golpe rápido de escala+rotação (GSAP, `ease: power4.out`, ~0.35s) quando entra na tela, como um carimbo de borracha batendo no papel, não um fade-in genérico.
 
-Paleta: `--color-ink` #5c1f2e (bordô de capa de passaporte — dark o bastante pra servir de cor de texto direto, sem precisar de uma segunda tonalidade "-ink" como nos outros 5 conceitos desta leva), `--color-paper` #f2ead9 (página de visto), `--color-teal` #2f6f6b (carimbo). Fontes: **Cormorant** (display, serifada de documento oficial) + **Courier Prime** (números/siglas, como texto datilografado de visto) + **Mulish** (corpo).
+Paleta: `--color-ink` #5c1f2e (bordô de capa de passaporte — dark o bastante pra servir de cor de texto direto, sem precisar de uma segunda tonalidade "-ink" como nos outros 5 conceitos desta leva), `--color-paper` #f2ead9 (página de visto), `--color-teal` #2f6f6b (carimbo). Fontes: **Big Shoulders Display** (display, condensada de documento oficial) + **Courier Prime** (números/siglas, como texto datilografado de visto) + **Mulish** (corpo).
 
 ## Arquitetura — sem nav nenhuma
 
