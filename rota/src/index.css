@@ -31,6 +31,14 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
+
+  /* --color-accent só alcança ~2,9:1 sobre --color-sidebar (fundo escuro da
+     barra lateral) — abaixo do mínimo de 3:1 pra elemento não-textual. Dentro
+     dela o foco usa --color-accent-hero, a mesma variante clara já usada pro
+     ícone da marca ali (~6,2:1 sobre o sidebar). */
+  .bg-sidebar :focus-visible {
+    outline-color: var(--color-accent-hero);
+  }
 }
 
 @layer components {

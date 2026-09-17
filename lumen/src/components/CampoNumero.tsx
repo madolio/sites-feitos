@@ -39,7 +39,7 @@ export function CampoNumero({
           step={step}
           value={value}
           onChange={(e) => onChange(clamp(Number(e.target.value) || min))}
-          className="campo-numero w-full min-w-0 flex-1 bg-transparent px-3 py-3 text-center text-marfim outline-none"
+          className="campo-numero w-full min-w-0 flex-1 bg-transparent px-3 py-3 text-center text-marfim focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento"
         />
         <button
           type="button"
