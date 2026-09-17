@@ -27,7 +27,7 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-preto">
       <div ref={imgRef} className="absolute inset-0 -top-16 h-[calc(100%+8rem)] w-full">
-        <img src="/carros/hero.jpg" alt="" className="h-full w-full object-cover" />
+        <img src="/carros/hero.jpg" alt="" width={1600} height={1067} className="h-full w-full object-cover" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-preto via-preto/50 to-preto/10" />
 

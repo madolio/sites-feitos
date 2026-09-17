@@ -7,7 +7,13 @@ export function Contato() {
 
   return (
     <section id="contato" className="relative overflow-hidden bg-preto px-6 py-20 md:py-28">
-      <img src="/carros/floresta.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
+      <img
+        src="/carros/floresta.jpg"
+        alt=""
+        width={1600}
+        height={1126}
+        className="absolute inset-0 h-full w-full object-cover opacity-25"
+      />
       <div className="absolute inset-0 bg-preto/70" />
       <Reveal className="relative mx-auto max-w-xl">
         <p className="font-mono text-sm tracking-widest text-acento uppercase">Contato</p>

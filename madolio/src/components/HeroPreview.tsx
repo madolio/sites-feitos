@@ -27,6 +27,8 @@ export default function HeroPreview({ projeto }: { projeto: Projeto }) {
         <img
           src={`/previews/${slugDaUrl(projeto.url)}.jpg`}
           alt={`Página inicial do site ${projeto.name}`}
+          width={1280}
+          height={760}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-top"

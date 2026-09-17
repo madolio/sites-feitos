@@ -90,6 +90,8 @@ export default function Reel() {
             <img
               src={`/previews/${p.slug}.jpg`}
               alt=""
+              width={1280}
+              height={760}
               className="pointer-events-none absolute inset-0 h-full w-full scale-110 object-cover object-top opacity-[0.08] blur-2xl saturate-50"
             />
             {/* Escurece a textura de fundo pra ela virar só cor/forma abstrata
