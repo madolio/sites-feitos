@@ -14,7 +14,7 @@ const springs = ['#f2b300', '#2f8f5b', '#2c4fa3', '#d63c3c']
 
 export default function Aulas() {
   return (
-    <section id="aulas" className="scroll-mt-16 border-t-2 border-ink py-20 md:py-28">
+    <section id="aulas" className="scroll-mt-16 border-t-2 border-ink py-20 md:py-28 lg:scroll-mt-0">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="display text-6xl md:text-8xl">Três jeitos de fazer aula.</h2>
 

@@ -8,7 +8,7 @@ type CardapioProps = {
 
 export default function Cardapio({ qty, change }: CardapioProps) {
   return (
-    <section id="cardapio" className="scroll-mt-16 border-t-[6px] border-blue py-16 md:py-24">
+    <section id="cardapio" className="scroll-mt-36 border-t-[6px] border-blue py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="poster text-blue">

@@ -70,6 +70,36 @@
   .btn-paper {
     @apply inline-flex items-center justify-center rounded-full border-[3px] border-blue px-5 py-2.5 font-bold text-blue no-underline transition-transform hover:rotate-2;
   }
+
+  /* Comandas penduradas no varal (Varal.tsx): cada uma balança um pouco no
+     próprio prendedor, --rot definindo a inclinação de repouso por item. A
+     ativa (.ticket-ativa) fica "espetada" reta, sem balanço. */
+  .ticket {
+    transform-origin: top center;
+    transform: rotate(var(--rot, -3deg));
+    animation: varal-sway 3.4s ease-in-out infinite;
+    animation-delay: calc(var(--rot, 0) * -80ms);
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .ticket-ativa {
+    animation: none;
+    transform: rotate(0deg);
+  }
+
+  .ticket:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes varal-sway {
+  0%,
+  100% {
+    transform: rotate(var(--rot, -3deg));
+  }
+  50% {
+    transform: rotate(calc(var(--rot, -3deg) * -0.6));
+  }
 }
 
 .demo-dialog,
@@ -98,6 +128,11 @@
 @media (prefers-reduced-motion: reduce) {
   .btn-blue,
   .btn-paper {
+    transition: none;
+  }
+
+  .ticket {
+    animation: none;
     transition: none;
   }
 }

@@ -1,6 +1,6 @@
 export default function Instrutora() {
   return (
-    <section id="helena" className="scroll-mt-16 py-20 md:py-28">
+    <section id="helena" className="scroll-mt-16 py-20 md:py-28 lg:scroll-mt-0">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-6 md:grid-cols-[1.2fr_1fr] md:gap-16">
         <blockquote>
           <p className="text-[2rem] leading-[1.15] font-medium tracking-tight md:text-5xl">

@@ -20,6 +20,18 @@ Mesmo esquema dos outros conceitos (Doce Ateliê, Estúdio Alma): `sendToWhatsAp
 
 Três tintas reais de risografia: Medium Blue `#3255a4`, Fluorescent Pink `#ff48b0`, Yellow `#ffe800`. Fundo "papel" `#fbfaf5`. Onde as tintas se sobrepõem aparecem outras cores (ex: azul+amarelo = o verde da alface), igual na impressão de verdade — **não adicionar essas cores como token**, elas são um efeito, não uma paleta. Fonte de título: **Bungee** (pôster/rótulo). Fonte de texto: **Barlow**. `.riso-type` imprime o título duas vezes (azul base + rosa por cima, `mix-blend-mode: multiply`, leve deslocamento) pra simular o registro torto.
 
+## Reestruturação de set/2026 — a navegação virou o varal de pedidos
+
+Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa full-width, logo + lista de links + botão) enquanto outros conceitos do repositório já tinham ganhado arquitetura própria (Nascente reformado antes deste, com a navegação virando o painel de instrumento do próprio diagrama técnico) — ver o `CLAUDE.md` do `madolio`. Reestruturado "página a página" a pedido do usuário.
+
+`Nav.tsx` (removido, não deixado como código morto) virou `Varal.tsx`: em qualquer chapeiro de hamburgueria de verdade, os pedidos ficam pendurados num arame esticado (o "varal"/"espeto de comanda"), cada papel preso por um clipe, balançando um pouco. A navegação virou esse objeto literal do balcão em vez de uma lista de links soltos — é só a navegação, não duplica a função do carrinho/comanda que já existe em `Comanda.tsx`.
+
+- **Estrutura:** header fixo de duas fileiras. A primeira tem só a marca e o CTA "Fazer pedido" (`btn-blue`), igual ao nav antigo. A segunda é o varal em si: um arame (`Fio`, SVG com leve caimento) do qual pendem as comandas (`Cardápio`, `Onde e horário`), cada uma presa por um clipe (`Clipe`, SVG simples de prendedor) e com uma leve rotação de repouso (`--rot`, alternando o sentido por item pra não parecer simétrico/artificial demais).
+- **Balanço:** cada comanda balança sozinha (`@keyframes varal-sway` em `index.css`, delay diferente por item via `--rot`) até alguém passar o mouse (pausa) ou a seção virar a ativa. Respeita `prefers-reduced-motion` (desliga a animação, mantém a rotação de repouso estática) e a página inteira já usa `MotionConfig reducedMotion="user"` em outros componentes — aqui é CSS puro, então o desligamento é via media query mesmo.
+- **Estado ativo:** por scroll-spy (`IntersectionObserver`, `useSecaoAtiva`, mesmo padrão do Nascente) — a comanda da seção em viewport fica "espetada" reta (sem balanço, preenchida em `blue`), como se tivesse acabado de ser pendurada, enquanto as outras continuam balançando em `outline`.
+- Como o header cresceu de uma fileira pra duas, o padding-top que compensava a barra mudou: `pt-36 md:pt-44` no lugar de `pt-24 md:pt-32` em `Hero.tsx`, e `scroll-mt-28` (no lugar de `scroll-mt-16`/nenhum) em `Cardapio.tsx` e `Onde.tsx` pra âncoras de `#cardapio`/`#onde` pararem no lugar certo.
+- `Mark` (o logo) passou a ser exportado de `Varal.tsx` em vez de `Nav.tsx` — `Footer.tsx` importa de lá.
+
 ## Componentes e de onde vieram
 
 - `RisoBurger.tsx` — hambúrguer 100% ilustrado (sem foto), com uma camada SVG por tinta (`ink-yellow`, `ink-pink`, `ink-blue`). Na entrada, o GSAP anima cada camada "passando pela máquina" e parando com o registro desalinhado; depois o mouse baila um pouco cada camada (`gsap.quickTo`). Os ângulos/posições de registro (`registration`) são fixos por design, não aleatórios.

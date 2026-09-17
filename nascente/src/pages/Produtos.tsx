@@ -7,7 +7,7 @@ import { treatmentProducts } from '../data/products'
 export default function Produtos() {
   return (
     <>
-      <section className="pt-28 pb-20 md:pt-36 md:pb-28">
+      <section className="pt-24 pb-20 md:pb-28 lg:pt-16">
         <div className="mx-auto max-w-6xl px-6">
           <h1 className="max-w-3xl text-[2.5rem] font-extrabold leading-[1.02] text-ink md:text-[3.75rem]">
             Equipamentos para filtração e tratamento de água

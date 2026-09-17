@@ -3,7 +3,7 @@ import StickerPeel from './StickerPeel'
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
+    <section id="inicio" className="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
       <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
         <div className="relative z-10">
           <h1 className="poster text-blue">

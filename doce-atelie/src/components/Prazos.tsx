@@ -18,7 +18,7 @@ const prazos = [
 
 export default function Prazos() {
   return (
-    <section id="prazos" className="scroll-mt-16 border-t border-line py-20 md:py-28">
+    <section id="prazos" className="scroll-mt-24 border-t border-line py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="display text-5xl md:text-7xl">Prazos e retirada</h2>
 

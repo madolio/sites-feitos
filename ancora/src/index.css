@@ -65,6 +65,19 @@
   transform: translateY(-0.3em);
 }
 
+/* Fundeio.tsx: a corrente paga pra fora conforme o scroll-spy avança —
+   o indicador de progresso é a própria linha de fundeio, não uma barra
+   separada. */
+.fundeio-progresso {
+  transition: height 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fundeio-progresso {
+    transition: none;
+  }
+}
+
 /* Selo/carimbo — usado uma vez, como confirmação de algo real (nunca como
    decoração repetida). */
 .stamp {

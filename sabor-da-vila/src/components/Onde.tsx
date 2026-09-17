@@ -9,7 +9,7 @@ const dias = [
 
 export default function Onde() {
   return (
-    <section id="onde" className="border-t-[6px] border-blue py-16 md:py-24">
+    <section id="onde" className="scroll-mt-36 border-t-[6px] border-blue py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="poster text-blue">
           <span className="riso-type text-6xl md:text-8xl">
