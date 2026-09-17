@@ -1,11 +1,23 @@
-import { Suspense } from 'react'
+import { Suspense, useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 import Joia from './Joia'
 import type { Gema as GemaTipo } from '../data/gemas'
 import type { Peca } from '../data/pecas'
 
+// Espelha o guard de prefers-reduced-motion usado em Reveal.tsx (lá via
+// gsap.matchMedia): aqui a auto-rotação da câmera é um prop simples do
+// OrbitControls, então checamos a media query direto.
+function usePrefereMovimentoReduzido() {
+  return useMemo(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return false
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  }, [])
+}
+
 export default function Vitrine({ peca, gema }: { peca: Peca; gema: GemaTipo }) {
+  const movimentoReduzido = usePrefereMovimentoReduzido()
+
   return (
     <Canvas
       camera={{ position: [0, 0.1, 6.2], fov: 28 }}
@@ -24,7 +36,7 @@ export default function Vitrine({ peca, gema }: { peca: Peca; gema: GemaTipo }) 
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        autoRotate
+        autoRotate={!movimentoReduzido}
         autoRotateSpeed={1.4}
         minPolarAngle={Math.PI / 2 - 0.5}
         maxPolarAngle={Math.PI / 2 + 0.5}
