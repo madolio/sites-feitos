@@ -21,12 +21,42 @@ export default function Sobre() {
             <h2 className="font-poster text-4xl tracking-tight text-ink uppercase md:text-5xl">
               Quem faz o seu site
             </h2>
-            <p className="mt-4 max-w-xl text-ink/70">
-              Cada site passa pelas minhas mãos, do primeiro esboço à
-              publicação. Não é atendimento por triagem nem repasse pra
-              freelancer terceirizado — quem conversa com você no orçamento é
-              quem entrega o site.
-            </p>
+
+            <div className="mt-4 max-w-xl space-y-4 text-ink/70">
+              <p>
+                Sou Henrique Madolio, formado em Sistemas de Informação pela
+                UNIP (2026). Trabalho com{' '}
+                <strong className="font-semibold text-accent">UI/UX</strong> e
+                já passei um bom tempo do outro lado do balcão: no
+                atendimento a clientes de uma plataforma de{' '}
+                <strong className="font-semibold text-accent">
+                  criação de sites
+                </strong>
+                .
+              </p>
+              <p>
+                Foi ali que aprendi, na prática, onde as pessoas travam de
+                verdade ao montar uma página — não na teoria, no cliente
+                mesmo, ligando sem saber como continuar. Essa rotina me deu
+                uma{' '}
+                <strong className="font-semibold text-accent">
+                  visão estratégica
+                </strong>{' '}
+                mais ampla: entender não só como uma página é construída, mas
+                como ela é percebida por quem chega nela.
+              </p>
+              <p>
+                Hoje uso essa mistura —{' '}
+                <strong className="font-semibold text-accent">UI/UX</strong>,
+                desenvolvimento e{' '}
+                <strong className="font-semibold text-accent">
+                  experiência do usuário
+                </strong>{' '}
+                real — pra pensar cada site dos dois lados: o de quem
+                constrói e o de quem só quer entender rápido o que fazer na
+                página.
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>
