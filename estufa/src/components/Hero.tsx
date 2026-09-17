@@ -11,11 +11,10 @@ export default function Hero() {
         src="/especies/strelitzia.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover opacity-60"
+        className="absolute inset-0 h-full w-full object-cover opacity-95"
       />
-      <GrandeEstufa className="pointer-events-none absolute inset-0 h-full w-full opacity-70 mix-blend-overlay" />
-      <div className="absolute inset-0 bg-gradient-to-t from-mata via-mata/60 to-mata/20" />
-      <div className="absolute inset-0 bg-mata/25" />
+      <GrandeEstufa className="pointer-events-none absolute inset-0 h-full w-full opacity-40 mix-blend-overlay" />
+      <div className="absolute inset-0 bg-gradient-to-t from-mata via-mata/35 to-transparent" />
 
       <div className="relative mx-auto flex min-h-[88vh] max-w-5xl flex-col justify-end px-6 pt-24 pb-16 sm:px-8">
         <Reveal as="p" className="dado-ficha text-vidro/60">

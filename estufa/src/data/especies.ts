@@ -19,6 +19,8 @@ export type Especie = {
   uso: string
   nota: string
   ilustracao: 'strelitzia' | 'aechmea' | 'heliconia' | 'cattleya' | 'zantedeschia' | 'tibouchina'
+  /** Cor real da flor/bráctea — usada como acento vivo na ficha (faixa, selo), tirada da própria espécie, não decorativa. */
+  cor: string
 }
 
 export const especies: Especie[] = [
@@ -37,6 +39,7 @@ export const especies: Especie[] = [
     nota:
       'a inflorescência em forma de cabeça de ave é polinizada por pássaros (nectarívoros) que pousam sobre a bráctea — a estrutura rígida existe pra sustentar o peso da ave, não é decorativa.',
     ilustracao: 'strelitzia',
+    cor: '#f2661a',
   },
   {
     id: 'aechmea',
@@ -53,6 +56,7 @@ export const especies: Especie[] = [
     nota:
       'planta monocárpica: cada roseta floresce uma única vez na vida e depois emite "filhotes" (brotações laterais) que a substituem — o vaso nunca fica vazio, só se renova.',
     ilustracao: 'aechmea',
+    cor: '#e0518c',
   },
   {
     id: 'heliconia',
@@ -69,6 +73,7 @@ export const especies: Especie[] = [
     nota:
       'as brácteas coloridas (não as flores em si, pequenas e escondidas dentro delas) são o que se vê e o que dura semanas cortado — a mesma lógica de durabilidade da bougainville.',
     ilustracao: 'heliconia',
+    cor: '#ff5a36',
   },
   {
     id: 'cattleya',
@@ -85,6 +90,7 @@ export const especies: Especie[] = [
     nota:
       'foi a espécie que, em 1818, reacendeu a febre europeia por orquídeas depois que William Cattley a floresceu em estufa a partir de material usado só como amortecedor de outra carga — daí o nome do gênero.',
     ilustracao: 'cattleya',
+    cor: '#c93fa0',
   },
   {
     id: 'zantedeschia',
@@ -101,6 +107,7 @@ export const especies: Especie[] = [
     nota:
       'a "flor" branca é na verdade uma espata (folha modificada) que envolve a espádice central, onde ficam as flores minúsculas de verdade — a mesma estrutura da copo-de-leite, do antúrio e do lírio-da-paz.',
     ilustracao: 'zantedeschia',
+    cor: '#f0b429',
   },
   {
     id: 'tibouchina',
@@ -117,5 +124,6 @@ export const especies: Especie[] = [
     nota:
       'os estames têm dois tamanhos diferentes na mesma flor — os maiores, curvos e roxos, servem só pra atrair abelhas por engano (polinização por vibração), os menores é que de fato produzem o pólen fértil.',
     ilustracao: 'tibouchina',
+    cor: '#7b4fd1',
   },
 ]
