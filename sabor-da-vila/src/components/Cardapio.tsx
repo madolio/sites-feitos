@@ -53,9 +53,18 @@ export default function Cardapio({ qty, change }: CardapioProps) {
 
 function MenuItem({ item, count, change }: { item: Item; count: number; change: (id: string, d: number) => void }) {
   return (
-    <li className="flex items-start justify-between gap-5 border-t-[3px] border-blue/80 py-5">
+    <li className="menu-item group flex items-start justify-between gap-5 border-t-[3px] border-blue/80 py-5">
       <div className="min-w-0">
-        <h4 className="text-xl font-bold leading-tight">{item.name}</h4>
+        {/* O nome usa o mesmo truque de registro desalinhado do título (riso-type),
+            só que a segunda camada fica invisível em repouso e só "sai fora de
+            registro" no hover/foco — o cartaz balançando quando alguém para pra
+            olhar o item, em vez de um hover genérico de escurecer o fundo. */}
+        <h4 className="riso-type text-xl leading-tight font-bold">
+          <span>{item.name}</span>
+          <span className="menu-item-ghost text-pink" aria-hidden="true" style={{ mixBlendMode: 'multiply' }}>
+            {item.name}
+          </span>
+        </h4>
         <p className="mt-1 text-ink/80">{item.description}</p>
         <p className="poster mt-2 text-lg text-blue">{brl(item.price)}</p>
       </div>

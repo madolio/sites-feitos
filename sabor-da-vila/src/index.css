@@ -90,6 +90,31 @@
   .ticket:hover {
     animation-play-state: paused;
   }
+
+  /* Item de cardápio: em repouso é só o nome; no hover/foco, o nome "sai de
+     registro" como o título e o hambúrguer (mesma camada fantasma em rosa,
+     mix-blend-mode multiply), em vez de um hover genérico de sombra/fundo
+     escurecendo. */
+  .menu-item {
+    transition: border-color 0.2s ease;
+  }
+
+  .menu-item:hover,
+  .menu-item:focus-within {
+    border-color: var(--color-pink);
+  }
+
+  .menu-item-ghost {
+    opacity: 0;
+    transform: translate(0, 0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .menu-item:hover .menu-item-ghost,
+  .menu-item:focus-within .menu-item-ghost {
+    opacity: 1;
+    transform: translate(0.05em, 0.04em);
+  }
 }
 
 @keyframes varal-sway {
@@ -133,6 +158,11 @@
 
   .ticket {
     animation: none;
+    transition: none;
+  }
+
+  .menu-item,
+  .menu-item-ghost {
     transition: none;
   }
 }

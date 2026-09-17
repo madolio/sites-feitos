@@ -39,6 +39,16 @@ Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa f
 - `Grain.tsx` — **adaptado do "Noise" do React Bits**: mesmo grão de ruído aleatório, mas desenhado uma vez num tile de 180×180 (não redesenhado a cada 2 frames) e aplicado como `background-image` do `body::after` — bem mais leve que um canvas full-screen redesenhando sempre.
 - `Cardapio.tsx` / `Comanda.tsx` — cardápio com contador +/− por item; a comanda flutuante (estilo carrinho) mostra o total com `@number-flow/react` (NumberFlow, pacote real) e abre um modal de "comanda" com forma de retirada/entrega, pagamento e observação, que vira a mensagem do WhatsApp.
 
+## Polimento visual de set/2026 — "reformula mas sem mudar a ideia"
+
+Este era um dos projetos mais antigos do portfólio, agrupado (junto com Doce Ateliê e Estúdio Alma) num CLAUDE.md de projeto irmão como "uma vertente só — todos artesanais/ilustrados, pequeno negócio local", enquanto conceitos mais novos (Torre, Traço, Âncora) existem pra provar variação de estilo além desse olhar. O usuário achou o site datado/plano perto do resto do portfólio, mas pediu explicitamente pra **não mudar a ideia** — o mecanismo wildcard do Varal (recém-reestruturado, ver seção acima) e a ilustração em risografia continuam exatamente como estavam. O que mudou foi só execução/craft, comparando com o nível de polimento de Cardume/Fornada/Corte:
+
+- **Hero deixou de "aparecer pronta":** título, texto e botões agora entram em `Reveal` escalonado (`stagger={0.12}`, `delay={0.15}`) em vez de renderizar tudo de uma vez — o resto da página já usava `Reveal` (Cardápio, Onde, Rodapé), só o hero (acima da dobra, sem scroll trigger) tinha ficado de fora.
+- **Item de cardápio ganhou uma interação própria** (`menu-item`/`menu-item-ghost` em `index.css`, usado em `Cardapio.tsx`): no hover/foco, o nome do item "sai de registro" — a mesma camada fantasma rosa em `mix-blend-mode: multiply` do título e do hambúrguer, só que em repouso invisível e revelada no hover — em vez de um hover genérico de sombra/fundo escurecendo. A borda também vira rosa. Reduced-motion desliga a transição.
+- **"Onde e quando" ganhou um "HOJE"** ao lado do dia da semana corrente (calculado no cliente com `Date().getDay()`, sem tocar no build), com o mesmo bloco sólido/picotado do resto do site (fundo amarelo, `mix-blend-mode: multiply`) em vez de um badge arredondado genérico.
+
+Não mexido de propósito: `Varal.tsx` (nav/wildcard, com o fix de scroll-spy de fim de página de 17/set intacto), `RisoBurger.tsx` (já tinha craft — animação de registro entrando em camadas + parallax de mouse), `StickerPeel.tsx`, paleta e tipografia (Bungee/Barlow, as três tintas de risografia).
+
 ## Gotchas
 
 - TypeScript reclama de comparar `string !== false` porque o filter encadeado misturava tipos — a linha de observação (`obs.trim() && ...`) some do array sem cast; resolvido filtrando só por `l !== false` já tipado como união.
