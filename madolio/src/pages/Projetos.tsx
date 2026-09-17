@@ -3,20 +3,26 @@ import { Link } from 'react-router-dom'
 import HeroPreview from '../components/HeroPreview'
 import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
-import { projetos } from '../data/projetos'
+import { projetos, type Tag } from '../data/projetos'
 
-// Com a lista passando de duas dezenas de projetos, uma grade sem filtro
-// virou rolagem longa demais pra achar um nicho específico — a busca
-// filtra ao vivo por nome ou categoria (client-side, a lista é pequena,
-// não precisa de nada além de um .includes()).
+// Com a lista passando de três dezenas de projetos, busca por texto sozinha
+// não bastava pra navegar — o filtro por tag agrupa os nichos (cada
+// `category` é um texto livre e específico demais pra virar filtro direto).
+// Busca e tag combinam com AND.
+const tags = Array.from(new Set(projetos.map((p) => p.tag))).sort((a, b) => a.localeCompare(b, 'pt-BR'))
+
 export default function Projetos() {
   const [busca, setBusca] = useState('')
+  const [tagAtiva, setTagAtiva] = useState<Tag | null>(null)
 
   const filtrados = useMemo(() => {
     const termo = busca.trim().toLowerCase()
-    if (!termo) return projetos
-    return projetos.filter((p) => `${p.name} ${p.category}`.toLowerCase().includes(termo))
-  }, [busca])
+    return projetos.filter((p) => {
+      if (tagAtiva && p.tag !== tagAtiva) return false
+      if (!termo) return true
+      return `${p.name} ${p.category}`.toLowerCase().includes(termo)
+    })
+  }, [busca, tagAtiva])
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
@@ -39,12 +45,6 @@ export default function Projetos() {
             negócio que representa, sem reaproveitar a cara de nenhum dos
             outros.
           </p>
-          <Link
-            to="/reel"
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-ink"
-          >
-            Ver os destaques em movimento →
-          </Link>
         </Reveal>
 
         <Reveal className="mt-10 flex items-center justify-between gap-4">
@@ -61,6 +61,32 @@ export default function Projetos() {
           <span className="shrink-0 text-sm text-ink/55">
             {filtrados.length} {filtrados.length === 1 ? 'projeto' : 'projetos'}
           </span>
+        </Reveal>
+
+        <Reveal className="mt-4 flex flex-wrap gap-2" aria-label="Filtrar por tipo de negócio">
+          <button
+            type="button"
+            onClick={() => setTagAtiva(null)}
+            aria-pressed={tagAtiva === null}
+            className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors ${
+              tagAtiva === null ? 'border-accent bg-accent text-white' : 'border-ink/15 text-ink/70 hover:border-ink/30'
+            }`}
+          >
+            Todos
+          </button>
+          {tags.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              onClick={() => setTagAtiva((atual) => (atual === tag ? null : tag))}
+              aria-pressed={tagAtiva === tag}
+              className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors ${
+                tagAtiva === tag ? 'border-accent bg-accent text-white' : 'border-ink/15 text-ink/70 hover:border-ink/30'
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
         </Reveal>
 
         {filtrados.length === 0 ? (

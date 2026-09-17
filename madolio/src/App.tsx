@@ -12,7 +12,6 @@ import CaseStudyLumen from './pages/CaseStudyLumen'
 import CaseStudyPrisma from './pages/CaseStudyPrisma'
 import CaseStudyMarcha from './pages/CaseStudyMarcha'
 import CaseStudyBruma from './pages/CaseStudyBruma'
-import Reel from './pages/Reel'
 
 export default function App() {
   return (
@@ -30,7 +29,6 @@ export default function App() {
         <Route path="/projetos/prisma" element={<CaseStudyPrisma />} />
         <Route path="/projetos/marcha" element={<CaseStudyMarcha />} />
         <Route path="/projetos/bruma" element={<CaseStudyBruma />} />
-        <Route path="/reel" element={<Reel />} />
       </Route>
     </Routes>
   )
