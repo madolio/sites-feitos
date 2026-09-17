@@ -13,6 +13,11 @@
   --color-vermelha: #d63c3c;
 
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  /* Rótulos numéricos (contador de movimento, horários, ciclos da respiração)
+     usam uma mono geométrica — leitura de "painel de instrumento", como o
+     mostrador de carga nas molas do reformer, em vez de disputar peso visual
+     com o Jost do corpo do texto. */
+  --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
 @layer base {

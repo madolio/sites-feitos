@@ -2,7 +2,11 @@ import { aulas } from '../data'
 
 function Shape({ shape, color }: { shape: 'circle' | 'square' | 'triangle'; color: string }) {
   return (
-    <svg viewBox="0 0 120 120" className="h-24 w-24 md:h-28 md:w-28" aria-hidden="true">
+    <svg
+      viewBox="0 0 120 120"
+      className="h-24 w-24 origin-center transition-transform duration-300 motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:rotate-6 md:h-28 md:w-28"
+      aria-hidden="true"
+    >
       {shape === 'circle' && <circle cx="60" cy="60" r="58" fill={color} />}
       {shape === 'square' && <rect x="4" y="4" width="112" height="112" fill={color} />}
       {shape === 'triangle' && <path d="M60 4 L116 116 L4 116 Z" fill={color} />}
@@ -20,7 +24,7 @@ export default function Aulas() {
 
         <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
           {aulas.map((aula) => (
-            <article key={aula.name}>
+            <article key={aula.name} className="group">
               <Shape shape={aula.shape} color={aula.color} />
               <h3 className="mt-7 text-3xl font-medium tracking-tight">{aula.name}</h3>
               <p className="mt-1 text-ink/70">{aula.detail}</p>

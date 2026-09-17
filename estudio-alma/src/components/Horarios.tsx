@@ -39,18 +39,20 @@ export default function Horarios() {
             <tbody>
               {grade.map((row) => (
                 <tr key={row.hora} className="border-t border-gesso/15">
-                  <th scope="row" className="py-2 pr-3 text-lg font-medium tabular-nums">
+                  <th scope="row" className="py-2 pr-3 font-mono text-lg font-medium tabular-nums">
                     {row.hora}
                   </th>
                   {row.slots.map((slot, i) => (
                     <td key={dias[i]} className="p-1">
                       {slot === 'A' && (
-                        <span className="flex h-10 items-center rounded-full bg-azul px-3 text-sm text-white">
+                        <span className="flex h-10 items-center rounded-full bg-azul px-3 text-sm text-white transition-transform duration-200 motion-safe:hover:scale-[1.04]">
                           Aparelhos
                         </span>
                       )}
                       {slot === 'S' && (
-                        <span className="flex h-10 items-center bg-amarela px-3 text-sm text-ink">Solo</span>
+                        <span className="flex h-10 items-center bg-amarela px-3 text-sm text-ink transition-transform duration-200 motion-safe:hover:scale-[1.04]">
+                          Solo
+                        </span>
                       )}
                       {slot === null && <span className="sr-only">Sem turma</span>}
                     </td>

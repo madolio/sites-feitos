@@ -54,8 +54,8 @@ export default function Respira() {
             {label}
           </p>
           {phase !== 'parado' && phase !== 'fim' && (
-            <p className="mt-2 text-sm tabular-nums text-ink/70">
-              Ciclo {cycle} de {CYCLES}
+            <p className="mt-2 font-mono text-sm tabular-nums text-ink/70">
+              CICLO {cycle}/{CYCLES}
             </p>
           )}
           <button type="button" onClick={start} className="btn-line mt-8">

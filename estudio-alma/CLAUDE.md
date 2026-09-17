@@ -25,6 +25,16 @@ Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa f
 - Como a coluna deixou de ser uma barra fixa no TOPO (no desktop), o padding-top do Hero mudou de "espaço pra header full-width" pra um respiro simétrico (`lg:pt-10 lg:pb-10` no lugar de `lg:pt-20 lg:pb-8`), e o `scroll-mt-16` das outras seções (usado pra âncora não ficar atrás da barra fixa) ganhou `lg:scroll-mt-0`, já que no desktop não há mais barra no topo.
 - Deslizar do carrinho e trocar a espessura/opacidade da mola usam `motion-safe:transition-*` do Tailwind — sem JS extra pra checar `prefers-reduced-motion`, já cai pra instantâneo.
 
+## Refino visual de set/2026 — mesma ideia, mais acabamento
+
+Estúdio Alma é um dos mais antigos do repositório e ficou pra trás em acabamento visual em relação aos conceitos mais recentes (Torno, Cardume, Bruma), mesmo já tendo passado pela reestruturação do trilho (ver seção acima). Pedido explícito do usuário: "reformula mas sem mudar a ideia" — nada de conceito, categoria de negócio ou mecânica mudou aqui, só o grau de acabamento. **Não mexi** no boneco geométrico em si (`data.ts`, os ângulos de pose) nem no fato de ele ser feito de formas primárias — isso é a citação ao Balé Triádico de Oskar Schlemmer do Vibe Discovery, não uma "gambiarra de bonequinho de palito" a corrigir.
+
+- **Segunda fonte, só pra leitura de instrumento**: o site inteiro rodava só em Jost (título e corpo). Adicionada **Space Mono** (geométrica, "leitura de painel") pra números que funcionam como mostrador — contador de movimento no Hero (agora `01/06` em vez de "1 de 6"), horas da grade em Horários, contagem de ciclo em Respira. Mesma lógica da Bruma/Torno/Cardume, que sempre têm uma segunda fonte pra dado técnico — aqui o "dado técnico" é o mostrador de carga do reformer.
+- **`Figure.tsx` ganhou peso e chão**: uma sombra de contato elíptica (`shadow`) acompanha o eixo X do quadril a cada frame do GSAP — mesma cadeia de refs do resto do boneco, sem estado React novo — e encolhe um pouco quando a pose se afasta do centro (sombra vista de perto perde área). Antes o boneco parecia flutuar sobre a barra do chão. O sol (`sun`) ganhou um glow radial atrás (`radialGradient`) que se move junto — profundidade de pôster Bauhaus, não brilho decorativo solto.
+- **Micro-interação nos cartões de Aulas**: os ícones de forma (círculo/quadrado/triângulo) agora inclinam e sobem levemente no hover do cartão (`group-hover`, `motion-safe`) — o site tinha ficado "morto" nesses cartões, sem nenhuma resposta a interação fora do Hero/Trilho/Respira.
+- **Células da grade de Horários** ganharam um hover sutil (`scale-[1.04]`, `motion-safe`) nas pílulas de Aparelhos/Solo — mesmo espírito, sem mudar a grade em si.
+- Tudo respeitando `motion-safe:`/`prefers-reduced-motion` como o resto do projeto já fazia — nenhuma animação nova é obrigatória pra entender a página.
+
 ## Vibe Discovery — "Contrologia"
 
 - **Lugar/objeto:** o estúdio de Joseph Pilates nos anos 1920 — molas, madeira e metal do reformer.

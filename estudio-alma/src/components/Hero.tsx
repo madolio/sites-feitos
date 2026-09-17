@@ -114,8 +114,8 @@ export default function Hero() {
             <div id="movimento" role="tabpanel" aria-labelledby={`tab-${movement.id}`} aria-live="polite" className="mt-5 border-t-2 border-ink pt-4">
               <div className="flex items-baseline justify-between gap-4">
                 <p className="text-2xl font-medium">{movement.name}</p>
-                <p className="text-sm tabular-nums text-ink/70">
-                  {index + 1} de {movements.length}
+                <p className="font-mono text-sm tabular-nums text-ink/70">
+                  {String(index + 1).padStart(2, '0')}/{String(movements.length).padStart(2, '0')}
                 </p>
               </div>
               <p className="mt-1 min-h-[3.2em] text-ink/85">{movement.description}</p>

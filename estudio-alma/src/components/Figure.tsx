@@ -23,6 +23,8 @@ export default function Figure({ index }: { index: number }) {
   const arm = useRef<SVGGElement>(null)
   const neck = useRef<SVGGElement>(null)
   const sun = useRef<SVGCircleElement>(null)
+  const glow = useRef<SVGCircleElement>(null)
+  const shadow = useRef<SVGEllipseElement>(null)
   const pose = useRef<Pose>({ ...initial })
 
   const apply = useCallback(() => {
@@ -34,6 +36,16 @@ export default function Figure({ index }: { index: number }) {
     neck.current?.setAttribute('transform', `translate(${TORSO} 0) rotate(${p.neck})`)
     sun.current?.setAttribute('cx', String(p.sunX))
     sun.current?.setAttribute('cy', String(p.sunY))
+    glow.current?.setAttribute('cx', String(p.sunX))
+    glow.current?.setAttribute('cy', String(p.sunY))
+    // A sombra de contato acompanha o quadril (só o eixo X importa — o chão é
+    // fixo em y=400) e "acorda" quando a pose se afasta do centro, dando ao
+    // boneco uma sensação de peso apoiado no chão em vez de flutuando sobre
+    // a barra. Largura cai um pouco quando o quadril sai do centro, como uma
+    // sombra vista de perto perdendo área.
+    const spread = Math.max(0.55, 1 - Math.abs(p.hx - 200) / 260)
+    shadow.current?.setAttribute('cx', String(p.hx))
+    shadow.current?.setAttribute('rx', String(70 * spread))
   }, [])
 
   useEffect(() => {
@@ -57,8 +69,16 @@ export default function Figure({ index }: { index: number }) {
 
   return (
     <svg viewBox="0 0 400 440" className="h-auto w-full" role="img" aria-label={`Figura fazendo ${movements[index].name}`}>
+      <defs>
+        <radialGradient id="figure-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#f2b300" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#f2b300" stopOpacity="0" />
+        </radialGradient>
+      </defs>
       <rect x="28" y="52" width="86" height="86" fill="#2c4fa3" />
+      <circle ref={glow} cx={initial.sunX} cy={initial.sunY} r="168" fill="url(#figure-glow)" />
       <circle ref={sun} cx={initial.sunX} cy={initial.sunY} r="104" fill="#f2b300" />
+      <ellipse ref={shadow} cx={initial.hx} cy="416" rx="70" ry="9" fill="#1d1b26" opacity="0.18" />
       <rect x="18" y="400" width="364" height="10" fill="#1d1b26" />
 
       <g ref={hip} transform={`translate(${initial.hx} ${initial.hy})`}>
