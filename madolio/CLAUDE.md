@@ -61,6 +61,14 @@ Ver histórico anterior deste arquivo — usar Puppeteer com `isMobile: true`/`h
 
 Ver `src/components/Reveal.tsx` — não colocar a classe `transition`/`duration-*` genérica do Tailwind no mesmo elemento que o GSAP anima em opacity/transform.
 
+## Menu em tela cheia (`MenuCheio.tsx`) — adicional, não substituto
+
+Pedido do usuário depois de mandar uma referência ("immersive full-screen nav" do Hyperiux/21st.dev — a página não deu pra ler o design de verdade, só confirmou uso de GSAP). Perguntei antes de construir se isso deveria SUBSTITUIR o chrome mínimo atual (logo + WhatsApp, sem nav — decisão deliberada documentada acima) ou ser um menu novo além dele; a resposta foi que é adicional. Por isso a home continua sem barra de navegação tradicional por padrão — o `MenuCheio` é só mais um jeito de explorar, atrás de um botão "Menu" no canto superior direito (o único canto livre: logo fica no superior esquerdo, WhatsApp no inferior direito).
+
+Ao abrir: uma camada `fixed inset-0` cobre a tela inteira (fundo `--color-void`) com um `clip-path: circle()` crescendo a partir do canto onde fica o botão — não um fade/slide genérico. Os links (`Trabalhos`/`Sobre`/`Perguntas`/`Contato`, numerados 01–04, tipografia `font-poster` enorme) entram com stagger via GSAP, com atraso pra só começar depois que o círculo já cobriu a tela. `prefers-reduced-motion: reduce` pula direto pro estado final (círculo 150%, links em opacidade 1) sem nenhuma das duas animações. `Escape` fecha, assim como clicar num link (que também fecha antes de navegar) ou no botão "Fechar".
+
+Seções que não tinham `id` ganharam um pra virar alvo do menu: `Sobre` (`#sobre`), `Faq` (`#faq`), `CtaFinal` (`#contato`) — `Trabalhos` (`#trabalhos`) já tinha. A rolagem até o hash reaproveita o `useEffect` que já existia em `Layout.tsx` (roda ao mudar `pathname`/`hash`), sem precisar de lógica nova pra isso.
+
 ## SEO básico
 
 `index.html` tem meta description, canonical, Open Graph e Twitter Card. `public/robots.txt` e `public/sitemap.xml` existem — o sitemap lista `/` e `/projetos`.

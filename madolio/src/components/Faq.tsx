@@ -47,7 +47,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section className="py-20 md:py-28">
+    <section id="faq" className="scroll-mt-20 py-20 md:py-28">
       <div className="mx-auto max-w-3xl px-6">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 

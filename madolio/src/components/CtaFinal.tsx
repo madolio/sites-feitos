@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 
 export default function CtaFinal() {
   return (
-    <section className="bg-void py-24 md:py-32">
+    <section id="contato" className="scroll-mt-20 bg-void py-24 md:py-32">
       <Reveal className="mx-auto max-w-2xl px-6 text-center">
         <h2 className="font-poster text-4xl tracking-tight text-white uppercase md:text-5xl">
           Bora colocar seu negócio no ar?
