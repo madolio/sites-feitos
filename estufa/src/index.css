@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* Vibe: estufa/jardim botânico × catálogo científico real — cada espécie é uma
+   ficha de herbário, não uma foto de vitrine. Abundância = densidade visual,
+   não minimalismo. */
+@theme {
+  --color-mata: #10241c; /* verde quase-preto, fundo e texto principal */
+  --color-vidro: #f3efe1; /* vidro/creme quente, fundo claro */
+  --color-musgo: #4c7a3f; /* verde-musgo, acento primário */
+  --color-musgo-hover: #3d6432;
+  --color-terracota: #c17a3a; /* barro do vaso, CTA */
+  --color-terracota-hover: #a8652c;
+  --color-linha: #d8cfb8; /* linha/borda sobre o vidro */
+
+  --font-display: "EB Garamond", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-ficha: "Spline Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-vidro font-body text-mata antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-terracota);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-musgo,
+  .btn-terracota,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-musgo {
+    @apply bg-musgo text-vidro hover:bg-musgo-hover;
+  }
+
+  .btn-terracota {
+    @apply bg-terracota text-vidro hover:bg-terracota-hover;
+  }
+
+  .btn-outline {
+    @apply border border-mata/30 text-mata hover:border-mata;
+  }
+
+  /* Rótulo de ficha botânica — nome científico, sempre em itálico serifado,
+     como convenção real de nomenclatura binomial. */
+  .binomial {
+    @apply font-display text-lg italic;
+  }
+
+  /* Dado real da ficha (luz, floração, cuidado) — mono, tabular, nunca
+     decorativo, é literalmente o dado técnico da espécie. */
+  .dado-ficha {
+    @apply font-ficha text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

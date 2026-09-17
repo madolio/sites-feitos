@@ -372,4 +372,15 @@ export const projetos: Projeto[] = [
     destaque: true,
     estudoDeCaso: '/projetos/bruma',
   },
+  {
+    name: 'Estufa Cheia',
+    category: 'Floricultura e paisagismo',
+    tag: 'Casa & Design',
+    description:
+      'Cada arranjo vira uma ficha de espécime real de herbário — nome científico binomial, família, luz e época de floração de verdade — com ilustração técnica em traço, nunca foto de buquê de banco de imagem. Uma trepadeira se desenha sozinha ao rolar a página.',
+    bg: '#f3efe1',
+    accent: '#4c7a3f',
+    url: 'https://estufa.fenoninho-max.workers.dev',
+    destaque: true,
+  },
 ]
