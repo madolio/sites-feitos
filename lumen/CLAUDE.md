@@ -20,7 +20,7 @@ Só ativa em telas com mouse de verdade (`matchMedia('(hover: hover) and (pointe
 
 ## Referência visual
 
-Paleta: `--color-noite` #0a0908 (fundo, quase preto), `--color-acento` #ffb46b (a própria cor de uma luz 2700K, não escolhida arbitrariamente). Fontes: **Fraunces** (títulos, serifada — tom de estúdio de design) + **Inter** (corpo) + **IBM Plex Mono** (rótulos técnicos: "PROJETO LUMINOTÉCNICO", especificações do catálogo).
+Paleta: `--color-noite` #0a0908 (fundo, quase preto), `--color-acento` #ffb46b (um âmbar de luz quente, próximo — mas não idêntico — ao que `kelvinParaRgb(2700)` devolve, que é #ffa757; 11,36:1 sobre `--color-noite`, medido em 18/09/2026). Fontes: **Fraunces** (títulos, serifada — tom de estúdio de design) + **Inter** (corpo) + **IBM Plex Mono** (rótulos técnicos: "PROJETO LUMINOTÉCNICO", especificações do catálogo).
 
 ## Gotchas
 

@@ -10,8 +10,8 @@
   --color-fio: #322c22;
   --color-marfim: #f2ead9;
   --color-fumo: #9a9285;
-  /* --color-acento é a temperatura 2700K (luz quente) convertida por
-     kelvinParaRgb — não escolhida no olho. Validada ~9:1 sobre --noite. */
+  /* --color-acento é um âmbar de luz quente, próximo do que kelvinParaRgb(2700)
+     devolve (#ffa757), mas escolhido à mão. 11,36:1 sobre --noite (medido). */
   --color-acento: #ffb46b;
   --color-acento-escuro: #7a4d1c;
 
