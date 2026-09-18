@@ -40,7 +40,7 @@ export default function Reveal({
           duration: 0.7,
           ease: 'power3.out',
           stagger,
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          scrollTrigger: { trigger: el, start: 'clamp(top 88%)', once: true },
         })
       })
     },

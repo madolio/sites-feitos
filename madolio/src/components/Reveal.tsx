@@ -45,7 +45,7 @@ export default function Reveal({
           stagger,
           scrollTrigger: {
             trigger: el,
-            start: 'top 88%',
+            start: 'clamp(top 88%)',
             once: true,
           },
         })
