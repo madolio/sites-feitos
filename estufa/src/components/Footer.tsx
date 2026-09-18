@@ -20,12 +20,19 @@ export default function Footer() {
             <p className="text-vidro/60">Paisagista e florista, CREA-RJ 2024117534</p>
           </div>
         </div>
-        <p className="mt-10 text-xs text-vidro/40">
+        <p className="mt-10 text-xs text-vidro/70">
           Estufa Cheia é um negócio fictício — conceito de site criado pela Madolio.
         </p>
-        <p className="mt-2 text-xs text-vidro/30">
+        <p className="mt-2 text-xs text-vidro/70">
           Fotos de espécimes: Tanvi.sharmaaa, Dick Culbert, 小石川人暉, Priskamarsila29 e Krzysztof
           Ziarnek — Wikimedia Commons, CC BY / CC BY-SA.
+        </p>
+        <p className="mt-2 text-xs text-vidro/70">
+          feito com <span aria-hidden="true" className="text-terracota">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-terracota/50 underline-offset-4">
+            madolio
+          </a>
         </p>
       </div>
     </footer>

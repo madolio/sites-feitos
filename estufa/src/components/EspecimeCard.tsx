@@ -7,19 +7,55 @@ const corCuidado: Record<Especie['cuidado'], string> = {
   exigente: 'text-terracota-hover',
 }
 
-// Contraste do selo de família: cores claras (ex. amarelo-ouro do copo-de-leite)
-// pedem texto escuro, cores escuras/saturadas pedem texto claro — luminância
-// relativa simplificada (WCAG), não um valor fixo por espécie.
-function corDeTexto(hex: string) {
+// Selo de família na cor real da flor. Texto claro ou escuro, o que tiver mais
+// contraste (WCAG); se nem o melhor chegar a 4,5:1, o fundo do selo é
+// escurecido (ou clareado) aos poucos até passar. A faixa do topo do cartão
+// continua na cor pura da flor — só o selo, que carrega texto, se ajusta.
+const ESCURO = '#10241c'
+const CLARO = '#f3efe1'
+
+function rgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16)
-  const r = (n >> 16) & 255
-  const g = (n >> 8) & 255
-  const b = n & 255
-  const luminancia = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-  return luminancia > 0.6 ? 'var(--color-mata)' : 'var(--color-vidro)'
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+}
+
+function luminancia([r, g, b]: [number, number, number]) {
+  const lin = (c: number) => {
+    const v = c / 255
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)
+  }
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+}
+
+function contraste(a: [number, number, number], b: [number, number, number]) {
+  const la = luminancia(a)
+  const lb = luminancia(b)
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05)
+}
+
+function misturar(a: [number, number, number], b: [number, number, number], t: number): [number, number, number] {
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]
+}
+
+const paraHex = (c: [number, number, number]) => '#' + c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('')
+
+export function seloDeFamilia(hex: string) {
+  const escuro = rgb(ESCURO)
+  const claro = rgb(CLARO)
+  let fundo = rgb(hex)
+  for (let i = 0; i < 30; i++) {
+    const cEscuro = contraste(fundo, escuro)
+    const cClaro = contraste(fundo, claro)
+    if (Math.max(cEscuro, cClaro) >= 4.5) {
+      return { fundo: paraHex(fundo), texto: cEscuro >= cClaro ? ESCURO : CLARO }
+    }
+    fundo = cClaro >= cEscuro ? misturar(fundo, escuro, 0.06) : misturar(fundo, claro, 0.06)
+  }
+  return { fundo: paraHex(fundo), texto: CLARO }
 }
 
 export default function EspecimeCard({ especie }: { especie: Especie }) {
+  const selo = seloDeFamilia(especie.cor)
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-lg border border-linha bg-white/60 shadow-[0_1px_0_var(--color-linha)]">
       <div className="h-1.5 w-full" style={{ backgroundColor: especie.cor }} />
@@ -40,7 +76,7 @@ export default function EspecimeCard({ especie }: { especie: Especie }) {
       <div className="flex flex-1 flex-col p-5">
         <span
           className="dado-ficha absolute top-4 right-4 rounded-full px-2.5 py-1 shadow-sm"
-          style={{ backgroundColor: especie.cor, color: corDeTexto(especie.cor) }}
+          style={{ backgroundColor: selo.fundo, color: selo.texto }}
         >
           {especie.familia}
         </span>
