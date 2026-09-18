@@ -44,8 +44,10 @@ export function seloDeFamilia(hex: string) {
   const claro = rgb(CLARO)
   let fundo = rgb(hex)
   for (let i = 0; i < 30; i++) {
-    const cEscuro = contraste(fundo, escuro)
-    const cClaro = contraste(fundo, claro)
+    // mede a cor já arredondada pra hex — é a que o navegador de fato desenha
+    const desenhada = rgb(paraHex(fundo))
+    const cEscuro = contraste(desenhada, escuro)
+    const cClaro = contraste(desenhada, claro)
     if (Math.max(cEscuro, cClaro) >= 4.5) {
       return { fundo: paraHex(fundo), texto: cEscuro >= cClaro ? ESCURO : CLARO }
     }
