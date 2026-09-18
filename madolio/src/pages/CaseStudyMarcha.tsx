@@ -1,121 +1,219 @@
-import { Link } from 'react-router-dom'
-import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
+import FinanciamentoDemo from '../components/makingof/FinanciamentoDemo'
+import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
-// Making-of do Marcha, traduzido do CLAUDE.md técnico do projeto pra
-// linguagem de cliente — mostra o processo real (pedido → decisão →
-// problema resolvido), não só o resultado final.
+// Making-of do Marcha. Cada número, arquivo e commit citado aqui é
+// conferível no repositório (marcha/CLAUDE.md, marcha/public/carros, git log).
+const fotos = [
+  { arquivo: 'coupe-azul', legenda: 'Cupê 2 portas', md5: 'fe77e557' },
+  { arquivo: 'esportivo-azul', legenda: 'Esportivo americano', md5: '74efca52' },
+  { arquivo: 'muscle-preto', legenda: 'Muscle car preparado', md5: '1f19a998' },
+  { arquivo: 'coupe-cinza', legenda: 'Cupê performance', md5: '1d5ac267' },
+  { arquivo: 'esportivo-amarelo', legenda: 'Superesportivo V10', md5: '61cc3b0f' },
+  { arquivo: 'hero', legenda: 'Fundo do hero', md5: '95cf3fb4' },
+  { arquivo: 'floresta', legenda: 'Fundo do contato', md5: '75c04038' },
+]
+
+const marcos = [
+  {
+    data: '16/09 · 11:57',
+    hash: 'b17aaaf',
+    texto: 'Nasce o Marcha: primeiro projeto do portfólio com foto de verdade, e a calculadora com a Tabela Price.',
+  },
+  {
+    data: '17/09 · 11:20',
+    hash: 'dee312f',
+    texto: 'As fotos passam a declarar largura e altura, pra página não pular de lugar quando a imagem termina de carregar.',
+  },
+  { data: '17/09 · 12:21', hash: 'ee292d2', texto: 'robots.txt e sitemap.xml — o site passa a se apresentar direito pra buscadores.' },
+  { data: '18/09 · 11:27', hash: 'bd69900', texto: 'Imagem de compartilhamento, feita com a foto do hero, pra link colado em rede social ter capa.' },
+]
+
 export default function CaseStudyMarcha() {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28">
+    <>
       <Seo
-        title="Making of: Marcha — A única loja do portfólio com fotos de verdade | Madolio"
-        description="O processo real por trás do Marcha: uma concessionária de esportivos com fotografia licenciada de verdade e uma calculadora de financiamento com a mesma fórmula usada por qualquer financeira. Do pedido inicial aos problemas resolvidos no caminho."
+        title="Making of: Marcha — a primeira loja do portfólio com foto de verdade | Madolio"
+        description="O processo real por trás do Marcha, uma concessionária de esportivos com fotografia licenciada e uma calculadora de financiamento que faz a mesma conta da financeira. Mexa nos números, veja as fotos e os problemas resolvidos."
         path="/projetos/marcha"
       />
-      <div className="mx-auto max-w-3xl px-6">
-        <Link to="/projetos" className="text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
-          ← todos os projetos
-        </Link>
 
-        <Reveal className="mt-6">
-          <p className="font-semibold text-accent">Making of</p>
-          <h1 className="mt-2 text-4xl font-semibold leading-tight text-ink md:text-5xl">Marcha</h1>
-          <p className="mt-4 text-lg text-ink/70">
-            Uma concessionária de esportivos fictícia que quebra, de propósito, a regra que o resto do portfólio
-            segue: aqui tem foto de verdade. E uma calculadora de financiamento que faz conta de financeira de
-            verdade, não um número inventado pra parecer bonito. Aqui está o processo real por trás disso, não só o
-            resultado.
-          </p>
-        </Reveal>
+      <Capa
+        nome="Marcha"
+        nicho="Concessionária de esportivos"
+        resumo={
+          <>
+            A primeira vez que a Madolio pôs foto de verdade num site — e tudo que isso exigiu. Mais uma calculadora
+            de financiamento que faz a conta que a financeira faz, não um número que “parece certo”.
+          </>
+        }
+        fatos={[
+          { rotulo: 'Nicho', valor: 'Concessionária de esportivos' },
+          { rotulo: 'Stack', valor: 'React 19 · Tailwind v4 · GSAP' },
+          { rotulo: 'No ar desde', valor: '16/09/2026' },
+          { rotulo: 'Regra quebrada', valor: '“Nunca foto”' },
+        ]}
+      >
+        <Figura
+          n={1}
+          src="/makingof/marcha/hero.jpg"
+          alt="Página inicial do Marcha: foto de uma mão ao volante de um carro ao entardecer, com o título 'Cada carro daqui já foi feito pra ser dirigido rápido.'"
+          width={1280}
+          height={800}
+          url="marcha.fenoninho-max.workers.dev"
+          legenda="A home do Marcha, no ar. A foto é real (Unsplash License); o texto por cima é do site."
+        />
+      </Capa>
 
-        <Reveal className="mt-14">
-          <h2 className="text-2xl font-semibold text-ink">O pedido</h2>
-          <blockquote className="mt-3 border-l-4 border-accent pl-5 text-lg text-ink/75 italic">
-            "Quero uma agência de carros, dessa vez coloque até imagens."
-          </blockquote>
-          <p className="mt-4 text-ink/70">
-            "Até imagens" era a parte que mudava tudo — todos os outros projetos do portfólio evitam foto de
-            propósito, usando ilustração ou 3D pra não depender de imagens de estoque genéricas. Aqui o pedido pedia
-            o oposto, e isso trouxe uma responsabilidade que nenhum outro projeto teve: garantir que cada foto fosse
-            de uso livre de verdade, e que nenhuma legenda inventasse uma marca que a foto não mostra.
-          </p>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">A ideia central</h2>
-          <p className="mt-3 text-ink/70">
-            O <strong>wildcard</strong> do Marcha não é um efeito visual — é o compromisso com dado real em duas
-            frentes. Primeiro, as fotos: sete imagens de carros esportivos, todas de banco de imagens com licença
-            livre pra reuso, conferidas uma a uma antes de entrar no site. Segundo, o dinheiro: uma calculadora de
-            financiamento que usa a Tabela Price, a mesma fórmula de amortização que qualquer banco ou financeira
-            usa pra calcular parcela de veículo — nunca um valor solto que "parece certo".
-          </p>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">Decisões que fazem a loja parecer real</h2>
-          <ul className="mt-4 space-y-4 text-ink/70">
-            <li>
-              <strong className="text-ink">Nenhuma foto tem placa legível.</strong> Fotos candidatas com placa real
-              nítida foram descartadas na curadoria — mesmo sendo um projeto fictício, expor uma placa real de
-              terceiros numa foto de estoque não é um risco que vale a pena correr.
-            </li>
-            <li>
-              <strong className="text-ink">Nenhum carro é vendido com a marca da foto.</strong> Cada item do estoque
-              é descrito por categoria e especificação genérica — "cupê performance", "muscle car preparado" — nunca
-              pelo nome da marca visível na imagem, porque a ficha do carro é fictícia e a foto não é literalmente
-              daquele carro que a loja "tem".
-            </li>
-            <li>
-              <strong className="text-ink">A parcela vem sempre do preço real daquele carro.</strong> A calculadora
-              deixa escolher o carro do estoque, a entrada em porcentagem e o número de parcelas, e recalcula a
-              prestação com a Tabela Price a partir do preço daquele item específico — trocar de carro muda a conta
-              de verdade, não é decorativo.
-            </li>
-            <li>
-              <strong className="text-ink">O efeito de paralaxe do hero é sob medida, sem biblioteca extra.</strong>
-              A imagem de fundo se move mais devagar que o scroll através de um loop de animação leve, respeitando
-              quem prefere menos movimento na tela — é um efeito contínuo, então não precisava da mesma ferramenta
-              de entrada em cena usada no resto do site.
-            </li>
-          </ul>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">Dois problemas que apareceram no caminho</h2>
-          <div className="mt-4 space-y-5 text-ink/70">
+      <Secao n="01" rotulo="O pedido" titulo="“Até imagens”">
+        <Citacao quem="Briefing original, palavras exatas" quando="16/09/2026">
+          Quero uma agência de carros, dessa vez coloque até imagens.
+        </Citacao>
+        <div className="mt-8">
+          <Prosa>
             <p>
-              <strong className="text-ink">A mesma foto entrou duas vezes sem perceber.</strong> Duas fotos baixadas
-              em momentos diferentes vieram do mesmo link de origem por engano, gerando dois arquivos idênticos com
-              nomes diferentes no estoque. Nome de arquivo sozinho não denuncia isso — a checagem final comparou a
-              impressão digital de cada uma das sete imagens antes de publicar, não só o nome delas.
+              “Até imagens” foi o pedaço que mudou o projeto. Até ali, cada site do portfólio fugia de foto de
+              propósito — ilustração, 3D, esquema técnico — pra não parecer banco de imagens genérico. O Marcha foi o
+              primeiro a fazer o contrário.
             </p>
             <p>
-              <strong className="text-ink">Cor de acento vermelha precisava provar que dava pra ler.</strong> Numa
-              paleta escura com vermelho de destaque, é fácil escolher um tom que "parece" legível mas falha em
-              contraste real contra o preto de fundo. O tom final foi validado formalmente antes de virar padrão do
-              site — acima do mínimo de contraste recomendado pra leitura confortável, não só aprovado no olho.
+              Isso trouxe uma responsabilidade nova: cada foto precisava ser de uso livre de verdade, e nenhuma
+              legenda podia inventar uma marca que a imagem não mostra. (Depois dele, o Estufa Cheia também passou a
+              usar fotos reais — mas foi o Marcha que abriu a exceção.)
             </p>
-          </div>
-        </Reveal>
+          </Prosa>
+        </div>
+      </Secao>
 
-        <Reveal className="mt-14 rounded-2xl border-2 border-ink bg-surface-alt p-6 sm:p-8">
-          <h2 className="text-xl font-semibold text-ink">Veja o resultado</h2>
-          <p className="mt-2 text-ink/70">
-            O site completo está no ar — escolha um carro do estoque e simule o financiamento com entrada e parcelas
-            de verdade.
+      <Secao n="02" rotulo="A ideia central" titulo="Dado real, nas duas pontas">
+        <Prosa>
+          <p>
+            O wildcard do Marcha não é um efeito visual — é uma regra: tudo que aparece na tela é verificável. As
+            fotos vêm de um banco livre e foram conferidas uma a uma. O dinheiro segue a conta que qualquer
+            financeira faz.
           </p>
-          <a
-            href="https://marcha.fenoninho-max.workers.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4"
+        </Prosa>
+        <div className="mt-10">
+          <Prova
+            itens={[
+              { rotulo: 'Fotos reais', valor: '7', nota: 'Todas do Unsplash, licença livre pra reuso, conferidas uma a uma antes de entrar.' },
+              { rotulo: 'Taxa da simulação', valor: '1,49%', nota: 'Ao mês — média de mercado pra financiamento de veículo usado.' },
+              { rotulo: 'Contraste do vermelho', valor: '5,55:1', nota: '#ff3b30 sobre #0b0b0c. O mínimo WCAG AA pra texto é 4,5:1.' },
+            ]}
+          />
+        </div>
+      </Secao>
+
+      <Secao n="03" rotulo="Mexa na conta" titulo="A parcela, de verdade">
+        <Prosa>
+          <p>
+            Esta é a calculadora do site, com os mesmos preços e a mesma taxa. Troque o carro, a entrada e o prazo: a
+            parcela recalcula pela Tabela Price e a conta aparece escrita embaixo — nada de valor solto.
+          </p>
+        </Prosa>
+        <div className="mt-8 rounded-2xl bg-void p-6 text-paper md:p-10">
+          <FinanciamentoDemo />
+        </div>
+        <Figura
+          className="mt-10"
+          n={2}
+          src="/makingof/marcha/financiamento.jpg"
+          alt="Seção de financiamento do Marcha com seletor de carro, entrada e prazo, e a parcela calculada."
+          width={1280}
+          height={816}
+          url="marcha.fenoninho-max.workers.dev/#financiamento"
+          legenda="A mesma calculadora dentro do site real."
+        />
+      </Secao>
+
+      <Secao n="04" rotulo="Curadoria" titulo="Sete fotos, nenhuma placa legível">
+        <Prosa>
+          <p>
+            As fotos passaram por uma peneira antes de entrar. Ficaram de fora as candidatas com placa real nítida —
+            como um Porsche com placa americana legível — e nenhum carro foi legendado com a marca que a foto mostra.
+            O estoque descreve categoria e ficha técnica genéricas (“cupê performance”, “muscle car preparado”),
+            porque a ficha é fictícia e a foto não é de um carro que a loja tem.
+          </p>
+        </Prosa>
+        <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {fotos.map((f) => (
+            <li key={f.arquivo}>
+              <img
+                src={`/makingof/marcha/fotos/${f.arquivo}.jpg`}
+                alt={`${f.legenda} — foto real do acervo do Marcha`}
+                width={520}
+                height={347}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full rounded-lg border-2 border-ink object-cover"
+              />
+              <p className="mt-2 text-sm font-semibold text-ink">{f.legenda}</p>
+              <p className="font-mono text-xs text-ink/60">md5 {f.md5}</p>
+            </li>
+          ))}
+        </ul>
+        <Figura
+          className="mt-12"
+          n={3}
+          src="/makingof/marcha/estoque-topo.jpg"
+          alt="Seção de estoque do Marcha com os cartões de carros, cada um com foto, categoria e ficha técnica."
+          width={1280}
+          height={880}
+          url="marcha.fenoninho-max.workers.dev/#estoque"
+          legenda="O estoque no site: categoria e ficha técnica no lugar de marca."
+        />
+      </Secao>
+
+      <Secao n="05" rotulo="O que deu errado" titulo="Dois problemas no caminho">
+        <div className="space-y-8">
+          <Ficha
+            titulo="A mesma foto entrou duas vezes"
+            sintoma="Dois arquivos com nomes diferentes, imagem idêntica, ocupando dois lugares no estoque."
+            causa="A mesma URL do Unsplash foi reaproveitada por engano em dois downloads diferentes."
+            correcao="Um md5sum nos 7 arquivos antes de montar o site. Nome de arquivo não denuncia duplicata; o conteúdo, sim."
           >
-            Abrir o Marcha
-          </a>
-        </Reveal>
-      </div>
-    </section>
+            <p className="font-mono text-sm text-ink/75">$ md5sum public/carros/*.jpg</p>
+            <p className="mt-2 font-mono text-sm break-words text-ink/70">
+              {fotos.map((f) => f.md5).join(' · ')} (7 diferentes)
+            </p>
+          </Ficha>
+
+          <Ficha
+            titulo="O vermelho parecia legível — e era?"
+            sintoma="Numa paleta preta com vermelho de acento, é fácil escolher um tom que parece ótimo a olho nu e falha no contraste."
+            causa="Percepção não é medida: o olho perdoa o que o cálculo não perdoa."
+            correcao="O tom foi medido antes de virar padrão: #ff3b30 sobre o preto do site dá 5,55:1, acima dos 4,5:1 do WCAG AA."
+          >
+            <div className="flex flex-wrap items-center gap-4 rounded-lg bg-[#0b0b0c] px-5 py-4">
+              <span className="font-mono text-sm tracking-widest text-[#ff3b30] uppercase">Concessionária de esportivos</span>
+              <span className="font-mono text-sm text-[#aab3c4]">#ff3b30 / #0b0b0c = 5,55:1</span>
+            </div>
+          </Ficha>
+        </div>
+      </Secao>
+
+      <Secao n="06" rotulo="Um detalhe" titulo="Paralaxe sem biblioteca">
+        <Prosa>
+          <p>
+            A foto do hero anda mais devagar que o scroll, com um loop de{' '}
+            <code className="font-mono text-base">requestAnimationFrame</code> movendo um{' '}
+            <code className="font-mono text-base">translate3d</code>. É um efeito contínuo, ligado à posição da
+            página — não uma entrada única — então não precisou do GSAP que anima o resto do site. Quem prefere menos
+            movimento na tela recebe a foto parada.
+          </p>
+        </Prosa>
+      </Secao>
+
+      <Secao n="07" rotulo="Histórico" titulo="Como aconteceu">
+        <Marcos itens={marcos} />
+        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do histórico real do repositório (git log).</p>
+      </Secao>
+
+      <CtaMakingOf
+        nome="Marcha"
+        url="https://marcha.fenoninho-max.workers.dev"
+        texto="Escolha um carro, mexa na entrada e no prazo — a parcela sai da conta de verdade."
+      />
+    </>
   )
 }

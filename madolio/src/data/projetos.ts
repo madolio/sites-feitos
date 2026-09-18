@@ -343,7 +343,7 @@ export const projetos: Projeto[] = [
     category: 'Concessionária de esportivos',
     tag: 'Automotivo',
     description:
-      'O único projeto do portfólio com fotografia de verdade — banco de imagens livre, sem inventar marca em nenhuma legenda. A calculadora de financiamento usa a tabela price de verdade (a mesma fórmula de qualquer financeira), nunca uma parcela solta.',
+      'O primeiro projeto do portfólio com fotografia de verdade — banco de imagens livre, sem inventar marca em nenhuma legenda. A calculadora de financiamento usa a tabela price de verdade (a mesma fórmula de qualquer financeira), nunca uma parcela solta.',
     bg: '#0b0b0c',
     accent: '#ff3b30',
     url: 'https://marcha.fenoninho-max.workers.dev',

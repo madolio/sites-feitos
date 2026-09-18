@@ -2,7 +2,7 @@
 
 Site-conceito da Madolio pro nicho de **concessionária de esportivos/muscle cars**. **Empresa fictícia** — não existe. Vite + React 19 + TypeScript + Tailwind v4 + GSAP (Reveal). Página única.
 
-Pedido: "quero uma agência de carros, dessa vez coloque até imagens" — o único projeto do repositório que usa fotografia de verdade, quebrando de propósito o princípio "nunca foto" dos demais.
+Pedido: "quero uma agência de carros, dessa vez coloque até imagens" — o primeiro projeto do repositório a usar fotografia de verdade, quebrando de propósito o princípio "nunca foto" dos demais (o Estufa Cheia também usa fotos reais desde 17/09/2026, mas o Marcha abriu a exceção).
 
 ## Deploy (Cloudflare Workers)
 
