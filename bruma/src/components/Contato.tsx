@@ -34,6 +34,19 @@ export default function Contato() {
             Enviar pelo WhatsApp
           </button>
         </div>
+
+        <p className="mt-14 text-sm text-fumo/80">
+          feito com <span aria-hidden="true" className="text-acento">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a
+            href="https://madolio.com.br"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-fio underline-offset-4 transition-colors hover:text-marfim"
+          >
+            madolio
+          </a>
+        </p>
       </div>
     </section>
   )

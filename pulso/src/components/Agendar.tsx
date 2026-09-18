@@ -78,6 +78,21 @@ export default function Agendar() {
           </a>
           .
         </p>
+        <p className="mt-2 text-sm text-chalk/70">
+          feito com{' '}
+          <span aria-hidden="true" className="text-lane">
+            ♥
+          </span>
+          <span className="sr-only">amor</span> por{' '}
+          <a
+            href="https://madolio.com.br"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-4 hover:text-chalk"
+          >
+            madolio
+          </a>
+        </p>
       </div>
     </footer>
   )

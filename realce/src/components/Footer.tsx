@@ -19,6 +19,22 @@ export default function Footer() {
           Endereço, horário e lista de serviços vieram do material público do
           próprio salão.
         </p>
+
+        <p className="mt-6 text-sm text-fumo">
+          feito com{' '}
+          <span aria-hidden="true" className="text-dourado">
+            ♥
+          </span>
+          <span className="sr-only">amor</span> por{' '}
+          <a
+            href="https://madolio.com.br"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-4 transition-colors hover:text-branco"
+          >
+            madolio
+          </a>
+        </p>
       </div>
     </footer>
   )

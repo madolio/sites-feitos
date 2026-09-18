@@ -46,6 +46,19 @@ export default function Contato() {
           </a>
           .
         </p>
+
+        <p className="mt-3 text-sm text-ink/70">
+          feito com <span aria-hidden="true" className="text-pine">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a
+            href="https://madolio.com.br"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-4 transition-colors hover:text-ink"
+          >
+            madolio
+          </a>
+        </p>
       </Reveal>
     </footer>
   )

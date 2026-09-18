@@ -40,6 +40,19 @@ export default function Footer() {
           . Números e carteiras são ilustrativos, não recomendação de
           investimento.
         </p>
+
+        <p className="mt-3 text-sm text-indigo/75">
+          feito com <span aria-hidden="true" className="text-brass">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a
+            href="https://madolio.com.br"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-brass/50 underline-offset-4"
+          >
+            madolio
+          </a>
+        </p>
       </Reveal>
     </footer>
   )

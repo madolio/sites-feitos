@@ -99,6 +99,14 @@ export default function Console() {
           <span className="font-heading text-paper/70">{FIRM_NAME}</span>
           <span>© {new Date().getFullYear()} {FIRM_NAME}. Todos os direitos reservados.</span>
         </div>
+
+        <p className="mt-3 text-sm text-paper/60">
+          feito com <span aria-hidden="true" className="text-precision">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-paper/50 underline-offset-4">
+            madolio
+          </a>
+        </p>
       </div>
     </footer>
   )

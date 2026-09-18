@@ -65,6 +65,13 @@ export default function Contato() {
           </a>
           .
         </p>
+        <p className="mt-3 text-sm text-paper/75">
+          feito com <span aria-hidden="true" className="text-steel">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-paper/50 underline-offset-4">
+            madolio
+          </a>
+        </p>
       </div>
     </footer>
   )

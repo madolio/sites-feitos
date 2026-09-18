@@ -50,6 +50,21 @@ export default function Painel() {
         </a>
         .
       </p>
+      <p className="mt-1.5 text-center text-xs text-ink/70">
+        feito com{' '}
+        <span aria-hidden="true" className="text-accent">
+          ♥
+        </span>
+        <span className="sr-only">amor</span> por{' '}
+        <a
+          href="https://madolio.com.br"
+          target="_blank"
+          rel="noreferrer"
+          className="underline underline-offset-4 transition-colors hover:text-ink"
+        >
+          madolio
+        </a>
+      </p>
     </div>
   )
 }

@@ -46,6 +46,13 @@ export default function PainelContato() {
           </a>
           .
         </p>
+        <p className="mt-3 max-w-sm text-sm text-paper/60">
+          feito com <span aria-hidden="true" className="text-ember">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-ember/50 underline-offset-4">
+            madolio
+          </a>
+        </p>
       </Reveal>
     </section>
   )

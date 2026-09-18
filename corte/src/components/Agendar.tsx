@@ -92,6 +92,13 @@ export default function Agendar() {
               </a>
               .
             </p>
+            <p className="mt-3 max-w-sm text-sm text-ink/70">
+              feito com <span aria-hidden="true" className="text-vermelho">♥</span>
+              <span className="sr-only">amor</span> por{' '}
+              <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-vermelho/50 underline-offset-4">
+                madolio
+              </a>
+            </p>
           </div>
           <Selo className="h-16 w-16 shrink-0 text-ink/40 sm:h-20 sm:w-20" />
         </div>

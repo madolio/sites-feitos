@@ -114,13 +114,22 @@ export default function Fundo() {
           <button type="button" onClick={subir} className="btn-outline">
             Voltar à superfície
           </button>
-          <p className="text-xs text-espuma/55">
-            Escola fictícia — conceito da{' '}
-            <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-2">
-              Madolio
-            </a>
-            .
-          </p>
+          <div className="text-xs text-espuma/55">
+            <p>
+              Escola fictícia — conceito da{' '}
+              <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-2">
+                Madolio
+              </a>
+              .
+            </p>
+            <p className="mt-1">
+              feito com <span aria-hidden="true" className="text-lanterna">♥</span>
+              <span className="sr-only">amor</span> por{' '}
+              <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline underline-offset-2">
+                madolio
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>

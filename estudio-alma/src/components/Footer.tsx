@@ -41,6 +41,13 @@ export default function Footer() {
           </a>
           .
         </p>
+        <p className="mt-3 text-sm text-gesso/75">
+          feito com <span aria-hidden="true" className="text-amarela">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-amarela/50 underline-offset-4">
+            madolio
+          </a>
+        </p>
       </div>
     </footer>
   )

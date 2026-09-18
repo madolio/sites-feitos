@@ -33,6 +33,14 @@ export default function Contato() {
           <span>Tratamento de água e serviços elétricos · {PROFISSIONAL.regiao}</span>
           <span>© {new Date().getFullYear()}</span>
         </div>
+
+        <p className="mt-3 text-sm text-white/65">
+          feito com <span aria-hidden="true" className="text-agua-luz">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-agua-luz/50 underline-offset-4">
+            madolio
+          </a>
+        </p>
       </div>
     </footer>
   )

@@ -227,6 +227,13 @@ function Medidas({ altura, diametro }: { altura: number; diametro: number }) {
           {diametro}
           <span className="text-base"> cm</span>
         </p>
+        <p className="mt-2 text-xs text-ink/65">
+          feito com <span aria-hidden="true" className="text-glaze">♥</span>
+          <span className="sr-only">amor</span> por{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-glaze/50 underline-offset-4">
+            madolio
+          </a>
+        </p>
         <p className="text-xs text-ink/60">de diâmetro</p>
       </div>
     </div>
