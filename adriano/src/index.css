@@ -1,30 +1,41 @@
 @import "tailwindcss";
 
-/* Identidade dupla: água + elétrica, os dois ofícios reais do Adriano. Azul
-   pra água, âmbar pra elétrica — nunca misturados no mesmo elemento, cada
-   um marca a seção do serviço que representa. Sóbrio e direto: é o site de
-   um profissional de verdade, não um portfólio de conceito. */
-@theme {
-  --color-grafite: #1b2530;
-  --color-papel: #f7f9fb;
-  --color-linha: #dde5ec;
-  --color-agua: #0e6ba8;
-  --color-agua-clara: #eaf4fb;
-  --color-eletrica: #b9790a;
-  --color-eletrica-clara: #fdf3e2;
-  --color-fumo: #5c6b7a;
+/* Identidade absorvida do Nascente (projeto-conceito aposentado): desenho
+   técnico como linguagem visual, tipografia Archivo, fundo escuro `grafite`
+   no bloco de contato.
 
-  --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+   A regra antiga do Adriano continua valendo e ficou mais forte: água e
+   elétrica NUNCA aparecem no mesmo elemento. O que mudou é que agora cada
+   ofício tem também a sua NOTAÇÃO de engenharia — P&ID pra água, unifilar
+   pra elétrica — então a separação não é só de cor, é de vocabulário.
+
+   Contraste verificado: todo texto >= 4.5:1 sobre o fundo em que aparece.
+   `agua` sobre `grafite` dá só 2.63:1 — por isso o painel escuro usa
+   `agua-luz` (6.82:1) e `eletrica-luz` (8.56:1), nunca as versões de texto. */
+@theme {
+  --color-grafite: #0f2430;
+  --color-papel: #ffffff;
+  --color-superficie: #eef4f6;
+  --color-linha: #c8d5d9;
+  --color-fumo: #4d5f6b;
+
+  --color-agua: #0a6b87;
+  --color-agua-forte: #085470;
+  --color-agua-luz: #4cb6d6;
+  --color-agua-clara: #e3f0f5;
+
+  --color-eletrica: #95590c;
+  --color-eletrica-forte: #74450a;
+  --color-eletrica-luz: #f0b429;
+  --color-eletrica-clara: #faf0de;
+
+  --font-heading: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-  }
-
-  section[id] {
-    scroll-margin-top: 4.5rem;
   }
 
   body {
@@ -35,50 +46,127 @@
 
   h1,
   h2,
-  h3 {
-    @apply font-heading font-semibold;
+  h3,
+  h4 {
+    @apply font-heading font-extrabold;
+    font-stretch: 116%;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
+  section[id],
+  footer[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  @media (min-width: 64rem) {
+    section[id],
+    footer[id] {
+      scroll-margin-top: 2rem;
+    }
+  }
+
   :focus-visible {
-    outline: 3px solid var(--color-agua);
+    outline: 2px solid var(--color-agua);
     outline-offset: 3px;
   }
 }
 
 @layer components {
+  .btn-escuro,
+  .btn-agua,
+  .btn-eletrica,
+  .btn-claro,
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-sm px-5 py-3 text-[0.9375rem] font-semibold transition-colors;
+  }
+
+  .btn-escuro {
+    @apply bg-grafite text-white hover:bg-grafite/85;
+  }
+
   .btn-agua {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-agua px-7 py-3.5 font-semibold text-white transition-opacity hover:opacity-90;
+    @apply bg-agua text-white hover:bg-agua-forte;
+  }
+
+  /* Elétrica tem o próprio foco: o contorno azul padrão seria a única
+     ocorrência de água dentro de um elemento do ofício elétrico. */
+  .btn-eletrica {
+    @apply bg-eletrica text-white hover:bg-eletrica-forte;
+  }
+
+  .btn-eletrica:focus-visible,
+  .foco-eletrica:focus-visible {
+    outline-color: var(--color-eletrica);
+  }
+
+  /* Sobre o grafite, as cores de texto dos ofícios não dão nem 3:1 — o
+     contorno de foco em fundo escuro usa as versões `-luz`. */
+  .escuro :focus-visible {
+    outline-color: var(--color-agua-luz);
+  }
+
+  .escuro .foco-eletrica:focus-visible {
+    outline-color: var(--color-eletrica-luz);
+  }
+
+  /* Só sobre fundo escuro (painel e bloco de contato). */
+  .btn-claro {
+    @apply bg-white text-grafite hover:bg-white/85;
   }
 
   .btn-contorno {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-grafite/25 px-6 py-3 font-semibold text-grafite transition-colors hover:border-grafite;
-  }
-
-  /* Contorno claro -- só sobre fundo escuro (CtaFinal). */
-  .btn-contorno-claro {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:border-white;
+    @apply border border-grafite/30 text-grafite hover:border-grafite;
   }
 
   .rotulo {
-    @apply text-xs font-semibold tracking-[0.16em] text-fumo uppercase;
+    @apply font-heading text-xs font-semibold tracking-[0.18em] uppercase;
+  }
+
+  /* Link de pular pro conteúdo: escrito à mão porque `sr-only` +
+     `focus-visible:fixed` dependem da ordem em que o Tailwind emite as duas
+     utilidades de `position` — aqui não há empate pra desempatar. */
+  .pular {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+  }
+
+  .pular:focus-visible {
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 60;
+    outline-color: var(--color-agua-luz);
+    @apply rounded-sm bg-grafite px-4 py-2 font-semibold text-white;
+  }
+
+  /* A folha de desenho onde os dois esquemas são desenhados — malha de
+     prancheta, igual pros dois ofícios (é o papel, não o ofício). */
+  .prancha {
+    @apply rounded-sm border border-linha bg-white;
+    background-image:
+      linear-gradient(to right, rgb(200 213 217 / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(200 213 217 / 0.35) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
 
-/* Revelação por rolagem — IntersectionObserver único (useRevelar.ts), sem
-   GSAP: só opacity/translate, então a classe utilitária transition do
-   Tailwind não briga com nada. */
-.revelar {
-  opacity: 0;
-  translate: 0 1rem;
-  transition:
-    opacity 0.6s ease-out,
-    translate 0.6s ease-out;
+/* Painel.tsx: o trilho tracejado que "escorre" entre os instrumentos, mesma
+   linguagem dos tracejados dentro dos esquemas. A cor vem do `color` inline
+   do próprio estágio (água ou elétrica), nunca de uma cor compartilhada. */
+@keyframes painel-trilho {
+  to {
+    background-position-y: 12px;
+  }
 }
 
-.revelar[data-visivel='true'] {
-  opacity: 1;
-  translate: 0 0;
+.painel-trilho {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    currentColor 0 4px,
+    transparent 4px 12px
+  );
+  animation: painel-trilho 1.4s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -86,9 +174,7 @@
     scroll-behavior: auto;
   }
 
-  .revelar {
-    opacity: 1;
-    translate: none;
-    transition: none;
+  .painel-trilho {
+    animation: none;
   }
 }

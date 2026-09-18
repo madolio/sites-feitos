@@ -2,17 +2,22 @@ import { useEffect, useRef, useState } from 'react'
 
 const RAIO = 54
 const CIRCUNFERENCIA = 2 * Math.PI * RAIO
+const MARCAS = 24
 
-// O selo visual da especialidade real dele: água tratada a 100% de pureza
-// (o padrão que hemodiálise exige). Um anel que enche até 100% quando entra
-// na tela, em vez de um ícone de gota genérico.
+// O selo visual da especialidade real dele: o anel enche até 100% quando
+// entra na tela. Sobreviveu ao redesenho porque já era um instrumento — só
+// ganhou a face com as marcas de escala do resto do painel.
+//
+// Continua sem lib de animação (IntersectionObserver + requestAnimationFrame)
+// e continua respeitando `prefers-reduced-motion`: nesse caso pula direto
+// pra 100 e nada se move.
 export default function PurezaGauge() {
   const ref = useRef<HTMLDivElement>(null)
   const [percurso, setPercurso] = useState(0)
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reducedMotion) {
+    const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (semMovimento) {
       setPercurso(100)
       return
     }
@@ -42,32 +47,52 @@ export default function PurezaGauge() {
     return () => observador.disconnect()
   }, [])
 
-  const offset = CIRCUNFERENCIA * (1 - percurso / 100)
+  const deslocamento = CIRCUNFERENCIA * (1 - percurso / 100)
 
   return (
-    <div className="rounded-2xl border border-agua-clara bg-agua-clara/50 p-6 text-center">
-      <div ref={ref} className="relative mx-auto inline-flex h-32 w-32 items-center justify-center">
-        <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
-          <circle cx="60" cy="60" r={RAIO} fill="none" stroke="var(--color-agua-clara)" strokeWidth="8" />
-          <circle
-            cx="60"
-            cy="60"
-            r={RAIO}
-            fill="none"
-            stroke="var(--color-agua)"
-            strokeWidth="8"
-            strokeLinecap="round"
-            strokeDasharray={CIRCUNFERENCIA}
-            strokeDashoffset={offset}
-            style={{ transition: 'stroke-dashoffset 0.05s linear' }}
-          />
-        </svg>
-        <div className="absolute flex flex-col items-center">
-          <span className="font-heading text-2xl font-semibold text-agua">{percurso}%</span>
-          <span className="text-[0.65rem] font-medium text-fumo">pura</span>
+    <figure className="w-full max-w-[16rem]">
+      <div className="rounded-sm border border-linha bg-superficie px-6 py-7">
+        <div ref={ref} className="relative mx-auto flex h-36 w-36 items-center justify-center">
+          <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90" aria-hidden="true">
+            {Array.from({ length: MARCAS }, (_, i) => {
+              const angulo = (i / MARCAS) * Math.PI * 2
+              return (
+                <line
+                  key={i}
+                  x1={60 + Math.cos(angulo) * 41}
+                  y1={60 + Math.sin(angulo) * 41}
+                  x2={60 + Math.cos(angulo) * 46}
+                  y2={60 + Math.sin(angulo) * 46}
+                  stroke="var(--color-linha)"
+                  strokeWidth={i % 6 === 0 ? 2.4 : 1.2}
+                  strokeLinecap="round"
+                />
+              )
+            })}
+            <circle cx="60" cy="60" r={RAIO} fill="none" stroke="var(--color-linha)" strokeWidth="8" />
+            <circle
+              cx="60"
+              cy="60"
+              r={RAIO}
+              fill="none"
+              stroke="var(--color-agua)"
+              strokeWidth="8"
+              strokeLinecap="round"
+              strokeDasharray={CIRCUNFERENCIA}
+              strokeDashoffset={deslocamento}
+            />
+          </svg>
+          <div className="absolute flex flex-col items-center">
+            <span className="font-heading text-[1.75rem] font-extrabold tabular-nums text-agua">
+              {percurso}%
+            </span>
+            <span className="rotulo text-[0.625rem] text-fumo">pura</span>
+          </div>
         </div>
       </div>
-      <p className="mt-4 max-w-[10rem] text-sm text-fumo">É o padrão de água que eu entrego pra quem precisa dela pra hemodiálise.</p>
-    </div>
+      <figcaption className="mt-3 text-[0.9375rem] leading-snug text-fumo">
+        É o padrão de água que eu entrego pra quem precisa dela pra hemodiálise.
+      </figcaption>
+    </figure>
   )
 }
