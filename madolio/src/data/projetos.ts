@@ -382,5 +382,6 @@ export const projetos: Projeto[] = [
     accent: '#4c7a3f',
     url: 'https://estufa.fenoninho-max.workers.dev',
     destaque: true,
+    estudoDeCaso: '/projetos/estufa',
   },
 ]
