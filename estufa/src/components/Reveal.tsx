@@ -34,7 +34,7 @@ export default function Reveal({
       gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
         const targets = stagger ? gsap.utils.toArray(el.children) : el
 
-        gsap.from(targets, {
+        const tween = gsap.from(targets, {
           opacity: 0,
           y,
           duration: 0.7,
@@ -43,8 +43,21 @@ export default function Reveal({
           stagger,
           scrollTrigger: {
             trigger: el,
-            start: 'clamp(top 88%)',
+            start: 'top 88%',
             once: true,
+          },
+        })
+
+        // Rede de segurança: um elemento colado no fim da página (rodapé curto)
+        // pode ter o topo impossível de chegar a 88% da altura da janela — o
+        // gatilho acima nunca dispararia e o conteúdo ficaria em opacity 0 pra
+        // sempre. Ao chegar no fim do scroll, toca o que estiver à vista.
+        ScrollTrigger.create({
+          start: () => ScrollTrigger.maxScroll(window) - 2,
+          once: true,
+          onEnter: () => {
+            const r = el.getBoundingClientRect()
+            if (r.top < window.innerHeight && r.bottom > 0) tween.play()
           },
         })
       })
