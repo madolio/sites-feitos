@@ -24,3 +24,6 @@ yarn-error.log*
 !.dev.vars.example
 .env*
 !.env.example
+
+# builds privados dos agentes de making-of
+.tmp-dist-*

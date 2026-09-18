@@ -1,132 +1,195 @@
-import { Link } from 'react-router-dom'
-import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
+import PrismaDemo from '../components/makingof/demos/PrismaDemo'
+import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
-// Making-of do Prisma, traduzido do CLAUDE.md técnico do projeto pra
-// linguagem de cliente — mostra o processo real (pedido → decisão →
-// problema resolvido), não só o resultado final.
+// Making-of do Prisma. Números e arquivos vêm de prisma/CLAUDE.md, do
+// código-fonte, de um build real e do git log.
+const marcos = [
+  { data: '16/09 · 15:00', hash: '0905144', texto: 'Nasce o Prisma: uma gema no hero com índice de refração real, e a correção do bug de stagger em botões.' },
+  { data: '16/09 · 16:04', hash: '838deb2', texto: 'Vira configurador: peça (anel, colar) com a gema encaixada, em vez da gema sozinha.' },
+  { data: '16/09 · 16:21', hash: '326363b', texto: 'Os brincos saem e entra a pulseira.' },
+  { data: '16/09 · 16:32', hash: '297ce1b', texto: 'A pulseira vira uma pulseira de pedras em fileira, com fecho.' },
+  { data: '16/09 · 16:47', hash: '9c19bf0', texto: 'Hero em duas colunas: joia à esquerda, escolha de peça e pedra à direita.' },
+  { data: '16/09 · 16:57', hash: 'c42515b', texto: 'Pulseira centralizada na coluna; o catálogo redundante de gemas é trocado pela calculadora de aro.' },
+  { data: '16/09 · 17:01', hash: 'e700a00', texto: 'Colar com corrente curva de verdade, no lugar de duas hastes retas.' },
+  { data: '16/09 · 17:09', hash: '8e6a11f', texto: 'Correção de gemas que apareciam pretas e opacas em vez de brilhantes e facetadas.' },
+  { data: '16/09 · 17:59', hash: '7a8b7a2', texto: 'Troca das fontes serifadas de título por fontes sem serifa, em todo o portfólio.' },
+  { data: '17/09 · 11:20', hash: '2eb0afb', texto: 'A rotação automática passa a respeitar prefers-reduced-motion.' },
+  { data: '17/09 · 12:21', hash: 'ee292d2', texto: 'robots.txt e sitemap.xml.' },
+]
+
 export default function CaseStudyPrisma() {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28">
+    <>
       <Seo
-        title="Making of: Prisma — Um configurador de joia que usa física de verdade | Madolio"
-        description="O processo real por trás do Prisma: um configurador de joia sob medida onde cada gema refrata luz com o índice de refração real da pedra. Do pedido inicial aos problemas técnicos resolvidos no caminho."
+        title="Making of: Prisma — joia com índice de refração real | Madolio"
+        description="O processo real por trás do Prisma, site-conceito de joalheria sob medida fictícia: um configurador 3D em que cada pedra usa o índice de refração da tabela gemológica. Mexa nos números, veja as capturas e os problemas."
         path="/projetos/prisma"
       />
-      <div className="mx-auto max-w-3xl px-6">
-        <Link to="/projetos" className="text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
-          ← todos os projetos
-        </Link>
 
-        <Reveal className="mt-6">
-          <p className="font-semibold text-accent">Making of</p>
-          <h1 className="mt-2 text-4xl font-semibold leading-tight text-ink md:text-5xl">Prisma</h1>
-          <p className="mt-4 text-lg text-ink/70">
-            Uma joalheria sob medida fictícia onde o cliente monta a própria peça — aro, formato, pedra — e vê a gema
-            brilhar com a física óptica real daquele mineral, não um brilho de efeito especial. Aqui está o processo
-            real por trás disso, não só o resultado.
+      <Capa
+        nome="Prisma"
+        nicho="Joalheria sob medida"
+        resumo={
+          <>
+            Um configurador 3D de joias fictício. Cada pedra é um material com o índice de refração e a dispersão de
+            uma tabela gemológica, não um brilho desenhado a olho.
+          </>
+        }
+        fatos={[
+          { rotulo: 'Nicho', valor: 'Joalheria sob medida' },
+          { rotulo: 'Stack', valor: 'React 19 · Three.js · GSAP' },
+          { rotulo: 'No ar desde', valor: '16/09/2026' },
+          { rotulo: 'Pedras · peças', valor: '6 · 3' },
+        ]}
+      >
+        <Figura
+          n={1}
+          src="/makingof/prisma/anel-rubi.jpg"
+          alt="Hero do Prisma: um anel dourado em 3D com um rubi, e à direita os botões de peça (Anel, Colar, Pulseira) e de pedra."
+          width={1280}
+          height={800}
+          url="prisma.fenoninho-max.workers.dev"
+          legenda="A vitrine com o rubi (IOR 1,762). A captura foi feita com WebGL por software."
+        />
+      </Capa>
+
+      <Secao n="01" rotulo="O ponto de partida" titulo="A primeira versão foi rejeitada">
+        <Prosa>
+          <p>
+            O CLAUDE.md descreve o ponto de partida como um site-conceito de joalheria sob medida em que a gema do
+            hero usa física de refração de verdade. A primeira versão mostrava só a gema, um octaedro gigante
+            girando sozinho. Segundo o mesmo arquivo, a reação foi de que a interatividade era fraca e o visual
+            estranho:
           </p>
-        </Reveal>
-
-        <Reveal className="mt-14">
-          <h2 className="text-2xl font-semibold text-ink">O pedido</h2>
-          <blockquote className="mt-3 border-l-4 border-accent pl-5 text-lg text-ink/75 italic">
-            "Quero que a pessoa monte a joia dela na tela antes de encomendar, e que pareça joia de verdade, não
-            desenho."
-          </blockquote>
-          <p className="mt-4 text-ink/70">
-            Isso descartava de cara qualquer solução de catálogo com fotos de peças prontas — a pessoa precisava
-            escolher aro, tipo de peça e pedra e ver o resultado ali, girando, com a luz se comportando como luz de
-            verdade se comporta dentro de uma gema. A pergunta virou "como simular óptica real dentro de um
-            navegador", não "como desenhar um anel bonito".
-          </p>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">A ideia central</h2>
-          <p className="mt-3 text-ink/70">
-            Um configurador de verdade, não uma gema girando sozinha no vazio. A pessoa escolhe a peça (anel, colar
-            ou pulseira) e a pedra, e a cena 3D monta a joia com a gema encaixada em escala real — aro de ouro,
-            bail, fecho, tudo proporcional. O <strong>wildcard</strong> é que a refração de cada pedra usa o índice
-            de refração (IOR) real daquele mineral: o diamante (IOR 2,417) refrata visivelmente mais luz que a
-            ametista (IOR 1,544), porque são números tirados de tabela gemológica — o mesmo que um refratômetro de
-            joalheiro mede na pedra física.
-          </p>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">Decisões que fazem a peça parecer real</h2>
-          <ul className="mt-4 space-y-4 text-ink/70">
-            <li>
-              <strong className="text-ink">A gema não é decorativa — é um material físico.</strong> Cada pedra usa
-              um material de transmissão de luz configurado com o índice de refração e a dispersão real daquele
-              mineral, então a curvatura da luz dentro da gema muda de pedra pra pedra, exatamente como aconteceria
-              numa lapidação física.
-            </li>
-            <li>
-              <strong className="text-ink">A gema mora dentro da peça, em escala.</strong> A primeira versão
-              mostrava só a pedra, gigante, girando sozinha — parecia um objeto solto, não uma joia. A versão final
-              monta o aro (com geometria de ouro de verdade), o bail ou a tarraxa, e encaixa a gema nele em tamanho
-              proporcional, do jeito que sairia da bancada de um joalheiro.
-            </li>
-            <li>
-              <strong className="text-ink">Arrastar e girar, sem precisar rolar a página.</strong> A vitrine fica
-              logo no início, com controle de órbita que trava zoom e movimento lateral mas libera a rotação manual
-              — a pessoa gira a peça com o mouse pra ver as facetas de todos os ângulos, sem precisar descer a
-              página pra achar essa interação.
-            </li>
-            <li>
-              <strong className="text-ink">A calculadora de aro usa geometria real, não um número solto.</strong>
-              Uma seção calcula o aro a partir da medida do dedo com a fórmula que joalherias usam de verdade
-              (circunferência dividida por π, com o ajuste padrão pro aro brasileiro) — deixando claro que é uma
-              estimativa, não substituto do anelímetro físico.
-            </li>
-          </ul>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">Problemas que apareceram no caminho</h2>
-          <div className="mt-4 space-y-5 text-ink/70">
+        </Prosa>
+        <div className="mt-8">
+          <Citacao quem="Reação à primeira versão, palavras exatas (prisma/CLAUDE.md)" quando="16/09/2026">
+            diamantão gigante horrendo
+          </Citacao>
+        </div>
+        <div className="mt-8">
+          <Prosa>
             <p>
-              <strong className="text-ink">A pulseira nasceu deslocada quando o layout mudou.</strong> A pulseira
-              cravejada tinha posição e escala calibradas pra um canvas de tela cheia; quando o Hero passou a dividir
-              a tela em duas colunas (joia de um lado, controles do outro), ela ficou grande demais e cortava o
-              cabeçalho. Qualquer ajuste fino numa cena 3D fica amarrado ao layout do momento em que foi calibrado —
-              mudar o layout ao redor exige reconferir visualmente cada peça, não só a que motivou a mudança.
+              Isso virou o commit 838deb2: em vez da gema sozinha, um configurador com a peça (aro de ouro, corrente
+              ou pulseira) e a gema encaixada nela, em escala.
             </p>
-            <p>
-              <strong className="text-ink">Uma pedra brincou de esconde-esconde da peça.</strong> Depois de trocar a
-              gema sozinha por um configurador completo, a primeira tentativa deixou a pedra flutuando longe do aro
-              em vez de encaixada, e o gancho do brinco virou um borrão sem forma — a rotação da peça estava sendo
-              passada como propriedade da geometria em vez do objeto que a envolve. Só ficou visivelmente certo
-              depois de testar cada peça com capturas de tela reais, não só lendo o código.
-            </p>
-            <p>
-              <strong className="text-ink">Girar sem parar incomoda quem prefere menos movimento na tela.</strong>{' '}
-              A vitrine gira sozinha por padrão pra mostrar a peça de todos os ângulos, mas descobrimos que quem
-              prefere menos animação na tela via o anel girando sem parar mesmo tendo pedido ao sistema pra reduzir
-              movimento. A rotação automática agora respeita essa preferência e para para quem configurou isso no
-              navegador.
-            </p>
-          </div>
-        </Reveal>
+          </Prosa>
+        </div>
+      </Secao>
 
-        <Reveal className="mt-14 rounded-2xl border-2 border-ink bg-surface-alt p-6 sm:p-8">
-          <h2 className="text-xl font-semibold text-ink">Veja o resultado</h2>
-          <p className="mt-2 text-ink/70">
-            O site completo está no ar — monte um anel, um colar ou uma pulseira, troque a pedra e veja a luz mudar
-            de comportamento em cada uma.
+      <Secao n="02" rotulo="A ideia central" titulo="O material é o dado">
+        <Prosa>
+          <p>
+            Em <code className="font-mono text-base">prisma/src/data/gemas.ts</code> cada pedra tem o IOR e a
+            dispersão de tabela gemológica. A cena repassa esses números ao material:{' '}
+            <code className="font-mono text-base">ior={'{gema.ior}'}</code> e{' '}
+            <code className="font-mono text-base">chromaticAberration={'{gema.dispersao * 8}'}</code>. A geometria é
+            um octaedro simplificado, não uma lapidação de 50 facetas: o foco é o material.
           </p>
-          <a
-            href="https://prisma.fenoninho-max.workers.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4"
+        </Prosa>
+        <div className="mt-10">
+          <Prova
+            itens={[
+              { rotulo: 'Maior IOR', valor: '2,417', nota: 'Diamante. A ametista, a menor da lista, tem 1,544.' },
+              { rotulo: 'Contraste do acento', valor: '7,61:1', nota: '#b98cff sobre #100c14. O mínimo WCAG AA para texto é 4,5:1.' },
+              { rotulo: 'Cena 3D (chunk)', valor: '983 kB', nota: '265,28 kB com gzip, medido em npx vite build. O restante do site tem 347,54 kB (118,47 kB com gzip).' },
+            ]}
+          />
+        </div>
+      </Secao>
+
+      <Secao n="03" rotulo="Mexa nos números" titulo="O que o IOR significa">
+        <Prosa>
+          <p>
+            Os valores de IOR e dispersão são os do site. A lei de Snell e o ângulo crítico não estão no site: são
+            física derivada do mesmo IOR, para mostrar o que o número faz com a luz. Escolha uma pedra e mude o ângulo
+            de entrada.
+          </p>
+        </Prosa>
+        <div className="mt-8 rounded-2xl bg-void p-6 text-paper md:p-10">
+          <PrismaDemo />
+        </div>
+        <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-8 md:grid-cols-2">
+          <Figura
+            n={2}
+            src="/makingof/prisma/anel-diamante.jpg"
+            alt="Anel dourado com um diamante de reflexos claros e faixas coloridas, com o texto 'Índice de refração real: 2.417 — Diamante'."
+            width={1280}
+            height={800}
+            url="prisma.fenoninho-max.workers.dev"
+            legenda="Diamante, IOR 2,417."
+          />
+          <Figura
+            n={3}
+            src="/makingof/prisma/colar-rubi.jpg"
+            alt="Colar dourado com pingente em octaedro, na vitrine do Prisma."
+            width={1280}
+            height={800}
+            url="prisma.fenoninho-max.workers.dev"
+            legenda="O colar. A câmera é fixa: nesta coluna estreita ele sai cortado nas bordas, limitação registrada no CLAUDE.md."
+          />
+        </div>
+      </Secao>
+
+      <Secao n="04" rotulo="Decisões com evidência" titulo="Calculadora de aro e vitrine arrastável">
+        <Prosa>
+          <p>
+            A vitrine usa <code className="font-mono text-base">OrbitControls</code> com zoom e pan desligados, para
+            girar a peça com o mouse sem rolar a página. O catálogo de gemas que ficava mais abaixo foi removido
+            porque repetia a escolha de pedra do hero, e no lugar entrou a calculadora de aro (
+            <code className="font-mono text-base">Medida.tsx</code>): diâmetro = circunferência ÷ π e aro ≈ diâmetro em
+            mm − 11,6, rotulada como estimativa que não substitui o anelímetro.
+          </p>
+        </Prosa>
+        <Figura
+          className="mt-10"
+          n={4}
+          src="/makingof/prisma/pulseira-ametista.jpg"
+          alt="Pulseira em fileira de pedras em torno de um aro, com um vão e fecho de um lado, na vitrine do Prisma."
+          width={1280}
+          height={800}
+          url="prisma.fenoninho-max.workers.dev"
+          legenda="A pulseira: 15 pedras pequenas em torno de um aro fino, segundo o CLAUDE.md."
+        />
+      </Secao>
+
+      <Secao n="05" rotulo="O que deu errado" titulo="Problemas reais">
+        <div className="space-y-8">
+          <Ficha
+            titulo="A rotação automática ignorava prefers-reduced-motion"
+            sintoma="Quem pede menos movimento no sistema ainda via a joia girando sem parar."
+            causa="O autoRotate do OrbitControls rodava incondicionalmente, diferente do Reveal e das animações CSS, que já respeitavam a preferência."
+            correcao="Commit 2eb0afb: um guard com matchMedia e autoRotate={!movimentoReduzido}."
           >
-            Abrir o Prisma
-          </a>
-        </Reveal>
-      </div>
-    </section>
+            <pre className="overflow-x-auto font-mono text-sm text-ink/75">{`- autoRotate
++ autoRotate={!movimentoReduzido}`}</pre>
+          </Ficha>
+          <Ficha
+            titulo="Botões que ficavam invisíveis para sempre"
+            sintoma="A grade de seis botões de gema ficava travada em opacity: 0, mesmo com onEnter e onComplete do GSAP disparando."
+            causa="A combinação de stagger com ScrollTrigger once: true em botões que têm transition do Tailwind e className condicional. Isolado removendo o WebGL (não era a causa) e removendo o stagger (aí funcionou)."
+            correcao="Cada botão virou seu próprio Reveal com delay manual crescente, sem a opção stagger. Registrado no CLAUDE.md e no commit inicial."
+          />
+          <Ficha
+            titulo="Ajustar a cena sem olhar o resultado"
+            sintoma="Gema flutuando longe da peça, gancho do brinco renderizado como blob e câmera errada deixando tudo gigante ou minúsculo."
+            causa="O gancho tinha rotation passada como prop do cylinderGeometry em vez de no mesh, e a câmera foi calibrada sem conferir cada peça."
+            correcao="Cada uma das peças foi conferida com screenshot real (Playwright). Depois, com o layout em duas colunas, foi preciso recalibrar a escala da pulseira."
+          />
+        </div>
+      </Secao>
+
+      <Secao n="06" rotulo="Histórico" titulo="Como aconteceu">
+        <Marcos itens={marcos} />
+        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do histórico real do repositório (git log).</p>
+      </Secao>
+
+      <CtaMakingOf
+        nome="Prisma"
+        url="https://prisma.fenoninho-max.workers.dev"
+        texto="Escolha uma peça, troque a pedra e arraste para girar. Joalheria fictícia."
+      />
+    </>
   )
 }

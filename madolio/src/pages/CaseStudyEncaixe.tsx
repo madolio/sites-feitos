@@ -1,125 +1,178 @@
-import { Link } from 'react-router-dom'
-import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
+import EncaixeDemo from '../components/makingof/demos/EncaixeDemo'
+import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
-// Making-of do Encaixe, traduzido do CLAUDE.md técnico do projeto pra
-// linguagem de cliente — mostra o processo real (pedido → decisão →
-// problema resolvido), não só o resultado final.
+// Making-of do Encaixe. Números, arquivos e commits citados aqui são
+// conferíveis em encaixe/CLAUDE.md, encaixe/src e no git log do repositório.
+const marcos = [
+  { data: '13/09 · 20:23', hash: '2f60b8b', texto: 'Nasce o Encaixe como marcenaria sob medida, com catálogo em desenho técnico e régua de carpinteiro no lugar do menu.' },
+  { data: '14/09 · 11:54', hash: '99fa7b8', texto: 'Correção que valeu para 19 sites do portfólio: o diálogo aparecia colado no canto por falta de margem automática.' },
+  { data: '15/09 · 16:12', hash: 'a28b123', texto: 'Ajuste de detalhe: halo ao passar o mouse sobre o encaixe, sem quebrar a regra de um único movimento.' },
+  { data: '15/09 · 16:44', hash: 'c64be10', texto: 'A ilustração do topo passa a ser um rabo-de-andorinha.' },
+  { data: '15/09 · 17:32', hash: 'ed46fd6', texto: 'Segunda versão: o tipo de encaixe passa a organizar o site inteiro.' },
+  { data: '15/09 · 18:06', hash: 'ba1ef73', texto: 'Terceira versão: muda até o nicho, de marcenaria para alfaiataria sob medida, mantendo o nome.' },
+  { data: '16/09 · 11:17', hash: '1a9361d', texto: 'Entrada suave das seções ao rolar, aplicada em vários projetos de uma vez.' },
+  { data: '16/09 · 17:59', hash: '7a8b7a2', texto: 'Commit que trocou fontes de título em todo o portfólio, o Encaixe incluído.' },
+]
+
 export default function CaseStudyEncaixe() {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28">
+    <>
       <Seo
-        title="Making of: Encaixe — Um orçamento de alfaiataria que se desenha ao vivo | Madolio"
-        description="O processo real por trás do Encaixe: um site pra alfaiataria sob medida onde escolher peça, tecido e corte atualiza preço, prazo e o figurino técnico ao vivo — sem recarregar nada."
+        title="Making of: Encaixe — três versões até achar o nicho | Madolio"
+        description="O processo real por trás do Encaixe, um site-conceito de alfaiataria sob medida com configurador de orçamento: a regra de preço e prazo, as três reformulações e um bug de desenho técnico. Monte uma peça e veja a conta."
         path="/projetos/encaixe"
       />
-      <div className="mx-auto max-w-3xl px-6">
-        <Link to="/projetos" className="text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
-          ← todos os projetos
-        </Link>
 
-        <Reveal className="mt-6">
-          <p className="font-semibold text-accent">Making of</p>
-          <h1 className="mt-2 text-4xl font-semibold leading-tight text-ink md:text-5xl">Encaixe</h1>
-          <p className="mt-4 text-lg text-ink/70">
-            Uma alfaiataria sob medida fictícia onde o site não mostra só um catálogo — ele monta o orçamento com
-            você, ao vivo, peça por peça, tecido por tecido. Aqui está o processo real por trás disso, incluindo os
-            dois caminhos que jogamos fora antes de chegar nele.
+      <Capa
+        nome="Encaixe"
+        nicho="Alfaiataria sob medida (fictícia)"
+        resumo={
+          <>
+            Um site que foi refeito três vezes, a última trocando o próprio negócio. No fim, em vez de uma metáfora no
+            menu, ficou uma ferramenta: um configurador que calcula preço e prazo na hora.
+          </>
+        }
+        fatos={[
+          { rotulo: 'Nicho', valor: 'Alfaiataria sob medida (empresa fictícia)' },
+          { rotulo: 'Stack', valor: 'React 19 · Tailwind v4' },
+          { rotulo: 'Primeiro commit', valor: '13/09' },
+          { rotulo: 'Versões', valor: '3 reformulações completas' },
+        ]}
+      >
+        <Figura
+          n={1}
+          src="/makingof/encaixe/hero.jpg"
+          alt="Página inicial do Encaixe: título 'A roupa encaixa em você, não o contrário' e o configurador com peça, tecido e corte."
+          width={1280}
+          height={800}
+          url="encaixe.fenoninho-max.workers.dev"
+          legenda="A home: o configurador já está no primeiro bloco da página."
+        />
+      </Capa>
+
+      <Secao n="01" rotulo="O ponto de partida" titulo="Do móvel à roupa">
+        <Prosa>
+          <p>
+            A versão 1 era uma marcenaria sob medida: catálogo em desenho técnico de elevação, régua de carpinteiro
+            como menu e um único movimento automático (uma espiga deslizando no furo). A versão 2 continuou
+            marcenaria, mas com o tipo de encaixe (rabo-de-andorinha, espiga-e-furo) organizando o site inteiro.
           </p>
-        </Reveal>
-
-        <Reveal className="mt-14">
-          <h2 className="text-2xl font-semibold text-ink">O pedido</h2>
-          <blockquote className="mt-3 border-l-4 border-accent pl-5 text-lg text-ink/75 italic">
-            "Aqui, muito ruim mesmo, reformule 100% até a ideia. Na verdade muda até essa ideia de móveis, me dá
-            outras."
-          </blockquote>
-          <p className="mt-4 text-ink/70">
-            O Encaixe nasceu, na verdade, como um site de marcenaria sob medida — passou por duas versões inteiras
-            antes desse feedback direto derrubar não só a execução, mas o nicho todo. A resposta não foi ajustar
-            layout: foi trocar de negócio inteiramente e provar que a mesma estrutura técnica aguentava outro ofício.
-          </p>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">A ideia central</h2>
-          <p className="mt-3 text-ink/70">
-            As duas versões anteriores tentavam fazer um tema (o encaixe de marcenaria) carregar a navegação inteira
-            — régua, slider, filtro. A virada foi perceber que ninguém fecha negócio com um alfaiate olhando uma
-            metáfora: fecha vendo um número. Então o site oferece um <strong>configurador de orçamento</strong> de
-            verdade: escolha a peça (blazer, calça, colete, camisa), o tecido (lã fria, linho, flanela, tweed,
-            algodão egípcio) e o corte (slim, clássico, oversized), e o preço, o prazo e o figurino técnico ao lado
-            atualizam na hora — nada de "solicitar orçamento" e esperar resposta.
-          </p>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">Decisões que fazem o orçamento parecer real</h2>
-          <ul className="mt-4 space-y-4 text-ink/70">
-            <li>
-              <strong className="text-ink">O preço nunca é um número solto.</strong> Cada peça tem um preço-base, e
-              o tecido e o corte entram como multiplicadores sobre esse valor — do jeito que um alfaiate de verdade
-              precifica (peça + material + complexidade do corte), não um preço fixo mascarado de "cálculo".
-            </li>
-            <li>
-              <strong className="text-ink">O desenho técnico reage à escolha, não é decorativo.</strong> Ao lado do
-              configurador tem um figurino técnico plano — o tipo de desenho que a indústria de moda usa pra
-              registrar corte e costura, sem corpo dentro — que muda de peça conforme você escolhe blazer, calça,
-              colete ou camisa. Nunca uma foto de roupa no site inteiro.
-            </li>
-            <li>
-              <strong className="text-ink">O botão final já monta a mensagem inteira.</strong> Terminar a
-              configuração não abre um formulário — dispara uma mensagem de WhatsApp pronta, com peça, tecido, corte,
-              preço e prazo já escritos, porque o objetivo real do configurador é chegar numa conversa, não coletar
-              um lead genérico.
-            </li>
-            <li>
-              <strong className="text-ink">O nome sobreviveu à troca de negócio.</strong> "Encaixe" cabe tanto no
-              sentido de marcenaria (a junta perfeita entre duas peças de madeira) quanto no de alfaiataria (o
-              caimento perfeito de uma peça sob medida) — o que evitou trocar marca, domínio e toda a estrutura de
-              arquivos quando o nicho mudou.
-            </li>
-          </ul>
-        </Reveal>
-
-        <Reveal className="mt-12">
-          <h2 className="text-2xl font-semibold text-ink">Dois problemas que apareceram no caminho</h2>
-          <div className="mt-4 space-y-5 text-ink/70">
+          <p>Depois vieram dois retornos do dono, registrados no CLAUDE.md do projeto:</p>
+        </Prosa>
+        <div className="mt-8 space-y-6">
+          <Citacao quem="Feedback, palavras exatas (encaixe/CLAUDE.md)" quando="15/09">
+            aqui, muito ruim mesmo, reformule 100% até a ideia
+          </Citacao>
+          <Citacao quem="Feedback seguinte, palavras exatas (encaixe/CLAUDE.md)" quando="15/09">
+            na verdade muda até essa ideia de moveis, me de outras
+          </Citacao>
+        </div>
+        <div className="mt-8">
+          <Prosa>
             <p>
-              <strong className="text-ink">Textos colidindo no figurino técnico.</strong> Ao reescrever os desenhos
-              de móvel pra desenhos de roupa, a cota de tamanho (embaixo do desenho) e o rótulo do detalhe em
-              destaque (no meio da peça) ficaram próximos demais na calça e na camisa — o espaço vertical original,
-              pensado pra elevação de móvel, era baixo demais pra essas duas peças. A correção foi aumentar a altura
-              do quadro de desenho especificamente nessas duas peças e empurrar a cota de tamanho pra baixo de
-              qualquer outro elemento.
+              O problema deixou de ser de execução e passou a ser o nicho inteiro. Foram propostas direções novas e o
+              dono escolheu alfaiataria sob medida. O nome Encaixe ficou de propósito: serve para roupa (“a roupa
+              encaixa em você”) tanto quanto servia para marcenaria, e isso evitou trocar marca e estrutura de
+              arquivos.
             </p>
-            <p>
-              <strong className="text-ink">O navegador servia a versão antiga do site depois de um novo build.</strong>{' '}
-              Depois de gerar uma nova versão dos arquivos, o servidor local de pré-visualização continuava
-              respondendo com os nomes de arquivo antigos — o navegador pedia o `.js` novo e recebia HTML no lugar,
-              porque o servidor não tinha percebido a troca sozinho. Reiniciar o servidor de pré-visualização depois
-              de cada build resolveu — e virou hábito pra todos os projetos do estúdio que usam essa mesma
-              infraestrutura.
-            </p>
-          </div>
-        </Reveal>
+          </Prosa>
+        </div>
+      </Secao>
 
-        <Reveal className="mt-14 rounded-2xl border-2 border-ink bg-surface-alt p-6 sm:p-8">
-          <h2 className="text-xl font-semibold text-ink">Veja o resultado</h2>
-          <p className="mt-2 text-ink/70">
-            O site completo está no ar — monte um blazer em lã fria, troque pra linho oversized e veja o preço e o
-            figurino mudarem na hora.
+      <Secao n="02" rotulo="A ideia central" titulo="Uma ferramenta em vez de uma metáfora">
+        <Prosa>
+          <p>
+            As duas primeiras versões tentavam fazer o tema carregar a página inteira. A terceira oferece o que a
+            pessoa realmente usaria antes de fechar com um alfaiate: um orçamento. Peça, tecido e corte; o preço e o
+            prazo saem de uma conta, nunca de um número solto. O botão final já monta a mensagem de WhatsApp com a
+            combinação.
           </p>
-          <a
-            href="https://encaixe.fenoninho-max.workers.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4"
+        </Prosa>
+        <div className="mt-10">
+          <Prova
+            itens={[
+              { rotulo: 'Combinações possíveis', valor: '60', nota: '4 peças × 5 tecidos × 3 cortes, com preço de R$ 500 a R$ 3.310.' },
+              { rotulo: 'Texto sobre o papel', valor: '12,54:1', nota: '#2a2420 sobre #efe8d8. O mínimo WCAG AA é 4,5:1.' },
+              { rotulo: 'JavaScript, comprimido', valor: '119 kB', nota: 'Bundle único do npm run build: 119,01 kB gzip (351,19 kB sem compressão).' },
+            ]}
+          />
+        </div>
+      </Secao>
+
+      <Secao n="03" rotulo="Monte uma peça" titulo="O orçamento, de verdade">
+        <Prosa>
+          <p>
+            Esta é a conta do configurador do site. Os preços base vêm do catálogo, e os multiplicadores de tecido e
+            corte são estimativas do projeto, já que a alfaiataria é fictícia e não existe tabela real para consultar.
+          </p>
+        </Prosa>
+        <div className="mt-8 rounded-2xl bg-void p-6 text-paper md:p-10">
+          <EncaixeDemo />
+        </div>
+        <Figura
+          className="mt-10"
+          n={2}
+          src="/makingof/encaixe/config.jpg"
+          alt="Configurador do Encaixe com blazer, tweed e corte clássico selecionados, mostrando R$ 2.880 e prazo de 4 semanas ao lado do desenho técnico do blazer."
+          width={1280}
+          height={660}
+          url="encaixe.fenoninho-max.workers.dev"
+          legenda="Blazer em tweed, corte clássico: 2.400 × 1,2 × 1 = R$ 2.880, igual à demonstração acima."
+        />
+      </Secao>
+
+      <Secao n="04" rotulo="Decisões" titulo="Figurino plano, sem foto">
+        <Prosa>
+          <p>
+            O desenho técnico foi reescrito do zero: as funções de elevação de móvel saíram e entraram blazer, calça,
+            colete e camisa em “flat sketch”, o desenho plano que a moda usa para registrar corte e costura sem corpo
+            dentro. O componente que desenha continuou genérico e não mudou; só as variáveis de cor passaram de
+            madeira para fio.
+          </p>
+          <p>
+            Um detalhe que o código mostra: a regra de prazo multiplica por 1,1 quando o corte é oversized, mas com
+            os prazos base atuais (4 e 2 semanas) o arredondamento devolve o mesmo valor. Hoje o corte não muda o
+            prazo de nenhuma peça.
+          </p>
+        </Prosa>
+      </Secao>
+
+      <Secao n="05" rotulo="O que deu errado" titulo="Problemas do caminho">
+        <div className="space-y-8">
+          <Ficha
+            titulo="Dois textos por cima um do outro no desenho"
+            sintoma="Na calça e na camisa, a cota de tamanho e o rótulo do detalhe ficavam ilegíveis."
+            causa="Os dois estavam próximos demais na vertical para a altura original do viewBox, de 200."
+            correcao="Aumentar a altura do viewBox e reposicionar a cota abaixo de todo o resto."
           >
-            Abrir o Encaixe
-          </a>
-        </Reveal>
-      </div>
-    </section>
+            <p className="font-mono text-sm text-ink/75">calça: 200 para 220 · camisa: 200 para 215</p>
+          </Ficha>
+          <Ficha
+            titulo="O navegador recebia HTML no lugar do JavaScript"
+            sintoma="Depois de rebuildar, a página de teste quebrava."
+            causa="O vite preview não pega sozinho os novos hashes de arquivo."
+            correcao="Reiniciar o vite preview depois de cada build."
+          />
+          <Ficha
+            titulo="Três versões para achar o problema certo"
+            sintoma="As duas primeiras versões da marcenaria foram rejeitadas."
+            causa="O problema não era de execução: era a ideia de móveis."
+            correcao="Trocar o nicho, mantendo nome, domínio e a estrutura de arquivos."
+          />
+        </div>
+      </Secao>
+
+      <Secao n="06" rotulo="Histórico" titulo="Como aconteceu">
+        <Marcos itens={marcos} />
+        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do git log da pasta encaixe/.</p>
+      </Secao>
+
+      <CtaMakingOf
+        nome="Encaixe"
+        url="https://encaixe.fenoninho-max.workers.dev"
+        texto="Escolha peça, tecido e corte e veja o preço e o prazo mudarem na hora."
+      />
+    </>
   )
 }
