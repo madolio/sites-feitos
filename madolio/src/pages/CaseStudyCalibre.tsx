@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import CalibreDemo from '../components/makingof/demos/CalibreDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Calibre. Números, hashes e arquivos citados aqui são conferíveis
 // em calibre/CLAUDE.md, calibre/src/index.css, calibre/src/components e git log.
@@ -58,9 +58,9 @@ export default function CaseStudyCalibre() {
           </p>
         </Prosa>
         <div className="mt-8">
-          <Citacao quem="Pedido de rework, palavras exatas (calibre/CLAUDE.md)" quando="15/09/2026">
-            calibre - rework total, esse 3d n curti, muda a ideia para outra
-          </Citacao>
+          <Briefing rotulo="Pedido de refação" quando="15/09/2026">
+            Refazer por inteiro: a ideia em 3D não funcionou, então o site precisa de outra ideia.
+          </Briefing>
         </div>
         <div className="mt-8">
           <Prosa>

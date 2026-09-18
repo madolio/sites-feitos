@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import PrismaDemo from '../components/makingof/demos/PrismaDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Prisma. Números e arquivos vêm de prisma/CLAUDE.md, do
 // código-fonte, de um build real e do git log.
@@ -64,9 +64,9 @@ export default function CaseStudyPrisma() {
           </p>
         </Prosa>
         <div className="mt-8">
-          <Citacao quem="Reação à primeira versão, palavras exatas (prisma/CLAUDE.md)" quando="16/09/2026">
-            diamantão gigante horrendo
-          </Citacao>
+          <Briefing rotulo="Reação à primeira versão" quando="16/09/2026">
+            A primeira versão foi recusada: a gema ficou grande demais e o resultado desagradou.
+          </Briefing>
         </div>
         <div className="mt-8">
           <Prosa>

@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import LumenDemo from '../components/makingof/demos/LumenDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Lúmen. Números e arquivos citados aqui vêm de lumen/CLAUDE.md,
 // do código-fonte de lumen/, de um build real e do git log.
@@ -51,9 +51,9 @@ export default function CaseStudyLumen() {
       </Capa>
 
       <Secao n="01" rotulo="O ponto de partida" titulo="Ousado, mas sem 3D">
-        <Citacao quem="Briefing original, palavras exatas (lumen/CLAUDE.md)" quando="16/09/2026">
-          seja ousado que nem a Cardume
-        </Citacao>
+        <Briefing rotulo="O pedido" quando="16/09/2026">
+          Ser tão ousado quanto o Cardume.
+        </Briefing>
         <div className="mt-8">
           <Prosa>
             <p>

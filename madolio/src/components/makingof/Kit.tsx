@@ -98,6 +98,19 @@ export function Citacao({ children, quem, quando }: CitacaoProps) {
   )
 }
 
+type BriefingProps = { children: ReactNode; rotulo: string; quando: string }
+
+/** O ponto de partida contado em terceira pessoa — resumo fiel do pedido, sem aspas. */
+export function Briefing({ children, rotulo, quando }: BriefingProps) {
+  return (
+    <div className="my-2 overflow-hidden rounded-2xl bg-void p-8 text-paper md:p-12">
+      <p className="font-poster text-sm tracking-[0.25em] text-accent-hero uppercase">{rotulo}</p>
+      <p className="mt-4 font-accent text-3xl leading-snug md:text-5xl">{children}</p>
+      <p className="mt-6 text-sm text-fog">Resumo do pedido · {quando}</p>
+    </div>
+  )
+}
+
 type FiguraProps = {
   src: string
   alt: string

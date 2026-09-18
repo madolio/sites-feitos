@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import EncaixeDemo from '../components/makingof/demos/EncaixeDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Encaixe. Números, arquivos e commits citados aqui são
 // conferíveis em encaixe/CLAUDE.md, encaixe/src e no git log do repositório.
@@ -61,12 +61,12 @@ export default function CaseStudyEncaixe() {
           <p>Depois vieram dois retornos do dono, registrados no CLAUDE.md do projeto:</p>
         </Prosa>
         <div className="mt-8 space-y-6">
-          <Citacao quem="Feedback, palavras exatas (encaixe/CLAUDE.md)" quando="15/09">
-            aqui, muito ruim mesmo, reformule 100% até a ideia
-          </Citacao>
-          <Citacao quem="Feedback seguinte, palavras exatas (encaixe/CLAUDE.md)" quando="15/09">
-            na verdade muda até essa ideia de moveis, me de outras
-          </Citacao>
+          <Briefing rotulo="Primeiro retorno" quando="15/09">
+            Não funcionou: refazer por completo, até a ideia.
+          </Briefing>
+          <Briefing rotulo="Segundo retorno" quando="15/09">
+            Na verdade, trocar até a ideia de móveis e propor outras.
+          </Briefing>
         </div>
         <div className="mt-8">
           <Prosa>

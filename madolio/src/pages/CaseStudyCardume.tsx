@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import CardumeDemo from '../components/makingof/demos/CardumeDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Cardume. Números, arquivos e commits citados aqui são
 // conferíveis em cardume/CLAUDE.md, cardume/src e no git log do repositório.
@@ -49,10 +49,10 @@ export default function CaseStudyCardume() {
         />
       </Capa>
 
-      <Secao n="01" rotulo="O ponto de partida" titulo="“Fuja de tudo que já fez”">
-        <Citacao quem="Briefing original, palavras exatas (cardume/CLAUDE.md)" quando="13/09">
-          fuja de tudo que já fez, coloque efeitos visuais, 3D, se exalte
-        </Citacao>
+      <Secao n="01" rotulo="O ponto de partida" titulo="Fugir de tudo que já foi feito">
+        <Briefing rotulo="O pedido" quando="13/09">
+          Fugir de tudo que já foi feito: efeitos visuais, 3D e nenhum medo de exagerar.
+        </Briefing>
         <div className="mt-8">
           <Prosa>
             <p>

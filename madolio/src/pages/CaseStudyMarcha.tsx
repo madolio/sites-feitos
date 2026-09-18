@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import FinanciamentoDemo from '../components/makingof/FinanciamentoDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Marcha. Cada número, arquivo e commit citado aqui é
 // conferível no repositório (marcha/CLAUDE.md, marcha/public/carros, git log).
@@ -65,14 +65,14 @@ export default function CaseStudyMarcha() {
         />
       </Capa>
 
-      <Secao n="01" rotulo="O pedido" titulo="“Até imagens”">
-        <Citacao quem="Briefing original, palavras exatas" quando="16/09/2026">
-          Quero uma agência de carros, dessa vez coloque até imagens.
-        </Citacao>
+      <Secao n="01" rotulo="O pedido" titulo="Dessa vez, com fotos">
+        <Briefing rotulo="O pedido" quando="16/09/2026">
+          Uma concessionária de carros — e, dessa vez, com foto de verdade.
+        </Briefing>
         <div className="mt-8">
           <Prosa>
             <p>
-              “Até imagens” foi o pedaço que mudou o projeto. Até ali, cada site do portfólio fugia de foto de
+              Foto de verdade foi o pedaço que mudou o projeto. Até ali, cada site do portfólio fugia de foto de
               propósito — ilustração, 3D, esquema técnico — pra não parecer banco de imagens genérico. O Marcha foi o
               primeiro a fazer o contrário.
             </p>

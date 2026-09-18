@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import TacaDemo from '../components/makingof/demos/TacaDemo'
-import { Capa, Citacao, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Capa, Briefing, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of da Taça. Números, hashes e arquivos citados aqui são conferíveis
 // em taca/CLAUDE.md, taca/src/data/vinhos.ts, taca/src/index.css e git log.
@@ -54,16 +54,16 @@ export default function CaseStudyTaca() {
       <Secao n="01" rotulo="O ponto de partida" titulo="Três versões, uma vencedora">
         <Prosa>
           <p>
-            O CLAUDE.md do projeto conta a sequência. Versão 1: uma taça 3D servindo vinho ao vivo, rejeitada com o
-            comentário &quot;a ideia da taça girando em 3d n curti&quot;. Versão 2: um corte transversal da encosta,
+            O CLAUDE.md do projeto conta a sequência. Versão 1: uma taça 3D servindo vinho ao vivo, descartada
+            porque a ideia da taça girando em 3D não agradou. Versão 2: um corte transversal da encosta,
             com cada rótulo ancorado na altitude do seu talhão. A versão 2 também foi rejeitada, e o nicho (vinícola de
             altitude) foi o único elemento mantido:
           </p>
         </Prosa>
         <div className="mt-8">
-          <Citacao quem="Rejeição da v2, palavras exatas (taca/CLAUDE.md)" quando="15/09/2026">
-            a mesma coisa do calibre, n curti nada
-          </Citacao>
+          <Briefing rotulo="Reação à segunda versão" quando="15/09/2026">
+            A segunda versão também foi recusada: lembrava demais a ideia do Calibre.
+          </Briefing>
         </div>
         <div className="mt-8">
           <Prosa>
