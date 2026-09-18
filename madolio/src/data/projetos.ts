@@ -35,20 +35,10 @@ export const projetos: Projeto[] = [
     category: 'Tratamento de água e serviços elétricos',
     tag: 'Casa & Design',
     description:
-      'Site real, sem modo demonstração: um anel de pureza enche até 100% no hero — o selo visual da especialidade dele em água de altíssima pureza, do tipo que hemodiálise exige — e cada ofício (água, elétrica) tem sua própria cor, nunca misturadas.',
-    bg: '#eaf4fb',
-    accent: '#0e6ba8',
+      'Site real, sem modo demonstração: cada ofício é desenhado na notação técnica de verdade do próprio ofício — P&ID pra água, diagrama unifilar pra elétrica — e a navegação é um painel de instrumentos, com manômetro na água e amperímetro na elétrica. Uma cor por ofício, nunca misturadas.',
+    bg: '#e3f0f5',
+    accent: '#0a6b87',
     url: 'https://adriano.fenoninho-max.workers.dev',
-  },
-  {
-    name: 'Nascente',
-    category: 'Equipamentos para tratamento de água',
-    tag: 'Casa & Design',
-    description:
-      'O sistema de filtração vira um diagrama técnico de verdade no hero — a água escorre pelos canos até a osmose reversa, e cada impureza para exatamente na etapa que a retém.',
-    bg: '#DCEFFB',
-    accent: '#0E8FB2',
-    url: 'https://nascente.fenoninho-max.workers.dev',
   },
   {
     name: 'Doce Ateliê',
