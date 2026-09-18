@@ -26,4 +26,4 @@ Igual ao Pulso/Ferro: `demo.ts` + `DemoDialog.tsx`. Nenhum botão abre um WhatsA
 
 ## SEO básico
 
-`index.html` tem meta description, canonical e Open Graph (sem `og:image` — não existe imagem gerada pra este conceito). `public/robots.txt` e `public/sitemap.xml` existem.
+`index.html` tem meta description, canonical, Open Graph e Twitter Card completos, incluindo `og-image.jpg` gerado na paleta do site. `public/robots.txt` e `public/sitemap.xml` existem.
