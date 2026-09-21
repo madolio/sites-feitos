@@ -140,8 +140,10 @@ export default function ArcadaMapa() {
           <div className="mt-6 rounded-2xl border border-linha bg-white/40 p-5">
             <p className="rotulo-mono">Como ler o mapa · notação FDI</p>
             <p className="mt-2 text-sm text-tinta/70">
-              O primeiro dígito do número do dente marca o quadrante. O segundo é a posição a
-              partir da linha média, de 1 (incisivo central) a 8 (siso).
+              Os números vão de 11 a 48, mas continuam sendo 32 dentes — não é uma contagem
+              sequencial. O primeiro dígito marca o quadrante (1 a 4). O segundo é a posição a
+              partir da linha média, de 1 (incisivo central) a 8 (siso). O "48", por exemplo, é
+              o siso inferior direito, não o 48º dente.
             </p>
             <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
               <div>
