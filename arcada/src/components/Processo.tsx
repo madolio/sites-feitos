@@ -25,7 +25,7 @@ const ETAPAS = [
 
 export default function Processo() {
   return (
-    <section id="processo" className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+    <section id="processo" className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
       <Reveal>
         <p className="rotulo-mono">Como conduzimos</p>
         <h2 className="mt-2 text-4xl sm:text-5xl">O plano segue a anatomia, não o contrário</h2>

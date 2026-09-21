@@ -2,7 +2,7 @@ import { sendToWhatsApp } from '../demo'
 
 export default function Hero() {
   return (
-    <header className="relative overflow-hidden px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
+    <header className="relative overflow-hidden px-6 pt-16 pb-14 sm:pt-24 sm:pb-20">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <p className="rotulo-mono">Meridiana Odontologia · Curitiba, PR</p>

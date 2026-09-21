@@ -16,7 +16,7 @@ export default function Contato() {
   }
 
   return (
-    <section id="contato" className="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+    <section id="contato" className="mx-auto max-w-3xl px-6 py-14 sm:py-20">
       <Reveal>
         <p className="rotulo-mono">Agendamento</p>
         <h2 className="mt-2 text-4xl sm:text-5xl">Marcar uma avaliação</h2>

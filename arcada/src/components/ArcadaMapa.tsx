@@ -73,7 +73,7 @@ export default function ArcadaMapa() {
   const info = dente ? INFO_POR_TIPO[dente.tipo] : null
 
   return (
-    <section id="arcada" className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+    <section id="arcada" className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
       <Reveal>
         <p className="rotulo-mono">O mapa da arcada</p>
         <h2 className="mt-2 text-4xl sm:text-5xl">Clique num dente. Veja o que fazemos nele.</h2>
@@ -85,8 +85,8 @@ export default function ArcadaMapa() {
         </p>
       </Reveal>
 
-      <Reveal delay={0.1} className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_1fr]">
-        <div>
+      <Reveal delay={0.1} className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-stretch">
+        <div className="flex flex-col justify-center">
           <div className="relative mx-auto aspect-[800/380] w-full max-w-3xl rounded-3xl border border-linha bg-white/50 p-2">
             <svg
               viewBox="0 0 800 380"

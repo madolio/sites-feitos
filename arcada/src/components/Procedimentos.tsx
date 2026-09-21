@@ -41,7 +41,7 @@ const PROCEDIMENTOS = [
 
 export default function Procedimentos() {
   return (
-    <section id="procedimentos" className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+    <section id="procedimentos" className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
       <Reveal>
         <p className="rotulo-mono">Procedimentos</p>
         <h2 className="mt-2 text-4xl sm:text-5xl">O que fazemos, em geral</h2>
