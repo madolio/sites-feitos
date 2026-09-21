@@ -75,10 +75,11 @@ export const projetos: Projeto[] = [
     category: 'Advocacia empresarial e civil',
     tag: 'Serviços profissionais',
     description:
-      'Página única pra um escritório de advocacia: áreas de atuação, processo de atendimento e agendamento direto — sem o kit visual de card e ícone que a maioria usa.',
-    bg: '#F5F1E8',
-    accent: '#7A2E3A',
+      'Cada área de atuação vira uma ficha de catálogo de biblioteca de verdade, com número de classificação, prazo e documentos — clique num item do acervo e veja a ficha ser puxada da gaveta.',
+    bg: '#ede2c8',
+    accent: '#a8672a',
     url: 'https://site-template.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Torre',
@@ -383,6 +384,39 @@ export const projetos: Projeto[] = [
     bg: '#12191c',
     accent: '#5ffbc0',
     url: 'https://luthier.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
+    name: 'Cútis Dermatologia',
+    category: 'Clínica de estética e dermatologia',
+    tag: 'Saúde & Bem-estar',
+    description:
+      'Cada procedimento vem com a linha do tempo real de recuperação (dia a dia, não uma foto de antes/depois) e o corte de pele que mostra exatamente qual camada é tratada — arraste os dias e veja a cicatrização acontecer.',
+    bg: '#f7f4ee',
+    accent: '#2c6e6a',
+    url: 'https://derme.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
+    name: 'Meridiana Odontologia',
+    category: 'Odontologia',
+    tag: 'Saúde & Bem-estar',
+    description:
+      'Em vez de lista de serviços, um mapa clicável dos 32 dentes da arcada, com a notação FDI real — cada dente mostra o procedimento que faz sentido pra ele, navegável até pelo teclado.',
+    bg: '#f6f0e0',
+    accent: '#dd5f45',
+    url: 'https://arcada.fenoninho-max.workers.dev',
+    destaque: true,
+  },
+  {
+    name: 'Vereda Fisioterapia',
+    category: 'Fisioterapia',
+    tag: 'Saúde & Bem-estar',
+    description:
+      'O plano de recuperação vira uma trilha em mapa topográfico de verdade — cada fase do tratamento (dor, amplitude, força, retorno) é um trecho percorrido, com curva de nível e distância.',
+    bg: '#f2ecdb',
+    accent: '#c2703f',
+    url: 'https://trilha.fenoninho-max.workers.dev',
     destaque: true,
   },
 ]

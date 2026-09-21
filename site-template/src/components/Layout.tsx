@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react'
-import StatusBar from './StatusBar'
-import Console from './Console'
+import Header from './Header'
+import Ledger from './Ledger'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
-      <StatusBar />
+      <Header />
       <main className="flex-1">{children}</main>
-      <Console />
+      <Ledger />
     </div>
   )
 }

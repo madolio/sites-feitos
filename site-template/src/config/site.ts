@@ -4,6 +4,7 @@
 export const FIRM_NAME = 'Bastos Advocacia'
 export const LAWYER_NAME = 'Dra. Camila Bastos'
 export const OAB = 'OAB/SP 312.884'
+export const FOUNDING_YEAR = 2013
 
 export const WHATSAPP_URL =
   'https://wa.me/5511940028800?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta'
@@ -12,7 +13,3 @@ export const PHONE_HREF = 'tel:+551140028800'
 export const EMAIL = 'contato@bastosadvocacia.com.br'
 export const EMAIL_HREF = `mailto:${EMAIL}`
 export const ADDRESS = 'Av. Brigadeiro Faria Lima, 1811 — São Paulo, SP'
-export const COORDINATES = '23.5870° S, 46.6826° O'
-// Número de processo fictício, usado como identificador de "sessão ao vivo"
-// no rastreador do topo da página e no console de contato.
-export const CASE_REF = '0192-45.2026.8.26.0100'
