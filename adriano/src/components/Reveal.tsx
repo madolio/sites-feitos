@@ -1,9 +1,5 @@
-import { createElement, useRef, type ElementType, type ReactNode } from 'react'
+import { createElement, useEffect, useRef, type ElementType, type ReactNode } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
-
-gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 type RevealProps = {
   children: ReactNode
@@ -26,39 +22,38 @@ export default function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLElement>(null)
 
-  useGSAP(
-    () => {
-      const el = ref.current
-      if (!el) return
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
 
-      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-        const alvos = stagger ? gsap.utils.toArray(el.children) : el
+    const mm = window.matchMedia('(prefers-reduced-motion: no-preference)')
+    if (!mm.matches) return // já nasce no estado final, sem animação
 
-        const tween = gsap.from(alvos, {
-          opacity: 0,
-          y: 22,
-          duration: 0.7,
-          ease: 'power3.out',
-          stagger,
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-        })
+    const alvos = stagger ? gsap.utils.toArray(el.children) : el
+    gsap.set(alvos, { opacity: 0, y: 22 })
 
-        // Rede de segurança: um elemento colado no fim da página (rodapé curto)
-        // pode ter o topo impossível de chegar a 88% da altura da janela — o
-        // gatilho acima nunca dispararia e o conteúdo ficaria em opacity 0 pra
-        // sempre. Ao chegar no fim do scroll, toca o que estiver à vista.
-        ScrollTrigger.create({
-          start: () => ScrollTrigger.maxScroll(window) - 2,
-          once: true,
-          onEnter: () => {
-            const r = el.getBoundingClientRect()
-            if (r.top < window.innerHeight && r.bottom > 0) tween.play()
-          },
-        })
-      })
-    },
-    { scope: ref, dependencies: [stagger] },
-  )
+    let disparado = false
+    const observer = new IntersectionObserver(
+      (entradas) => {
+        for (const entrada of entradas) {
+          if (entrada.isIntersecting && !disparado) {
+            disparado = true
+            gsap.to(alvos, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: 'power3.out',
+              stagger,
+            })
+            observer.disconnect()
+          }
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [stagger])
 
   return createElement(Tag, { ref, className, ...rest }, children)
 }
