@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-grafite: #12191c;
+  --color-painel: #1a2327;
+  --color-osso: #f3ede1;
+  --color-fosforo: #5ffbc0;
+  --color-cobre: #b5693a;
+  --color-neblina: #8aa39c;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, "Roboto Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-grafite font-body text-osso antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-fosforo);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-fosforo {
+    @apply inline-flex items-center justify-center rounded-full bg-fosforo px-6 py-3 font-semibold text-grafite transition hover:brightness-110;
+  }
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-full border border-neblina/40 px-6 py-3 font-semibold text-osso transition hover:border-fosforo hover:text-fosforo;
+  }
+  .rotulo-mono {
+    @apply font-mono text-xs tracking-wide text-neblina uppercase;
+  }
+  .valor-mono {
+    @apply font-mono text-fosforo;
+  }
+}

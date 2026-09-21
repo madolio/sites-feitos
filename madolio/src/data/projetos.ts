@@ -374,4 +374,15 @@ export const projetos: Projeto[] = [
     destaque: true,
     estudoDeCaso: '/projetos/estufa',
   },
+  {
+    name: 'Ressoa',
+    category: 'Luteria de precisão',
+    tag: 'Casa & Design',
+    description:
+      'A corda na tela toca de verdade: síntese Karplus-Strong de corda dedilhada, com a frequência calculada pela fórmula real de Mersenne — mude o comprimento de escala ou a bitola e ouça a física mudar. A mesma frequência desenha, ao vivo, uma figura de Chladni em curvas de nível.',
+    bg: '#12191c',
+    accent: '#5ffbc0',
+    url: 'https://luthier.fenoninho-max.workers.dev',
+    destaque: true,
+  },
 ]
