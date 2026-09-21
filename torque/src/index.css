@@ -5,16 +5,22 @@
    quilômetro revela o que está em dia, perto do prazo ou vencido, usando
    intervalo de manutenção real por item (óleo, freio, correia...). Nunca a
    estética de concessionária de esportivo (preto+vermelho, foto de carro de
-   banco de imagem) nem academia industrial (preto+lima). */
+   banco de imagem) nem academia industrial (preto+lima).
+
+   Paleta v2: a primeira versão (creme + azul-aço suave) ficou parecendo
+   design de escritório, não de oficina. Refeita com o vocabulário real de
+   galpão — piso de concreto/asfalto e as cores de sinalização de chão de
+   oficina (laranja de cone/EPI, amarelo de faixa de risco), não decoração. */
 @theme {
-  --color-chumbo: #2c3236; /* aço escurecido, fundo escuro e texto principal */
-  --color-oficina: #f4f0e4; /* parede clara de galpão, fundo principal */
-  --color-oficina-forte: #e7ddc7; /* papel/cartão um tom mais escuro */
-  --color-linha: #d9cfb3; /* borda sobre o fundo claro */
-  --color-aco: #46606d; /* azul-aço — acento primário, dado técnico */
-  --color-aco-hover: #384e59;
-  --color-sinal: #e8961f; /* amarelo de sinalização de oficina — CTA */
-  --color-sinal-hover: #c67d15;
+  --color-chumbo: #17181a; /* asfalto/piso de oficina, fundo escuro e texto principal */
+  --color-oficina: #ece7dc; /* concreto claro de galpão, fundo principal */
+  --color-oficina-forte: #ded6c4; /* concreto um tom mais escuro, cartão */
+  --color-linha: #cbc1a9; /* borda sobre o fundo claro */
+  --color-aco: #3a3f42; /* grafite/aço, texto secundário e dado técnico */
+  --color-aco-hover: #24272a;
+  --color-sinal: #e8551f; /* laranja de sinalização/cone de oficina — CTA primário */
+  --color-sinal-hover: #c94317;
+  --color-risco: #f2b705; /* amarelo de faixa de risco — acento secundário, nunca CTA */
   --color-alerta: #c1432a; /* vermelho de item vencido no painel */
   --color-ok: #4f7a3d; /* verde de item em dia no painel */
 
@@ -89,7 +95,7 @@
   background-image: repeating-linear-gradient(
     135deg,
     var(--color-sinal) 0 10px,
-    var(--color-chumbo) 10px 20px
+    var(--color-risco) 10px 20px
   );
 }
 

@@ -425,8 +425,8 @@ export const projetos: Projeto[] = [
     tag: 'Automotivo',
     description:
       'Uma oficina de bairro que troca o formulário de orçamento por um odômetro: arraste a quilometragem e veja, item a item, o que já está vencido — óleo, freio, correia, tudo com o intervalo real de manutenção por trás.',
-    bg: '#f4f0e4',
-    accent: '#e8961f',
+    bg: '#ece7dc',
+    accent: '#e8551f',
     url: 'https://torque.fenoninho-max.workers.dev',
   },
   {
