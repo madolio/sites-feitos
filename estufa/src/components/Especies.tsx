@@ -12,8 +12,7 @@ export default function Especies() {
           <h2 className="mt-2 max-w-xl text-4xl">Cada espécie, uma ficha — não uma foto de vitrine</h2>
           <p className="mt-4 max-w-2xl text-mata/70">
             Nome científico, floração, exigência de luz e nível de cuidado são
-            dados reais de cada planta — como uma prancheta de herbário, não
-            um produto genérico com preço e "adicionar ao carrinho".
+            dados reais de cada planta, como numa prancheta de herbário.
           </p>
         </Reveal>
       </div>

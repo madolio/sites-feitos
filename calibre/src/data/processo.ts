@@ -23,16 +23,16 @@ export const etapas: Etapa[] = [
   {
     numero: '04',
     titulo: 'Montagem e regulagem',
-    descricao: 'O escape é montado sob lupa e regulado em seis posições — a diferença entre um relógio bonito e um relógio certo.',
+    descricao: 'O escape é montado sob lupa e regulado em seis posições.',
   },
   {
     numero: '05',
     titulo: 'Caixa e cristal',
-    descricao: 'O mecanismo regulado entra na caixa, o cristal de safira fecha por cima — só então o relógio existe como objeto.',
+    descricao: 'O mecanismo regulado entra na caixa, e o cristal de safira fecha por cima.',
   },
   {
     numero: '06',
     titulo: 'Entrega com boletim de marcha',
-    descricao: 'Você recebe o relógio com o registro de precisão medido nos dias de teste — não uma promessa, um número.',
+    descricao: 'Você recebe o relógio com o registro de precisão medido nos dias de teste.',
   },
 ]

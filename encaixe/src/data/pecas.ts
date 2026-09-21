@@ -20,7 +20,7 @@ export const pecas: Peca[] = [
     medidas: 'Corte clássico',
     aPartirDe: 'a partir de R$ 2.400',
     descricao:
-      'A lapela é entalhada e costurada à mão, não termocolada — é o que faz ela cair reta e não enrugar depois de uma tarde sentado.',
+      'A lapela é entalhada e costurada à mão, não termocolada. É o que faz ela cair reta e não enrugar depois de uma tarde sentado.',
     desenho: desenharBlazer('Clássico'),
   },
   {
@@ -31,7 +31,7 @@ export const pecas: Peca[] = [
     medidas: 'Corte clássico',
     aPartirDe: 'a partir de R$ 980',
     descricao:
-      'Uma prega só na frente, não duas — dá mais espaço no quadril sem parecer larga demais na cintura.',
+      'Uma prega só na frente, não duas: dá mais espaço no quadril sem parecer larga demais na cintura.',
     desenho: desenharCalca('Clássico'),
   },
   {
@@ -42,7 +42,7 @@ export const pecas: Peca[] = [
     medidas: 'Corte clássico',
     aPartirDe: 'a partir de R$ 780',
     descricao:
-      'Fechamento em V baixo, pensado pra não esconder o nó da gravata — o erro mais comum de colete pronto.',
+      'Fechamento em V baixo, pensado pra não esconder o nó da gravata (o erro mais comum de colete pronto).',
     desenho: desenharColete('Clássico'),
   },
   {
@@ -53,7 +53,7 @@ export const pecas: Peca[] = [
     medidas: 'Corte slim',
     aPartirDe: 'a partir de R$ 590',
     descricao:
-      'O punho com dois botões ajusta em dois pontos, não um — segura melhor no pulso sem folgar durante o dia.',
+      'O punho com dois botões ajusta em dois pontos, não um. Segura melhor no pulso sem folgar durante o dia.',
     desenho: desenharCamisa('Slim'),
   },
 ]

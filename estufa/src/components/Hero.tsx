@@ -28,9 +28,8 @@ export default function Hero() {
         <Reveal delay={0.1}>
           <p className="mt-5 max-w-xl text-lg text-vidro/85">
             A Estufa Cheia trabalha com nome científico, estação de floração e
-            exigência de luz reais — como um catálogo botânico, não uma
-            vitrine de flores genéricas. Cultivo próprio, projeto de
-            paisagismo e encomendas sob medida.
+            exigência de luz reais, como um catálogo botânico. Cultivo próprio,
+            projeto de paisagismo e encomendas sob medida.
           </p>
         </Reveal>
         <Reveal delay={0.15} className="mt-8 flex flex-wrap gap-3">

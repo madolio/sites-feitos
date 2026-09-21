@@ -4,22 +4,22 @@ const etapas = [
   {
     titulo: '1. Leitura do local',
     texto:
-      'luz direta ou filtrada, umidade, exposição ao vento — o mesmo levantamento que decide se uma espécie vinga ou não, antes de qualquer escolha estética.',
+      'luz direta ou filtrada, umidade, exposição ao vento: o mesmo levantamento que decide se uma espécie vinga ou não, antes de qualquer escolha estética.',
   },
   {
     titulo: '2. Escolha por espécie, não por cor',
     texto:
-      'a paleta do arranjo ou do canteiro nasce das espécies que combinam com o local e a estação — a cor é consequência da espécie certa, não o ponto de partida.',
+      'a paleta do arranjo ou do canteiro nasce das espécies que combinam com o local e a estação. A cor é consequência da espécie certa, não o ponto de partida.',
   },
   {
     titulo: '3. Cultivo e montagem',
     texto:
-      'produção própria na estufa em Nova Friburgo, clima de serra favorável a espécies de meia-sombra — corte, plantio ou instalação de paisagismo conforme o projeto.',
+      'produção própria na estufa em Nova Friburgo, clima de serra favorável a espécies de meia-sombra. Corte, plantio ou instalação de paisagismo, conforme o projeto.',
   },
   {
     titulo: '4. Ficha de cuidado',
     texto:
-      'toda entrega sai com a ficha da espécie (rega, luz, poda) — a mesma informação técnica do catálogo, adaptada pro ambiente de quem recebe.',
+      'toda entrega sai com a ficha da espécie (rega, luz, poda), a mesma informação técnica do catálogo, adaptada pro ambiente de quem recebe.',
   },
 ]
 
