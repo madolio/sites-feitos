@@ -72,7 +72,7 @@ export default function CalendarioFiscal() {
           {proximo.obrigacao.nome} ({proximo.obrigacao.sigla})
         </p>
         <p className="mt-1 text-tinta/75">
-          Vence em {formatarData(proximo.data)} —{' '}
+          Vence em {formatarData(proximo.data)}:{' '}
           <span className="font-dado font-semibold text-selo">
             {proximo.diasRestantes === 0
               ? 'hoje'

@@ -14,7 +14,7 @@ export default function Home() {
           <Reveal>
             <p className="dado-fiscal text-selo">o calendário</p>
             <h2 className="mt-2 max-w-xl text-3xl sm:text-4xl">
-              Cada regime tem seu próprio ritmo de vencimento — escolha o seu
+              Cada regime tem seu próprio ritmo de vencimento: escolha o seu
             </h2>
             <p className="mt-4 max-w-xl text-tinta/75">
               MEI, Simples Nacional e profissional liberal seguem calendários fiscais diferentes.

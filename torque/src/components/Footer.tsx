@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="mt-10 text-xs text-oficina/70">
-          Torque Auto Mecânica é um negócio fictício — conceito de site feito com{' '}
+          Torque Auto Mecânica é um negócio fictício: conceito de site feito com{' '}
           <span aria-hidden="true" className="text-sinal">♥</span>
           <span className="sr-only">amor</span> pela{' '}
           <a

@@ -28,7 +28,7 @@ export default function Contato() {
           <h2 className="mt-2 text-4xl">Marcar horário</h2>
           <p className="mt-4 text-marfim/75">
             Escolha a técnica e a Renata confirma o horário certo pra caber o tempo de cura sem
-            correria — sem botão que abre WhatsApp de verdade, isto é um conceito.
+            correria. Isto é um conceito, sem botão que abre WhatsApp de verdade.
           </p>
         </Reveal>
 

@@ -20,8 +20,8 @@ export default function Hero() {
         </h1>
         <p className="mt-6 max-w-xl text-lg text-carvao/80">
           A Trama é a loja do bairro Floresta pra quem quer se vestir sem drama: básico, jeans,
-          vestido, moletom. E, pela primeira vez, um jeito simples de saber o que aquele símbolo
-          na etiqueta realmente significa antes de jogar a peça na máquina.
+          vestido, moletom. E um jeito simples de saber o que aquele símbolo na etiqueta
+          realmente significa antes de jogar a peça na máquina.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="#etiqueta" className="btn-ferrugem">
