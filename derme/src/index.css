@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Vibe: clínica de estética × registro clínico de dermatologia real —
+   resultado mostrado como dado documentado de recuperação ao longo do
+   tempo, nunca como foto de antes/depois de banco de imagens. */
+@theme {
+  --color-noturno: #16262c; /* tinta azul-esverdeada escura — fundo/texto de seções escuras */
+  --color-papel: #f7f4ee; /* papel claro, fundo principal */
+  --color-linha: #ddd2c1; /* borda/linha sobre o papel */
+  --color-clinico: #2c6e6a; /* verde-azulado clínico — acento primário, CTA */
+  --color-clinico-hover: #23524f;
+  --color-derme: #c17557; /* tom quente — camada derme no diagrama, acento secundário */
+  --color-derme-hover: #a25f45;
+  --color-epiderme: #e8c9a8; /* tom claro — camada epiderme no diagrama */
+  --color-hipoderme: #f4e6ce; /* tom mais claro — camada hipoderme no diagrama */
+  --color-alerta: #ab4a30; /* fase de reação/vermelhidão na linha do tempo */
+
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Overpass Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-noturno antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-clinico);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-clinico,
+  .btn-derme,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-clinico {
+    @apply bg-clinico text-papel hover:bg-clinico-hover;
+  }
+
+  .btn-derme {
+    @apply bg-derme text-papel hover:bg-derme-hover;
+  }
+
+  .btn-outline {
+    @apply border border-noturno/30 text-noturno hover:border-noturno;
+  }
+
+  /* Dado clínico real (dia, camada, duração) — mono, tabular, nunca
+     decorativo: é o número documentado de recuperação, não um enfeite. */
+  .dado-clinico {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

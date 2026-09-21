@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-papel: #f6f0e0;
+  --color-tinta: #16283a;
+  --color-contorno: #9c8a63;
+  --color-esmalte: #dd5f45;
+  --color-gengiva: #2f7a6b;
+  --color-linha: #ddd0ac;
+
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-body: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "PT Mono", ui-monospace, "Roboto Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-esmalte);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-esmalte {
+    @apply inline-flex items-center justify-center rounded-full bg-esmalte px-6 py-3 font-semibold text-papel transition hover:brightness-110;
+  }
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-full border border-contorno/50 px-6 py-3 font-semibold text-tinta transition hover:border-esmalte hover:text-esmalte;
+  }
+  .rotulo-mono {
+    @apply font-mono text-xs tracking-wide text-contorno uppercase;
+  }
+  .valor-mono {
+    @apply font-mono text-esmalte;
+  }
+}
+
+@layer components {
+  /* Movimento contínuo do hero — anéis de "meridiano" respirando devagar,
+   * mais o ponto central percorrendo o contorno como um cursor de mapa.
+   * Guardado por prefers-reduced-motion: fica estático sem a media query. */
+  @media (prefers-reduced-motion: no-preference) {
+    .meridiana-anel {
+      animation: meridiana-respirar 7s ease-in-out infinite;
+    }
+    .meridiana-anel-2 {
+      animation-duration: 9s;
+      animation-direction: reverse;
+    }
+    .meridiana-ponto {
+      animation: meridiana-orbitar 14s linear infinite;
+      transform-origin: 100px 100px;
+    }
+  }
+}
+
+@keyframes meridiana-respirar {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+@keyframes meridiana-orbitar {
+  from {
+    transform: rotate(0deg) translateX(92px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(92px) rotate(-360deg);
+  }
+}

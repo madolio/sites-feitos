@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* Vibe: clínica de fisioterapia × cartografia/mapa topográfico de trilha — o
+   plano de recuperação é um percurso real, com curvas de nível, marcos e
+   distância. Nunca a paleta azul/laranja genérica de clínica esportiva. */
+@theme {
+  --color-tinta: #1b2620; /* verde-ardósia quase-preto, fundo escuro e texto principal */
+  --color-papel: #f2ecdb; /* papel de mapa topográfico envelhecido, fundo claro */
+  --color-papel-forte: #e8dfc4; /* papel um tom mais escuro, cartões sobre o papel */
+  --color-contorno: #6b8f6a; /* verde de curva de nível — acento primário, linhas do mapa */
+  --color-contorno-hover: #587a58;
+  --color-trilha: #c2703f; /* terracota do marco de trilha — CTA */
+  --color-trilha-hover: #a75c30;
+  --color-altitude: #2e6b6e; /* azul-petróleo, "altitude"/dado técnico */
+  --color-linha: #d6c9a3; /* borda/linha sobre o papel */
+
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --font-body: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Source Code Pro", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-trilha);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-contorno,
+  .btn-trilha,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-contorno {
+    @apply bg-contorno text-papel hover:bg-contorno-hover;
+  }
+
+  .btn-trilha {
+    @apply bg-trilha text-papel hover:bg-trilha-hover;
+  }
+
+  .btn-outline {
+    @apply border border-tinta/30 text-tinta hover:border-tinta;
+  }
+
+  /* Rótulo tipo régua de mapa: distância, altitude, duração — sempre mono,
+     nunca decorativo, é dado real da fase de recuperação. */
+  .dado-mapa {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+.contorno-deriva {
+  animation: deriva-contorno 26s linear infinite;
+}
+
+@keyframes deriva-contorno {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-80px);
+  }
+}
+
+.trilha-percorrida {
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.marco-ativo {
+  animation: pulso-marco 2.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes pulso-marco {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(194, 112, 63, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(194, 112, 63, 0.65));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
