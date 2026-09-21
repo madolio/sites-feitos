@@ -86,7 +86,7 @@ export default function ArcadaMapa() {
       </Reveal>
 
       <Reveal delay={0.1} className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-stretch">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col">
           <div className="relative mx-auto aspect-[800/380] w-full max-w-3xl rounded-3xl border border-linha bg-white/50 p-2">
             <svg
               viewBox="0 0 800 380"
@@ -135,6 +135,32 @@ export default function ArcadaMapa() {
             />
             <span className="rotulo-mono absolute left-3 top-3">arco superior</span>
             <span className="rotulo-mono absolute bottom-3 left-3">arco inferior</span>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-linha bg-white/40 p-5">
+            <p className="rotulo-mono">Como ler o mapa · notação FDI</p>
+            <p className="mt-2 text-sm text-tinta/70">
+              O primeiro dígito do número do dente marca o quadrante. O segundo é a posição a
+              partir da linha média, de 1 (incisivo central) a 8 (siso).
+            </p>
+            <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+              <div>
+                <dt className="valor-mono text-esmalte">Quadrante 1 — 11 a 18</dt>
+                <dd className="text-tinta/70">Superior direito</dd>
+              </div>
+              <div>
+                <dt className="valor-mono text-esmalte">Quadrante 2 — 21 a 28</dt>
+                <dd className="text-tinta/70">Superior esquerdo</dd>
+              </div>
+              <div>
+                <dt className="valor-mono text-esmalte">Quadrante 3 — 31 a 38</dt>
+                <dd className="text-tinta/70">Inferior esquerdo</dd>
+              </div>
+              <div>
+                <dt className="valor-mono text-esmalte">Quadrante 4 — 41 a 48</dt>
+                <dd className="text-tinta/70">Inferior direito</dd>
+              </div>
+            </dl>
           </div>
         </div>
 
