@@ -459,4 +459,14 @@ export const projetos: Projeto[] = [
     accent: '#b5502f',
     url: 'https://trama.fenoninho-max.workers.dev',
   },
+  {
+    name: 'Escuta Psicologia',
+    category: 'Psicologia clínica',
+    tag: 'Saúde & Bem-estar',
+    description:
+      'A ficha de registro de pensamento da terapia cognitivo-comportamental vira mecânica interativa real — situação, pensamento automático, emoção e reformulação — em vez de card genérico de bem-estar.',
+    bg: '#f8f2e9',
+    accent: '#b5613f',
+    url: 'https://escuta.fenoninho-max.workers.dev',
+  },
 ]

@@ -138,6 +138,38 @@ nenhum `index.html` do repositório, incluindo os três em paralelo. Nenhuma
 das três fontes finais (Italiana, Urbanist, Red Hat Mono) aparece em outro
 projeto, e o trio como combinação também é inédito.
 
+## FAQ e depoimentos (`Faq.tsx`, `Depoimentos.tsx`)
+
+Adicionados depois do build inicial, por pedido direto da dona da agência: ela
+apontou a página real da psicóloga Luana Raquel
+(psicologaluanaraquel.com) como referência comprovada de conversão, e o
+esmalte não tinha nem FAQ nem prova social (grep confirmou seção vazia).
+Trazidos os padrões estruturais, não o visual do site de referência —
+mantendo o mecanismo de cura, a paleta e a tipografia do Esmalte intactos.
+
+- **`Faq.tsx`**: acordeão acessível de verdade, `<button aria-expanded
+  aria-controls>` controlando um `<div role="region">`, navegável por
+  teclado (Enter/Space nativos do `<button>`), sem JS de animação de altura
+  (evita medir/recalcular altura sob `prefers-reduced-motion`; o painel só
+  aparece/some via `hidden`). Perguntas em `data/faq.ts`: durabilidade real
+  de gel (15-21 dias) vs. BIAB (3-4 semanas), remoção seguro de gel de outro
+  salão, custo de nail art à parte, antecedência de agendamento, garantia de
+  7 dias pra unha que lasca, e esterilização por autoclave — dúvidas reais de
+  quem nunca fez o procedimento, não perguntas genéricas de salão. Copy
+  passada pelo skill `humanizer` antes de fechar.
+- **`Depoimentos.tsx`**: 3 depoimentos fictícios em `data/depoimentos.ts`,
+  nome + inicial do sobrenome (nunca nome completo, cliente fictícia), cada
+  um específico sobre uma técnica ou situação real do site (cronômetro de
+  cura, garantia de 7 dias, remoção segura) em vez de "adorei, recomendo".
+  Cards no estilo swatch do próprio Esmalte (borda `linha`, fundo branco
+  sobre `marfim`), sem widget de estrelas genérico.
+
+Posição em `App.tsx`: depois de `Formatos` (conteúdo de apoio) e antes de
+`Contato` (CTA final), pra prova social e FAQ aparecerem depois do wildcard
+mas antes do formulário de agendamento — igual ao padrão da página de
+referência (CTA de contato repetido no Hero e em `Contato`, sem inventar um
+terceiro botão de WhatsApp de verdade).
+
 ## Decisões
 
 - Owner fictícia: **Renata Bastos**, esmalteria de bairro em

@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Vibe: psicologia clínica × ficha de registro de pensamento (o instrumento
+   real de terapia cognitivo-comportamental que fica sobre a mesa de um
+   consultório) — não mapa, não calendário, não cartão decorativo. Paleta
+   calma e quente, nunca azul/branco clínico genérico. */
+@theme {
+  --color-tinta: #2b2320; /* marrom-tinta quase-preto, fundo escuro e texto principal */
+  --color-papel: #f8f2e9; /* papel de ficha clínica, fundo claro */
+  --color-papel-forte: #efe3d3; /* papel um tom mais escuro, cartões */
+  --color-linha: #e3d4b8; /* borda/linha sobre o papel */
+  --color-quieto: #7c9a92; /* verde-salva calmo — acento secundário, "emoção" */
+  --color-quieto-hover: #648078;
+  --color-acolhe: #b5613f; /* terracota argila — CTA principal, "ação"/WhatsApp */
+  --color-acolhe-hover: #984e30;
+
+  --font-display: "Lora", ui-serif, Georgia, serif;
+  --font-body: "Epilogue", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Chivo Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-acolhe);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-acolhe,
+  .btn-quieto,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-acolhe {
+    @apply bg-acolhe text-papel hover:bg-acolhe-hover;
+  }
+
+  .btn-quieto {
+    @apply bg-quieto text-papel hover:bg-quieto-hover;
+  }
+
+  .btn-outline {
+    @apply border border-tinta/30 text-tinta hover:border-tinta;
+  }
+
+  /* Rótulo tipo carimbo de ficha clínica: CRP, sigla de etapa da sessão —
+     sempre mono, nunca decorativo, é dado real. */
+  .dado-ficha {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+/* Fundo do hero: linhas de pauta de caderno de anotação, derivando devagar
+   pra página não parecer morta, sem competir com o texto. */
+.pauta-deriva {
+  animation: deriva-pauta 30s linear infinite;
+}
+
+@keyframes deriva-pauta {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-64px);
+  }
+}
+
+.cartao-registro {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

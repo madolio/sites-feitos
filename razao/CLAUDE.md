@@ -130,6 +130,34 @@ Rubik + DM Mono sem que os dois agentes pudessem ver um ao outro em tempo
 real — o grep só pega irmãos já commitados. Corrigido nesta revisão final
 antes do commit único dos 4 projetos novos.
 
+## FAQ e prova social (`Faq.tsx` / `Depoimentos.tsx`)
+
+Adicionados depois de `Servicos.tsx`, antes de `Contato.tsx`, a pedido do
+dono da agência: ele apontou uma landing page real de psicóloga
+(psicologaluanaraquel.com) como referência de conversão, com CTA de
+WhatsApp repetido, acordeão de FAQ e depoimentos. A Razão já tinha o CTA de
+WhatsApp (`Contato.tsx` via `demo.ts`), mas não tinha FAQ nem prova social:
+conferido em `Servicos.tsx` antes de escrever qualquer coisa nova, porque um
+grep anterior tinha achado algo "relacionado a FAQ" lá, e não era nada, só
+os cards de serviço.
+
+- `Faq.tsx`: acordeão acessível (`<button aria-expanded aria-controls>` +
+  `<div role="region">`, operável por teclado por ser `<button>` nativo,
+  respeita `prefers-reduced-motion` porque não anima nada além do que o
+  `Reveal` já trata). Seis perguntas reais de quem está decidindo contratar
+  um contador (documento de onboarding, se o escritório paga a guia ou só
+  calcula, o que acontece se perder o prazo, mensalidade fixa vs.
+  por serviço, abertura de MEI do zero, tempo de resposta), com respostas
+  específicas e políticas fictícias mas coerentes com o resto do site
+  (nunca inventa alíquota, mesma regra do `CalendarioFiscal.tsx`).
+- `Depoimentos.tsx`: três depoimentos curtos e plausíveis (Padaria do João,
+  Marcos T. MEI, Camila R. profissional liberal), cada um com um caso
+  concreto (prazo salvo, formalização, Carnê-Leão), não elogio genérico.
+  Estilizado como cartão de papel com um carimbo "confere" no canto, pra
+  ficar na mesma linguagem visual de talão/carimbo do site em vez de virar
+  um widget de estrelas genérico.
+- Copy passada pelo skill `humanizer` antes de fechar.
+
 ## Decisões
 
 - Owner fictício: **Marcos Vieira Andrade**, contador, CRC-SP

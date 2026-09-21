@@ -2,6 +2,8 @@ import Hero from '../components/Hero'
 import Reveal from '../components/Reveal'
 import EtiquetaCuidado from '../components/EtiquetaCuidado'
 import Vitrine from '../components/Vitrine'
+import Depoimentos from '../components/Depoimentos'
+import Perguntas from '../components/Perguntas'
 import Contato from '../components/Contato'
 
 export default function Home() {
@@ -30,6 +32,8 @@ export default function Home() {
       </section>
 
       <Vitrine />
+      <Depoimentos />
+      <Perguntas />
       <Contato />
     </>
   )

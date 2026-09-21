@@ -119,6 +119,34 @@ repositório (nem em `marcha`: Space Grotesk + Inter + IBM Plex Mono; nem em
 `ferro`: Space Grotesk + Archivo), então o trio como combinação também é
 inédito.
 
+## FAQ e depoimentos (adição, não redesign)
+
+O dono da agência apontou o site de uma psicóloga (referência externa, real,
+com conversão comprovada) como exemplo de padrões estruturais que faltavam
+nas construções recentes: CTA de WhatsApp repetido, FAQ respondendo a
+ansiedade real de pré-compra, e prova social. O `torque` não tinha nem FAQ
+nem depoimentos, então os dois foram adicionados sem tocar em Hero,
+PainelRevisao, Especialidades ou paleta.
+
+`Faq.tsx` + `data/faq.ts`: acordeão acessível de verdade, `<button
+aria-expanded aria-controls>` por pergunta controlando um `<div role="region"
+hidden>`, navegável por teclado, sem `<details>`. Perguntas são as dúvidas
+reais de quem nunca foi na oficina: agendamento, orçamento por escrito antes
+de qualquer serviço, se guardam a peça trocada, garantia de peça/mão de
+obra, quais marcas atendem, formas de pagamento. Respostas inventam
+política concreta e consistente com o resto do site (ex.: 90 dias de
+garantia na mão de obra), já que é negócio fictício.
+
+`Depoimentos.tsx` + `data/depoimentos.ts`: 3 depoimentos curtos, nome +
+inicial do sobrenome (Marina T., Roberto S., Camila A.) pra deixar claro que
+é conceito de portfólio, não review raspada de verdade. Em vez do padrão
+card-com-estrelas da referência, o layout usa o vocabulário de ficha/ticket
+já estabelecido pelo painel: rótulo de serviço em `dado-oficina`, citação,
+nome como se fosse assinatura de baixo de uma ficha de saída.
+
+Ambos entram em `Home.tsx` depois de Especialidades e antes de Contato,
+posição padrão de prova social + objeções logo antes do CTA final.
+
 ## Decisões
 
 - Owner fictício: **Cláudio Teixeira**, mecânico formado pelo SENAI-SP, 22

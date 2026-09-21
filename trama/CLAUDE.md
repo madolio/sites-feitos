@@ -120,6 +120,32 @@ composição, temperatura, símbolo, nunca decorativo). Conferido com
 aparece em nenhum outro projeto (nem em `encaixe`: Syne + Work Sans; nem em `calibre`: Syne
 + Sora; nem em `prisma`: Space Grotesk + Inter), e o trio como combinação também é inédito.
 
+## FAQ e prova social
+
+Adicionados depois do lançamento inicial, a pedido do agenciamento: uma referência de
+página de psicóloga real e comprovadamente eficaz (`psicologaluanaraquel.com`) mostrou três
+elementos estruturais que a Trama não tinha, CTA de WhatsApp repetido em pontos-chave,
+acordeão de FAQ respondendo ansiedade real de pré-compra, e seção de prova social. A Trama
+não tinha nenhum dos dois últimos.
+
+- **`Perguntas.tsx` + `data/perguntas.ts`**: acordeão acessível (`aria-expanded`,
+  `aria-controls`, `role="region"`, `hidden` no painel fechado, operável por teclado,
+  respeita `prefers-reduced-motion` pro ícone de `+`) com seis dúvidas reais de quem nunca
+  veio na loja: reserva por WhatsApp pra provar, prazo de troca (7 dias, mesmo prazo já
+  citado em `data/categorias.ts`), plus size, se o preço inclui ajuste de bainha, formas de
+  pagamento, frequência de peça nova. Termina com um botão de WhatsApp repetindo o CTA de
+  `Contato.tsx`, mesmo padrão de simulação via `demo.ts` (nunca abre WhatsApp de verdade).
+- **`Depoimentos.tsx` + `data/depoimentos.ts`**: três depoimentos fictícios (nome + inicial
+  do sobrenome) no vocabulário visual da própria etiqueta de cuidado, cartão com aba
+  arredondada simulando etiqueta pendurada (hang-tag) e um rótulo de tecido em
+  `dado-etiqueta`, não um widget genérico de estrelas. Cada depoimento amarra um problema
+  têxtil real (jeans que sangra tinta, viscose que perde a forma torcida molhada, elastano
+  que degrada com calor da secadora) à mesma lição que `EtiquetaCuidado.tsx` ensina, reforço
+  do wildcard em vez de elemento solto.
+- Posição em `Home.tsx`: depois de `Vitrine`, antes de `Contato`, pra prova social e FAQ
+  aparecerem depois que a pessoa já viu o catálogo e o wildcard, mas antes do CTA final.
+- Paleta, tipografia, `Hero`, `EtiquetaCuidado` e `Vitrine` não foram tocados.
+
 ## Decisões
 
 - Owner fictícia: **Marlene Aparecida Souza**, proprietária da Trama no bairro Floresta, em
