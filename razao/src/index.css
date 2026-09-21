@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Vibe: escritório de contabilidade × calendário fiscal de parede — os
+   prazos reais de MEI, Simples Nacional e profissional liberal, marcados
+   como um calendário anual de escritório, nunca um extrato bancário
+   (isso é o `ancora`) nem classificado de jornal (isso é o `chave`). */
+@theme {
+  --color-tinta: #241d17; /* quase-preto de tinta de carimbo — fundo escuro e texto principal */
+  --color-papel: #f4ecd8; /* papel de talão/formulário, fundo claro */
+  --color-papel-forte: #e9ddc0; /* papel um tom mais escuro, cartões */
+  --color-linha: #d3c19a; /* borda/linha sobre o papel */
+  --color-selo: #24466b; /* azul de carimbo de protocolo — acento primário, CTA */
+  --color-selo-hover: #1b3552;
+  --color-prazo: #b9812a; /* âmbar — prazo em aberto, "próximo vencimento" */
+  --color-vencido: #96392b; /* terracota-vinho — usado só quando um prazo já passou */
+
+  --font-display: "Bitter", ui-serif, Georgia, serif;
+  --font-body: "Rubik", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Fragment Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-selo);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-selo,
+  .btn-prazo,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-selo {
+    @apply bg-selo text-papel hover:bg-selo-hover;
+  }
+
+  .btn-prazo {
+    @apply bg-prazo text-tinta hover:bg-[#a06f22];
+  }
+
+  .btn-outline {
+    @apply border border-tinta/30 text-tinta hover:border-tinta;
+  }
+
+  /* Rótulo de dado fiscal real: sigla, dia, prazo — sempre mono, nunca
+     decorativo, é o mesmo registro de um carimbo de protocolo. */
+  .dado-fiscal {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

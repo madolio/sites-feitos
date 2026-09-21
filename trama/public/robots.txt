@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trama.fenoninho-max.workers.dev/sitemap.xml

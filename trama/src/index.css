@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* Vibe: loja de roupa de bairro (pronta-para-vestir, não sob medida) ×
+   simbologia real de etiqueta de cuidado têxtil. Cada peça do catálogo tem
+   um cartão de etiqueta interativo com o símbolo de lavagem, alvejante,
+   secagem e passar reais daquele tecido. Nunca o registro de alfaiataria
+   sob medida ou de luxo dos vizinhos de categoria (encaixe, calibre,
+   prisma) — aqui é pronta-entrega, preço acessível, do dia a dia. */
+@theme {
+  --color-cru: #f7f1e6; /* fundo claro, cor de tecido cru/algodão não branqueado */
+  --color-carvao: #262220; /* texto principal, quase-preto quente */
+  --color-jeans: #3e5c74; /* azul jeans — acento primário */
+  --color-jeans-hover: #33495d;
+  --color-ferrugem: #b5502f; /* terracota/ferrugem — CTA */
+  --color-ferrugem-hover: #9a4127;
+  --color-mostarda: #c99a3e; /* mostarda — acento secundário, dado de tecido */
+  --color-linha: #ddd0ba; /* borda/linha sobre o cru */
+  --color-cartao: #efe6d3; /* cartão sobre o fundo cru */
+
+  --font-display: "Bitter", ui-serif, Georgia, serif;
+  --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Ubuntu Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-cru font-body text-carvao antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ferrugem);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-jeans,
+  .btn-ferrugem,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-jeans {
+    @apply bg-jeans text-cru hover:bg-jeans-hover;
+  }
+
+  .btn-ferrugem {
+    @apply bg-ferrugem text-cru hover:bg-ferrugem-hover;
+  }
+
+  .btn-outline {
+    @apply border border-carvao/30 text-carvao hover:border-carvao;
+  }
+
+  /* Rótulo tipo etiqueta de costura: composição, temperatura, símbolo —
+     sempre mono, sempre dado real de cuidado têxtil, nunca decorativo. */
+  .dado-etiqueta {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+.tecido-flutua {
+  animation: flutua-tecido 22s ease-in-out infinite;
+}
+
+@keyframes flutua-tecido {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.simbolo-ativo {
+  animation: pulso-simbolo 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes pulso-simbolo {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(181, 80, 47, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(181, 80, 47, 0.55));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

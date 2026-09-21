@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* Vibe: oficina mecânica de bairro × painel de revisão por quilometragem —
+   o carro do cliente é mostrado como um odômetro real: arrastar o
+   quilômetro revela o que está em dia, perto do prazo ou vencido, usando
+   intervalo de manutenção real por item (óleo, freio, correia...). Nunca a
+   estética de concessionária de esportivo (preto+vermelho, foto de carro de
+   banco de imagem) nem academia industrial (preto+lima). */
+@theme {
+  --color-chumbo: #2c3236; /* aço escurecido, fundo escuro e texto principal */
+  --color-oficina: #f4f0e4; /* parede clara de galpão, fundo principal */
+  --color-oficina-forte: #e7ddc7; /* papel/cartão um tom mais escuro */
+  --color-linha: #d9cfb3; /* borda sobre o fundo claro */
+  --color-aco: #46606d; /* azul-aço — acento primário, dado técnico */
+  --color-aco-hover: #384e59;
+  --color-sinal: #e8961f; /* amarelo de sinalização de oficina — CTA */
+  --color-sinal-hover: #c67d15;
+  --color-alerta: #c1432a; /* vermelho de item vencido no painel */
+  --color-ok: #4f7a3d; /* verde de item em dia no painel */
+
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Rubik", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "DM Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-oficina font-body text-chumbo antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-wide uppercase;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sinal);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-aco,
+  .btn-sinal,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-aco {
+    @apply bg-aco text-oficina hover:bg-aco-hover;
+  }
+
+  .btn-sinal {
+    @apply bg-sinal text-chumbo hover:bg-sinal-hover;
+  }
+
+  .btn-outline {
+    @apply border border-chumbo/30 text-chumbo hover:border-chumbo;
+  }
+
+  /* Rótulo de dado técnico real: km, torque, intervalo — nunca decorativo. */
+  .dado-oficina {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+.ponteiro-vibra {
+  animation: vibra-ponteiro 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes vibra-ponteiro {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+.faixa-listrada {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-sinal) 0 10px,
+    var(--color-chumbo) 10px 20px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

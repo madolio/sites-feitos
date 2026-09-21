@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-marfim: #fdf6f2; /* fundo claro, "vidro de esmalte" fosco */
+  --color-tinta: #241220; /* ameixa quase-preto — fundo escuro e texto principal */
+  --color-uv: #7c5cff; /* roxo-azulado da luz da lâmpada LED, acento primário */
+  --color-uv-hover: #6446e0;
+  --color-coral: #ff6f91; /* coral do esmalte, CTA/acento secundário */
+  --color-coral-hover: #e0557a;
+  --color-linha: #f0ddd3; /* borda sobre o marfim */
+  --color-nude: #eccbb4; /* tom nude decorativo, swatch */
+
+  --font-display: "Italiana", ui-serif, Georgia, serif;
+  --font-body: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Red Hat Mono", ui-monospace, "Roboto Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-marfim font-body text-tinta antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-uv);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-coral {
+    @apply inline-flex items-center justify-center rounded-full bg-coral px-6 py-3 font-semibold text-tinta transition hover:bg-coral-hover;
+  }
+  .btn-uv {
+    @apply inline-flex items-center justify-center rounded-full bg-uv px-6 py-3 font-semibold text-marfim transition hover:bg-uv-hover;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-tinta/30 px-6 py-3 font-semibold text-tinta transition hover:border-uv hover:text-uv;
+  }
+  .rotulo-mono {
+    @apply font-mono text-xs tracking-wide text-tinta/60 uppercase;
+  }
+  .valor-mono {
+    @apply font-mono text-uv;
+  }
+}
+
+@layer components {
+  /* Movimento contínuo: o brilho da lâmpada UV pulsa devagar no hero, como
+   * uma cabine de LED de verdade ligada em stand-by. Guardado por
+   * prefers-reduced-motion: sem a media query, fica estático. */
+  @media (prefers-reduced-motion: no-preference) {
+    .lampada-brilho {
+      animation: lampada-pulsar 3.2s ease-in-out infinite;
+    }
+    .esmalte-gota {
+      animation: gota-balancar 6s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes lampada-pulsar {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes gota-balancar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+}
+
+/* Fim de página: zera toda animação/transição sob reduced-motion, sem
+ * exceção — nenhuma animação deste site é necessária pro conteúdo aparecer. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

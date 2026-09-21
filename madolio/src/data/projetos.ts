@@ -419,4 +419,44 @@ export const projetos: Projeto[] = [
     url: 'https://trilha.fenoninho-max.workers.dev',
     destaque: true,
   },
+  {
+    name: 'Torque Auto Mecânica',
+    category: 'Oficina mecânica',
+    tag: 'Automotivo',
+    description:
+      'Uma oficina de bairro que troca o formulário de orçamento por um odômetro: arraste a quilometragem e veja, item a item, o que já está vencido — óleo, freio, correia, tudo com o intervalo real de manutenção por trás.',
+    bg: '#f4f0e4',
+    accent: '#e8961f',
+    url: 'https://torque.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Renata Bastos Nail Studio',
+    category: 'Manicure e nail design',
+    tag: 'Beleza',
+    description:
+      'Uma esmalteria que transformou o cronômetro da cabine de LED num cartão de visitas: escolha a técnica e veja, segundo a segundo, o tempo real de cura sob luz.',
+    bg: '#241220',
+    accent: '#ff6f91',
+    url: 'https://esmalte.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Razão Contábil',
+    category: 'Contabilidade',
+    tag: 'Serviços profissionais',
+    description:
+      'Um calendário fiscal de parede que virou site: MEI, Simples Nacional e autônomo, cada um com seu próprio ritmo de vencimento, e o próximo prazo calculado com a data de hoje de verdade.',
+    bg: '#f4ecd8',
+    accent: '#24466b',
+    url: 'https://razao.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Trama',
+    category: 'Loja de roupas de bairro',
+    tag: 'Moda & Acessórios',
+    description:
+      'Loja de roupa de bairro que ensina a cuidar da peça que você acabou de comprar: escolha o tecido e veja o símbolo real de lavagem, alvejante, secagem e passar, explicado por extenso.',
+    bg: '#f7f1e6',
+    accent: '#b5502f',
+    url: 'https://trama.fenoninho-max.workers.dev',
+  },
 ]
