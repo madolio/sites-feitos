@@ -64,19 +64,13 @@ export default function Agendar() {
           <span className="font-display text-lg">Focinho</span>
         </div>
         <p className="mt-4 text-sm text-paper/80">
-          O Focinho é um negócio fictício: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
+          O Focinho é um negócio fictício: este site é um conceito feito
+          com <span aria-hidden="true" className="text-accent">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-        <p className="mt-3 text-sm text-paper/80">
-          feito com <span aria-hidden="true" className="text-accent">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-paper/50 underline-offset-4">
-            madolio
-          </a>
         </p>
       </div>
     </footer>

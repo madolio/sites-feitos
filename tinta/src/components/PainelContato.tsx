@@ -40,18 +40,13 @@ export default function PainelContato() {
         </form>
 
         <p className="mt-12 max-w-sm text-sm text-paper/50">
-          A Tinta é um estúdio fictício: este site é um conceito criado pela{' '}
+          A Tinta é um estúdio fictício: este site é um conceito feito com{' '}
+          <span aria-hidden="true" className="text-ember">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
           <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold text-paper underline underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-        <p className="mt-3 max-w-sm text-sm text-paper/60">
-          feito com <span aria-hidden="true" className="text-ember">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-ember/50 underline-offset-4">
-            madolio
-          </a>
         </p>
       </Reveal>
     </section>

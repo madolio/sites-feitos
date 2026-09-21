@@ -44,26 +44,20 @@ export default function Painel() {
       </Reveal>
 
       <p className="mt-8 text-center text-sm text-ink/45">
-        A Rota é um software fictício: este site é um conceito criado pela{' '}
-        <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold text-ink/65 underline underline-offset-4">
-          Madolio
-        </a>
-        .
-      </p>
-      <p className="mt-1.5 text-center text-xs text-ink/70">
-        feito com{' '}
+        A Rota é um software fictício: um conceito feito com{' '}
         <span aria-hidden="true" className="text-accent">
           ♥
         </span>
-        <span className="sr-only">amor</span> por{' '}
+        <span className="sr-only">amor</span> pela{' '}
         <a
           href="https://madolio.com.br"
           target="_blank"
           rel="noreferrer"
-          className="underline underline-offset-4 transition-colors hover:text-ink"
+          className="font-semibold text-ink/65 underline underline-offset-4"
         >
-          madolio
+          Madolio
         </a>
+        .
       </p>
     </div>
   )

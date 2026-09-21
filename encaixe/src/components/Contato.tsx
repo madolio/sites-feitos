@@ -50,19 +50,13 @@ export default function Contato() {
         <div className="mt-16 border-t border-line pt-6">
           <span className="font-heading text-lg font-medium text-ink">Encaixe</span>
           <p className="mt-2 text-sm text-ink/60">
-            A Encaixe é uma alfaiataria fictícia: este site é um conceito
-            criado pela{' '}
-            <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
+            A Encaixe é uma alfaiataria fictícia: um conceito feito com{' '}
+            <span aria-hidden="true" className="text-fio">♥</span>
+            <span className="sr-only">amor</span> pela{' '}
+            <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
               Madolio
             </a>
             .
-          </p>
-          <p className="mt-3 text-sm text-ink/70">
-            feito com <span aria-hidden="true" className="text-fio">♥</span>
-            <span className="sr-only">amor</span> por{' '}
-            <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-fio/50 underline-offset-4">
-              madolio
-            </a>
           </p>
         </div>
       </div>

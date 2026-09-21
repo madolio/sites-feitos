@@ -21,12 +21,8 @@ export default function Footer() {
           </div>
         </div>
         <p className="mt-10 text-xs text-papel/70">
-          Cútis Dermatologia é um negócio fictício, conceito de site criado pela Madolio. Os
-          números de recuperação descritos são faixas típicas de literatura dermatológica geral, não
-          garantia de resultado individual.
-        </p>
-        <p className="mt-2 text-xs text-papel/70">
-          feito com <span aria-hidden="true" className="text-derme">♥</span>
+          Cútis Dermatologia é um negócio fictício, conceito de site feito com{' '}
+          <span aria-hidden="true" className="text-derme">♥</span>
           <span className="sr-only">amor</span> por{' '}
           <a
             href="https://madolio.com.br"
@@ -36,6 +32,8 @@ export default function Footer() {
           >
             madolio
           </a>
+          . Os números de recuperação descritos são faixas típicas de literatura dermatológica geral, não
+          garantia de resultado individual.
         </p>
       </div>
     </footer>

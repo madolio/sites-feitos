@@ -35,18 +35,13 @@ export default function Footer() {
         </dl>
 
         <p className="mt-14 text-sm text-gesso/75">
-          O Estúdio Alma é um negócio fictício: este site é um conceito criado pela{' '}
-          <a href="https://madolio.com.br" className="font-medium text-gesso underline underline-offset-4">
+          O Estúdio Alma é um negócio fictício: um conceito feito com{' '}
+          <span aria-hidden="true" className="text-amarela">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-medium text-gesso underline underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-        <p className="mt-3 text-sm text-gesso/75">
-          feito com <span aria-hidden="true" className="text-amarela">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-amarela/50 underline-offset-4">
-            madolio
-          </a>
         </p>
       </div>
     </footer>

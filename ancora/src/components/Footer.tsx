@@ -32,26 +32,19 @@ export default function Footer() {
         </div>
 
         <p className="mt-16 border-t border-line pt-6 text-sm text-indigo/70">
-          A Âncora é uma consultoria fictícia: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="underline decoration-brass/50 underline-offset-4">
-            Madolio
-          </a>
-          . Números e carteiras são ilustrativos, não recomendação de
-          investimento.
-        </p>
-
-        <p className="mt-3 text-sm text-indigo/75">
-          feito com <span aria-hidden="true" className="text-brass">♥</span>
-          <span className="sr-only">amor</span> por{' '}
+          A Âncora é uma consultoria fictícia: um conceito feito com{' '}
+          <span aria-hidden="true" className="text-brass">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
           <a
             href="https://madolio.com.br"
             target="_blank"
             rel="noreferrer"
             className="underline decoration-brass/50 underline-offset-4"
           >
-            madolio
+            Madolio
           </a>
+          . Números e carteiras são ilustrativos, não recomendação de
+          investimento.
         </p>
       </Reveal>
     </footer>

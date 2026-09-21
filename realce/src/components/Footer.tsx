@@ -12,16 +12,8 @@ export default function Footer() {
         <div className="filete-claro my-6" />
 
         <p className="max-w-3xl text-sm text-fumo">
-          Este site é um <strong className="text-branco">conceito de redesenho</strong> criado
-          pela Madolio para o Realce &amp; Cia, salão e escola de cabeleireiros
-          que existe de verdade em São Roque. Não é o site oficial do salão, não
-          é encomendado por eles e os textos descritivos são ilustrativos.
-          Endereço, horário e lista de serviços vieram do material público do
-          próprio salão.
-        </p>
-
-        <p className="mt-6 text-sm text-fumo">
-          feito com{' '}
+          Este site é um <strong className="text-branco">conceito de redesenho</strong> feito
+          com{' '}
           <span aria-hidden="true" className="text-dourado">
             ♥
           </span>
@@ -33,7 +25,12 @@ export default function Footer() {
             className="underline underline-offset-4 transition-colors hover:text-branco"
           >
             madolio
-          </a>
+          </a>{' '}
+          para o Realce &amp; Cia, salão e escola de cabeleireiros
+          que existe de verdade em São Roque. Não é o site oficial do salão, não
+          é encomendado por eles e os textos descritivos são ilustrativos.
+          Endereço, horário e lista de serviços vieram do material público do
+          próprio salão.
         </p>
       </div>
     </footer>

@@ -30,19 +30,13 @@ export default function Footer() {
         </div>
 
         <p className="mt-16 border-t border-line pt-6 text-sm text-ink/70">
-          O Traço é um escritório fictício: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="underline decoration-blueline underline-offset-4">
+          O Traço é um escritório fictício: este site é um conceito feito com{' '}
+          <span aria-hidden="true" className="text-ochre">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-ochre/50 underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-        <p className="mt-3 text-sm text-ink/70">
-          feito com <span aria-hidden="true" className="text-ochre">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-ochre/50 underline-offset-4">
-            madolio
-          </a>
         </p>
       </Reveal>
     </footer>

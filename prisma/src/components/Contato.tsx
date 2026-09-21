@@ -50,6 +50,7 @@ export default function Contato() {
           >
             madolio
           </a>
+          .
         </p>
       </Reveal>
     </section>

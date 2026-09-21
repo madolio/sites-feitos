@@ -40,24 +40,13 @@ export default function Contato() {
         </form>
 
         <p className="mt-10 text-sm text-ink/70">
-          O Cerne é um estúdio fictício: este site é um conceito criado pela{' '}
+          O Cerne é um estúdio fictício: um conceito feito com{' '}
+          <span aria-hidden="true" className="text-pine">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
           <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-
-        <p className="mt-3 text-sm text-ink/70">
-          feito com <span aria-hidden="true" className="text-pine">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a
-            href="https://madolio.com.br"
-            target="_blank"
-            rel="noreferrer"
-            className="underline underline-offset-4 transition-colors hover:text-ink"
-          >
-            madolio
-          </a>
         </p>
       </Reveal>
     </footer>

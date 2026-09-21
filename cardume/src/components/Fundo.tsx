@@ -116,18 +116,13 @@ export default function Fundo() {
           </button>
           <div className="text-xs text-espuma/55">
             <p>
-              Escola fictícia — conceito da{' '}
+              Escola fictícia — um conceito feito com{' '}
+              <span aria-hidden="true" className="text-lanterna">♥</span>
+              <span className="sr-only">amor</span> pela{' '}
               <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-2">
                 Madolio
               </a>
               .
-            </p>
-            <p className="mt-1">
-              feito com <span aria-hidden="true" className="text-lanterna">♥</span>
-              <span className="sr-only">amor</span> por{' '}
-              <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline underline-offset-2">
-                madolio
-              </a>
             </p>
           </div>
         </div>

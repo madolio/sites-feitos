@@ -21,19 +21,18 @@ export default function Footer() {
           </div>
         </div>
         <p className="mt-10 text-xs text-papel/70">
-          Vereda Fisioterapia é um negócio fictício — conceito de site criado pela Madolio.
-        </p>
-        <p className="mt-2 text-xs text-papel/70">
-          feito com <span aria-hidden="true" className="text-trilha">♥</span>
-          <span className="sr-only">amor</span> por{' '}
+          Vereda Fisioterapia é um negócio fictício — conceito de site feito com{' '}
+          <span aria-hidden="true" className="text-trilha">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
           <a
             href="https://madolio.com.br"
             target="_blank"
             rel="noreferrer"
             className="underline decoration-trilha/50 underline-offset-4"
           >
-            madolio
+            Madolio
           </a>
+          .
         </p>
       </div>
     </footer>

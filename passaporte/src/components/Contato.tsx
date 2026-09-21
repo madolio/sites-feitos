@@ -60,15 +60,8 @@ export default function Contato() {
         </form>
 
         <p className="mt-16 border-t border-line pt-6 text-sm text-ink/70">
-          O Passaporte é uma escola fictícia: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
-            Madolio
-          </a>
-          .
-        </p>
-        <p className="mt-2 text-sm text-ink/75">
-          feito com{' '}
+          O Passaporte é uma escola fictícia: este site é um conceito feito
+          com{' '}
           <span aria-hidden="true" className="text-teal">
             ♥
           </span>
@@ -81,6 +74,7 @@ export default function Contato() {
           >
             madolio
           </a>
+          .
         </p>
       </div>
     </footer>

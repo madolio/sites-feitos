@@ -62,24 +62,18 @@ export default function Contato() {
           <span className="font-display font-bold">Confete</span>
         </div>
         <p className="mt-4 text-sm text-carbon/75">
-          A Confete é uma empresa fictícia: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
-            Madolio
-          </a>
-          .
-        </p>
-        <p className="mt-2 text-sm text-carbon/65">
-          feito com <span aria-hidden="true" className="text-ember">♥</span>
-          <span className="sr-only">amor</span> por{' '}
+          A Confete é uma empresa fictícia: um conceito feito com{' '}
+          <span aria-hidden="true" className="text-ember">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
           <a
             href="https://madolio.com.br"
             target="_blank"
             rel="noreferrer"
             className="font-semibold underline underline-offset-4"
           >
-            madolio
+            Madolio
           </a>
+          .
         </p>
       </div>
     </footer>

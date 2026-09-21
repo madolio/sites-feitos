@@ -200,7 +200,9 @@ export default function Painel({ etapa, esmalte, onEsmalte, onEtapa, onQueimar }
         <Etapas etapa={etapa} onVoltar={onEtapa} />
         <div className="mt-4">{conteudo}</div>
         <p className="mt-4 text-xs text-ink/55">
-          Ateliê fictício — conceito criado pela{' '}
+          Ateliê fictício — conceito feito com{' '}
+          <span aria-hidden="true" className="text-glaze">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
           <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-2">
             Madolio
           </a>
@@ -226,13 +228,6 @@ function Medidas({ altura, diametro }: { altura: number; diametro: number }) {
         <p className="font-display text-3xl tabular-nums lg:text-4xl">
           {diametro}
           <span className="text-base"> cm</span>
-        </p>
-        <p className="mt-2 text-xs text-ink/65">
-          feito com <span aria-hidden="true" className="text-glaze">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-glaze/50 underline-offset-4">
-            madolio
-          </a>
         </p>
         <p className="text-xs text-ink/60">de diâmetro</p>
       </div>

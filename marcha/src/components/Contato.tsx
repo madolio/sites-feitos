@@ -39,9 +39,8 @@ export function Contato() {
           </button>
         </form>
 
-        <p className="mt-8 text-xs text-fumo">A Marcha é uma concessionária fictícia, conceito de site criado pela Madolio.</p>
-        <p className="mt-2 text-xs text-fumo">
-          feito com{' '}
+        <p className="mt-8 text-xs text-fumo">
+          A Marcha é uma concessionária fictícia, conceito de site feito com{' '}
           <span aria-hidden="true" className="text-acento">
             ♥
           </span>
@@ -54,6 +53,7 @@ export function Contato() {
           >
             madolio
           </a>
+          .
         </p>
       </Reveal>
     </section>

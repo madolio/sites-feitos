@@ -34,18 +34,13 @@ export default function Footer() {
         </dl>
 
         <p className="mt-14 text-sm text-white/90">
-          A Doce Ateliê é um negócio fictício: este site é um conceito criado pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
+          A Doce Ateliê é um negócio fictício: um conceito feito com{' '}
+          <span aria-hidden="true" className="text-frosting">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-        <p className="mt-3 text-sm text-white/90">
-          feito com <span aria-hidden="true" className="text-frosting">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-white/50 underline-offset-4">
-            madolio
-          </a>
         </p>
       </div>
     </footer>

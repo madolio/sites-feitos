@@ -72,14 +72,7 @@ export default function Agendar() {
           <span className="font-display tracking-wide">Pulso</span>
         </div>
         <p className="mt-4 text-sm text-chalk/85">
-          O Pulso é um negócio fictício: este site é um conceito criado pela{' '}
-          <a href="https://madolio.com.br" className="font-bold underline underline-offset-4">
-            Madolio
-          </a>
-          .
-        </p>
-        <p className="mt-2 text-sm text-chalk/70">
-          feito com{' '}
+          O Pulso é um negócio fictício: este site é um conceito feito com{' '}
           <span aria-hidden="true" className="text-lane">
             ♥
           </span>
@@ -92,6 +85,7 @@ export default function Agendar() {
           >
             madolio
           </a>
+          .
         </p>
       </div>
     </footer>

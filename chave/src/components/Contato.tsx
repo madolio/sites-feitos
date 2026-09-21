@@ -58,19 +58,13 @@ export default function Contato() {
         </form>
 
         <p className="mt-16 border-t border-paper/20 pt-6 text-sm text-paper/75">
-          A Chave é uma imobiliária fictícia: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
+          A Chave é uma imobiliária fictícia: um conceito feito com{' '}
+          <span aria-hidden="true" className="text-steel">♥</span>
+          <span className="sr-only">amor</span> pela{' '}
+          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
             Madolio
           </a>
           .
-        </p>
-        <p className="mt-3 text-sm text-paper/75">
-          feito com <span aria-hidden="true" className="text-steel">♥</span>
-          <span className="sr-only">amor</span> por{' '}
-          <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="underline decoration-paper/50 underline-offset-4">
-            madolio
-          </a>
         </p>
       </div>
     </footer>

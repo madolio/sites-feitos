@@ -64,8 +64,13 @@ export default function Contato() {
       </Reveal>
 
       <p className="mt-8 text-center text-sm text-tinta/50">
-        Meridiana Odontologia é uma clínica fictícia — este é um site-conceito criado
-        pela Madolio.
+        Meridiana Odontologia é uma clínica fictícia — este é um site-conceito feito com{' '}
+        <span aria-hidden="true" className="text-esmalte">♥</span>
+        <span className="sr-only">amor</span> pela{' '}
+        <a href="https://madolio.com.br" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-4">
+          Madolio
+        </a>
+        .
       </p>
     </section>
   )

@@ -75,27 +75,20 @@ export default function Contato() {
           <span className="font-display">Revelar</span>
         </div>
         <p className="mt-4 text-sm text-ink/65">
-          O Revelar é um estúdio fictício: este site é um conceito criado
-          pela{' '}
-          <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
-            Madolio
-          </a>
-          .
-        </p>
-        <p className="mt-2 text-sm text-ink/65">
-          feito com{' '}
+          O Revelar é um estúdio fictício: um conceito feito com{' '}
           <span aria-hidden="true" className="text-amber-ink">
             ♥
           </span>
-          <span className="sr-only">amor</span> por{' '}
+          <span className="sr-only">amor</span> pela{' '}
           <a
             href="https://madolio.com.br"
             target="_blank"
             rel="noreferrer"
-            className="underline underline-offset-4 hover:text-ink"
+            className="font-semibold underline underline-offset-4"
           >
-            madolio
+            Madolio
           </a>
+          .
         </p>
       </div>
     </footer>

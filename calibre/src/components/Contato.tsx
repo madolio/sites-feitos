@@ -53,24 +53,18 @@ export default function Contato() {
         <Reveal className="mt-16 border-t border-line pt-6">
           <span className="font-heading text-lg font-medium text-brass">Calibre</span>
           <p className="mt-2 text-sm text-cream/60">
-            A Calibre é uma relojoaria fictícia: este site é um conceito
-            criado pela{' '}
-            <a href="https://madolio.com.br" className="font-semibold underline underline-offset-4">
-              Madolio
-            </a>
-            .
-          </p>
-          <p className="mt-3 text-sm text-cream/60">
-            feito com <span aria-hidden="true" className="text-brass">♥</span>
-            <span className="sr-only">amor</span> por{' '}
+            A Calibre é uma relojoaria fictícia: um conceito feito com{' '}
+            <span aria-hidden="true" className="text-brass">♥</span>
+            <span className="sr-only">amor</span> pela{' '}
             <a
               href="https://madolio.com.br"
               target="_blank"
               rel="noreferrer"
               className="underline underline-offset-4 transition-colors hover:text-brass"
             >
-              madolio
+              Madolio
             </a>
+            .
           </p>
         </Reveal>
       </div>
