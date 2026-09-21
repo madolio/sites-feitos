@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* Vibe: chaveiro/serralheria × triagem real de urgência (emergência 24h,
+   agendado, sob medida) — não card decorativo, é a mesma categorização que
+   um chaveiro de verdade usa pra decidir quem atende primeiro. Paleta de
+   metal/latão sobre fundo cru, nunca preto+vermelho vívido de oficina de
+   carro (isso é o marcha/torque). */
+@theme {
+  --color-grafite: #24211d; /* grafite quase-preto, fundo escuro e texto principal */
+  --color-limalha: #f2ede3; /* cor de limalha/serragem de metal, fundo claro */
+  --color-limalha-forte: #e6dcc8; /* um tom mais escuro, cartões */
+  --color-linha: #d6c9ac; /* borda sobre o fundo claro */
+  --color-latao: #a67c3d; /* latão de fechadura — acento primário, CTA */
+  --color-latao-hover: #8a6530;
+  --color-emergencia: #b5342a; /* vermelho de urgência — CTA de emergência 24h */
+  --color-emergencia-hover: #97281f;
+  --color-seguro: #4c7a4f; /* verde — serviço agendado/sob controle */
+
+  --font-display: "Zilla Slab", ui-serif, Georgia, serif;
+  --font-body: "Cabin", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Azeret Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-limalha font-body text-grafite antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-latao);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-latao,
+  .btn-emergencia,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-latao {
+    @apply bg-latao text-limalha hover:bg-latao-hover;
+  }
+
+  .btn-emergencia {
+    @apply bg-emergencia text-limalha hover:bg-emergencia-hover;
+  }
+
+  .btn-outline {
+    @apply border border-grafite/30 text-grafite hover:border-grafite;
+  }
+
+  /* Rótulo tipo placa de metal estampada: categoria de serviço, tempo de
+     resposta — sempre mono, sempre dado real, nunca decorativo. */
+  .dado-placa {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+/* Fundo do hero: dentes de chave estilizados em fileira, deslizando devagar
+   como se fosse um molho de chaves visto de perfil. */
+.dentes-deriva {
+  animation: deriva-dentes 26s linear infinite;
+}
+
+@keyframes deriva-dentes {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-120px);
+  }
+}
+
+.cartao-servico {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

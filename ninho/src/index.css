@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Vibe: creche/escolinha infantil × trilha real de marcos de desenvolvimento
+   por faixa etária (a mesma estrutura de bebês/crianças bem pequenas/
+   crianças pequenas usada na Educação Infantil brasileira) — não "criança
+   feliz brincando" de banco de imagem, não bloco de cor primária de
+   parquinho. Paleta quente e acolhedora, mas com neutros considerados +
+   um acento confiante, não o "AI slop" de cores primárias saturadas. */
+@theme {
+  --color-tinta: #2e2620; /* marrom-tinta quase-preto, fundo escuro e texto principal */
+  --color-papel: #faf4e9; /* creme quente, fundo claro */
+  --color-papel-forte: #efe0c8; /* creme mais escuro, cartões */
+  --color-linha: #ddc9a8; /* borda/linha sobre o papel */
+  --color-broto: #6d8a63; /* verde-broto — acento secundário, crescimento/marco */
+  --color-broto-hover: #567350;
+  --color-ninho: #c96f4a; /* argila/terracota — CTA principal, ação */
+  --color-ninho-hover: #a8562f;
+
+  --font-display: "Frank Ruhl Libre", ui-serif, Georgia, serif;
+  --font-body: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Noto Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ninho);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-ninho,
+  .btn-broto,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-ninho {
+    @apply bg-ninho text-papel hover:bg-ninho-hover;
+  }
+
+  .btn-broto {
+    @apply bg-broto text-papel hover:bg-broto-hover;
+  }
+
+  .btn-outline {
+    @apply border border-tinta/30 text-tinta hover:border-tinta;
+  }
+
+  /* Rótulo tipo etiqueta de ficha pedagógica: faixa etária, horário da
+     rotina, proporção adulto-criança — sempre mono, sempre dado real,
+     nunca decorativo. */
+  .dado-ficha {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+/* Fundo do hero: trilha de passos suaves, derivando devagar pra página não
+   parecer morta, sem competir com o texto. */
+.trilha-deriva {
+  animation: deriva-trilha 34s linear infinite;
+}
+
+@keyframes deriva-trilha {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-72px);
+  }
+}
+
+.cartao-marco {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Vibe: banho e tosa (grooming) × guia real de tipo de pelagem — não
+   fichário/prontuário veterinário (isso é o `focinho`), não carimbo de
+   vacina. O mecanismo aqui é puramente sobre pelo: escovação, banho e
+   técnica de tosa mudam de verdade conforme o tipo de pelagem do pet. */
+@theme {
+  --color-tinta: #17332f; /* verde-escuro quase-preto, fundo escuro e texto principal */
+  --color-papel: #f7f2e8; /* creme de toalha de banho, fundo claro */
+  --color-papel-forte: #ede4d1; /* creme mais escuro, cartões */
+  --color-linha: #ddd0b6; /* borda sobre o papel */
+  --color-agua: #2f8f86; /* teal de água de banho — acento secundário */
+  --color-agua-hover: #24746c;
+  --color-pelo: #c9622b; /* terracota (tom de pelo caramelo) — CTA principal, WhatsApp */
+  --color-pelo-hover: #a94f21;
+
+  --font-display: "Zilla Slab", ui-serif, Georgia, serif;
+  --font-body: "Libre Franklin", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Overpass Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-pelo);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-pelo,
+  .btn-agua,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-pelo {
+    @apply bg-pelo text-papel hover:bg-pelo-hover;
+  }
+
+  .btn-agua {
+    @apply bg-agua text-papel hover:bg-agua-hover;
+  }
+
+  .btn-outline {
+    @apply border border-tinta/30 text-tinta hover:border-tinta;
+  }
+
+  /* Rótulo tipo etiqueta de estúdio de tosa: número de etapa, faixa de
+     preço — sempre mono, sempre dado real, nunca decorativo. */
+  .dado-ficha {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+/* Fundo do hero: ondas suaves de água de banho, derivando devagar. */
+.agua-deriva {
+  animation: deriva-agua 22s ease-in-out infinite;
+}
+
+@keyframes deriva-agua {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-24px);
+  }
+}
+
+.cartao-pelagem {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -464,9 +464,49 @@ export const projetos: Projeto[] = [
     category: 'Psicologia clínica',
     tag: 'Saúde & Bem-estar',
     description:
-      'A ficha de registro de pensamento da terapia cognitivo-comportamental vira mecânica interativa real — situação, pensamento automático, emoção e reformulação — em vez de card genérico de bem-estar.',
+      'A ficha de registro de pensamento da terapia cognitivo-comportamental (situação, pensamento automático, emoção, reformulação) vira mecânica interativa real, em vez de card genérico de bem-estar.',
     bg: '#f8f2e9',
     accent: '#b5613f',
     url: 'https://escuta.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Ninho Educação Infantil',
+    category: 'Creche e educação infantil',
+    tag: 'Educação',
+    description:
+      'Uma creche que mostra o marco de desenvolvimento real que cada turma está trabalhando, não só "cuidar até os pais voltarem".',
+    bg: '#2e2620',
+    accent: '#c96f4a',
+    url: 'https://ninho.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Estúdio Pelagem',
+    category: 'Banho e tosa',
+    tag: 'Pets',
+    description:
+      'Banho e tosa que leva o tipo de pelo a sério: escovação, banho e técnica de tosa mudam de verdade entre pelagem curta, dupla, crespa e arame.',
+    bg: '#17332f',
+    accent: '#c9622b',
+    url: 'https://pelagem.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Trinco Chaveiro e Serralheria',
+    category: 'Chaveiro e serralheria',
+    tag: 'Serviços profissionais',
+    description:
+      'Chaveiro que separa emergência de agendamento antes de você ligar, e serralheria que mede antes de cortar o ferro.',
+    bg: '#24211d',
+    accent: '#a67c3d',
+    url: 'https://trinco.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Vazão Encanamentos',
+    category: 'Encanador avulso',
+    tag: 'Casa & Design',
+    description:
+      'Encanador avulso que compara a vazão da sua torneira às faixas reais de cada ponto de uso da casa, pra você saber se é entupimento ou vazamento antes de ligar.',
+    bg: '#10202b',
+    accent: '#1d6fa5',
+    url: 'https://vazao.fenoninho-max.workers.dev',
   },
 ]

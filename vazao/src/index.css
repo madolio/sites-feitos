@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Vibe: encanador avulso × vazão real de ponto hidráulico residencial —
+   cada peça de utilização (chuveiro, torneira, vaso sanitário, máquina de
+   lavar) tem uma faixa de vazão típica documentada, e é isso que o
+   visitante compara pra perceber se o que sai da torneira dele é normal,
+   fraco (indício de entupimento) ou forte demais (indício de vazamento).
+   Nunca notação de P&ID nem painel de instrumentos com manômetro/
+   amperímetro — isso é território do `adriano`. Aqui é o vocabulário
+   direto do encanador de bairro: litro por minuto, cano, registro. */
+@theme {
+  --color-tinta: #10202b; /* azul-ardósia quase-preto — fundo escuro e texto principal */
+  --color-papel: #f3f6f5; /* branco-cano, fundo claro */
+  --color-papel-forte: #e4ebe9; /* um tom mais escuro, cartões */
+  --color-linha: #ccd9d6; /* borda sobre o papel */
+  --color-fluxo: #1d6fa5; /* azul de água corrente — acento primário */
+  --color-fluxo-hover: #155078;
+  --color-emergencia: #c23f1c; /* terracota-vermelho — CTA de vazamento/urgência */
+  --color-emergencia-hover: #9c3216;
+  --color-atencao: #d9a02c; /* âmbar — faixa de atenção no diagnóstico de vazão */
+  --color-vazamento: #a3273a; /* vinho — faixa de vazão suspeita de vazamento */
+
+  --font-display: "Kanit", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Sen", ui-sans-serif, system-ui, sans-serif;
+  --font-dado: "Noto Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-fluxo);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-fluxo,
+  .btn-emergencia,
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+  }
+
+  .btn-fluxo {
+    @apply bg-fluxo text-papel hover:bg-fluxo-hover;
+  }
+
+  .btn-emergencia {
+    @apply bg-emergencia text-papel hover:bg-emergencia-hover;
+  }
+
+  .btn-outline {
+    @apply border border-tinta/30 text-tinta hover:border-tinta;
+  }
+
+  /* Rótulo tipo etiqueta de medição: litro/minuto, diâmetro, tempo — sempre
+     mono, sempre dado real do diagnóstico, nunca decorativo. */
+  .dado-vazao {
+    @apply font-dado text-[0.75rem] tracking-wide uppercase;
+  }
+}
+
+.pinga {
+  animation: pinga-gota 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes pinga-gota {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.5;
+  }
+}
+
+.correnteza {
+  animation: correnteza-desloca 18s linear infinite;
+}
+
+@keyframes correnteza-desloca {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
