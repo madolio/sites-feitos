@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Hero from './components/Hero'
 import Medida from './components/Medida'
 import Processo from './components/Processo'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Contato from './components/Contato'
 import DemoDialog from './components/DemoDialog'
 import { gemas } from './data/gemas'
@@ -16,6 +18,8 @@ export default function App() {
       <Hero gema={gema} peca={peca} onPeca={setPeca} onGema={setGema} />
       <Medida />
       <Processo />
+      <Depoimentos />
+      <Faq />
       <Contato />
       <DemoDialog />
     </div>

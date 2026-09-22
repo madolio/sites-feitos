@@ -38,6 +38,10 @@ Depois da v3 (seleção de pedra também no Hero), a seção "Escolha a gema" ab
 
 **Fix aplicado**: em vez de um `Reveal` com `stagger` envolvendo todos os botões, cada botão agora é seu próprio `<Reveal as="button" delay={i * 0.05}>` (delay manual crescente, sem usar a opção `stagger` do GSAP). Mesmo efeito visual, sem o bug. Se outro projeto do portfólio precisar dar `Reveal`+`stagger` em elementos `<button>` interativos com `transition` do Tailwind, vale testar com Playwright + scroll real antes de confiar — o `fullPage` screenshot sozinho não é suficiente pra pegar isso (só apareceu porque testei com scroll incremental real).
 
+## v5: FAQ + depoimentos (prova social)
+
+Adicionados `Depoimentos.tsx` e `Faq.tsx`, entre `Processo` e `Contato` no `App.tsx` — a página só tinha configurador + calculadora de aro + contato, sem responder dúvidas pré-compra nem mostrar peças anteriores. `Faq.tsx` segue o mesmo padrão de acordeão acessível usado em Razão/Calibre (`<button aria-expanded aria-controls>` + `<div role="region">`, sem `stagger` do GSAP nos botões — ver o bug documentado acima em "Bug real encontrado", o mesmo `Reveal` que quebrou em `Catalogo.tsx` com stagger em botões seria o mesmo risco aqui, então o bloco inteiro de perguntas entra num único `Reveal` sem stagger, como em Razão/Calibre). Seis perguntas: prazo de encomenda, certificação gemológica das pedras (laudo com 4 Cs pra diamante), ajuste de aro, documentação de seguro, estrutura de pagamento (sinal + parcelas) e garantia do engaste/revisão de garras. `Depoimentos.tsx` traz três casos fictícios e específicos (anel de noivado com esmeralda de família reengastada, anel desenhado em vídeochamada, reforma de pulseira de herança) — evita depoimento genérico tipo "atendimento excelente".
+
 ## Referência visual
 
 Paleta: `--color-noite` #100c14, `--color-acento` #b98cff (violeta ametista). Fontes: **Cormorant Garamond** (display) + **Inter** (corpo).

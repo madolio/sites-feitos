@@ -28,3 +28,7 @@ Em vez de mostrar o mecanismo por dentro (3D), a ideia virou literal na direçã
 Paleta: `--color-void` #120d08 (fundo, quase preto mas com calor), `--color-brass` #caa25e (latão — cor de metal de verdade), `--color-steel` #3a5a72 (aço azulado, reservado pro segundeiro do mostrador grande — o mesmo "blued steel" que relojoaria fina usa em ponteiros e parafusos). Fontes: **Cormorant Garamond** (títulos) + **Sora** (interface).
 
 **Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo):** depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.
+
+## FAQ e depoimentos (adição pura)
+
+`Faq.tsx` (seção `#duvidas`) e `Depoimentos.tsx` (seção `#depoimentos`) foram adicionados entre `Processo` e `Contato`, sem tocar em Hero, `RelogioNav`/mostrador ou nos tokens de `index.css`. Reaproveitam o mesmo padrão dos irmãos do repo (ex.: Razão): acordeão acessível (`button[aria-expanded][aria-controls]` + `div[role="region"]`, operável por teclado, sem animação de abertura que dependa de `prefers-reduced-motion`) e cards de depoimento com nome + inicial do sobrenome. Seis perguntas cobrem revisão/manutenção, garantia, encomenda sob medida, prazo, tipos de movimento e política de troca. Três depoimentos fictícios (Marcelo A., Beatriz N., Thiago R.), cada um amarrado a um caso concreto (casamento, herança de família, cronógrafo sob medida).

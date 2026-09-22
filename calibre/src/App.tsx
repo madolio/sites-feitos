@@ -1,6 +1,8 @@
 import Catalogo from './components/Catalogo'
 import Contato from './components/Contato'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
 import Processo from './components/Processo'
@@ -13,6 +15,8 @@ export default function App() {
         <Hero />
         <Catalogo />
         <Processo />
+        <Depoimentos />
+        <Faq />
         <Contato />
       </main>
       <DemoDialog />

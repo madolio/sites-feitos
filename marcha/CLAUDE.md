@@ -25,3 +25,7 @@ As 7 fotos em `public/carros/` são reais (Unsplash, licença livre pra reuso), 
 ## Referência visual
 
 Paleta: `--color-preto` #0b0b0c, `--color-acento` #ff3b30 (vermelho, validada ~5,5:1 sobre preto — acima do mínimo AA). Fontes: **Space Grotesk** (títulos) + **Inter** (corpo) + **IBM Plex Mono** (rótulos técnicos). `CampoNumero.tsx` (mesmo padrão de Lúmen/Ferro/Taça) no lugar das setinhas nativas de input number.
+
+## FAQ e depoimentos
+
+`Faq.tsx` e `Depoimentos.tsx` seguem o padrão já usado em outros sites do monorepo (ver `razao/src/components/Faq.tsx` e `Depoimentos.tsx`), adaptado à paleta do Marcha (`bg-carvao`/`border-fio`/`text-acento` em vez das classes de papel/selo do Razão). O acordeão do FAQ é acessível: `<button aria-expanded aria-controls>` controlando uma `<div role="region">`, navegável por teclado, e o giro do ícone "+" respeita `prefers-reduced-motion` via `motion-reduce:transition-none`. As 6 perguntas cobrem os pontos reais de dúvida de pré-compra (troca de usado, vistoria independente, o que está incluso no preço, política de test-drive, garantia de usado/certificado, processo de aprovação do financiamento). Os 3 depoimentos são fictícios (nome + inicial do sobrenome), com detalhes específicos em vez de elogio genérico. Ambas as seções entram entre `Processo` e `Contato` em `App.tsx`.

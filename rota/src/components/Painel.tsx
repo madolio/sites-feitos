@@ -1,4 +1,6 @@
 import { sendToWhatsApp } from '../demo'
+import Depoimentos from './Depoimentos'
+import Faq from './Faq'
 import MapaRotas from './MapaRotas'
 import Reveal from './Reveal'
 import StatGrid from './StatGrid'
@@ -42,6 +44,10 @@ export default function Painel() {
       <Reveal className="mt-4">
         <TabelaEntregas />
       </Reveal>
+
+      <Faq />
+
+      <Depoimentos />
 
       <p className="mt-8 text-center text-sm text-ink/45">
         A Rota é um software fictício: um conceito feito com{' '}

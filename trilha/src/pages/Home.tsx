@@ -2,6 +2,8 @@ import Hero from '../components/Hero'
 import Reveal from '../components/Reveal'
 import TrilhaMapa from '../components/TrilhaMapa'
 import Especialidades from '../components/Especialidades'
+import Depoimentos from '../components/Depoimentos'
+import Faq from '../components/Faq'
 import Contato from '../components/Contato'
 
 export default function Home() {
@@ -31,6 +33,8 @@ export default function Home() {
       </section>
 
       <Especialidades />
+      <Depoimentos />
+      <Faq />
       <Contato />
     </>
   )

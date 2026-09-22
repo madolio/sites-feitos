@@ -116,6 +116,26 @@ três foram conferidas contra todo `family=` usado em `*/index.html` do
 repositório (Fraunces, Albert Sans e Fira Code não apareciam em nenhum
 outro projeto) e o trio como combinação também é inédito.
 
+## Depoimentos e dúvidas frequentes
+
+`Depoimentos.tsx` e `Faq.tsx`, adicionados depois do lançamento inicial,
+entram na composição entre `Encomendas` e `Contato`. Nenhum dos dois toca
+`Hero.tsx`, o wildcard de síntese de corda ou os tokens de cor/fonte de
+`index.css` — reaproveitam `rotulo-mono`, `font-display` e a paleta
+grafite/osso/fósforo/cobre já existentes.
+
+`Depoimentos.tsx` traz três depoimentos fictícios (nome + inicial do
+sobrenome) amarrados a serviços reais descritos no site (regulagem de
+ação/oitavação, restauro de leque harmônico, encomenda com escolha de
+madeira por amostra tocada), no registro de instrumentação de laboratório
+em vez de elogio genérico.
+
+`Faq.tsx` é um acordeão acessível (`aria-expanded` + `aria-controls` no
+botão, `role="region"` no painel, operável por teclado, sem depender de
+JS de terceiros) com 6 perguntas de pré-venda: prazo de construção, escolha
+de madeira, prazo de reparo vs. instrumento novo, regulagem de ação/afinação
+em instrumento de fora, garantia de instrumento novo e restauro de vintage.
+
 ## Decisões
 
 - Owner fictício: **Otávio Kessler**, luteria em São Bento do Sul/SC — polo

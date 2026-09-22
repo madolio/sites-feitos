@@ -49,6 +49,14 @@ Este era um dos projetos mais antigos do portfólio, agrupado (junto com Doce At
 
 Não mexido de propósito: `Varal.tsx` (nav/wildcard, com o fix de scroll-spy de fim de página de 17/set intacto), `RisoBurger.tsx` (já tinha craft — animação de registro entrando em camadas + parallax de mouse), `StickerPeel.tsx`, paleta e tipografia (Bungee/Barlow, as três tintas de risografia).
 
+## Dúvidas e Depoimentos (set/2026) — adição pura
+
+Duas seções novas entre `Onde` e `Footer`, no mesmo padrão de outros irmãos do repositório (`razao/src/components/Faq.tsx`/`Depoimentos.tsx`), mas adaptadas ao próprio registro do site (título `poster`/`riso-type`, `Reveal`, borda azul de 6px separando seções):
+
+- `Faq.tsx` (`#duvidas`): acordeão acessível com 6 perguntas de pré-compra (raio/tempo de entrega, troca de ingrediente, opção vegetariana, pedido mínimo, formas de pagamento, encomenda pra evento). Cada item é `<button aria-expanded aria-controls>` + `<div role="region">`, operável por teclado, com o "+" girando 45° ao abrir (`motion-reduce:transition-none` desliga a transição).
+- `Depoimentos.tsx` (`#depoimentos`): 3 depoimentos fictícios (nome + inicial do sobrenome), cada um citando um item real do cardápio. Usa `.picote` (a borda picotada que já existia pro bloco de comanda) em vez de inventar um novo estilo de card.
+- Nenhuma das duas entrou no varal (`Varal.tsx` não foi tocado) — dá pra chegar nelas só rolando a página, entre "Onde e horário" e o rodapé.
+
 ## Gotchas
 
 - TypeScript reclama de comparar `string !== false` porque o filter encadeado misturava tipos — a linha de observação (`obs.trim() && ...`) some do array sem cast; resolvido filtrando só por `l !== false` já tipado como união.

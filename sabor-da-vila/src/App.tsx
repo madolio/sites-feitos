@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import Cardapio from './components/Cardapio'
 import Comanda from './components/Comanda'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Grain from './components/Grain'
 import Hero from './components/Hero'
@@ -43,6 +45,8 @@ export default function App() {
         <Hero />
         <Cardapio qty={qty} change={change} />
         <Onde />
+        <Depoimentos />
+        <Faq />
       </main>
       <Footer />
       <Comanda qty={qty} change={change} clear={clear} />

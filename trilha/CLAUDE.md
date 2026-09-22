@@ -96,6 +96,27 @@ mensagem a partir da especialidade escolhida num `<select>` + nome
 opcional, então o texto que aparece no modal de demonstração já reflete o
 agendamento real que a pessoa montou.
 
+## Depoimentos e dúvidas frequentes
+
+`Depoimentos.tsx` e `Faq.tsx`, inseridos entre `Especialidades` e `Contato`
+em `Home.tsx`. Pura adição — Hero, `TrilhaMapa.tsx` e os tokens de
+`index.css` não foram tocados.
+
+- `Depoimentos.tsx`: 3 relatos fictícios (nome + inicial do sobrenome),
+  cada um amarrado a uma fase específica já existente em `data/fases.ts`
+  (controle da dor, amplitude de movimento, retorno funcional) em vez de
+  elogio genérico — reaproveita o registro de "marco" de trilha no selo do
+  card.
+- `Faq.tsx`: acordeão acessível (mesmo padrão de `razao/src/components/
+  Faq.tsx`) com 6 perguntas pré-venda de fisioterapia (encaminhamento
+  médico, número de sessões, convênio vs. particular, o que levar na
+  primeira sessão, atendimento domiciliar, expectativa de dor durante a
+  sessão). `<button aria-expanded aria-controls>` + `<div role="region">`,
+  operável por teclado, sem animação de abertura amarrada a
+  `prefers-reduced-motion` (é `hidden`/visível direto, sem transição de
+  altura). Linguagem clinicamente responsável: sessões e fases continuam
+  citadas como referência geral, nunca como prescrição.
+
 ## SEO
 
 `index.html` tem meta description, canonical, Open Graph e Twitter card

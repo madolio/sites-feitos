@@ -54,6 +54,10 @@ Conferido com `grep -rh -- '--color-' */src/index.css` contra os ~33 projetos ir
 
 **Newsreader** (display serial, usado em títulos — registro editorial/clínico, não script decorativo) + **Figtree** (corpo, sans neutro e legível) + **Overpass Mono** (`--font-dado`, só pra dado clínico real: dia, camada, protocolo, duração — nunca decorativo). Conferido com `grep -rhoE "family=[A-Za-z0-9+]+" */index.html` contra todos os irmãos: nenhuma das três fontes aparece em nenhum outro projeto do repositório, então o trio como combinação também é inédito.
 
+## FAQ e depoimentos
+
+`Faq.tsx` (`#duvidas`) e `Depoimentos.tsx` (`#depoimentos`), inseridos em `Home.tsx` depois de `Metodo` e antes de `Contato`. Acordeão acessível: `<button aria-expanded aria-controls>` + `<div role="region">`, operável por teclado, sem animação (`Reveal` já respeita `prefers-reduced-motion`). As 6 perguntas do FAQ cobrem as dúvidas reais de pré-compra do nicho (indicação médica, afastamento/downtime, número de sessões, consulta prévia obrigatória, forma de pagamento/convênio, idade mínima), sem prometer resultado específico nem substituir avaliação clínica. Os 3 depoimentos (`Depoimentos.tsx`) são fictícios, nome + inicial do sobrenome, cada um amarrado a um procedimento e marco real da linha do tempo de recuperação já documentada em `data/procedimentos.ts` (casquinha do peeling médio no dia 3, vermelhidão do microagulhamento no dia 1, atraso de efeito da toxina), pra manter o mesmo registro clínico-documentado do resto do site em vez de elogio genérico. Estilizados só com os tokens já existentes (`clinico`, `derme`, `noturno`, `papel`, `linha`, `dado-clinico`), sem mexer em `index.css`.
+
 ## Decisões
 
 - Owner fictícia: **Dra. Marina Petrucci**, dermatologista, CRM-PR 34981 · RQE 28104, formada pela UFPR, consultório próprio em Curitiba há 11 anos. Curitiba escolhida por ser polo real relevante de dermatologia clínica no Sul do Brasil, sem repetir a cidade de nenhum projeto irmão já lido.
