@@ -2,6 +2,7 @@ import Hero from '../components/Hero'
 import Especialidades from '../components/Especialidades'
 import RegistroPensamento from '../components/RegistroPensamento'
 import Credenciais from '../components/Credenciais'
+import Ambiente from '../components/Ambiente'
 import OnlinePresencial from '../components/OnlinePresencial'
 import Depoimentos from '../components/Depoimentos'
 import Faq from '../components/Faq'
@@ -14,6 +15,7 @@ export default function Home() {
       <Especialidades />
       <RegistroPensamento />
       <Credenciais />
+      <Ambiente />
       <OnlinePresencial />
       <Depoimentos />
       <Faq />
