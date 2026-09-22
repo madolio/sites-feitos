@@ -5,14 +5,14 @@
    consultório) — não mapa, não calendário, não cartão decorativo. Paleta
    calma e quente, nunca azul/branco clínico genérico. */
 @theme {
-  --color-tinta: #2b2320; /* marrom-tinta quase-preto, fundo escuro e texto principal */
-  --color-papel: #f8f2e9; /* papel de ficha clínica, fundo claro */
-  --color-papel-forte: #efe3d3; /* papel um tom mais escuro, cartões */
-  --color-linha: #e3d4b8; /* borda/linha sobre o papel */
-  --color-quieto: #7c9a92; /* verde-salva calmo — acento secundário, "emoção" */
-  --color-quieto-hover: #648078;
-  --color-acolhe: #b5613f; /* terracota argila — CTA principal, "ação"/WhatsApp */
-  --color-acolhe-hover: #984e30;
+  --color-tinta: #1d2b29; /* petróleo quase-preto — mais frio que o marrom-tinta genérico dos outros */
+  --color-papel: #eef3f0; /* verde-salva pálido, fundo claro FRIO (não creme amarelado como os outros 5) */
+  --color-papel-forte: #dfe8e2; /* um tom mais escuro, cartões */
+  --color-linha: #cbd8d1; /* borda/linha fria sobre o papel */
+  --color-quieto: #4d7369; /* verde-salva calmo — acento secundário, "emoção" (ajustado p/ contraste AA em botão) */
+  --color-quieto-hover: #3d5c54;
+  --color-acolhe: #5f4870; /* lavanda-ameixa — CTA principal (era terracota, cor repetida em 4 dos 6 primeiros; ajustado p/ contraste AA) */
+  --color-acolhe-hover: #4b3959;
 
   --font-display: "Lora", ui-serif, Georgia, serif;
   --font-body: "Epilogue", ui-sans-serif, system-ui, sans-serif;

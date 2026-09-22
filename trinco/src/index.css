@@ -7,11 +7,11 @@
    carro (isso é o marcha/torque). */
 @theme {
   --color-grafite: #24211d; /* grafite quase-preto, fundo escuro e texto principal */
-  --color-limalha: #f2ede3; /* cor de limalha/serragem de metal, fundo claro */
-  --color-limalha-forte: #e6dcc8; /* um tom mais escuro, cartões */
-  --color-linha: #d6c9ac; /* borda sobre o fundo claro */
-  --color-latao: #a67c3d; /* latão de fechadura — acento primário, CTA */
-  --color-latao-hover: #8a6530;
+  --color-limalha: #e7e4dd; /* cinza-pedra neutro (quase sem matiz) — limalha de metal real, não creme quente dos outros */
+  --color-limalha-forte: #d9d4c8; /* um tom mais escuro, cartões */
+  --color-linha: #c7c0ac; /* borda sobre o fundo claro */
+  --color-latao: #7a5829; /* latão de fechadura — acento primário, CTA (ajustado p/ contraste AA em botão) */
+  --color-latao-hover: #614421;
   --color-emergencia: #b5342a; /* vermelho de urgência — CTA de emergência 24h */
   --color-emergencia-hover: #97281f;
   --color-seguro: #4c7a4f; /* verde — serviço agendado/sob controle */

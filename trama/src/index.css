@@ -7,15 +7,15 @@
    sob medida ou de luxo dos vizinhos de categoria (encaixe, calibre,
    prisma) — aqui é pronta-entrega, preço acessível, do dia a dia. */
 @theme {
-  --color-cru: #f7f1e6; /* fundo claro, cor de tecido cru/algodão não branqueado */
+  --color-cru: #ece6da; /* pedra clara neutra (não amarela) — papel de catálogo, distinto do creme quente dos outros 5 */
   --color-carvao: #262220; /* texto principal, quase-preto quente */
   --color-jeans: #3e5c74; /* azul jeans — acento primário */
   --color-jeans-hover: #33495d;
-  --color-ferrugem: #b5502f; /* terracota/ferrugem — CTA */
-  --color-ferrugem-hover: #9a4127;
+  --color-ferrugem: #7a2635; /* vinho/burgundy — CTA (era terracota, cor repetida em 4 dos 6 primeiros) */
+  --color-ferrugem-hover: #611d29;
   --color-mostarda: #c99a3e; /* mostarda — acento secundário, dado de tecido */
-  --color-linha: #ddd0ba; /* borda/linha sobre o cru */
-  --color-cartao: #efe6d3; /* cartão sobre o fundo cru */
+  --color-linha: #d6cdba; /* borda/linha sobre o cru */
+  --color-cartao: #e2dbca; /* cartão sobre o fundo cru */
 
   --font-display: "Bitter", ui-serif, Georgia, serif;
   --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
@@ -93,10 +93,10 @@
 @keyframes pulso-simbolo {
   0%,
   100% {
-    filter: drop-shadow(0 0 0 rgba(181, 80, 47, 0));
+    filter: drop-shadow(0 0 0 rgba(122, 38, 53, 0));
   }
   50% {
-    filter: drop-shadow(0 0 6px rgba(181, 80, 47, 0.55));
+    filter: drop-shadow(0 0 6px rgba(122, 38, 53, 0.55));
   }
 }
 

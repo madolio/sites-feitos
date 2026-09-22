@@ -7,14 +7,14 @@
    parquinho. Paleta quente e acolhedora, mas com neutros considerados +
    um acento confiante, não o "AI slop" de cores primárias saturadas. */
 @theme {
-  --color-tinta: #2e2620; /* marrom-tinta quase-preto, fundo escuro e texto principal */
-  --color-papel: #faf4e9; /* creme quente, fundo claro */
-  --color-papel-forte: #efe0c8; /* creme mais escuro, cartões */
-  --color-linha: #ddc9a8; /* borda/linha sobre o papel */
-  --color-broto: #6d8a63; /* verde-broto — acento secundário, crescimento/marco */
-  --color-broto-hover: #567350;
-  --color-ninho: #c96f4a; /* argila/terracota — CTA principal, ação */
-  --color-ninho-hover: #a8562f;
+  --color-tinta: #33261d; /* marrom-cacau quase-preto, fundo escuro e texto principal */
+  --color-papel: #fbeee1; /* pêssego claro — fundo claro com undertone laranja, distinto do creme amarelado dos outros */
+  --color-papel-forte: #f4dbc2; /* pêssego mais escuro, cartões */
+  --color-linha: #e8c7a2; /* borda/linha sobre o papel */
+  --color-broto: #4f6e46; /* verde-broto — acento secundário, crescimento/marco (ajustado p/ contraste AA em botão) */
+  --color-broto-hover: #3e5737;
+  --color-ninho: #b8460f; /* laranja-coral vivo — CTA principal (era terracota apagada, agora mais saturado/lúdico; ajustado p/ contraste AA) */
+  --color-ninho-hover: #953a0c;
 
   --font-display: "Frank Ruhl Libre", ui-serif, Georgia, serif;
   --font-body: "Onest", ui-sans-serif, system-ui, sans-serif;

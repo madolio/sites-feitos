@@ -5,14 +5,14 @@
    vacina. O mecanismo aqui é puramente sobre pelo: escovação, banho e
    técnica de tosa mudam de verdade conforme o tipo de pelagem do pet. */
 @theme {
-  --color-tinta: #17332f; /* verde-escuro quase-preto, fundo escuro e texto principal */
-  --color-papel: #f7f2e8; /* creme de toalha de banho, fundo claro */
-  --color-papel-forte: #ede4d1; /* creme mais escuro, cartões */
-  --color-linha: #ddd0b6; /* borda sobre o papel */
-  --color-agua: #2f8f86; /* teal de água de banho — acento secundário */
-  --color-agua-hover: #24746c;
-  --color-pelo: #c9622b; /* terracota (tom de pelo caramelo) — CTA principal, WhatsApp */
-  --color-pelo-hover: #a94f21;
+  --color-tinta: #12292e; /* azul-petróleo quase-preto, fundo escuro e texto principal */
+  --color-papel: #e9f4f2; /* água-marinha pálido, fundo claro FRIO — espuma de banho, não creme de toalha */
+  --color-papel-forte: #d7ece8; /* um tom mais escuro, cartões */
+  --color-linha: #c2ddd6; /* borda fria sobre o papel */
+  --color-agua: #106861; /* teal de água de banho — acento primário (ajustado p/ contraste AA em botão) */
+  --color-agua-hover: #0c4f4a;
+  --color-pelo: #ad2f68; /* pink vibrante — CTA principal (era terracota, agora energia lúdica de pet-groom; ajustado p/ contraste AA) */
+  --color-pelo-hover: #8c2454;
 
   --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
   --font-body: "Libre Franklin", ui-sans-serif, system-ui, sans-serif;
