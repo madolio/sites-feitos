@@ -79,7 +79,6 @@ export const projetos: Projeto[] = [
     bg: '#ede2c8',
     accent: '#a8672a',
     url: 'https://site-template.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Torre',
@@ -190,7 +189,6 @@ export const projetos: Projeto[] = [
     bg: '#FAF7F2',
     accent: '#2F4A3E',
     url: 'https://cerne.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Tinta',
@@ -221,7 +219,6 @@ export const projetos: Projeto[] = [
     bg: '#F2F3F5',
     accent: '#5B4FE0',
     url: 'https://rota.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Torno',
@@ -232,7 +229,6 @@ export const projetos: Projeto[] = [
     bg: '#E8E4DD',
     accent: '#1F3C88',
     url: 'https://torno.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/torno',
   },
   {
@@ -244,7 +240,6 @@ export const projetos: Projeto[] = [
     bg: '#04121F',
     accent: '#FFE2A1',
     url: 'https://cardume.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/cardume',
   },
   {
@@ -256,7 +251,6 @@ export const projetos: Projeto[] = [
     bg: '#EFE8D8',
     accent: '#34586C',
     url: 'https://encaixe.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/encaixe',
   },
   {
@@ -268,7 +262,6 @@ export const projetos: Projeto[] = [
     bg: '#120D08',
     accent: '#CAA25E',
     url: 'https://calibre.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/calibre',
   },
   {
@@ -280,7 +273,6 @@ export const projetos: Projeto[] = [
     bg: '#241832',
     accent: '#7A1030',
     url: 'https://taca.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/taca',
   },
   {
@@ -302,7 +294,6 @@ export const projetos: Projeto[] = [
     bg: '#000000',
     accent: '#c59d5f',
     url: 'https://realce.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/realce',
   },
   {
@@ -324,7 +315,6 @@ export const projetos: Projeto[] = [
     bg: '#0a0908',
     accent: '#ffb46b',
     url: 'https://lumen.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/lumen',
   },
   {
@@ -336,7 +326,6 @@ export const projetos: Projeto[] = [
     bg: '#100c14',
     accent: '#b98cff',
     url: 'https://prisma.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/prisma',
   },
   {
@@ -348,7 +337,6 @@ export const projetos: Projeto[] = [
     bg: '#0b0b0c',
     accent: '#ff3b30',
     url: 'https://marcha.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/marcha',
   },
   {
@@ -360,7 +348,6 @@ export const projetos: Projeto[] = [
     bg: '#06120f',
     accent: '#3fae82',
     url: 'https://bruma.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/bruma',
   },
   {
@@ -372,7 +359,6 @@ export const projetos: Projeto[] = [
     bg: '#f3efe1',
     accent: '#4c7a3f',
     url: 'https://estufa.fenoninho-max.workers.dev',
-    destaque: true,
     estudoDeCaso: '/projetos/estufa',
   },
   {
@@ -384,7 +370,6 @@ export const projetos: Projeto[] = [
     bg: '#12191c',
     accent: '#5ffbc0',
     url: 'https://luthier.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Cútis Dermatologia',
@@ -395,7 +380,6 @@ export const projetos: Projeto[] = [
     bg: '#f7f4ee',
     accent: '#2c6e6a',
     url: 'https://derme.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Meridiana Odontologia',
@@ -406,7 +390,6 @@ export const projetos: Projeto[] = [
     bg: '#f6f0e0',
     accent: '#dd5f45',
     url: 'https://arcada.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Vereda Fisioterapia',
@@ -417,7 +400,6 @@ export const projetos: Projeto[] = [
     bg: '#f2ecdb',
     accent: '#c2703f',
     url: 'https://trilha.fenoninho-max.workers.dev',
-    destaque: true,
   },
   {
     name: 'Torque Auto Mecânica',
@@ -428,6 +410,7 @@ export const projetos: Projeto[] = [
     bg: '#ece7dc',
     accent: '#e8551f',
     url: 'https://torque.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Renata Bastos Nail Studio',
@@ -438,6 +421,7 @@ export const projetos: Projeto[] = [
     bg: '#241220',
     accent: '#ff6f91',
     url: 'https://esmalte.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Razão Contábil',
@@ -448,6 +432,7 @@ export const projetos: Projeto[] = [
     bg: '#f4ecd8',
     accent: '#24466b',
     url: 'https://razao.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Trama',
@@ -458,6 +443,7 @@ export const projetos: Projeto[] = [
     bg: '#f7f1e6',
     accent: '#b5502f',
     url: 'https://trama.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Escuta Psicologia',
@@ -468,6 +454,7 @@ export const projetos: Projeto[] = [
     bg: '#f8f2e9',
     accent: '#b5613f',
     url: 'https://escuta.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Ninho Educação Infantil',
@@ -478,6 +465,7 @@ export const projetos: Projeto[] = [
     bg: '#2e2620',
     accent: '#c96f4a',
     url: 'https://ninho.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Estúdio Pelagem',
@@ -488,6 +476,7 @@ export const projetos: Projeto[] = [
     bg: '#17332f',
     accent: '#c9622b',
     url: 'https://pelagem.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Trinco Chaveiro e Serralheria',
@@ -498,6 +487,7 @@ export const projetos: Projeto[] = [
     bg: '#24211d',
     accent: '#a67c3d',
     url: 'https://trinco.fenoninho-max.workers.dev',
+    destaque: true,
   },
   {
     name: 'Vazão Encanamentos',
@@ -508,5 +498,6 @@ export const projetos: Projeto[] = [
     bg: '#10202b',
     accent: '#1d6fa5',
     url: 'https://vazao.fenoninho-max.workers.dev',
+    destaque: true,
   },
 ]

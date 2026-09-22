@@ -62,7 +62,7 @@ export default function Trabalhos() {
                     onFocus={() => setActive(i)}
                     onClick={() => setActive(i)}
                     aria-expanded={active === i}
-                    className="group flex w-full flex-col gap-1 py-5 text-left sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                    className="group flex w-full flex-col gap-1 py-3 text-left sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
                   >
                     <span className="flex items-baseline gap-2.5">
                       <span className="text-xl font-semibold text-white transition-colors group-hover:text-accent-hero">
