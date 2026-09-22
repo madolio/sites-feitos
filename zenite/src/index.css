@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* Noite da Serra da Mantiqueira — não é preto absoluto, é o índigo-quase-preto
+     do céu real numa noite sem lua, visto a olho nu depois de ~20min de adaptação
+     escotópica. Acento não é neon: é o verde-fósforo P1 específico das oculares
+     antigas de retículo iluminado (dim, dessaturado), somado ao latão real de
+     tubo de telescópio e a um âmbar de vela de acampamento — nunca azul-espacial
+     genérico nem terracota. */
+  --color-noturno: #0a0f1c;
+  --color-cupula: #131c2e;
+  --color-cupula-alta: #1b2740;
+  --color-latao: #b28a4a;
+  --color-latao-fundo: #7d5f30;
+  --color-marfim: #f0e9da;
+  --color-neblina: #8b93a8;
+  --color-fosforo: #7fd9a0;
+  --color-vela: #e0954a;
+
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-noturno font-body text-marfim antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-fosforo);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-fosforo {
+    @apply inline-flex items-center justify-center rounded-full bg-fosforo px-6 py-3 font-semibold text-noturno transition hover:brightness-110;
+  }
+  .btn-contorno {
+    @apply inline-flex items-center justify-center rounded-full border border-latao-fundo px-6 py-3 font-semibold text-marfim transition hover:border-latao hover:text-latao;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

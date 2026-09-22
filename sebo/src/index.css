@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Vibe "Orelha" — a orelha (dobra) de página de um livro usado é o objeto
+   central: cada exemplar de sebo carrega o próprio manuseio (dobras, grifos,
+   dedicatórias). Fundo é o pano de capa de livro antigo (verde-garrafa
+   escuro, não preto neutro nem creme-clichê), páginas/fichas em papel
+   envelhecido, carimbo oxblood como único acento quente. Ver CLAUDE.md. */
+@theme {
+  --color-pano: #17241b;
+  --color-pano-2: #1e2f23;
+  --color-pagina: #f1e7ce;
+  --color-pagina-2: #e8dabc;
+  --color-tinta: #2a1d12;
+  --color-creme: #ece2c8;
+  /* --color-grafite funciona pra texto secundário sobre --pano (~5.3:1) e
+     sobre --pagina (~4.6:1). Não usar mais claro que isso pra texto. */
+  --color-grafite: #9fae9e;
+  --color-grafite-escuro: #4b5a4c;
+  --color-carimbo: #c1432e;
+  /* --color-carimbo cai pra ~3:1 sobre --pano — seguro só como preenchimento
+     grande/ilustração, nunca como texto pequeno sobre pano. Sobre --pagina
+     dá ~4.9:1, ok pra texto. */
+
+  --font-display: "Piazzolla", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mao: "Caveat", cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-pano font-body text-creme antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-carimbo);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .btn-carimbo {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-carimbo px-7 py-3.5 font-semibold text-creme transition-transform hover:-translate-y-0.5;
+  }
+
+  .btn-contorno {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-creme/25 px-6 py-3 font-semibold text-creme transition-colors hover:border-creme/60;
+  }
+
+  .btn-tinta {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-tinta px-6 py-3 font-semibold text-pagina transition-opacity hover:opacity-85;
+  }
+
+  .rotulo-mao {
+    font-family: var(--font-mao);
+    @apply text-2xl leading-none text-carimbo;
+  }
+
+  .ficha {
+    @apply border border-tinta/15 bg-pagina text-tinta shadow-[3px_4px_0_0_rgba(0,0,0,0.18)];
+  }
+}
+
+/* Textura sutil de papel nas fichas — grão leve via ruído gerado em SVG
+   inline, não imagem baixada. */
+.textura-papel {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Carimbo de preço: leve rotação e borda irregular via border-radius
+   assimétrico, imitando carimbo de borracha batido à mão. */
+.carimbo-preco {
+  border-radius: 48% 52% 51% 49% / 53% 47% 53% 47%;
+  border: 2px solid currentColor;
+}
+
+/* Orelha.tsx — dobras de página fixas na borda, ver componente. */
+.orelha-dobra {
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  transition:
+    transform 0.25s ease,
+    width 0.25s ease,
+    height 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

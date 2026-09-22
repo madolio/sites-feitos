@@ -314,6 +314,15 @@ export const projetos: Projeto[] = [
     keywords: ['vinho', 'vinícola', 'bebida'],
   },
   {
+    name: 'Sebo Marginália',
+    category: 'Livraria/sebo de livros usados',
+    description:
+      'A navegação é uma fileira de orelhas de página dobradas na borda da tela, e cada livro do acervo traz sua própria nota de margem — grifo, dedicatória, mancha de café — em vez de um genérico "bom estado".',
+    bg: '#17241b',
+    accent: '#c1432e',
+    url: 'https://sebo.fenoninho-max.workers.dev',
+  },
+  {
     name: 'Ferro',
     category: 'Academia old school',
     tag: 'Saúde & Bem-estar',
@@ -558,5 +567,23 @@ export const projetos: Projeto[] = [
     url: 'https://vazao.fenoninho-max.workers.dev',
     destaque: true,
     keywords: ['encanador', 'hidráulica', 'vazamento', 'água', 'casa'],
+  },
+  {
+    name: 'Banca',
+    category: 'Floricultura',
+    description:
+      'A navegação é a própria fileira de baldes de uma banca de feira: cada um guarda uma flor, com o nível de água enchendo quando a seção está em foco. O catálogo vira etiqueta de preço com a receita completa do buquê, não um card de loja.',
+    bg: '#edefe7',
+    accent: '#f0a93a',
+    url: 'https://banca.fenoninho-max.workers.dev',
+  },
+  {
+    name: 'Zênite',
+    category: 'Observatório e turismo astronômico',
+    description:
+      'A ocular do telescópio virou moldura de scroll: role a página como quem gira a roda de foco e veja os anéis de Saturno saírem do desfoque até a nitidez, com o dado real de distância e diâmetro. O catálogo de sessões traz data verificável de chuva de meteoros, não nome bonito solto.',
+    bg: '#0a0f1c',
+    accent: '#7fd9a0',
+    url: 'https://zenite.fenoninho-max.workers.dev',
   },
 ]
