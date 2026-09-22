@@ -25,8 +25,10 @@ export type Projeto = {
   url?: string
   /**
    * Recorte curado dos nichos com maior potencial comercial (leads locais,
-   * oferta clara, alta demanda) — usado tanto pra lista da home
-   * (Trabalhos.tsx) quanto pra seção "Mais fáceis de vender" em /projetos.
+   * oferta clara, alta demanda) — decisão interna de priorização, invisível
+   * pro visitante. Usado pra curar a lista da home (Trabalhos.tsx) e, em
+   * /projetos, pra puxar esses projetos pro início da listagem quando o
+   * visitante está só explorando (sem busca/filtro ativo).
    */
   destaque?: boolean
   /** Rota interna pra página de "making of" deste projeto, quando existe uma. */

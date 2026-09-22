@@ -16,23 +16,19 @@ export default function Projetos() {
   const [busca, setBusca] = useState('')
   const [tagAtiva, setTagAtiva] = useState<Tag | null>(null)
 
-  // Sem busca nem filtro de tag, o visitante está só explorando — aí a
-  // listagem separa "Mais fáceis de vender" (`destaque: true`, os nichos com
-  // maior potencial comercial) de "Outros nichos". Assim que ele pesquisa ou
-  // filtra por tag, a hierarquia comercial dá lugar a uma lista única
-  // ordenada por relevância — a busca precisa cobrir o portfólio inteiro,
-  // não só a vitrine.
-  const navegandoLivre = !busca.trim() && !tagAtiva
-
   const porRelevancia = useMemo(() => buscarProjetos(busca, projetos), [busca])
 
-  const filtrados = useMemo(
-    () => porRelevancia.filter((p) => !tagAtiva || p.tag === tagAtiva),
-    [porRelevancia, tagAtiva],
-  )
-
-  const maisFaceisDeVender = useMemo(() => filtrados.filter((p) => p.destaque), [filtrados])
-  const outrosNichos = useMemo(() => filtrados.filter((p) => !p.destaque), [filtrados])
+  const filtrados = useMemo(() => {
+    const comFiltroDeTag = porRelevancia.filter((p) => !tagAtiva || p.tag === tagAtiva)
+    // Sem busca nem filtro de tag, o visitante está só explorando — aí os
+    // nichos com maior potencial comercial (`destaque: true`, decisão
+    // interna de priorização) puxam a listagem pra frente, mas sem nenhuma
+    // divisão ou rótulo visível: pro visitante é uma coleção única de
+    // portfólio. Assim que ele pesquisa ou filtra por tag, a ordem passa a
+    // ser só por relevância da busca.
+    if (busca.trim() || tagAtiva) return comFiltroDeTag
+    return [...comFiltroDeTag].sort((a, b) => Number(!!b.destaque) - Number(!!a.destaque))
+  }, [porRelevancia, tagAtiva, busca])
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
@@ -103,32 +99,11 @@ export default function Projetos() {
           <p className="mt-14 text-ink/60">
             {busca.trim() ? <>Nenhum projeto encontrado pra "{busca}".</> : 'Nenhum projeto encontrado com esse filtro.'}
           </p>
-        ) : navegandoLivre ? (
-          <>
-            <SecaoProjetos titulo="Mais fáceis de vender" projetos={maisFaceisDeVender} className="mt-10" />
-            <SecaoProjetos
-              titulo="Outros nichos"
-              projetos={outrosNichos}
-              className={maisFaceisDeVender.length > 0 ? 'mt-16' : 'mt-10'}
-            />
-          </>
         ) : (
           <GradeProjetos projetos={filtrados} className="mt-10" />
         )}
       </div>
     </section>
-  )
-}
-
-function SecaoProjetos({ titulo, projetos, className = '' }: { titulo: string; projetos: Projeto[]; className?: string }) {
-  if (projetos.length === 0) return null
-  return (
-    <div className={className}>
-      <Reveal>
-        <h2 className="text-sm font-semibold tracking-wide text-ink/50 uppercase">{titulo}</h2>
-      </Reveal>
-      <GradeProjetos projetos={projetos} className="mt-5" />
-    </div>
   )
 }
 
