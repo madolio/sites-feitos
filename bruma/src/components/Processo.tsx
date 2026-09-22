@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react'
 
-// Diagrama técnico do processo Bruma — reaproveita o princípio já usado nos
-// projetos-irmãos (traço fino, grade, elementos numerados e conectados, um
-// movimento controlado que só existe quando corresponde a algo real), mas
-// redesenhado do zero pra perfumaria. O centro é a pirâmide olfativa: o
-// diagrama que perfumistas de fato usam pra mostrar que topo, coração e
-// fundo evaporam em velocidades diferentes — por isso os pontinhos de vapor
-// sobem em ritmos diferentes por faixa, e a maceração pulsa devagar porque
-// ali o que "acontece" é tempo passando, não movimento.
+// Cena única do processo Bruma — não é mais um diagrama de quatro paradas
+// que aparecem uma a uma. É uma sequência contínua: notas convergem para um
+// ponto, esse ponto se resolve nas três camadas da pirâmide olfativa
+// (topo/coração/fundo — cada uma com peso e velocidade de evaporação
+// diferentes, de verdade), as camadas assentam dentro de um frasco que se
+// desenha ao redor delas, o tempo passa (marcas de semana acendendo devagar,
+// nível de líquido baixando um triz), e o frasco se sela com um rótulo
+// numerado e um brilho único. Tudo disparado por um único gatilho
+// (IntersectionObserver) e encadeado por classes de fase — nunca reveals
+// independentes por elemento.
 
 const etapas = [
   {
@@ -34,7 +36,20 @@ const LINHA = 'var(--color-fumo)'
 const ACENTO = 'var(--color-acento)'
 const FUNDO = 'var(--color-carvao)'
 
-const COLUNAS = [130, 370, 610, 850]
+// Notas que convergem — cada uma já "pertence" a uma camada futura, o que
+// dá continuidade real entre a conversa (notas soltas) e a pirâmide
+// (camadas): bergamota e pimenta-rosa são topo, jasmim é coração, âmbar e
+// sândalo são fundo.
+const CENTRO = { x: 450, y: 110 }
+const notas = [
+  { nome: 'bergamota', dx: -380, dy: -70, dur: 1200 },
+  { nome: 'pimenta-rosa', dx: 380, dy: -60, dur: 1300 },
+  { nome: 'jasmim', dx: -410, dy: 70, dur: 1150 },
+  { nome: 'âmbar', dx: 410, dy: 80, dur: 1400 },
+  { nome: 'sândalo', dx: 0, dy: -90, dur: 1500 },
+] as const
+
+const TICKS = [150, 168, 186, 204, 222, 240]
 
 export default function Processo() {
   const raizRef = useRef<HTMLElement>(null)
@@ -44,131 +59,166 @@ export default function Processo() {
     if (!raiz) return
     if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return
 
-    // Só arma o estado "escondido" quando sabemos que a animação vai rodar —
-    // sem isso, quem prefere movimento reduzido já vê tudo desenhado.
-    raiz.classList.add('processo-armado')
+    const timers: number[] = []
+    let raf = 0
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return
-        raiz.classList.add('processo-visivel')
         observer.disconnect()
+
+        // Estado inicial (escondido/recolhido) primeiro...
+        raiz.classList.add('cena-armada')
+        // ...e só no quadro seguinte começamos a sequência, pra garantir que
+        // o navegador pinte o estado inicial antes de disparar a transição.
+        raf = requestAnimationFrame(() => {
+          raiz.classList.add('fase-1') // notas convergem
+          timers.push(
+            window.setTimeout(() => raiz.classList.add('fase-2'), 1300), // camadas se resolvem
+            window.setTimeout(() => raiz.classList.add('fase-3'), 2300), // maceração / tempo passa
+            window.setTimeout(() => raiz.classList.add('fase-4'), 4700), // frasco sela
+            window.setTimeout(() => raiz.classList.add('fase-5'), 5900), // vapor esparso contínuo
+          )
+        })
       },
       { threshold: 0.3 },
     )
     observer.observe(raiz)
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(raf)
+      timers.forEach((t) => window.clearTimeout(t))
+    }
   }, [])
 
   return (
     <section ref={raizRef} className="processo px-5 py-20 sm:px-8 sm:py-28">
       <h2 className="font-display text-3xl sm:text-4xl">Da conversa ao frasco</h2>
 
-      <figure className="mt-10 rounded-2xl border border-fio bg-carvao/50 p-4 sm:p-8">
+      <figure className="processo-cena mt-10 rounded-2xl border border-fio bg-carvao/50 p-4 sm:p-8">
         <svg
-          viewBox="0 0 960 300"
+          viewBox="0 0 900 420"
           className="h-auto w-full overflow-visible"
           role="img"
-          aria-label="Diagrama do processo: uma conversa olfativa vira uma pirâmide de fragrância com notas de topo, coração e fundo que evaporam em velocidades diferentes, a mistura macera em repouso por semanas, e o resultado é entregue num frasco numerado com ficha de composição."
+          aria-label="Cena animada mostrando notas de perfume convergindo, virando as camadas de topo, coração e fundo dentro de um frasco que macera em repouso e é selado com um rótulo numerado."
         >
           <defs>
             <pattern id="processo-grade" width="30" height="30" patternUnits="userSpaceOnUse">
               <circle cx="1" cy="1" r="1" fill={LINHA} fillOpacity="0.35" />
             </pattern>
+            <clipPath id="processo-vaso-clip">
+              <rect x="380" y="150" width="140" height="112" rx="16" />
+            </clipPath>
+            <linearGradient id="processo-brilho" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor={ACENTO} stopOpacity="0" />
+              <stop offset="50%" stopColor={ACENTO} stopOpacity="0.35" />
+              <stop offset="100%" stopColor={ACENTO} stopOpacity="0" />
+            </linearGradient>
           </defs>
 
-          <rect x="0" y="0" width="960" height="300" fill="url(#processo-grade)" opacity="0.5" />
+          <rect x="0" y="0" width="900" height="420" fill="url(#processo-grade)" opacity="0.5" />
 
-          {/* Trilho: liga as quatro etapas em sequência. */}
+          {/* Notas: convergem de bordas diferentes até o mesmo ponto — o
+              gargalo do frasco nasce exatamente aí. */}
           <g>
-            {[0, 1, 2].map((i) => (
-              <line
-                key={i}
-                data-rail
-                style={{ ['--i' as string]: i }}
-                x1={COLUNAS[i]}
-                y1="250"
-                x2={COLUNAS[i + 1]}
-                y2="250"
-                stroke={LINHA}
-                strokeWidth="1.5"
-              />
-            ))}
-            {COLUNAS.map((cx, i) => (
-              <g key={cx} data-entrada style={{ ['--i' as string]: i }}>
-                <line x1={cx} y1="220" x2={cx} y2="250" stroke={LINHA} strokeWidth="1.5" />
-                <circle cx={cx} cy="250" r="5" fill={FUNDO} stroke={ACENTO} strokeWidth="2" />
+            {notas.map((n) => (
+              <g
+                key={n.nome}
+                data-nota
+                className="cena-nota"
+                style={{
+                  ['--nx' as string]: `${n.dx}px`,
+                  ['--ny' as string]: `${n.dy}px`,
+                  ['--dur' as string]: `${n.dur}ms`,
+                }}
+              >
+                <circle cx={CENTRO.x} cy={CENTRO.y} r="4" fill={ACENTO} />
                 <text
-                  x={cx}
-                  y="26"
+                  x={CENTRO.x}
+                  y={CENTRO.y - 10}
                   textAnchor="middle"
                   style={{
-                    fill: ACENTO,
+                    fill: LINHA,
                     fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                    fontSize: 13,
-                    fontWeight: 600,
+                    fontSize: 10,
                   }}
                 >
-                  {String(i).padStart(2, '0')}
+                  {n.nome}
                 </text>
               </g>
             ))}
           </g>
 
-          {/* 00 — Conversa olfativa: dois pontos de vista que se encontram. */}
-          <g data-entrada style={{ ['--i' as string]: 0 }}>
-            <circle cx="116" cy="140" r="24" fill="none" stroke={TRACO} strokeWidth="1.8" />
-            <circle cx="144" cy="140" r="24" fill="none" stroke={TRACO} strokeWidth="1.8" />
-            <path
-              d="M130,132 L133,138 L139,140 L133,142 L130,148 L127,142 L121,140 L127,138 Z"
-              fill={ACENTO}
-              fillOpacity="0.9"
-            />
+          {/* Camadas: a mesma massa convergida se resolve em três bandas —
+              topo fina e leve, fundo grossa e pesada. */}
+          <g clipPath="url(#processo-vaso-clip)">
+            <rect data-banda="topo" className="cena-banda" x="380" y="150" width="140" height="15" fill={ACENTO} fillOpacity="0.5" />
+            <rect data-banda="coracao" className="cena-banda cena-banda-2" x="380" y="165" width="140" height="35" fill={ACENTO} fillOpacity="0.38" />
+            <rect data-banda="fundo" className="cena-banda cena-banda-3" x="380" y="200" width="140" height="60" fill={ACENTO} fillOpacity="0.28" />
+
+            {/* Vapor: continua durante a maceração e depois vira o loop
+                esparso — topo evapora rápido, fundo quase não se move. */}
+            <circle data-vapor="topo" className="cena-vapor" cx="410" cy="158" r="1.8" fill={ACENTO} />
+            <circle data-vapor="coracao" className="cena-vapor" cx="450" cy="178" r="1.8" fill={ACENTO} />
+            <circle data-vapor="fundo" className="cena-vapor" cx="490" cy="222" r="1.8" fill={ACENTO} />
+
+            <rect className="cena-unificar" x="380" y="150" width="140" height="112" fill={ACENTO} />
           </g>
 
-          {/* 01 — Composição: a pirâmide olfativa, topo / coração / fundo. */}
-          <g data-entrada style={{ ['--i' as string]: 1 }}>
-            <path
-              d="M370,60 L440,210 L300,210 Z"
+          {/* Frasco: se desenha ao redor das camadas — o gargalo passa
+              exatamente pelo ponto onde as notas convergiram. */}
+          <g>
+            <rect
+              className="cena-vaso-gargalo"
+              x="436"
+              y="90"
+              width="28"
+              height="62"
+              rx="4"
               fill="none"
               stroke={TRACO}
               strokeWidth="1.8"
-              strokeLinejoin="round"
             />
-            <line x1="346.67" y1="110" x2="393.33" y2="110" stroke={ACENTO} strokeOpacity="0.6" strokeWidth="1.2" />
-            <line x1="323.33" y1="160" x2="416.67" y2="160" stroke={ACENTO} strokeOpacity="0.6" strokeWidth="1.2" />
-
-            {/* Vapor: topo evapora mais rápido, fundo é o mais lento — de verdade. */}
-            <circle data-vapor="topo" cx="365" cy="100" r="2" fill={ACENTO} fillOpacity="0.6" />
-            <circle data-vapor="topo" cx="377" cy="95" r="1.6" fill={ACENTO} fillOpacity="0.55" />
-            <circle data-vapor="coracao" cx="345" cy="150" r="2" fill={ACENTO} fillOpacity="0.6" />
-            <circle data-vapor="coracao" cx="372" cy="144" r="1.8" fill={ACENTO} fillOpacity="0.55" />
-            <circle data-vapor="coracao" cx="397" cy="150" r="2" fill={ACENTO} fillOpacity="0.5" />
-            <circle data-vapor="fundo" cx="330" cy="200" r="2.2" fill={ACENTO} fillOpacity="0.55" />
-            <circle data-vapor="fundo" cx="370" cy="196" r="1.8" fill={ACENTO} fillOpacity="0.5" />
-            <circle data-vapor="fundo" cx="410" cy="200" r="2.2" fill={ACENTO} fillOpacity="0.5" />
+            <rect
+              className="cena-vaso-bulbo"
+              x="380"
+              y="150"
+              width="140"
+              height="112"
+              rx="16"
+              fill="none"
+              stroke={TRACO}
+              strokeWidth="1.8"
+            />
           </g>
 
-          {/* 02 — Maceração: o frasco descansa, o nível é o que "acontece". */}
-          <g data-entrada style={{ ['--i' as string]: 2 }}>
-            <rect x="570" y="70" width="80" height="140" rx="10" fill="none" stroke={TRACO} strokeWidth="1.8" />
-            <rect x="571.5" y="110" width="77" height="98" fill={ACENTO} fillOpacity="0.14" />
-            <line data-pulso x1="571.5" y1="110" x2="648.5" y2="110" stroke={ACENTO} strokeWidth="1.5" />
-            {[120, 140, 160, 180].map((y) => (
-              <line key={y} x1="654" y1={y} x2="662" y2={y} stroke={LINHA} strokeWidth="1" strokeOpacity="0.6" />
+          {/* Maceração: nível que assenta um triz + marcas de semana que
+              acendem uma a uma — tempo passando, não um spinner. */}
+          <line className="cena-nivel" x1="392" y1="158" x2="508" y2="158" stroke={ACENTO} strokeWidth="1.4" />
+          <g>
+            {TICKS.map((y, i) => (
+              <line
+                key={y}
+                data-tick
+                className="cena-tick"
+                style={{ ['--i' as string]: i }}
+                x1="528"
+                y1={y}
+                x2="538"
+                y2={y}
+                stroke={LINHA}
+                strokeWidth="1.2"
+              />
             ))}
           </g>
 
-          {/* 03 — Entrega: frasco numerado com a ficha de composição. */}
-          <g data-entrada style={{ ['--i' as string]: 3 }}>
-            <rect x="841" y="50" width="18" height="12" rx="2" fill="none" stroke={TRACO} strokeWidth="1.8" />
-            <rect x="844" y="62" width="12" height="23" fill="none" stroke={TRACO} strokeWidth="1.8" />
-            <rect x="822" y="85" width="56" height="125" rx="8" fill="none" stroke={TRACO} strokeWidth="1.8" />
-            <rect x="833" y="140" width="34" height="26" fill={FUNDO} stroke={ACENTO} strokeWidth="1.2" />
+          {/* Rótulo numerado — carimbado, uma única vez, sem quicar. */}
+          <g className="cena-selo">
+            <rect x="430" y="236" width="40" height="20" fill={FUNDO} stroke={ACENTO} strokeWidth="1.2" />
             <text
-              x="850"
-              y="157"
+              x="450"
+              y="250"
               textAnchor="middle"
               style={{
                 fill: ACENTO,
@@ -180,6 +230,18 @@ export default function Processo() {
               001
             </text>
           </g>
+
+          {/* Brilho: um único varrido, marca o fim — não um glow em loop. */}
+          <rect
+            className="cena-brilho"
+            x="380"
+            y="150"
+            width="46"
+            height="150"
+            transform="rotate(24 450 206)"
+            fill="url(#processo-brilho)"
+            clipPath="url(#processo-vaso-clip)"
+          />
         </svg>
 
         <figcaption className="mt-4 text-[0.9375rem] text-fumo">
@@ -207,63 +269,133 @@ export default function Processo() {
       </ol>
 
       <style>{`
-        .processo.processo-armado [data-entrada] {
+        /* Estado padrão (sem JS / motion reduzido): a cena já composta e
+           parada — frasco selado, camadas assentadas, sem notas soltas. */
+        .cena-nota { opacity: 0; }
+        .cena-vaso-gargalo,
+        .cena-vaso-bulbo { stroke-width: 2.2; }
+        .cena-unificar { opacity: 0.16; }
+        .cena-selo { opacity: 1; transform: none; }
+        .cena-brilho { opacity: 0; }
+        .cena-tick { stroke: ${ACENTO}; opacity: 1; }
+        .cena-nivel { transform: translateY(5px); }
+        .cena-vapor { opacity: 0.35; }
+
+        /* Estado inicial armado: antes da fase 1 começar. */
+        .processo-cena.cena-armada .cena-nota {
+          opacity: 0.9;
+          transform: translate(var(--nx), var(--ny));
+        }
+        .processo-cena.cena-armada .cena-banda {
           opacity: 0;
-          transform: translateY(10px);
+          transform-box: fill-box;
+          transform-origin: top;
+          transform: scaleY(0);
         }
-        .processo.processo-armado.processo-visivel [data-entrada] {
+        .processo-cena.cena-armada .cena-vaso-gargalo,
+        .processo-cena.cena-armada .cena-vaso-bulbo {
+          stroke-width: 1.8;
+          stroke-dasharray: 260;
+          stroke-dashoffset: 260;
+        }
+        .processo-cena.cena-armada .cena-unificar { opacity: 0; }
+        .processo-cena.cena-armada .cena-nivel { transform: translateY(0); }
+        .processo-cena.cena-armada .cena-tick { stroke: ${LINHA}; opacity: 0.4; }
+        .processo-cena.cena-armada .cena-selo {
+          opacity: 0;
+          transform-box: fill-box;
+          transform-origin: center;
+          transform: scale(0.7);
+        }
+        .processo-cena.cena-armada .cena-brilho { opacity: 0; }
+        .processo-cena.cena-armada .cena-vapor { opacity: 0; }
+
+        /* Fase 1 — notas convergem para o gargalo. */
+        .processo-cena.cena-armada.fase-1 .cena-nota {
+          opacity: 0.9;
+          transform: translate(0, 0);
+          transition: transform var(--dur, 1.3s) cubic-bezier(0.25, 0.7, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Fase 2 — a mesma massa se resolve em três camadas; as notas somem. */
+        .processo-cena.cena-armada.fase-2 .cena-nota {
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+        .processo-cena.cena-armada.fase-2 .cena-banda {
           opacity: 1;
-          transform: translateY(0);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-          transition-delay: calc(var(--i, 0) * 0.12s);
+          transform: scaleY(1);
         }
-        .processo.processo-armado [data-rail] {
-          stroke-dasharray: 240;
-          stroke-dashoffset: 240;
+        .processo-cena.cena-armada.fase-2 [data-banda='topo'] {
+          transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
-        .processo.processo-armado.processo-visivel [data-rail] {
+        .processo-cena.cena-armada.fase-2 [data-banda='coracao'] {
+          transition: transform 0.7s ease-out 0.15s, opacity 0.7s ease-out 0.15s;
+        }
+        .processo-cena.cena-armada.fase-2 [data-banda='fundo'] {
+          transition: transform 0.9s ease-out 0.3s, opacity 0.9s ease-out 0.3s;
+        }
+
+        /* Fase 3 — o frasco se desenha ao redor, o tempo passa. */
+        .processo-cena.cena-armada.fase-3 .cena-vaso-gargalo,
+        .processo-cena.cena-armada.fase-3 .cena-vaso-bulbo {
           stroke-dashoffset: 0;
-          transition: stroke-dashoffset 0.7s ease;
-          transition-delay: calc(var(--i, 0) * 0.12s);
+          transition: stroke-dashoffset 0.9s ease;
         }
+        .processo-cena.cena-armada.fase-3 .cena-nivel {
+          transform: translateY(5px);
+          transition: transform 1.8s ease-in-out;
+        }
+        .processo-cena.cena-armada.fase-3 .cena-tick {
+          stroke: ${ACENTO};
+          opacity: 1;
+          transition: stroke 0.4s ease, opacity 0.4s ease;
+          transition-delay: calc(var(--i, 0) * 0.25s);
+        }
+
+        /* Fase 4 — o frasco sela: bolde, tom único, selo, brilho único. */
+        .processo-cena.cena-armada.fase-4 .cena-vaso-gargalo,
+        .processo-cena.cena-armada.fase-4 .cena-vaso-bulbo {
+          stroke-width: 2.2;
+          transition: stroke-width 0.6s ease;
+        }
+        .processo-cena.cena-armada.fase-4 .cena-unificar {
+          opacity: 0.16;
+          transition: opacity 0.6s ease;
+        }
+        .processo-cena.cena-armada.fase-4 .cena-selo {
+          opacity: 1;
+          transform: scale(1);
+          transition: transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1), opacity 0.45s ease;
+        }
+
         @media (prefers-reduced-motion: no-preference) {
-          .processo [data-vapor='topo'] {
-            animation: processo-subir 1.8s ease-in infinite;
+          .processo-cena.cena-armada.fase-4 .cena-brilho {
+            animation: processo-brilho-varrer 0.9s ease-out forwards;
           }
-          .processo [data-vapor='coracao'] {
-            animation: processo-subir 3.2s ease-in infinite;
+          .processo-cena.cena-armada.fase-5 [data-vapor='topo'] {
+            animation: processo-subir 4s ease-in infinite;
           }
-          .processo [data-vapor='fundo'] {
-            animation: processo-subir 5.4s ease-in infinite;
+          .processo-cena.cena-armada.fase-5 [data-vapor='coracao'] {
+            animation: processo-subir 7.5s ease-in infinite;
+            animation-delay: 1.2s;
           }
-          .processo [data-pulso] {
-            animation: processo-respirar 4s ease-in-out infinite;
+          .processo-cena.cena-armada.fase-5 [data-vapor='fundo'] {
+            animation: processo-subir 13s ease-in infinite;
+            animation-delay: 2.4s;
           }
+        }
+
+        @keyframes processo-brilho-varrer {
+          0% { opacity: 0; transform: rotate(24deg) translateX(-120px); }
+          40% { opacity: 1; }
+          100% { opacity: 0; transform: rotate(24deg) translateX(160px); }
         }
         @keyframes processo-subir {
-          0% {
-            transform: translateY(0);
-            opacity: 0;
-          }
-          15% {
-            opacity: 0.85;
-          }
-          85% {
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(-26px);
-            opacity: 0;
-          }
-        }
-        @keyframes processo-respirar {
-          0%,
-          100% {
-            opacity: 0.55;
-          }
-          50% {
-            opacity: 0.95;
-          }
+          0% { transform: translateY(0); opacity: 0; }
+          15% { opacity: 0.7; }
+          85% { opacity: 0; }
+          100% { transform: translateY(-20px); opacity: 0; }
         }
       `}</style>
     </section>
