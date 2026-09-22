@@ -2,6 +2,15 @@
 // trocado apenas next/image por <img> normal e removido "use client", que
 // não existe fora do Next.js App Router. O resto (framer-motion puro) veio
 // direto: dá o efeito de "cartão 3D se endireitando" conforme rola a página.
+//
+// PRESERVADO SEM USO no momento: a Bruma removeu o wrapper que usava este
+// componente (era um frasco genérico dentro do card que rolava/endireitava,
+// competindo com a cena de processo). O efeito em si continua bom — um
+// card que se inclina e endireita conforme a rolagem, revelando o que tem
+// dentro — e serve bem para mostrar um produto/dashboard/mockup em outro
+// projeto do portfólio. Nenhum dos candidatos óbvios (torre, razão) tinha
+// um encaixe realmente natural no momento desta limpeza, então o arquivo
+// fica aqui, intacto, para reuso futuro.
 import { useRef, useState, useEffect, type ReactNode } from 'react'
 import { useScroll, useTransform, motion, type MotionValue } from 'framer-motion'
 
