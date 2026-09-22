@@ -316,6 +316,7 @@ export const projetos: Projeto[] = [
   {
     name: 'Sebo Marginália',
     category: 'Livraria/sebo de livros usados',
+    tag: 'Educação',
     description:
       'A navegação é uma fileira de orelhas de página dobradas na borda da tela, e cada livro do acervo traz sua própria nota de margem — grifo, dedicatória, mancha de café — em vez de um genérico "bom estado".',
     bg: '#17241b',
@@ -571,6 +572,7 @@ export const projetos: Projeto[] = [
   {
     name: 'Banca',
     category: 'Floricultura',
+    tag: 'Casa & Design',
     description:
       'A navegação é a própria fileira de baldes de uma banca de feira: cada um guarda uma flor, com o nível de água enchendo quando a seção está em foco. O catálogo vira etiqueta de preço com a receita completa do buquê, não um card de loja.',
     bg: '#edefe7',
@@ -580,6 +582,7 @@ export const projetos: Projeto[] = [
   {
     name: 'Zênite',
     category: 'Observatório e turismo astronômico',
+    tag: 'Educação',
     description:
       'A ocular do telescópio virou moldura de scroll: role a página como quem gira a roda de foco e veja os anéis de Saturno saírem do desfoque até a nitidez, com o dado real de distância e diâmetro. O catálogo de sessões traz data verificável de chuva de meteoros, não nome bonito solto.',
     bg: '#0a0f1c',
