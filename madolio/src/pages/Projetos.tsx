@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import HeroPreview from '../components/HeroPreview'
 import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
-import { projetos, type Tag } from '../data/projetos'
+import { projetos, type Projeto, type Tag } from '../data/projetos'
+import { buscarProjetos } from '../lib/busca'
 
 // Com a lista passando de três dezenas de projetos, busca por texto sozinha
 // não bastava pra navegar — o filtro por tag agrupa os nichos (cada
@@ -15,14 +16,23 @@ export default function Projetos() {
   const [busca, setBusca] = useState('')
   const [tagAtiva, setTagAtiva] = useState<Tag | null>(null)
 
-  const filtrados = useMemo(() => {
-    const termo = busca.trim().toLowerCase()
-    return projetos.filter((p) => {
-      if (tagAtiva && p.tag !== tagAtiva) return false
-      if (!termo) return true
-      return `${p.name} ${p.category}`.toLowerCase().includes(termo)
-    })
-  }, [busca, tagAtiva])
+  // Sem busca nem filtro de tag, o visitante está só explorando — aí a
+  // listagem separa "Mais fáceis de vender" (`destaque: true`, os nichos com
+  // maior potencial comercial) de "Outros nichos". Assim que ele pesquisa ou
+  // filtra por tag, a hierarquia comercial dá lugar a uma lista única
+  // ordenada por relevância — a busca precisa cobrir o portfólio inteiro,
+  // não só a vitrine.
+  const navegandoLivre = !busca.trim() && !tagAtiva
+
+  const porRelevancia = useMemo(() => buscarProjetos(busca, projetos), [busca])
+
+  const filtrados = useMemo(
+    () => porRelevancia.filter((p) => !tagAtiva || p.tag === tagAtiva),
+    [porRelevancia, tagAtiva],
+  )
+
+  const maisFaceisDeVender = useMemo(() => filtrados.filter((p) => p.destaque), [filtrados])
+  const outrosNichos = useMemo(() => filtrados.filter((p) => !p.destaque), [filtrados])
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
@@ -90,44 +100,73 @@ export default function Projetos() {
         </Reveal>
 
         {filtrados.length === 0 ? (
-          <p className="mt-14 text-ink/60">Nenhum projeto encontrado pra "{busca}".</p>
+          <p className="mt-14 text-ink/60">
+            {busca.trim() ? <>Nenhum projeto encontrado pra "{busca}".</> : 'Nenhum projeto encontrado com esse filtro.'}
+          </p>
+        ) : navegandoLivre ? (
+          <>
+            <SecaoProjetos titulo="Mais fáceis de vender" projetos={maisFaceisDeVender} className="mt-10" />
+            <SecaoProjetos
+              titulo="Outros nichos"
+              projetos={outrosNichos}
+              className={maisFaceisDeVender.length > 0 ? 'mt-16' : 'mt-10'}
+            />
+          </>
         ) : (
-          <Reveal stagger={0.1} className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {filtrados.map((project) => (
-              <div key={project.name}>
-                <a href={project.url} target="_blank" rel="noreferrer" className="block">
-                  <HeroPreview projeto={project} />
-                </a>
-                <div className="mt-5">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
-                    <span className="text-sm text-ink/65">{project.category} · portfólio</span>
-                  </div>
-                  <p className="mt-2 text-ink/65">{project.description}</p>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4"
-                    >
-                      Ver site
-                    </a>
-                    {project.estudoDeCaso && (
-                      <Link
-                        to={project.estudoDeCaso}
-                        className="inline-block font-semibold text-ink/60 underline decoration-ink/25 underline-offset-4 hover:text-ink"
-                      >
-                        Ver making of
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Reveal>
+          <GradeProjetos projetos={filtrados} className="mt-10" />
         )}
       </div>
     </section>
+  )
+}
+
+function SecaoProjetos({ titulo, projetos, className = '' }: { titulo: string; projetos: Projeto[]; className?: string }) {
+  if (projetos.length === 0) return null
+  return (
+    <div className={className}>
+      <Reveal>
+        <h2 className="text-sm font-semibold tracking-wide text-ink/50 uppercase">{titulo}</h2>
+      </Reveal>
+      <GradeProjetos projetos={projetos} className="mt-5" />
+    </div>
+  )
+}
+
+function GradeProjetos({ projetos, className = '' }: { projetos: Projeto[]; className?: string }) {
+  return (
+    <Reveal stagger={0.1} className={`grid gap-10 sm:grid-cols-2 lg:grid-cols-3 ${className}`}>
+      {projetos.map((project) => (
+        <div key={project.name}>
+          <a href={project.url} target="_blank" rel="noreferrer" className="block">
+            <HeroPreview projeto={project} />
+          </a>
+          <div className="mt-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
+              <span className="text-sm text-ink/65">{project.category} · portfólio</span>
+            </div>
+            <p className="mt-2 text-ink/65">{project.description}</p>
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block font-semibold text-accent underline decoration-accent/30 underline-offset-4"
+              >
+                Ver site
+              </a>
+              {project.estudoDeCaso && (
+                <Link
+                  to={project.estudoDeCaso}
+                  className="inline-block font-semibold text-ink/60 underline decoration-ink/25 underline-offset-4 hover:text-ink"
+                >
+                  Ver making of
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </Reveal>
   )
 }

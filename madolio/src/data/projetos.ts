@@ -23,10 +23,22 @@ export type Projeto = {
   bg: string
   accent: string
   url?: string
-  /** Recorte curado pra home (Trabalhos.tsx) — a lista completa só aparece em /projetos. */
+  /**
+   * Recorte curado dos nichos com maior potencial comercial (leads locais,
+   * oferta clara, alta demanda) — usado tanto pra lista da home
+   * (Trabalhos.tsx) quanto pra seção "Mais fáceis de vender" em /projetos.
+   */
   destaque?: boolean
   /** Rota interna pra página de "making of" deste projeto, quando existe uma. */
   estudoDeCaso?: string
+  /**
+   * Termos de busca adicionais que não aparecem literalmente em `name`,
+   * `category` ou `description` — sinônimos, jeitos coloquiais de descrever
+   * o negócio e conceitos mais amplos (ex.: "carro" pra uma oficina
+   * mecânica). Alimenta a busca por nicho/intenção em /projetos; ver
+   * `src/lib/busca.ts`.
+   */
+  keywords?: string[]
 }
 
 export const projetos: Projeto[] = [
@@ -39,6 +51,7 @@ export const projetos: Projeto[] = [
     bg: '#e3f0f5',
     accent: '#0a6b87',
     url: 'https://adriano.fenoninho-max.workers.dev',
+    keywords: ['elétrica', 'eletricista', 'encanador', 'hidráulica', 'água', 'casa', 'residencial', 'reforma'],
   },
   {
     name: 'Doce Ateliê',
@@ -49,6 +62,7 @@ export const projetos: Projeto[] = [
     bg: '#FFFCF7',
     accent: '#C4213A',
     url: 'https://doce-atelie.fenoninho-max.workers.dev',
+    keywords: ['bolo', 'doce', 'confeitaria', 'comida', 'festa', 'sobremesa'],
   },
   {
     name: 'Estúdio Alma',
@@ -59,6 +73,7 @@ export const projetos: Projeto[] = [
     bg: '#E9E8E4',
     accent: '#2C4FA3',
     url: 'https://estudio-alma.fenoninho-max.workers.dev',
+    keywords: ['pilates', 'academia', 'exercício', 'condicionamento físico', 'bem-estar'],
   },
   {
     name: 'Sabor da Vila',
@@ -69,6 +84,7 @@ export const projetos: Projeto[] = [
     bg: '#FBFAF5',
     accent: '#3255A4',
     url: 'https://sabor-da-vila.fenoninho-max.workers.dev',
+    keywords: ['hambúrguer', 'lanche', 'comida', 'restaurante', 'fast food'],
   },
   {
     name: 'Bastos Advocacia',
@@ -79,6 +95,7 @@ export const projetos: Projeto[] = [
     bg: '#ede2c8',
     accent: '#a8672a',
     url: 'https://site-template.fenoninho-max.workers.dev',
+    keywords: ['advogado', 'advocacia', 'jurídico', 'direito', 'empresa', 'contrato'],
   },
   {
     name: 'Torre',
@@ -89,6 +106,7 @@ export const projetos: Projeto[] = [
     bg: '#0B1417',
     accent: '#35D6C9',
     url: 'https://torre.fenoninho-max.workers.dev',
+    keywords: ['software', 'saas', 'sistema', 'agenda', 'empresa', 'tecnologia'],
   },
   {
     name: 'Traço',
@@ -99,6 +117,7 @@ export const projetos: Projeto[] = [
     bg: '#F6F4EF',
     accent: '#C9962D',
     url: 'https://traco.fenoninho-max.workers.dev',
+    keywords: ['arquitetura', 'arquiteto', 'projeto', 'casa', 'reforma', 'interiores', 'construção'],
   },
   {
     name: 'Âncora',
@@ -109,6 +128,7 @@ export const projetos: Projeto[] = [
     bg: '#F3EDE0',
     accent: '#AB8A53',
     url: 'https://ancora.fenoninho-max.workers.dev',
+    keywords: ['financeira', 'consultoria', 'investimento', 'patrimônio', 'empresa', 'dinheiro'],
   },
   {
     name: 'Pulso',
@@ -119,6 +139,7 @@ export const projetos: Projeto[] = [
     bg: '#F4F0E6',
     accent: '#E8482F',
     url: 'https://pulso.fenoninho-max.workers.dev',
+    keywords: ['personal trainer', 'academia', 'treino', 'fitness'],
   },
   {
     name: 'Focinho',
@@ -129,6 +150,7 @@ export const projetos: Projeto[] = [
     bg: '#FAF7F0',
     accent: '#B8432E',
     url: 'https://focinho.fenoninho-max.workers.dev',
+    keywords: ['pet', 'animal', 'cachorro', 'gato', 'veterinário', 'petshop', 'banho e tosa'],
   },
   {
     name: 'Corte',
@@ -139,6 +161,7 @@ export const projetos: Projeto[] = [
     bg: '#FAFAF7',
     accent: '#C8202F',
     url: 'https://corte.fenoninho-max.workers.dev',
+    keywords: ['barbearia', 'cabelo', 'corte de cabelo', 'salão'],
   },
   {
     name: 'Chave',
@@ -149,6 +172,7 @@ export const projetos: Projeto[] = [
     bg: '#EFECE4',
     accent: '#3B5B70',
     url: 'https://chave.fenoninho-max.workers.dev',
+    keywords: ['imóvel', 'imobiliária', 'casa', 'apartamento', 'aluguel', 'corretor', 'compra e venda'],
   },
   {
     name: 'Revelar',
@@ -159,6 +183,7 @@ export const projetos: Projeto[] = [
     bg: '#EFE6D8',
     accent: '#D98C2B',
     url: 'https://revelar.fenoninho-max.workers.dev',
+    keywords: ['fotografia', 'fotógrafo', 'casamento', 'ensaio', 'evento'],
   },
   {
     name: 'Passaporte',
@@ -169,6 +194,7 @@ export const projetos: Projeto[] = [
     bg: '#F2EAD9',
     accent: '#5C1F2E',
     url: 'https://passaporte.fenoninho-max.workers.dev',
+    keywords: ['idiomas', 'inglês', 'curso', 'escola', 'aula'],
   },
   {
     name: 'Confete',
@@ -179,6 +205,7 @@ export const projetos: Projeto[] = [
     bg: '#FFFAF0',
     accent: '#141414',
     url: 'https://confete.fenoninho-max.workers.dev',
+    keywords: ['festa', 'evento', 'aniversário', 'buffet infantil', 'criança'],
   },
   {
     name: 'Cerne',
@@ -189,6 +216,7 @@ export const projetos: Projeto[] = [
     bg: '#FAF7F2',
     accent: '#2F4A3E',
     url: 'https://cerne.fenoninho-max.workers.dev',
+    keywords: ['design de interiores', 'decoração', 'casa', 'reforma', 'arquitetura'],
   },
   {
     name: 'Tinta',
@@ -199,6 +227,7 @@ export const projetos: Projeto[] = [
     bg: '#121212',
     accent: '#FF3B3B',
     url: 'https://tinta.fenoninho-max.workers.dev',
+    keywords: ['tatuagem', 'tattoo', 'estúdio'],
   },
   {
     name: 'Balcão',
@@ -209,6 +238,7 @@ export const projetos: Projeto[] = [
     bg: '#FFF6E1',
     accent: '#257A40',
     url: 'https://balcao.fenoninho-max.workers.dev',
+    keywords: ['lanchonete', 'lanche', 'fast food', 'comida'],
   },
   {
     name: 'Rota',
@@ -219,6 +249,7 @@ export const projetos: Projeto[] = [
     bg: '#F2F3F5',
     accent: '#5B4FE0',
     url: 'https://rota.fenoninho-max.workers.dev',
+    keywords: ['logística', 'software', 'saas', 'entrega', 'empresa'],
   },
   {
     name: 'Torno',
@@ -230,6 +261,7 @@ export const projetos: Projeto[] = [
     accent: '#1F3C88',
     url: 'https://torno.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/torno',
+    keywords: ['cerâmica', 'artesanato', 'decoração'],
   },
   {
     name: 'Cardume',
@@ -241,6 +273,7 @@ export const projetos: Projeto[] = [
     accent: '#FFE2A1',
     url: 'https://cardume.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/cardume',
+    keywords: ['mergulho', 'curso', 'escola', 'esporte'],
   },
   {
     name: 'Encaixe',
@@ -252,6 +285,7 @@ export const projetos: Projeto[] = [
     accent: '#34586C',
     url: 'https://encaixe.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/encaixe',
+    keywords: ['alfaiataria', 'roupa sob medida', 'moda', 'costura'],
   },
   {
     name: 'Calibre',
@@ -263,6 +297,7 @@ export const projetos: Projeto[] = [
     accent: '#CAA25E',
     url: 'https://calibre.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/calibre',
+    keywords: ['relógio', 'relojoaria', 'acessório'],
   },
   {
     name: 'Taça',
@@ -274,6 +309,7 @@ export const projetos: Projeto[] = [
     accent: '#7A1030',
     url: 'https://taca.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/taca',
+    keywords: ['vinho', 'vinícola', 'bebida'],
   },
   {
     name: 'Ferro',
@@ -284,6 +320,7 @@ export const projetos: Projeto[] = [
     bg: '#0A0A0A',
     accent: '#C6FF3D',
     url: 'https://ferro.fenoninho-max.workers.dev',
+    keywords: ['academia', 'musculação', 'treino', 'fitness'],
   },
   {
     name: 'Realce & Cia',
@@ -295,6 +332,7 @@ export const projetos: Projeto[] = [
     accent: '#c59d5f',
     url: 'https://realce.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/realce',
+    keywords: ['salão', 'cabelo', 'estética'],
   },
   {
     name: 'Fornada',
@@ -305,6 +343,7 @@ export const projetos: Projeto[] = [
     bg: '#f7f1e4',
     accent: '#d97b29',
     url: 'https://fornada.fenoninho-max.workers.dev',
+    keywords: ['padaria', 'pão', 'comida'],
   },
   {
     name: 'Lúmen',
@@ -316,6 +355,7 @@ export const projetos: Projeto[] = [
     accent: '#ffb46b',
     url: 'https://lumen.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/lumen',
+    keywords: ['iluminação', 'elétrica', 'casa', 'reforma'],
   },
   {
     name: 'Prisma',
@@ -327,6 +367,7 @@ export const projetos: Projeto[] = [
     accent: '#b98cff',
     url: 'https://prisma.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/prisma',
+    keywords: ['joalheria', 'joias', 'acessório'],
   },
   {
     name: 'Marcha',
@@ -338,6 +379,7 @@ export const projetos: Projeto[] = [
     accent: '#ff3b30',
     url: 'https://marcha.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/marcha',
+    keywords: ['carro', 'concessionária', 'veículo', 'automóvel', 'auto'],
   },
   {
     name: 'Bruma',
@@ -349,6 +391,7 @@ export const projetos: Projeto[] = [
     accent: '#3fae82',
     url: 'https://bruma.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/bruma',
+    keywords: ['perfume', 'perfumaria'],
   },
   {
     name: 'Estufa Cheia',
@@ -360,6 +403,7 @@ export const projetos: Projeto[] = [
     accent: '#4c7a3f',
     url: 'https://estufa.fenoninho-max.workers.dev',
     estudoDeCaso: '/projetos/estufa',
+    keywords: ['flores', 'floricultura', 'paisagismo', 'jardim', 'casa'],
   },
   {
     name: 'Ressoa',
@@ -370,6 +414,7 @@ export const projetos: Projeto[] = [
     bg: '#12191c',
     accent: '#5ffbc0',
     url: 'https://luthier.fenoninho-max.workers.dev',
+    keywords: ['luteria', 'instrumento musical', 'violão', 'guitarra'],
   },
   {
     name: 'Cútis Dermatologia',
@@ -380,6 +425,7 @@ export const projetos: Projeto[] = [
     bg: '#f7f4ee',
     accent: '#2c6e6a',
     url: 'https://derme.fenoninho-max.workers.dev',
+    keywords: ['clínica', 'dermatologia', 'estética', 'pele', 'beleza'],
   },
   {
     name: 'Meridiana Odontologia',
@@ -390,6 +436,7 @@ export const projetos: Projeto[] = [
     bg: '#f6f0e0',
     accent: '#dd5f45',
     url: 'https://arcada.fenoninho-max.workers.dev',
+    keywords: ['clínica', 'odontologia', 'dentista', 'dente'],
   },
   {
     name: 'Vereda Fisioterapia',
@@ -400,6 +447,7 @@ export const projetos: Projeto[] = [
     bg: '#f2ecdb',
     accent: '#c2703f',
     url: 'https://trilha.fenoninho-max.workers.dev',
+    keywords: ['clínica', 'fisioterapia', 'reabilitação'],
   },
   {
     name: 'Torque Auto Mecânica',
@@ -411,6 +459,7 @@ export const projetos: Projeto[] = [
     accent: '#e8551f',
     url: 'https://torque.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['carro', 'auto', 'automóvel', 'conserto de carro', 'revisão', 'manutenção veicular'],
   },
   {
     name: 'Renata Bastos Nail Studio',
@@ -422,6 +471,7 @@ export const projetos: Projeto[] = [
     accent: '#ff6f91',
     url: 'https://esmalte.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['manicure', 'unha', 'unhas', 'nail design'],
   },
   {
     name: 'Razão Contábil',
@@ -433,6 +483,7 @@ export const projetos: Projeto[] = [
     accent: '#24466b',
     url: 'https://razao.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['contabilidade', 'contador', 'empresa', 'mei', 'imposto'],
   },
   {
     name: 'Trama',
@@ -444,6 +495,7 @@ export const projetos: Projeto[] = [
     accent: '#b5502f',
     url: 'https://trama.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['roupa', 'loja', 'moda', 'vestuário'],
   },
   {
     name: 'Escuta Psicologia',
@@ -455,6 +507,7 @@ export const projetos: Projeto[] = [
     accent: '#b5613f',
     url: 'https://escuta.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['clínica', 'psicologia', 'psicólogo', 'terapia', 'saúde mental'],
   },
   {
     name: 'Ninho Educação Infantil',
@@ -466,6 +519,7 @@ export const projetos: Projeto[] = [
     accent: '#c96f4a',
     url: 'https://ninho.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['creche', 'escola infantil', 'criança'],
   },
   {
     name: 'Estúdio Pelagem',
@@ -477,6 +531,7 @@ export const projetos: Projeto[] = [
     accent: '#c9622b',
     url: 'https://pelagem.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['pet', 'animal', 'cachorro', 'gato', 'petshop'],
   },
   {
     name: 'Trinco Chaveiro e Serralheria',
@@ -488,6 +543,7 @@ export const projetos: Projeto[] = [
     accent: '#a67c3d',
     url: 'https://trinco.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['chaveiro', 'serralheria', 'chave', 'fechadura', 'casa'],
   },
   {
     name: 'Vazão Encanamentos',
@@ -499,5 +555,6 @@ export const projetos: Projeto[] = [
     accent: '#1d6fa5',
     url: 'https://vazao.fenoninho-max.workers.dev',
     destaque: true,
+    keywords: ['encanador', 'hidráulica', 'vazamento', 'água', 'casa'],
   },
 ]
