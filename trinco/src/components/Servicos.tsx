@@ -16,7 +16,18 @@ export default function Servicos() {
           <h2 className="mt-2 max-w-xl text-3xl sm:text-4xl">Quatro serviços, cada um com seu próprio ritmo</h2>
         </Reveal>
 
-        <Reveal delay={0.05} className="mt-10 grid gap-6 sm:grid-cols-2" stagger={0.08}>
+        <Reveal delay={0.03} className="mt-8 overflow-hidden rounded-sm border border-linha">
+          <img
+            src="https://images.pexels.com/photos/35578808/pexels-photo-35578808.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Chaveiro trabalhando de perto em uma máquina de cópia de chaves, cercado por dezenas de chaves e cadeados pendurados na parede da oficina"
+            className="h-56 w-full object-cover sm:h-72"
+            loading="lazy"
+            width="1200"
+            height="800"
+          />
+        </Reveal>
+
+        <Reveal delay={0.05} className="mt-6 grid gap-6 sm:grid-cols-2" stagger={0.08}>
           {servicos.map((s) => (
             <div
               key={s.id}

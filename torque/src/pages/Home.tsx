@@ -2,6 +2,7 @@ import Hero from '../components/Hero'
 import Reveal from '../components/Reveal'
 import PainelRevisao from '../components/PainelRevisao'
 import Especialidades from '../components/Especialidades'
+import SobreOficina from '../components/SobreOficina'
 import Depoimentos from '../components/Depoimentos'
 import Faq from '../components/Faq'
 import Contato from '../components/Contato'
@@ -32,6 +33,7 @@ export default function Home() {
       </section>
 
       <Especialidades />
+      <SobreOficina />
       <Depoimentos />
       <Faq />
       <Contato />
