@@ -1,7 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react'
 import DemoDialog from './components/DemoDialog'
-import Depoimentos from './components/Depoimentos'
-import Faq from './components/Faq'
 import Fundo from './components/Fundo'
 import { Curiosidades, ListaCursos, Superficie, TELAS } from './components/Pranchetas'
 import Profundimetro from './components/Profundimetro'
@@ -29,8 +27,6 @@ export default function App() {
         <Superficie />
         <Curiosidades />
         <ListaCursos />
-        <Depoimentos />
-        <Faq />
         <Fundo />
       </main>
 
