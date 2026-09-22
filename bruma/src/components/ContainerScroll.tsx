@@ -4,13 +4,40 @@
 // direto: dá o efeito de "cartão 3D se endireitando" conforme rola a página.
 //
 // PRESERVADO SEM USO no momento: a Bruma removeu o wrapper que usava este
-// componente (era um frasco genérico dentro do card que rolava/endireitava,
-// competindo com a cena de processo). O efeito em si continua bom — um
-// card que se inclina e endireita conforme a rolagem, revelando o que tem
-// dentro — e serve bem para mostrar um produto/dashboard/mockup em outro
-// projeto do portfólio. Nenhum dos candidatos óbvios (torre, razão) tinha
-// um encaixe realmente natural no momento desta limpeza, então o arquivo
-// fica aqui, intacto, para reuso futuro.
+// componente (era `Vitrine.tsx` — um frasco genérico + bolhas animadas
+// dentro do card, competindo com a cena de processo; ver histórico do
+// commit "Consolidate bruma into one perfume scene, remove second 21st.dev
+// effect", 22/09/2026). Esse conteúdo (frasco/bolhas/textos de perfume)
+// era específico da Bruma e foi removido de vez — NÃO faz parte do motor
+// reutilizável e não deve ser resgatado. O motor genérico é só isto aqui:
+// moldura com perspectiva que começa inclinada e se endireita conforme o
+// scroll, recebendo `titleComponent` e `children` — sem qualquer
+// dependência do conteúdo específico da Bruma.
+//
+// REGRA PARA REUSO FUTURO: não reaproveitar só pra aproveitar código.
+// Antes de aplicar em outro projeto do portfólio, confirmar que existe um
+// momento natural de "revelar uma tela/produto/objeto dentro de uma
+// moldura durante o scroll" — e que isso acrescenta significado à
+// experiência daquele projeto específico, não só tecnicamente encaixa.
+// Sem essa justificativa conceitual, não usar.
+//
+// Em 22/09/2026 nenhum candidato óbvio (torre, rota, razão, torque, derme,
+// madolio-admin) se qualificou: todos já são dashboards/produtos completos
+// onde a própria página inteira É o produto (sidebar + conteúdo full-bleed
+// ou Layout/Home ocupando a tela toda), não uma landing page com uma
+// captura de tela pra emoldurar. Enfiar esses projetos inteiros dentro
+// deste card giraria numa "tela dentro de outra tela" sem sentido — não
+// fazer isso só pra encaixar o efeito. Analisar de novo caso a caso quando
+// surgir um projeto novo: (1) identidade visual existente, (2) conceito/
+// narrativa da página, (3) se o efeito soma significado, (4) só então
+// reutilizar.
+//
+// Pendências a considerar quando for de fato reutilizado:
+// - `prefers-reduced-motion`: hoje este componente não trata (framer-motion
+//   tem `useReducedMotion()` pronto pra isso — não implementado ainda).
+// - Responsividade real além do `isMobile` binário atual.
+// - Evitar seção excessivamente alta (`h-[60rem] md:h-[80rem]`) só pra
+//   sustentar a animação — em mobile isso é bastante scroll vazio.
 import { useRef, useState, useEffect, type ReactNode } from 'react'
 import { useScroll, useTransform, motion, type MotionValue } from 'framer-motion'
 
