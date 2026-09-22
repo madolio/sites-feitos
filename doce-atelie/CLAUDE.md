@@ -14,7 +14,7 @@ npm run deploy   # = npm run build && wrangler deploy
 
 Nenhum botão abre o WhatsApp de um número inventado (poderia ser de alguém de verdade). `sendToWhatsApp()` (`src/demo.ts`) dispara um evento que abre `DemoDialog.tsx`: mostra a mensagem que seria enviada e oferece o WhatsApp da Madolio ("Quero um site assim"). Se um dia virar cliente real, trocar `sendToWhatsApp` por `window.open('https://wa.me/NUMERO?text=' + encodeURIComponent(msg))`. O rodapé também declara que o negócio é fictício — não remover.
 
-Sem JSON-LD de LocalBusiness de propósito (seria dado estruturado de uma empresa que não existe).
+**Atualização (2026-09-22):** JSON-LD de `Bakery` foi adicionado ao `index.html`, alinhando com o padrão já usado em ~20 outros conceitos fictícios do repositório (Torque, Corte, Escuta etc.) — a ressalva acima ficou desatualizada e não reflete mais a prática do monorepo.
 
 ## Vibe Discovery — "Cartela de Sabores"
 

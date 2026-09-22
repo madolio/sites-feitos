@@ -42,6 +42,37 @@
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Torno",
+        "description": "Ateliê de cerâmica com aulas de torno, esmaltação e queima, em Ouro Preto, MG.",
+        "url": "https://torno.fenoninho-max.workers.dev/",
+        "image": "https://torno.fenoninho-max.workers.dev/og-image.png",
+        "email": "contato@tornoceramica.com.br",
+        "telephone": "+553132214488",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Conde de Bobadela, 150 — Centro",
+          "addressLocality": "Ouro Preto",
+          "addressRegion": "MG",
+          "addressCountry": "BR"
+        },
+        "areaServed": "BR",
+        "priceRange": "$$",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Turmas",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Course", "name": "Iniciação ao torno" }, "price": "480", "priceCurrency": "BRL" },
+            { "@type": "Offer", "itemOffered": { "@type": "Course", "name": "Torno livre" }, "price": "390", "priceCurrency": "BRL" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Esmaltação e queima" }, "price": "260", "priceCurrency": "BRL" }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
