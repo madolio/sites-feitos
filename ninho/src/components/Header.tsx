@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-linha bg-papel/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
+    <header className="sticky top-3 z-20 px-4 sm:top-4 sm:px-6">
+      <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 rounded-full border border-linha bg-papel/90 px-5 py-3 shadow-sm backdrop-blur sm:px-6">
         <a href="#topo" className="font-display text-base italic sm:text-xl">
           Ninho Educação Infantil
         </a>

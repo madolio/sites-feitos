@@ -70,18 +70,18 @@
   }
 }
 
-/* Fundo do hero: dentes de chave estilizados em fileira, deslizando devagar
-   como se fosse um molho de chaves visto de perfil. */
-.dentes-deriva {
-  animation: deriva-dentes 26s linear infinite;
+/* Fundo do hero: faixa de risco/atenção (linhas diagonais tipo placa de
+   sinalização técnica), deslizando devagar. */
+.faixa-risco-deriva {
+  animation: deriva-risco 26s linear infinite;
 }
 
-@keyframes deriva-dentes {
+@keyframes deriva-risco {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-120px);
+    transform: translateX(-84px);
   }
 }
 

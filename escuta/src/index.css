@@ -64,6 +64,12 @@
   .dado-ficha {
     @apply font-dado text-[0.75rem] tracking-wide uppercase;
   }
+
+  /* CTA secundário silencioso: um link sublinhado, sem peso de botão —
+     usado onde antes havia um segundo botão outline competindo com o CTA principal. */
+  .link-sutil {
+    @apply text-tinta/70 underline decoration-tinta/30 underline-offset-4 transition-colors hover:text-acolhe hover:decoration-acolhe;
+  }
 }
 
 /* Fundo do hero: linhas de pauta de caderno de anotação, derivando devagar

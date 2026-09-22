@@ -1,19 +1,25 @@
+// Masthead de catálogo, não barra de app: fica no topo da página (não
+// sticky), sem fundo desfocado, com o CTA como link sublinhado — não um
+// botão colorido competindo com a vitrine.
 export default function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-linha bg-cru/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
-        <a href="#topo" className="font-display text-xl italic">
+    <header className="border-b border-carvao/15 bg-cru">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8">
+        <a href="#topo" className="font-display text-lg tracking-[0.16em] uppercase">
           Trama
         </a>
-        <nav className="flex items-center gap-5 text-sm">
-          <a href="#etiqueta" className="hover:text-jeans">
+        <nav className="flex items-center gap-6 text-xs tracking-[0.08em] text-carvao/70 uppercase">
+          <a href="#etiqueta" className="hover:text-carvao">
             Como cuidar
           </a>
-          <a href="#vitrine" className="hidden hover:text-jeans sm:inline">
-            O que temos
+          <a href="#vitrine" className="hidden hover:text-carvao sm:inline">
+            Catálogo
           </a>
-          <a href="#contato" className="btn-jeans px-4 py-2 text-sm">
-            Falar no WhatsApp
+          <a
+            href="#contato"
+            className="text-carvao underline decoration-ferrugem decoration-2 underline-offset-4 hover:text-ferrugem"
+          >
+            WhatsApp
           </a>
         </nav>
       </div>
