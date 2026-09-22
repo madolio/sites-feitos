@@ -1,8 +1,6 @@
-import { Suspense, lazy } from 'react'
 import { gemas, type Gema } from '../data/gemas'
 import { pecas, type Peca } from '../data/pecas'
-
-const Vitrine = lazy(() => import('../cena/Vitrine'))
+import ConstrucaoJoia from './ConstrucaoJoia'
 
 export default function Hero({
   gema,
@@ -29,9 +27,7 @@ export default function Hero({
           flutuando por cima, pra abrir espaço pra mais peças/gemas sem
           disputar espaço com o próprio 3D. */}
       <div className="relative h-[60svh] w-full pt-16 lg:h-svh lg:w-1/2 lg:pt-0">
-        <Suspense fallback={<div className="h-full w-full animate-pulse bg-carvao" />}>
-          <Vitrine peca={peca} gema={gema} />
-        </Suspense>
+        <ConstrucaoJoia peca={peca} gema={gema} />
       </div>
 
       <div className="flex w-full flex-col justify-center gap-8 px-5 py-10 sm:px-8 lg:w-1/2 lg:py-8">
@@ -42,7 +38,7 @@ export default function Hero({
           <h2 className="mt-2 max-w-md font-display text-3xl leading-tight sm:text-4xl">
             Escolha a peça e a pedra
           </h2>
-          <p className="mt-3 max-w-md text-sm text-fumo">Arraste a joia pra girar. Cada pedra usa o índice de refração real dela.</p>
+          <p className="mt-3 max-w-md text-sm text-fumo">Veja a pedra sendo lapidada e engastada. Cada pedra usa o índice de refração real dela.</p>
         </div>
 
         <div>
