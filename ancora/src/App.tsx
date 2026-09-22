@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
 import Equipe from './components/Equipe'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Fundeio from './components/Fundeio'
 import Hero from './components/Hero'
@@ -27,6 +29,8 @@ export default function App() {
           <Servicos />
           <Processo />
           <Equipe />
+          <Depoimentos />
+          <Faq />
         </main>
         <Footer />
       </div>

@@ -2,6 +2,8 @@ import Hero from './components/Hero'
 import ArcadaMapa from './components/ArcadaMapa'
 import Procedimentos from './components/Procedimentos'
 import Processo from './components/Processo'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Contato from './components/Contato'
 import DemoDialog from './components/DemoDialog'
 
@@ -12,6 +14,8 @@ export default function App() {
       <ArcadaMapa />
       <Procedimentos />
       <Processo />
+      <Depoimentos />
+      <Faq />
       <Contato />
       <DemoDialog />
     </div>

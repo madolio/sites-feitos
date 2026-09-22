@@ -24,6 +24,43 @@ Paleta: `--color-carbon` #141414 (texto/contorno, nunca trocado), `--color-cream
 
 `Nav.tsx` não é uma barra full-width — é uma pílula flutuante centralizada no topo (`rounded-full`, contorno preto), no espírito do radius de 1600px da referência em nav/botões.
 
+## FAQ (`Faq.tsx`)
+
+Adicionado depois de `Ribbon.tsx`, antes de `Contato.tsx`. Antes de escrever
+qualquer coisa nova, rodei `grep` por "FAQ"/"Depoimento"/"Avalia" em `src/` e
+não achei nada: o site não tinha acordeão de dúvidas. Já tinha prova social,
+porém — ver abaixo, decidi não duplicar.
+
+- `Faq.tsx`: acordeão acessível no mesmo padrão usado em outros sites do
+  monorepo (ex. `razao/src/components/Faq.tsx`): `<button aria-expanded
+  aria-controls>` controlando um `<div role="region">`, operável por
+  teclado por ser `<button>` nativo, sem nenhuma animação fora do que o
+  `Reveal` já trata (então já respeita `prefers-reduced-motion` de graça).
+  Seis perguntas reais de quem está decidindo fechar a festa (prazo pra
+  fechar, taxa de deslocamento, o que acontece se chover, mudança no
+  número de convidados, restrição alimentar, forma de pagamento), com
+  respostas específicas e políticas fictícias mas coerentes com os
+  pacotes de `data.ts` (nunca inventa preço fora do que já existe lá).
+  Restilizado do zero com os tokens do próprio `index.css` (`carbon`,
+  `cream`, `ember` só no "+"  do acordeão) — nenhuma classe ou cor do
+  `razao` foi copiada, só a estrutura do componente.
+- Copy passada pelo skill `humanizer` antes de fechar.
+
+## Prova social — já existia, não duplicada
+
+`Ribbon.tsx` (o wildcard do site) já é a seção de depoimentos: dois
+depoimentos curtos e concretos (`data.ts`, array `depoimentos`), cada um
+amarrado à mecânica real do serviço (chegar e não precisar fazer nada,
+monitores cuidando das crianças a festa toda), no formato nome + inicial.
+Como `Ribbon.tsx` é o mecanismo wildcard do site (fita ondulada atrás do
+bloco), não deve ser tocado por instrução do projeto — por isso não criei
+uma segunda seção de depoimentos separada, o que duplicaria a prova social
+e brigaria visualmente com a fita. Se um dia quiser mais depoimentos,
+estender o array em `data.ts` é a extensão natural, mas o grid de
+`Ribbon.tsx` está desenhado pra dois (`sm:grid-cols-2`) — adicionar um
+terceiro exige mexer no layout do wildcard, o que ficou fora do escopo
+desta adição.
+
 ## Gotcha de contraste — a regra da própria referência já resolve o problema
 
 Ao contrário de Pulso/Focinho/Corte/Chave/Revelar (que precisaram de uma segunda tonalidade "-ink" da cor de marca), aqui não foi preciso: seguindo a regra da própria referência (cor saturada nunca vira texto), nenhuma das 5 cores (`sky`, `ember`, etc.) é usada como `text-*` — só como `fill`/`bg` de forma, com `--color-carbon` por cima ou do lado. A palavra de destaque "chega" no Hero por exemplo não é texto colorido (`text-ember` falha a ~2.7:1) — é um "grifo" com fundo `bg-ember` e texto `carbon` normal por cima (~6.7:1). **Se outro projeto usar essa mesma lógica de referência, replicar essa regra em vez de tentar validar cor saturada como texto.**

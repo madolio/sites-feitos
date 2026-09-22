@@ -1,6 +1,8 @@
 import CtaFinal from './components/CtaFinal'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
 import Escola from './components/Escola'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Marquise from './components/Marquise'
@@ -23,6 +25,8 @@ export default function App() {
         <Noivas />
         <Escola />
         <Onde />
+        <Depoimentos />
+        <Faq />
         <CtaFinal />
       </main>
       <Footer />

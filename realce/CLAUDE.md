@@ -82,6 +82,30 @@ As animações daqui são só `opacity`/`translate`. A classe utilitária `trans
 
 `demo.ts` + `DemoDialog.tsx`, igual aos outros projetos, com o texto adaptado pro fato de o salão ser real. `<dialog>` já nasce com `m-auto` (sem isso o preflight do Tailwind zera a margem e o modal cola no canto — bug corrigido em 19 projetos deste repositório).
 
+## FAQ (`Faq.tsx`) — e por que sem depoimentos
+
+A pedido do dono da agência, todos os sites mais antigos do portfólio
+ganharam um acordeão de FAQ e uma seção de prova social, no padrão de
+`razao/src/components/Faq.tsx` e `Depoimentos.tsx`. Aqui só entrou o FAQ.
+
+Este projeto é o único do repositório sobre um negócio **real** (ver seção
+"Isto NÃO é um conceito fictício" acima), com a regra explícita de nunca
+publicar depoimento, nome de profissional ou número de cliente que não
+exista no material público deles. Uma seção de depoimentos fictícios
+quebraria essa regra na primeira frase, então foi omitida de propósito, não
+esquecida.
+
+`Faq.tsx`: acordeão acessível (`<button aria-expanded aria-controls>` +
+`<div role="region">`, operável por teclado por ser `<button>` nativo),
+inserido entre `Escola.tsx` e `Onde.tsx`. Seis perguntas reais de quem está
+decidindo marcar horário (antecedência, por que não tem preço na página,
+remarcação, cabelo cacheado/com química, se a escola interfere no
+atendimento, segunda-feira fechada), com as mesmas duas regras do resto do
+site: nenhum preço citado e nenhuma promessa que não dá pra confirmar sem
+depender do WhatsApp. Usa `.revelar` (o `useRevelar` do projeto), não o
+`Reveal.tsx` do `razao`, porque este projeto não tem GSAP nem esse
+componente.
+
 ## SEO
 
 `index.html` tem meta description, canonical, Open Graph e **JSON-LD `HairSalon`** com endereço e `openingHoursSpecification` reais (sem `telephone`, pelo mesmo motivo acima). `public/robots.txt` e `public/sitemap.xml` existem.

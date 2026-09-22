@@ -60,6 +60,14 @@ Depois da reestruturação da navegação (seção acima), o usuário pediu pra 
 - **Docinhos com mais profundidade no hover:** além do giro que já existia, ganharam `drop-shadow` e um leve levantar (`-translate-y-1`) — reforça que são objetos numa forminha, não figuras planas.
 - Nada de card+badge+CTA-gradiente genérico foi adicionado; os componentes usados (`Reveal`, gradientes SVG) já existiam no vocabulário do projeto ou do repositório.
 
+## Depoimentos e FAQ (set/2026) — padrão do repositório, vocabulário próprio
+
+Adicionado o par depoimentos+FAQ que já existia em outros 9 conceitos do repositório (ver `razao/src/components/Faq.tsx` e `Depoimentos.tsx` como referência de forma). Sem mexer no Hero, no leque (`FanDeck.tsx`) nem nos tokens de `index.css` — só reaproveitou o que já existia.
+
+- `Depoimentos.tsx` — cards com o mesmo `rounded-xl border border-line bg-card` dos outros blocos do site, fundo da seção em `bg-frosting/60` (token que já existia, sem uso até então). No lugar do selo "confere" do Razão, cada card tem um código no estilo cartela (`DA 202`, `Docinhos`) com a mesma tipografia de `.fan-code`/`FlavorOption` (`text-xs font-semibold tabular-nums text-ink/50`) — reforça a metáfora de catálogo de cores sem inventar vocabulário novo.
+- `Faq.tsx` — acordeão acessível (`useId`/`useState`, `aria-expanded`, `aria-controls`, `role="region"`, `<button>` nativo), com uma tira de cor (`swatch`) ao lado de cada pergunta em vez de um ícone genérico, puxando das cores dos sabores em `data.ts`. Perguntas cobrem prazo de encomenda, restrição alimentar, combinação de sabores, pagamento, entrega/retirada e escrita no bolo, com respostas consistentes com o que `Prazos.tsx` e `Encomenda.tsx` já afirmavam (3/7 dias, 50% de sinal, retirada na Vila Mariana, 40 caracteres na escrita).
+- Posicionados em `App.tsx` depois de `Prazos` (fim do conteúdo principal) e antes do rodapé, sem tocar `Hero`, `Encomenda` ou o mecanismo de leque.
+
 ## Testes visuais
 
 O `vite preview` com o plugin da Cloudflare guarda a lista de assets de quando subiu — depois de um novo build ele devolve HTML no lugar do JS novo (tela branca). Pra revisar, servir o `dist` com um servidor estático (`npx serve -s dist`) ou reiniciar o preview a cada build.

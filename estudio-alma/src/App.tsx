@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import Aulas from './components/Aulas'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
 import Experimental from './components/Experimental'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Horarios from './components/Horarios'
@@ -37,6 +39,12 @@ export default function App() {
             <Instrutora />
           </Reveal>
           <Respira />
+          <Reveal as="div">
+            <Depoimentos />
+          </Reveal>
+          <Reveal as="div">
+            <Faq />
+          </Reveal>
           <Reveal as="div">
             <Experimental />
           </Reveal>

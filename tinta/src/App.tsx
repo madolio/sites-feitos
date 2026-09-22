@@ -3,6 +3,7 @@ import DemoDialog from './components/DemoDialog'
 import PainelAbertura from './components/PainelAbertura'
 import PainelArtistas from './components/PainelArtistas'
 import PainelContato from './components/PainelContato'
+import PainelDuvidas from './components/PainelDuvidas'
 import PainelProvador from './components/PainelProvador'
 import Trilho from './components/Trilho'
 
@@ -14,6 +15,7 @@ export default function App() {
         <PainelAbertura />
         <PainelProvador />
         <PainelArtistas />
+        <PainelDuvidas />
         <PainelContato />
       </Trilho>
       <DemoDialog />

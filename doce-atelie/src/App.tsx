@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
 import Docinhos from './components/Docinhos'
 import Encomenda from './components/Encomenda'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Cartela from './components/Cartela'
@@ -31,6 +33,8 @@ export default function App() {
         <Encomenda order={order} setOrder={setOrder} />
         <Docinhos />
         <Prazos />
+        <Depoimentos />
+        <Faq />
       </main>
       <Reveal as="div">
         <Footer />

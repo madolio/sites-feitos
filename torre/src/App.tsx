@@ -1,4 +1,6 @@
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Log from './components/Log'
@@ -15,6 +17,8 @@ export default function App() {
           <Hero />
           <SystemCheck />
           <Planos />
+          <Depoimentos />
+          <Faq />
           <Log />
         </main>
         <Footer />

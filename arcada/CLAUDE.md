@@ -49,6 +49,14 @@ Paleta: `--color-papel` #f6f0e0 (papel/pergaminho, fundo claro), `--color-tinta`
 
 Fontes: **Cormorant Garamond** (display — serifa de eixo clássico, evoca rótulo gravado de mapa/carta náutica) + **Outfit** (corpo — grotesca geométrica neutra) + **PT Mono** (rótulos técnicos: numeração FDI, durações). Nenhuma das três aparecia em nenhum `family=` de `*/index.html` do repositório (conferido via `grep -rhoE "family=[A-Za-z0-9+]+" */index.html`), e o trio como combinação também é inédito.
 
+## FAQ e prova social (`Faq.tsx` / `Depoimentos.tsx`)
+
+Adicionados depois de `Processo.tsx`, antes de `Contato.tsx`, seguindo o mesmo padrão já usado na Razão. Conferido antes de escrever qualquer coisa nova: `grep` por "FAQ", "Depoimento" e "Avalia" em `src/` não encontrou nenhuma seção equivalente (só um item de procedimento chamado "Avaliação radiográfica" em `dentes.ts`, sem relação).
+
+- `Faq.tsx`: acordeão acessível (`<button aria-expanded aria-controls>` + `<div role="region">`, operável por teclado por ser `<button>` nativo, sem depender de `prefers-reduced-motion` porque não anima nada além da rotação do `+`, que já é instantânea o bastante pra não precisar de guarda própria — o `Reveal` cuida do fade de entrada da seção). Seis perguntas de quem está decidindo marcar a primeira consulta (convênio vs. particular, o que esperar na primeira consulta, tempo de recuperação de extração e canal, encaixe de emergência fora do horário, como funciona o orçamento, se todo siso precisa sair), com respostas específicas e coerentes com o resto do site (mesmas faixas de duração de `Procedimentos.tsx`, mesma ressalva sobre siso de `dentes.ts`).
+- `Depoimentos.tsx`: três relatos curtos (Marina T., Eduardo S., Renata A.) amarrados a um momento específico do atendimento (canal sem dor, siso que não precisou sair, orçamento por escrito antes do implante), não depoimentos genéricos de "equipe atenciosa".
+- Ambos usam só os tokens de cor e fonte já existentes (`--color-esmalte`, `--color-linha`, `--color-tinta`, `rotulo-mono`), nenhum token novo criado. `index.css`, `Hero.tsx` e a mecânica de mapa da arcada não foram tocados.
+
 ## Decisões
 
 - Owner fictícia: **Dra. Marina Kolb**, cirurgiã-dentista, Curitiba/PR.

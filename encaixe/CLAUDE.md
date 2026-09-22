@@ -36,3 +36,11 @@ As duas versões anteriores tentavam fazer o **tema** (encaixe de marcenaria) ca
 Paleta (`--color-paper` #efe8d8, `--color-ink` #2a2420, `--color-accent` #34586c) e fontes (**Fraunces** + **Work Sans**) não mudaram — o tom "caderno de bancada"/kraft funciona bem pra ficha técnica de alfaiate também. `rounded-none` em tudo.
 
 **Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo):** depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.
+
+## Adição — FAQ e depoimentos (2026-09-21)
+
+Padrão replicado em vários projetos do monorepo: seção de dúvidas frequentes (`Faq.tsx`) e prova social (`Depoimentos.tsx`), posicionadas depois de `Processo` e antes de `Contato`. Pura adição, sem tocar em `Hero`, `Configurador` (o mecanismo central do site) ou nos tokens de cor/fonte do `index.css`.
+
+- **`Faq.tsx`**: acordeão acessível (`useId` + `useState`, `aria-expanded`/`aria-controls`, painel com `role="region"`), seis perguntas reais de pré-venda pra alfaiataria sob medida (provas, prazo, tecido próprio, ajuste pós-entrega, ajuste de peça externa, pagamento). Usa os tokens já existentes do projeto (`text-fio`, `border-line`, `.rotulo`, `font-heading`) em vez dos de `razao` (`text-selo`/`dado-fiscal`).
+- **`Depoimentos.tsx`**: três depoimentos curtos e específicos (blazer, colete, calça), citando etapas reais do `Processo` (prova, tecido próprio, figurino técnico) pra soar concreto em vez de genérico.
+- Ambos usam `Reveal` como o resto do site, respeitando `prefers-reduced-motion`.

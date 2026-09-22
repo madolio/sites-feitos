@@ -24,6 +24,13 @@ Paleta: `--color-crosta` (#2b1a12, quase-preto quente) + `--color-farinha` (#f7f
 
 Igual ao Pulso/Ferro: `demo.ts` + `DemoDialog.tsx`. Nenhum botão abre um WhatsApp real. **Escrito com `m-auto` na className do `<dialog>` desde o início** — bug real encontrado em 19 outros conceitos (o reset do Tailwind zera `margin`, que é o que centraliza o dialog em `showModal()`); aqui já nasceu correto.
 
+## FAQ + depoimentos
+
+`Faq.tsx` e `Depoimentos.tsx`, entre `Cardapio` e `CtaFinal` no `App.tsx`. Adição pura, sem tocar Hero, `LoafCounter` ou tokens do `index.css` — reusa `--color-crosta/farinha/trigo/forno` e a classe `.tally` já existentes.
+
+- **Faq.tsx:** acordeão acessível (mesmo padrão do `razao/src/components/Faq.tsx`): `<button aria-expanded aria-controls>` controlando um `<div role="region">`, toggle nativo por teclado via elemento `button`, sem lib. 6 perguntas concretas do nicho (antecedência de encomenda, sem glúten/vegano, bolo de aniversário, validade do pão, entrega vs. retirada, horário da fornada) com políticas inventadas e internamente consistentes.
+- **Depoimentos.tsx:** 3 depoimentos curtos (nome + inicial do sobrenome), cada um específico sobre uma situação real (bolo de aniversário, hábito de terça de manhã, encomenda grande pra evento), fundo `crosta` pra variar o ritmo visual entre seções claras.
+
 ## SEO básico
 
 `index.html` tem meta description, canonical, Open Graph e Twitter Card completos, incluindo `og-image.jpg` gerado na paleta do site. `public/robots.txt` e `public/sitemap.xml` existem.

@@ -1,5 +1,7 @@
 import Agendar from './components/Agendar'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Hero from './components/Hero'
 import Programas from './components/Programas'
 import Rail from './components/Rail'
@@ -13,6 +15,8 @@ export default function App() {
         <Hero />
         <Programas />
         <Resultados />
+        <Depoimentos />
+        <Faq />
       </main>
       <Agendar />
       <DemoDialog />

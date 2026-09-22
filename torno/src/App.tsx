@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import type { Etapa } from './cena/Atelie'
 import DemoDialog from './components/DemoDialog'
+import FaqDepoimentos from './components/FaqDepoimentos'
 import Painel from './components/Painel'
 import Turmas from './components/Turmas'
 import { esmaltes } from './data'
@@ -18,6 +19,7 @@ export default function App() {
   const [etapa, setEtapa] = useState<Etapa>('moldar')
   const [esmalte, setEsmalte] = useState(esmaltes[0])
   const [turmasAberto, setTurmasAberto] = useState(false)
+  const [duvidasAberto, setDuvidasAberto] = useState(false)
   const dicaRef = useRef<HTMLDivElement>(null)
   const tituloRef = useRef<HTMLDivElement>(null)
   const queima = useRef<gsap.core.Timeline | null>(null)
@@ -98,18 +100,28 @@ export default function App() {
           <h1 className="text-3xl leading-none">Torno</h1>
           <p className="mt-1 text-sm opacity-70">ateliê de cerâmica</p>
         </div>
-        <button
-          type="button"
-          onClick={() => setTurmasAberto(true)}
-          className="pointer-events-auto rounded-full border border-ink/25 bg-folha px-4 py-2 text-sm font-semibold hover:border-ink"
-        >
-          Turmas
-        </button>
+        <div className="pointer-events-auto flex gap-2">
+          <button
+            type="button"
+            onClick={() => setDuvidasAberto(true)}
+            className="rounded-full border border-ink/25 bg-folha px-4 py-2 text-sm font-semibold hover:border-ink"
+          >
+            Dúvidas
+          </button>
+          <button
+            type="button"
+            onClick={() => setTurmasAberto(true)}
+            className="rounded-full border border-ink/25 bg-folha px-4 py-2 text-sm font-semibold hover:border-ink"
+          >
+            Turmas
+          </button>
+        </div>
       </header>
 
       <Painel etapa={etapa} esmalte={esmalte} onEsmalte={setEsmalte} onEtapa={irPara} onQueimar={queimar} />
 
       <Turmas aberto={turmasAberto} onFechar={() => setTurmasAberto(false)} />
+      <FaqDepoimentos aberto={duvidasAberto} onFechar={() => setDuvidasAberto(false)} />
       <DemoDialog />
     </div>
   )

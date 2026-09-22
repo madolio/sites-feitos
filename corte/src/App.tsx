@@ -1,5 +1,7 @@
 import Agendar from './components/Agendar'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Hero from './components/Hero'
 import Menu from './components/Menu'
 import Profissionais from './components/Profissionais'
@@ -19,6 +21,12 @@ export default function App() {
         <div className="piso-xadrez h-3" aria-hidden="true" />
         <Reveal as="div">
           <Profissionais />
+        </Reveal>
+        <Reveal as="div">
+          <Depoimentos />
+        </Reveal>
+        <Reveal as="div">
+          <Faq />
         </Reveal>
       </main>
       <Reveal as="div">

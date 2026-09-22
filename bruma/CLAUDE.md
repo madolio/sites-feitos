@@ -26,3 +26,11 @@ O frasco em `components/Vitrine.tsx` é um SVG desenhado (silhueta simples + neb
 ## Referência visual
 
 Paleta: `--color-noite` #06120f, `--color-acento` #3fae82 (verde-esmeralda). Fontes: **Fraunces** (display) + **Inter** (corpo).
+
+## FAQ e prova social
+
+Adicionados `components/Faq.tsx` e `components/Depoimentos.tsx` (21/09/2026), seguindo o padrão já usado em razao (`Faq.tsx`/`Depoimentos.tsx`). Entram na composição depois de `Processo` (fim do conteúdo/mecânica de vitrine) e antes de `Contato`.
+
+- `Faq.tsx`: acordeão acessível de verdade — `<button aria-expanded aria-controls>` alternando um `<div id role="region">`, sem depender de animação de scroll/shader pra existir (render condicional puro, `motion-reduce` só afasta a transição do ícone `+`). Seis perguntas específicas de perfumaria sob medida: prazo de maceração, política de ajuste, diferença EDT/Extrait, reencomenda, forma de pagamento, entrega fora da cidade.
+- `Depoimentos.tsx`: três depoimentos fictícios curtos, nome + inicial (Marina T., Diego F., Camila R.), cada um amarrado a uma fragrância real de `data/fragancias.ts` e a uma situação concreta, não a elogio genérico.
+- Nenhum dos dois usa cores/fontes novas — reaproveitam os tokens existentes (`--color-fio`, `--color-acento`, `--color-fumo`, `--color-carvao`, `--font-display`) e a malha de grid/borda já usada em `Processo.tsx`. `Hero.tsx`, `ShaderBackground.tsx` e `ContainerScroll.tsx` não foram tocados.

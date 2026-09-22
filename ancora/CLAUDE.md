@@ -31,6 +31,14 @@ Era um dos 5 projetos deliberadamente deixados com o nav genérico (barra fixa f
 - Como a coluna deixou de ser uma barra fixa no TOPO, o padding-top do Hero mudou de "espaço pra header full-width" pra "espaço só no mobile" — `pt-24 lg:pt-16` no lugar de `pt-28 md:pt-36`. As demais seções já usavam `scroll-mt-16`, que continua servindo tanto pro scroll suave quanto pra folga da barra fina mobile.
 - `Footer.tsx` importava `Mark` de `./Nav`; passou a importar de `./Fundeio`.
 
+## FAQ e prova social (set/2026)
+
+Adicionados `Faq.tsx` e `Depoimentos.tsx`, seguindo o mesmo padrão já validado no `razao` (acordeão acessível + cards de depoimento), sem mexer no Hero, no `Extrato.tsx` (wildcard) nem nos tokens de `index.css`. Entram no `App.tsx` depois de `Equipe` e antes do `Footer`/contato: `Depoimentos` primeiro, `Faq` por último, pra quem ainda tem dúvida ler a prova social antes de bater de frente com a objeção.
+
+- **`Faq.tsx`:** acordeão com `<button aria-expanded aria-controls>` controlando um `<div role="region">` por `useState` local (sem CSS de altura/opacidade dependente de transição, então funciona igual com `prefers-reduced-motion`). Seis perguntas pré-venda específicas do nicho de consultoria patrimonial: patrimônio mínimo, forma de cobrança (honorário fixo, sem comissão de banco/corretora — o gancho de confiança do setor), se a consultoria tem acesso ao dinheiro do cliente, frequência de revisão, cancelamento e se cobre sucessão além do dia a dia.
+- **`Depoimentos.tsx`:** três depoimentos fictícios (primeiro nome + inicial, ex. "Marina T."), cada um amarrado a um serviço real do `data.ts` (planejamento, sucessório, gestão de carteira) e a um fato concreto, não a elogio genérico. Estilizado só com os tokens já existentes (`bg-paper`, `border-line`, `text-brass`, `.mono`) — nenhum widget de estrelas, porque não combina com o vocabulário sóbrio de "extrato/caderneta" do site.
+- Ambas as seções usam `id` + `scroll-mt-16` e `Reveal` como as demais seções de `App.tsx`, mas **não foram adicionadas à `Fundeio.tsx`** (a linha de fundeio): mexer nas profundidades numeradas (0/8/16/24/32 m) e no scroll-spy é fora do escopo de "adição pura" pedido; ficam alcançáveis por scroll normal, sem entrada própria na navegação.
+
 ## Gotcha de contraste
 
 O rótulo mono "Extrato ilustrativo — aportes e rendimento" em `Extrato.tsx` estava em `text-indigo/60` sobre o fundo `paper` — dá ~4.14:1, abaixo do mínimo de 4.5:1 pra texto normal. Subido pra `/75` (~6.6:1). Qualquer texto pequeno em `text-indigo/*` sobre `bg-paper` precisa de pelo menos `/70`.

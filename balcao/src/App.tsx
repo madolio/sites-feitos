@@ -2,6 +2,8 @@ import { useState } from 'react'
 import type { Categoria } from './data/cardapio'
 import Carrinho from './components/Carrinho'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
+import Faq from './components/Faq'
 import Grade from './components/Grade'
 import Rodape from './components/Rodape'
 import Topo from './components/Topo'
@@ -26,6 +28,8 @@ export default function App() {
       <Topo ativa={categoria} onSelect={setCategoria} />
       <main className={temItens ? 'pb-24' : ''}>
         <Grade categoria={categoria} carrinho={carrinho} onAdd={add} onRemove={remove} />
+        <Depoimentos />
+        <Faq />
         <Rodape />
       </main>
       <Carrinho carrinho={carrinho} />

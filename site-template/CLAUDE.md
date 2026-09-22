@@ -99,6 +99,17 @@ Depois de ver Torre/Traço/Âncora, o usuário notou que todos os sites (inclusi
 
 Ver o CLAUDE.md do `madolio` pra a gotcha de GSAP + Tailwind `transition` e o gotcha de teste do Chrome headless com `--window-size` pequeno — ambos se aplicam aqui.
 
+## FAQ e prova social (set/2026)
+
+Adicionados dois componentes novos entre `Catalog.tsx` e `Ledger.tsx`, seguindo o mesmo padrão já usado nos projetos-irmãos (razao, trama, esmalte, trinco, torque, escuta, ninho, pelagem, vazao), mas reformulados pra caber na metáfora de biblioteca/catálogo em vez do "carimbo de papel" genérico usado em alguns deles:
+
+- **`Registro.tsx` (prova social):** em vez de cards de citação com aspas grandes, os depoimentos viram **fichas encerradas do acervo** — cada uma com o `callNumber` (CDU) da área de atuação em que o caso foi resolvido e um selo "ARQUIVADO" no canto (rotacionado, na cor `--color-stamp`, ecoando o selo de cera do `Stamp.tsx` no hero). Reforça a lógica do acervo: um depoimento não é só uma opinião solta, é um caso que já foi catalogado e fechado.
+- **`Faq.tsx` (dúvidas frequentes):** um **índice de consultas** — cada pergunta tem um código (`C.01`, `C.02`...) no mesmo estilo `.catalog-code` usado pro número de chamada CDU, e abre a resposta como acordeão (`button` com `aria-expanded`/`aria-controls`, `region` real, operável por teclado, sem depender de hover). Perguntas escolhidas por serem as que decidem se alguém liga: custo da primeira consulta, como funciona a cobrança, prazo típico por tipo de caso, documentos pra levar, sigilo profissional, e o que acontece se o caso não for de nenhuma área do acervo — políticas fictícias mas internamente consistentes com os dados de `catalog.ts` (prazos batem com o `timeline` de cada ficha).
+
+Ordem de composição: `Hero` → `Catalog` (wildcard) → `Registro` → `Faq` → `Ledger` (rodapé, já fixo no `Layout.tsx`). Os dois componentes novos ficam em `bg-paper` (claro), fazendo a transição visual entre o `Catalog` escuro (`bg-ink`) e o `Ledger` escuro (`bg-panel`) — dá um respiro claro no meio da página em vez de dois blocos escuros emendados.
+
+Não mexemos em `Hero.tsx`, no wildcard (`Catalog.tsx`), nem nos tokens de `index.css` — só reaproveitamos as classes `.catalog-code` e as cores já existentes (`accent-hover`, `stamp`).
+
 ## Gotcha: servidores de preview zumbis no Windows
 
 `pkill -f "vite preview"` via Git Bash **não mata processos nativos do Windows** de forma confiável nesta máquina — o processo `node.exe` continua vivo e respondendo na porta antiga, mesmo depois de "matar" e reabrir em cima da mesma porta (o novo processo às vezes falha silenciosamente com "port already in use" enquanto o zumbi antigo continua servindo uma build desatualizada, ou passa a responder com página branca depois de ficar muito tempo vivo). Isso já causou falso alarme de "a página quebrou" mais de uma vez.

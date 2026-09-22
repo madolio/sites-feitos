@@ -23,3 +23,11 @@ Diferente de todo o resto do portfólio (que é sempre uma experiência de "ler 
 Paleta: `--color-cream` #fff6e1 (fundo), `--color-card` #fffcf5 (cartão, um tom mais claro), `--color-ink` #2b2115, `--color-leaf` #257a40 (verde — cor seguro pra texto, validada em ~5.0:1 sobre o cream; a variante mais viva #2F8F4E ficava em ~3.78:1, abaixo do mínimo de 4.5:1). Cor escolhida de propósito pra fugir da família laranja/vermelho já usada em Pulso, Focinho, Revelar e Doce Ateliê. Fontes: **Alfa Slab One** (display, bem robusta pra preço/menu) + **Lexend** (corpo) — nenhuma das duas usada em outro projeto do repositório.
 
 `Icone.tsx` tem os 6 glifos do cardápio (burger, wrap, copo, lata, doce, combo) — traço só, sem preenchimento, nunca foto de comida.
+
+## FAQ e prova social
+
+Adicionados `Faq.tsx` e `Depoimentos.tsx`, encaixados em `App.tsx` depois de `Grade` (a mecânica de catálogo/carrinho) e antes de `Rodape`. Pura adição, não mexe em `Topo.tsx`, `Grade.tsx`/`ItemCard.tsx`/`Carrinho.tsx` (a mecânica-curinga do projeto) nem em `index.css`.
+
+`Faq.tsx` segue o padrão de acordeão acessível já usado em outros projetos do repo (ver Razão): `<button aria-expanded aria-controls>` controlando um `<div id role="region">`, sem depender de transição CSS pra esconder conteúdo (troca `hidden`/classe, então funciona igual com `prefers-reduced-motion`). As 6 perguntas são específicas do nicho de lanchonete de autoatendimento: pedido mínimo pra entrega, tempo de espera, forma de pagamento, restrição alimentar (glúten/lactose), pedido grande pra empresa e raio de entrega — nada genérico de SaaS.
+
+`Depoimentos.tsx` usa só as cores e fontes já existentes do projeto (`--color-leaf`, `--color-line`, `--color-card`, `font-body`), sem selo giratório nem estrelas — cada depoimento amarra a um pedido concreto (retirada no horário de pico, encomenda pra reunião, adaptação de item por restrição), assinado com primeiro nome + inicial do sobrenome.

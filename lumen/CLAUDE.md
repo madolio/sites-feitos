@@ -22,6 +22,10 @@ Só ativa em telas com mouse de verdade (`matchMedia('(hover: hover) and (pointe
 
 Paleta: `--color-noite` #0a0908 (fundo, quase preto), `--color-acento` #ffb46b (um âmbar de luz quente, próximo — mas não idêntico — ao que `kelvinParaRgb(2700)` devolve, que é #ffa757; 11,36:1 sobre `--color-noite`, medido em 18/09/2026). Fontes: **Fraunces** (títulos, serifada — tom de estúdio de design) + **Inter** (corpo) + **IBM Plex Mono** (rótulos técnicos: "PROJETO LUMINOTÉCNICO", especificações do catálogo).
 
+## FAQ e depoimentos (`Faq.tsx`, `Depoimentos.tsx`)
+
+Adição pura pra reforçar prova social e reduzir objeção pré-compra, sem mexer no Hero, no mecanismo do cursor-luminária ou nos tokens de `index.css` — pedido explícito do responsável ("sem perder o design"). Seguem o mesmo padrão de accordion acessível e cards de depoimento já usado em outros sites do portfólio (ver `razao/src/components/Faq.tsx` e `Depoimentos.tsx`), mas reescritos com os próprios tokens do Lúmen (`--color-carvao`, `--color-fio`, `--color-acento`, `font-mono`/`font-display`) e perguntas específicas de projeto luminotécnico (visita técnica, instalação elétrica, troca de Kelvin, prazo, residencial x comercial, ajuste fino pós-instalação). Accordion: `<button aria-expanded>` controlando `role="region"`, sem JS de teclado customizado (o `<button>` nativo já cobre isso), com `motion-reduce:transition-none` na seta. Posicionados entre `Processo` e `Contato`.
+
 ## Gotchas
 
 - TypeScript não estreita `ref.current` dentro de `function` declarada no mesmo closure mesmo depois de um guard `if (!x) return` — precisou de anotação de tipo explícita + `!` em vez de confiar no narrowing (ver `Hero.tsx`).

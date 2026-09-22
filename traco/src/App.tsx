@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import Carimbo from './components/Carimbo'
 import DemoDialog from './components/DemoDialog'
+import Depoimentos from './components/Depoimentos'
 import Estudio from './components/Estudio'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Processo from './components/Processo'
@@ -25,6 +27,8 @@ export default function App() {
         <Projetos />
         <Processo />
         <Estudio />
+        <Depoimentos />
+        <Faq />
       </main>
       <Footer />
       <Carimbo />

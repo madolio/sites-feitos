@@ -15,6 +15,7 @@ const links = [
   { href: '#produto', id: 'produto', label: 'Produto' },
   { href: '#planos', id: 'planos', label: 'Planos' },
   { href: '#depoimentos', id: 'depoimentos', label: 'Clientes' },
+  { href: '#duvidas', id: 'duvidas', label: 'Dúvidas' },
 ]
 
 // Substitui a barra horizontal (logo+links+botão, igual a qualquer landing
