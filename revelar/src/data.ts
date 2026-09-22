@@ -1,6 +1,7 @@
 // Revelar é um estúdio fictício — conceito de site da Madolio pro nicho de
-// fotografia (casamento/ensaio). Sem fotos de verdade (não existe cliente
-// real) — cada quadro do contact sheet é ilustrado, não fotografado.
+// fotografia (casamento/ensaio). Não existe cliente real, então cada quadro
+// do contact sheet é ilustrado, não fotografado (fotos de estoque no Hero
+// mostram o tipo de entrega, não trabalho do estúdio fictício).
 
 export type Frame = {
   numero: string
