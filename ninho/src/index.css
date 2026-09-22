@@ -18,7 +18,7 @@
 
   --font-display: "Frank Ruhl Libre", ui-serif, Georgia, serif;
   --font-body: "Onest", ui-sans-serif, system-ui, sans-serif;
-  --font-dado: "Noto Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-dado: "Martian Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
 @layer base {

@@ -17,7 +17,7 @@ export default function Depoimentos() {
           {depoimentos.map((dep) => (
             <figure
               key={dep.nome}
-              className="relative rounded-xl border border-linha bg-cru p-6 pt-8"
+              className="relative rounded-sm border border-linha bg-cru p-6 pt-8"
             >
               <span
                 aria-hidden="true"

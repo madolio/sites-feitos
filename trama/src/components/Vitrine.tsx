@@ -12,7 +12,7 @@ export default function Vitrine() {
 
         <Reveal as="div" stagger={0.08} className="mt-10 grid gap-5 sm:grid-cols-2">
           {categorias.map((cat) => (
-            <div key={cat.nome} className="rounded-xl border border-linha bg-cru p-6">
+            <div key={cat.nome} className="rounded-sm border border-linha bg-cru p-6">
               <h3 className="text-xl">{cat.nome}</h3>
               <p className="mt-2 text-sm text-carvao/75">{cat.descricao}</p>
             </div>

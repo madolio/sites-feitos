@@ -16,7 +16,7 @@
   --color-emergencia-hover: #97281f;
   --color-seguro: #4c7a4f; /* verde — serviço agendado/sob controle */
 
-  --font-display: "Zilla Slab", ui-serif, Georgia, serif;
+  --font-display: "Archivo Narrow", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Cabin", ui-sans-serif, system-ui, sans-serif;
   --font-dado: "Azeret Mono", ui-monospace, "SFMono-Regular", monospace;
 }
@@ -43,10 +43,12 @@
 }
 
 @layer components {
+  /* Cantos retos — placa estampada, não app de bem-estar: aqui é serviço
+     rápido e direto, sem enfeite. */
   .btn-latao,
   .btn-emergencia,
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+    @apply inline-flex items-center justify-center rounded-sm px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
   }
 
   .btn-latao {

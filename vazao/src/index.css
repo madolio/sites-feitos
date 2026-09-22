@@ -22,7 +22,7 @@
 
   --font-display: "Kanit", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Sen", ui-sans-serif, system-ui, sans-serif;
-  --font-dado: "Noto Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-dado: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
 @layer base {

@@ -20,7 +20,7 @@ export default function Servicos() {
           {servicos.map((s) => (
             <div
               key={s.id}
-              className="cartao-servico rounded-xl border border-linha bg-limalha-forte p-6 hover:-translate-y-1 hover:shadow-lg"
+              className="cartao-servico rounded-sm border border-linha bg-limalha-forte p-6 hover:-translate-y-1 hover:shadow-lg"
             >
               <p className={`dado-placa ${corCategoria[s.categoria]}`}>{categoriaInfo[s.categoria].rotulo}</p>
               <h3 className="mt-2 text-xl">{s.nome}</h3>

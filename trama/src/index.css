@@ -44,10 +44,11 @@
 }
 
 @layer components {
+  /* Cantos retos (não pill) — linguagem de etiqueta/produto, não de app. */
   .btn-jeans,
   .btn-ferrugem,
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
+    @apply inline-flex items-center justify-center rounded-sm px-6 py-3 text-[0.9375rem] font-semibold tracking-wide transition-colors;
   }
 
   .btn-jeans {

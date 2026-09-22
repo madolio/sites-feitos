@@ -47,7 +47,7 @@ export default function EtiquetaCuidado() {
         ))}
       </div>
 
-      <div className="mt-6 grid gap-6 rounded-2xl border border-linha bg-cartao p-6 sm:p-8 lg:grid-cols-[1fr_1.3fr]">
+      <div className="mt-6 grid gap-6 rounded-md border border-linha bg-cartao p-6 sm:p-8 lg:grid-cols-[1fr_1.3fr]">
         <div>
           <p className="dado-etiqueta text-mostarda">peça exemplo</p>
           <h3 className="mt-1 text-2xl">{ativo.pecaExemplo}</h3>
@@ -132,7 +132,7 @@ function IconeSimbolo({ tipo }: { tipo: Tipo }) {
 
 function SimboloCartao({ titulo, simbolo, tipo }: { titulo: string; simbolo: { rotulo: string; detalhe: string }; tipo: Tipo }) {
   return (
-    <div className="rounded-xl border border-linha bg-cru p-4">
+    <div className="rounded-sm border border-linha bg-cru p-4">
       <div className="flex items-start gap-3">
         <IconeSimbolo tipo={tipo} />
         <div>

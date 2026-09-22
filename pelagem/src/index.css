@@ -14,7 +14,7 @@
   --color-pelo: #c9622b; /* terracota (tom de pelo caramelo) — CTA principal, WhatsApp */
   --color-pelo-hover: #a94f21;
 
-  --font-display: "Zilla Slab", ui-serif, Georgia, serif;
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
   --font-body: "Libre Franklin", ui-sans-serif, system-ui, sans-serif;
   --font-dado: "Overpass Mono", ui-monospace, "SFMono-Regular", monospace;
 }
