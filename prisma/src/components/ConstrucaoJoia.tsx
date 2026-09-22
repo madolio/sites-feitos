@@ -323,6 +323,27 @@ export default function ConstrucaoJoia({ gema, peca }: { gema: Gema; peca: Peca 
     else gsap.set(group, { opacity: 1 })
   }, [displayPecaId])
 
+  // O aro/corrente/pulseira de CADA peça fica sempre no DOM (pra poder
+  // fazer crossfade entre elas); sem isto, só o wire que estava visível no
+  // primeiro carregamento nunca escondia de novo ao trocar de peça — a
+  // troca reposicionava a gema, mas o aro do anel continuava por baixo do
+  // colar/pulseira selecionado. Pula a primeira renderização: nela, quem
+  // decide a opacidade inicial de cada wire é o timeline de construção (ou
+  // o estado final do modo reduced-motion), não este efeito — senão o aro
+  // apareceria de imediato, antes da fase "engastar" da animação.
+  const primeiraRenderWire = useRef(true)
+  useEffect(() => {
+    if (primeiraRenderWire.current) {
+      primeiraRenderWire.current = false
+      return
+    }
+    for (const id of Object.keys(wireRefs.current) as Peca['id'][]) {
+      const el = wireRefs.current[id]
+      if (!el) continue
+      gsap.set(el, { opacity: id === displayPecaId ? 1 : 0 })
+    }
+  }, [displayPecaId])
+
   const fogo = fogoCount(gema.dispersao)
   const isAnel = displayPecaId === 'anel'
 
