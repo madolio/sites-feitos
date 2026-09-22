@@ -31,11 +31,11 @@ export default function DemoDialog() {
           {message}
         </pre>
         <p className="mt-5 text-tinta/75">
-          Num site de verdade, esse botão abriria o WhatsApp da Escuta Psicologia com a mensagem
+          Num site de verdade, esse botão abriria o WhatsApp do Estúdio Pelagem com a mensagem
           acima já escrita. É um negócio fictício, este site é um conceito criado pela Madolio.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <a href={MADOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="btn-acolhe">
+          <a href={MADOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="btn-agua">
             Quero um site assim
           </a>
           <button type="button" onClick={() => ref.current?.close()} className="btn-outline">

@@ -16,7 +16,7 @@ export default function Depoimentos() {
               key={dep.nome}
               className="flex flex-col rounded-md border border-linha bg-white p-5"
             >
-              <p className="dado-oficina text-sinal">{dep.servico}</p>
+              <p className="dado-oficina text-aco">{dep.servico}</p>
               <p className="mt-3 flex-1 text-sm text-chumbo/80 normal-case">
                 &ldquo;{dep.texto}&rdquo;
               </p>

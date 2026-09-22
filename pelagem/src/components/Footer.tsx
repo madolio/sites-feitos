@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="text-sm">
             <p className="dado-ficha text-papel/50">Contato</p>
             <p className="mt-2">contato@estudiopelagem.com.br</p>
-            <p>(54) 3221-7740</p>
+            <p>(47) 3221-7740</p>
             <p>Rua Os Dezoito do Forte, 512</p>
           </div>
           <div className="text-sm">

@@ -69,7 +69,7 @@ export default function VazaoDiagnostico() {
 
             <dl className="mt-8 grid gap-4 sm:grid-cols-3">
               <div className="rounded-lg border border-linha p-4">
-                <dt className="dado-vazao text-atencao">bem abaixo da faixa</dt>
+                <dt className="dado-vazao text-[#8a6008]">bem abaixo da faixa</dt>
                 <dd className="mt-1 text-sm text-tinta/75">
                   Fluxo fraco ou intermitente. Costuma ser entupimento parcial, arejador sujo ou
                   registro regulador fechado demais.

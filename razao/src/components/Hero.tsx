@@ -28,7 +28,7 @@ export default function Hero() {
         </div>
 
         <div className="rounded-2xl border border-linha bg-papel-forte/60 p-6">
-          <p className="dado-fiscal text-prazo">Próximo prazo · MEI</p>
+          <p className="dado-fiscal text-selo">Próximo prazo · MEI</p>
           <p className="mt-2 text-2xl font-semibold">
             {proximoMei.obrigacao.sigla}
             <span className="ml-2 font-dado text-base font-normal text-tinta/60">

@@ -36,7 +36,11 @@ export default function OnlinePresencial() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.05} className="mt-10 overflow-x-auto">
+        <p className="mt-8 text-xs text-tinta/50 sm:hidden" aria-hidden="true">
+          Deslize para o lado para ver a coluna presencial →
+        </p>
+
+        <Reveal delay={0.05} className="mt-2 overflow-x-auto sm:mt-10">
           <table className="w-full min-w-[520px] border-collapse overflow-hidden rounded-xl border border-linha bg-papel text-left text-sm">
             <thead>
               <tr className="border-b border-linha">
