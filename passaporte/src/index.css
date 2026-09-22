@@ -7,8 +7,8 @@
   --color-ink: #5c1f2e;
   --color-paper: #f2ead9;
   --color-line: #ddceac;
-  --color-teal: #2f6f6b;
-  --color-teal-hover: #245552;
+  --color-teal: #2c4d75; /* azul-carimbo (tinta de visto aprovado) — trocado do teal-clínico, que colidia com derme/trilha */
+  --color-teal-hover: #203a58;
 
   --font-display: "Big Shoulders Display", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Mulish", ui-sans-serif, system-ui, sans-serif;

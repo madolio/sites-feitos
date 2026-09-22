@@ -9,9 +9,9 @@
   --color-papel-forte: #e8dfc4; /* papel um tom mais escuro, cartões sobre o papel */
   --color-contorno: #6b8f6a; /* verde de curva de nível — acento primário, linhas do mapa */
   --color-contorno-hover: #587a58;
-  --color-trilha: #c2703f; /* terracota do marco de trilha — CTA */
-  --color-trilha-hover: #a75c30;
-  --color-altitude: #2e6b6e; /* azul-petróleo, "altitude"/dado técnico */
+  --color-trilha: #35618f; /* azul-trilha (placa de sinalização de percurso) — CTA, trocado do terracota que colidia com estufa */
+  --color-trilha-hover: #294a6e;
+  --color-altitude: #8a5a2e; /* sépia de mapa antigo, "altitude"/dado técnico — trocado do teal que colidia com derme/passaporte */
   --color-linha: #d6c9a3; /* borda/linha sobre o papel */
 
   --font-display: "Newsreader", ui-serif, Georgia, serif;
@@ -92,10 +92,10 @@
 @keyframes pulso-marco {
   0%,
   100% {
-    filter: drop-shadow(0 0 0 rgba(194, 112, 63, 0));
+    filter: drop-shadow(0 0 0 rgba(53, 97, 143, 0));
   }
   50% {
-    filter: drop-shadow(0 0 6px rgba(194, 112, 63, 0.65));
+    filter: drop-shadow(0 0 6px rgba(53, 97, 143, 0.65));
   }
 }
 
