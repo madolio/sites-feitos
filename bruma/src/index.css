@@ -38,3 +38,12 @@
     @apply inline-flex items-center justify-center rounded-full border border-fio px-6 py-3 font-semibold text-marfim transition hover:border-acento hover:text-acento;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
