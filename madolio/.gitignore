@@ -27,3 +27,6 @@ yarn-error.log*
 
 # builds privados dos agentes de making-of
 .tmp-dist-*
+
+# Saida das auditorias visuais (screenshots regeneraveis)
+auditoria/
