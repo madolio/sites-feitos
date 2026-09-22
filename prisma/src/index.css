@@ -48,6 +48,16 @@
   }
 }
 
+.diagrama-pulso {
+  animation: diagrama-fluxo 3.4s linear infinite;
+}
+
+@keyframes diagrama-fluxo {
+  to {
+    stroke-dashoffset: -860;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
