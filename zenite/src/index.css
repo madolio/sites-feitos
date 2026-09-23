@@ -22,6 +22,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-noturno font-body text-marfim antialiased;
   }
@@ -54,5 +58,28 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Cintilacao das estrelas mais brilhantes do ceu (Hero.tsx). Cada uma tem
+   atraso e duracao proprios, entao nunca piscam em coro. */
+.estrela-cintila {
+  animation: cintila 4s ease-in-out infinite;
+}
+
+@keyframes cintila {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estrela-cintila {
+    animation: none;
+    opacity: 0.9;
   }
 }
