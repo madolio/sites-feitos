@@ -5,16 +5,38 @@ export default function Credenciais() {
     <section className="border-b border-linha bg-papel py-20">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 sm:grid-cols-[1fr_1.3fr] sm:px-8">
         <Reveal>
-          <div className="aspect-square w-full max-w-xs overflow-hidden rounded-2xl border-2 border-tinta bg-papel-forte">
+          <div className="flex aspect-square w-full max-w-xs items-center justify-center overflow-hidden rounded-2xl border-2 border-tinta bg-papel-forte p-8">
             <svg viewBox="0 0 200 200" aria-hidden="true" className="h-full w-full text-quieto">
-              <circle cx="100" cy="78" r="38" fill="none" stroke="currentColor" strokeWidth="3" />
-              <path
-                d="M40 168c6-38 34-58 60-58s54 20 60 58"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
+              <defs>
+                <path id="selo-topo" d="M18 100 A82 82 0 0 1 182 100" />
+                <path id="selo-base" d="M182 100 A82 82 0 0 0 18 100" />
+              </defs>
+              <g transform="rotate(-3 100 100)" fill="none" stroke="currentColor">
+                <circle cx="100" cy="100" r="92" strokeWidth="1.5" />
+                <circle cx="100" cy="100" r="82" strokeWidth="1" strokeDasharray="1.5 4" />
+                <text className="font-dado" fontSize="8.5" letterSpacing="2" fill="currentColor" stroke="none">
+                  <textPath href="#selo-topo" startOffset="50%" textAnchor="middle">
+                    DRA. RENATA CASAGRANDE
+                  </textPath>
+                </text>
+                <text className="font-dado" fontSize="7.5" letterSpacing="1.5" fill="currentColor" stroke="none">
+                  <textPath href="#selo-base" startOffset="50%" textAnchor="middle">
+                    PSICÓLOGA CLÍNICA · CRP 04/118527
+                  </textPath>
+                </text>
+                <line x1="76" y1="100" x2="124" y2="100" strokeWidth="1" opacity="0.4" />
+                <text
+                  className="font-display"
+                  x="100"
+                  y="119"
+                  textAnchor="middle"
+                  fontSize="54"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  RC
+                </text>
+              </g>
             </svg>
           </div>
         </Reveal>

@@ -83,6 +83,19 @@
   stroke: none;
 }
 
+/* Pequenos desenhos técnicos da seção "Como o projeto acontece" (ver
+   ProcessoPlan.tsx) — mesmo traço fino do floor-plan, com o detalhe de cada
+   etapa em ocre pra marcar o que muda na prancha. */
+.processo-plan {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 1.4;
+}
+
+.processo-plan .pp-accent {
+  stroke: var(--color-ochre);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
