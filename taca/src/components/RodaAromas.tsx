@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { vinhos } from '../data/vinhos'
 import { sendToWhatsApp } from '../demo'
 import Reveal from './Reveal'
@@ -26,6 +26,10 @@ function fatia(inicio: number, fim: number) {
 
 export default function RodaAromas() {
   const [selecionada, setSelecionada] = useState<string | null>(null)
+  // Rotulo em foco: acende na roda os aromas dele. Mouse: pairar. Toque: tocar
+  // no rotulo alterna (nao existe hover no celular).
+  const [emFoco, setEmFoco] = useState<string | null>(null)
+  const ponteiro = useRef<string>('mouse')
   const passo = 360 / categorias.length
 
   const vinhosFiltrados = selecionada ? vinhos.filter((v) => v.aromas.includes(selecionada)) : vinhos
@@ -54,16 +58,33 @@ export default function RodaAromas() {
                 const fim = inicio + passo
                 const meio = pontoNoCirculo(inicio + passo / 2, RAIO * 0.62)
                 const ativa = selecionada === cat
+                const destacada = !!emFoco && (vinhos.find((v) => v.nome === emFoco)?.aromas.includes(cat) ?? false)
+                const alvo = pontoNoCirculo(inicio + passo / 2, 3.2)
                 return (
-                  <g key={cat}>
+                  <g
+                    key={cat}
+                    className="fatia-aroma"
+                    data-destacada={destacada || undefined}
+                    style={{ '--dx': `${alvo.x - CENTRO}px`, '--dy': `${alvo.y - CENTRO}px` } as React.CSSProperties}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={ativa}
+                    aria-label={`Filtrar rotulos por aroma: ${cat}`}
+                    onClick={() => setSelecionada(ativa ? null : cat)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        setSelecionada(ativa ? null : cat)
+                      }
+                    }}
+                  >
                     <path
                       d={fatia(inicio, fim)}
                       fill={ativa ? 'var(--color-garnet)' : 'var(--color-sage)'}
-                      fillOpacity={ativa ? 1 : selecionada ? 0.18 : 0.55}
+                      fillOpacity={ativa ? 1 : destacada ? 0.95 : selecionada ? 0.18 : 0.55}
                       stroke="var(--color-dusk)"
                       strokeWidth={1.5}
                       className="cursor-pointer transition-[fill-opacity] duration-200"
-                      onClick={() => setSelecionada(ativa ? null : cat)}
                     />
                     <text
                       x={meio.x}
@@ -100,7 +121,20 @@ export default function RodaAromas() {
             className="divide-y divide-parchment/10 border-y border-parchment/10"
           >
             {vinhosFiltrados.map((v) => (
-              <li key={v.nome} className="flex flex-wrap items-start justify-between gap-4 py-5">
+              <li
+                key={v.nome}
+                className="rotulo group relative flex cursor-default flex-wrap items-start justify-between gap-4 py-5"
+                data-em-foco={emFoco === v.nome || undefined}
+                onPointerDown={(e) => {
+                  ponteiro.current = e.pointerType
+                }}
+                onPointerEnter={(e) => e.pointerType === 'mouse' && setEmFoco(v.nome)}
+                onPointerLeave={(e) => e.pointerType === 'mouse' && setEmFoco(null)}
+                onClick={() => {
+                  if (ponteiro.current !== 'mouse') setEmFoco((atual) => (atual === v.nome ? null : v.nome))
+                }}
+              >
+                <span aria-hidden="true" className="rotulo-linha" />
                 <div>
                   <div className="flex items-baseline gap-3">
                     <span className="h-3 w-3 shrink-0 rounded-full border border-parchment/30" style={{ backgroundColor: v.cor }} />

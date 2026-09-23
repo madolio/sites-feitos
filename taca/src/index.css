@@ -22,6 +22,10 @@
     height: 100%;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-parchment font-ui text-ink antialiased;
     font-size: 0.9375rem;
@@ -66,5 +70,69 @@
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Roda de aromas (RodaAromas.tsx). A fatia sobe um pouco na direcao radial
+   (--dx/--dy, calculados por fatia) e clareia; o rotulo da lista ganha uma
+   linha grenat que cresce ao lado e o nome desliza. Mouse usa :hover, toque
+   usa :active e o toggle de rotulo em foco; teclado usa :focus-visible. */
+.fatia-aroma {
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.fatia-aroma:focus-visible path {
+  stroke: var(--color-parchment);
+  stroke-width: 2.5;
+}
+
+.fatia-aroma[data-destacada] {
+  transform: translate(var(--dx), var(--dy));
+}
+
+.fatia-aroma:active {
+  transform: translate(var(--dx), var(--dy));
+}
+
+@media (hover: hover) {
+  .fatia-aroma:hover {
+    transform: translate(var(--dx), var(--dy));
+  }
+  .fatia-aroma:hover path {
+    fill-opacity: 0.9;
+  }
+}
+
+.rotulo-linha {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: -0.85rem;
+  width: 2px;
+  background: var(--color-garnet-light);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.rotulo > div {
+  transition: transform 0.3s ease;
+}
+
+.rotulo[data-em-foco] .rotulo-linha {
+  transform: scaleY(1);
+}
+
+.rotulo[data-em-foco] > div {
+  transform: translateX(0.4rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fatia-aroma,
+  .rotulo-linha,
+  .rotulo > div {
+    transition: none;
   }
 }
