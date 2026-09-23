@@ -87,6 +87,10 @@ reduce)` em `index.css`, que zera duração de animação/transição — nenhum
 animação depende de scroll ou de reduced-motion desligado pra que o
 conteúdo apareça.
 
+## Header quebrando em 3 linhas no mobile (set/2026)
+
+`Header.tsx` tinha "Vereda Fisioterapia" + o link "Sua trilha" + o botão "Agendar avaliação" todos numa única linha flex sem quebra controlada — no mobile isso virava três elementos quebrados em várias linhas, o pior caso do padrão que a auditoria viu também em `torque`/`vazao` (só que lá era 1 elemento quebrando, aqui eram 3). Corrigido: "Fisioterapia" (`<span className="hidden sm:inline">`) e o link "Sua trilha" só aparecem a partir de `sm`. Mobile mostra só "Vereda" + o botão "Agendar avaliação", numa linha.
+
 ## Modo demonstração
 
 Igual a Estufa/Bruma/Fornada/Pulso: `demo.ts` + `DemoDialog.tsx`. Nenhum

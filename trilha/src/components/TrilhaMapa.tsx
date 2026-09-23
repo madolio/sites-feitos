@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { fases, DISTANCIA_TOTAL_KM, type Fase } from '../data/fases'
+import { pontosDoAnel, pathSuaveFechado } from '../lib/curva'
 
 // O mapa topográfico da trilha: o mecanismo central do site.
 //
@@ -13,45 +14,16 @@ import { fases, DISTANCIA_TOTAL_KM, type Fase } from '../data/fases'
 // — a forma real como um mapa topográfico representa elevação ao redor de
 // um cume: anéis concêntricos irregulares, não uma grade de nós de
 // vibração. Cada anel é convertido de pontos polares pra um path SVG
-// suave via interpolação Catmull-Rom → Bézier cúbica.
+// suave via interpolação Catmull-Rom → Bézier cúbica. A matemática em si
+// (pontosDoAnel/pathSuaveFechado) mora em lib/curva.ts, reaproveitada
+// também pelas miniaturas de especialidade em CurvaEspecialidade.tsx.
 
 const PICO = { x: 780, y: 120 }
 const ANEIS = [70, 130, 190, 250, 310, 370, 430]
 
-function pontosDoAnel(raioBase: number, indiceAnel: number, segmentos = 28) {
-  const pontos: [number, number][] = []
-  for (let i = 0; i < segmentos; i++) {
-    const theta = (i / segmentos) * Math.PI * 2
-    const r =
-      raioBase +
-      18 * Math.sin(3 * theta + indiceAnel) +
-      9 * Math.sin(5 * theta + 2 * indiceAnel)
-    const x = PICO.x + r * Math.cos(theta) * 1.15
-    const y = PICO.y + r * Math.sin(theta) * 0.72 + indiceAnel * 6
-    pontos.push([x, y])
-  }
-  return pontos
-}
+const OPCOES_ANEL = { cx: PICO.x, cy: PICO.y, escalaX: 1.15, escalaY: 0.72, deriva: 6 }
 
-// Catmull-Rom -> Bézier cúbica, fechado, pra um traço suave de curva de nível.
-function pathSuaveFechado(pontos: [number, number][]) {
-  const n = pontos.length
-  let d = `M ${pontos[0][0].toFixed(1)} ${pontos[0][1].toFixed(1)} `
-  for (let i = 0; i < n; i++) {
-    const p0 = pontos[(i - 1 + n) % n]
-    const p1 = pontos[i]
-    const p2 = pontos[(i + 1) % n]
-    const p3 = pontos[(i + 2) % n]
-    const c1x = p1[0] + (p2[0] - p0[0]) / 6
-    const c1y = p1[1] + (p2[1] - p0[1]) / 6
-    const c2x = p2[0] - (p3[0] - p1[0]) / 6
-    const c2y = p2[1] - (p3[1] - p1[1]) / 6
-    d += `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2[0].toFixed(1)} ${p2[1].toFixed(1)} `
-  }
-  return d + 'Z'
-}
-
-const contornos = ANEIS.map((raio, i) => pathSuaveFechado(pontosDoAnel(raio, i)))
+const contornos = ANEIS.map((raio, i) => pathSuaveFechado(pontosDoAnel(raio, i, OPCOES_ANEL)))
 
 // Posições visuais dos marcos (aproximadas sobre a trilha desenhada à mão
 // abaixo — não recalculadas geometricamente, é um traçado de mapa, não uma

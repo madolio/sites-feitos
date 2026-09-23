@@ -63,6 +63,22 @@
     transform: translate(0.045em, 0.035em);
   }
 
+  /* Tamanho fluido dos títulos riso-type: em text-6xl fixo, "Depoimentos"
+     (palavra única, sem espaço pra quebrar — .riso-type é inline-grid, que
+     nunca encolhe abaixo do max-content) estourava 109px de largura no
+     mobile. clamp() substitui o degrau fixo por escala contínua: some antes
+     de imprimir maior que a viewport, some fica igual ao original (60px) a
+     partir de ~545px, onde já cabia. */
+  .riso-heading {
+    font-size: clamp(1.9rem, 11vw, 3.75rem);
+  }
+
+  @media (width >= 48rem) {
+    .riso-heading {
+      font-size: var(--text-8xl);
+    }
+  }
+
   .btn-blue {
     @apply inline-flex items-center justify-center rounded-full bg-blue px-6 py-3 font-bold text-paper no-underline transition-transform hover:-rotate-2 active:scale-95;
   }

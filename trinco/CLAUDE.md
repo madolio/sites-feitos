@@ -158,6 +158,10 @@ desde o início, não como adendo.
   orçamento bater com o corte final), como pedido explicitamente.
 - Copy passada pelo skill `humanizer` antes de fechar.
 
+## Servicos.tsx virou molho de chaves (set/2026)
+
+A auditoria de 2026-09 apontou `trinco ↔ vazao` como o par mais duplicado do portfólio: hero, mecanismo, triagem e depoimentos já eram distintos (ver seções acima), mas `Servicos.tsx` nos dois era literalmente a mesma composição — título, banner de foto de banco de imagem, grade 2x2 de cards. Reescrito sem foto: os quatro serviços agora penduram num fio vertical (`<ol>` com uma linha absoluta atrás), cada um com um anel colorido pela categoria (`corCategoria`/`anelCategoria`, mesmas cores de `Triagem.tsx`) e um glifo simples de chave dentro do anel — o próprio objeto do ofício como esqueleto, não uma metáfora nova. `data/servicos.ts` não mudou, só a apresentação. `vazao/src/components/Servicos.tsx` foi reescrito na mesma leva como um esquema de cano vertical com válvulas — mesma ideia estrutural (lista conectada por uma linha, não grade+foto), executada de um jeito que não se parece com este.
+
 ## Decisões
 
 - Owner fictício: **Adilson Ferraz**, chaveiro e serralheiro, 19 anos de

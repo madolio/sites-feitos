@@ -23,7 +23,7 @@ export default function Depoimentos() {
     <section id="depoimentos" className="scroll-mt-36 border-t-[6px] border-blue bg-pink/10 py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="poster text-blue">
-          <span className="riso-type text-6xl md:text-8xl">
+          <span className="riso-type riso-heading">
             <span>Depoimentos</span>
             <span className="riso-pink" aria-hidden="true">
               Depoimentos

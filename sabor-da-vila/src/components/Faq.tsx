@@ -1,5 +1,7 @@
 import { useId, useState } from 'react'
 import Reveal from './Reveal'
+import StickerPeel from './StickerPeel'
+import { sendToWhatsApp } from '../demo'
 
 const perguntas = [
   {
@@ -68,7 +70,7 @@ export default function Faq() {
     <section id="duvidas" className="scroll-mt-36 border-t-[6px] border-blue py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <h2 className="poster text-blue">
-          <span className="riso-type text-6xl md:text-8xl">
+          <span className="riso-type riso-heading">
             <span>Dúvidas</span>
             <span className="riso-pink" aria-hidden="true">
               Dúvidas
@@ -77,11 +79,53 @@ export default function Faq() {
         </h2>
         <p className="mt-4 max-w-sm text-lg font-medium">O que quem tá pra pedir pela primeira vez costuma perguntar.</p>
 
-        <Reveal as="div" className="mt-10 max-w-2xl" stagger={0.06}>
-          {perguntas.map((p) => (
-            <ItemFaq key={p.pergunta} pergunta={p.pergunta} resposta={p.resposta} />
-          ))}
-        </Reveal>
+        <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-start lg:gap-16">
+          <Reveal as="div" stagger={0.06}>
+            {perguntas.map((p) => (
+              <ItemFaq key={p.pergunta} pergunta={p.pergunta} resposta={p.resposta} />
+            ))}
+          </Reveal>
+
+          {/* Preenche o vão que sobrava à direita do acordeão: em vez de um
+              card genérico, um "quadro de recado" de chapeiro — mesma borda
+              picotada da comanda/depoimentos — com o adesivo (StickerPeel,
+              reaproveitado do Hero) como selo descolável e um CTA de
+              WhatsApp pra quem não achou a resposta na lista. */}
+          <Reveal as="div" delay={0.1} className="hidden md:block">
+            <div className="picote relative overflow-hidden border-[3px] border-blue bg-blue/5 px-8 pt-10 pb-8 text-center">
+              <p className="poster text-2xl text-blue">
+                Ainda ficou
+                <br />
+                com dúvida?
+              </p>
+              <p className="mt-2 text-sm font-medium text-ink/75">
+                Chama a gente no zap que a comanda responde rapidinho.
+              </p>
+
+              <div className="relative mx-auto mt-6 h-44 w-44">
+                <StickerPeel
+                  imageSrc="/adesivo-duvida.svg"
+                  alt="Selo: não achou sua dúvida? Chama no zap"
+                  width={168}
+                  rotate={-10}
+                  peelBackHoverPct={26}
+                  peelBackActivePct={38}
+                  shadowIntensity={0.35}
+                  lightingIntensity={0.08}
+                  initialPosition={{ x: 12, y: 8 }}
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={() => sendToWhatsApp('Olá, Sabor da Vila! Tenho uma dúvida que não vi na lista do site.')}
+                className="btn-blue mt-2 w-full"
+              >
+                Falar no WhatsApp
+              </button>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   )

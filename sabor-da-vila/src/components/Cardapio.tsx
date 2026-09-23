@@ -12,7 +12,7 @@ export default function Cardapio({ qty, change }: CardapioProps) {
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="poster text-blue">
-            <span className="riso-type text-6xl md:text-8xl">
+            <span className="riso-type riso-heading">
               <span>Cardápio</span>
               <span className="riso-pink" aria-hidden="true">
                 Cardápio

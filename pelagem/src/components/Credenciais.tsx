@@ -6,16 +6,12 @@ export default function Credenciais() {
       <div className="mx-auto grid max-w-5xl gap-10 px-6 sm:grid-cols-[1fr_1.3fr] sm:px-8">
         <Reveal>
           <div className="aspect-square w-full max-w-xs overflow-hidden rounded-2xl border-2 border-tinta bg-papel-forte">
-            <svg viewBox="0 0 200 200" aria-hidden="true" className="h-full w-full text-agua">
-              <path
-                d="M60 90c-8-22 8-38 26-30 4-18 30-18 34 0 18-8 34 8 26 30 10 16-2 34-22 32-8 12-26 12-34 0-20 2-32-16-22-32z"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinejoin="round"
-              />
-              <circle cx="100" cy="112" r="6" fill="currentColor" />
-            </svg>
+            <img
+              src="https://images.pexels.com/photos/19145880/pexels-photo-19145880.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Mãos de tosador aparando com tesoura o pelo das patas de um cão durante a tosa"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
           </div>
         </Reveal>
 
