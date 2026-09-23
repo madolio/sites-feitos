@@ -21,7 +21,10 @@ const tabs = [
 // ficam só com o rótulo, sem quebrar linha.
 export default function FolderTabs() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[color-mix(in_srgb,var(--color-line)_65%,var(--color-paper))] backdrop-blur-md">
+      {/* Faixa solida atras das abas: antes so as abas tinham fundo, entao o
+      conteudo passava por tras da barra (e do botao Agendar) ao rolar. O tom mistura
+      line com paper pra as abas de pasta (bg-paper) continuarem se destacando. */}
       <div className="mx-auto flex max-w-3xl items-end gap-1 px-4 pt-3 sm:px-6">
         {tabs.map((tab) => (
           <a
