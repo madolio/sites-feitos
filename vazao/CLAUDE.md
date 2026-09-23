@@ -74,6 +74,18 @@ vazamento, instalação de metais e louças, revisão de caixa d'água. Sem
 tabela de preço (não existe fato de preço pra um negócio fictício) e sem
 estatística de fachada.
 
+**Header quebrando em 2 linhas no mobile (set/2026):** a auditoria apontou `torque · trinco · vazao` com o mesmo defeito — "Vazão Encanamentos" colado no botão "Emergência agora" numa única linha flex sem quebra controlada, forçando o nome pra 2 linhas. `Header.tsx`: "Encanamentos" (`<span className="hidden sm:inline">`) só aparece a partir de `sm`; mobile mostra só "Vazão" + o botão, numa linha. Mesma correção aplicada no `torque` (ver seu `CLAUDE.md`).
+
+**Reescrito set/2026:** a auditoria visual apontou que este componente era
+idêntico ao `Servicos.tsx` do `trinco` — mesmo título + banner de foto de
+banco de imagem + grade 2x2 de cards, só mudava a paleta. Virou um esquema
+de cano vertical: uma barra grossa (`bg-fluxo/20`) atravessando os quatro
+serviços, cada um com um anel-válvula (`border-fluxo`) e um glifo simples
+(entupimento, gota de vazamento, torneira, caixa d'água) — o mesmo registro
+técnico/esquemático do `VazaoDiagnostico.tsx`, sem repetir a solução do
+Trinco (que virou um molho de chaves — fio + anéis coloridos por categoria,
+sem válvula nem cano). Sem foto de banco de imagem nos dois.
+
 ## FAQ e prova social (`Faq.tsx` / `Depoimentos.tsx`)
 
 Seguindo o padrão consolidado desde Torque/Esmalte/Razão/Trama/Escuta:

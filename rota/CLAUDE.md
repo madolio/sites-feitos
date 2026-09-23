@@ -18,7 +18,7 @@ Da barra lateral, só "Painel" é de fato navegável (é a única tela que exist
 
 **Mobile:** a barra lateral vira uma barra superior fina com botão de menu, que abre um drawer (`Sidebar.tsx`, estado `open`) deslizando por cima do conteúdo com overlay escuro — não é a barra lateral inteira encolhida, é outra composição.
 
-**Gotcha de mobile:** a tabela de entregas tinha 5 colunas — a coluna "ETA" ficava fora da tela sem nenhuma pista de que dava pra arrastar (mesmo problema já visto nas abas do Balcão). Corrigido escondendo a coluna "Bairro" em telas pequenas (`hidden sm:table-cell`, menos crítica que ETA/Status) + `mask-image` de fade na borda direita do contêiner com `overflow-x-auto`, sinalizando que ainda dá pra rolar pra ver a ETA.
+**Gotcha de mobile (retrabalhado em set/2026):** a primeira correção escondia a coluna "Bairro" em telas pequenas + `mask-image` de fade sinalizando rolagem horizontal pra ver a ETA (mesmo truque das abas do Balcão). A auditoria visual mostrou que, numa tabela de dados, o fade não se lê como "arraste" — lê como coluna cortada de verdade (o dígito de "19 min" picotado na borda). Resolvido de raiz: `TabelaEntregas.tsx` agora renderiza duas versões — abaixo de `sm`, uma lista (`<ul>`) com cada entrega em duas linhas (pedido+status, depois motorista+bairro+ETA), sem coluna nenhuma escondida e sem rolagem horizontal; a partir de `sm`, a tabela completa de 5 colunas, sem fade nem `overflow-x-auto` (não precisa mais rolar).
 
 **Gotcha de teste (vale pra todo projeto Cloudflare Vite deste repo):** depois de rebuildar, reiniciar o `vite preview` — ele não pega os novos hashes de asset sozinho, e o navegador recebe HTML no lugar do `.js` esperado.
 

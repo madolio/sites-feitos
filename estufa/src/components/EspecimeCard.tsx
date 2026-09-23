@@ -64,9 +64,12 @@ export default function EspecimeCard({ especie }: { especie: Especie }) {
 
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-mata/10">
         <img
-          src={`/especies/${especie.ilustracao}.jpg`}
+          src={`/especies/${especie.ilustracao}.webp`}
           alt={`Foto de ${especie.comum} (${especie.cientifico}) em cultivo`}
           loading="lazy"
+          decoding="async"
+          width={900}
+          height={900}
           className="h-full w-full object-cover"
         />
         <EspecieIlustracao

@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import Especies from '../components/Especies'
+import ReguaFlorescimento from '../components/ReguaFlorescimento'
 import Processo from '../components/Processo'
 import Depoimentos from '../components/Depoimentos'
 import Faq from '../components/Faq'
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <Especies />
+      <ReguaFlorescimento />
       <Processo />
       <Depoimentos />
       <Faq />

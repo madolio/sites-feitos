@@ -18,8 +18,9 @@ export default function Grade({
   return (
     <Reveal
       as="ul"
+      id="cardapio"
       stagger={0.08}
-      className="mx-auto grid max-w-4xl grid-cols-2 gap-4 px-5 py-6 sm:grid-cols-3 sm:gap-5 sm:px-8"
+      className="mx-auto grid max-w-4xl scroll-mt-28 grid-cols-2 gap-4 px-5 py-6 sm:grid-cols-3 sm:gap-5 sm:px-8"
     >
       {itens.map((item) => (
         <ItemCard

@@ -26,8 +26,8 @@ export default function Header() {
 
       <div className="border-b border-linha bg-papel/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
-          <a href="#topo" className="font-display text-xl font-semibold">
-            Vazão Encanamentos
+          <a href="#topo" className="font-display text-xl font-semibold whitespace-nowrap">
+            Vazão <span className="hidden sm:inline">Encanamentos</span>
           </a>
           <nav className="flex items-center gap-5 text-sm">
             <a href="#diagnostico" className="hidden hover:text-fluxo sm:inline">

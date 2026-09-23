@@ -8,7 +8,7 @@ export function Contato() {
   return (
     <section id="contato" className="relative overflow-hidden bg-preto px-6 py-20 md:py-28">
       <img
-        src="/carros/floresta.jpg"
+        src="/carros/floresta.webp"
         alt=""
         width={1600}
         height={1126}

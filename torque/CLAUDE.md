@@ -147,6 +147,10 @@ nome como se fosse assinatura de baixo de uma ficha de saída.
 Ambos entram em `Home.tsx` depois de Especialidades e antes de Contato,
 posição padrão de prova social + objeções logo antes do CTA final.
 
+## Header quebrando em 2 linhas no mobile (set/2026)
+
+A auditoria apontou `torque · trinco · vazao` com o mesmo defeito: o nome completo da marca (`Torque Auto Mecânica`) ao lado do link "Painel de revisão" e do botão "Agendar horário", tudo numa única linha flex sem quebra controlada, forçava o nome a virar 2 linhas coladas no CTA. Corrigido em `Header.tsx`: "Auto Mecânica" (`<span className="hidden sm:inline">`) só aparece a partir de `sm`, e o link "Painel de revisão" — que já escondia "Serviços" no mobile mas não a si mesmo — ganhou o mesmo tratamento. Mobile agora mostra só "TORQUE" + o botão "Agendar horário", numa linha só; nada mudou a partir de `sm`. Vazão tinha o mesmo problema (resolvido do mesmo jeito, ver seu `CLAUDE.md`); Trinco já estava correto.
+
 ## Decisões
 
 - Owner fictício: **Cláudio Teixeira**, mecânico formado pelo SENAI-SP, 22

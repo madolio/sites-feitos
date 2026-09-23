@@ -5,6 +5,7 @@ import DemoDialog from './components/DemoDialog'
 import Depoimentos from './components/Depoimentos'
 import Faq from './components/Faq'
 import Grade from './components/Grade'
+import Hero from './components/Hero'
 import Rodape from './components/Rodape'
 import Topo from './components/Topo'
 
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <>
+      <Hero />
       <Topo ativa={categoria} onSelect={setCategoria} />
       <main className={temItens ? 'pb-24' : ''}>
         <Grade categoria={categoria} carrinho={carrinho} onAdd={add} onRemove={remove} />

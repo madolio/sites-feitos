@@ -31,3 +31,11 @@ Adicionados `Faq.tsx` e `Depoimentos.tsx`, encaixados em `App.tsx` depois de `Gr
 `Faq.tsx` segue o padrão de acordeão acessível já usado em outros projetos do repo (ver Razão): `<button aria-expanded aria-controls>` controlando um `<div id role="region">`, sem depender de transição CSS pra esconder conteúdo (troca `hidden`/classe, então funciona igual com `prefers-reduced-motion`). As 6 perguntas são específicas do nicho de lanchonete de autoatendimento: pedido mínimo pra entrega, tempo de espera, forma de pagamento, restrição alimentar (glúten/lactose), pedido grande pra empresa e raio de entrega — nada genérico de SaaS.
 
 `Depoimentos.tsx` usa só as cores e fontes já existentes do projeto (`--color-leaf`, `--color-line`, `--color-card`, `font-body`), sem selo giratório nem estrelas — cada depoimento amarra a um pedido concreto (retirada no horário de pico, encomenda pra reunião, adaptação de item por restrição), assinado com primeiro nome + inicial do sobrenome.
+
+## Hero (`Hero.tsx`) — o hambúrguer se monta na tela
+
+A auditoria de 2026-09 marcou o Balcão como nota D: sem hero, entrando direto em abas + cards, parecendo estrutura incompleta. A decisão de "catálogo direto, sem hero" (seção acima) continua valendo pro miolo da página — o que faltava era uma abertura com identidade própria antes do totem de autoatendimento.
+
+`Hero.tsx` entra acima do `Topo` (não é sticky, rola normalmente). Um SVG de hambúrguer (`BurgerSVG`, inline no mesmo arquivo) se monta camada por camada via timeline do GSAP: pão de baixo → carne com marcas de grelha → queijo derretendo (duas gotas que esticam por `scaleY`) → alface/tomate → pão de cima caindo com leve rotação e gergelim aparecendo por último. Uma lista de "etapas" ao lado do texto acende em sincronia (`aria-live="polite"`), então quem não vê a animação ainda lê a sequência Pão → Carne na chapa → Queijo derretendo → Montagem → Pronto em ~8 min como texto.
+
+Sem `prefers-reduced-motion`, ou se o navegador nunca intersecta o SVG, ele nasce já montado (mesmo padrão do `Reveal.tsx`: só anima quando há preferência explícita por movimento). O CTA "Ver cardápio" rola até `#cardapio`, âncora adicionada no `<ul>` de `Grade.tsx` (com `scroll-mt-28` pra não ficar embaixo do `Topo` sticky) — única mudança em `Grade.tsx`, sem tocar na mecânica de carrinho.

@@ -22,7 +22,7 @@ export const estoque: Carro[] = [
     preco: 289000,
     potencia: '245 cv',
     aceleracao: '0-100 em 5,8s',
-    foto: '/carros/coupe-azul.jpg',
+    foto: '/carros/coupe-azul.webp',
   },
   {
     id: 'coupe-cinza',
@@ -32,7 +32,7 @@ export const estoque: Carro[] = [
     preco: 512000,
     potencia: '480 cv',
     aceleracao: '0-100 em 3,9s',
-    foto: '/carros/coupe-cinza.jpg',
+    foto: '/carros/coupe-cinza.webp',
   },
   {
     id: 'muscle-preto',
@@ -42,7 +42,7 @@ export const estoque: Carro[] = [
     preco: 398000,
     potencia: '650 cv',
     aceleracao: '0-100 em 4,1s',
-    foto: '/carros/muscle-preto.jpg',
+    foto: '/carros/muscle-preto.webp',
   },
   {
     id: 'esportivo-azul',
@@ -52,7 +52,7 @@ export const estoque: Carro[] = [
     preco: 335000,
     potencia: '455 cv',
     aceleracao: '0-100 em 4,7s',
-    foto: '/carros/esportivo-azul.jpg',
+    foto: '/carros/esportivo-azul.webp',
   },
   {
     id: 'esportivo-amarelo',
@@ -62,6 +62,6 @@ export const estoque: Carro[] = [
     preco: 1890000,
     potencia: '610 cv',
     aceleracao: '0-100 em 3,2s',
-    foto: '/carros/esportivo-amarelo.jpg',
+    foto: '/carros/esportivo-amarelo.webp',
   },
 ]

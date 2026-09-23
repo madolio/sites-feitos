@@ -8,9 +8,13 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-mata text-vidro">
       <img
-        src="/especies/strelitzia.jpg"
+        src="/especies/strelitzia.webp"
         alt=""
         aria-hidden="true"
+        width={900}
+        height={900}
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover opacity-95"
       />
       <GrandeEstufa className="pointer-events-none absolute inset-0 h-full w-full opacity-40 mix-blend-overlay" />

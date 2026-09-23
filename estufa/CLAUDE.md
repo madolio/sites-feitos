@@ -41,6 +41,19 @@ Paleta: `--color-mata` #10241c (verde quase-preto, fundo escuro/texto), `--color
 
 Fontes: **EB Garamond** (display — itálico pro nome científico, como convenção real de nomenclatura binomial) + **Inter** (corpo) + **Spline Sans Mono** (só pra dado real de ficha: luz, floração, família — nunca decorativo). Nenhuma das três usada em outro projeto do repositório, e a combinação como trio também é inédita (EB Garamond aparece só no `site-template`/Torre com pareamento diferente; Spline Sans Mono e a combinação completa não apareciam em nenhum outro `CLAUDE.md`).
 
+## Performance (set/2026) — as 6 fotos de espécie + o hero eram os 22s de load
+
+A auditoria visual de 2026-09 mediu 22,4s de carregamento em produção, o pior do portfólio, apontando as fotos de espécime como causa provável. As 6 fotos (`public/especies/*.jpg`, 1000×1000, ~142–194KB cada) + a mesma foto reusada no `Hero.tsx` somavam ~1,1MB. Convertidas pra WebP (`sharp`, qualidade 72, redimensionadas pra 900×900 — usado como `object-cover` num card `aspect-[4/3]` e num hero full-bleed, nunca exibido no tamanho original de qualquer forma): **~1016KB → ~435KB, -57%**. `EspecimeCard.tsx` e `Hero.tsx` agora apontam pra `.webp`; os `.jpg` antigos ficaram em `public/especies/` sem nenhuma referência no código (remover é seguro, só não foi feito nesta rodada).
+
+Outras três correções na mesma leva, todas de causa e não de sintoma:
+- `Hero.tsx`: a foto do hero (LCP da página) ganhou `fetchPriority="high"` + `<link rel="preload" as="image">` em `index.html` — antes competia com fontes/JS pela prioridade de rede sem nenhum sinal de que era o recurso mais importante da página.
+- `EspecimeCard.tsx`/`Hero.tsx`: `width`/`height` explícitos nas duas (evita reflow enquanto a imagem carrega — as 6 do catálogo já tinham `loading="lazy"`, isso não mudou).
+- Medir de novo em produção exige um deploy (`npm run deploy`) pra comparar contra os 22,4s originais — não feito nesta sessão, só a redução de payload local está confirmada.
+
+## Régua de florescimento (set/2026) — o catálogo cruzado com o calendário
+
+A auditoria sugeriu cruzar floração × exigência de luz como experiência visual, em vez de repetir o padrão genérico de "1→2→3" já usado em `Processo.tsx` (esse continua como estava — descreve a metodologia comercial, não o catálogo, e tem texto específico o bastante pra não ser trocado sem motivo). `ReguaFlorescimento.tsx`, nova seção entre `Especies` e `Processo`: uma trilha Jan–Dez por espécie, com a cor real da flor (`especie.cor`, já usada no selo de família) preenchendo os meses de floração — opacidade cheia no pico, fraca no resto da janela — e um glifo de sol/meia-sombra/sombra ao lado do nome científico. As janelas de mês (`JANELAS`, no topo do arquivo) são uma leitura das estações do hemisfério sul aplicada ao texto de `floracao` que já existia em `especies.ts` — não é dado novo, é o mesmo dado em outra forma. Rola na horizontal em mobile (`overflow-x-auto`, mesmo padrão de `Topo`/nav de outros projetos do repo) em vez de espremer 12 meses numa tela de 375px.
+
 ## Decisões
 
 - Owner fictícia: **Iara Bicalho**, paisagista e florista, Nova Friburgo/RJ — cidade real conhecida como polo de floricultura de clima serrano, coerente com espécies de meia-sombra/sombra filtrada do catálogo.

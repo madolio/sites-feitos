@@ -14,6 +14,8 @@ As 7 fotos em `public/carros/` são reais (Unsplash, licença livre pra reuso), 
 
 **Gotcha real**: reusei a mesma URL do Unsplash por engano em dois downloads diferentes, gerando um arquivo duplicado sob nomes diferentes — pego via `md5sum` nos 7 arquivos antes de montar o site, não confiando só no nome do arquivo.
 
+**Otimização (set/2026):** a auditoria visual apontou os 7 JPGs (~2,2MB somados) como causa provável do load de 5,4s, o segundo pior do portfólio (atrás só do Estufa). Convertidos pra WebP (`sharp`, qualidade 74, redimensionados pra no máximo 1600px no maior lado — já era o tamanho de exibição real): **~2188KB → ~1080KB, -51%**. `data/estoque.ts`, `Hero.tsx` e `Contato.tsx` apontam pra `.webp`; os `.jpg` antigos ficaram em `public/carros/` sem referência no código.
+
 ## Calculadora de financiamento — fórmula real, não estimativa
 
 `financiamento.ts`: tabela price (`PMT = P × i × (1+i)ⁿ ÷ ((1+i)ⁿ − 1)`), a mesma fórmula de amortização usada por qualquer financeira de veículo. `Financiamento.tsx` deixa escolher o carro do estoque, a entrada (%) e o número de parcelas, e a parcela mostrada é sempre calculada a partir do preço real daquele carro — nunca um valor solto.
