@@ -80,3 +80,12 @@ Ver `src/components/Reveal.tsx` — não colocar a classe `transition`/`duration
 - `ParaQuemE` só prepara o `drawSVG` (getBBox → layout forçado) quando a seção chega perto do viewport.
 - Watermark "madolio." de `Faixa.tsx` é `::before` (texto real, mesmo `aria-hidden`, era auditado por contraste).
 - Medir com Lighthouse local (`npx lighthouse`, Chromium do Playwright) varia bastante entre execuções (TBT de 10 a 800ms) — rodar 3x.
+
+### Segunda rodada (23/set/2026)
+
+- **Previews de `/projetos`:** `HeroPreview` usa `srcSet` com WebP 640w/1280w (`public/previews/<slug>-640.webp`, `-1280.webp`). Depois de regerar um `<slug>.jpg`, rodar `node scripts/gera-previews-webp.cjs`.
+- **`Layout.tsx`:** o `Suspense` das rotas lazy reserva `min-h-[100svh]` — sem isso o rodapé aparecia no topo e era empurrado (CLS 0,186 em `/projetos*`).
+- **`Scene3D`:** loop a 30 fps via `FrameLimiter` (`frameloop="never"` + `advance`); o drift dos pontos é escalado por `delta` pra não depender do fps. Movimento reduzido = `frameloop="demand"` (desenha uma vez). dpr 1 em `pointer: coarse`.
+- **404:** rota `*` → `NotFound.tsx` com `<meta name="robots" content="noindex">` (o Worker responde 200 pra qualquer URL). `sitemap.xml` lista as 13 URLs reais.
+- **Contraste:** `text-ink/55|60|65` → `/70` (o de /60 dava 4,46:1, abaixo de 4,5).
+- **Lighthouse em `/projetos*`:** o `color-contrast` às vezes acusa texto no meio do fade do Reveal — é artefato da medição durante a animação.
