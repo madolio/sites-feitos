@@ -107,7 +107,7 @@ export default function TornoDemo() {
       </div>
 
       <div aria-live="polite" className="min-w-0 rounded-xl border border-paper/15 bg-paper/5 p-6">
-        <div className="flex items-end gap-6">
+        <div className="flex flex-wrap items-end gap-x-6 gap-y-3">
           <svg
             viewBox="0 0 200 160"
             role="img"
