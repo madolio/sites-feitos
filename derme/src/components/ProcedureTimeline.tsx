@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import type { Marco } from '../data/procedimentos'
 
-const FASE_COR: Record<Marco['fase'], string> = {
+export const FASE_COR: Record<Marco['fase'], string> = {
   procedimento: 'var(--color-derme)',
   reacao: 'var(--color-alerta)',
   recuperacao: '#9a8f78',
   resultado: 'var(--color-clinico)',
 }
 
-const FASE_LABEL: Record<Marco['fase'], string> = {
+export const FASE_LABEL: Record<Marco['fase'], string> = {
   procedimento: 'Procedimento',
   reacao: 'Reação esperada',
   recuperacao: 'Recuperação',
@@ -19,12 +19,20 @@ export default function ProcedureTimeline({
   marcos,
   compact = false,
   titleAs = 'h4',
+  index: indexControlado,
+  onIndexChange,
 }: {
   marcos: Marco[]
   compact?: boolean
   titleAs?: 'h2' | 'h3' | 'h4'
+  // Com index/onIndexChange vindos do pai, o controle de dias e o diagrama da
+  // pele andam juntos. Sem eles, o componente continua funcionando sozinho.
+  index?: number
+  onIndexChange?: (i: number) => void
 }) {
-  const [index, setIndex] = useState(0)
+  const [indexInterno, setIndexInterno] = useState(0)
+  const index = indexControlado ?? indexInterno
+  const setIndex = onIndexChange ?? setIndexInterno
   const atual = marcos[index]
   const max = marcos.length - 1
   const Titulo = titleAs

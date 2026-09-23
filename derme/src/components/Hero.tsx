@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { procedimentos } from '../data/procedimentos'
 import ProcedureTimeline from './ProcedureTimeline'
 import SkinLayerDiagram from './SkinLayerDiagram'
@@ -5,6 +6,9 @@ import SkinLayerDiagram from './SkinLayerDiagram'
 const destaque = procedimentos.find((p) => p.id === 'peeling-medio')!
 
 export default function Hero() {
+  // O controle de dias e o corte da pele compartilham o mesmo indice: arrastar
+  // o dia muda a pele desenhada, nao so o texto.
+  const [indice, setIndice] = useState(0)
   return (
     <section className="border-b border-linha bg-papel">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_1fr] lg:items-center">
@@ -30,10 +34,10 @@ export default function Hero() {
         <div className="rounded-2xl border border-linha bg-white/70 p-5 sm:p-6">
           <p className="dado-clinico text-derme">{destaque.nome}</p>
           <div className="mt-4">
-            <ProcedureTimeline marcos={destaque.marcos} compact titleAs="h2" />
+            <ProcedureTimeline marcos={destaque.marcos} compact titleAs="h2" index={indice} onIndexChange={setIndice} />
           </div>
           <div className="mt-5">
-            <SkinLayerDiagram camada={destaque.camada} camadaLabel={destaque.camadaLabel} />
+            <SkinLayerDiagram camada={destaque.camada} camadaLabel={destaque.camadaLabel} marco={destaque.marcos[indice]} />
           </div>
         </div>
       </div>

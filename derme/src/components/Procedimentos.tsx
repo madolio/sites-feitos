@@ -6,6 +6,7 @@ import Reveal from './Reveal'
 
 export default function Procedimentos() {
   const [selecionado, setSelecionado] = useState(procedimentos[0].id)
+  const [indice, setIndice] = useState(0)
   const atual = procedimentos.find((p) => p.id === selecionado) ?? procedimentos[0]
 
   return (
@@ -28,7 +29,10 @@ export default function Procedimentos() {
                 type="button"
                 role="tab"
                 aria-selected={p.id === selecionado}
-                onClick={() => setSelecionado(p.id)}
+                onClick={() => {
+                  setSelecionado(p.id)
+                  setIndice(0)
+                }}
                 className={
                   'rounded-full border px-4 py-2 text-sm font-medium transition-colors ' +
                   (p.id === selecionado
@@ -59,14 +63,14 @@ export default function Procedimentos() {
                 </div>
               </dl>
               <div className="mt-6">
-                <SkinLayerDiagram camada={atual.camada} camadaLabel={atual.camadaLabel} />
+                <SkinLayerDiagram camada={atual.camada} camadaLabel={atual.camadaLabel} marco={atual.marcos[indice]} />
               </div>
             </div>
 
             <div className="rounded-xl border border-linha bg-papel p-5">
               <p className="dado-clinico text-noturno/50">Linha do tempo de recuperação</p>
               <div className="mt-3">
-                <ProcedureTimeline marcos={atual.marcos} key={atual.id} />
+                <ProcedureTimeline marcos={atual.marcos} key={atual.id} index={indice} onIndexChange={setIndice} />
               </div>
             </div>
           </div>
