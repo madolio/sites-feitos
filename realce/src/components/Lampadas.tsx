@@ -11,20 +11,21 @@ const LADO_QTD = 4
 // Ordem de aceso: sobe pelo lado esquerdo, passa pelo arco e desce pelo
 // direito — como alguém ligando o espelho de camarim numa chave só.
 function posicoes() {
-  const esquerda = Array.from({ length: LADO_QTD }, (_, i) => ({
-    x: 0,
-    y: 100 - (i * (100 - ARCO - 12)) / LADO_QTD - 8,
-  }))
+  // Os dois lados usam as MESMAS alturas, espelhadas, e o vao junto ao arco e
+  // o vao ate a base sao iguais entre si. Antes, a esquerda era
+  // y = 100 - i*passo - 8 (de 92% a 45,5%) e a direita y = ARCO + 8 + i*passo
+  // (de 34% a 80,5%): nao eram espelho uma da outra, e os vaos junto ao arco e
+  // a base ficavam diferentes de um lado e do outro.
+  const lados = Array.from({ length: LADO_QTD }, (_, i) => ARCO + ((i + 1) * (100 - ARCO)) / (LADO_QTD + 1))
+
+  const esquerda = [...lados].reverse().map((y) => ({ x: 0, y }))
 
   const arco = Array.from({ length: ARCO_QTD }, (_, i) => {
     const ang = Math.PI * (1 - i / (ARCO_QTD - 1))
     return { x: 50 + 50 * Math.cos(ang), y: ARCO - ARCO * Math.sin(ang) }
   })
 
-  const direita = Array.from({ length: LADO_QTD }, (_, i) => ({
-    x: 100,
-    y: ARCO + 8 + (i * (100 - ARCO - 12)) / LADO_QTD,
-  }))
+  const direita = lados.map((y) => ({ x: 100, y }))
 
   return [...esquerda, ...arco, ...direita]
 }

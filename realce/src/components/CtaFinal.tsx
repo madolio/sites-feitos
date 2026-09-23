@@ -5,7 +5,10 @@ export default function CtaFinal() {
   return (
     <section className="bg-preto px-6 pb-24 text-branco">
       <div className="mx-auto max-w-2xl">
-        <div className="relative pt-[20%] pb-10">
+        {/* O arco ocupa ARCO% da ALTURA do quadro, mas o respiro de cima e % da
+            LARGURA: em tela estreita (largura pequena, quadro alto) o titulo invadia a
+            curva e encostava nas lampadas. pt maior abaixo de sm compensa. */}
+        <div className="relative pt-[40%] pb-10 sm:pt-[20%]">
           <div
             className="absolute inset-0 border border-dourado/35"
             style={{ borderRadius: `50% 50% 10px 10px / ${ARCO}% ${ARCO}% 10px 10px` }}
