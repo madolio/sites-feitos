@@ -16,7 +16,7 @@ export default function Contato() {
   }
 
   return (
-    <footer id="contato" className="scroll-mt-24 py-20 md:py-28">
+    <footer id="contato" className="scroll-mt-24 border-t-2 border-ink py-20 md:py-20">
       <div className="mx-auto max-w-2xl px-6">
         <Reveal>
           <h2 className="text-3xl sm:text-4xl">Pacotes</h2>

@@ -7,7 +7,7 @@ import Reveal from './Reveal'
 // fotos: os quadros são ilustrados (FrameIcon), porque o estúdio não existe.
 export default function ContactSheet() {
   return (
-    <section id="servicos" className="scroll-mt-24 border-t-2 border-ink py-20 md:py-28">
+    <section id="servicos" className="scroll-mt-24 border-t-2 border-ink py-20 md:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
           <h2 className="text-3xl sm:text-4xl">Folha de contato</h2>

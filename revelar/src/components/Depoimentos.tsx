@@ -25,7 +25,7 @@ const depoimentos = [
 // negativo do ContactSheet, texto em anotação de lápis de cera.
 export default function Depoimentos() {
   return (
-    <section id="depoimentos" className="border-t-2 border-ink bg-paper py-20 md:py-28">
+    <section id="depoimentos" className="border-t-2 border-ink bg-paper py-20 md:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
           <span className="font-display text-sm text-ink/50">quadros revelados</span>
