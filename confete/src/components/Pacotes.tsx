@@ -1,7 +1,7 @@
 import { pacotes, temas } from '../data'
-import Sticker from './Sticker'
+import Bolo from './Bolo'
 
-const shapeByColor = { sky: 'blob', ember: 'bolt', mint: 'balloon' } as const
+const camadasPorPacote = { sky: 1, ember: 2, mint: 3 } as const
 
 export default function Pacotes() {
   return (
@@ -15,7 +15,7 @@ export default function Pacotes() {
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {pacotes.map((p) => (
             <div key={p.nome} className="rounded-3xl border-[1.5px] border-carbon bg-cream p-6">
-              <Sticker shape={shapeByColor[p.cor]} color={p.cor} className="h-12 w-12" />
+              <Bolo camadas={camadasPorPacote[p.cor]} color={p.cor} />
               <h3 className="mt-4 text-2xl">{p.nome}</h3>
               <p className="text-sm text-carbon/70">
                 {p.horas} · {p.convidados}

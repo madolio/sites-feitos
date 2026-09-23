@@ -64,3 +64,7 @@ desta adição.
 ## Gotcha de contraste — a regra da própria referência já resolve o problema
 
 Ao contrário de Pulso/Focinho/Corte/Chave/Revelar (que precisaram de uma segunda tonalidade "-ink" da cor de marca), aqui não foi preciso: seguindo a regra da própria referência (cor saturada nunca vira texto), nenhuma das 5 cores (`sky`, `ember`, etc.) é usada como `text-*` — só como `fill`/`bg` de forma, com `--color-carbon` por cima ou do lado. A palavra de destaque "chega" no Hero por exemplo não é texto colorido (`text-ember` falha a ~2.7:1) — é um "grifo" com fundo `bg-ember` e texto `carbon` normal por cima (~6.7:1). **Se outro projeto usar essa mesma lógica de referência, replicar essa regra em vez de tentar validar cor saturada como texto.**
+
+## O bolo cresce com o pacote (set/2026)
+
+Cada card de `Pacotes.tsx` tinha um `Sticker` abstrato solto (blob/bolt/balloon) — decorativo, mas sem relação com o conteúdo do card. Trocado por `Bolo.tsx`: um bolo de aniversário desenhado no mesmo vocabulário visual do `Sticker` (contorno `--color-carbon` de 1.6px, preenchimento saturado, sem gradiente/sombra), com o número de camadas e velas crescendo junto com o pacote — Mini tem 1 camada e 1 vela, Completa 2, Show 3 (mais duas estrelinhas do próprio `Sticker` estourando ao lado, só no maior). Não é decoração nova: é a mesma lógica de "quanto maior a festa, maior o bolo" que qualquer buffet infantil de verdade segue, e reaproveita as cores (`sky`/`ember`/`mint`) já atribuídas a cada pacote em `data.ts`.
