@@ -38,7 +38,7 @@ export default function Projetos() {
         path="/projetos"
       />
       <div className="mx-auto max-w-6xl px-6">
-        <Link to="/" className="inline-block py-1 text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
+        <Link to="/" className="inline-block py-1 text-sm font-semibold text-ink/70 transition-colors hover:text-ink">
           ← madolio
         </Link>
 
@@ -64,7 +64,7 @@ export default function Projetos() {
               className="w-full rounded-full border-2 border-ink/15 bg-white px-5 py-2.5 text-ink placeholder:text-ink/40 focus:border-accent focus:outline-none"
             />
           </label>
-          <span className="shrink-0 text-sm text-ink/55">
+          <span className="shrink-0 text-sm text-ink/70">
             {filtrados.length} {filtrados.length === 1 ? 'projeto' : 'projetos'}
           </span>
         </Reveal>
@@ -96,7 +96,7 @@ export default function Projetos() {
         </Reveal>
 
         {filtrados.length === 0 ? (
-          <p className="mt-14 text-ink/60">
+          <p className="mt-14 text-ink/70">
             {busca.trim() ? <>Nenhum projeto encontrado pra "{busca}".</> : 'Nenhum projeto encontrado com esse filtro.'}
           </p>
         ) : (
@@ -117,10 +117,10 @@ function GradeProjetos({ projetos, className = '' }: { projetos: Projeto[]; clas
           </a>
           <div className="mt-5">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
-              <span className="text-sm text-ink/65">{project.category} · portfólio</span>
+              <h2 className="text-xl font-semibold text-ink">{project.name}</h2>
+              <span className="text-sm text-ink/70">{project.category} · portfólio</span>
             </div>
-            <p className="mt-2 text-ink/65">{project.description}</p>
+            <p className="mt-2 text-ink/70">{project.description}</p>
             <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
               <a
                 href={project.url}
@@ -133,7 +133,7 @@ function GradeProjetos({ projetos, className = '' }: { projetos: Projeto[]; clas
               {project.estudoDeCaso && (
                 <Link
                   to={project.estudoDeCaso}
-                  className="inline-block font-semibold text-ink/60 underline decoration-ink/25 underline-offset-4 hover:text-ink"
+                  className="inline-block font-semibold text-ink/70 underline decoration-ink/25 underline-offset-4 hover:text-ink"
                 >
                   Ver making of
                 </Link>

@@ -98,7 +98,7 @@ export default function ParaQuemE() {
             <h3 className="font-poster text-sm tracking-wider text-ink/50 uppercase">Não faz sentido se</h3>
             <ul className="mt-4 space-y-3">
               {naoFazSentido.map((item) => (
-                <li key={item} className="flex gap-3 text-ink/60">
+                <li key={item} className="flex gap-3 text-ink/70">
                   <Cross />
                   {item}
                 </li>

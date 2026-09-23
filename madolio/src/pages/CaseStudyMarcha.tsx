@@ -148,7 +148,7 @@ export default function CaseStudyMarcha() {
                 className="block h-auto w-full rounded-lg border-2 border-ink object-cover"
               />
               <p className="mt-2 text-sm font-semibold text-ink">{f.legenda}</p>
-              <p className="font-mono text-xs text-ink/60">md5 {f.md5}</p>
+              <p className="font-mono text-xs text-ink/70">md5 {f.md5}</p>
             </li>
           ))}
         </ul>
@@ -206,7 +206,7 @@ export default function CaseStudyMarcha() {
 
       <Secao n="07" rotulo="Histórico" titulo="Como aconteceu">
         <Marcos itens={marcos} />
-        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do histórico real do repositório (git log).</p>
+        <p className="mt-6 max-w-3xl text-sm text-ink/70">Datas e hashes do histórico real do repositório (git log).</p>
       </Secao>
 
       <CtaMakingOf

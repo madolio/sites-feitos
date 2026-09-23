@@ -165,7 +165,7 @@ export default function CaseStudyEncaixe() {
 
       <Secao n="06" rotulo="Histórico" titulo="Como aconteceu">
         <Marcos itens={marcos} />
-        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do git log da pasta encaixe/.</p>
+        <p className="mt-6 max-w-3xl text-sm text-ink/70">Datas e hashes do git log da pasta encaixe/.</p>
       </Secao>
 
       <CtaMakingOf

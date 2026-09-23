@@ -163,7 +163,7 @@ export default function CaseStudyEstufa() {
 
       <Secao n="06" rotulo="Histórico" titulo="Como aconteceu">
         <Marcos itens={marcos} />
-        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do histórico real do repositório (git log).</p>
+        <p className="mt-6 max-w-3xl text-sm text-ink/70">Datas e hashes do histórico real do repositório (git log).</p>
       </Secao>
 
       <CtaMakingOf

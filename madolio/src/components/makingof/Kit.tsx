@@ -22,7 +22,7 @@ export function Capa({ nome, nicho, resumo, fatos, children }: CapaProps) {
   return (
     <header className="pt-32 md:pt-40">
       <div className="mx-auto max-w-5xl px-6">
-        <Link to="/projetos" className="inline-block py-1 text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
+        <Link to="/projetos" className="inline-block py-1 text-sm font-semibold text-ink/70 transition-colors hover:text-ink">
           ← todos os projetos
         </Link>
 
@@ -30,7 +30,7 @@ export function Capa({ nome, nicho, resumo, fatos, children }: CapaProps) {
           <div className="flex items-center gap-3 text-accent" aria-hidden="true">
             <span className="font-poster text-sm tracking-[0.25em] whitespace-nowrap">MAKING OF</span>
             <span className="h-px w-10 bg-accent/40" />
-            <span className="text-xs font-semibold tracking-[0.2em] text-ink/60 uppercase">{nicho}</span>
+            <span className="text-xs font-semibold tracking-[0.2em] text-ink/70 uppercase">{nicho}</span>
           </div>
           <h1 className="mt-4 font-poster text-7xl leading-[0.9] tracking-tight text-ink uppercase md:text-9xl">
             {nome}
@@ -42,7 +42,7 @@ export function Capa({ nome, nicho, resumo, fatos, children }: CapaProps) {
           <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t-2 border-ink pt-5 md:grid-cols-4">
             {fatos.map((f) => (
               <div key={f.rotulo}>
-                <dt className="text-xs font-semibold tracking-[0.2em] text-ink/60 uppercase">{f.rotulo}</dt>
+                <dt className="text-xs font-semibold tracking-[0.2em] text-ink/70 uppercase">{f.rotulo}</dt>
                 <dd className="mt-1 font-heading text-base font-semibold text-ink">{f.valor}</dd>
               </div>
             ))}
@@ -131,7 +131,7 @@ export function Figura({ src, alt, width, height, n, legenda, url = 'seudominio.
           <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
           <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
           <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
-          <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/60">{url}</span>
+          <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/70">{url}</span>
         </div>
         <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" className="block h-auto w-full" />
       </div>
@@ -151,9 +151,9 @@ export function Prova({ itens }: ProvaProps) {
     <dl className="grid gap-px overflow-hidden rounded-2xl border-2 border-ink bg-ink sm:grid-cols-3">
       {itens.map((i) => (
         <div key={i.rotulo} className="bg-white p-6">
-          <dt className="text-xs font-semibold tracking-[0.2em] text-ink/60 uppercase">{i.rotulo}</dt>
+          <dt className="text-xs font-semibold tracking-[0.2em] text-ink/70 uppercase">{i.rotulo}</dt>
           <dd className="mt-2 font-poster text-6xl leading-none text-accent">{i.valor}</dd>
-          <p className="mt-3 text-sm text-ink/75">{i.nota}</p>
+          <dd className="mt-3 text-sm text-ink/75">{i.nota}</dd>
         </div>
       ))}
     </dl>
@@ -194,7 +194,7 @@ export function Marcos({ itens }: MarcosProps) {
       {itens.map((m) => (
         <li key={m.hash} className="relative pb-7 last:pb-0">
           <span aria-hidden="true" className="absolute top-1.5 -left-[1.9rem] h-3 w-3 rounded-full border-2 border-accent bg-paper" />
-          <p className="font-mono text-sm text-ink/60">
+          <p className="font-mono text-sm text-ink/70">
             {m.data} · <span className="text-ink/75">{m.hash}</span>
           </p>
           <p className="mt-1 text-ink/80">{m.texto}</p>

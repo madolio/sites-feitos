@@ -128,7 +128,7 @@ export default function CaseStudyRealce() {
           <dt>Dourado #c59d5f sobre branco</dt>
           <dd className="font-mono font-semibold text-ink">2,51:1 · falha como texto</dd>
         </dl>
-        <p className="mt-4 max-w-3xl text-sm text-ink/60">
+        <p className="mt-4 max-w-3xl text-sm text-ink/70">
           Cálculo WCAG feito com os hex de realce/src/index.css. O mínimo AA para texto é 4,5:1. O CLAUDE.md lista 4,9:1
           e 4,3:1 para dois pares próximos; recalculados agora dão 5,02:1 e 4,18:1, e os valores desta página são os
           recalculados.
@@ -170,7 +170,7 @@ export default function CaseStudyRealce() {
 
       <Secao n="06" rotulo="Histórico" titulo="Como aconteceu">
         <Marcos itens={marcos} />
-        <p className="mt-6 max-w-3xl text-sm text-ink/60">Datas e hashes do histórico real do repositório (git log de realce/).</p>
+        <p className="mt-6 max-w-3xl text-sm text-ink/70">Datas e hashes do histórico real do repositório (git log de realce/).</p>
       </Secao>
 
       <CtaMakingOf
