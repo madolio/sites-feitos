@@ -5,7 +5,7 @@ import type { Projeto } from '../data/projetos'
 // acessibilidade (cada iframe é outro documento inteiro, com sua própria
 // árvore de foco e leitores de tela se perdendo nela). Uma foto da home
 // resolve os dois problemas: carrega leve e não é navegável por engano.
-// Os arquivos ficam em public/previews/<slug>.jpg, gerados via Playwright;
+// Os arquivos ficam em public/previews/<slug>.jpg, gerados via Playwright (+ variantes WebP: scripts/gera-previews-webp.cjs);
 // o slug é o subdomínio da URL (ex: "pulso" de pulso.fenoninho-max...).
 function slugDaUrl(url: string) {
   return new URL(url).hostname.split('.')[0]
@@ -13,6 +13,7 @@ function slugDaUrl(url: string) {
 
 export default function HeroPreview({ projeto }: { projeto: Projeto }) {
   if (!projeto.url) return null
+  const slug = slugDaUrl(projeto.url)
 
   return (
     <div className="overflow-hidden rounded-lg border-2 border-ink shadow-[6px_6px_0_0_rgba(29,27,24,0.12)]">
@@ -20,12 +21,14 @@ export default function HeroPreview({ projeto }: { projeto: Projeto }) {
         <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
         <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
         <span className="h-2.5 w-2.5 rounded-full border border-ink/40" />
-        <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/55">seudominio.com</span>
+        <span className="ml-2 truncate rounded-full bg-surface-alt px-3 py-1 text-xs text-ink/70">seudominio.com</span>
       </div>
 
       <div className="relative w-full overflow-hidden bg-surface-alt" style={{ aspectRatio: '1280 / 760' }}>
         <img
-          src={`/previews/${slugDaUrl(projeto.url)}.jpg`}
+          src={`/previews/${slug}.jpg`}
+          srcSet={`/previews/${slug}-640.webp 640w, /previews/${slug}-1280.webp 1280w`}
+          sizes="(min-width: 1024px) 384px, (min-width: 640px) 45vw, calc(100vw - 48px)"
           alt={`Página inicial do site ${projeto.name}`}
           width={1280}
           height={760}
