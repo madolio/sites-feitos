@@ -40,13 +40,13 @@ export default function Hero() {
 
     gsap.set([bunBottom, patty, cheese, drip1, drip2, veggies, bunTop], { opacity: 0 })
     gsap.set(plate, { opacity: 0, scale: 0.85, transformOrigin: '50% 50%' })
-    gsap.set(bunBottom, { y: 30 })
-    gsap.set(patty, { y: 24 })
+    gsap.set(bunBottom, { y: -70 })
+    gsap.set(patty, { y: -70 })
     gsap.set(grill, { opacity: 0 })
     gsap.set(cheese, { scaleY: 0, transformOrigin: '50% 0%' })
     gsap.set([drip1, drip2], { scaleY: 0, transformOrigin: '50% 0%' })
-    gsap.set(veggies, { y: -16 })
-    gsap.set(bunTop, { y: -40, rotate: -6, transformOrigin: '50% 100%' })
+    gsap.set(veggies, { y: -70 })
+    gsap.set(bunTop, { y: -90, rotate: -8, transformOrigin: '50% 100%' })
     gsap.set(sesame, { opacity: 0 })
 
     let disparado = false
@@ -58,15 +58,15 @@ export default function Hero() {
             const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
 
             tl.to(plate, { opacity: 1, scale: 1, duration: 0.5 })
-              .to(bunBottom, { opacity: 1, y: 0, duration: 0.45 }, '-=0.1')
+              .to(bunBottom, { opacity: 1, y: 0, duration: 0.7, ease: 'bounce.out' }, '-=0.1')
               .call(() => setEtapa(0))
-              .to(patty, { opacity: 1, y: 0, duration: 0.4 }, '+=0.15')
+              .to(patty, { opacity: 1, y: 0, duration: 0.7, ease: 'bounce.out' }, '+=0.1')
               .call(() => setEtapa(1))
               .to(grill, { opacity: 1, duration: 0.3, stagger: 0.05 }, '-=0.1')
               .to(cheese, { opacity: 1, scaleY: 1, duration: 0.45, ease: 'power1.out' }, '+=0.2')
               .call(() => setEtapa(2))
               .to([drip1, drip2], { scaleY: 1, duration: 0.55, ease: 'power1.in', stagger: 0.12 }, '-=0.15')
-              .to(veggies, { opacity: 1, y: 0, duration: 0.4 }, '+=0.1')
+              .to(veggies, { opacity: 1, y: 0, duration: 0.7, ease: 'bounce.out' }, '+=0.1')
               .call(() => setEtapa(3))
               .to(
                 bunTop,
@@ -141,62 +141,60 @@ function BurgerSVG({ ref }: { ref: React.Ref<SVGSVGElement> }) {
   return (
     <svg
       ref={ref}
-      viewBox="0 0 320 300"
+      viewBox="0 40 320 230"
       className="mx-auto h-auto w-full max-w-[300px] md:max-w-none"
       role="img"
       aria-label="Ilustração de um hambúrguer sendo montado: pão, carne, queijo derretendo, alface e tomate, coberto pelo pão de cima com gergelim."
     >
       <ellipse id="plate" cx="160" cy="248" rx="118" ry="16" fill="#efe1c2" />
 
+      {/* Pilha real, de baixo pra cima. Cada camada nasce assentada sobre a
+          anterior (sem sobreposicao que esconda uma camada): pao-base plano,
+          carne, queijo, salada, pao de cima. */}
       <path
         id="bun-bottom"
-        d="M56 210c0-20 18-32 104-32s104 12 104 32z"
-        fill="#e8a93b"
+        d="M58 222h204v14c0 9-8 11-24 11H82c-16 0-24-2-24-11z"
+        fill="#d99a2b"
       />
 
       <g id="patty">
-        <rect x="52" y="182" width="216" height="26" rx="10" fill="#7a4a2b" />
-        <line className="grill-mark" x1="72" y1="188" x2="72" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
-        <line className="grill-mark" x1="104" y1="188" x2="104" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
-        <line className="grill-mark" x1="136" y1="188" x2="136" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
-        <line className="grill-mark" x1="168" y1="188" x2="168" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
-        <line className="grill-mark" x1="200" y1="188" x2="200" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
-        <line className="grill-mark" x1="232" y1="188" x2="232" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
-        <line className="grill-mark" x1="248" y1="188" x2="248" y2="202" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
+        <rect x="52" y="194" width="216" height="28" rx="11" fill="#7a4a2b" />
+        <line className="grill-mark" x1="76" y1="201" x2="76" y2="215" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
+        <line className="grill-mark" x1="108" y1="201" x2="108" y2="215" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
+        <line className="grill-mark" x1="140" y1="201" x2="140" y2="215" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
+        <line className="grill-mark" x1="172" y1="201" x2="172" y2="215" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
+        <line className="grill-mark" x1="204" y1="201" x2="204" y2="215" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
+        <line className="grill-mark" x1="236" y1="201" x2="236" y2="215" stroke="#5c3620" strokeWidth="3" strokeLinecap="round" />
       </g>
 
-      <path id="cheese" d="M46 176h228l-20 18H66z" fill="#f0c23a" />
-      <path id="drip-1" d="M84 194c-2 10-2 18 3 18s5-8 3-18z" fill="#f0c23a" />
-      <path id="drip-2" d="M226 194c-2 12-2 22 4 22s6-10 4-22z" fill="#f0c23a" />
+      <path id="cheese" d="M46 187h228l-14 13H60z" fill="#f0c23a" />
+      <path id="drip-1" d="M84 199c-2 9-2 17 3 17s5-8 3-17z" fill="#f0c23a" />
+      <path id="drip-2" d="M226 199c-2 11-2 20 4 20s6-9 4-20z" fill="#f0c23a" />
 
       <g id="veggies">
-        <path
-          d="M54 170c30-14 182-14 212 0l-8 10H62z"
-          fill="#5f9a4a"
-        />
-        <circle cx="110" cy="168" r="9" fill="#c14a34" />
-        <circle cx="168" cy="164" r="9" fill="#c14a34" />
-        <circle cx="222" cy="168" r="9" fill="#c14a34" />
+        <path d="M54 182c30-14 182-14 212 0l-8 10H62z" fill="#5f9a4a" />
+        <circle cx="112" cy="180" r="8" fill="#c14a34" />
+        <circle cx="168" cy="177" r="8" fill="#c14a34" />
+        <circle cx="220" cy="180" r="8" fill="#c14a34" />
       </g>
 
       <g id="bun-top">
-        <path
-          d="M52 158c0-40 34-64 108-64s108 24 108 64z"
-          fill="#e8a93b"
-        />
-        <path
-          d="M60 156c4-34 34-54 100-54s96 20 100 54"
-          fill="none"
-          stroke="#c98a2a"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <circle className="sesame" cx="110" cy="120" r="4" fill="#fff6e1" />
-        <circle className="sesame" cx="140" cy="104" r="4" fill="#fff6e1" />
-        <circle className="sesame" cx="172" cy="98" r="4" fill="#fff6e1" />
-        <circle className="sesame" cx="204" cy="106" r="4" fill="#fff6e1" />
-        <circle className="sesame" cx="230" cy="122" r="4" fill="#fff6e1" />
-        <circle className="sesame" cx="160" cy="118" r="4" fill="#fff6e1" />
+        <g transform="translate(0 20)">
+          <path d="M52 158c0-40 34-64 108-64s108 24 108 64z" fill="#e8a93b" />
+          <path
+            d="M60 156c4-34 34-54 100-54s96 20 100 54"
+            fill="none"
+            stroke="#c98a2a"
+            strokeWidth="4"
+            strokeLinecap="round"
+          />
+          <circle className="sesame" cx="110" cy="120" r="4" fill="#fff6e1" />
+          <circle className="sesame" cx="140" cy="104" r="4" fill="#fff6e1" />
+          <circle className="sesame" cx="172" cy="98" r="4" fill="#fff6e1" />
+          <circle className="sesame" cx="204" cy="106" r="4" fill="#fff6e1" />
+          <circle className="sesame" cx="230" cy="122" r="4" fill="#fff6e1" />
+          <circle className="sesame" cx="160" cy="118" r="4" fill="#fff6e1" />
+        </g>
       </g>
     </svg>
   )
