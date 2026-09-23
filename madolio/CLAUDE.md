@@ -70,3 +70,13 @@ Ver `src/components/Reveal.tsx` — não colocar a classe `transition`/`duration
 ## SEO básico
 
 `index.html` tem meta description, canonical, Open Graph e Twitter Card. `public/robots.txt` e `public/sitemap.xml` existem — o sitemap lista `/` e `/projetos`.
+
+## Performance (23/set/2026)
+
+- **Fontes self-hosted** em `public/fonts` (latin, WOFF2; Space Grotesk e IBM Plex Sans são variáveis) com `@font-face` no topo de `index.css` + `<link rel="preload">` no `index.html`. Antes vinham do Google Fonts e o swap tardio do Bebas Neue no título causava CLS intermitente (~0.11). Se mudar de fonte, refazer o preload.
+- **`Reveal.tsx` não usa mais GSAP** — transições CSS inline (mesma curva/duração do `power3.out`/0.7s). `fade={false}` = só sobe, sem opacity 0 (usado no título do Hero: elemento com opacity 0 não conta como LCP). GSAP só é carregado pelo chunk de baixo da dobra.
+- **Home dividida:** `Hero` no bundle inicial; o resto está em `HomeBelowFold.tsx` (lazy), montado depois do `load` (+150ms), com placeholder `min-h-[200svh]` pro rodapé não aparecer antes. Rotas `/projetos*` são lazy em `App.tsx`.
+- **`Scene3DLazy`** só monta o WebGL (three.js, ~900 kB) na 1ª interação ou 3,5s após o `load`; pausa o render loop fora da tela (`frameloop`); fade-in via `.scene-in`.
+- `ParaQuemE` só prepara o `drawSVG` (getBBox → layout forçado) quando a seção chega perto do viewport.
+- Watermark "madolio." de `Faixa.tsx` é `::before` (texto real, mesmo `aria-hidden`, era auditado por contraste).
+- Medir com Lighthouse local (`npx lighthouse`, Chromium do Playwright) varia bastante entre execuções (TBT de 10 a 800ms) — rodar 3x.

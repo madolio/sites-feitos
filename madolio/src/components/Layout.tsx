@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Chrome from './Chrome'
 import Footer from './Footer'
@@ -21,7 +21,9 @@ export default function Layout() {
     <div className="flex min-h-screen flex-col bg-paper text-ink">
       <Chrome />
       <main className="flex-1">
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>

@@ -1,18 +1,19 @@
+import { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Projetos from './pages/Projetos'
-import CaseStudyCardume from './pages/CaseStudyCardume'
-import CaseStudyTorno from './pages/CaseStudyTorno'
-import CaseStudyEncaixe from './pages/CaseStudyEncaixe'
-import CaseStudyCalibre from './pages/CaseStudyCalibre'
-import CaseStudyTaca from './pages/CaseStudyTaca'
-import CaseStudyRealce from './pages/CaseStudyRealce'
-import CaseStudyLumen from './pages/CaseStudyLumen'
-import CaseStudyPrisma from './pages/CaseStudyPrisma'
-import CaseStudyMarcha from './pages/CaseStudyMarcha'
-import CaseStudyBruma from './pages/CaseStudyBruma'
-import CaseStudyEstufa from './pages/CaseStudyEstufa'
+const Projetos = lazy(() => import('./pages/Projetos'))
+const CaseStudyCardume = lazy(() => import('./pages/CaseStudyCardume'))
+const CaseStudyTorno = lazy(() => import('./pages/CaseStudyTorno'))
+const CaseStudyEncaixe = lazy(() => import('./pages/CaseStudyEncaixe'))
+const CaseStudyCalibre = lazy(() => import('./pages/CaseStudyCalibre'))
+const CaseStudyTaca = lazy(() => import('./pages/CaseStudyTaca'))
+const CaseStudyRealce = lazy(() => import('./pages/CaseStudyRealce'))
+const CaseStudyLumen = lazy(() => import('./pages/CaseStudyLumen'))
+const CaseStudyPrisma = lazy(() => import('./pages/CaseStudyPrisma'))
+const CaseStudyMarcha = lazy(() => import('./pages/CaseStudyMarcha'))
+const CaseStudyBruma = lazy(() => import('./pages/CaseStudyBruma'))
+const CaseStudyEstufa = lazy(() => import('./pages/CaseStudyEstufa'))
 
 export default function App() {
   return (

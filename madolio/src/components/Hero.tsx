@@ -32,7 +32,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/10 via-void/40 to-void" />
 
       <div className="relative z-10 flex flex-1 items-center justify-center px-6 pt-24 pb-20">
-        <Reveal className="mx-auto max-w-3xl text-center">
+        <Reveal fade={false} className="mx-auto max-w-3xl text-center">
           <p className="mb-5 flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.2em] text-fog uppercase">
             <span className="h-px w-8 bg-accent-hero/60" />
             Criação de sites sob medida

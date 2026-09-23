@@ -92,6 +92,8 @@ type Scene3DProps = {
   fov?: number
   glowColor?: string
   showGlow?: boolean
+  /** false pausa o render loop (cena fora da tela). */
+  active?: boolean
 }
 
 const DEFAULT_GLOW_LAYERS = [
@@ -112,12 +114,14 @@ export default function Scene3D({
   fov = 45,
   glowColor = '#3f6dff',
   showGlow = true,
+  active = true,
 }: Scene3DProps) {
   return (
     <Canvas
       dpr={[1, 1.5]}
+      frameloop={active ? 'always' : 'never'}
       camera={{ position: [0, 0, cameraDistance], fov }}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
     >
       <Suspense fallback={null}>
         {showGlow && <CoreGlow color={glowColor} layers={DEFAULT_GLOW_LAYERS} />}

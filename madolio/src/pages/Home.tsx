@@ -1,17 +1,28 @@
-import Benefits from '../components/Benefits'
-import Confianca from '../components/Confianca'
-import CtaFinal from '../components/CtaFinal'
-import Diferenciais from '../components/Diferenciais'
-import Faixa from '../components/Faixa'
-import Faq from '../components/Faq'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import Hero from '../components/Hero'
-import ParaQuemE from '../components/ParaQuemE'
-import Processo from '../components/Processo'
 import Seo from '../components/Seo'
-import Sobre from '../components/Sobre'
-import Trabalhos from '../components/Trabalhos'
+
+const HomeBelowFold = lazy(() => import('../components/HomeBelowFold'))
 
 export default function Home() {
+  // O resto da página só é pedido depois que o hero pintou e a página terminou
+  // de carregar — assim o chunk não disputa banda/CPU com o primeiro render.
+  const [showRest, setShowRest] = useState(false)
+  useEffect(() => {
+    let handle: number | undefined
+    const start = () => {
+      handle = window.setTimeout(() => setShowRest(true), 150)
+    }
+    if (document.readyState === 'complete') start()
+    else window.addEventListener('load', start, { once: true })
+    return () => {
+      window.removeEventListener('load', start)
+      window.clearTimeout(handle)
+    }
+  }, [])
+
+  const placeholder = <div className="min-h-[200svh]" aria-hidden="true" />
+
   return (
     <>
       <Seo
@@ -20,16 +31,10 @@ export default function Home() {
         path="/"
       />
       <Hero />
-      <Diferenciais />
-      <Trabalhos />
-      <Faixa />
-      <Benefits />
-      <ParaQuemE />
-      <Processo />
-      <Confianca />
-      <Sobre />
-      <Faq />
-      <CtaFinal />
+      {/* Reserva altura enquanto o chunk chega, pro rodapé não aparecer e depois ser empurrado. */}
+      <Suspense fallback={placeholder}>
+        {showRest ? <HomeBelowFold /> : placeholder}
+      </Suspense>
     </>
   )
 }

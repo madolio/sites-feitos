@@ -11,7 +11,7 @@ export default function Footer() {
           <span className="font-poster text-lg tracking-wide text-ink/70 uppercase">
             madolio<span className="text-accent">.</span>
           </span>
-          <span className="text-sm text-ink/60">© {new Date().getFullYear()} Todos os direitos reservados.</span>
+          <span className="text-sm text-ink/70">© {new Date().getFullYear()} Todos os direitos reservados.</span>
         </div>
         <a href={EMAIL_HREF} className="text-sm font-medium text-ink/70 transition-colors hover:text-ink">
           {EMAIL}

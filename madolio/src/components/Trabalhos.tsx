@@ -130,16 +130,21 @@ function ProjetoInfo({ projeto, compact = false }: { projeto: Projeto | null; co
         {projeto?.description ?? 'Passe o mouse num nome à esquerda pra ver o site aqui.'}
       </p>
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-        <a
-          href={projeto?.url}
-          target="_blank"
-          rel="noreferrer"
-          className={`inline-block font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 ${
-            projeto?.url ? '' : 'pointer-events-none opacity-0'
-          }`}
-        >
-          Abrir site completo
-        </a>
+        {/* Ocioso: mesmo espaço, mas sem <a> sem href (não rastreável). */}
+        {projeto?.url ? (
+          <a
+            href={projeto.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4"
+          >
+            Abrir site completo
+          </a>
+        ) : (
+          <span aria-hidden="true" className="inline-block font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 invisible">
+            Abrir site completo
+          </span>
+        )}
         {projeto?.estudoDeCaso && (
           <Link
             to={projeto.estudoDeCaso}

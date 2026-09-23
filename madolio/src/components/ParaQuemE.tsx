@@ -46,14 +46,26 @@ export default function ParaQuemE() {
   useGSAP(
     () => {
       gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-        gsap.set('[data-mark]', { drawSVG: '0%' })
-        gsap.to('[data-mark]', {
-          drawSVG: '100%',
-          duration: 0.5,
-          ease: 'power2.out',
-          stagger: 0.12,
-          scrollTrigger: { trigger: root.current, start: 'top 75%', once: true },
-        })
+        // drawSVG mede cada traço (getBBox → layout forçado da página toda),
+        // então só prepara quando a seção está perto de aparecer — não durante
+        // o carregamento inicial.
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) return
+            observer.disconnect()
+            gsap.set('[data-mark]', { drawSVG: '0%' })
+            gsap.to('[data-mark]', {
+              drawSVG: '100%',
+              duration: 0.5,
+              ease: 'power2.out',
+              stagger: 0.12,
+              scrollTrigger: { trigger: root.current, start: 'top 75%', once: true },
+            })
+          },
+          { rootMargin: '600px 0px' },
+        )
+        observer.observe(root.current!)
+        return () => observer.disconnect()
       })
     },
     { scope: root },
