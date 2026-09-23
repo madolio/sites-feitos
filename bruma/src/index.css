@@ -15,6 +15,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-noite font-body text-marfim antialiased;
   }

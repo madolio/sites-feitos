@@ -108,3 +108,12 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Rolagem suave nas ancoras do menu. Fica DENTRO de no-preference: quem pede
+   menos movimento recebe o salto direto, sem precisar de override. O offset do
+   header fixo (scroll-mt / scroll-padding) e responsabilidade de cada projeto. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

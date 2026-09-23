@@ -12,6 +12,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-paper font-body text-ink antialiased;
     font-size: 1.0625rem;
@@ -81,6 +85,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .sala-entrar {
     animation: none;
   }

@@ -21,6 +21,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-cream font-body text-carbon antialiased;
     font-size: 1.0625rem;
@@ -54,6 +58,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .btn-sticker,
   .btn-ghost {
     transition: none;
