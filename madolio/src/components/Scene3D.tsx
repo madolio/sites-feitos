@@ -1,5 +1,5 @@
-import { Suspense, useMemo, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Suspense, useEffect, useMemo, useRef } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import type { Points as PointsType } from 'three'
 import { AdditiveBlending } from 'three'
 
@@ -33,7 +33,7 @@ function ParticleField({ count, color, opacity, size, minRadius, maxRadius }: Pa
     return [pos, seed]
   }, [count, minRadius, maxRadius])
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     if (!points.current) return
     const t = clock.getElapsedTime()
     points.current.rotation.y = reducedMotion ? 0 : t * 0.05
@@ -44,7 +44,7 @@ function ParticleField({ count, color, opacity, size, minRadius, maxRadius }: Pa
       const arr = attr.array as Float32Array
       for (let i = 0; i < count; i++) {
         const s = seeds[i]
-        arr[i * 3 + 1] += Math.sin(t * 0.6 + s) * 0.0006
+        arr[i * 3 + 1] += Math.sin(t * 0.6 + s) * 0.0006 * (delta * 60)
       }
       attr.needsUpdate = true
     }
@@ -66,6 +66,28 @@ function ParticleField({ count, color, opacity, size, minRadius, maxRadius }: Pa
       />
     </points>
   )
+}
+
+// A rotação é lentíssima (0,05 rad/s): 30 quadros/s são indistinguíveis de 60,
+// e metade do trabalho de GPU/CPU (principalmente em celular). O R3F não tem
+// limite de fps, então o loop fica em `frameloop="never"` e este componente
+// chama `advance` no ritmo certo, só enquanto a cena está visível.
+function FrameLimiter({ active, fps }: { active: boolean; fps: number }) {
+  const advance = useThree((state) => state.advance)
+  useEffect(() => {
+    if (!active) return
+    let raf = 0
+    let last = 0
+    const loop = (t: number) => {
+      raf = requestAnimationFrame(loop)
+      if (t - last < 1000 / fps - 2) return
+      last = t
+      advance(t / 1000)
+    }
+    raf = requestAnimationFrame(loop)
+    return () => cancelAnimationFrame(raf)
+  }, [active, advance, fps])
+  return null
 }
 
 function CoreGlow({ color, layers }: { color: string; layers: { radius: number; opacity: number }[] }) {
@@ -116,13 +138,21 @@ export default function Scene3D({
   showGlow = true,
   active = true,
 }: Scene3DProps) {
+  // Movimento reduzido: cena estática, desenhada uma vez (sem loop de render).
+  const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  const coarsePointer = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+
   return (
     <Canvas
-      dpr={[1, 1.5]}
-      frameloop={active ? 'always' : 'never'}
+      // Celular (ponteiro grosso) fica em 1x: a cena é pontos suaves de 0,045 de
+      // raio, dpr 1,5+ só multiplica pixels pintados sem ganho visível.
+      dpr={coarsePointer ? 1 : [1, 1.5]}
+      frameloop={reducedMotion ? (active ? 'demand' : 'never') : 'never'}
       camera={{ position: [0, 0, cameraDistance], fov }}
       gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
     >
+      {!reducedMotion && <FrameLimiter active={active} fps={30} />}
       <Suspense fallback={null}>
         {showGlow && <CoreGlow color={glowColor} layers={DEFAULT_GLOW_LAYERS} />}
         <ParticleField
