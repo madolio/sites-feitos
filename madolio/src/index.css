@@ -216,6 +216,7 @@
 @media (prefers-reduced-motion: reduce) {
   .bento-card-inner {
     transition: none;
+    transform: none;
   }
 }
 

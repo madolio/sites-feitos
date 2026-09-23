@@ -22,7 +22,7 @@ export function Capa({ nome, nicho, resumo, fatos, children }: CapaProps) {
   return (
     <header className="pt-32 md:pt-40">
       <div className="mx-auto max-w-5xl px-6">
-        <Link to="/projetos" className="text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
+        <Link to="/projetos" className="inline-block py-1 text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
           ← todos os projetos
         </Link>
 

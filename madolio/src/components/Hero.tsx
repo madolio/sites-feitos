@@ -56,7 +56,7 @@ export default function Hero() {
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-ghost">
               Falar no WhatsApp
             </a>
-            <a href={EMAIL_HREF} className="text-sm font-semibold text-fog underline decoration-fog/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white">
+            <a href={EMAIL_HREF} className="py-1 text-sm font-semibold text-fog underline decoration-fog/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white">
               Enviar e-mail
             </a>
           </div>

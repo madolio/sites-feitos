@@ -57,14 +57,14 @@ export default function LivePreview({ projeto }: { projeto: Projeto | null }) {
               className="pointer-events-none absolute top-0 left-0 origin-top-left border-0 transition-opacity duration-300"
               style={{ width: VIRTUAL_WIDTH, height: VIRTUAL_HEIGHT, transform: `scale(${scale})`, opacity: loaded ? 1 : 0 }}
             />
-            {!loaded && <div className="absolute inset-0 animate-pulse bg-white/5" aria-hidden="true" />}
+            {!loaded && <div className="absolute inset-0 motion-safe:animate-pulse bg-white/5" aria-hidden="true" />}
           </>
         ) : (
           // Estado ocioso: em vez de uma caixa vazia, um cursor sutil
           // piscando no centro — sinaliza "aponte aqui" sem repetir o texto
           // que já aparece embaixo da moldura (ProjetoInfo).
           <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 24 24" className="h-8 w-8 animate-pulse text-white/20" fill="currentColor">
+            <svg viewBox="0 0 24 24" className="h-8 w-8 motion-safe:animate-pulse text-white/20" fill="currentColor">
               <path d="M5 3l14 8.5-6 1.3L10.5 19z" />
             </svg>
           </div>

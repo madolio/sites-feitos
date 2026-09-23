@@ -38,7 +38,7 @@ export default function Projetos() {
         path="/projetos"
       />
       <div className="mx-auto max-w-6xl px-6">
-        <Link to="/" className="text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
+        <Link to="/" className="inline-block py-1 text-sm font-semibold text-ink/60 transition-colors hover:text-ink">
           ← madolio
         </Link>
 

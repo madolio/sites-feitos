@@ -13,7 +13,7 @@ export default function Footer() {
           </span>
           <span className="text-sm text-ink/70">© {new Date().getFullYear()} Todos os direitos reservados.</span>
         </div>
-        <a href={EMAIL_HREF} className="text-sm font-medium text-ink/70 transition-colors hover:text-ink">
+        <a href={EMAIL_HREF} className="inline-block py-1 text-sm font-medium text-ink/70 transition-colors hover:text-ink">
           {EMAIL}
         </a>
       </div>

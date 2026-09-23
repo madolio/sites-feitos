@@ -10,7 +10,7 @@ export default function Layout() {
     if (hash) {
       const el = document.querySelector(hash)
       if (el) {
-        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }))
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }))
         return
       }
     }
