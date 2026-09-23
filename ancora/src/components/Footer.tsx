@@ -7,7 +7,7 @@ export default function Footer() {
     <footer id="contato" className="scroll-mt-16 border-t border-line py-16">
       <Reveal as="div" className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
-          <div>
+          <div className="min-w-0">
             <h2 className="text-3xl md:text-4xl">Vamos organizar o seu patrimônio?</h2>
             <p className="mt-4 max-w-md text-indigo/75">
               O primeiro diagnóstico é sem custo e sem compromisso — só pra
@@ -16,7 +16,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={() => sendToEmail('contato@ancorapatrimonio.com.br')}
-              className="btn-brass mt-7 inline-flex"
+              className="btn-brass mt-7 inline-flex max-w-full break-all"
             >
               contato@ancorapatrimonio.com.br
             </button>
