@@ -21,7 +21,9 @@ export default function Layout() {
     <div className="flex min-h-screen flex-col bg-paper text-ink">
       <Chrome />
       <main className="flex-1">
-        <Suspense fallback={null}>
+        {/* Reserva a altura da tela enquanto o chunk da rota chega: sem isso o rodapé
+            aparece no topo e é empurrado pra baixo quando a página monta (CLS). */}
+        <Suspense fallback={<div className="min-h-[100svh]" aria-hidden="true" />}>
           <Outlet />
         </Suspense>
       </main>
