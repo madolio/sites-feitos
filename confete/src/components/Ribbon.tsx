@@ -1,35 +1,50 @@
 import { depoimentos } from '../data'
 
-// A fita ondulada por trás do bloco inteiro — versão 2D e achatada do motivo
-// de "fitas 3D texturizadas" do estilo de referência. A onda fica só nas
-// bordas de cima/baixo (fora da área do texto); o meio é sólido, pra não
-// cruzar as linhas do depoimento.
+// A onda tem altura FIXA (h-7 / sm:h-10). Antes era um único SVG com
+// viewBox 0 0 600 240 e preserveAspectRatio="none" esticado por trás do bloco
+// inteiro: a amplitude da onda crescia junto com a altura do texto, então no
+// mobile (bloco de ~510px) a crista virava ~64px e cobria a linha do autor.
+// Agora a fita é onda-fixa + miolo sólido + onda-fixa, e só o miolo estica.
+function Onda({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 600 40"
+      preserveAspectRatio="none"
+      className={`block h-7 w-full sm:h-10 ${className}`}
+      aria-hidden="true"
+    >
+      <path d="M0 40 V20 Q75 0 150 20 T300 20 T450 20 T600 20 V40 Z" fill="var(--color-sky)" />
+      <path
+        d="M0 40 V20 Q75 0 150 20 T300 20 T450 20 T600 20 V40"
+        fill="none"
+        stroke="var(--color-carbon)"
+        strokeWidth="1.6"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  )
+}
+
 export default function Ribbon() {
   return (
     <section className="border-t-[1.5px] border-carbon py-20 md:py-28">
-      <div className="relative mx-auto max-w-3xl px-6">
-        <svg
-          viewBox="0 0 600 240"
-          preserveAspectRatio="none"
-          className="absolute inset-0 h-full w-full"
-          aria-hidden="true"
-        >
-          <path
-            d="M0 30 Q75 0 150 30 T300 30 T450 30 T600 30 V210 Q525 240 450 210 T300 210 T150 210 T0 210 Z"
-            fill="var(--color-sky)"
-            stroke="var(--color-carbon)"
-            strokeWidth="1.6"
-          />
-        </svg>
+      <div className="mx-auto max-w-3xl px-6">
+        <Onda />
 
-        <div className="relative grid gap-8 px-6 py-14 sm:grid-cols-2 sm:px-10">
-          {depoimentos.map((d) => (
-            <div key={d.autor}>
-              <p className="text-lg leading-snug font-semibold text-carbon">"{d.texto}"</p>
-              <p className="mt-2 text-sm text-carbon/75">{d.autor}</p>
-            </div>
-          ))}
+        <div className="-my-px border-x-[1.5px] border-carbon bg-sky px-6 py-6 sm:px-10 sm:py-8">
+          <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
+            {depoimentos.map((d) => (
+              <figure key={d.autor} className="flex h-full flex-col">
+                <blockquote className="text-lg leading-snug font-semibold text-carbon">
+                  &ldquo;{d.texto}&rdquo;
+                </blockquote>
+                <figcaption className="mt-3 text-sm text-carbon/75 sm:mt-auto sm:pt-3">{d.autor}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
+
+        <Onda className="rotate-180" />
       </div>
     </section>
   )
