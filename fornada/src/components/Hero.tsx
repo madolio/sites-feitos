@@ -32,7 +32,7 @@ export default function Hero() {
 
         <div className="order-1 md:order-2">
           <img
-            src="https://images.pexels.com/photos/30350350/pexels-photo-30350350.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="https://images.pexels.com/photos/30350350/pexels-photo-30350350.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Pães artesanais redondos, com casca dourada e crocante, recém-saídos do forno sobre uma grade de resfriamento na padaria"
             className="aspect-[4/3] w-full rounded-2xl border-2 border-crosta/15 object-cover"
             loading="eager"

@@ -41,7 +41,7 @@ export default function Hero() {
             </g>
           </svg>
           <img
-            src="https://images.pexels.com/photos/6131161/pexels-photo-6131161.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="https://images.pexels.com/photos/6131161/pexels-photo-6131161.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Cachorro sendo enxaguado com cuidado durante o banho no pet shop"
             loading="eager"
             className="relative h-72 w-full rounded-[2rem] border-4 border-papel object-cover shadow-lg sm:h-96 lg:h-[26rem]"

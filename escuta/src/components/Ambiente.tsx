@@ -7,7 +7,7 @@ export default function Ambiente() {
         <Reveal>
           <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-tinta">
             <img
-              src="https://images.pexels.com/photos/16269015/pexels-photo-16269015.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://images.pexels.com/photos/16269015/pexels-photo-16269015.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Poltrona confortável num canto tranquilo, com plantas e luz natural entrando pela janela — o tipo de ambiente pensado para uma sessão presencial"
               loading="lazy"
               className="h-full w-full object-cover"

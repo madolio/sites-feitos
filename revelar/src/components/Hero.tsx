@@ -46,7 +46,7 @@ export default function Hero() {
             </div>
             <div className="absolute left-1/2 top-1/2 z-10 w-[62%] -translate-x-1/2 -translate-y-1/2 -rotate-2 border-8 border-paper bg-paper shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/19816937/pexels-photo-19816937.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src="https://images.pexels.com/photos/19816937/pexels-photo-19816937.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Noivo e noiva se entreolhando ao ar livre, luz natural e fundo desfocado de vegetação."
                 className="aspect-[3/4] w-full object-cover"
                 loading="eager"

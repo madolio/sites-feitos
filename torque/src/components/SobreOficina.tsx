@@ -10,7 +10,7 @@ export default function SobreOficina() {
       <div className="mx-auto grid max-w-5xl gap-10 px-6 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-14">
         <Reveal>
           <img
-            src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Mecânico debruçado sobre o motor de um carro, checando peças no vão do motor dentro da oficina"
             className="aspect-[4/3] w-full rounded-lg border border-linha object-cover"
             loading="lazy"

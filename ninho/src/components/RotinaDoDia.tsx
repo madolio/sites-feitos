@@ -33,7 +33,7 @@ export default function RotinaDoDia() {
           <Reveal delay={0.1} className="sm:sticky sm:top-24">
             <figure className="overflow-hidden rounded-[1.75rem_0.75rem_1.75rem_0.75rem] border border-linha shadow-sm sm:-rotate-1">
               <img
-                src="https://images.pexels.com/photos/8088235/pexels-photo-8088235.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src="https://images.pexels.com/photos/8088235/pexels-photo-8088235.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Sala de atividades de uma escola de educação infantil, vazia, com mesinhas e cadeiras de madeira baixinhas, estante organizada com brinquedos e um tapete verde no chão"
                 loading="lazy"
                 className="h-full w-full object-cover"

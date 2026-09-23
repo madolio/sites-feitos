@@ -48,7 +48,7 @@ export default function Faq() {
 
           <Reveal delay={0.1} className="lg:sticky lg:top-24">
             <img
-              src="https://images.pexels.com/photos/35287856/pexels-photo-35287856.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://images.pexels.com/photos/35287856/pexels-photo-35287856.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Mãos de chaveiro operando uma máquina de cópia de chaves, ajustando a chave em bruto contra o gabarito"
               className="aspect-[3/4] w-full rounded-lg border border-linha object-cover"
               loading="lazy"
