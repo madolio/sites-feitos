@@ -31,6 +31,17 @@ const profundidades = [
   { hash: '#contato', label: 'Contato', metros: '32 m' },
 ] as const
 
+// Qual profundidade esta ativa? A resposta e CALCULADA a partir da posicao de
+// rolagem, nao reconstruida de eventos de IntersectionObserver: a secao ativa
+// e a ultima (na ordem do documento) cujo topo ja passou da linha de leitura.
+// Isso garante exatamente UMA ativa por vez. A versao anterior guardava o
+// boundingClientRect.top do instante da entrada e ordenava por esse numero
+// velho, observava uma faixa de so 20% da janela (secao mais curta que a
+// faixa entrava e saia no mesmo lote, e o nav pulava um estado) e, nas secoes
+// fora do nav (depoimentos, duvidas), ficava sem nada visivel e preso no
+// valor antigo.
+const LINHA_DE_LEITURA = 0.35 // fracao da altura da janela
+
 function useProfundidadeAtiva() {
   const [ativo, setAtivo] = useState<string>(profundidades[0].hash)
 
@@ -38,49 +49,69 @@ function useProfundidadeAtiva() {
     const elementos = profundidades
       .map((p) => document.getElementById(p.hash.slice(1)))
       .filter((el): el is HTMLElement => !!el)
+      .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
     if (elementos.length === 0) return
+    const ultima = elementos[elementos.length - 1].id
 
-    // O callback só reporta os alvos cujo estado MUDOU desde a última
-    // chamada, não uma foto completa de quem está visível agora — por isso
-    // `visiveis` mantém o próprio registro, atualizado entrada a entrada,
-    // em vez de tratar o lote da vez como a lista inteira. Sem isso, uma
-    // seção que já estava visível (típico logo após um pulo direto pra uma
-    // #âncora) nunca é reconfirmada quando outra sai de vista, e o estado
-    // ativo trava no valor antigo (mesmo bug achado e corrigido no Varal.tsx
-    // do sabor-da-vila, a partir de um print do usuário).
-    const visiveis = new Map<string, number>()
+    let quadro = 0
+    let ociosidade = 0
+    // Enquanto um clique de navegacao rola (suave), o estado fica no destino
+    // em vez de passar por todas as secoes do caminho.
+    let destino: string | null = null
 
-    const observer = new IntersectionObserver(
-      (entradas) => {
-        for (const e of entradas) {
-          if (e.isIntersecting) visiveis.set(e.target.id, e.boundingClientRect.top)
-          else visiveis.delete(e.target.id)
-        }
-        const ordenado = [...visiveis.entries()].sort((a, b) => a[1] - b[1])
-        if (ordenado[0]) setAtivo(`#${ordenado[0][0]}`)
-      },
-      { rootMargin: '-20% 0px -60% 0px' },
-    )
-    elementos.forEach((el) => observer.observe(el))
-
-    // A última profundidade (#contato) é o próprio <footer>, o fim do
-    // documento — a página não rola além dele, então o topo dessa seção
-    // pode nunca entrar na faixa -20%/-60% do observer acima (rodapé curto
-    // demais pra empurrar o próprio topo até lá). Sem isso, chegar no fim
-    // da página pelo link "Contato" deixa o nav preso na profundidade
-    // anterior (reportado pelo usuário com print: clicou "Contato", o site
-    // foi pra lá, mas "Equipe" continuou marcada).
-    const ultima = profundidades[profundidades.length - 1].hash
-    const checarFim = () => {
+    const calcular = () => {
+      quadro = 0
+      if (destino) return
+      const linha = window.innerHeight * LINHA_DE_LEITURA
+      // A ultima secao e o proprio rodape: a pagina pode acabar antes do topo
+      // dele alcancar a linha, entao chegar no fim tambem conta.
       const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
-      if (noFim) setAtivo(ultima)
+      let atual = elementos[0].id
+      for (const el of elementos) {
+        if (el.getBoundingClientRect().top <= linha) atual = el.id
+        else break
+      }
+      setAtivo(`#${noFim ? ultima : atual}`)
     }
-    window.addEventListener('scroll', checarFim, { passive: true })
-    checarFim()
+    const agendar = () => {
+      if (!quadro) quadro = requestAnimationFrame(calcular)
+    }
+
+    // Libera o estado calculado quando a rolagem realmente para.
+    const liberar = () => {
+      destino = null
+      agendar()
+    }
+    const aoRolar = () => {
+      agendar()
+      if (destino) {
+        window.clearTimeout(ociosidade)
+        ociosidade = window.setTimeout(liberar, 140) // fallback sem 'scrollend'
+      }
+    }
+    const aoClicar = (e: MouseEvent) => {
+      const link = (e.target as Element | null)?.closest?.('a[href^="#"]')
+      const hash = link?.getAttribute('href')
+      if (!hash || !profundidades.some((p) => p.hash === hash)) return
+      destino = hash.slice(1)
+      setAtivo(hash)
+      window.clearTimeout(ociosidade)
+      ociosidade = window.setTimeout(liberar, 600) // rolagem sem movimento (ja no lugar)
+    }
+
+    window.addEventListener('scroll', aoRolar, { passive: true })
+    window.addEventListener('scrollend', liberar)
+    window.addEventListener('resize', agendar)
+    document.addEventListener('click', aoClicar)
+    calcular()
 
     return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', checarFim)
+      cancelAnimationFrame(quadro)
+      window.clearTimeout(ociosidade)
+      window.removeEventListener('scroll', aoRolar)
+      window.removeEventListener('scrollend', liberar)
+      window.removeEventListener('resize', agendar)
+      document.removeEventListener('click', aoClicar)
     }
   }, [])
 
