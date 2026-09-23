@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 const Projetos = lazy(() => import('./pages/Projetos'))
 const CaseStudyCardume = lazy(() => import('./pages/CaseStudyCardume'))
 const CaseStudyTorno = lazy(() => import('./pages/CaseStudyTorno'))
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/projetos/marcha" element={<CaseStudyMarcha />} />
         <Route path="/projetos/bruma" element={<CaseStudyBruma />} />
         <Route path="/projetos/estufa" element={<CaseStudyEstufa />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

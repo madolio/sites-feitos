@@ -2,20 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://madolio.com.br/</loc>
-    <lastmod>2026-09-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://madolio.com.br/projetos</loc>
-    <lastmod>2026-09-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://madolio.com.br/reel</loc>
-    <lastmod>2026-09-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://madolio.com.br/projetos/cardume</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/torno</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/encaixe</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/calibre</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/taca</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/realce</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/lumen</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/prisma</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/marcha</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/bruma</loc>
+  </url>
+  <url>
+    <loc>https://madolio.com.br/projetos/estufa</loc>
   </url>
 </urlset>
