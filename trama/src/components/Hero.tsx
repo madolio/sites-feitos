@@ -5,12 +5,12 @@
 export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-carvao/15">
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-24 sm:px-8 sm:py-32 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
-        <h1 className="text-4xl leading-[1.05] sm:text-6xl lg:text-7xl">
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-24 sm:px-8 sm:py-32 lg:grid-cols-[1.55fr_1fr] lg:items-end lg:gap-14">
+        <h1 className="text-4xl leading-[1.05] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]">
           Roupa de todo dia, com a etiqueta que ensina a cuidar de cada peça.
         </h1>
 
-        <div className="lg:pb-2">
+        <div className="lg:pb-1.5">
           <p className="dado-etiqueta text-mostarda">loja de bairro · pronta-entrega</p>
           <p className="mt-4 max-w-sm text-lg text-carvao/80">
             A Trama é a loja do bairro Floresta pra quem quer se vestir sem drama: básico, jeans,
