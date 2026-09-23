@@ -1,74 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
+import { useState } from 'react'
 import { movements } from '../data'
 import Figure from './Figure'
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
-
-const LAST = movements.length - 1
-
 export default function Hero() {
-  const section = useRef<HTMLElement>(null)
-  const trigger = useRef<ScrollTrigger | null>(null)
+  // O boneco e uma referencia visual ESTAVEL: a pose so muda quando a pessoa
+  // escolhe um movimento nas abas. Nada aqui reage a rolagem nem troca sozinho
+  // (antes a secao ficava presa e a rolagem escolhia o movimento no desktop, e
+  // um timer trocava a pose a cada 2,8s no mobile).
   const [index, setIndex] = useState(0)
-  const [autoplay, setAutoplay] = useState(false)
-  const [inView, setInView] = useState(true)
   const movement = movements[index]
 
-  // Desktop: a seção fica presa e a rolagem escolhe o movimento.
-  // Tela menor: sem prender a rolagem — o boneco troca sozinho (e para quando
-  // a pessoa escolhe um movimento). Reduced motion: nenhum dos dois.
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia()
-      mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-        trigger.current = ScrollTrigger.create({
-          trigger: section.current,
-          start: 'top top',
-          end: `+=${LAST * 60}%`,
-          pin: true,
-          onUpdate: (self) => setIndex(Math.round(self.progress * LAST)),
-        })
-        return () => {
-          trigger.current = null
-        }
-      })
-      mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
-        setAutoplay(true)
-        return () => setAutoplay(false)
-      })
-    },
-    { scope: section },
-  )
-
-  useEffect(() => {
-    const el = section.current
-    if (!el) return
-    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.3 })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!autoplay || !inView) return
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % movements.length), 2800)
-    return () => window.clearInterval(id)
-  }, [autoplay, inView])
-
-  const choose = (i: number) => {
-    setAutoplay(false)
-    const st = trigger.current
-    if (st) {
-      window.scrollTo({ top: st.start + (st.end - st.start) * (i / LAST), behavior: 'smooth' })
-    } else {
-      setIndex(i)
-    }
-  }
-
   return (
-    <section ref={section} id="inicio" className="overflow-hidden bg-gesso pt-24 pb-16 lg:flex lg:h-svh lg:items-center lg:pt-10 lg:pb-10">
+    <section id="inicio" className="overflow-hidden bg-gesso pt-24 pb-16 lg:flex lg:h-svh lg:items-center lg:pt-10 lg:pb-10">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-14">
         <div>
           <h1 className="display text-[3.6rem] sm:text-7xl lg:text-[6.4rem]">Pilates é controle.</h1>
@@ -101,7 +44,7 @@ export default function Hero() {
                   id={`tab-${m.id}`}
                   aria-selected={i === index}
                   aria-controls="movimento"
-                  onClick={() => choose(i)}
+                  onClick={() => setIndex(i)}
                   className={`px-3 py-1.5 text-sm font-medium transition-colors ${
                     i === index ? 'bg-ink text-gesso' : 'text-ink/75 hover:bg-ink/10'
                   }`}
