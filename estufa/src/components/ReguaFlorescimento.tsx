@@ -47,14 +47,15 @@ export default function ReguaFlorescimento() {
         <Reveal
           as="div"
           stagger={0.06}
-          className="mt-10 overflow-x-auto"
+          className="mt-10"
         >
-          <div className="min-w-[640px]">
-            <div className="grid grid-cols-[10rem_repeat(12,1fr)] items-center gap-x-1">
-              <span />
+          <div>
+            <div className="grid grid-cols-12 items-center gap-x-0.5 sm:grid-cols-[10rem_repeat(12,1fr)] sm:gap-x-1">
+              <span className="hidden sm:block" />
               {MESES.map((m) => (
                 <span key={m} className="dado-ficha pb-2 text-center text-mata/40">
-                  {m}
+                  <span className="sm:hidden" aria-hidden="true">{m[0]}</span>
+                  <span className="sr-only sm:not-sr-only">{m}</span>
                 </span>
               ))}
             </div>
@@ -64,9 +65,9 @@ export default function ReguaFlorescimento() {
               return (
                 <div
                   key={especie.id}
-                  className="grid grid-cols-[10rem_repeat(12,1fr)] items-center gap-x-1 border-t border-linha py-3"
+                  className="grid grid-cols-12 items-center gap-x-0.5 gap-y-2 border-t border-linha py-3 sm:grid-cols-[10rem_repeat(12,1fr)] sm:gap-x-1 sm:gap-y-0"
                 >
-                  <div className="flex items-center gap-2 pr-3 text-sm text-mata/80">
+                  <div className="col-span-12 flex items-center gap-2 pr-3 text-sm text-mata/80 sm:col-span-1">
                     <span style={{ color: especie.cor }}>
                       <LuzIcone luz={especie.luz} />
                     </span>
@@ -80,7 +81,7 @@ export default function ReguaFlorescimento() {
                     return (
                       <span
                         key={mes}
-                        className="mx-auto h-2.5 w-full max-w-8 rounded-full"
+                        className="mx-auto h-2.5 w-full max-w-8 rounded-full sm:h-2.5"
                         style={
                           ativo
                             ? { backgroundColor: especie.cor, opacity: pico ? 1 : 0.35 }

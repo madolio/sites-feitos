@@ -8,20 +8,23 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-mata text-vidro">
       <img
-        src="/especies/strelitzia.webp"
+        src="/hero-1920.webp"
+        srcSet="/hero-1000.webp 1000w, /hero-1920.webp 1920w"
+        sizes="100vw"
         alt=""
         aria-hidden="true"
-        width={900}
-        height={900}
+        width={1920}
+        height={1354}
         fetchPriority="high"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover opacity-95"
+        className="absolute inset-0 h-full w-full object-cover object-[62%_35%] sm:object-[50%_38%]"
       />
       <GrandeEstufa className="pointer-events-none absolute inset-0 h-full w-full opacity-40 mix-blend-overlay" />
       <div className="absolute inset-0 bg-gradient-to-t from-mata via-mata/35 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-mata/65 via-mata/30 to-transparent" />
 
       <div className="relative mx-auto flex min-h-[88vh] max-w-5xl flex-col justify-end px-6 pt-24 pb-16 sm:px-8">
-        <Reveal as="p" className="dado-ficha text-vidro/60">
+        <Reveal as="p" className="dado-ficha text-vidro/80">
           Floricultura &amp; paisagismo — Nova Friburgo, RJ
         </Reveal>
         <Reveal delay={0.05}>
