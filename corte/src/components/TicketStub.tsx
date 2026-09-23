@@ -15,7 +15,13 @@ export default function TicketStub({ numeroInicial }: { numeroInicial: number })
   }
 
   return (
-    <div className="mx-auto max-w-xs text-center">
+    // max-w-xs (20rem) é a largura de projeto do talão, mas os dois entalhes
+    // ficam pra fora dele: 0.875rem de cada lado, 1.75rem no total. Numa
+    // viewport de 320px o talão ocupava a tela inteira e o entalhe da direita
+    // empurrava a rolagem horizontal. O min() reserva esse espaço — de 348px
+    // pra cima nada muda, abaixo disso o talão encolhe só o que os entalhes
+    // precisam, sem mexer no tamanho nem na posição deles.
+    <div className="mx-auto max-w-[min(20rem,100%_-_1.75rem)] text-center">
       <div className="relative">
         <div key={tique} className="ticket-dispensar relative border-2 border-ink bg-white p-7 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-ink/55 uppercase">Sua senha</p>
