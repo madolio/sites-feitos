@@ -13,8 +13,12 @@ export default function Footer() {
               Conta um pouco sobre o terreno ou o imóvel, e a gente retorna
               com os próximos passos.
             </p>
-            <div className="mt-7 flex flex-wrap gap-6">
-              <button type="button" onClick={() => sendToEmail('projetos@tracoarquitetura.com.br')} className="btn-ink">
+            <div className="mt-7 flex min-w-0 flex-wrap gap-6">
+              <button
+                type="button"
+                onClick={() => sendToEmail('projetos@tracoarquitetura.com.br')}
+                className="btn-ink min-w-0 max-w-full break-all"
+              >
                 projetos@tracoarquitetura.com.br
               </button>
             </div>

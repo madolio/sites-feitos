@@ -22,7 +22,12 @@ export default function Contato() {
         </p>
 
         <form onSubmit={submit} className="mt-8 flex flex-wrap gap-3">
+          <label htmlFor="cerne-nome" className="sr-only">
+            Seu nome
+          </label>
           <input
+            id="cerne-nome"
+            name="nome"
             type="text"
             placeholder="Seu nome"
             autoComplete="given-name"

@@ -26,7 +26,12 @@ export default function PainelContato() {
         </p>
 
         <form onSubmit={submit} className="mt-8 flex max-w-sm flex-wrap gap-3">
+          <label htmlFor="tinta-nome" className="sr-only">
+            Seu nome
+          </label>
           <input
+            id="tinta-nome"
+            name="nome"
             type="text"
             placeholder="Seu nome"
             autoComplete="given-name"

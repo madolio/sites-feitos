@@ -18,7 +18,12 @@ export function Contato() {
             if (texto.trim()) sendToWhatsApp(texto.trim())
           }}
         >
+          <label htmlFor="lumen-mensagem" className="sr-only">
+            Sua mensagem
+          </label>
           <textarea
+            id="lumen-mensagem"
+            name="mensagem"
             rows={4}
             placeholder="ex: quero orçar a iluminação de um apartamento de 70m²"
             value={texto}

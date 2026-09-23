@@ -15,10 +15,19 @@ const FASE_LABEL: Record<Marco['fase'], string> = {
   resultado: 'Resultado',
 }
 
-export default function ProcedureTimeline({ marcos, compact = false }: { marcos: Marco[]; compact?: boolean }) {
+export default function ProcedureTimeline({
+  marcos,
+  compact = false,
+  titleAs = 'h4',
+}: {
+  marcos: Marco[]
+  compact?: boolean
+  titleAs?: 'h2' | 'h3' | 'h4'
+}) {
   const [index, setIndex] = useState(0)
   const atual = marcos[index]
   const max = marcos.length - 1
+  const Titulo = titleAs
 
   return (
     <div>
@@ -31,7 +40,7 @@ export default function ProcedureTimeline({ marcos, compact = false }: { marcos:
         </p>
       </div>
 
-      <h4 className={compact ? 'mt-1 text-lg' : 'mt-1 text-xl'}>{atual.titulo}</h4>
+      <Titulo className={compact ? 'mt-1 text-lg' : 'mt-1 text-xl'}>{atual.titulo}</Titulo>
       <p className={compact ? 'mt-1 text-sm text-noturno/75' : 'mt-2 text-noturno/75'}>{atual.descricao}</p>
 
       <input

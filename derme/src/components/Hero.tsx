@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="rounded-2xl border border-linha bg-white/70 p-5 sm:p-6">
           <p className="dado-clinico text-derme">{destaque.nome}</p>
           <div className="mt-4">
-            <ProcedureTimeline marcos={destaque.marcos} compact />
+            <ProcedureTimeline marcos={destaque.marcos} compact titleAs="h2" />
           </div>
           <div className="mt-5">
             <SkinLayerDiagram camada={destaque.camada} camadaLabel={destaque.camadaLabel} />

@@ -65,11 +65,11 @@ export default function PainelRevisao() {
           return (
             <li
               key={item.id}
-              className={`rounded-md border p-4 ${corStatus[status]}`}
+              className={`min-w-0 rounded-md border p-4 ${corStatus[status]}`}
             >
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-semibold text-chumbo">{item.nome}</p>
-                <span className="dado-oficina rounded-full border px-2 py-0.5 whitespace-nowrap">
+              <div className="flex min-w-0 items-center justify-between gap-3">
+                <p className="min-w-0 font-semibold text-chumbo">{item.nome}</p>
+                <span className="dado-oficina shrink-0 rounded-full border px-2 py-0.5 whitespace-nowrap">
                   {rotuloStatus[status]}
                 </span>
               </div>

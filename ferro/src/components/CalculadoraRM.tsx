@@ -28,7 +28,7 @@ export default function CalculadoraRM() {
   return (
     <div className="border-2 border-preto bg-branco p-6 sm:p-8">
       <p className="rotulo text-lima-escuro">Calculadora de carga máxima</p>
-      <h3 className="mt-2 text-2xl">Quanto você levanta em 1 rep?</h3>
+      <h2 className="mt-2 text-2xl">Quanto você levanta em 1 rep?</h2>
       <p className="mt-1 text-fumo">
         Informe o peso e quantas repetições você fez até a falha — a gente estima sua carga máxima (fórmula de Epley).
       </p>

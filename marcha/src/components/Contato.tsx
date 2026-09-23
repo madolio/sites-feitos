@@ -27,7 +27,12 @@ export function Contato() {
             if (texto.trim()) sendToWhatsApp(texto.trim())
           }}
         >
+          <label htmlFor="marcha-mensagem" className="sr-only">
+            Sua mensagem
+          </label>
           <textarea
+            id="marcha-mensagem"
+            name="mensagem"
             rows={4}
             placeholder="ex: quero agendar um test-drive pro sábado de manhã"
             value={texto}

@@ -26,8 +26,8 @@ export default function App() {
 
   return (
     <>
-      <Hero />
       <Topo ativa={categoria} onSelect={setCategoria} />
+      <Hero />
       <main className={temItens ? 'pb-24' : ''}>
         <Grade categoria={categoria} carrinho={carrinho} onAdd={add} onRemove={remove} />
         <Depoimentos />

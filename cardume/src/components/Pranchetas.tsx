@@ -73,9 +73,9 @@ export function Curiosidades() {
 
 export function Superficie() {
   return (
-    <div className="absolute inset-x-0 top-0 flex h-screen flex-col justify-center pr-16 pl-5 sm:px-[12%]">
+    <div className="absolute inset-x-0 top-0 flex h-screen flex-col justify-center pr-10 pl-5 sm:px-[12%]">
       {/* Syne no peso 800 é larguíssima — no celular precisa ser bem menor pra caber */}
-      <h1 className="text-[2.6rem] leading-[0.9] font-extrabold tracking-tight text-casco sm:text-[5rem] lg:text-[7rem]">
+      <h1 className="text-[2.15rem] leading-[0.9] font-extrabold tracking-tight text-casco sm:text-[5rem] lg:text-[7rem]">
         Cardume
       </h1>
       <p className="mt-3 text-xl font-semibold text-casco">Escola de mergulho</p>
