@@ -103,8 +103,22 @@
     transform: rotate(0deg);
   }
 
-  .ticket:hover {
+  /* Pausar o balanco no hover so faz sentido com mouse. Sem esta guarda, no
+     toque o :hover fica "pegado" e o bilhete congela inclinado depois do tap. */
+  @media (hover: hover) {
+    .ticket:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Feedback de pressao, vale pra mouse e toque. */
+  .ticket:active {
     animation-play-state: paused;
+  }
+
+  .ticket:focus-visible {
+    outline: 3px solid var(--color-pink);
+    outline-offset: 3px;
   }
 
   /* Item de cardápio: em repouso é só o nome; no hover/foco, o nome "sai de

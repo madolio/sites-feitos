@@ -11,6 +11,15 @@ const secoes = [
   { id: 'onde', label: 'Onde e horário', rot: 4 },
 ] as const
 
+// A secao ativa e CALCULADA a partir da posicao de rolagem: a ultima (na ordem
+// do documento) cujo topo ja passou de uma linha de leitura a 35% da janela.
+// Exatamente uma fica ativa. A versao anterior reconstruia o estado de eventos
+// do IntersectionObserver guardando o boundingClientRect.top do instante da
+// entrada (nunca atualizado) numa faixa de so 15% da janela, e travava ou
+// pulava. Um clique fixa o item no destino enquanto a rolagem acontece e libera
+// quando ela realmente para (scrollend, com ociosidade de eventos de fallback).
+const LINHA_DE_LEITURA = 0.35
+
 function useSecaoAtiva() {
   const [ativa, setAtiva] = useState<string>('inicio')
 
@@ -18,49 +27,61 @@ function useSecaoAtiva() {
     const ids = ['inicio', ...secoes.map((s) => s.id)]
     const elementos = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el)
     if (elementos.length === 0) return
+    const ultima = elementos[elementos.length - 1].id
 
-    // O callback do IntersectionObserver só reporta os alvos cujo estado
-    // MUDOU desde a última chamada, não uma foto completa de quem está
-    // visível agora — por isso precisa manter o próprio registro de quem
-    // está visível (`visiveis`), atualizando entrada a entrada, em vez de
-    // tratar `entradas` (o lote da vez) como a lista inteira. Sem isso, uma
-    // seção que já estava visível e continua visível nunca é reconfirmada
-    // quando outra seção sai de vista — a ativa trava no valor antigo (bug
-    // relatado pelo usuário: o tíquete nunca ficava azul depois de um pulo
-    // direto pra #cardapio, porque "início" saía sem "cardápio" ser
-    // reportado de novo).
-    const visiveis = new Map<string, number>()
+    let quadro = 0
+    let ociosidade = 0
+    let destino: string | null = null
 
-    const observer = new IntersectionObserver(
-      (entradas) => {
-        for (const e of entradas) {
-          if (e.isIntersecting) visiveis.set(e.target.id, e.boundingClientRect.top)
-          else visiveis.delete(e.target.id)
-        }
-        const ordenado = [...visiveis.entries()].sort((a, b) => a[1] - b[1])
-        if (ordenado[0]) setAtiva(ordenado[0][0])
-      },
-      { rootMargin: '-15% 0px -70% 0px' },
-    )
-    elementos.forEach((el) => observer.observe(el))
-
-    // "Onde e horário" é a última seção antes do rodapé — a página não rola
-    // além do fim do documento, então o topo dela pode nunca entrar na
-    // faixa -15%/-70% do observer acima. Sem isso, chegar no fim da página
-    // pelo link "Onde e horário" deixa o tíquete de "Cardápio" marcado como
-    // ativo (mesmo bug e fix do Fundeio.tsx do ancora, a partir de um print
-    // do usuário: clicou "Contato" lá e "Equipe" continuou marcada).
-    const ultima = ids[ids.length - 1]
-    const checarFim = () => {
+    const calcular = () => {
+      quadro = 0
+      if (destino) return
+      const linha = window.innerHeight * LINHA_DE_LEITURA
       const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
-      if (noFim) setAtiva(ultima)
+      let atual = elementos[0].id
+      for (const el of elementos) {
+        if (el.getBoundingClientRect().top <= linha) atual = el.id
+        else break
+      }
+      setAtiva(noFim ? ultima : atual)
     }
-    window.addEventListener('scroll', checarFim, { passive: true })
-    checarFim()
+    const agendar = () => {
+      if (!quadro) quadro = requestAnimationFrame(calcular)
+    }
+    const liberar = () => {
+      destino = null
+      agendar()
+    }
+    const aoRolar = () => {
+      agendar()
+      if (destino) {
+        window.clearTimeout(ociosidade)
+        ociosidade = window.setTimeout(liberar, 140)
+      }
+    }
+    const aoClicar = (e: MouseEvent) => {
+      const link = (e.target as Element | null)?.closest?.('a[href^="#"]')
+      const id = link?.getAttribute('href')?.slice(1)
+      if (!id || !ids.includes(id)) return
+      destino = id
+      setAtiva(id)
+      window.clearTimeout(ociosidade)
+      ociosidade = window.setTimeout(liberar, 600)
+    }
+
+    window.addEventListener('scroll', aoRolar, { passive: true })
+    window.addEventListener('scrollend', liberar)
+    window.addEventListener('resize', agendar)
+    document.addEventListener('click', aoClicar)
+    calcular()
 
     return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', checarFim)
+      cancelAnimationFrame(quadro)
+      window.clearTimeout(ociosidade)
+      window.removeEventListener('scroll', aoRolar)
+      window.removeEventListener('scrollend', liberar)
+      window.removeEventListener('resize', agendar)
+      document.removeEventListener('click', aoClicar)
     }
   }, [])
 
