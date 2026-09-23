@@ -48,7 +48,10 @@ export default function Hero() {
 
         {/* balde panorâmico: o objeto central do negócio, transbordando */}
         <div className="relative mx-auto w-full max-w-sm">
-          <svg viewBox="0 0 100 92" className="w-full" aria-hidden="true">
+          {/* viewBox alargado em 4 de cada lado: a flor da esquerda (x=8, r=9)
+              chega a x=-1 e a da direita (x=91, r=10) a x=101, entao com o
+              viewBox 0..100 as duas pétalas externas eram cortadas pelo proprio SVG. */}
+          <svg viewBox="-4 0 108 92" className="w-full" aria-hidden="true">
             <line x1="50" y1="42" x2="50" y2="8" stroke="var(--color-folha)" strokeWidth="1.4" opacity="0.7" />
             {RAMALHETE.map((f, i) => (
               <g key={i}>
@@ -64,7 +67,10 @@ export default function Hero() {
               </g>
             ))}
             <path d="M14,42 L86,42 L74,88 Q50,96 26,88 Z" fill="var(--color-paper)" stroke="var(--color-ink)" strokeOpacity="0.35" strokeWidth="1.6" />
-            <rect x="16" y="46" width="68" height="30" fill="var(--color-sky)" opacity="0.4" />
+            <clipPath id="balde-interno">
+              <path d="M14,42 L86,42 L74,88 Q50,96 26,88 Z" />
+            </clipPath>
+            <rect x="14" y="46" width="72" height="30" fill="var(--color-sky)" opacity="0.4" clipPath="url(#balde-interno)" />
             <ellipse cx="50" cy="42" rx="36" ry="6" fill="none" stroke="var(--color-ink)" strokeOpacity="0.45" strokeWidth="1.6" />
             <path d="M22,43 Q50,20 78,43" fill="none" stroke="var(--color-ink)" strokeOpacity="0.4" strokeWidth="2.2" strokeLinecap="round" />
           </svg>
