@@ -65,7 +65,7 @@ function ItemFaq({ pergunta, resposta }: { pergunta: string; resposta: string })
 
 export default function Faq() {
   return (
-    <section id="duvidas" className="scroll-mt-16 border-t border-line py-20 md:py-28">
+    <section id="duvidas" className="scroll-mt-16 border-t border-line py-20 md:py-20">
       <div className="mx-auto max-w-2xl px-6">
         <Reveal>
           <p className="stamp-number text-sm tracking-widest text-teal uppercase">Perguntas frequentes</p>

@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 
 export default function Metodologia() {
   return (
-    <section className="border-t border-line bg-ink py-20 text-paper md:py-28">
+    <section className="border-t border-line bg-ink py-20 text-paper md:py-20">
       <div className="mx-auto max-w-2xl px-6">
         <h2 className="text-3xl text-paper sm:text-4xl">Idiomas</h2>
         <Reveal as="ul" className="stamp-number mt-6 flex flex-wrap gap-3 text-sm" stagger={0.08}>

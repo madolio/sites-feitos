@@ -15,7 +15,7 @@ export default function Contato() {
   }
 
   return (
-    <footer id="matricula" className="scroll-mt-16 py-20 md:py-28">
+    <footer id="matricula" className="scroll-mt-16 py-20 md:py-20">
       <div className="mx-auto max-w-2xl px-6">
         <Reveal>
           <h2 className="text-3xl sm:text-4xl">Carimbe o seu primeiro nível</h2>

@@ -1,11 +1,13 @@
 import { niveis } from '../data'
 import NivelStamp from './NivelStamp'
+import CartaoEmbarque from './CartaoEmbarque'
 import Reveal from './Reveal'
 
 export default function Niveis() {
   return (
-    <section id="niveis" className="scroll-mt-16 py-20 md:py-28">
-      <div className="mx-auto max-w-2xl px-6">
+    <section id="niveis" className="scroll-mt-16 py-20 md:py-20">
+      <div className="mx-auto max-w-5xl px-6 lg:grid lg:grid-cols-[minmax(0,40rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
+      <div>
         <Reveal>
           <h2 className="text-3xl sm:text-4xl">Seis carimbos até a fluência</h2>
           <p className="mt-3 text-ink/75">
@@ -19,6 +21,11 @@ export default function Niveis() {
             <NivelStamp key={n.sigla} nivel={n} index={i} />
           ))}
         </div>
+      </div>
+
+      <div className="mt-10 lg:sticky lg:top-24 lg:mt-0">
+        <CartaoEmbarque />
+      </div>
       </div>
     </section>
   )

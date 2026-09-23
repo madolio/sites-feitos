@@ -29,7 +29,7 @@ const depoimentos = [
 
 export default function Depoimentos() {
   return (
-    <section id="depoimentos" className="scroll-mt-16 border-t border-line bg-paper py-20 md:py-28">
+    <section id="depoimentos" className="scroll-mt-16 border-t border-line bg-paper py-20 md:py-20">
       <div className="mx-auto max-w-2xl px-6">
         <Reveal>
           <p className="stamp-number text-sm tracking-widest text-teal uppercase">Vistos aprovados</p>
