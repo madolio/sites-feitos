@@ -28,7 +28,12 @@ export default function Stamp() {
   )
 
   return (
-    <div className="relative flex h-24 w-24 shrink-0 items-center justify-center sm:h-28 sm:w-28">
+    // Abaixo de 360px o selo cede largura pra manchete. Com 96px de selo sobram
+    // 152px pra coluna de texto, e "organizado" no text-4xl do h1 pede 181px —
+    // a palavra vazava 29px e empurrava a rolagem horizontal. Encolher o selo,
+    // que já é responsivo aqui, preserva o corpo da manchete; de 360px pra cima
+    // nada muda.
+    <div className="relative flex h-24 w-24 shrink-0 items-center justify-center max-[359px]:h-14 max-[359px]:w-14 sm:h-28 sm:w-28">
       <div
         className="lamp-glow absolute inset-0 rounded-full bg-accent/25 blur-xl"
         aria-hidden="true"

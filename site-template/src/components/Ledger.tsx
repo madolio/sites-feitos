@@ -6,6 +6,20 @@ import Reveal from './Reveal'
 // acervo: papel, régua pontilhada, linhas de preenchimento — não mais um
 // console com relógio contando ao vivo (a página não precisa fingir estar
 // "ao vivo" o tempo inteiro; o motion vive no catálogo, que reage ao clique).
+
+// O e-mail tem 30 caracteres sem espaço e é a maior "palavra" da ficha. Célula
+// de grid não encolhe abaixo do próprio min-content, então essa palavra sozinha
+// segurava a ficha em 328px e estourava a viewport de 320px.
+//
+// A solução é dar ao navegador um ponto de quebra logo depois do @ — o lugar
+// onde um endereço se lê partido. Quebrar em qualquer caractere resolveria a
+// conta do mesmo jeito e devolveria coisas como "...advocaci / a.com.br"; nos
+// pontos do domínio, "...com. / br". Com um <wbr> só, o pior caso vira
+// "contato@ / bastosadvocacia.com.br", e o p-8 do design fica intacto.
+const DEPOIS_DO_ARROBA = EMAIL.indexOf('@') + 1
+const EMAIL_LOCAL = EMAIL.slice(0, DEPOIS_DO_ARROBA)
+const EMAIL_DOMINIO = EMAIL.slice(DEPOIS_DO_ARROBA)
+
 export default function Ledger() {
   return (
     <footer id="contato" className="scroll-mt-20 bg-panel text-paper">
@@ -65,7 +79,9 @@ export default function Ledger() {
                 </dt>
                 <dd className="mt-1">
                   <a href={EMAIL_HREF} className="text-paper transition-colors hover:text-paper/80">
-                    {EMAIL}
+                    {EMAIL_LOCAL}
+                    <wbr />
+                    {EMAIL_DOMINIO}
                   </a>
                 </dd>
               </div>
