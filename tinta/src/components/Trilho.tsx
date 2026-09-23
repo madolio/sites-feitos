@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState, type ReactNode, type WheelEvent } from 'react'
+import { Children, useEffect, useRef, useState, type ReactNode } from 'react'
 
 // O esqueleto inteiro do site: a página rola de LADO, não de cima pra baixo.
 // Cada filho é um painel de largura 100vw; o wheel vertical (mouse/trackpad)
@@ -10,16 +10,23 @@ export default function Trilho({ children }: { children: ReactNode }) {
   const [active, setActive] = useState(0)
   const count = Children.count(children)
 
-  const onWheel = (e: WheelEvent<HTMLDivElement>) => {
+  useEffect(() => {
     const el = railRef.current
     if (!el) return
-    // Só redireciona quando o gesto é predominantemente vertical — um
-    // trackpad que já manda deltaX (gesto de lado) continua funcionando nativo.
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault()
-      el.scrollLeft += e.deltaY
+    // React anexa onWheel como passive por padrão, o que faz preventDefault()
+    // falhar silenciosamente (e logar erro no console). Um listener nativo
+    // com passive:false é necessário pra realmente bloquear o scroll vertical.
+    const onWheel = (e: globalThis.WheelEvent) => {
+      // Só redireciona quando o gesto é predominantemente vertical — um
+      // trackpad que já manda deltaX (gesto de lado) continua funcionando nativo.
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault()
+        el.scrollLeft += e.deltaY
+      }
     }
-  }
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
 
   useEffect(() => {
     const el = railRef.current
@@ -43,7 +50,6 @@ export default function Trilho({ children }: { children: ReactNode }) {
       <div
         ref={railRef}
         id="trilho"
-        onWheel={onWheel}
         className="trilho flex h-svh w-full overflow-x-auto overflow-y-hidden"
       >
         {children}
