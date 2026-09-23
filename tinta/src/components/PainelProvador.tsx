@@ -33,7 +33,11 @@ export default function PainelProvador() {
       <p className="mt-2 max-w-md text-paper/65">Escolhe onde no corpo, depois qual desenho — ele aparece carimbado ali, na hora.</p>
 
       <div className="mt-8 grid gap-8 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-start sm:gap-10 lg:grid-cols-[16rem_1fr]">
-        <div className="relative mx-auto h-[22rem] w-full max-w-[13rem] text-paper sm:h-[26rem]">
+        {/* aspect-[220/480] = a proporcao EXATA do viewBox do Corpo. O carimbo e
+            posicionado por porcentagem deste contêiner; com altura/largura
+            fixas de outra proporcao o SVG encolhia pra caber e ficava centrado
+            com folga lateral, e a porcentagem errava a zona em ate 13px. */}
+        <div className="relative mx-auto aspect-[220/480] w-full max-w-[10rem] text-paper sm:max-w-[11.5rem]">
           <Corpo zonaAtiva={zonaId} onEscolherZona={escolherZona} />
           {zona && flash && (
             <div
