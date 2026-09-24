@@ -6,7 +6,7 @@ atendimento de balcão, preço acessível). **Negócio fictício**, não existe.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `trama`, em `https://trama.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `trama`, em `https://trama.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Por que este nicho
 
