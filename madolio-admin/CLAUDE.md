@@ -6,7 +6,7 @@ Feito deliberadamente como projeto **separado** de `madolio/` (que é o site rea
 
 ## Deploy (Cloudflare Workers + D1)
 
-Worker `madolio-admin`, em `https://madolio-admin.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `madolio-admin`, em `https://madolio-admin.sneakpeek.workers.dev`. `npm run deploy`.
 
 Banco D1 `madolio-metricas` (binding `DB`), compartilhado por convenção de nome mas fisicamente só usado por este worker. Schema em `schema.sql`, aplicado com `npm run db:migrate` (usa `--remote`, escreve direto no banco de produção do Cloudflare — não existe ambiente local por padrão aqui).
 
