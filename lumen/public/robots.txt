@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lumen.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://lumen.sneakpeek.workers.dev/sitemap.xml

@@ -6,7 +6,7 @@ Pedido: "seja ousado que nem a Cardume" — mas sem entrar em WebGL/three.js (es
 
 ## Deploy (Cloudflare Workers)
 
-Worker `lumen`, em `https://lumen.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `lumen`, em `https://lumen.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O momento ousado: cursor como luminária (`Hero.tsx`)
 
