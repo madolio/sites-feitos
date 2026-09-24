@@ -6,7 +6,7 @@ Um dos 6 conceitos com estilo E estrutura próprios — ver também Pulso, Focin
 
 ## Deploy (Cloudflare Workers)
 
-Worker `corte`, em `https://corte.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `corte`, em `https://corte.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Senha"
 
