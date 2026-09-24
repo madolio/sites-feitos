@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://doce-atelie.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://doce-atelie.sneakpeek.workers.dev/sitemap.xml

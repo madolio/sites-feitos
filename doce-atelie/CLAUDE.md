@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de confeitaria de encomenda. **Neg√≥cio fict√
 
 ## Deploy (Cloudflare Workers)
 
-Worker `doce-atelie`, em `https://doce-atelie.fenoninho-max.workers.dev`. Deploy manual:
+Worker `doce-atelie`, em `https://doce-atelie.sneakpeek.workers.dev`. Deploy manual:
 
 ```
 npm run deploy   # = npm run build && wrangler deploy
