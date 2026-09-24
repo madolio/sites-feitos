@@ -8,7 +8,7 @@ inventado). Vite + React 19 + TypeScript + Tailwind v4 + GSAP
 
 ## Deploy (Cloudflare Workers)
 
-Worker `razao`, em `https://razao.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `razao`, em `https://razao.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
