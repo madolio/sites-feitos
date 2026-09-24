@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arcada.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://arcada.sneakpeek.workers.dev/sitemap.xml

@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de **odontologia geral / clínica dentária**
 
 ## Deploy (Cloudflare Workers)
 
-Worker `arcada`, em `https://arcada.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `arcada`, em `https://arcada.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
