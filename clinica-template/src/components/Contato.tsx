@@ -1,14 +1,14 @@
 import { site, whatsappUrl } from '../config/site'
-import { contato } from '../data/conteudo'
+import { contato, rotulos } from '../data/conteudo'
 import { IconClock, IconMail, IconPhone, IconPin, IconWhatsapp, Reveal, Rich } from './ui'
 
 const enderecoBusca = `${site.address.line1}, ${site.address.line2}`
 
 export default function Contato() {
   const itens = [
-    { icone: <IconWhatsapp />, rotulo: 'WhatsApp', valor: site.whatsappLabel, href: whatsappUrl() },
-    { icone: <IconPhone />, rotulo: 'Telefone', valor: site.phone, href: `tel:${site.phone.replace(/\D/g, '')}` },
-    { icone: <IconMail />, rotulo: 'E-mail', valor: site.email, href: `mailto:${site.email}` },
+    { icone: <IconWhatsapp />, rotulo: rotulos.contato.whatsapp, valor: site.whatsappLabel, href: whatsappUrl() },
+    { icone: <IconPhone />, rotulo: rotulos.contato.telefone, valor: site.phone, href: `tel:${site.phone.replace(/\D/g, '')}` },
+    { icone: <IconMail />, rotulo: rotulos.contato.email, valor: site.email, href: `mailto:${site.email}` },
   ]
 
   return (
@@ -32,7 +32,7 @@ export default function Contato() {
                     </span>
                     <span className="min-w-0">
                       <span className="block text-xs font-semibold tracking-[0.16em] text-muted uppercase">{i.rotulo}</span>
-                      <span className={`block font-display break-words sm:text-2xl ${i.rotulo === 'E-mail' ? 'text-base' : 'text-xl'}`}>{i.valor}</span>
+                      <span className={`block font-display break-words sm:text-2xl ${i.href.startsWith('mailto:') ? 'text-base' : 'text-xl'}`}>{i.valor}</span>
                     </span>
                   </a>
                 </li>
@@ -42,7 +42,7 @@ export default function Contato() {
                   <IconClock />
                 </span>
                 <span>
-                  <span className="block text-xs font-semibold tracking-[0.16em] text-muted uppercase">Horários</span>
+                  <span className="block text-xs font-semibold tracking-[0.16em] text-muted uppercase">{rotulos.contato.horarios}</span>
                   {site.hours.map((h) => (
                     <span key={h.days} className="mt-1 flex flex-wrap gap-x-3 text-lg">
                       <span>{h.days}</span>
@@ -64,11 +64,11 @@ export default function Contato() {
                 <path d="M-10 90 L 420 60" />
                 <path d="M-10 270 L 420 240" />
               </svg>
-              <span aria-hidden="true" className="absolute top-[24%] left-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-forest text-clay-light shadow-[0_0_0_10px_rgb(29_58_50/0.12)]">
+              <span aria-hidden="true" className="absolute top-[24%] left-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-forest text-clay-light shadow-[0_0_0_10px_color-mix(in_oklab,var(--color-forest)_12%,transparent)]">
                 <IconPin className="size-6" />
               </span>
               <div className="relative">
-                <p className="text-xs font-semibold tracking-[0.16em] text-clay uppercase">Endereço</p>
+                <p className="text-xs font-semibold tracking-[0.16em] text-clay uppercase">{rotulos.contato.endereco}</p>
                 <p className="mt-2 font-display text-2xl">{site.address.line1}</p>
                 <p className="text-muted">
                   {site.address.line2} · CEP {site.address.zip}
@@ -79,7 +79,7 @@ export default function Contato() {
                   rel="noreferrer"
                   className="btn btn-primary mt-5"
                 >
-                  Abrir no mapa
+                  {rotulos.abrirMapa}
                 </a>
               </div>
             </div>

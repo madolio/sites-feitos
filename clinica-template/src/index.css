@@ -1,8 +1,29 @@
 @import "tailwindcss";
 
-/* TEMA DO TEMPLATE — para rebrandar, troque só estas variáveis.
-   Direção: verde-floresta profundo + osso + argila. Serifa com itálico nos
-   destaques (Fraunces) sobre texto limpo (Manrope). */
+/* TEMA — para rebrandar, troque só estes valores (e as fontes no index.html).
+   Papéis das cores:
+     forest / forest-soft  cor principal (botões, faixas escuras)
+     ink                   texto e fundo do CTA/rodapé
+     bone                  fundo do site (igual a seo.themeColor em site.ts)
+     sage                  fundo secundário suave (seções alternadas, cards)
+     clay / clay-hover     destaque sobre fundo claro (contraste >= 4,5:1)
+     clay-light            destaque sobre fundo escuro (contraste >= 4,5:1)
+     muted / line          texto secundário e divisores
+   Os nomes das cores são só rótulos: pode ser qualquer cor. */
+/* Fontes de reserva com a mesma largura média das fontes do Google: evitam que
+   o texto reflua (e a página "pule") quando a fonte real termina de carregar.
+   Medido: Fraunces = 98,7% do Georgia; Manrope = 101,3% do Arial. */
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia");
+  size-adjust: 98.7%;
+}
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial");
+  size-adjust: 101.3%;
+}
+
 @theme {
   --color-ink: #12201b;
   --color-forest: #1d3a32;
@@ -17,8 +38,8 @@
   --color-clay-hover: #83401f;
   --color-clay-light: #e3ad8a;
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Fraunces Fallback", ui-serif, Georgia, serif;
+  --font-body: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -102,7 +123,7 @@
 
   /* Textura sutil de pontos para painéis escuros. */
   .dots {
-    background-image: radial-gradient(rgb(246 243 236 / 0.09) 1px, transparent 1px);
+    background-image: radial-gradient(color-mix(in oklab, var(--color-bone) 9%, transparent) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 

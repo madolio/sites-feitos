@@ -10,6 +10,9 @@ export const hero = {
   primary: 'Agendar avaliação',
   secondary: 'Conhecer os cuidados',
   note: 'Atendimento com hora marcada · Resposta no mesmo dia útil',
+  /** Texto que gira no selo sobre a foto (termine com ' · '). */
+  selo: 'ESCUTA · MÉTODO · CUIDADO · ',
+  /** O cartão sobre a foto usa a 1ª pessoa de `equipe.pessoas`. */
 }
 
 export const sobre = {
@@ -155,4 +158,22 @@ export const cta = {
 export const contato = {
   eyebrow: 'Contato',
   title: 'Como *chegar* e falar com a gente.',
+}
+
+// Rótulos de interface e mensagens automáticas (troque para mudar tom ou idioma).
+export const rotulos = {
+  agendar: 'Agendar',
+  saberMais: 'Saber mais',
+  tambem: 'Também',
+  abrirMapa: 'Abrir no mapa',
+  perguntarWhatsapp: 'Perguntar no WhatsApp',
+  irParaConteudo: 'Ir para o conteúdo',
+  menuAbrir: 'Abrir menu',
+  menuFechar: 'Fechar menu',
+  inicio: 'Início',
+  contato: { whatsapp: 'WhatsApp', telefone: 'Telefone', email: 'E-mail', horarios: 'Horários', endereco: 'Endereço' },
+  rodape: { navegacao: 'Navegação', contato: 'Contato' },
+  /** Mensagem enviada pelo botão "Saber mais" de cada cuidado. {servico} vira o título. */
+  mensagemServico: 'Olá! Quero saber mais sobre: {servico}.',
+  mensagemDuvida: 'Olá! Tenho uma dúvida.',
 }

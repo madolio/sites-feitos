@@ -18,7 +18,7 @@ export default function Sobre() {
           </div>
           <div
             aria-hidden="true"
-            className="absolute -right-2 -bottom-4 rounded-2xl bg-forest px-5 py-4 text-bone shadow-[0_12px_30px_-14px_rgb(18_32_27/0.5)] sm:-right-5"
+            className="absolute -right-2 -bottom-4 rounded-2xl bg-forest px-5 py-4 text-bone shadow-[0_12px_30px_-14px_color-mix(in_oklab,var(--color-ink)_50%,transparent)] sm:-right-5"
           >
             <span className="block font-display text-4xl leading-none text-clay-light italic">{sobre.numeros[0].valor}</span>
             <span className="mt-1 block text-xs tracking-wide text-bone/80">{sobre.numeros[0].rotulo}</span>

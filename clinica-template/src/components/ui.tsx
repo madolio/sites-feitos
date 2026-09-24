@@ -55,6 +55,7 @@ export function Reveal({
 }
 
 export function Logo({ light = false, compact = false }: { light?: boolean; compact?: boolean }) {
+  if (site.logo) return <img src={site.logo.src} alt={site.logo.alt} className="h-10 w-auto" />
   return (
     <span className="flex items-center gap-3">
       <span

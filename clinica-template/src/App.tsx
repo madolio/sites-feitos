@@ -1,3 +1,4 @@
+import { rotulos } from './data/conteudo'
 import Contato from './components/Contato'
 import Cta from './components/Cta'
 import Equipe from './components/Equipe'
@@ -18,7 +19,7 @@ export default function App() {
         href="#sobre"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-forest focus:px-5 focus:py-3 focus:text-bone"
       >
-        Ir para o conteúdo
+        {rotulos.irParaConteudo}
       </a>
       <Header />
       <main>

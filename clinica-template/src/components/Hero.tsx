@@ -1,9 +1,10 @@
 import { images } from '../config/images'
 import { site, whatsappUrl } from '../config/site'
-import { hero } from '../data/conteudo'
+import { equipe, hero } from '../data/conteudo'
 import { IconArrow, Reveal, Rich } from './ui'
 
 export default function Hero() {
+  const lead = equipe.pessoas[0]
   return (
     <section id="topo" className="relative overflow-hidden">
       {/* Linhas concêntricas decorativas atrás da imagem */}
@@ -72,22 +73,22 @@ export default function Hero() {
                 <path id="circulo" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0" />
               </defs>
               <text fontSize="10.5" letterSpacing="3.2" fill="currentColor" fontWeight="600">
-                <textPath href="#circulo">ESCUTA · MÉTODO · CUIDADO ·</textPath>
+                <textPath href="#circulo">{hero.selo}</textPath>
               </text>
             </svg>
             <span className="font-display text-3xl text-forest italic">{site.initial}</span>
           </div>
 
-          <div className="absolute -bottom-5 left-4 flex items-center gap-3 rounded-2xl bg-bone p-3 pr-5 shadow-[0_10px_30px_-12px_rgb(18_32_27/0.35)] ring-1 ring-line sm:-left-6">
+          <div className="absolute -bottom-5 left-4 flex items-center gap-3 rounded-2xl bg-bone p-3 pr-5 shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--color-ink)_35%,transparent)] ring-1 ring-line sm:-left-6">
             <span
               aria-hidden="true"
               className="grid size-11 place-items-center rounded-full bg-forest font-display text-lg text-clay-light italic"
             >
-              {site.lead.name.replace(/^Dra?\.\s*/, '').charAt(0)}
+              {lead.nome.replace(/^(Dra?|Dr\.?a?)\.?\s*/i, '').charAt(0)}
             </span>
             <span className="leading-tight">
-              <span className="block font-display text-base">{site.lead.name}</span>
-              <span className="block text-xs tracking-wide text-muted">{site.lead.role}</span>
+              <span className="block font-display text-base">{lead.nome}</span>
+              <span className="block text-xs tracking-wide text-muted">{lead.papel}</span>
             </span>
           </div>
         </Reveal>

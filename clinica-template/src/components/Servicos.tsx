@@ -1,5 +1,5 @@
 import { whatsappUrl } from '../config/site'
-import { servicos } from '../data/conteudo'
+import { rotulos, servicos } from '../data/conteudo'
 import { IconArrow, Reveal, Rich } from './ui'
 
 export default function Servicos() {
@@ -45,12 +45,12 @@ export default function Servicos() {
                   ))}
                 </ul>
                 <a
-                  href={whatsappUrl(`Olá! Quero saber mais sobre: ${s.titulo}.`)}
+                  href={whatsappUrl(rotulos.mensagemServico.replace('{servico}', s.titulo))}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-auto inline-flex min-h-11 items-center gap-2 pt-6 text-sm font-semibold text-clay hover:text-clay-hover"
                 >
-                  Saber mais
+                  {rotulos.saberMais}
                   <IconArrow className="size-4 transition-transform [@media(hover:hover)]:group-hover:translate-x-1" />
                 </a>
               </article>
@@ -59,7 +59,7 @@ export default function Servicos() {
         </ul>
 
         <Reveal className="mt-16 flex flex-wrap items-center gap-x-4 gap-y-3 border-y border-line py-5">
-          <span className="text-xs font-semibold tracking-[0.18em] text-muted uppercase">Também</span>
+          <span className="text-xs font-semibold tracking-[0.18em] text-muted uppercase">{rotulos.tambem}</span>
           {servicos.extras.map((e) => (
             <span key={e} className="rounded-full bg-sage px-4 py-1.5 text-sm text-forest">
               {e}

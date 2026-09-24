@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { nav, whatsappUrl } from '../config/site'
+import { rotulos } from '../data/conteudo'
 import { IconClose, IconMenu, Logo } from './ui'
 
 export default function Header() {
   const [aberto, setAberto] = useState(false)
   const [rolou, setRolou] = useState(false)
+  const botaoMenu = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const aoRolar = () => setRolou(window.scrollY > 8)
@@ -15,7 +17,11 @@ export default function Header() {
 
   useEffect(() => {
     if (!aberto) return
-    const aoTeclar = (e: KeyboardEvent) => e.key === 'Escape' && setAberto(false)
+    const aoTeclar = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      setAberto(false)
+      botaoMenu.current?.focus()
+    }
     window.addEventListener('keydown', aoTeclar)
     return () => window.removeEventListener('keydown', aoTeclar)
   }, [aberto])
@@ -27,7 +33,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 lg:h-20 lg:px-8">
-        <a href="#topo" aria-label="Início" className="shrink-0" onClick={() => setAberto(false)}>
+        <a href="#topo" aria-label={rotulos.inicio} className="shrink-0" onClick={() => setAberto(false)}>
           <Logo compact />
         </a>
 
@@ -42,14 +48,15 @@ export default function Header() {
 
         <div className="flex items-center gap-2">
           <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="btn btn-primary !min-h-11 !px-4 sm:!px-5">
-            Agendar
+            {rotulos.agendar}
           </a>
           <button
+            ref={botaoMenu}
             type="button"
             className="grid size-11 place-items-center rounded-full border border-ink/20 lg:hidden"
             aria-expanded={aberto}
             aria-controls="menu-mobile"
-            aria-label={aberto ? 'Fechar menu' : 'Abrir menu'}
+            aria-label={aberto ? rotulos.menuFechar : rotulos.menuAbrir}
             onClick={() => setAberto((v) => !v)}
           >
             {aberto ? <IconClose className="size-5" /> : <IconMenu className="size-5" />}

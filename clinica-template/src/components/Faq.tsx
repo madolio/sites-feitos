@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { whatsappUrl } from '../config/site'
-import { faq } from '../data/conteudo'
+import { faq, rotulos } from '../data/conteudo'
 import { IconPlus, IconWhatsapp, Reveal, Rich } from './ui'
 
 export default function Faq() {
@@ -15,9 +15,9 @@ export default function Faq() {
             <Rich text={faq.title} />
           </h2>
           <p className="mt-5 text-lg text-muted">{faq.text}</p>
-          <a href={whatsappUrl('Olá! Tenho uma dúvida.')} target="_blank" rel="noreferrer" className="btn btn-primary mt-8">
+          <a href={whatsappUrl(rotulos.mensagemDuvida)} target="_blank" rel="noreferrer" className="btn btn-primary mt-8">
             <IconWhatsapp />
-            Perguntar no WhatsApp
+            {rotulos.perguntarWhatsapp}
           </a>
         </Reveal>
 
@@ -30,6 +30,7 @@ export default function Faq() {
                   <h3>
                     <button
                       type="button"
+                      id={`faq-botao-${i}`}
                       aria-expanded={ativa}
                       aria-controls={`faq-${i}`}
                       onClick={() => setAberta(ativa ? null : i)}
@@ -44,6 +45,7 @@ export default function Faq() {
                   <div
                     id={`faq-${i}`}
                     role="region"
+                    aria-labelledby={`faq-botao-${i}`}
                     className={`grid transition-[grid-template-rows] duration-300 ease-out ${ativa ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
                   >
                     <div className="overflow-hidden">
