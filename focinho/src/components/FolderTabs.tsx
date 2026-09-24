@@ -25,19 +25,19 @@ export default function FolderTabs() {
       {/* Faixa solida atras das abas: antes so as abas tinham fundo, entao o
       conteudo passava por tras da barra (e do botao Agendar) ao rolar. O tom mistura
       line com paper pra as abas de pasta (bg-paper) continuarem se destacando. */}
-      <div className="mx-auto flex max-w-3xl items-end gap-1 px-4 pt-3 sm:px-6">
+      <div className="mx-auto flex max-w-3xl items-end gap-1 px-2.5 pt-3 sm:px-6">
         {tabs.map((tab) => (
           <a
             key={tab.href}
             href={tab.href}
-            className="rounded-t-xl border border-b-0 border-line bg-paper px-4 py-2.5 text-sm font-semibold text-ink/75 shadow-[0_-2px_6px_rgba(43,58,58,0.06)] transition-colors hover:text-ink sm:px-6 sm:text-base"
+            className="rounded-t-xl border border-b-0 border-line bg-paper px-2 py-2.5 text-[13px] font-semibold text-ink/75 shadow-[0_-2px_6px_rgba(43,58,58,0.06)] transition-colors hover:text-ink sm:px-6 sm:text-base"
           >
             {tab.label}
           </a>
         ))}
         <a
           href="#agendar"
-          className="btn-accent ml-auto mb-1 px-4 py-2 text-sm sm:px-5"
+          className="btn-accent ml-auto mb-1 px-3 py-2 text-sm sm:px-5"
         >
           Agendar
         </a>
