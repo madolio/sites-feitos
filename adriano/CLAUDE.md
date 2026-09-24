@@ -22,7 +22,7 @@ Se qualquer um desses fatos for confirmado depois, atualizar o site é trivial �
 
 ## Deploy (Cloudflare Workers)
 
-Worker `adriano`, em `https://adriano.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `adriano`, em `https://adriano.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Identidade visual — dupla, sem misturar
 
