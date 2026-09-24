@@ -4,6 +4,7 @@
 //   npm run new-site -- --template restaurante --project meu-bistro --brand "Bistrô Aurora" \
 //       --description "..." [--worker meu-bistro] [--whatsapp "11 91234-5678"] [--instalar] [--com-deps]
 //   npm run new-site -- --briefing briefing.json   (modelo: scripts/briefing.exemplo.json)
+//   npm run new-site -- --template academia --dry-run   (valida e mostra o plano e as pendências, sem criar nada)
 // Sem campos de contato/identidade extras, o comportamento é o da versão anterior.
 import { spawnSync } from 'node:child_process'
 import { cpSync, existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
@@ -25,7 +26,7 @@ const falha = (msg) => {
 // --- Argumentos e briefing -------------------------------------------------
 // Precedência de cada campo: flag > arquivo --briefing > pergunta (só no modo interativo).
 const args = process.argv.slice(2)
-const FLAGS_BOOL = ['instalar', 'com-deps']
+const FLAGS_BOOL = ['instalar', 'com-deps', 'dry-run']
 const FLAGS_VALOR = [
   'template', 'project', 'brand', 'description', 'worker', 'briefing',
   'descriptor', 'tagline', 'initial', 'title', 'seo-description', 'url',
@@ -115,8 +116,12 @@ const horariosDados = () => {
     return { days: dias.trim(), time: resto.join('=').trim() }
   })
 }
+// --dry-run: mesma validação e mesmo cálculo da geração real, mas sem perguntas e sem criar nada.
+const dry = flag('dry-run')
+if (dry && (flag('instalar') || flag('com-deps'))) falha('--dry-run não combina com --instalar/--com-deps (nada é criado).')
+const naoInformados = [] // obrigatórios não informados (só no dry-run; na geração real são perguntados)
 // Os campos opcionais só são perguntados no modo totalmente interativo.
-const interativo = !flag('project') && !arqBriefing
+const interativo = !flag('project') && !arqBriefing && !dry
 
 const rl = createInterface({ input: process.stdin, output: process.stdout })
 const perguntar = async (texto) => (await rl.question(texto)).trim()
@@ -168,6 +173,10 @@ async function obter(nome, texto, validar, padrao) {
     return v
   }
   if (padrao && !interativo) return padrao // modo por argumentos: sem perguntas
+  if (dry) {
+    naoInformados.push(nome)
+    return `<${nome}>`
+  }
   for (;;) {
     v = (await perguntar(texto + (padrao ? ` [${padrao}]` : '') + ': ')) || padrao || ''
     const erro = validar(v)
@@ -292,6 +301,7 @@ function varrer(dir, achado = []) {
 // --- Fluxo -----------------------------------------------------------------
 const ids = Object.keys(templates)
 let id = valor('template')
+if (id === undefined && dry) falha('--dry-run precisa de --template (ou um briefing com "template").')
 if (id === undefined) {
   console.log('\nTemplates disponíveis:\n')
   ids.forEach((k, i) => console.log(`  ${i + 1}. ${templates[k].name} — ${templates[k].description}`))
@@ -318,7 +328,7 @@ const worker = await obter(
     const em = workersExistentes().get(v)
     return em ? `O Worker "${v}" já é usado por sites-feitos/${em}: o deploy sobrescreveria aquele site.` : ''
   },
-  projeto,
+  naoInformados.includes('project') ? undefined : projeto,
 )
 
 // Opcionais (briefing): identidade, contato, SEO
@@ -364,6 +374,71 @@ opc.url = await opcional('url', 'URL pública própria (Enter = https://<worker>
 rl.close()
 
 const destino = resolve(raiz, projeto)
+
+/** Linhas de código/dados (fora de comentários) de src/ que citam a marca de demonstração do template. */
+const linhasComMarca = (dirSrc, siteNovo) =>
+  varrer(dirSrc)
+    .map((p) => [
+      relative(dirSrc, p).split(sep).join('/'),
+      (relative(dirSrc, p).split(sep).join('/') === 'config/site.ts' ? siteNovo : readFileSync(p, 'utf8')).split('\n').filter((l) => l.includes(tpl.brand) && !/^\s*(\/\/|\/?\*)/.test(l)).length,
+    ])
+    .filter(([, n]) => n > 0)
+
+/** O que o briefing NÃO cobre neste template, lido dos arquivos reais (nada é escrito). */
+function pendenciasManuais(siteTxt) {
+  const ler = (...p) => readFileSync(join(origem, ...p), 'utf8')
+  const conteudo = ler('src', 'data', 'conteudo.ts')
+  const css = ler('src', 'index.css')
+  const imgs = ler('src', 'config', 'images.ts')
+  const blocos = [...conteudo.matchAll(/^export const (\w+)/gm)].map((m) => m[1])
+  const marca = linhasComMarca(join(origem, 'src'), siteTxt).map(([a, n]) => `${a} (${n})`)
+  const dirDemo = join(origem, 'public', 'demo')
+  const fotos = (existsSync(dirDemo) ? readdirSync(dirDemo) : []).filter((a) => !tpl.omit.includes(`public/demo/${a}`))
+  const chavesImg = [...imgs.matchAll(/^\s{2}(\w+):\s*\{\s*src:/gm)].map((m) => m[1])
+  const corCss = [...css.matchAll(/^\s*--color-[\w-]+:/gm)].length
+  const fontesCss = [...new Set([...css.matchAll(/^\s*--font-[\w-]+:\s*"([^"]+)"/gm)].map((m) => m[1]))]
+  const navBloco = siteTxt.match(/export const nav = \[([\s\S]*?)\n\]/)?.[1] ?? ''
+  const rotulosNav = [...navBloco.matchAll(/label:\s*'((?:[^'\\]|\\.)*)'/g)].map((m) => m[1])
+  const rodape = lerLiteral(siteTxt, 'footerNote')
+  const fonteSite = lerLiteral(siteTxt, 'fonts')
+  const p = [] // cada item: [título, ...linhas]
+  p.push([
+    'Conteúdo do nicho — src/data/conteudo.ts',
+    `todos os textos são de demonstração. Blocos: ${blocos.join(', ')}.`,
+    marca.length ? `o nome "${tpl.brand}" ainda aparece em: ${marca.join(', ')} (entre parênteses, nº de linhas).` : '',
+    'o gerador não reescreve esse arquivo (cada nicho tem a sua estrutura).',
+  ].filter(Boolean))
+  p.push([
+    `Imagens — src/config/images.ts${fotos.length ? ' e public/demo/' : ''}`,
+    chavesImg.length ? `${chavesImg.length} imagens de demonstração (${chavesImg.join(', ')}).` : 'este template não usa fotografias (images fica vazio); só adicione se o cliente quiser fotos.',
+    fotos.length ? `${fotos.length} arquivos em public/demo/ (Pexels): substitua e depois apague a pasta.` : '',
+    /pexels\.com/.test(imgs) ? 'as URLs apontam direto para o Pexels (não há arquivo local): troque por fotos do cliente em public/.' : '',
+    tpl.ogImage
+      ? 'og:image: removida do projeto (a do template levava a marca dele). Para ter prévia em redes sociais, adicione uma imagem em public/ e aponte @gen:og-image em src/config/site.ts.'
+      : 'og:image: este template não define imagem de compartilhamento.',
+  ].filter(Boolean))
+  p.push([
+    'Cores — src/index.css (@theme) e src/config/site.ts (seo)',
+    `${corCss} variáveis --color-* do template; nada é trocado automaticamente.`,
+    `seo.themeColor (${lerLiteral(siteTxt, 'themeColor')}) deve ser igual à cor de fundo; faviconBg (${lerLiteral(siteTxt, 'faviconBg')}) e faviconFg (${lerLiteral(siteTxt, 'faviconFg')}) definem favicon e apple-touch-icon.`,
+  ])
+  p.push([
+    `Fontes — ${fonteSite !== undefined ? 'src/config/site.ts (fonts) e src/index.css (--font-*)' : 'index.html (link do Google Fonts) e src/index.css (--font-*)'}`,
+    `em uso: ${fontesCss.join(', ')}. Trocar exige mudar os dois lugares.`,
+  ])
+  const outros = []
+  outros.push(/logo:\s*null/.test(siteTxt) ? 'logo: site.ts logo é null (o logo é a inicial + nome); defina { src, alt } só se o cliente tiver logo em imagem.' : 'logo: confira o campo logo em site.ts.')
+  if (rotulosNav.length) outros.push(`navegação: export nav em site.ts (${rotulosNav.join(', ')}); os href apontam para seções do template, então mexa só se remover uma seção.`)
+  if (/mapEmbedUrl:\s*''/.test(siteTxt)) outros.push('mapa: site.ts mapEmbedUrl está vazio (sem mapa). Cole o src do iframe do Google Maps se quiser mostrar o mapa.')
+  else if (!/mapEmbedUrl/.test(siteTxt)) outros.push('mapa: este template não tem campo de mapa.')
+  if (rodape) outros.push(`rodapé: site.ts footerNote ainda diz "${rodape}". Deixe '' na entrega ao cliente.`)
+  outros.push('redes sociais: só o Instagram é configurável pelo briefing; este template não tem outras redes.')
+  outros.push('apple-touch-icon: gerado só com as cores do favicon (sem letra). Troque por um public/apple-touch-icon.png (180×180) do cliente.')
+  p.push(['Outros itens (site.ts e public/)', ...outros])
+  return p
+}
+
+const fmtPend = (lista) => lista.map(([tit, ...linhas]) => `  • ${tit}\n${linhas.map((l) => `      ${l}`).join('\n')}`).join('\n')
 
 // 0. Pré-voo: calcula o novo site.ts a partir do template ANTES de criar qualquer coisa.
 //    Se o template não suporta um campo pedido, sai sem criar nada (nunca gera código inválido).
@@ -430,6 +505,30 @@ try {
   } else pendente.push('horários (mantidos os de exemplo)')
 } catch (e) {
   falha(`o template "${id}" não aceita o briefing: ${e.message}.`)
+}
+
+const automatico = [
+  `Worker: ${worker} (wrangler.jsonc)`,
+  `package.json e package-lock.json: name = ${projeto}`,
+  'favicon.svg, robots.txt, sitemap.xml e canonical (gerados no build a partir de site.ts)',
+  'apple-touch-icon.png (180×180, só cores)',
+]
+
+if (dry) {
+  const antes = new Set(readFileSync(join(origem, 'src', 'config', 'site.ts'), 'utf8').replace(/\r\n/g, '\n').split('\n'))
+  const depois = new Set(site.split('\n'))
+  console.log(`\n[dry-run] template ${id} (${tpl.name}) → sites-feitos/${projeto}   Worker: ${worker}`)
+  if (naoInformados.length) console.log(`Obrigatórios ainda não informados (a geração real vai perguntar): ${naoInformados.join(', ')}`)
+  console.log(`\nSeria criado: cópia de ${tpl.path} (sem dist, .wrangler${flag('com-deps') ? '' : ', node_modules'}${tpl.omit.length ? `, ${tpl.omit.join(', ')}` : ''}), README.md e briefing.json.`)
+  console.log('\nConfigurado automaticamente:')
+  for (const a of [...feito, ...automatico]) console.log(`  ✓ ${a}`)
+  console.log('\nMudanças em src/config/site.ts (- template, + projeto):')
+  for (const l of [...antes].filter((x) => !depois.has(x) && x.trim())) console.log(`  - ${l.trim()}`)
+  for (const l of [...depois].filter((x) => !antes.has(x) && x.trim())) console.log(`  + ${l.trim()}`)
+  if (pendente.length) console.log(`\nDo briefing, não informado (fica o valor de exemplo do template):\n${pendente.map((x) => `  - ${x}`).join('\n')}`)
+  console.log(`\nPendente de configuração manual:\n${fmtPend(pendenciasManuais(site))}`)
+  console.log('\n[dry-run] Nada foi criado nem alterado.')
+  process.exit(0)
 }
 
 console.log(`\nCriando sites-feitos/${projeto} a partir de ${tpl.path}...`)
@@ -512,10 +611,6 @@ const faltando = essenciais.filter((p) => !existsSync(join(destino, p)))
 if (faltando.length) console.error(`Aviso: arquivos essenciais ausentes: ${faltando.join(', ')}`)
 const vestigios = varrer(destino).filter((p) => /\.(json|jsonc|ts|tsx|html|css)$/.test(p) && readFileSync(p, 'utf8').includes(tpl.path))
 if (vestigios.length) console.error(`Aviso: referência a "${tpl.path}" em: ${vestigios.map((p) => relative(destino, p)).join(', ')}`)
-// Os comentários do template citam a marca de demonstração; só conta o que aparece em código ou dados.
-const marcaTpl = varrer(join(destino, 'src'))
-  .filter((p) => readFileSync(p, 'utf8').split('\n').some((l) => l.includes(tpl.brand) && !/^\s*(\/\/|\/?\*)/.test(l)))
-  .map((p) => relative(destino, p))
 
 // Trava: o projeto novo não pode manter o Worker nem o pacote do template (o deploy sobrescreveria o template).
 const lerJson = (arq) => JSON.parse(readFileSync(join(destino, arq), 'utf8'))
@@ -547,16 +642,12 @@ if (buildOk === null && existsSync(join(destino, 'node_modules'))) {
 }
 
 console.log(`\n✓ projeto criado: sites-feitos/${projeto}  (Worker: ${worker})`)
-for (const f of feito) console.log(`✓ ${f}`)
-if (buildOk === true) console.log('✓ build: OK')
-if (buildOk === false) console.log('✗ build FALHOU. O projeto foi mantido; corrija o erro acima e rode `npm run build` na pasta.')
+console.log('\nConfigurado automaticamente:')
+for (const f of [...feito, ...automatico]) console.log(`  ✓ ${f}`)
+if (buildOk === true) console.log('  ✓ build: OK')
+if (buildOk === false) console.log('  ✗ build FALHOU. O projeto foi mantido; corrija o erro acima e rode `npm run build` na pasta.')
+if (pendente.length) console.log(`\nDo briefing, não informado (fica o valor de exemplo do template):\n${pendente.map((p) => `  - ${p}`).join('\n')}`)
+console.log(`\nPendente de configuração manual (conteúdo de demonstração do template ${id}):\n${fmtPend(pendenciasManuais(site))}`)
 if (buildOk === null) console.log(`\nPróximos passos:\n  cd ${projeto}\n  npm install\n  npm run build`)
-
-console.log(`\nAinda é conteúdo de demonstração (troque à mão):
-  - src/data/conteudo.ts: todos os textos${marcaTpl.length ? ` (o nome "${tpl.brand}" aparece em: ${marcaTpl.join(', ')})` : ''}
-  - src/config/images.ts e public/: fotos do template (Pexels, demonstração)
-  - src/index.css (@theme): cores e fontes; site.ts: cores do favicon
-  - public/apple-touch-icon.png: gerado só com as cores; troque pelo ícone real`)
-if (pendente.length) console.log(`Do briefing, não informado (fica o valor de exemplo do template):\n${pendente.map((p) => `  - ${p}`).join('\n')}`)
-console.log('Nada foi enviado: sem commit, sem push, sem deploy.')
+console.log('\nNada foi enviado: sem commit, sem push, sem deploy.')
 process.exit(buildOk === false ? 2 : 0)
