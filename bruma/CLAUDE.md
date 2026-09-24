@@ -6,7 +6,7 @@ Não usa GSAP no scroll — e não é o único (conferido em 18/09/2026: bruma, 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `bruma`, em `https://bruma.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `bruma`, em `https://bruma.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Componentes de terceiros — adaptados, não copiados cegamente
 

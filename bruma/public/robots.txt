@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bruma.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://bruma.sneakpeek.workers.dev/sitemap.xml
