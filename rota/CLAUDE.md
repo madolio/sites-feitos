@@ -6,7 +6,7 @@ Feito pra ter um **esqueleto de página** genuinamente diferente dos outros conc
 
 ## Deploy (Cloudflare Workers)
 
-Worker `rota`, em `https://rota.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `rota`, em `https://rota.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O esqueleto — o site É a tela do software
 
