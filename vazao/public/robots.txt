@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vazao.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://vazao.sneakpeek.workers.dev/sitemap.xml
