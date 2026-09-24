@@ -8,7 +8,7 @@ export default function Header() {
       <div className="bg-emergencia text-limalha">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-1.5 text-xs sm:px-8">
           <span className="dado-placa">
-            Emergência 24h<span className="hidden sm:inline"> · atendimento no mesmo dia, a qualquer hora</span>
+            Emergência 24h<span className="hidden md:inline"> · atendimento no mesmo dia, a qualquer hora</span>
           </span>
           <a href="tel:+5543991128845" className="dado-placa shrink-0 hover:underline">
             (43) 99112-8845
