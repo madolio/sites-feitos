@@ -6,7 +6,7 @@ Um dos três conceitos feitos pra responder ao feedback de que os quatro anterio
 
 ## Deploy (Cloudflare Workers)
 
-Worker `ancora`, em `https://ancora.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `ancora`, em `https://ancora.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery — "Extrato"
 
