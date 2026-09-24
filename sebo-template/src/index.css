@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* TEMA — para rebrandar, troque só estes valores (e `fonts` em site.ts).
+   Cada cor tem uma FUNÇÃO; os componentes usam só estas funções
+   (bg-background, text-foreground, text-muted, bg-accent, bg-paper...).
+
+   Duas superfícies:
+   1) o "pano" (fundo do site, escuro no template):
+     background / surface   fundo do site e das faixas alternadas
+     foreground / muted     texto principal e texto secundário sobre o pano
+     accent-text            destaque em TEXTO sobre o pano (rótulos manuscritos, carimbos)
+     border                 divisores sobre o pano
+     idle                   orelha de navegação inativa
+   2) o "papel" (fichas, cartões e o diálogo, claros no template):
+     paper / paper-2        fundo do papel e um tom mais velho
+     ink / ink-muted        texto sobre o papel
+   E o destaque que serve às duas: accent (botões, orelha ativa e carimbo sobre o papel),
+   accent-hover e accent-foreground (texto dentro de um botão accent).
+
+   Contraste mínimo (texto): foreground e muted sobre background e surface >= 4,5:1;
+   accent-text sobre background e surface >= 4,5:1; ink e ink-muted sobre paper e paper-2 >= 4,5:1;
+   accent sobre paper e paper-2 >= 4,5:1; accent-foreground sobre accent >= 4,5:1.
+   Os nomes são só rótulos: qualquer cor serve (um sebo claro pode inverter os dois grupos). */
+@theme {
+  --color-background: #17241b;
+  --color-surface: #1e2f23;
+  --color-foreground: #ece2c8;
+  --color-muted: #9fae9e;
+  --color-accent-text: #ec8f76;
+  --color-border: #364638;
+  --color-idle: #4b5a4c;
+
+  --color-paper: #f1e7ce;
+  --color-paper-2: #e8dabc;
+  --color-ink: #2a1d12;
+  --color-ink-muted: #665443;
+
+  --color-accent: #a83a26;
+  --color-accent-hover: #8c2e1c;
+  --color-accent-foreground: #fbf3e0;
+
+  /* Fontes: os nomes devem bater com `fonts` em src/config/site.ts.
+     --font-mao é a letra manuscrita dos rótulos e das orelhas. */
+  --font-display: "Piazzolla", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mao: "Caveat", cursive;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 1.5rem;
+  }
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent-text);
+    outline-offset: 3px;
+  }
+  /* Dentro do papel, o contorno usa a cor de destaque do papel */
+  .ficha :focus-visible,
+  dialog :focus-visible {
+    outline-color: var(--color-accent);
+  }
+}
+
+@layer components {
+  .btn-carimbo {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-accent px-7 py-3 text-center font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5 hover:bg-accent-hover;
+  }
+
+  .btn-contorno {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border-2 border-foreground/30 px-6 py-3 text-center font-semibold text-foreground transition-colors hover:border-foreground/70;
+  }
+
+  .btn-tinta {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-ink px-6 py-3 text-center font-semibold text-paper transition-opacity hover:opacity-85;
+  }
+
+  .rotulo-mao {
+    font-family: var(--font-mao);
+    font-weight: 600;
+    @apply text-2xl leading-none text-accent-text;
+  }
+
+  .ficha {
+    @apply border border-ink/15 bg-paper text-ink shadow-[3px_4px_0_0_rgba(0,0,0,0.18)];
+  }
+}
+
+/* Textura sutil de papel nas fichas: grão leve via ruído gerado em SVG
+   inline, não imagem baixada. */
+.textura-papel {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Carimbo de preço: borda irregular via border-radius assimétrico,
+   imitando carimbo de borracha batido à mão. */
+.carimbo-preco {
+  border-radius: 48% 52% 51% 49% / 53% 47% 53% 47%;
+  border: 2px solid currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
