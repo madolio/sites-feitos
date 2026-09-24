@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de **observatório / turismo astronômico**. 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `zenite`, em `https://zenite.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `zenite`, em `https://zenite.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
