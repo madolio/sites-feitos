@@ -46,7 +46,7 @@ export default function Processo() {
               decoding="async"
               className="aspect-[4/3] w-full object-cover"
             />
-            <figcaption className="dado-ficha mt-2 text-center text-[10px] text-mata/50">
+            <figcaption className="dado-ficha mt-2 text-center text-[11px] tracking-normal text-mata/70">
               no cultivo, todo dia
             </figcaption>
           </figure>
