@@ -7,7 +7,7 @@ v4 + GSAP (`Reveal.tsx`, cópia canônica de `arcada`). Página única.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `ninho`, em `https://ninho.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `ninho`, em `https://ninho.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
