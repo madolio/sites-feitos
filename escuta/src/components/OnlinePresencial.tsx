@@ -36,13 +36,9 @@ export default function OnlinePresencial() {
           </p>
         </Reveal>
 
-        <p className="mt-8 text-xs text-tinta/50 sm:hidden" aria-hidden="true">
-          Deslize para o lado para ver a coluna presencial →
-        </p>
-
-        <Reveal delay={0.05} className="mt-2 overflow-x-auto sm:mt-10">
-          <table className="w-full min-w-[520px] border-collapse overflow-hidden rounded-xl border border-linha bg-papel text-left text-sm">
-            <thead>
+        <Reveal delay={0.05} className="mt-8 overflow-x-auto sm:mt-10">
+          <table className="w-full border-collapse overflow-hidden rounded-xl border border-linha bg-papel text-left text-sm max-sm:block">
+            <thead className="max-sm:sr-only">
               <tr className="border-b border-linha">
                 <th scope="col" className="p-4 font-semibold text-tinta/50">
                   &nbsp;
@@ -55,14 +51,20 @@ export default function OnlinePresencial() {
                 </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="max-sm:block">
               {pontos.map((p) => (
-                <tr key={p.tema} className="border-b border-linha last:border-0">
-                  <th scope="row" className="p-4 align-top font-semibold">
+                <tr key={p.tema} className="border-b border-linha last:border-0 max-sm:block max-sm:p-4">
+                  <th scope="row" className="p-4 align-top font-semibold max-sm:block max-sm:p-0">
                     {p.tema}
                   </th>
-                  <td className="p-4 align-top text-tinta/75">{p.online}</td>
-                  <td className="p-4 align-top text-tinta/75">{p.presencial}</td>
+                  <td className="p-4 align-top text-tinta/75 max-sm:mt-3 max-sm:block max-sm:p-0">
+                    <span className="dado-ficha mb-0.5 block text-quieto sm:hidden">Online</span>
+                    {p.online}
+                  </td>
+                  <td className="p-4 align-top text-tinta/75 max-sm:mt-3 max-sm:block max-sm:p-0">
+                    <span className="dado-ficha mb-0.5 block text-acolhe sm:hidden">Presencial</span>
+                    {p.presencial}
+                  </td>
                 </tr>
               ))}
             </tbody>
