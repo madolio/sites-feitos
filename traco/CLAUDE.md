@@ -6,7 +6,7 @@ Um dos três conceitos feitos pra responder ao feedback de que os quatro anterio
 
 ## Deploy (Cloudflare Workers)
 
-Worker `traco`, em `https://traco.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `traco`, em `https://traco.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery — "Planta Baixa"
 
