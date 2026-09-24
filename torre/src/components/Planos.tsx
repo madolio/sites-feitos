@@ -20,7 +20,48 @@ export default function Planos() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-12 overflow-x-auto">
+        <div className="mt-12 grid gap-4 md:hidden">
+          {plans.map((plan) => (
+            <Reveal key={plan.name} className="rounded-lg border border-line p-5">
+              <span className={`block text-lg font-medium ${plan.highlight ? 'text-amber' : 'text-ink'}`}>
+                {plan.name}
+              </span>
+              <span className="mono mt-2 block text-2xl text-ink">
+                {plan.price > 0 ? (
+                  <>
+                    R$ {plan.price}
+                    <span className="text-sm text-ink-dim">{plan.unit}</span>
+                  </>
+                ) : (
+                  <span className="text-lg">Sob consulta</span>
+                )}
+              </span>
+              <span className="mt-1 block text-sm text-ink-dim">{plan.description}</span>
+              <ul className="mono mt-5 space-y-2 text-sm">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2">
+                    <svg viewBox="0 0 16 16" className="mt-0.5 h-4 w-4 shrink-0 text-cyan" aria-label="Incluído">
+                      <path
+                        d="M2 8.5 6 12.5 14 3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#contato" className={`${plan.highlight ? 'btn-amber' : 'btn-line'} mt-6 w-full`}>
+                {plan.price > 0 ? 'Começar teste' : 'Falar com vendas'}
+              </a>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="mt-12 hidden overflow-x-auto md:block">
           <table className="w-full min-w-[36rem] border-collapse">
             <caption className="sr-only">Comparação de planos da Torre</caption>
             <thead>
