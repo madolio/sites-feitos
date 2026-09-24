@@ -7,6 +7,7 @@ Documentação da estrutura do monorepo `sites-feitos` para produzir sites de cl
 | [guia-de-uso.md](guia-de-uso.md) | Passo a passo: criar site de cliente, criar template, testar, publicar |
 | [arquitetura-de-templates.md](arquitetura-de-templates.md) | Convenção de pastas e config, padrões repetidos, o que centralizar, padrões visuais |
 | [inventario-e-catalogo.md](inventario-e-catalogo.md) | Catálogo dos 55 projetos por nicho: templates, demos, cliente, potencial de reutilização |
+| [avaliacao-candidatos-proximo-template.md](avaliacao-candidatos-proximo-template.md) | Auditoria de 7 demos (banca, sebo, focinho, pulso, revelar, estudio-alma, corte) contra o contrato de template |
 | [contrato-de-template.md](contrato-de-template.md) | O que todo template precisa ter para o futuro gerador: arquivos, responsabilidades, metadados, riscos, pendências |
 | [gerador.md](gerador.md) | Como usar o `npm run new-site`, segurança, limitações, como registrar template |
 | [plano-gerador.md](plano-gerador.md) | Plano original do gerador (agora implementado) |
