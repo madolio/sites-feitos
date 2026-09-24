@@ -6,7 +6,7 @@ Pedido: "quero uma agência de carros, dessa vez coloque até imagens" — o pri
 
 ## Deploy (Cloudflare Workers)
 
-Worker `marcha`, em `https://marcha.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `marcha`, em `https://marcha.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Fotos reais — banco de imagens livre, sem inventar marca
 

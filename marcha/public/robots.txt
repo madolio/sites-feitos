@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marcha.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://marcha.sneakpeek.workers.dev/sitemap.xml
