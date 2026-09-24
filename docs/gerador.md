@@ -35,11 +35,12 @@ Campos por template: `name`, `category`, `path` (pasta dentro de `sites-feitos/`
 4. `name` em `wrangler.jsonc` (Worker), `package.json` e `package-lock.json`, via JSON/regex ancorada, sem replace global.
 5. Gera `public/apple-touch-icon.png` (180×180) com as cores do favicon.
 6. Escreve um `README.md` próprio no projeto.
-7. Confere arquivos essenciais e avisa se sobrou referência ao nome do template. Com `--instalar`, roda `npm install` e `npm run build` (erro: o projeto é mantido).
+7. **Trava de identidade:** confere Worker, `package.json` e as duas ocorrências do `package-lock.json`; se algum ainda tiver o nome do template (ou não for o esperado), sai com código 3 e manda não fazer deploy.
+8. Confere arquivos essenciais e avisa se sobrou referência ao nome do template (só conta código e dados, não os comentários do template). Com `--instalar`, roda `npm install` e `npm run build` (erro: o projeto é mantido).
 
 ## Segurança
 
-Nome do projeto e do Worker: `^[a-z0-9]+(-[a-z0-9]+)*$` (sem espaço, `/`, `\`, `..`, caminho absoluto ou maiúscula); nomes reservados (`docs`, `scripts`, `madolio`, `node_modules`, `leads`); o destino precisa ser filho direto de `sites-feitos/` (checado após `resolve`); destino existente é **recusado** (a cópia ainda usa `errorOnExist`); template inexistente é recusado; Worker não pode ter nome de template. Não apaga nada, sem `git`.
+Nome do projeto e do Worker: `^[a-z0-9]+(-[a-z0-9]+)*$` (sem espaço, `/`, `\`, `..`, caminho absoluto ou maiúscula); nomes reservados (`docs`, `scripts`, `madolio`, `node_modules`, `leads`); o destino precisa ser filho direto de `sites-feitos/` (checado após `resolve`); destino existente é **recusado** (a cópia ainda usa `errorOnExist`); template inexistente é recusado; Worker não pode ter nome de template. Não apaga nada, sem `git`. O Worker também não pode ser o de um template nem o de qualquer Worker já existente no monorepo (lido de `*/wrangler.jsonc`), porque o deploy sobrescreveria aquele site.
 
 ## O que cada template deixa configurável (além do comum)
 

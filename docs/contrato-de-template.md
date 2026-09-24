@@ -173,7 +173,7 @@ A entrada do restaurante **não** está definida: `PENDENTE: validar após concl
 
 - Imagens de demonstração podem ser URLs de banco de imagens, referenciadas **só em `images.ts`**. Um site de cliente usa arquivos em `public/`.
 - Nenhum componente referencia um caminho de imagem diretamente: todos leem de `images`.
-- O único arquivo de marca estático em `public/` é o `apple-touch-icon.png`. Ele **continua apontando para o template original** depois da cópia (é um PNG com a letra da marca). O gerador deve tratá-lo como pendência manual explícita, ou gerar um substituto (ver seção 11).
+- O único arquivo de marca estático em `public/` é o `apple-touch-icon.png`. O gerador escreve um PNG novo com as cores do favicon (ver seção 16); é provisório.
 - `og:image`: só declarar se o arquivo existir em `public/`. Hoje o `clinica-template` não declara.
 - O gerador não baixa nem copia imagens de fora do template.
 
@@ -282,3 +282,21 @@ Os três templates (`clinica-template`, `restaurante-template`, `academia-templa
 - **Rótulo curto para o CTA do header** (`rotulos.matriculaCurto`): textos longos empurram a marca para fora no celular.
 - **Contraste do tema**: conferir o `accent` sobre `background` **e** sobre `surface`, nos dois conjuntos (normal e `inverse-*`). Uma paleta de teste falhou só em `surface`.
 - Cada template mantém as próprias cores: não há paleta comum, e o gerador não mexe nelas.
+
+## 16. Contrato x V1 real (auditoria de 2026-09-24)
+
+Auditoria prática com os três templates (geração, `npm install`, `npm run build`, conferência do `dist/`). O que o V1 faz **diferente do que as seções 6 e 7 descrevem**:
+
+- **`scripts/templates.json` (seção 6):** o arquivo real é um objeto indexado pelo id, não uma lista, e não tem `customization`, `status` nem `requires`. Tem `brand` (nome de demonstração, usado para avisar sobre vestígios), `ogImage` e `omit`. As categorias reais são `saude`, `gastronomia` e `fitness`, não as da seção 6. Como só há templates prontos, o gerador oferece todos; `status` só passa a valer quando existir um `draft`.
+- **`apple-touch-icon.png` (seção 7):** já **não** aponta para o template. O gerador escreve um PNG novo (anel nas cores do favicon, sem letra). Continua provisório.
+- **`og:image`:** o restaurante e a academia declaram `seo.ogImage`; o gerador limpa o campo (`@gen:og-image`) e não copia `public/demo/og.jpg`, então nenhum projeto gerado aponta para arquivo que não existe.
+- **Trava de identidade:** depois de copiar, o gerador confere Worker, `package.json` e as duas ocorrências do `package-lock.json`. Se algum continuar com o valor do template (ou diferente do esperado), sai com código 3 e manda não fazer deploy.
+- **Worker:** além do formato e de não ser o nome de um template, não pode ser o de nenhum Worker já existente no monorepo (qualquer `*/wrangler.jsonc`).
+
+### Diferenças entre os três templates
+
+| Tipo | O que |
+| --- | --- |
+| Necessária por nicho | `conteudo.ts` (serviços/equipe/relatos; cardápio; modalidades/planos), nomes de seção e componentes, `mapEmbedUrl` e `fonts` em `site.ts` (restaurante e academia), `og:image` (só restaurante e academia). |
+| Estrutural inconsistente | Nenhuma encontrada: os três têm os mesmos arquivos de configuração, `package.json`, `wrangler.jsonc`, `index.html` com tokens e plugin `marcaDoCliente`. A clínica não usa `fonts` em `site.ts` (fontes fixas no `index.html`) e não tem `og:image`; o gerador trata os dois casos, então não impede um quarto template. |
+| Limitação conhecida do V1 | Cores e fontes não são trocadas; `conteudo.ts` inteiro é demonstração e cita a marca de exemplo (restaurante e academia); comentários de cabeçalho de `site.ts` citam a marca de exemplo; o ícone é provisório; `--instalar` é opcional (sem ele o projeto nasce sem `node_modules`). |
