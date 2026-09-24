@@ -6,7 +6,7 @@ Era o projeto de um cliente real (NBJ Systems) que não seguiu adiante — refor
 
 ## Deploy (Cloudflare Workers)
 
-Worker `nascente`, em `https://nascente.fenoninho-max.workers.dev`.
+Worker `nascente`, em `https://nascente.sneakpeek.workers.dev`.
 
 ```
 npm run build
