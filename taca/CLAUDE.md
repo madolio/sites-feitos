@@ -6,7 +6,7 @@ Site-conceito da Madolio pro nicho de vinícola de altitude. **Empresa fictícia
 
 ## Deploy (Cloudflare Workers)
 
-Worker `taca`, em `https://taca.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `taca`, em `https://taca.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O conceito v3: a roda de aromas é a navegação/catálogo
 
