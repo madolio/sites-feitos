@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* TEMA — para rebrandar, troque só estes valores (e `fonts` em site.ts).
+   Cada cor tem uma FUNÇÃO; os componentes usam só estas funções
+   (bg-background, text-foreground, text-muted, bg-accent, border-border...).
+     background / surface   fundo do site e fundo de cartões/painéis
+     foreground / muted     texto principal e texto secundário
+     accent                 destaque sobre o fundo (botões, preços, itálicos)
+     accent-hover           destaque ao passar o mouse
+     accent-foreground      texto sobre o accent (ex.: dentro do botão)
+     border                 divisores
+     inverse-*              versão invertida usada em seções `.tema-claro`
+                            (no template, o cardápio: papel claro sobre fundo escuro)
+   Contraste mínimo (texto): foreground/background e muted/background >= 4,5:1;
+   accent/background >= 4,5:1; accent-foreground/accent >= 4,5:1.
+   Os nomes são só rótulos: qualquer cor serve. */
+@theme {
+  --color-background: #14110e;
+  --color-surface: #1e1a16;
+  --color-foreground: #f4ede1;
+  --color-muted: #b5a996;
+  --color-accent: #d9903f;
+  --color-accent-hover: #eaa657;
+  --color-accent-foreground: #14110e;
+  --color-border: #3a3229;
+
+  --color-inverse-background: #f4ede1;
+  --color-inverse-surface: #ebe2d1;
+  --color-inverse-foreground: #1c1712;
+  --color-inverse-muted: #5e5245;
+  --color-inverse-accent: #93541a;
+  --color-inverse-accent-hover: #74400f;
+  --color-inverse-accent-foreground: #fbf6ec;
+  --color-inverse-border: #d3c7b0;
+
+  /* Fontes: o nome deve bater com `fonts` em src/config/site.ts. */
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Seção invertida: redefine as funções de cor dentro do bloco, sem trocar
+   nenhuma classe nos componentes. */
+.tema-claro {
+  --color-background: var(--color-inverse-background);
+  --color-surface: var(--color-inverse-surface);
+  --color-foreground: var(--color-inverse-foreground);
+  --color-muted: var(--color-inverse-muted);
+  --color-accent: var(--color-inverse-accent);
+  --color-accent-hover: var(--color-inverse-accent-hover);
+  --color-accent-foreground: var(--color-inverse-accent-foreground);
+  --color-border: var(--color-inverse-border);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+  }
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 6rem;
+    }
+  }
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    text-wrap: balance;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-[0.9375rem] font-semibold tracking-wide transition duration-200;
+  }
+  .btn-primary {
+    @apply bg-accent text-accent-foreground hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply border border-foreground/35 text-foreground hover:border-foreground hover:bg-foreground hover:text-background;
+  }
+
+  /* Etiqueta pequena com fio: o "sotaque" gráfico do template. */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.75rem] font-semibold tracking-[0.2em] text-accent uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .h-section {
+    @apply text-[2rem] leading-[1.1] sm:text-5xl;
+  }
+
+  /* Palavra em destaque dentro dos títulos. */
+  .em-accent {
+    @apply text-accent italic;
+    font-weight: 300;
+  }
+}
+
+/* Aparecer ao rolar: só arma quando há JS e o usuário não pediu menos
+   movimento. Sem JS ou com reduced-motion, o conteúdo já nasce visível. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}

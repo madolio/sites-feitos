@@ -46,7 +46,7 @@ Ele **não** faz deploy, não roda `npm install` sozinho, não faz `git commit`,
 ## Pré-requisitos (fazer antes de implementar)
 
 1. Marcar os pontos trocáveis no `clinica-template` (`// @gen:*`). Exige editar o template (hoje com outra sessão trabalhando nele).
-2. Ter **pelo menos um segundo template** config-driven, para o gerador não nascer amarrado a um só.
+2. ~~Ter **pelo menos um segundo template** config-driven~~ — feito: `restaurante-template`. Diferenças em relação ao `clinica-template` que o gerador deve tratar: cores com função semântica (`--color-background`, `--color-accent`...), fontes em `site.fonts` (link gerado pelo plugin) e `seo.ogImage` opcional.
 3. Decidir a convenção de cor: um único `--color-brand` no `@theme` que o gerador possa trocar (hoje cada template tem nomes próprios).
 4. Gerar o `apple-touch-icon.png` a partir do favicon (opcional no plugin do Vite), para reduzir o passo manual.
 
