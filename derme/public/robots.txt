@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://derme.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://derme.sneakpeek.workers.dev/sitemap.xml

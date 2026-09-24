@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de **dermatologia e estética médica**. **Ne
 
 ## Deploy (Cloudflare Workers)
 
-Worker `derme`, em `https://derme.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `derme`, em `https://derme.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
