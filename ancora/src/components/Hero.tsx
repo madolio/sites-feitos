@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="inicio" className="pt-24 pb-16 lg:pt-16 lg:pb-24">
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:gap-12">
         <div className="min-w-0">
-          <h1 className="text-5xl leading-[1.1] font-normal break-words sm:text-6xl">
+          <h1 className="text-[length:min(3rem,calc((100vw-2.5rem)*0.145))] leading-[1.1] font-normal break-words sm:text-6xl">
             Patrimônio administrado como uma conta que fecha todo mês.
           </h1>
           <p className="mt-6 max-w-md text-lg text-indigo/75">
