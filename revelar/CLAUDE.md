@@ -6,7 +6,7 @@ Um dos 6 conceitos com estilo E estrutura próprios — ver também Pulso, Focin
 
 ## Deploy (Cloudflare Workers)
 
-Worker `revelar`, em `https://revelar.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `revelar`, em `https://revelar.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Contact Sheet"
 
