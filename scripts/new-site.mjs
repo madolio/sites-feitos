@@ -57,6 +57,18 @@ function validarTexto(v, rotulo, max) {
   return ''
 }
 
+/** Nomes de Worker já usados por projetos do monorepo: reusar um deles faria o deploy sobrescrever o site publicado. */
+function workersExistentes() {
+  const nomes = new Map()
+  for (const e of readdirSync(raiz, { withFileTypes: true })) {
+    const arq = join(raiz, e.name, 'wrangler.jsonc')
+    if (!e.isDirectory() || !existsSync(arq)) continue
+    const n = readFileSync(arq, 'utf8').match(/"name"\s*:\s*"([^"]*)"/)?.[1]
+    if (n) nomes.set(n, e.name)
+  }
+  return nomes
+}
+
 async function obter(nome, texto, validar, padrao) {
   let v = valor(nome)
   if (v !== undefined) {
@@ -152,7 +164,13 @@ const descricao = await obter('description', 'Descrição (SEO, ~150 caracteres)
 const worker = await obter(
   'worker',
   'Nome do Worker',
-  (v) => validarSlug(v, 'Nome do Worker', 63) || (Object.values(templates).some((t) => t.path === v) ? 'O nome do Worker não pode ser o de um template.' : ''),
+  (v) => {
+    const erro = validarSlug(v, 'Nome do Worker', 63)
+    if (erro) return erro
+    if (Object.values(templates).some((t) => t.path === v)) return 'O nome do Worker não pode ser o de um template.'
+    const em = workersExistentes().get(v)
+    return em ? `O Worker "${v}" já é usado por sites-feitos/${em}: o deploy sobrescreveria aquele site.` : ''
+  },
   projeto,
 )
 rl.close()
@@ -234,7 +252,27 @@ const faltando = essenciais.filter((p) => !existsSync(join(destino, p)))
 if (faltando.length) console.error(`Aviso: arquivos essenciais ausentes: ${faltando.join(', ')}`)
 const vestigios = varrer(destino).filter((p) => /\.(json|jsonc|ts|tsx|html|css)$/.test(p) && readFileSync(p, 'utf8').includes(tpl.path))
 if (vestigios.length) console.error(`Aviso: referência a "${tpl.path}" em: ${vestigios.map((p) => relative(destino, p)).join(', ')}`)
-const marcaTpl = varrer(join(destino, 'src')).filter((p) => readFileSync(p, 'utf8').includes(tpl.brand)).map((p) => relative(destino, p))
+// Os comentários do template citam a marca de demonstração; só conta o que aparece em código ou dados.
+const marcaTpl = varrer(join(destino, 'src'))
+  .filter((p) => readFileSync(p, 'utf8').split('\n').some((l) => l.includes(tpl.brand) && !/^\s*(\/\/|\/?\*)/.test(l)))
+  .map((p) => relative(destino, p))
+
+// Trava: o projeto novo não pode manter o Worker nem o pacote do template (o deploy sobrescreveria o template).
+const lerJson = (arq) => JSON.parse(readFileSync(join(destino, arq), 'utf8'))
+const conferidos = [
+  ['wrangler.jsonc', readFileSync(arqWrangler, 'utf8').match(/"name"\s*:\s*"([^"]*)"/)?.[1], worker],
+  ['package.json', lerJson('package.json').name, projeto],
+]
+if (existsSync(join(destino, 'package-lock.json'))) {
+  const lock = lerJson('package-lock.json')
+  conferidos.push(['package-lock.json', lock.name, projeto], ['package-lock.json packages[""]', lock.packages?.['']?.name, projeto])
+}
+const errados = conferidos.filter(([, atual, esperado]) => atual !== esperado || atual === tpl.path)
+if (errados.length) {
+  console.error(`\nERRO: a identidade do template não foi trocada: ${errados.map(([a, v, e]) => `${a}="${v}" (esperado "${e}")`).join('; ')}.`)
+  console.error(`NÃO faça deploy de sites-feitos/${projeto}: apague a pasta e gere de novo.`)
+  process.exit(3)
+}
 
 // 7. Instalação e build: só com --instalar (ou --com-deps, que já traz node_modules)
 let buildOk = null
