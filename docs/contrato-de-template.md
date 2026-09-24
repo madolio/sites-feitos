@@ -272,3 +272,13 @@ Decisões que **já** podem ser tomadas sem o restaurante: a restrição de `sit
 - Não marca `@gen:*` nos templates existentes (exigiria editar o `clinica-template`).
 - Não migra nem altera nenhum dos 53 projetos antigos.
 - Não define o restaurante: ele é tratado como desconhecido até estar pronto.
+
+## 15. Atualização: três templates (2026-09-24)
+
+Os três templates (`clinica-template`, `restaurante-template`, `academia-template`) seguem este contrato e o gerador (`docs/gerador.md`, `scripts/templates.json`) já os consome; os `PENDENTE` acima sobre o restaurante ficaram resolvidos por essa prática. O que o terceiro template acrescentou:
+
+- **Marcadores `// @gen:*` em `site.ts`** são parte do contrato: `name`, `initial`, `seo-url`, `seo-title`, `seo-description` (cada um em uma linha, com um literal de string) e `og-image` (se o template tem).
+- **Listas opcionais precisam de tipo explícito** em `conteudo.ts` (`[] as Numero[]`); sem isso, uma lista esvaziada vira `never[]` e quebra o TypeScript do componente. Foi o único defeito que o teste de reutilização da academia achou.
+- **Rótulo curto para o CTA do header** (`rotulos.matriculaCurto`): textos longos empurram a marca para fora no celular.
+- **Contraste do tema**: conferir o `accent` sobre `background` **e** sobre `surface`, nos dois conjuntos (normal e `inverse-*`). Uma paleta de teste falhou só em `surface`.
+- Cada template mantém as próprias cores: não há paleta comum, e o gerador não mexe nelas.

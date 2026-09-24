@@ -4,7 +4,7 @@ Levantamento feito em 2026-09-24 a partir do código (`package.json`, `index.htm
 
 **Como ler:** "conceito" = site de demonstração de um nicho, com dados fictícios (a maioria). "Reutilizável" descreve o esforço real de virar um cliente hoje, olhando o código:
 
-- **Alto**: conteúdo isolado em arquivo de configuração e sem dependências pesadas (`clinica-template` e `restaurante-template`).
+- **Alto**: conteúdo isolado em arquivo de configuração e sem dependências pesadas (`clinica-template`, `restaurante-template` e `academia-template`).
 - **Médio**: conteúdo em `src/data.ts` ou `src/data/`, mas a marca, o visual e as seções estão amarrados aos componentes.
 - **Baixo**: o visual *é* a ideia (3D, diagrama, simulador); trocar o cliente é reescrever a peça central.
 
@@ -16,6 +16,7 @@ Tecnologias: quase todos usam GSAP só para `Reveal` (animação de entrada). S�
 | --- | --- | --- | --- | --- | --- | --- |
 | clinica-template | Saúde / clínicas (estética, odonto, psico, fisio, nutrição) | **template** | **Alto** | Média (1,2 mil linhas, só React) | Plugin Vite gera head/robots/sitemap/favicon a partir de `site.ts` | Base de referência (config central). Ver `arquitetura-de-templates.md`. |
 | restaurante-template | Restaurante / gastronomia | **template** | **Alto** | Média (só React, sem gsap/3D) | Plugin Vite (SEO/favicon/fontes), tema por funções de cor (`.tema-claro`) | 2º template config-driven; validado com uma 2ª marca (pizzaria) sem editar componentes. Ver README do template. |
+| academia-template | Academia / boxes / estúdios de treino | **template** | **Alto** | Média (só React, sem gsap/3D) | Plugin Vite (SEO/favicon/fontes), tema por funções de cor (`.tema-claro` nos planos) | 3º template config-driven; validado com uma 2ª marca (box de crossfit, tema claro). Ver README do template. |
 | site-template | Advocacia (Bastos Advocacia) | template (legado) | Médio | Média | `config/site.ts`, `pages/` | Primeira tentativa de template; convenção mais fraca que a do `clinica-template`. |
 | arcada | Odontologia | demo | Médio | Média | Mapa interativo da arcada dentária (SVG) | Peça central é específica de odonto. |
 | derme | Dermatologia / estética médica | demo | Médio | Média | Diagrama de camadas da pele, timeline de procedimento | Estrutura Header/Layout parecida com clínicas. |

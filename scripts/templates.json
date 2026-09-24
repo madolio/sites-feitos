@@ -16,5 +16,14 @@
     "brand": "Cumaru",
     "ogImage": true,
     "omit": ["public/demo/og.jpg"]
+  },
+  "academia": {
+    "name": "Academia & Treino",
+    "category": "fitness",
+    "path": "academia-template",
+    "description": "Academias, boxes e estúdios: modalidades, planos, estrutura, professores, aula experimental.",
+    "brand": "Vértice",
+    "ogImage": true,
+    "omit": ["public/demo/og.jpg"]
   }
 }

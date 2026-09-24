@@ -1,0 +1,98 @@
+import { site, whatsappUrl } from '../config/site'
+import { contato, rotulos } from '../data/conteudo'
+import { IconClock, IconMail, IconPhone, IconPin, IconWhatsapp, Reveal, Rich } from './ui'
+
+const enderecoBusca = `${site.name}, ${site.address.line1}, ${site.address.line2}`
+const linkMapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(enderecoBusca)}`
+
+export default function Contato() {
+  const itens = [
+    { icone: <IconWhatsapp />, rotulo: rotulos.contato.whatsapp, valor: site.whatsappLabel, href: whatsappUrl() },
+    { icone: <IconPhone />, rotulo: rotulos.contato.telefone, valor: site.phone, href: `tel:${site.phone.replace(/\D/g, '')}` },
+    { icone: <IconMail />, rotulo: rotulos.contato.email, valor: site.email, href: `mailto:${site.email}` },
+  ]
+
+  return (
+    <section id="contato" className="bg-surface py-20 lg:py-28">
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        <Reveal className="max-w-2xl">
+          <p className="eyebrow">{contato.eyebrow}</p>
+          <h2 className="h-section mt-5">
+            <Rich text={contato.title} />
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-12">
+          <Reveal className="min-w-0 lg:col-span-6">
+            <ul className="divide-y divide-border border-y border-border">
+              {itens.map((i) => (
+                <li key={i.rotulo}>
+                  <a href={i.href} className="group flex min-h-20 items-center gap-4 py-4">
+                    <span className="grid size-11 shrink-0 place-items-center bg-background text-accent transition-colors [@media(hover:hover)]:group-hover:bg-accent [@media(hover:hover)]:group-hover:text-accent-foreground">
+                      {i.icone}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-xs font-semibold tracking-[0.16em] text-muted uppercase">{i.rotulo}</span>
+                      <span className={`block font-display break-words sm:text-2xl ${i.href.startsWith('mailto:') ? 'text-base' : 'text-xl'}`}>{i.valor}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+              <li className="flex items-start gap-4 py-4">
+                <span className="grid size-11 shrink-0 place-items-center bg-background text-accent">
+                  <IconClock />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-semibold tracking-[0.16em] text-muted uppercase">{rotulos.contato.horarios}</span>
+                  {site.hours.map((h) => (
+                    <span key={h.days} className="mt-1 flex flex-wrap justify-between gap-x-4 text-lg">
+                      <span>{h.days}</span>
+                      <span className="text-muted">{h.time}</span>
+                    </span>
+                  ))}
+                </span>
+              </li>
+            </ul>
+          </Reveal>
+
+          <Reveal delay={100} className="min-w-0 lg:col-span-6">
+            {site.mapEmbedUrl ? (
+              <iframe
+                title={`${rotulos.contato.endereco}: ${site.name}`}
+                src={site.mapEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full min-h-[25rem] w-full border-0"
+              />
+            ) : (
+              /* Mapa estilizado (sem iframe, sem dado real): defina mapEmbedUrl em site.ts para usar o mapa real */
+              <div className="relative flex h-full min-h-[25rem] flex-col justify-end overflow-hidden border border-border bg-background p-6 sm:p-8">
+                <svg aria-hidden="true" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full text-accent/20" fill="none" stroke="currentColor" strokeWidth="1.2">
+                  <path d="M-10 220 C 90 180, 140 260, 240 200 S 380 120, 420 150" />
+                  <path d="M60 -10 C 90 80, 40 140, 120 320" />
+                  <path d="M250 -10 C 230 90, 300 140, 280 320" />
+                  <path d="M-10 90 L 420 60" />
+                  <path d="M-10 270 L 420 240" />
+                </svg>
+                <span aria-hidden="true" className="absolute top-[24%] left-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center bg-accent text-accent-foreground">
+                  <IconPin className="size-6" />
+                </span>
+                <div className="relative">
+                  <p className="text-xs font-semibold tracking-[0.16em] text-accent uppercase">{rotulos.contato.endereco}</p>
+                  <p className="mt-2 font-display text-2xl">{site.address.line1}</p>
+                  <p className="text-muted">
+                    {site.address.line2} · CEP {site.address.zip}
+                  </p>
+                  {contato.observacao && <p className="mt-3 max-w-sm text-sm text-muted">{contato.observacao}</p>}
+                  <a href={linkMapa} target="_blank" rel="noreferrer" className="btn btn-primary mt-5">
+                    {rotulos.abrirMapa}
+                  </a>
+                </div>
+              </div>
+            )}
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
