@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de livraria/sebo — livros usados. **Sebo fi
 
 ## Deploy (Cloudflare Workers)
 
-Worker `sebo`, em `https://sebo.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `sebo`, em `https://sebo.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery — "Orelha"
 
