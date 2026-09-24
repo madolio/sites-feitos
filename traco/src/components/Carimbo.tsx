@@ -105,7 +105,7 @@ export default function Carimbo() {
           destacada, e o CTA de contato como se fosse o campo de assinatura. */}
       <div
         id="carimbo-painel"
-        className={`mb-3 w-64 origin-bottom-right border border-ink bg-paper/97 backdrop-blur transition-all motion-reduce:transition-none ${
+        className={`mb-3 w-[min(16rem,calc(100vw-2rem))] origin-bottom-right border border-ink bg-paper/97 backdrop-blur transition-all motion-reduce:transition-none ${
           open ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
         }`}
         aria-hidden={!open}
@@ -156,10 +156,10 @@ export default function Carimbo() {
         aria-expanded={open}
         aria-controls="carimbo-painel"
         aria-label={open ? 'Fechar índice de pranchas' : `Abrir índice de pranchas — prancha atual: ${atual.num} ${atual.label}`}
-        className="ml-auto flex w-24 flex-col items-end border border-ink bg-paper/95 px-3 py-2 text-right backdrop-blur transition-colors hover:bg-line/30"
+        className="ml-auto flex w-20 flex-col items-end border border-ink bg-paper/95 px-2.5 py-1.5 sm:w-24 sm:px-3 sm:py-2 text-right backdrop-blur transition-colors hover:bg-line/30"
       >
-        <span className="text-[0.625rem] tracking-wide text-ink/55">PRANCHA</span>
-        <span className="font-serif text-2xl leading-none">{atual.num}</span>
+        <span className="text-[0.5625rem] tracking-wide text-ink/55 sm:text-[0.625rem]">PRANCHA</span>
+        <span className="font-serif text-xl leading-none sm:text-2xl">{atual.num}</span>
       </button>
     </div>
   )
