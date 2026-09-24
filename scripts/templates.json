@@ -33,6 +33,7 @@
     "description": "Sebos e livrarias de usados: acervo em fichas, avaliação de acervo, dúvidas, contato.",
     "brand": "Folha Solta",
     "ogImage": true,
+    "vazio": ["phone", "email"],
     "omit": ["public/demo/og.jpg"]
   }
 }

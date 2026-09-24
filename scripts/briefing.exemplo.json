@@ -1,0 +1,29 @@
+{
+  "template": "restaurante",
+  "projeto": "bella-massa",
+  "worker": "bella-massa",
+  "identidade": {
+    "marca": "Bella Massa",
+    "descritor": "Trattoria italiana",
+    "frase": "Massa fresca, feita na hora.",
+    "descricao": "Bella Massa, trattoria italiana de bairro: massas frescas, molhos de longa cocção e reserva pelo WhatsApp."
+  },
+  "contato": {
+    "whatsapp": "11 91234-5678",
+    "telefone": "(11) 3456-7890",
+    "email": "reservas@bellamassa.com.br",
+    "instagram": "@bellamassa",
+    "endereco": {
+      "linha1": "Rua das Acácias, 250",
+      "linha2": "Vila Nova · São Paulo — SP",
+      "cep": "01234-567"
+    },
+    "horarios": [
+      { "dias": "Terça a sábado", "horario": "12h às 15h · 19h às 23h" },
+      { "dias": "Domingo", "horario": "12h às 17h" }
+    ]
+  },
+  "seo": {
+    "titulo": "Bella Massa — Trattoria italiana em São Paulo"
+  }
+}
