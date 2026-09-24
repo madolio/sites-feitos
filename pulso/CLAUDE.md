@@ -6,7 +6,7 @@ Um dos 6 conceitos feitos após o usuário pedir mais templates com estilo E est
 
 ## Deploy (Cloudflare Workers)
 
-Worker `pulso`, em `https://pulso.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `pulso`, em `https://pulso.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Raia"
 
