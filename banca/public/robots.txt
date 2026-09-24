@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://banca.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://banca.sneakpeek.workers.dev/sitemap.xml

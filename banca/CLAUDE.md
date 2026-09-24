@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de floricultura de bairro. **Empresa fictíci
 
 ## Deploy (Cloudflare Workers)
 
-Worker `banca`, em `https://banca.fenoninho-max.workers.dev`. Deploy manual:
+Worker `banca`, em `https://banca.sneakpeek.workers.dev`. Deploy manual:
 
 ```
 npm run deploy   # = npm run build && wrangler deploy
