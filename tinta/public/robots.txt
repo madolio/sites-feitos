@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tinta.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://tinta.sneakpeek.workers.dev/sitemap.xml

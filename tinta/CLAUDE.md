@@ -14,7 +14,7 @@ O carimbo se desenha sozinho, como se a agulha estivesse traçando ali na hora: 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `tinta`, em `https://tinta.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `tinta`, em `https://tinta.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O esqueleto — a página inteira rola de lado
 
