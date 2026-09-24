@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de hamburgueria de bairro. **Negócio fictíc
 
 ## Deploy (Cloudflare Workers)
 
-Worker `sabor-da-vila`, em `https://sabor-da-vila.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `sabor-da-vila`, em `https://sabor-da-vila.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## WhatsApp é demonstração
 
