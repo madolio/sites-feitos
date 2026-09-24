@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de pilates. **Negócio fictício** — não �
 
 ## Deploy (Cloudflare Workers)
 
-Worker `estudio-alma`, em `https://estudio-alma.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `estudio-alma`, em `https://estudio-alma.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## WhatsApp é demonstração
 
