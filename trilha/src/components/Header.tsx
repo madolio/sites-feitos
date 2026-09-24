@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-20 border-b border-dashed border-contorno/50 bg-papel">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
-        <a href="#topo" className="flex items-center gap-2.5 font-display text-xl italic whitespace-nowrap">
+        <a href="#topo" className="flex min-h-9 items-center gap-2.5 font-display text-xl italic whitespace-nowrap">
           <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-trilha" />
           Vereda <span className="hidden sm:inline">Fisioterapia</span>
         </a>

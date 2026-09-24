@@ -45,7 +45,7 @@ function ItemFaq({ pergunta, resposta }: { pergunta: string; resposta: string })
         aria-expanded={aberto}
         aria-controls={id}
         onClick={() => setAberto((v) => !v)}
-        className="flex w-full items-center justify-between gap-4 text-left"
+        className="-my-2.5 flex w-full items-center justify-between gap-4 py-2.5 text-left"
       >
         <span className="font-semibold text-tinta">{pergunta}</span>
         <span

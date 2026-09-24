@@ -121,12 +121,12 @@ export default function TrilhaMapa() {
                   {fase.km} km
                 </text>
                 {/* alvo clicável acessível */}
-                <foreignObject x={pos.x - 22} y={pos.y - 22} width="44" height="44">
+                <foreignObject x={pos.x - 22} y={pos.y - 22} width="44" height="44" className="overflow-visible">
                   <button
                     type="button"
                     aria-pressed={ativa}
                     onClick={() => setSelecionada(fase)}
-                    className="h-full w-full rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-trilha focus-visible:outline-offset-2"
+                    className="relative h-full w-full rounded-full before:absolute before:-inset-[43px] before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-trilha focus-visible:outline-offset-2"
                     aria-label={`Ver fase ${fase.numero}: ${fase.nome}`}
                   />
                 </foreignObject>
