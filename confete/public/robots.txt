@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://confete.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://confete.sneakpeek.workers.dev/sitemap.xml

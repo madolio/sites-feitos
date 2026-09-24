@@ -6,7 +6,7 @@ Feito a partir de duas referências visuais que o usuário mandou (styles.refero
 
 ## Deploy (Cloudflare Workers)
 
-Worker `confete`, em `https://confete.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `confete`, em `https://confete.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Referência — sistema "Slush" (colagem de adesivos)
 
