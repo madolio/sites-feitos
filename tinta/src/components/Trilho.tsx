@@ -55,7 +55,7 @@ export default function Trilho({ children }: { children: ReactNode }) {
         {children}
       </div>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-40 flex justify-center gap-2 sm:bottom-8">
+      <div className="pointer-events-none fixed inset-x-0 bottom-2.5 z-40 flex justify-center sm:bottom-[1.125rem]">
         {Array.from({ length: count }, (_, i) => (
           <button
             key={i}
@@ -63,10 +63,15 @@ export default function Trilho({ children }: { children: ReactNode }) {
             onClick={() => goTo(i)}
             aria-label={`Ir pro painel ${i + 1}`}
             aria-current={active === i}
-            className={`pointer-events-auto h-2 w-2 rounded-full transition-all ${
-              active === i ? 'w-6 bg-ember' : 'bg-paper/30 hover:bg-paper/50'
-            }`}
-          />
+            className="group pointer-events-auto flex h-9 items-center justify-center px-2"
+          >
+            <span
+              aria-hidden="true"
+              className={`block h-2 rounded-full transition-all ${
+                active === i ? 'w-6 bg-ember' : 'w-2 bg-paper/30 group-hover:bg-paper/50'
+              }`}
+            />
+          </button>
         ))}
       </div>
 
