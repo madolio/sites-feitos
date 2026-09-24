@@ -14,19 +14,19 @@ export default function Etapas({ etapa, onVoltar }: { etapa: Etapa; onVoltar: (e
   const atual = ordem[etapa]
 
   return (
-    <ol className="flex items-center gap-1.5">
+    <ol className="flex flex-wrap items-center gap-x-1 gap-y-1">
       {passos.map((p, i) => {
         const feito = i < atual
         const agora = i === atual
         const podeVoltar = feito && etapa !== 'queimando' && p.id !== 'queimando'
         return (
-          <li key={p.id} className="flex items-center gap-1.5">
+          <li key={p.id} className="flex items-center gap-1">
             <button
               type="button"
               disabled={!podeVoltar}
               onClick={() => onVoltar(p.id)}
               aria-current={agora ? 'step' : undefined}
-              className={`flex items-center gap-2 rounded-full py-1 pr-3 pl-1 text-sm font-semibold transition-colors ${
+              className={`flex items-center gap-1.5 rounded-full py-1 pr-2 pl-1 text-sm font-semibold transition-colors ${
                 agora ? 'bg-glaze text-on-glaze' : feito ? 'text-ink hover:bg-ink/5' : 'text-ink/40'
               } disabled:cursor-default`}
             >
@@ -39,7 +39,7 @@ export default function Etapas({ etapa, onVoltar }: { etapa: Etapa; onVoltar: (e
               </span>
               {p.nome}
             </button>
-            {i < passos.length - 1 && <span className="h-px w-3 bg-ink/20" aria-hidden="true" />}
+            {i < passos.length - 1 && <span className="h-px w-2 bg-ink/20" aria-hidden="true" />}
           </li>
         )
       })}
