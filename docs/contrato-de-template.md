@@ -128,7 +128,7 @@ O que **é** aceitável ficar no componente: texto genérico de interface que n�
 7. Conteúdo visível sem JS nem animação (a animação de entrada só esconde antes quando há JS e movimento permitido).
 8. Nenhum dado real de terceiros nos dados de exemplo; depoimentos e números marcados como exemplo.
 9. `README.md` do template com a tabela "o que trocar e onde" e a checklist de entrega.
-10. Fontes de reserva com `size-adjust` e carregamento das fontes antes do render, quando o template usa fonte externa, para não ter salto de layout.
+10. Fontes de reserva com `size-adjust` e carregamento das fontes antes do render, quando o template usa fonte externa, para não ter salto de layout. **Desvio conhecido:** só o `clinica-template` tem os fallbacks com `size-adjust` (seção 17).
 
 ## 6. Metadados dos templates
 
@@ -182,7 +182,7 @@ A entrada do restaurante **não** está definida: `PENDENTE: validar após concl
 - `<title>`, `description`, `canonical`, `og:*`, `twitter:*` e `theme-color` saem de `site.seo` por token no `index.html`. Ninguém escreve o domínio à mão no HTML.
 - `seo.url` é a **única** fonte do domínio; `robots.txt` e `sitemap.xml` são gerados com ele.
 - Dados fictícios devem ficar claramente demonstrativos (`(00) 00000-0000`, `Rua do Exemplo`), sem inventar endereço, horário ou preço reais.
-- Se o template tiver JSON-LD, ele só pode usar dados que a página mostra e precisa sair de `site.ts` também. O `clinica-template` **não tem** JSON-LD. `PENDENTE: validar após conclusão do restaurante-template.` (se ele traz JSON-LD e como o gerador deve tratá-lo).
+- Se o template tiver JSON-LD, ele só pode usar dados que a página mostra e precisa sair de `site.ts` também. Nenhum dos quatro templates atuais tem JSON-LD (decisão na seção 17).
 - Uma só página por template hoje (`sitemap.xml` com uma URL). Template multi-página exigiria estender o plugin: fora do contrato atual.
 
 ## 9. Regras para o Worker
@@ -300,3 +300,23 @@ Auditoria prática com os três templates (geração, `npm install`, `npm run bu
 | Necessária por nicho | `conteudo.ts` (serviços/equipe/relatos; cardápio; modalidades/planos), nomes de seção e componentes, `mapEmbedUrl` e `fonts` em `site.ts` (restaurante e academia), `og:image` (só restaurante e academia). |
 | Estrutural inconsistente | Nenhuma encontrada: os três têm os mesmos arquivos de configuração, `package.json`, `wrangler.jsonc`, `index.html` com tokens e plugin `marcaDoCliente`. A clínica não usa `fonts` em `site.ts` (fontes fixas no `index.html`) e não tem `og:image`; o gerador trata os dois casos, então não impede um quarto template. |
 | Limitação conhecida do V1 | Cores e fontes não são trocadas; `conteudo.ts` inteiro é demonstração e cita a marca de exemplo (restaurante e academia); comentários de cabeçalho de `site.ts` citam a marca de exemplo; o ícone é provisório; `--instalar` é opcional (sem ele o projeto nasce sem `node_modules`). |
+
+## 17. Quatro templates: sebo, JSON-LD e fontes (2026-09-24)
+
+O `sebo-template` (derivado do conceito `sebo`, que não foi alterado) é o quarto template e está registrado no gerador (`id: sebo`). Duas decisões e um registro:
+
+### JSON-LD: opcional, e nenhum template tem
+
+Regra da seção 8: **"se o template tiver JSON-LD"**, os dados vêm de `site.ts`. Não é obrigatório. Na prática, `clinica-template`, `restaurante-template`, `academia-template` e `sebo-template` **não têm** JSON-LD, e o plugin `marcaDoCliente` não gera nenhum. O `sebo` original tinha um `BookStore` escrito à mão no `index.html` (nome, descrição e URL copiados), que não veio para o template: um gerador que troca só os campos `@gen` o deixaria com a marca antiga. **Decisão:** o `sebo-template` fica igual aos outros três (sem JSON-LD), sem exceção silenciosa. Se um dia for desejado, o caminho consistente é estender o plugin com um token `{{JSON_LD}}` montado a partir de `site.ts` (um campo `seo.schemaType`), para todos os templates de uma vez; não foi feito.
+
+### Fontes de reserva (`size-adjust`): desvio registrado
+
+O requisito 10 da seção 5 pede fontes de reserva com `size-adjust` e carregamento antes do render. **Só o `clinica-template` cumpre os dois.** `restaurante-template`, `academia-template` e `sebo-template` cumprem só o carregamento antecipado (`document.fonts.load`, no máximo 1 s, em `main.tsx`) e **não têm** os `@font-face` de reserva. Corrigir exige medir as métricas de cada fonte (ajuste de tamanho, ascendente e descendente por família), o que não é uma mudança pequena nem segura por template; fica como pendência de contrato comum aos três, não como exceção do sebo.
+
+### O que o sebo acrescentou ao contrato
+
+- **Tema em duas superfícies** (pano e papel), com `accent` (preenchimento, texto sobre o papel) separado de `accent-text` (texto sobre o pano). Um vermelho que passa sobre papel claro pode falhar sobre pano escuro (no original: 4,15:1 e 3,96:1, corrigidos no template).
+- **Navegação como links**, não botões com `scrollIntoView`: funciona sem JS, com `aria-current="location"`; o rótulo invisível não pode ampliar a área clicável (`pointer-events-none` e posição absoluta).
+- **`images.ts` pode ser um objeto vazio** quando o visual não usa imagens (`sebo-template`); `og.jpg` continua vindo de `public/demo/`.
+- **Listas opcionais tipadas** (`[] as Detalhe[]`), como na seção 15.
+- **Mensagem do gerador:** o texto final ("fotos do template (Pexels, demonstração)") é genérico e não vale para o `sebo-template`, que não tem fotos. Não foi alterado (fora de escopo desta etapa).

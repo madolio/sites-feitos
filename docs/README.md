@@ -13,4 +13,4 @@ Documentação da estrutura do monorepo `sites-feitos` para produzir sites de cl
 | [plano-gerador.md](plano-gerador.md) | Plano original do gerador (agora implementado) |
 | [auditoria-visual-2026-09-22.md](auditoria-visual-2026-09-22.md) | Auditoria visual anterior |
 
-Bases atuais para novos sites: **[`../clinica-template/`](../clinica-template/)** (saúde), **[`../restaurante-template/`](../restaurante-template/)** (restaurantes) e **[`../academia-template/`](../academia-template/)** (academias).
+Bases atuais para novos sites: **[`../clinica-template/`](../clinica-template/)** (saúde), **[`../restaurante-template/`](../restaurante-template/)** (restaurantes), **[`../academia-template/`](../academia-template/)** (academias) e **[`../sebo-template/`](../sebo-template/)** (sebos e livrarias de usados).

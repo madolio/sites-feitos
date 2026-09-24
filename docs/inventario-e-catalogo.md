@@ -6,37 +6,39 @@ Onde não foi possível determinar algo com segurança, o documento diz "desconh
 
 ## Resumo
 
-**55 projetos** (pastas com `package.json`), mais `docs/` e `scripts/` (sem projeto).
+**56 projetos** (pastas com `package.json`), mais `docs/` e `scripts/` (sem projeto).
 
 | Tipo | Qtd | O que é |
 | --- | --- | --- |
-| **Template** | 3 | Feito para reutilização: configuração central (`site.ts`, `conteudo.ts`, `images.ts`, `@theme`), marcadores `@gen` e uso pelo gerador |
+| **Template** | 4 | Feito para reutilização: configuração central (`site.ts`, `conteudo.ts`, `images.ts`, `@theme`), marcadores `@gen` e uso pelo gerador |
 | Demo / conceito | 47 | Site fictício que demonstra um nicho ou uma técnica. Inclui `site-template` (config parcial, ver abaixo) e `nascente` (histórico) |
 | Cliente | 1 a 2 | `adriano` (site real). `realce` é um redesenho de negócio real: **a confirmar** se é cliente |
 | Institucional | 1 | `madolio` (site da própria Madolio, em produção) |
 | Ferramenta interna | 2 | `madolio-admin`, `leads` |
 
-Contagem por nicho: 14 grupos abaixo, cada projeto aparece **uma única vez**.
+Atualizado com o `sebo-template` (4º template). Contagem por nicho: 14 grupos abaixo, cada projeto aparece **uma única vez**.
 
 ## Templates atuais
 
-Só estes três cumprem o [contrato de template](contrato-de-template.md) e podem ser usados pelo gerador (`npm run new-site`, ver [gerador.md](gerador.md)).
+Só estes quatro cumprem o [contrato de template](contrato-de-template.md) e podem ser usados pelo gerador (`npm run new-site`, ver [gerador.md](gerador.md)).
 
 | Template | Id no gerador | Nicho | Cores | Dependências de runtime |
 | --- | --- | --- | --- | --- |
 | [`clinica-template`](../clinica-template/) | `clinica` | Saúde: clínicas e profissionais (estética, odonto, psicologia, fisio, nutrição) | `forest` / `clay` (nomes de cor) | React |
 | [`restaurante-template`](../restaurante-template/) | `restaurante` | Restaurantes, bistrôs, pizzarias | funções (`background`, `accent`...), cardápio em `.tema-claro` | React |
 | [`academia-template`](../academia-template/) | `academia` | Academias, boxes, estúdios de treino | funções (`background`, `accent`...), planos em `.tema-claro` | React |
+| [`sebo-template`](../sebo-template/) | `sebo` | Sebos e livrarias de usados | funções em duas superfícies (pano e papel), com `accent` e `accent-text` separados | React |
 
-Pontos configuráveis, iguais nos três: `src/config/site.ts` (nome, contatos, endereço, horários, redes, SEO, fontes, menu; linhas marcadas `// @gen:*` que o gerador troca), `src/data/conteudo.ts` (todos os textos e listas), `src/config/images.ts` (fotos e `alt`) e o bloco `@theme` de `src/index.css` (cores e fontes). O que muda por nicho fica dentro do template:
+Pontos configuráveis, iguais nos quatro: `src/config/site.ts` (nome, contatos, endereço, horários, redes, SEO, fontes, menu; linhas marcadas `// @gen:*` que o gerador troca), `src/data/conteudo.ts` (todos os textos e listas), `src/config/images.ts` (fotos e `alt`) e o bloco `@theme` de `src/index.css` (cores e fontes). O que muda por nicho fica dentro do template:
 
 | Template | Conteúdo específico em `conteudo.ts` |
 | --- | --- |
 | clinica | serviços/cuidados, método, equipe, relatos, FAQ |
 | restaurante | destaques, cardápio por categorias (preço e marcas opcionais), história, equipe, ambiente, reserva, FAQ |
 | academia | modalidades, planos (destaque e preço opcionais), estrutura, etapas do método, professores (registro opcional), aula experimental, FAQ |
+| sebo | acervo de livros (preço opcional, condição concreta em cada ficha), ficha em destaque, etapas de avaliação de acervo, FAQ, contato com extras; navegação em "orelhas" definida em `nav` |
 
-Os três usam só React em runtime (sem GSAP, Motion ou 3D). Cada um mantém a própria identidade visual: **não existe paleta comum**, e o gerador não altera cores.
+Os quatro usam só React em runtime (sem GSAP, Motion ou 3D). Cada um mantém a própria identidade visual: **não existe paleta comum**, e o gerador não altera cores.
 
 ### `site-template` **não** é um template do contrato
 
@@ -141,12 +143,13 @@ Colunas: **Tipo** (Template, Demo, Cliente...), **Dados** (onde o conteúdo fica
 | lumen | Projeto luminotécnico | Demo | data/ | Baixo | Calculadora |
 | encaixe | Marcenaria sob medida (nome no README) / alfaiataria (título) | Demo | data/ | Baixo | Configurador, desenho técnico · Título e README divergem; conferir antes de catalogar. |
 
-### Comércio de bairro e artesanal (8)
+### Comércio de bairro e artesanal (9)
 
 | Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
 | --- | --- | --- | --- | --- | --- |
 | trama | Loja de roupa de bairro | Demo | data/ | Médio | Etiqueta de cuidado |
-| sebo | Livraria / sebo | Demo | data/ | Médio | |
+| sebo-template | Sebos e livrarias de usados | Template | site.ts + conteudo.ts + images.ts | Alto (já é template) | Derivado do conceito `sebo`; sem fotos (fichas, carimbos e orelhas em CSS/SVG); `@theme` por funções em duas superfícies |
+| sebo | Livraria / sebo | Demo | data/ | Médio | Conceito original do `sebo-template`; permanece como estava |
 | banca | Floricultura de bairro | Demo | data.ts | Médio | |
 | estufa | Floricultura / paisagismo | Demo | data/ | Médio | Régua de florescimento, imagens webp |
 | bruma | Perfumaria artesanal | Demo | data/ | Baixo | `framer-motion`, shader de fundo |
@@ -194,14 +197,14 @@ Colunas: **Tipo** (Template, Demo, Cliente...), **Dados** (onde o conteúdo fica
 
 | Nível | Definição | Quantos |
 | --- | --- | --- |
-| **Alto** | Já é template do contrato, ou cumpriria o contrato só com o trabalho de configuração | 3 (apenas os templates) |
+| **Alto** | Já é template do contrato, ou cumpriria o contrato só com o trabalho de configuração | 4 (apenas os templates) |
 | **Médio** | Dado em arquivo próprio, sem recurso pesado e com peça central que pode ser trocada ou removida; ainda exige extrair texto dos componentes e adotar o contrato | 31 |
 | **Baixo** | A peça central *é* o site (3D, shader, diagrama, simulador), ou há recurso pesado, ou o conteúdo está nos componentes | 16 |
 | n/a | Cliente, institucional ou ferramenta | 5 |
 
-**Nenhuma demo atinge "Alto"**: mesmo as melhores têm arquivo de dados pequeno (22 a 113 linhas nas verificadas) e o texto principal dentro dos componentes. Isso é o oposto do que os templates fazem.
+**Nenhuma demo atinge "Alto"** (o `sebo` já virou o `sebo-template`, que é o único caso migrado): mesmo as melhores têm arquivo de dados pequeno (22 a 113 linhas nas verificadas) e o texto principal dentro dos componentes. Isso é o oposto do que os templates fazem.
 
-**Demos mais próximas de virar template** (nível Médio, complexidade baixa no inventário, dado em arquivo, no máximo `gsap`): `banca`, `sebo`, `focinho`, `pulso`, `revelar`. Em seguida, com complexidade média: `estudio-alma`, `corte`. Para cada uma, o caminho seria o mesmo do restaurante e da academia: criar `conteudo.ts`, `images.ts` e `site.ts`, e mover o texto dos componentes para lá.
+**Demos mais próximas de virar template** (nível Médio, complexidade baixa no inventário, dado em arquivo, no máximo `gsap`): `banca`, `focinho`, `pulso`, `revelar` (o `sebo` saiu desta lista: virou `sebo-template`). Em seguida, com complexidade média: `estudio-alma`, `corte`. Para cada uma, o caminho seria o mesmo do restaurante e da academia: criar `conteudo.ts`, `images.ts` e `site.ts`, e mover o texto dos componentes para lá.
 
 **Demos de potencial baixo mais evidentes**: `torno` e `cardume` (three/r3f), `bruma` (shader, framer-motion), `nascente` (router) e as de peça central própria: `prisma`, `luthier`, `calibre`, `lumen`, `encaixe`, `tinta`, `taca`. `zenite` também está em baixo no inventário original, sem motivo detalhado lá (usa `framer-motion`). `ferro` e `fornada` ficam em baixo por terem o conteúdo dentro dos componentes, embora sejam simples.
 

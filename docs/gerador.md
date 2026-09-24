@@ -24,6 +24,7 @@ Por padrão o projeto nasce **sem `node_modules`** (2 MB em vez de ~285 MB) e o 
 | `clinica` | `clinica-template` | saude |
 | `restaurante` | `restaurante-template` | gastronomia |
 | `academia` | `academia-template` | fitness |
+| `sebo` | `sebo-template` | comercio |
 
 Campos por template: `name`, `category`, `path` (pasta dentro de `sites-feitos/`), `description`, `brand` (nome de demonstração, usado só para avisar o que sobrou), `ogImage` (o template tem `og:image` próprio), `omit` (arquivos que não são copiados, por carregarem a marca do template).
 
@@ -47,6 +48,7 @@ Nome do projeto e do Worker: `^[a-z0-9]+(-[a-z0-9]+)*$` (sem espaço, `/`, `\`, 
 - **clinica:** serviços, método, equipe, relatos, FAQ.
 - **restaurante:** destaques, cardápio por categorias (preço e marcas opcionais), história, equipe, ambiente, reserva.
 - **academia:** modalidades, planos (destaque e preço opcionais), estrutura, etapas do método, professores (registro opcional), aula experimental. Cores próprias (grafite e lima, com seção de planos clara).
+- **sebo:** acervo de livros (preço opcional), ficha em destaque, etapas de avaliação de acervo, FAQ, contato com extras; as "orelhas" de navegação vêm de `nav`. Cores próprias (pano verde e papel, com `accent` e `accent-text` separados). Sem fotos.
 
 Só `site.ts` (nome, inicial, URL, título, descrição, `og:image`) é comum e marcado com `@gen`; o resto é conteúdo do nicho e fica no template.
 
@@ -60,11 +62,11 @@ Gerado com `zlib` do Node (sem biblioteca): fundo `faviconBg` com um anel `favic
 
 ## Imagens
 
-Preservadas como demonstração (restaurante e academia: `public/demo/`; clínica: URLs do Pexels em `images.ts`). Nada é baixado nem criado. `public/demo/og.jpg` do restaurante e da academia não é copiado e `seo.ogImage` fica vazio.
+Preservadas como demonstração (restaurante e academia: `public/demo/`; sebo: só `public/demo/og.jpg`, sem fotos; clínica: URLs do Pexels em `images.ts`). Nada é baixado nem criado. `public/demo/og.jpg` do restaurante, da academia e do sebo não é copiado e `seo.ogImage` fica vazio.
 
 ## Limitações (manual depois de gerar)
 
-- Todo `src/data/conteudo.ts` é texto de demonstração (no restaurante cita "Cumaru" e na academia "Vértice"; o gerador avisa quais arquivos contêm o nome do template).
+- Todo `src/data/conteudo.ts` é texto de demonstração (no restaurante cita "Cumaru" na academia "Vértice" e no sebo "Iara Bastos" (a curadora fictícia; o nome "Folha Solta" só aparece em comentários e em `site.ts`); o gerador avisa quais arquivos contêm o nome do template).
 - Descritor, contatos, endereço, horários e redes ficam com valores de exemplo em `site.ts`.
 - Cores e fontes do template; ícone real; fotos do cliente.
 - Comentários de cabeçalho de `site.ts` ainda citam o nome de demonstração.
