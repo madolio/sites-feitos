@@ -31,7 +31,7 @@ export function Hero() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-preto via-preto/50 to-preto/10" />
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-20">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pt-28 pb-20 sm:pt-0">
         <p className="inline-block bg-preto px-2.5 py-1 font-mono text-sm tracking-widest text-acento uppercase">Concessionária de esportivos</p>
         <h1 className="mt-4 max-w-2xl text-4xl leading-tight text-marfim sm:text-6xl">
           Cada carro daqui já foi feito pra ser dirigido rápido.
