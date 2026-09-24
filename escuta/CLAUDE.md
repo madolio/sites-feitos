@@ -7,7 +7,7 @@ GSAP (`Reveal.tsx`, cópia canônica de `arcada`). Página única.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `escuta`, em `https://escuta.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `escuta`, em `https://escuta.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Referência estrutural (não visual)
 

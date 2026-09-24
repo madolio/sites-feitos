@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://escuta.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://escuta.sneakpeek.workers.dev/sitemap.xml
