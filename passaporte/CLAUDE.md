@@ -6,7 +6,7 @@ Site-conceito da Madolio pro nicho de escola de idiomas. **Escola fictícia** �
 
 ## Deploy (Cloudflare Workers)
 
-Worker `passaporte`, em `https://passaporte.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `passaporte`, em `https://passaporte.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Visto"
 
