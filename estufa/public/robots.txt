@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://estufa.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://estufa.sneakpeek.workers.dev/sitemap.xml

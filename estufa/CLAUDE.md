@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de **floricultura e paisagismo**. **Negócio 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `estufa`, em `https://estufa.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `estufa`, em `https://estufa.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
