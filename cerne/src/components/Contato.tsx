@@ -13,7 +13,7 @@ export default function Contato() {
   }
 
   return (
-    <footer id="contato" className="border-t border-line bg-panel px-6 py-20 sm:px-10 md:py-28">
+    <footer id="contato" className="border-t border-line bg-panel px-6 py-20 pb-32 sm:px-10 md:py-28">
       <Reveal className="mx-auto max-w-lg">
         <h2 className="text-3xl text-ink sm:text-4xl">Vamos desenhar o seu?</h2>
         <p className="mt-3 text-ink/75">
