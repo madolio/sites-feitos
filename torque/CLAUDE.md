@@ -11,7 +11,7 @@ avant-garde/de luxo do resto do repositório.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `torque`, em `https://torque.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `torque`, em `https://torque.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
