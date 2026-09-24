@@ -63,7 +63,7 @@ Ver `src/components/Reveal.tsx` — não colocar a classe `transition`/`duration
 
 ## SEO básico
 
-`index.html` tem meta description, canonical, Open Graph e Twitter Card. `public/robots.txt` e `public/sitemap.xml` existem — o sitemap lista `/` e `/projetos`.
+`index.html` tem meta description, canonical, Open Graph e Twitter Card. `public/robots.txt` e `public/sitemap.xml` existem — o sitemap lista as 13 URLs reais (`/`, `/projetos` e os 11 making-of em `/projetos/<slug>`); a 404 fica de fora.
 
 ## Performance (23/set/2026)
 
