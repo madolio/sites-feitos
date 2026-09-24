@@ -17,7 +17,7 @@ Erros do site antigo que este corrige: link de e-mail apontando pro placeholder 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `realce`, em `https://realce.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `realce`, em `https://realce.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Camarim"
 
