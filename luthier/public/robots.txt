@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luthier.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://luthier.sneakpeek.workers.dev/sitemap.xml

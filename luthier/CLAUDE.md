@@ -7,7 +7,7 @@ nativa. Página única.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `luthier`, em `https://luthier.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `luthier`, em `https://luthier.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
