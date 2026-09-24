@@ -25,5 +25,14 @@
     "brand": "Vértice",
     "ogImage": true,
     "omit": ["public/demo/og.jpg"]
+  },
+  "sebo": {
+    "name": "Sebo & Livros usados",
+    "category": "comercio",
+    "path": "sebo-template",
+    "description": "Sebos e livrarias de usados: acervo em fichas, avaliação de acervo, dúvidas, contato.",
+    "brand": "Folha Solta",
+    "ogImage": true,
+    "omit": ["public/demo/og.jpg"]
   }
 }

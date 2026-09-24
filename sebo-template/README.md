@@ -41,7 +41,7 @@ Por que `accent` e `accent-text`? Um vermelho que passa em texto sobre papel cla
 
 ## Como criar uma versão para cliente
 
-1. Copie a pasta (sem `node_modules`, `dist`, `.wrangler`) para `nome-do-cliente/`. O gerador (`npm run new-site`) ainda **não** registra este template.
+1. Copie a pasta (sem `node_modules`, `dist`, `.wrangler`) para `nome-do-cliente/`. Prefira o gerador (`npm run new-site`, id `sebo`); a lista abaixo é o caminho manual.
 2. Troque `name` em `wrangler.jsonc` e `package.json` (o nome do Worker vira `https://<name>.sneakpeek.workers.dev`).
 3. `src/config/site.ts`: nome, descritor, inicial, frase do rodapé, WhatsApp (`5511999999999`), e-mail, endereço, horários, Instagram, `seo.url`, `title`, `description`, `themeColor` (igual ao `--color-background`) e cores do favicon. **Endereço e horário só se o cliente informou.**
 4. `src/index.css`: cores do `@theme` e, se trocar de fonte, `fonts` em `site.ts` + `--font-*`.
@@ -90,8 +90,8 @@ Um `h1`, hierarquia de títulos, link "Ir para o conteúdo", `lang` pt-BR, foco 
 
 ## Limitações conhecidas
 
-- Sem fontes de reserva com `size-adjust` (o carregamento das fontes antes do render existe, mas pode haver um pequeno salto de layout em rede lenta).
-- Sem JSON-LD (o `sebo` original tinha um `BookStore` escrito à mão no HTML; o contrato exige que saia de `site.ts`).
+- Sem fontes de reserva com `size-adjust` (desvio conhecido, seção 17 do contrato). O carregamento das fontes antes do render existe (até 1 s), mas pode haver um pequeno salto de layout em rede lenta.
+- Sem JSON-LD, como os outros três templates (decisão registrada na seção 17 do contrato). O `sebo` original tinha um `BookStore` escrito à mão no HTML, que não veio: repetiria nome e URL fora de `site.ts`.
 - Fotos não fazem parte do visual: um cliente que queira capas de livros precisa criar o componente.
 
 ## Checklist de entrega
