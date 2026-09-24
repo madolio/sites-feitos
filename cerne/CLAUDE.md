@@ -6,7 +6,7 @@ Site-conceito da Madolio pro nicho de design de interiores. **Empresa fictícia*
 
 ## Deploy (Cloudflare Workers)
 
-Worker `cerne`, em `https://cerne.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `cerne`, em `https://cerne.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O esqueleto — planta baixa interativa, sem scroll controlando nada
 
