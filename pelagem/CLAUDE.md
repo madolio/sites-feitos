@@ -8,7 +8,7 @@ Vite + React 19 + TypeScript + Tailwind v4, `Reveal.tsx` cópia canônica de
 
 ## Deploy (Cloudflare Workers)
 
-Worker `pelagem`, em `https://pelagem.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `pelagem`, em `https://pelagem.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
