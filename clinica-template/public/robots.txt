@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clinica-template.sneakpeek.workers.dev/sitemap.xml

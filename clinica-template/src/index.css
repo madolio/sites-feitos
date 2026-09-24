@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* TEMA DO TEMPLATE — para rebrandar, troque só estas variáveis.
+   Direção: verde-floresta profundo + osso + argila. Serifa com itálico nos
+   destaques (Fraunces) sobre texto limpo (Manrope). */
+@theme {
+  --color-ink: #12201b;
+  --color-forest: #1d3a32;
+  --color-forest-soft: #2b4d43;
+  --color-bone: #f6f3ec;
+  --color-sage: #e3e9e0;
+  --color-line: #d8d4c7;
+  --color-muted: #47564f;
+  /* clay: acento sobre fundo claro (5:1 sobre bone). clay-light: acento sobre
+     fundo escuro (7:1 sobre forest). */
+  --color-clay: #9d4e2c;
+  --color-clay-hover: #83401f;
+  --color-clay-light: #e3ad8a;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+  }
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 6rem;
+    }
+  }
+  body {
+    @apply bg-bone font-body text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    text-wrap: balance;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-clay);
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-clay-light);
+  }
+  ::selection {
+    background: var(--color-clay-light);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-[0.9375rem] font-semibold tracking-wide transition duration-200;
+  }
+  .btn-primary {
+    @apply bg-forest text-bone hover:bg-clay;
+  }
+  .btn-light {
+    @apply bg-bone text-ink hover:bg-clay-light;
+  }
+  .btn-ghost {
+    @apply border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-bone;
+  }
+  .on-dark .btn-ghost {
+    @apply border-bone/35 text-bone hover:border-bone hover:bg-bone hover:text-ink;
+  }
+
+  /* Etiqueta pequena com fio: o "sotaque" gráfico do template. */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.75rem] font-semibold tracking-[0.18em] text-clay uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+  }
+  .on-dark .eyebrow {
+    @apply text-clay-light;
+  }
+
+  .h-section {
+    @apply text-[2rem] leading-[1.1] sm:text-5xl;
+  }
+
+  /* Palavra em destaque dentro dos títulos. */
+  .em-accent {
+    @apply text-clay italic;
+    font-weight: 300;
+  }
+  .on-dark .em-accent {
+    @apply text-clay-light;
+  }
+
+  /* Textura sutil de pontos para painéis escuros. */
+  .dots {
+    background-image: radial-gradient(rgb(246 243 236 / 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .arch {
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+  }
+}
+
+/* Aparecer ao rolar: só arma quando há JS e o usuário não pediu menos
+   movimento. Sem JS ou com reduced-motion, o conteúdo já nasce visível. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+  @keyframes girar {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .girar {
+    animation: girar 28s linear infinite;
+  }
+}
