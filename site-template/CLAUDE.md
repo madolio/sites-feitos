@@ -1,6 +1,6 @@
 # Bastos Advocacia (conceito — nicho jurídico)
 
-Vite + React + TypeScript + Tailwind v4, hospedado no Cloudflare Workers (`https://site-template.fenoninho-max.workers.dev`). Continua sendo o Worker/pasta chamado `site-template`, mas o conteúdo foi completamente reformulado — ver histórico abaixo.
+Vite + React + TypeScript + Tailwind v4, hospedado no Cloudflare Workers (`https://site-template.sneakpeek.workers.dev`). Continua sendo o Worker/pasta chamado `site-template`, mas o conteúdo foi completamente reformulado — ver histórico abaixo.
 
 ## O que este projeto é hoje
 
