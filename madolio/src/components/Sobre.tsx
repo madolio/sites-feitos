@@ -1,19 +1,18 @@
 import Reveal from './Reveal'
 import SectionNumber from './SectionNumber'
 
-// Foto real e bio pessoal ainda vão entrar aqui — por enquanto, um
-// placeholder discreto (iniciais) em vez de deixar o espaço quebrado ou
-// inventar uma biografia que ninguém confirmou.
+// A foto real ainda não existe: o monograma "M." ocupa o lugar dela, sem
+// legenda prometendo algo. Quando houver foto, trocar o <div> do círculo por
+// <img> (com alt e width/height). Nada de bio inventada aqui.
 export default function Sobre() {
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal className="grid items-start gap-10 md:grid-cols-[auto_1fr] md:gap-14">
-          <div className="flex flex-col items-center gap-3 sm:items-start">
-            <div className="flex h-28 w-28 items-center justify-center rounded-full bg-surface-alt font-poster text-3xl text-ink/40">
+          <div className="flex justify-center sm:justify-start" aria-hidden="true">
+            <div className="flex h-28 w-28 items-center justify-center rounded-full bg-ink font-poster text-4xl text-paper">
               M.
             </div>
-            <span className="text-xs text-ink/40">foto em breve</span>
           </div>
 
           <div>
