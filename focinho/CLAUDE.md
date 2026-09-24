@@ -6,7 +6,7 @@ Um dos 6 conceitos com estilo E estrutura próprios — ver também Pulso, Corte
 
 ## Deploy (Cloudflare Workers)
 
-Worker `focinho`, em `https://focinho.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `focinho`, em `https://focinho.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Prontuário"
 
