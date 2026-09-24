@@ -6,7 +6,7 @@ Feito depois de feedback explícito do usuário: os 4 conceitos anteriores (Doce
 
 ## Deploy (Cloudflare Workers)
 
-Worker `torre`, em `https://torre.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `torre`, em `https://torre.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery — "Torre de Controle"
 
