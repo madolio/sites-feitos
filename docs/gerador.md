@@ -27,6 +27,15 @@ npm run new-site -- --template restaurante --project meu-bistro --brand "Bistrô
 
 No modo por flags ou por `--briefing` **nada opcional é perguntado**; só o que faltar entre os obrigatórios. Sem nenhum campo opcional o resultado é idêntico ao da versão anterior do gerador.
 
+### Pré-visualização (`--dry-run`)
+
+```bash
+npm run new-site -- --template academia --dry-run
+npm run new-site -- --briefing briefing.json --dry-run
+```
+
+Roda a **mesma** validação e o **mesmo** cálculo do `site.ts` da geração real (é o mesmo código; a única diferença é parar antes de copiar) e imprime: o que seria criado, o que seria configurado, as linhas de `site.ts` que mudam (`-` template, `+` projeto), o que o briefing não informou e as pendências manuais do template. **Não cria pasta nem altera arquivo**, e não pergunta nada: obrigatório ausente aparece como `<project>`, `<brand>`... e é listado como "não informado". Exige `--template` (ou `template` no briefing) e não combina com `--instalar`/`--com-deps`. Entrada inválida falha igual à geração real (código 1).
+
 Por padrão o projeto nasce **sem `node_modules`** (2 MB em vez de ~285 MB) e o gerador não instala nada: rode `cd <projeto> && npm install && npm run build`. `--instalar` faz o `npm install` e o build por você; `--com-deps` copia o `node_modules` do template (só para uso offline/rápido).
 
 ## Briefing
@@ -83,6 +92,31 @@ Campos por template: `name`, `category`, `path` (pasta dentro de `sites-feitos/`
 6. Escreve um `README.md` próprio no projeto.
 7. **Trava de identidade:** confere Worker, `package.json` e as duas ocorrências do `package-lock.json`; se algum ainda tiver o nome do template (ou não for o esperado), sai com código 3 e manda não fazer deploy.
 8. Confere arquivos essenciais e avisa se sobrou referência ao nome do template (só conta código e dados, não os comentários do template). Com `--instalar`, roda `npm install` e `npm run build` (erro: o projeto é mantido).
+
+## Relatório ao final (e no `--dry-run`)
+
+Três blocos, sempre nesta ordem:
+
+1. **Configurado automaticamente:** identidade, SEO, os campos de contato que vieram no briefing, Worker, `package.json`/`package-lock.json`, favicon, `robots.txt`, `sitemap.xml`, canonical e apple-touch-icon.
+2. **Do briefing, não informado:** campos de `site.ts` que ficaram com o valor de exemplo do template (descritor, frase, WhatsApp, telefone, e-mail, Instagram, endereço, CEP, horários).
+3. **Pendente de configuração manual**, específico do template e lido dos arquivos reais dele (nada é escrito): blocos exportados de `conteudo.ts` e em quais arquivos a marca de demonstração ainda aparece (com nº de linhas); imagens de `images.ts` e arquivos de `public/demo/`; `og:image`; variáveis `--color-*` do `@theme` mais `themeColor`/`faviconBg`/`faviconFg`; fontes (e se ficam em `site.ts` ou no `index.html`); `logo`; rótulos de `nav`; `mapEmbedUrl` (só academia e restaurante); `footerNote`; redes sociais; apple-touch-icon.
+
+### Automatizado × manual, por template
+
+| Item | clínica | restaurante | academia | sebo |
+| --- | --- | --- | --- | --- |
+| Identidade, contato, SEO, Worker, package, favicon, apple-touch-icon | auto | auto | auto | auto (telefone/e-mail podem ficar vazios) |
+| `conteudo.ts` (textos do nicho) | manual (11 blocos) | manual (13) | manual (12) | manual (7, inclui `livros`) |
+| Imagens | manual: 7 URLs do Pexels em `images.ts` | manual: 13 imagens em `images.ts` + `public/demo/` | manual: 13 imagens em `images.ts` + `public/demo/` | sem fotos (opcional) |
+| `og:image` | não tem | removida; adicionar | removida; adicionar | removida; adicionar |
+| Cores (`@theme`, `themeColor`, favicon) | manual | manual | manual | manual |
+| Fontes | manual: `index.html` + `@theme` | manual: `site.ts` + `@theme` | manual: `site.ts` + `@theme` | manual: `site.ts` + `@theme` |
+| `logo`, `nav` | manual (opcional) | manual (opcional) | manual (opcional) | manual (opcional) |
+| `mapEmbedUrl` | sem campo | manual (vazio = sem mapa) | manual (vazio = sem mapa) | sem campo |
+| `footerNote` | manual | manual | manual | manual |
+| Redes sociais | só Instagram | só Instagram | só Instagram | só Instagram |
+
+Exemplo de fluxo: `--dry-run` para conferir e ver as pendências → mesmo comando sem `--dry-run` (com `--instalar`) → trocar o que o bloco 3 apontou, arquivo por arquivo → `npm run build`.
 
 ## Segurança
 
