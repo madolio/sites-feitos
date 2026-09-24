@@ -9,10 +9,10 @@
 
 export const site = {
   // --- Identidade ---------------------------------------------------------
-  name: 'Cumaru',
+  name: 'Cumaru', // @gen:name
   descriptor: 'Cozinha brasileira autoral',
   /** Letra do logo e do favicon gerado. */
-  initial: 'C',
+  initial: 'C', // @gen:initial
   tagline: 'Ingrediente do Brasil, técnica de cozinha, tempo de mesa.',
   /** Logo em imagem (opcional). Ex.: { src: '/logo.svg', alt: 'Cumaru' }.
    *  Se ficar `null`, o logo é a letra em círculo + nome. */
@@ -49,17 +49,16 @@ export const site = {
   //     são gerados a partir daqui no build) --------------------------------
   seo: {
     /** Endereço público do site, sem barra final. */
-    url: 'https://restaurante-template.sneakpeek.workers.dev',
-    title: 'Cumaru — Cozinha brasileira autoral (template)',
-    description:
-      'Cumaru, restaurante de cozinha brasileira autoral (site-modelo): menu de estação, ingredientes de pequenos produtores e reserva pelo WhatsApp. Template reutilizável para restaurantes.',
+    url: 'https://restaurante-template.sneakpeek.workers.dev', // @gen:seo-url
+    title: 'Cumaru — Cozinha brasileira autoral (template)', // @gen:seo-title
+    description: 'Cumaru, restaurante de cozinha brasileira autoral (site-modelo): menu de estação, ingredientes de pequenos produtores e reserva pelo WhatsApp. Template reutilizável para restaurantes.', // @gen:seo-description
     /** Deve ser igual à cor de fundo (--color-background em src/index.css). */
     themeColor: '#14110e',
     /** Cores do favicon gerado. */
     faviconBg: '#14110e',
     faviconFg: '#d9903f',
     /** Imagem de compartilhamento (1200×630) em /public. Vazio: sem og:image. */
-    ogImage: '/demo/og.jpg',
+    ogImage: '/demo/og.jpg', // @gen:og-image
   },
 
   // --- Fontes (Google Fonts) ---------------------------------------------

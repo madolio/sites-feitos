@@ -1,0 +1,20 @@
+{
+  "clinica": {
+    "name": "Clínica & Bem-estar",
+    "category": "saude",
+    "path": "clinica-template",
+    "description": "Clínicas e profissionais da saúde (estética, odonto, psicologia, fisio, nutrição).",
+    "brand": "Serena",
+    "ogImage": false,
+    "omit": []
+  },
+  "restaurante": {
+    "name": "Restaurante",
+    "category": "gastronomia",
+    "path": "restaurante-template",
+    "description": "Restaurantes, bistrôs e pizzarias: cardápio, história, reserva pelo WhatsApp.",
+    "brand": "Cumaru",
+    "ogImage": true,
+    "omit": ["public/demo/og.jpg"]
+  }
+}

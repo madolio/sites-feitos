@@ -9,10 +9,10 @@
 
 export const site = {
   // --- Identidade ---------------------------------------------------------
-  name: 'Serena',
+  name: 'Serena', // @gen:name
   descriptor: 'Clínica & Bem-estar',
   /** Letra do logo e da marca d'água do CTA. Também gera o favicon. */
-  initial: 'S',
+  initial: 'S', // @gen:initial
   tagline: 'Cuidado que começa por ouvir.',
   /** Logo em imagem (opcional). Ex.: { src: '/logo.svg', alt: 'Serena' }.
    *  Se ficar `null`, o logo é a letra em círculo + nome. */
@@ -44,10 +44,9 @@ export const site = {
   //     são gerados a partir daqui no build) --------------------------------
   seo: {
     /** Endereço público do site, sem barra final. */
-    url: 'https://clinica-template.sneakpeek.workers.dev',
-    title: 'Serena — Clínica & Bem-estar (template)',
-    description:
-      'Serena, clínica e bem-estar (site-modelo): consulta com escuta, plano por escrito e acompanhamento. Template reutilizável para clínicas e profissionais da saúde.',
+    url: 'https://clinica-template.sneakpeek.workers.dev', // @gen:seo-url
+    title: 'Serena — Clínica & Bem-estar (template)', // @gen:seo-title
+    description: 'Serena, clínica e bem-estar (site-modelo): consulta com escuta, plano por escrito e acompanhamento. Template reutilizável para clínicas e profissionais da saúde.', // @gen:seo-description
     /** Deve ser igual à cor de fundo (--color-bone em src/index.css). */
     themeColor: '#f6f3ec',
     /** Cores do favicon gerado. */

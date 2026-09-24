@@ -8,7 +8,8 @@ Documentação da estrutura do monorepo `sites-feitos` para produzir sites de cl
 | [arquitetura-de-templates.md](arquitetura-de-templates.md) | Convenção de pastas e config, padrões repetidos, o que centralizar, padrões visuais |
 | [inventario-e-catalogo.md](inventario-e-catalogo.md) | Classificação dos 53 projetos e catálogo comercial proposto |
 | [contrato-de-template.md](contrato-de-template.md) | O que todo template precisa ter para o futuro gerador: arquivos, responsabilidades, metadados, riscos, pendências |
-| [plano-gerador.md](plano-gerador.md) | Plano técnico do futuro `npm run new-site` (não implementado) |
+| [gerador.md](gerador.md) | Como usar o `npm run new-site`, segurança, limitações, como registrar template |
+| [plano-gerador.md](plano-gerador.md) | Plano original do gerador (agora implementado) |
 | [auditoria-visual-2026-09-22.md](auditoria-visual-2026-09-22.md) | Auditoria visual anterior |
 
 Bases atuais para novos sites: **[`../clinica-template/`](../clinica-template/)** (saúde) e **[`../restaurante-template/`](../restaurante-template/)** (restaurantes).

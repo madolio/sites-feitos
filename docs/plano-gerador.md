@@ -1,6 +1,6 @@
 # Plano do gerador `npm run new-site`
 
-**Status: planejamento. Nada foi implementado.** O gerador só faz sentido depois que existir mais de um template config-driven; hoje só o `clinica-template` tem essa forma.
+**Status: implementado (v1).** Uso, segurança e limitações reais em [gerador.md](gerador.md). Este arquivo guarda o plano original; diferenças da implementação: registro em `scripts/templates.json` (não na raiz), marcadores `// @gen:*` só em `site.ts` (name, initial, seo-url, seo-title, seo-description, og-image), sem pergunta de cor/contatos (cores e conteúdo continuam manuais), `apple-touch-icon` gerado por `zlib` (anel colorido, sem letra), `node_modules` copiado do template para o build funcionar sem `npm install`.
 
 ## O que já está pronto para o gerador
 
@@ -45,10 +45,10 @@ Ele **não** faz deploy, não roda `npm install` sozinho, não faz `git commit`,
 
 ## Pré-requisitos (fazer antes de implementar)
 
-1. Marcar os pontos trocáveis no `clinica-template` (`// @gen:*`). Exige editar o template (hoje com outra sessão trabalhando nele).
+1. ~~Marcar os pontos trocáveis no `clinica-template` (`// @gen:*`). Exige editar o template (hoje com outra sessão trabalhando nele).~~ feito.
 2. ~~Ter **pelo menos um segundo template** config-driven~~ — feito: `restaurante-template`. Diferenças em relação ao `clinica-template` que o gerador deve tratar: cores com função semântica (`--color-background`, `--color-accent`...), fontes em `site.fonts` (link gerado pelo plugin) e `seo.ogImage` opcional.
-3. Decidir a convenção de cor: um único `--color-brand` no `@theme` que o gerador possa trocar (hoje cada template tem nomes próprios).
-4. Gerar o `apple-touch-icon.png` a partir do favicon (opcional no plugin do Vite), para reduzir o passo manual.
+3. ~~Decidir a convenção de cor: um único `--color-brand` no `@theme` que o gerador possa trocar (hoje cada template tem nomes próprios).~~ adiado; ver gerador.md.
+4. ~~Gerar o `apple-touch-icon.png` a partir do favicon (opcional no plugin do Vite), para reduzir o passo manual.~~ feito no gerador.
 
 ## Fora de escopo (de propósito)
 

@@ -1,0 +1,8 @@
+{
+  "name": "sites-feitos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "new-site": "node scripts/new-site.mjs"
+  }
+}
