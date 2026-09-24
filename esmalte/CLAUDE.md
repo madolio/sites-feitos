@@ -10,7 +10,7 @@ Página única.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `esmalte`, em `https://esmalte.fenoninho-max.workers.dev`.
+Worker `esmalte`, em `https://esmalte.sneakpeek.workers.dev`.
 `npm run deploy`.
 
 ## Vibe Discovery
