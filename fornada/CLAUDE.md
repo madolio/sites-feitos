@@ -4,7 +4,7 @@ Site-conceito da Madolio pro nicho de padaria artesanal. **Negócio fictício** 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `fornada`, em `https://fornada.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `fornada`, em `https://fornada.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Quadro de fornada"
 
