@@ -1,112 +1,225 @@
-# Inventário e catálogo comercial
+# Catálogo de projetos
 
-Levantamento feito em 2026-09-24 a partir do código (`package.json`, `index.html`, `src/`) e do README raiz. Nenhum projeto foi alterado para produzi-lo.
+Inventário do monorepo `sites-feitos`, organizado por nicho. Levantamento de 2026-09-24, feito a partir do código (`package.json`, `index.html`, `src/`) e dos `CLAUDE.md` de cada pasta. **É documentação**: nenhum projeto foi alterado, movido ou renomeado para produzi-lo.
 
-**Como ler:** "conceito" = site de demonstração de um nicho, com dados fictícios (a maioria). "Reutilizável" descreve o esforço real de virar um cliente hoje, olhando o código:
+Onde não foi possível determinar algo com segurança, o documento diz "desconhecido" ou "a confirmar" em vez de assumir (ver [Pontos incertos](#pontos-incertos)).
 
-- **Alto**: conteúdo isolado em arquivo de configuração e sem dependências pesadas (`clinica-template`, `restaurante-template` e `academia-template`).
-- **Médio**: conteúdo em `src/data.ts` ou `src/data/`, mas a marca, o visual e as seções estão amarrados aos componentes.
-- **Baixo**: o visual *é* a ideia (3D, diagrama, simulador); trocar o cliente é reescrever a peça central.
+## Resumo
 
-Tecnologias: quase todos usam GSAP só para `Reveal` (animação de entrada). Só as exceções estão na coluna "Tecnologias especiais".
+**55 projetos** (pastas com `package.json`), mais `docs/` e `scripts/` (sem projeto).
 
-## Inventário (53 pastas com código)
+| Tipo | Qtd | O que é |
+| --- | --- | --- |
+| **Template** | 3 | Feito para reutilização: configuração central (`site.ts`, `conteudo.ts`, `images.ts`, `@theme`), marcadores `@gen` e uso pelo gerador |
+| Demo / conceito | 47 | Site fictício que demonstra um nicho ou uma técnica. Inclui `site-template` (config parcial, ver abaixo) e `nascente` (histórico) |
+| Cliente | 1 a 2 | `adriano` (site real). `realce` é um redesenho de negócio real: **a confirmar** se é cliente |
+| Institucional | 1 | `madolio` (site da própria Madolio, em produção) |
+| Ferramenta interna | 2 | `madolio-admin`, `leads` |
 
-| Projeto | Nicho | Tipo | Reutilizável | Complexidade | Tecnologias especiais | Observação |
-| --- | --- | --- | --- | --- | --- | --- |
-| clinica-template | Saúde / clínicas (estética, odonto, psico, fisio, nutrição) | **template** | **Alto** | Média (1,2 mil linhas, só React) | Plugin Vite gera head/robots/sitemap/favicon a partir de `site.ts` | Base de referência (config central). Ver `arquitetura-de-templates.md`. |
-| restaurante-template | Restaurante / gastronomia | **template** | **Alto** | Média (só React, sem gsap/3D) | Plugin Vite (SEO/favicon/fontes), tema por funções de cor (`.tema-claro`) | 2º template config-driven; validado com uma 2ª marca (pizzaria) sem editar componentes. Ver README do template. |
-| academia-template | Academia / boxes / estúdios de treino | **template** | **Alto** | Média (só React, sem gsap/3D) | Plugin Vite (SEO/favicon/fontes), tema por funções de cor (`.tema-claro` nos planos) | 3º template config-driven; validado com uma 2ª marca (box de crossfit, tema claro). Ver README do template. |
-| site-template | Advocacia (Bastos Advocacia) | template (legado) | Médio | Média | `config/site.ts`, `pages/` | Primeira tentativa de template; convenção mais fraca que a do `clinica-template`. |
-| arcada | Odontologia | demo | Médio | Média | Mapa interativo da arcada dentária (SVG) | Peça central é específica de odonto. |
-| derme | Dermatologia / estética médica | demo | Médio | Média | Diagrama de camadas da pele, timeline de procedimento | Estrutura Header/Layout parecida com clínicas. |
-| escuta | Psicologia clínica | demo | Médio | Média | Registro de pensamento (interativo), tabela online × presencial | 22 arquivos. |
-| trilha | Fisioterapia | demo | Médio | Média | Mapa de fases em trilha, curva por especialidade | |
-| esmalte | Manicure / esmalteria | demo | Médio | Média | Timer de "tempo de cura" | |
-| realce | Salão + escola de cabeleireiros (cliente real em São Roque, redesenho) | portfólio | Baixo | Média | — | Conceito sobre negócio existente; **não** usar como modelo genérico. |
-| corte | Salão / barbearia | demo | Médio | Média | Ticket de horário, poste de barbeiro | |
-| pelagem | Banho e tosa | demo | Médio | Média | Guia por tipo de pelagem | |
-| focinho | Pet shop / veterinária | demo | Médio | Baixa | Fichas e abas | |
-| ninho | Creche / educação infantil | demo | Médio | Média | Marcos do desenvolvimento, rotina do dia | |
-| passaporte | Curso de idiomas | demo | Médio | Média | Cartão de embarque, níveis como carimbos | |
-| ferro | Academia (musculação + funcional) | demo | Médio | Média | Calculadora de 1RM | |
-| pulso | Personal training | demo | Médio | Baixa | Linha de pulso, contador de repetições | |
-| estudio-alma | Pilates | demo | Médio | Média | Horários, aula experimental | |
-| razao | Contabilidade (MEI/Simples) | demo | Médio | Média | Calendário fiscal por regime | |
-| ancora | Planejamento financeiro / patrimônio | demo | Médio | Média | `@number-flow/react` (números animados) | |
-| traco | Arquitetura | demo | Médio | Média | Plantas em SVG | |
-| cerne | Design de interiores | demo | Médio | Média | Explorador de materiais, planta | |
-| lumen | Projeto luminotécnico | demo | Baixo | Média | Calculadora | |
-| encaixe | Marcenaria sob medida (nome no README) / alfaiataria (título) | demo | Baixo | Média | Configurador, desenho técnico | Título e README divergem; conferir antes de catalogar. |
-| trama | Loja de roupa de bairro | demo | Médio | Média | Etiqueta de cuidado | |
-| bruma | Perfumaria artesanal | demo | Baixo | Alta | `framer-motion`, shader de fundo | |
-| prisma | Joalheria sob medida | demo | Baixo | Alta | Construção da joia (SVG), medida | |
-| calibre | Relojoaria artesanal | demo | Baixo | Média | Mostrador interativo | README descreve 3D; o código atual só tem `gsap` (sem three). |
-| luthier (Ressoa) | Luteria | demo | Baixo | Média | Figuras de Chladni, onda de corda | |
-| marcha | Concessionária de esportivos | demo | Médio | Média | Financiamento (calculadora), estoque | |
-| torque | Oficina mecânica | demo | Médio | Média | Painel de revisão por km | |
-| trinco | Chaveiro / serralheria 24h | demo | Médio | Média | Triagem de emergência | |
-| vazao | Encanador autônomo | demo | Médio | Média | Diagnóstico | |
-| adriano | Tratamento de água e elétrica (**site real** de Adriano Souza Passos) | **projeto especial** | Baixo | Média | Diagramas SVG, gauges | Cliente real: não usar como template; não alterar sem pedido. |
-| nascente | Tratamento de água | demo (histórico) | Baixo | Alta | `react-router-dom`, multi-página | Identidade técnica migrou para `adriano`. |
-| fornada | Padaria artesanal | demo | Médio | Baixa | Contador de pães | |
-| banca | Floricultura de bairro | demo | Médio | Baixa | — | |
-| estufa | Floricultura / paisagismo | demo | Médio | Média | Régua de florescimento, imagens webp | |
-| sebo | Livraria / sebo | demo | Médio | Baixa | — | |
-| sabor-da-vila | Hamburgueria | demo | Médio | Alta | `motion`, `@number-flow/react`, stickers | Bundle 514 kB (aceito, ver `auditoria-visual`). |
-| doce-atelie | Confeitaria sob encomenda | demo | Médio | Alta | `motion`, gsap Draggable/Inertia, cartela | Bundle 458 kB. |
-| balcao | Delivery / pedido direto | demo | Médio | Média | Carrinho | |
-| confete | Festa infantil | demo | Médio | Média | Bolo, stickers | |
-| revelar | Fotografia (casamento/ensaio) | demo | Médio | Baixa | Folha de contatos | |
-| tinta | Estúdio de tatuagem | demo | Baixo | Média | Layout horizontal por painéis (sem scroll vertical) | Navegação incomum. |
-| torno | Cerâmica (ateliê) | demo | Baixo | Alta | `three`, r3f, drei, postprocessing (chunk lazy 1 MB) | |
-| cardume | Escola de mergulho | demo | Baixo | Alta | `three`, r3f (chunk lazy 920 kB) | |
-| zenite | Observação astronômica | demo | Baixo | Média | `framer-motion` | |
-| taca | Vinícola | demo | Baixo | Média | Roda de aromas (SVG) | |
-| chave | Classificados de imóveis | demo | Médio | Média | Estilo "jornal" | Nicho imobiliário do catálogo. |
-| rota | Roteirização de entregas | demo | Baixo | Média | Mapa de rotas, painel | SaaS/ferramenta (demonstração). |
-| torre | Agenda que se administra sozinha | demo | Baixo | Média | Radar, sistema de checagem | SaaS/ferramenta (demonstração). |
-| madolio | Site institucional da própria Madolio | **projeto especial** | Baixo | Muito alta (56 arquivos, 6,3 mil linhas) | router, three, r3f, gsap, number-flow | Vitrine comercial. Não é template. |
-| madolio-admin | Painel interno | administrativo | Não se aplica | Baixa | — | |
-| leads | Ferramenta de busca de leads | ferramenta | Não se aplica | Baixa | — | |
-| docs | — (sem código) | documentação | — | — | — | Esta pasta. |
+Contagem por nicho: 14 grupos abaixo, cada projeto aparece **uma única vez**.
 
-Pontos de atenção do inventário:
+## Templates atuais
 
-- **`encaixe`** tem título "Alfaiataria" e README "marcenaria": o nicho não é claro. Confirmar antes de usar.
-- **`calibre`**: o README fala em 3D, mas `package.json` não tem `three`.
-- **Nomes de domínio**: o README raiz ainda cita `*.fenoninho-max.workers.dev`; o subdomínio atual é `sneakpeek.workers.dev`. Não corrigi (o README está modificado por outra sessão).
+Só estes três cumprem o [contrato de template](contrato-de-template.md) e podem ser usados pelo gerador (`npm run new-site`, ver [gerador.md](gerador.md)).
 
-## Estrutura de catálogo proposta
-
-Os projetos existentes já formam grupos naturais. Proponho as categorias abaixo (menos forçadas que a lista genérica):
-
-| Categoria | Projetos candidatos |
-| --- | --- |
-| **Saúde e clínicas** | clinica-template (base), arcada, derme, escuta, trilha, esmalte, ninho |
-| **Beleza e bem-estar** | corte, realce, estudio-alma, pulso, ferro, pelagem, focinho |
-| **Alimentação** | fornada, sabor-da-vila, doce-atelie, balcao, banca, estufa |
-| **Serviços profissionais** | site-template (advocacia), ancora, razao, traco, cerne, lumen |
-| **Serviços locais e oficinas** | torque, trinco, vazao, marcha |
-| **Comércio de bairro** | trama, sebo, bruma, prisma, calibre, luthier |
-| **Criativo e experiências** | revelar, tinta, torno, cardume, zenite, taca, confete, passaporte |
-| **Imobiliário / operação (SaaS demo)** | chave, rota, torre |
-
-Não há projetos para "Restaurante de mesa" e "Eventos" além de `confete` e das demos de comida; **lacuna real**: nenhum template genérico de restaurante e nenhum de academia é config-driven.
-
-## Candidatos a catálogo
-
-Nenhum ranking definitivo (falta evidência de mercado). A lista mostra o que serviria **agora** com pouco esforço.
-
-| Projeto | Nicho | Por que pode ser reutilizado | O que trocar para virar cliente | Esforço |
+| Template | Id no gerador | Nicho | Cores | Dependências de runtime |
 | --- | --- | --- | --- | --- |
-| clinica-template | Saúde | Já é config-driven; só depende de React; SEO e favicon gerados | `site.ts`, `conteudo.ts`, `images.ts`, cores, apple-touch-icon | **Baixo** (horas) |
-| site-template | Advocacia | Tem `config/site.ts` e `pages/` | Marca, textos, registro OAB | Baixo–médio |
-| escuta / trilha / arcada / derme | Psicologia, fisio, odonto, derma | Estrutura Header/Hero/Faq/Contato; peça central específica do nicho | Todo o `data/`, marca, cores, fotos; manter a peça central (mapa, registro) ou remover | Médio |
-| corte / pulso / ferro / estudio-alma | Beleza e fitness | Agendamento e planos em `data.ts` | `data.ts`, marca, WhatsApp, horários | Médio |
-| torque / trinco / vazao / marcha | Serviços locais | Seções de serviço + triagem/diagnóstico simples | `data`, telefone/WhatsApp, área de atendimento | Médio |
-| fornada / balcao / sabor-da-vila / doce-atelie | Alimentação | Cardápio e pedido via WhatsApp | Cardápio, preços reais, fotos | Médio (doce/sabor: alto, por `motion`) |
-| ancora / razao / traco / cerne | Serviços profissionais | Layout sóbrio, pouca dependência | `data`, marca, credenciais reais | Médio |
-| torno / cardume / prisma / bruma / tinta | Experiências | Servem como **vitrine/portfólio**, não como base | Reescrever a peça central por cliente | Alto |
+| [`clinica-template`](../clinica-template/) | `clinica` | Saúde: clínicas e profissionais (estética, odonto, psicologia, fisio, nutrição) | `forest` / `clay` (nomes de cor) | React |
+| [`restaurante-template`](../restaurante-template/) | `restaurante` | Restaurantes, bistrôs, pizzarias | funções (`background`, `accent`...), cardápio em `.tema-claro` | React |
+| [`academia-template`](../academia-template/) | `academia` | Academias, boxes, estúdios de treino | funções (`background`, `accent`...), planos em `.tema-claro` | React |
 
-Regras que valem para qualquer candidato: substituir depoimentos fictícios por relatos autorizados (ou remover a seção), remover o `DemoDialog` e o aviso de demonstração, e nunca inventar endereço, horário ou preço.
+Pontos configuráveis, iguais nos três: `src/config/site.ts` (nome, contatos, endereço, horários, redes, SEO, fontes, menu; linhas marcadas `// @gen:*` que o gerador troca), `src/data/conteudo.ts` (todos os textos e listas), `src/config/images.ts` (fotos e `alt`) e o bloco `@theme` de `src/index.css` (cores e fontes). O que muda por nicho fica dentro do template:
+
+| Template | Conteúdo específico em `conteudo.ts` |
+| --- | --- |
+| clinica | serviços/cuidados, método, equipe, relatos, FAQ |
+| restaurante | destaques, cardápio por categorias (preço e marcas opcionais), história, equipe, ambiente, reserva, FAQ |
+| academia | modalidades, planos (destaque e preço opcionais), estrutura, etapas do método, professores (registro opcional), aula experimental, FAQ |
+
+Os três usam só React em runtime (sem GSAP, Motion ou 3D). Cada um mantém a própria identidade visual: **não existe paleta comum**, e o gerador não altera cores.
+
+### `site-template` **não** é um template do contrato
+
+`site-template` (advocacia, "Bastos Advocacia", conceito fictício) tem `src/config/site.ts` e `src/data/`, mas **não** tem `conteudo.ts` nem `images.ts`, não tem marcadores `@gen` e usa GSAP. É a primeira tentativa de template, e por isso está classificado como **demo com configuração parcial**. Não está registrado no gerador. Para virar template seria preciso migrá-lo ao contrato (fora do escopo desta documentação).
+
+## Cliente, institucional e ferramentas
+
+| Projeto | Classificação | Observação |
+| --- | --- | --- |
+| `adriano` | **Cliente**: site real de Adriano Souza Passos (tratamento de água e elétrica, SP) | O `CLAUDE.md` diz que não é conceito, e os botões usam o WhatsApp real. Não usar como modelo e não alterar sem pedido. |
+| `realce` | **Cliente? a confirmar**: redesenho de um salão e escola que **existe de verdade** (São Roque, SP) | O `CLAUDE.md` diz "não é conceito fictício", mas não confirma contrato com o dono. Tratar como dado real: não usar como modelo genérico. |
+| `madolio` | **Institucional**: site da própria Madolio em produção (vitrine comercial) | Muito complexo (router, three, gsap, number-flow). Não é template. |
+| `madolio-admin` | **Ferramenta interna** | Painel de métricas dos sites-conceito. Separado de `madolio` por decisão do dono. |
+| `leads` | **Ferramenta interna** | Busca de negócios sem site (Google Places). |
+
+## Catálogo por nicho
+
+Colunas: **Tipo** (Template, Demo, Cliente...), **Dados** (onde o conteúdo fica: `site.ts + conteudo.ts + images.ts` é o contrato completo; `data.ts` / `data/` é dado separado, geralmente pequeno; `nos componentes` = sem arquivo de dados) e **Potencial** (reutilização técnica, definida na seção seguinte).
+
+### Saúde e clínicas (5)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| clinica-template | Saúde / clínicas (estética, odonto, psico, fisio, nutrição) | Template | site.ts + conteudo.ts + images.ts | Alto (já é template) | Cores forest/clay no @theme; plugin do Vite gera head, robots, sitemap e favicon |
+| arcada | Odontologia | Demo | data/ | Médio | Mapa interativo da arcada dentária (SVG) · Peça central é específica de odonto. |
+| derme | Dermatologia / estética médica | Demo | data/ | Médio | Diagrama de camadas da pele, timeline de procedimento · Estrutura Header/Layout parecida com clínicas. |
+| escuta | Psicologia clínica | Demo | data/ | Médio | Registro de pensamento (interativo), tabela online × presencial · 22 arquivos. |
+| trilha | Fisioterapia | Demo | data/ | Médio | Mapa de fases em trilha, curva por especialidade |
+
+### Beleza e bem-estar (3)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| corte | Salão / barbearia | Demo | data.ts | Médio | Ticket de horário, poste de barbeiro |
+| esmalte | Manicure / esmalteria | Demo | data/ | Médio | Timer de "tempo de cura" |
+| realce | Salão + escola de cabeleireiros (cliente real em São Roque, redesenho) | Cliente? (redesign de negócio real) | data/ | n/a | Conceito sobre negócio existente; **não** usar como modelo genérico. |
+
+### Fitness e academia (4)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| academia-template | Academia / boxes / estúdios de treino | Template | site.ts + conteudo.ts + images.ts | Alto (já é template) | @theme por funções de cor; planos em seção tema-claro |
+| ferro | Academia (musculação + funcional) | Demo | nos componentes | Baixo | Calculadora de 1RM |
+| pulso | Personal training | Demo | data.ts | Médio | Linha de pulso, contador de repetições |
+| estudio-alma | Pilates | Demo | data.ts | Médio | Horários, aula experimental |
+
+### Alimentação e restaurantes (6)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| restaurante-template | Restaurante / gastronomia | Template | site.ts + conteudo.ts + images.ts | Alto (já é template) | @theme por funções de cor; cardápio em seção tema-claro |
+| fornada | Padaria artesanal | Demo | nos componentes | Baixo | Contador de pães |
+| sabor-da-vila | Hamburgueria | Demo | data.ts | Médio | `motion`, `@number-flow/react`, stickers · Bundle 514 kB (aceito, ver `auditoria-visual`). |
+| doce-atelie | Confeitaria sob encomenda | Demo | data.ts | Médio | `motion`, gsap Draggable/Inertia, cartela · Bundle 458 kB. |
+| balcao | Delivery / pedido direto | Demo | data/ | Médio | Carrinho |
+| taca | Vinícola | Demo | data/ | Baixo | Roda de aromas (SVG) |
+
+### Pet (2)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| pelagem | Banho e tosa | Demo | data/ | Médio | Guia por tipo de pelagem |
+| focinho | Pet shop / veterinária | Demo | data.ts | Médio | Fichas e abas |
+
+### Educação (2)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| ninho | Creche / educação infantil | Demo | data/ | Médio | Marcos do desenvolvimento, rotina do dia |
+| passaporte | Curso de idiomas | Demo | data.ts | Médio | Cartão de embarque, níveis como carimbos |
+
+### Automotivo (2)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| torque | Oficina mecânica | Demo | data/ | Médio | Painel de revisão por km |
+| marcha | Concessionária de esportivos | Demo | data/ | Médio | Financiamento (calculadora), estoque |
+
+### Serviços técnicos e locais (4)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| adriano | Tratamento de água e elétrica (**site real** de Adriano Souza Passos) | Cliente (site real) | nos componentes | n/a | Diagramas SVG, gauges · Cliente real: não usar como template; não alterar sem pedido. |
+| nascente | Tratamento de água | Demo (histórico) | data/ | Baixo | `react-router-dom`, multi-página · Identidade técnica migrou para `adriano`. |
+| vazao | Encanador autônomo | Demo | data/ | Médio | Diagnóstico |
+| trinco | Chaveiro / serralheria 24h | Demo | data/ | Médio | Triagem de emergência |
+
+### Serviços profissionais (3)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| site-template | Advocacia (Bastos Advocacia) | Demo (config parcial) | site.ts + data/ | Médio | `config/site.ts`, `pages/` · Primeira tentativa de template; convenção mais fraca que a do `clinica-template`. |
+| ancora | Planejamento financeiro / patrimônio | Demo | data.ts | Médio | `@number-flow/react` (números animados) |
+| razao | Contabilidade (MEI/Simples) | Demo | data/ | Médio | Calendário fiscal por regime |
+
+### Arquitetura, design e construção (4)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| traco | Arquitetura | Demo | data.ts | Médio | Plantas em SVG |
+| cerne | Design de interiores | Demo | data/ | Médio | Explorador de materiais, planta |
+| lumen | Projeto luminotécnico | Demo | data/ | Baixo | Calculadora |
+| encaixe | Marcenaria sob medida (nome no README) / alfaiataria (título) | Demo | data/ | Baixo | Configurador, desenho técnico · Título e README divergem; conferir antes de catalogar. |
+
+### Comércio de bairro e artesanal (8)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| trama | Loja de roupa de bairro | Demo | data/ | Médio | Etiqueta de cuidado |
+| sebo | Livraria / sebo | Demo | data/ | Médio | |
+| banca | Floricultura de bairro | Demo | data.ts | Médio | |
+| estufa | Floricultura / paisagismo | Demo | data/ | Médio | Régua de florescimento, imagens webp |
+| bruma | Perfumaria artesanal | Demo | data/ | Baixo | `framer-motion`, shader de fundo |
+| prisma | Joalheria sob medida | Demo | data/ | Baixo | Construção da joia (SVG), medida |
+| calibre | Relojoaria artesanal | Demo | data/ | Baixo | Mostrador interativo · README descreve 3D; o código atual só tem `gsap` (sem three). |
+| luthier | Luteria | Demo | data/ | Baixo | Figuras de Chladni, onda de corda |
+
+### Criativo, eventos e experiências (6)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| revelar | Fotografia (casamento/ensaio) | Demo | data.ts | Médio | Folha de contatos |
+| tinta | Estúdio de tatuagem | Demo | data/ | Baixo | Layout horizontal por painéis (sem scroll vertical) · Navegação incomum. |
+| torno | Cerâmica (ateliê) | Demo | data.ts | Baixo | `three`, r3f, drei, postprocessing (chunk lazy 1 MB) |
+| cardume | Escola de mergulho | Demo | data.ts | Baixo | `three`, r3f (chunk lazy 920 kB) |
+| zenite | Observação astronômica | Demo | data/ | Baixo | `framer-motion` |
+| confete | Festa infantil | Demo | data.ts | Médio | Bolo, stickers |
+
+### Imobiliário e ferramentas SaaS (demos) (3)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| chave | Classificados de imóveis | Demo | data.ts | Médio | Estilo "jornal" · Nicho imobiliário do catálogo. |
+| rota | Roteirização de entregas | Demo | data/ | Baixo | Mapa de rotas, painel · SaaS/ferramenta (demonstração). |
+| torre | Agenda que se administra sozinha | Demo | data.ts | Baixo | Radar, sistema de checagem · SaaS/ferramenta (demonstração). |
+
+### Madolio: institucional e ferramentas internas (3)
+
+| Projeto | Nicho | Tipo | Dados | Potencial | Tecnologias especiais / observação |
+| --- | --- | --- | --- | --- | --- |
+| madolio | Site institucional da própria Madolio | Institucional (produção) | data/ | n/a | router, three, r3f, gsap, number-flow · Vitrine comercial. Não é template. |
+| madolio-admin | Painel interno | Ferramenta interna | data/ | n/a | |
+| leads | Ferramenta de busca de leads | Ferramenta interna | nos componentes | n/a | |
+
+
+## Potencial de reutilização (análise técnica)
+
+É só reutilização técnica, **não** avaliação comercial. Critérios usados, todos verificáveis no código:
+
+1. **Separação entre conteúdo e componentes**: existe arquivo de dados? Quanto do texto está nele?
+2. **Dependências e recursos pesados**: `three`/r3f, shader, `react-router-dom`. Uma dependência leve isolada (`gsap`, `motion`, `@number-flow/react`) não rebaixa por si só.
+3. **Peça central específica do nicho**: simulador, mapa, calculadora ou diagrama que precisaria ser reescrito.
+4. **Trocar a identidade sem reescrever a interface**: só os templates atendem hoje.
+5. **Complexidade** (arquivos e linhas).
+
+| Nível | Definição | Quantos |
+| --- | --- | --- |
+| **Alto** | Já é template do contrato, ou cumpriria o contrato só com o trabalho de configuração | 3 (apenas os templates) |
+| **Médio** | Dado em arquivo próprio, sem recurso pesado e com peça central que pode ser trocada ou removida; ainda exige extrair texto dos componentes e adotar o contrato | 31 |
+| **Baixo** | A peça central *é* o site (3D, shader, diagrama, simulador), ou há recurso pesado, ou o conteúdo está nos componentes | 16 |
+| n/a | Cliente, institucional ou ferramenta | 5 |
+
+**Nenhuma demo atinge "Alto"**: mesmo as melhores têm arquivo de dados pequeno (22 a 113 linhas nas verificadas) e o texto principal dentro dos componentes. Isso é o oposto do que os templates fazem.
+
+**Demos mais próximas de virar template** (nível Médio, complexidade baixa no inventário, dado em arquivo, no máximo `gsap`): `banca`, `sebo`, `focinho`, `pulso`, `revelar`. Em seguida, com complexidade média: `estudio-alma`, `corte`. Para cada uma, o caminho seria o mesmo do restaurante e da academia: criar `conteudo.ts`, `images.ts` e `site.ts`, e mover o texto dos componentes para lá.
+
+**Demos de potencial baixo mais evidentes**: `torno` e `cardume` (three/r3f), `bruma` (shader, framer-motion), `nascente` (router) e as de peça central própria: `prisma`, `luthier`, `calibre`, `lumen`, `encaixe`, `tinta`, `taca`. `zenite` também está em baixo no inventário original, sem motivo detalhado lá (usa `framer-motion`). `ferro` e `fornada` ficam em baixo por terem o conteúdo dentro dos componentes, embora sejam simples.
+
+**Nichos sem template** hoje, onde há demo de potencial médio: pet (`focinho`, `pelagem`), beleza (`corte`, `esmalte`), educação (`ninho`, `passaporte`), serviços profissionais (`ancora`, `razao`), automotivo/local (`torque`, `marcha`, `trinco`, `vazao`). Não há evidência de mercado neste documento sobre qual priorizar.
+
+## Pontos incertos
+
+- **`realce`**: existe de verdade, mas não está claro se é cliente contratado ou redesenho de portfólio.
+- **`encaixe`**: título "Alfaiataria sob Medida", README/`CLAUDE.md` falam em marcenaria em partes. Nicho a confirmar.
+- **`calibre`, `ferro`**: os `CLAUDE.md` citam 3D (mostrador com física; anilhas 3D), mas o `package.json` não tem `three`. Pode ser CSS/SVG/canvas; não verificado.
+- **`escuta`**: o `CLAUDE.md` diz que o pedido apontou para um site real como referência de estrutura; o projeto está catalogado como demo, sem confirmação de vínculo com o dono desse site.
+- **`nascente`**: começou como projeto de um cliente real (NBJ Systems), que não seguiu adiante, e virou conceito em set/2026. Catalogado como demo (histórico).
+- **Nomes de domínio**: o README da raiz pode ainda citar o subdomínio antigo `*.fenoninho-max.workers.dev` (o atual é `sneakpeek.workers.dev`). Não foi verificado nem alterado, pois o arquivo está em edição por outra sessão.
+- **Potencial "Médio" das demos** parte da leitura de código feita no inventário original (2026-09-24) mais a checagem de arquivos de dados desta revisão; não foi construído nem testado cada projeto.
+
+## Documentos relacionados
+
+- [contrato-de-template.md](contrato-de-template.md): o que um template precisa ter.
+- [arquitetura-de-templates.md](arquitetura-de-templates.md): convenções e padrões repetidos entre os projetos.
+- [gerador.md](gerador.md) e [plano-gerador.md](plano-gerador.md): o `npm run new-site`.
+- [guia-de-uso.md](guia-de-uso.md): passo a passo para criar um site de cliente.
