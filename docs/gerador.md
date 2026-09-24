@@ -12,10 +12,10 @@ Pergunta: template → nome do projeto (pasta) → nome da marca → descrição
 
 ```bash
 npm run new-site -- --template restaurante --project meu-bistro --brand "Bistrô Aurora" \
-  --description "Bistrô Aurora: cozinha de bairro." [--worker meu-bistro] [--sem-deps] [--sem-build]
+  --description "Bistrô Aurora: cozinha de bairro." [--worker meu-bistro] [--instalar] [--com-deps]
 ```
 
-`--sem-deps` não copia `node_modules` (rode `npm install` depois); `--sem-build` pula o build.
+Por padrão o projeto nasce **sem `node_modules`** (2 MB em vez de ~285 MB) e o gerador não instala nada: rode `cd <projeto> && npm install && npm run build`. `--instalar` faz o `npm install` e o build por você; `--com-deps` copia o `node_modules` do template (só para uso offline/rápido).
 
 ## Templates (`scripts/templates.json`)
 
@@ -29,12 +29,12 @@ Campos por template: `name`, `category`, `path` (pasta dentro de `sites-feitos/`
 ## O que o gerador faz
 
 1. Valida tudo **antes** de criar qualquer coisa.
-2. Copia o template (sem `dist`, `.wrangler`; `node_modules` incluído para o build funcionar sem `npm install`).
+2. Copia o template (sem `dist`, `.wrangler`; sem `node_modules`).
 3. Em `src/config/site.ts`, troca **só as linhas marcadas** com `// @gen:*`: `name`, `initial` (1ª letra da marca), `seo-url` (`https://<worker>.sneakpeek.workers.dev`), `seo-title` (`marca — descritor`), `seo-description` e, se o template tem, `og-image` (limpo, pois a imagem de compartilhamento do template leva a marca dele). Falha alto se um marcador sumir.
 4. `name` em `wrangler.jsonc` (Worker), `package.json` e `package-lock.json`, via JSON/regex ancorada, sem replace global.
 5. Gera `public/apple-touch-icon.png` (180×180) com as cores do favicon.
 6. Escreve um `README.md` próprio no projeto.
-7. Confere arquivos essenciais, avisa se sobrou referência ao nome do template e roda `npm run build`. Build com erro: o projeto é mantido.
+7. Confere arquivos essenciais e avisa se sobrou referência ao nome do template. Com `--instalar`, roda `npm install` e `npm run build` (erro: o projeto é mantido).
 
 ## Segurança
 

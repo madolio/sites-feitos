@@ -2,7 +2,7 @@
 // Node puro, sem dependências. Não faz deploy, push nem commit.
 //   npm run new-site
 //   npm run new-site -- --template restaurante --project meu-bistro --brand "Bistrô Aurora" \
-//       --description "..." [--worker meu-bistro] [--sem-deps] [--sem-build]
+//       --description "..." [--worker meu-bistro] [--instalar] [--com-deps]
 import { spawnSync } from 'node:child_process'
 import { cpSync, existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve, sep } from 'node:path'
@@ -160,7 +160,7 @@ rl.close()
 const destino = resolve(raiz, projeto)
 console.log(`\nCriando sites-feitos/${projeto} a partir de ${tpl.path}...`)
 
-// 1. Copia (sem build antigo; node_modules só se não houver --sem-deps)
+// 1. Copia (sem build antigo; node_modules só com --com-deps)
 const omitir = new Set(tpl.omit.map((p) => resolve(origem, p)))
 cpSync(origem, destino, {
   recursive: true,
@@ -169,7 +169,7 @@ cpSync(origem, destino, {
   filter: (src) => {
     const rel = relative(origem, src).split(sep)[0]
     if (rel === 'dist' || rel === '.wrangler') return false
-    if (rel === 'node_modules' && flag('sem-deps')) return false
+    if (rel === 'node_modules' && !flag('com-deps')) return false
     return !omitir.has(src)
   },
 })
@@ -221,7 +221,7 @@ Guia completo do template em \`../${tpl.path}/README.md\` e do gerador em \`../d
 Ainda com conteúdo de demonstração (ver checklist): textos e fotos do template, cores, contatos, \`apple-touch-icon.png\` (gerado sem letra).
 
 \`\`\`bash
-npm install   # se o projeto foi criado com --sem-deps
+npm install
 npm run build
 npm run deploy   # só quando decidir publicar (Worker: ${worker})
 \`\`\`
@@ -236,16 +236,18 @@ const vestigios = varrer(destino).filter((p) => /\.(json|jsonc|ts|tsx|html|css)$
 if (vestigios.length) console.error(`Aviso: referência a "${tpl.path}" em: ${vestigios.map((p) => relative(destino, p)).join(', ')}`)
 const marcaTpl = varrer(join(destino, 'src')).filter((p) => readFileSync(p, 'utf8').includes(tpl.brand)).map((p) => relative(destino, p))
 
-// 7. Build
+// 7. Instalação e build: só com --instalar (ou --com-deps, que já traz node_modules)
 let buildOk = null
-if (!flag('sem-build')) {
-  if (!existsSync(join(destino, 'node_modules'))) {
-    console.log('\nSem node_modules: build pulado. Rode `npm install` e `npm run build` no projeto.')
-  } else {
-    console.log('\nExecutando npm run build...\n')
-    buildOk = spawnSync('npm', ['run', 'build'], { cwd: destino, stdio: 'inherit', shell: true }).status === 0
-  }
+const npm = (...a) => spawnSync('npm', a, { cwd: destino, stdio: 'inherit', shell: true }).status === 0
+if (flag('instalar') && !existsSync(join(destino, 'node_modules'))) {
+  console.log('\nExecutando npm install...\n')
+  if (!npm('install')) buildOk = false
 }
+if (buildOk === null && existsSync(join(destino, 'node_modules'))) {
+  console.log('\nExecutando npm run build...\n')
+  buildOk = npm('run', 'build')
+}
+if (buildOk === null) console.log(`\nDependências não instaladas. Próximo passo:\n  cd ${projeto} && npm install && npm run build`)
 
 console.log(`\nProjeto criado: sites-feitos/${projeto}  (Worker: ${worker})`)
 if (buildOk === true) console.log('Build: OK.')

@@ -1,6 +1,6 @@
 # Plano do gerador `npm run new-site`
 
-**Status: implementado (v1).** Uso, segurança e limitações reais em [gerador.md](gerador.md). Este arquivo guarda o plano original; diferenças da implementação: registro em `scripts/templates.json` (não na raiz), marcadores `// @gen:*` só em `site.ts` (name, initial, seo-url, seo-title, seo-description, og-image), sem pergunta de cor/contatos (cores e conteúdo continuam manuais), `apple-touch-icon` gerado por `zlib` (anel colorido, sem letra), `node_modules` copiado do template para o build funcionar sem `npm install`.
+**Status: implementado (v1).** Uso, segurança e limitações reais em [gerador.md](gerador.md). Este arquivo guarda o plano original; diferenças da implementação: registro em `scripts/templates.json` (não na raiz), marcadores `// @gen:*` só em `site.ts` (name, initial, seo-url, seo-title, seo-description, og-image), sem pergunta de cor/contatos (cores e conteúdo continuam manuais), `apple-touch-icon` gerado por `zlib` (anel colorido, sem letra), sem `node_modules` por padrão (`--instalar` roda `npm install` e build).
 
 ## O que já está pronto para o gerador
 
