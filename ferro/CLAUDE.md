@@ -14,7 +14,7 @@ Nada da v2–v4 sobrevive como código morto: `Scene3D.tsx`, `Scene3DLazy.tsx`, 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `ferro`, em `https://ferro.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `ferro`, em `https://ferro.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O conceito v5: laboratório de performance
 
