@@ -6,7 +6,7 @@ Feito a partir do pedido "fuja de tudo que já fez, coloque efeitos visuais, 3D,
 
 ## Deploy (Cloudflare Workers)
 
-Worker `torno`, em `https://torno.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `torno`, em `https://torno.sneakpeek.workers.dev`. `npm run deploy`.
 
 `.npmrc` com `legacy-peer-deps=true`: sem ele o `npm install` tenta resolver os peers opcionais do React Three Fiber (Expo/React Native) e quebra com ERESOLVE.
 
