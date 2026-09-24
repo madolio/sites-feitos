@@ -7,7 +7,7 @@ Página única.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `trilha`, em `https://trilha.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `trilha`, em `https://trilha.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
