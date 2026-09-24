@@ -13,7 +13,7 @@ com urgência.
 
 ## Deploy (Cloudflare Workers)
 
-Worker `trinco`, em `https://trinco.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `trinco`, em `https://trinco.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe Discovery
 
