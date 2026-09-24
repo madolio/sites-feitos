@@ -67,6 +67,8 @@ Regra geral: cada camada muda por um motivo diferente.
 
 Deve conter:
 
+> **Briefing do gerador:** o gerador preenche automaticamente `name`, `initial`, `descriptor`, `tagline`, `whatsapp`, `whatsappLabel`, `whatsappMessage`, `phone`, `email`, `address.line1/line2/zip`, `hours`, `social.instagram` e `seo.url/title/description/ogImage`. Para isso, cada um desses campos deve estar **em uma linha só** (`chave: '...',`), `social.instagram` como `instagram: { handle: '...', url: '...' },` e `hours` como bloco `hours: [ ... ],`; os do SEO e identidade com marcador `// @gen:*`. Um template que fuja desse formato faz o gerador recusar o briefing (nada é criado). Se o template aceita telefone/e-mail vazios (esconde o campo), registre `"vazio"` em `scripts/templates.json`. Ver [gerador.md](gerador.md#briefing).
+
 - identidade: `name`, `descriptor`, `initial`, `tagline`, `logo` (opcional);
 - contatos: `whatsapp` (formato `DDI+DDD+número`), `whatsappLabel`, `whatsappMessage`, `phone`, `email`;
 - endereço e horários **quando o negócio os tem**;
