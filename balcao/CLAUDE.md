@@ -6,7 +6,7 @@ Feito pra ter um **esqueleto de página** genuinamente diferente dos outros conc
 
 ## Deploy (Cloudflare Workers)
 
-Worker `balcao`, em `https://balcao.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `balcao`, em `https://balcao.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O esqueleto — catálogo direto, sem hero, com carrinho de verdade
 
