@@ -6,7 +6,7 @@ Terceiro projeto do portfólio com WebGL de verdade (depois de Cardume e Torno) 
 
 ## Deploy (Cloudflare Workers)
 
-Worker `prisma`, em `https://prisma.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `prisma`, em `https://prisma.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## A gema — índice de refração real, não "por olho"
 
