@@ -102,7 +102,7 @@ export default function Trabalhos() {
             <Reveal className="mt-10 text-center lg:text-left">
               <Link
                 to="/projetos"
-                className="font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 transition-colors hover:decoration-accent-hero"
+                className="inline-block py-1 font-semibold text-accent-hero underline decoration-accent-hero/30 underline-offset-4 transition-colors hover:decoration-accent-hero"
               >
                 Ver todos os projetos numa página só
               </Link>
