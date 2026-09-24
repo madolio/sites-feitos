@@ -18,7 +18,7 @@ async function medir(browser, slug, largura, dpr) {
     }
   });
   try {
-    await page.goto('https://' + slug + '.fenoninho-max.workers.dev', { waitUntil: 'networkidle', timeout: 45000 });
+    await page.goto('https://' + slug + '.sneakpeek.workers.dev', { waitUntil: 'networkidle', timeout: 45000 });
     await page.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += 400) {
         window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 120));

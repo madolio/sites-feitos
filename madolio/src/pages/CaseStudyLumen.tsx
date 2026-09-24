@@ -45,7 +45,7 @@ export default function CaseStudyLumen() {
           alt="Hero do Lúmen: fundo preto, título 'A luz certa não é a mais forte. É a mais pensada.' iluminado ao centro e escurecendo nas bordas."
           width={1280}
           height={800}
-          url="lumen.fenoninho-max.workers.dev"
+          url="lumen.sneakpeek.workers.dev"
           legenda="O hero no ar. O título só aparece por inteiro dentro do círculo de luz que segue o cursor."
         />
       </Capa>
@@ -102,7 +102,7 @@ export default function CaseStudyLumen() {
           alt="Seção Calculadora do Lúmen com largura 4, comprimento 5, sala de estar e pendente selecionados, resultando em 4 luminárias e 60W."
           width={1280}
           height={933}
-          url="lumen.fenoninho-max.workers.dev/#calculadora"
+          url="lumen.sneakpeek.workers.dev/#calculadora"
           legenda="A calculadora no site real, com os valores iniciais: 4 × 5 m, sala de estar, pendente, 4 luminárias."
         />
       </Secao>
@@ -130,7 +130,7 @@ export default function CaseStudyLumen() {
           alt="Catálogo do Lúmen com cinco cartões de luminárias, cada um com um cone de luz de largura e cor diferentes, e ficha de fluxo, potência, feixe e temperatura."
           width={1280}
           height={1113}
-          url="lumen.fenoninho-max.workers.dev/#catalogo"
+          url="lumen.sneakpeek.workers.dev/#catalogo"
           legenda="Do spot de 24° à fita de 180°: o cone muda de largura porque o ângulo muda."
         />
       </Secao>
@@ -173,7 +173,7 @@ export default function CaseStudyLumen() {
 
       <CtaMakingOf
         nome="Lúmen"
-        url="https://lumen.fenoninho-max.workers.dev"
+        url="https://lumen.sneakpeek.workers.dev"
         texto="Mova o cursor no hero e depois dimensione um ambiente na calculadora. Estúdio fictício."
       />
     </>

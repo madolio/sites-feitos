@@ -26,7 +26,7 @@ if (!OUT || !SLUGS.length) {
   process.exit(1);
 }
 
-const url = (s) => `https://${s}.fenoninho-max.workers.dev`;
+const url = (s) => `https://${s}.sneakpeek.workers.dev`;
 const CONC = 4;
 const PASSO_ROLAGEM = 250;
 const ESPERA_ROLAGEM = 320;

@@ -49,7 +49,7 @@ export default function CaseStudyTorno() {
           alt="Página inicial do Torno: um bloco de barro cinza girando sobre o torno em 3D, com o painel de etapas à direita mostrando 12 cm de altura e 15 cm de diâmetro."
           width={1280}
           height={800}
-          url="torno.fenoninho-max.workers.dev"
+          url="torno.sneakpeek.workers.dev"
           legenda="A tela inicial: barro cru no torno e o painel com as três etapas."
         />
       </Capa>
@@ -108,7 +108,7 @@ export default function CaseStudyTorno() {
           alt="Torno com um vaso de barro cru moldado, mostrando 22 cm de altura e 19 cm de diâmetro no painel."
           width={1280}
           height={800}
-          url="torno.fenoninho-max.workers.dev"
+          url="torno.sneakpeek.workers.dev"
           legenda="A forma pronta Vaso no site real: 22 cm por 19 cm, as mesmas medidas da demonstração acima."
         />
       </Secao>
@@ -162,7 +162,7 @@ export default function CaseStudyTorno() {
 
       <CtaMakingOf
         nome="Torno"
-        url="https://torno.fenoninho-max.workers.dev"
+        url="https://torno.sneakpeek.workers.dev"
         texto="Arraste o barro, escolha um esmalte e leve a peça ao forno."
       />
     </>

@@ -44,7 +44,7 @@ export default function CaseStudyRealce() {
           alt="Página inicial do redesenho do Realce & Cia: fundo preto, arco de lâmpadas acesas como um espelho de camarim e o título 'Salão e escola, no mesmo espelho.'"
           width={1280}
           height={800}
-          url="realce.fenoninho-max.workers.dev"
+          url="realce.sneakpeek.workers.dev"
           legenda="O redesenho conceitual, no ar. A marca é a do salão; o texto e o design são da Madolio."
         />
       </Capa>
@@ -106,7 +106,7 @@ export default function CaseStudyRealce() {
           alt="Seção Monte sua visita do Realce & Cia: serviços em cartões agrupados por tipo à esquerda e o painel Sua agenda, ainda vazio, à direita."
           width={1280}
           height={900}
-          url="realce.fenoninho-max.workers.dev/#visita"
+          url="realce.sneakpeek.workers.dev/#visita"
           legenda="A seção real, sem nenhum serviço escolhido. A duração de cada serviço vem do mesmo arquivo que alimenta a lista."
         />
       </Secao>
@@ -175,7 +175,7 @@ export default function CaseStudyRealce() {
 
       <CtaMakingOf
         nome="Realce & Cia"
-        url="https://realce.fenoninho-max.workers.dev"
+        url="https://realce.sneakpeek.workers.dev"
         texto="Conceito da Madolio, não o site oficial do salão. Monte uma visita e veja a que horas você sai."
       />
     </>

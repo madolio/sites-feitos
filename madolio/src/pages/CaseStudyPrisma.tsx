@@ -49,7 +49,7 @@ export default function CaseStudyPrisma() {
           alt="Hero do Prisma: um anel dourado em 3D com um rubi, e à direita os botões de peça (Anel, Colar, Pulseira) e de pedra."
           width={1280}
           height={800}
-          url="prisma.fenoninho-max.workers.dev"
+          url="prisma.sneakpeek.workers.dev"
           legenda="A vitrine com o rubi (IOR 1,762). A captura foi feita com WebGL por software."
         />
       </Capa>
@@ -117,7 +117,7 @@ export default function CaseStudyPrisma() {
             alt="Anel dourado com um diamante de reflexos claros e faixas coloridas, com o texto 'Índice de refração real: 2.417 — Diamante'."
             width={1280}
             height={800}
-            url="prisma.fenoninho-max.workers.dev"
+            url="prisma.sneakpeek.workers.dev"
             legenda="Diamante, IOR 2,417."
           />
           <Figura
@@ -126,7 +126,7 @@ export default function CaseStudyPrisma() {
             alt="Colar dourado com pingente em octaedro, na vitrine do Prisma."
             width={1280}
             height={800}
-            url="prisma.fenoninho-max.workers.dev"
+            url="prisma.sneakpeek.workers.dev"
             legenda="O colar. A câmera é fixa: nesta coluna estreita ele sai cortado nas bordas, limitação registrada no CLAUDE.md."
           />
         </div>
@@ -149,7 +149,7 @@ export default function CaseStudyPrisma() {
           alt="Pulseira em fileira de pedras em torno de um aro, com um vão e fecho de um lado, na vitrine do Prisma."
           width={1280}
           height={800}
-          url="prisma.fenoninho-max.workers.dev"
+          url="prisma.sneakpeek.workers.dev"
           legenda="A pulseira: 15 pedras pequenas em torno de um aro fino, segundo o CLAUDE.md."
         />
       </Secao>
@@ -187,7 +187,7 @@ export default function CaseStudyPrisma() {
 
       <CtaMakingOf
         nome="Prisma"
-        url="https://prisma.fenoninho-max.workers.dev"
+        url="https://prisma.sneakpeek.workers.dev"
         texto="Escolha uma peça, troque a pedra e arraste para girar. Joalheria fictícia."
       />
     </>

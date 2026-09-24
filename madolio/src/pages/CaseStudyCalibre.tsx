@@ -44,7 +44,7 @@ export default function CaseStudyCalibre() {
           alt="Página inicial do Calibre: título 'O relógio certo, à vista' e um mostrador analógico com ponteiros dourados, com os rótulos Modelos, Como nasce e Encomendar em volta."
           width={1280}
           height={800}
-          url="calibre.fenoninho-max.workers.dev"
+          url="calibre.sneakpeek.workers.dev"
           legenda="A home do Calibre, no ar. Os ponteiros estão na hora real de quem abre a página."
         />
       </Capa>
@@ -113,7 +113,7 @@ export default function CaseStudyCalibre() {
           alt="Seção de modelos do Calibre com cartões de relógios desenhados em SVG, ponteiros parados às 10h09."
           width={1280}
           height={837}
-          url="calibre.fenoninho-max.workers.dev/#catalogo"
+          url="calibre.sneakpeek.workers.dev/#catalogo"
           legenda="O catálogo: os mostradores dos modelos são SVG, com ponteiros sempre às 10h09, sem nenhuma foto de relógio."
         />
       </Secao>
@@ -182,7 +182,7 @@ export default function CaseStudyCalibre() {
 
       <CtaMakingOf
         nome="Calibre"
-        url="https://calibre.fenoninho-max.workers.dev"
+        url="https://calibre.sneakpeek.workers.dev"
         texto="Veja o mostrador na sua hora e clique nos números 12, 4 e 8."
       />
     </>

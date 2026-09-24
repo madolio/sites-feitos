@@ -60,7 +60,7 @@ export default function CaseStudyMarcha() {
           alt="Página inicial do Marcha: foto de uma mão ao volante de um carro ao entardecer, com o título 'Cada carro daqui já foi feito pra ser dirigido rápido.'"
           width={1280}
           height={800}
-          url="marcha.fenoninho-max.workers.dev"
+          url="marcha.sneakpeek.workers.dev"
           legenda="A home do Marcha, no ar. A foto é real (Unsplash License); o texto por cima é do site."
         />
       </Capa>
@@ -121,7 +121,7 @@ export default function CaseStudyMarcha() {
           alt="Seção de financiamento do Marcha com seletor de carro, entrada e prazo, e a parcela calculada."
           width={1280}
           height={816}
-          url="marcha.fenoninho-max.workers.dev/#financiamento"
+          url="marcha.sneakpeek.workers.dev/#financiamento"
           legenda="A mesma calculadora dentro do site real."
         />
       </Secao>
@@ -159,7 +159,7 @@ export default function CaseStudyMarcha() {
           alt="Seção de estoque do Marcha com os cartões de carros, cada um com foto, categoria e ficha técnica."
           width={1280}
           height={880}
-          url="marcha.fenoninho-max.workers.dev/#estoque"
+          url="marcha.sneakpeek.workers.dev/#estoque"
           legenda="O estoque no site: categoria e ficha técnica no lugar de marca."
         />
       </Secao>
@@ -211,7 +211,7 @@ export default function CaseStudyMarcha() {
 
       <CtaMakingOf
         nome="Marcha"
-        url="https://marcha.fenoninho-max.workers.dev"
+        url="https://marcha.sneakpeek.workers.dev"
         texto="Escolha um carro, mexa na entrada e no prazo — a parcela sai da conta de verdade."
       />
     </>

@@ -44,7 +44,7 @@ export default function CaseStudyEstufa() {
           alt="Página inicial do Estufa Cheia: foto de uma ave-do-paraíso laranja numa estufa, com o título 'Cada arranjo começa numa espécie de verdade.'"
           width={1280}
           height={800}
-          url="estufa.fenoninho-max.workers.dev"
+          url="estufa.sneakpeek.workers.dev"
           legenda="A home do Estufa Cheia, no ar. A foto é da ave-do-paraíso (Wikimedia Commons); o texto por cima é do site."
         />
       </Capa>
@@ -100,7 +100,7 @@ export default function CaseStudyEstufa() {
           alt="Seção de espécies do Estufa Cheia com três fichas: ave-do-paraíso, bromélia-prateada e helicônia, cada uma com foto, selo de família colorido e dados de luz, cuidado, floração e água."
           width={1280}
           height={1000}
-          url="estufa.fenoninho-max.workers.dev/#especies"
+          url="estufa.sneakpeek.workers.dev/#especies"
           legenda="As mesmas fichas dentro do site real (primeiras três de seis)."
         />
       </Secao>
@@ -128,7 +128,7 @@ export default function CaseStudyEstufa() {
           alt="Formulário de encomenda do Estufa Cheia sobre fundo verde escuro, com seletor de espécie e campo de ocasião."
           width={1280}
           height={587}
-          url="estufa.fenoninho-max.workers.dev/#encomenda"
+          url="estufa.sneakpeek.workers.dev/#encomenda"
           legenda="O formulário de encomenda, em verde-mata."
         />
       </Secao>
@@ -168,7 +168,7 @@ export default function CaseStudyEstufa() {
 
       <CtaMakingOf
         nome="Estufa Cheia"
-        url="https://estufa.fenoninho-max.workers.dev"
+        url="https://estufa.sneakpeek.workers.dev"
         texto="Role até o catálogo, veja a videira crescer e monte uma encomenda de demonstração."
       />
     </>

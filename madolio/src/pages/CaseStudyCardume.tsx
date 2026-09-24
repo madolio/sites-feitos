@@ -44,7 +44,7 @@ export default function CaseStudyCardume() {
           alt="Página inicial do Cardume: título Cardume sobre a superfície da água vista de baixo, com o visor de mergulho no canto superior esquerdo e a régua de profundidade à direita."
           width={1280}
           height={800}
-          url="cardume.fenoninho-max.workers.dev"
+          url="cardume.sneakpeek.workers.dev"
           legenda="A home a 0,0 m: visor de mergulho no canto, régua de profundidade no lugar do menu."
         />
       </Capa>
@@ -162,7 +162,7 @@ export default function CaseStudyCardume() {
 
       <CtaMakingOf
         nome="Cardume"
-        url="https://cardume.fenoninho-max.workers.dev"
+        url="https://cardume.sneakpeek.workers.dev"
         texto="Role a página até o fundo, ligue a lanterna abaixo de 24 m e ache o naufrágio."
       />
     </>

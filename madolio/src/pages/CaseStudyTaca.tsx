@@ -46,7 +46,7 @@ export default function CaseStudyTaca() {
           alt="Página inicial da Taça: título 'Vinícola de altitude na Serra Catarinense', uma roda de aromas com seis fatias à esquerda e a lista de rótulos à direita."
           width={1280}
           height={800}
-          url="taca.fenoninho-max.workers.dev"
+          url="taca.sneakpeek.workers.dev"
           legenda="A home da Taça, no ar: a roda de aromas ao lado da lista de rótulos."
         />
       </Capa>
@@ -115,7 +115,7 @@ export default function CaseStudyTaca() {
           alt="A roda de aromas da Taça com a fatia Fruta escura selecionada; a lista mostra só o rótulo Talhão Sul."
           width={1280}
           height={913}
-          url="taca.fenoninho-max.workers.dev/#prova"
+          url="taca.sneakpeek.workers.dev/#prova"
           legenda="No site real, com a fatia Fruta escura ativa: sobra um rótulo, o Talhão Sul."
         />
       </Secao>
@@ -169,7 +169,7 @@ export default function CaseStudyTaca() {
 
       <CtaMakingOf
         nome="Taça"
-        url="https://taca.fenoninho-max.workers.dev"
+        url="https://taca.sneakpeek.workers.dev"
         texto="Clique numa fatia da roda e veja qual rótulo tem aquele aroma."
       />
     </>

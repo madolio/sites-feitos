@@ -41,7 +41,7 @@ export default function CaseStudyBruma() {
           alt="Hero da Bruma: fundo verde-esmeralda escuro em manchas de shader e o título 'Uma fragrância composta pra você, não escolhida numa vitrine.'"
           width={960}
           height={600}
-          url="bruma.fenoninho-max.workers.dev"
+          url="bruma.sneakpeek.workers.dev"
           legenda="O hero no ar, com o shader ao fundo. Captura em 960 px de largura, feita com WebGL por software."
         />
       </Capa>
@@ -94,7 +94,7 @@ export default function CaseStudyBruma() {
           alt="Seção 'Nosso catálogo' da Bruma com quatro cartões: Bruma Noturna, Raiz Seca, Flor de Sal e Fumaça Doce, cada um com concentração, duração e notas de topo, coração e fundo."
           width={1280}
           height={908}
-          url="bruma.fenoninho-max.workers.dev"
+          url="bruma.sneakpeek.workers.dev"
           legenda="O catálogo real, com os mesmos números do demo acima."
         />
       </Secao>
@@ -147,7 +147,7 @@ export default function CaseStudyBruma() {
 
       <CtaMakingOf
         nome="Bruma"
-        url="https://bruma.fenoninho-max.workers.dev"
+        url="https://bruma.sneakpeek.workers.dev"
         texto="Role a página e veja o cartão se endireitar sobre o shader. Perfumaria fictícia."
       />
     </>

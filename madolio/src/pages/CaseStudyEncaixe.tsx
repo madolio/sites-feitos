@@ -46,7 +46,7 @@ export default function CaseStudyEncaixe() {
           alt="Página inicial do Encaixe: título 'A roupa encaixa em você, não o contrário' e o configurador com peça, tecido e corte."
           width={1280}
           height={800}
-          url="encaixe.fenoninho-max.workers.dev"
+          url="encaixe.sneakpeek.workers.dev"
           legenda="A home: o configurador já está no primeiro bloco da página."
         />
       </Capa>
@@ -117,7 +117,7 @@ export default function CaseStudyEncaixe() {
           alt="Configurador do Encaixe com blazer, tweed e corte clássico selecionados, mostrando R$ 2.880 e prazo de 4 semanas ao lado do desenho técnico do blazer."
           width={1280}
           height={660}
-          url="encaixe.fenoninho-max.workers.dev"
+          url="encaixe.sneakpeek.workers.dev"
           legenda="Blazer em tweed, corte clássico: 2.400 × 1,2 × 1 = R$ 2.880, igual à demonstração acima."
         />
       </Secao>
@@ -170,7 +170,7 @@ export default function CaseStudyEncaixe() {
 
       <CtaMakingOf
         nome="Encaixe"
-        url="https://encaixe.fenoninho-max.workers.dev"
+        url="https://encaixe.sneakpeek.workers.dev"
         texto="Escolha peça, tecido e corte e veja o preço e o prazo mudarem na hora."
       />
     </>
