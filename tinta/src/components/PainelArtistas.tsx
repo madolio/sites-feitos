@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 
 export default function PainelArtistas() {
   return (
-    <section className="panel flex h-svh w-screen shrink-0 flex-col justify-center overflow-y-auto px-6 py-20 sm:px-10">
+    <section className="panel flex h-svh w-screen shrink-0 flex-col justify-center-safe overflow-y-auto px-6 py-20 sm:px-10">
       <Reveal as="h2" className="font-display text-3xl tracking-widest text-paper uppercase sm:text-4xl">
         Quem tatua
       </Reveal>
