@@ -6,7 +6,7 @@ Feito a partir do pedido "fuja de tudo que já fez, coloque efeitos visuais, 3D,
 
 ## Deploy (Cloudflare Workers)
 
-Worker `cardume`, em `https://cardume.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `cardume`, em `https://cardume.sneakpeek.workers.dev`. `npm run deploy`.
 
 `.npmrc` com `legacy-peer-deps=true` (mesmo motivo do Torno: sem ele o npm tenta resolver os peers opcionais de Expo do React Three Fiber e quebra).
 
