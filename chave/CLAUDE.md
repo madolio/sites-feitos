@@ -6,7 +6,7 @@ Um dos 6 conceitos com estilo E estrutura próprios — ver também Pulso, Focin
 
 ## Deploy (Cloudflare Workers)
 
-Worker `chave`, em `https://chave.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `chave`, em `https://chave.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## Vibe — "Classificados"
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chave.fenoninho-max.workers.dev/sitemap.xml
+Sitemap: https://chave.sneakpeek.workers.dev/sitemap.xml
