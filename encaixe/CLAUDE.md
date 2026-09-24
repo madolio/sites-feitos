@@ -12,7 +12,7 @@ Site-conceito da Madolio pro nicho de **alfaiataria sob medida**. **Empresa fict
 
 ## Deploy (Cloudflare Workers)
 
-Worker `encaixe`, em `https://encaixe.fenoninho-max.workers.dev`. `npm run deploy`.
+Worker `encaixe`, em `https://encaixe.sneakpeek.workers.dev`. `npm run deploy`.
 
 ## O conceito v3: configurador de orçamento, não navegação temática
 
