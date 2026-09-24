@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import BrumaDemo from '../components/makingof/demos/BrumaDemo'
-import { Capa, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Briefing, Capa, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of da Bruma. Números e arquivos vêm de bruma/CLAUDE.md, do
 // código-fonte, de um build real, de grep nos package.json e do git log.
@@ -21,7 +21,7 @@ export default function CaseStudyBruma() {
 
       <Capa
         nome="Bruma"
-        nicho="Perfumaria artesanal"
+        nicho="Perfumaria artesanal (fictícia)"
         resumo={
           <>
             Uma perfumaria fictícia que mostra concentração de óleo essencial e pirâmide olfativa em vez de só nomes
@@ -29,7 +29,7 @@ export default function CaseStudyBruma() {
           </>
         }
         fatos={[
-          { rotulo: 'Nicho', valor: 'Perfumaria artesanal' },
+          { rotulo: 'Nicho', valor: 'Perfumaria artesanal (empresa fictícia)' },
           { rotulo: 'Stack', valor: 'React 19 · Tailwind v4 · framer-motion' },
           { rotulo: 'No ar desde', valor: '16/09/2026' },
           { rotulo: 'Sem foto', valor: 'Frasco em SVG' },
@@ -47,6 +47,10 @@ export default function CaseStudyBruma() {
       </Capa>
 
       <Secao n="01" rotulo="O ponto de partida" titulo="Componentes prontos e um tema">
+        <Briefing rotulo="O pedido" quando="16/09">
+          Uma página nova construída em torno de dois componentes prontos, com o tema a escolher.
+        </Briefing>
+        <div className="mt-8">
         <Prosa>
           <p>
             Segundo a mensagem do primeiro commit (c947f96), o usuário colou dois componentes prontos, um shader
@@ -55,6 +59,7 @@ export default function CaseStudyBruma() {
             perfumaria artesanal. A mesma mensagem registra que não há fotos, seguindo o padrão do portfólio.
           </p>
         </Prosa>
+        </div>
       </Secao>
 
       <Secao n="02" rotulo="A ideia central" titulo="Dado real de perfumaria">

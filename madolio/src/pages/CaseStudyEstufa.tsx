@@ -1,6 +1,6 @@
 import Seo from '../components/Seo'
 import EstufaEspecimeDemo from '../components/makingof/demos/EstufaEspecimeDemo'
-import { Capa, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
+import { Briefing, Capa, CtaMakingOf, Ficha, Figura, Marcos, Prosa, Prova, Secao } from '../components/makingof/Kit'
 
 // Making-of do Estufa Cheia. Números, hexes, hashes e créditos conferíveis em
 // estufa/CLAUDE.md, estufa/src/components/Footer.tsx, estufa/public/especies e git log.
@@ -50,9 +50,13 @@ export default function CaseStudyEstufa() {
       </Capa>
 
       <Secao n="01" rotulo="O ponto de partida" titulo="Quatro respostas antes do código">
+        <Briefing rotulo="O pedido" quando="17/09">
+          Um site-conceito de floricultura e paisagismo. Não houve briefing escrito além do nicho.
+        </Briefing>
+        <div className="mt-8">
         <Prosa>
           <p>
-            Não houve um briefing escrito além do nicho. O projeto começou por quatro decisões registradas no{' '}
+            O projeto começou por quatro decisões registradas no{' '}
             <code className="font-mono text-base">CLAUDE.md</code> do site, antes de qualquer tela:
           </p>
           <ul className="list-disc space-y-2 pl-6">
@@ -62,6 +66,7 @@ export default function CaseStudyEstufa() {
             <li>O que nunca ser: e-commerce genérico de flor, com grade de produto, preço e carrinho.</li>
           </ul>
         </Prosa>
+        </div>
       </Secao>
 
       <Secao n="02" rotulo="A ideia central" titulo="Ficha de espécime, não card de produto">

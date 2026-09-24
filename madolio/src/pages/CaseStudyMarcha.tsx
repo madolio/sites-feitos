@@ -40,7 +40,7 @@ export default function CaseStudyMarcha() {
 
       <Capa
         nome="Marcha"
-        nicho="Concessionária de esportivos"
+        nicho="Concessionária de esportivos (fictícia)"
         resumo={
           <>
             A primeira vez que a Madolio pôs foto de verdade num site — e tudo que isso exigiu. Mais uma calculadora
@@ -48,7 +48,7 @@ export default function CaseStudyMarcha() {
           </>
         }
         fatos={[
-          { rotulo: 'Nicho', valor: 'Concessionária de esportivos' },
+          { rotulo: 'Nicho', valor: 'Concessionária de esportivos (empresa fictícia)' },
           { rotulo: 'Stack', valor: 'React 19 · Tailwind v4 · GSAP' },
           { rotulo: 'No ar desde', valor: '16/09/2026' },
           { rotulo: 'Regra quebrada', valor: '“Nunca foto”' },
