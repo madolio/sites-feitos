@@ -61,12 +61,6 @@ Ver histórico anterior deste arquivo — usar Puppeteer com `isMobile: true`/`h
 
 Ver `src/components/Reveal.tsx` — não colocar a classe `transition`/`duration-*` genérica do Tailwind no mesmo elemento que o GSAP anima em opacity/transform.
 
-## `/reel` — showcase em movimento dos projetos-destaque
-
-`src/pages/Reel.tsx`: pega os projetos com `destaque: true` de `data/projetos.ts` (hoje 11) e monta uma sequência de scrollytelling — uma seção `pin: true` do ScrollTrigger, com um painel por projeto sobreposto em `position: absolute`, crossfade controlado por uma timeline `scrub` (não `once`, é contínuo e reversível ao rolar pra cima). Cada painel usa o próprio preview screenshot (`public/previews/<slug>.jpg`) como textura de fundo em opacidade baixa — não é vídeo real, é o material que já existia.
-
-`end` do ScrollTrigger é calculado em pixels (`painéis.length * window.innerHeight`), não em `%`, pra não depender de arredondamento de porcentagem relativa à viewport. Ao final do scroll, o pin libera e o rodapé aparece normalmente por baixo — não é bug, ainda que a screenshot de um frame no meio da transição possa parecer estranha (o texto claro "fantasma" atrás do título é a tagline do próprio preview daquele projeto, não outro painel colado).
-
 ## SEO básico
 
 `index.html` tem meta description, canonical, Open Graph e Twitter Card. `public/robots.txt` e `public/sitemap.xml` existem — o sitemap lista `/` e `/projetos`.
